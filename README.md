@@ -1,6 +1,7 @@
 # Dotfiles
 
 Config files for:
+
 1. [Bash](http://www.gnu.org/software/bash/)
 2. [Tmux](http://tmux.github.io/)
 3. [Emacs](http://www.gnu.org/software/emacs/)
