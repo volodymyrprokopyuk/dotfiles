@@ -1,25 +1,3 @@
-; emacs configuration
-; in ~/.emacs:
-;   ; volodymir's configuration
-;   (load "~/.emacs.d/emacs.el")
-
-; terminal copy/paste to/from clipboard
-(setq x-select-enable-clipboard t)
-(unless window-system
-  (when (getenv "DISPLAY")
-    (defun xsel-cut-function (text &optional push)
-      (with-temp-buffer
-        (insert text)
-        (call-process-region (point-min) (point-max)
-          "xsel" nil 0 nil "--clipboard" "--input")))
-    (defun xsel-paste-function()
-      (let ((xsel-output
-        (shell-command-to-string "xsel --clipboard --output")))
-          (unless (string= (car kill-ring) xsel-output) xsel-output )))
-  (setq interprogram-cut-function 'xsel-cut-function)
-  (setq interprogram-paste-function 'xsel-paste-function))
-)
-
 ; remove Toolbar
 (tool-bar-mode -1)
 ; remove Menubar
@@ -48,15 +26,6 @@
 (setq default-frame-alist '((font . "Source Code Pro Light 12")))
 
 ; color
-; Solarized dark
-; $ git clone https://github.com/sellout/emacs-color-theme-solarized.git
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-;(load-theme 'solarized-dark t)
-; Solarized light
-; $ git clone git://github.com/bbatsov/solarized-emacs.git
-;(add-to-list 'load-path "~/.emacs.d/solarized-emacs")
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/solarized-emacs")
-;(load-theme 'solarized-light t)
 ; Zenburn
 ; $ git clone https://github.com/bbatsov/zenburn-emacs.git
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
@@ -87,6 +56,23 @@
 ; elisp indentation
 (setq lisp-indent-offset 2)
 
+; terminal copy/paste to/from clipboard
+(setq x-select-enable-clipboard t)
+(unless window-system
+  (when (getenv "DISPLAY")
+    (defun xsel-cut-function (text &optional push)
+      (with-temp-buffer
+        (insert text)
+        (call-process-region (point-min) (point-max)
+          "xsel" nil 0 nil "--clipboard" "--input")))
+    (defun xsel-paste-function()
+      (let ((xsel-output
+        (shell-command-to-string "xsel --clipboard --output")))
+          (unless (string= (car kill-ring) xsel-output) xsel-output )))
+  (setq interprogram-cut-function 'xsel-cut-function)
+  (setq interprogram-paste-function 'xsel-paste-function))
+)
+
 ; RecentFiles mode
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -99,15 +85,6 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
-
-; Tern mode
-; $ git clone https://github.com/marijnh/tern.git
-; $ npm install/update
-(add-to-list 'load-path "~/.emacs.d/tern/emacs")
-(autoload 'tern-mode "tern.el" nil t)
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-; Tern completion
-(global-set-key (kbd "M-/") 'complete-symbol)
 
 ; Haskell mode
 ; $ git clone https://github.com/haskell/haskell-mode.git
@@ -128,13 +105,6 @@
 (add-to-list 'load-path "~/.emacs.d/julia")
 (require 'julia-mode)
 
-; TeX mode
-; M-q (format selection)
-(setq-default fill-column 80)
-; TeX completion
-(add-hook 'LaTeX-mode-hook (lambda()
-  (local-set-key (kbd "M-/") 'TeX-complete-symbol)))
-
 ; Jade mode
 ; $ git clone https://github.com/brianc/jade-mode.git
 (add-to-list 'load-path "~/.emacs.d/jade-mode")
@@ -150,6 +120,10 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+; TeX mode
+; M-q (format selection)
+(setq-default fill-column 80)
+
 ; Gnuplot mode
 ; $ git clone https://github.com/mkmcc/gnuplot-mode.git
 (add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
@@ -158,7 +132,7 @@
 
 ; XML format
 ; $ sudo apt-get install libxml2-utils
-; M-x xml-format RET
+; M-x xml-format RET (format XML)
 (defun xml-format ()
   (interactive)
   (save-excursion
@@ -193,8 +167,6 @@
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
 ; $ make
-; u (undo)
-; 0 u (redo)
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
@@ -204,6 +176,5 @@
 ; M-x ispell-change-dictionary
 ; M-x ispell-kill-ispell
 
-; C-x RET f unix/utf-8
-; C-x 8 RET 20AC RET
 ; M-x toggle-read-only
+; C-x RET f unix/utf-8

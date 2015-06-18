@@ -1,8 +1,3 @@
-"
-" vim configuration
-"
-" author: Volodymyr Prokopyuk
-"
 " Statusline
 set laststatus=2
 set statusline=[%n,%{v:register}]\ %<%F\ %m\ %r\ %y\ [%{&fenc}]\ [%{&ff}]\ (%l,%v)\ %L\ %p%%
@@ -16,14 +11,9 @@ set cursorline
 " 80 columns margin
 set colorcolumn=81
 " line wrapping
-" :vip
-" :gq
 set textwidth=80
 
 " font
-" :set guifont # check current font
-"set guifont=Ubuntu\ Mono\ 12
-"set guifont=PT\ Mono\ 12
 set guifont=Source\ Code\ Pro\ Light\ 12
 " baselineskip
 set linespace=3
@@ -31,13 +21,6 @@ set linespace=3
 " color
 filetype on
 syntax on
-" Solarized color scheme
-" git clone https://github.com/altercation/vim-colors-solarized.git
-" cp ./solarized.vim ~/.vim/colors
-"let g:solarized_termcolors=256
-"set background=light
-"set background=dark
-"colorscheme solarized
 " Zenburn color scheme
 " git clone https://github.com/jnurmine/Zenburn.git
 " cp Zenburn/colors/zenburn.vim ~/.vim/colors
@@ -90,12 +73,3 @@ if has("gui_running")
   set spellsuggest=14
   " :set syntax=txt
 endif
-
-"""""""""""""""""""""""""""""""""""""""""
-" set file encoding
-" :set bomb
-" :set fileencoding=utf-8
-" :w
-" set file format
-" :set ff=unix
-" :w
