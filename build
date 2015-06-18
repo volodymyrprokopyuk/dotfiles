@@ -1,0 +1,21 @@
+#!/usr/bin/env runghc
+import Development.Shake
+import Development.Shake.Command
+import Development.Shake.FilePath
+import Development.Shake.Util
+
+main :: IO ()
+main = shakeArgs shakeOptions { shakeFiles = ".build/" } $ do
+  want [ "install" ]
+
+  "install" ~> do
+    putNormal "** installing dotfiles"
+    cmd "bash -c " [ "cp .bash.sh ~/" ++ " && cp .tmux.conf ~/"
+      ++ " && cp .vimrc ~/" ++ " && cp .psqlrc ~/"
+      ++ " && mkdir -p ~/.emacs.d && cp em ~/.emacs.d && chmod 755 ~/.emacs.d/em"
+      ++ " && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d" ]
+
+  "clean" ~> do
+    putNormal "** removing dotfiles"
+    cmd "bash -c " [ "rm ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.psqlrc"
+      ++ " ~/.emacs.d/em ~/.emacs.d/emacs.el" ]
