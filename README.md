@@ -10,7 +10,7 @@ Config files for:
 
 # Install
 
-### [Shake](http://shakebuild.com/)
+##### Install [Shake](http://shakebuild.com/)
 
 ```bash
 $ sudo apt-get install ghc haskell-platform
@@ -18,13 +18,13 @@ $ cabal update
 $ cabal install shake
 ```
 
-### Install config files
+##### Install config files
 
 ```bash
 $ ./build
 ```
 
-### Attach Bash config
+##### Attach Bash config
 
 In `~/.bashrc`:
 ```bash
@@ -38,7 +38,7 @@ In `~/.bash_profile`:
 source ~/.bash.sh
 ```
 
-### Start Tmux
+##### Start Tmux
 
 In `~/.bashrc`:
 ```bash
@@ -46,7 +46,7 @@ In `~/.bashrc`:
 tmux attach-session -t "$USER" || tmux new-session -s "$USER"
 ```
 
-### Attach Emacs config
+##### Attach Emacs config
 
 In `~/.emacs`:
 ```elisp
@@ -54,7 +54,7 @@ In `~/.emacs`:
 (load "~/.emacs.d/emacs.el")
 ```
 
-### Install em
+##### Install em
 
 ```bash
 $ sudo ln -s ~/.emacs.d/em /usr/local/bin
