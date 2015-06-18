@@ -57,6 +57,7 @@
 (setq lisp-indent-offset 2)
 
 ; terminal copy/paste to/from clipboard
+; $ sudo apt-get install xsel
 (setq x-select-enable-clipboard t)
 (unless window-system
   (when (getenv "DISPLAY")
@@ -73,9 +74,26 @@
   (setq interprogram-paste-function 'xsel-paste-function))
 )
 
+; XML format
+; $ sudo apt-get install libxml2-utils
+; M-x xml-format RET (format XML)
+(defun xml-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "xmllint --format -"
+      (buffer-name) t)))
+
 ; RecentFiles mode
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+; PostgreSQL mode
+(add-to-list 'auto-mode-alist '("\\.sql\\'" . (lambda () (sql-mode)
+  (sql-highlight-postgres-keywords))))
+
+; TeX mode
+; M-q (format selection)
+(setq-default fill-column 80)
 
 ; JS2 mode
 ; $ git clone git://github.com/mooz/js2-mode.git
@@ -96,48 +114,6 @@
 (setq haskell-indent-offset 2)
 ; Shake mode
 (add-to-list 'auto-mode-alist '("build\\'" . haskell-mode))
-
-; PostgreSQL mode
-(add-to-list 'auto-mode-alist '("\\.sql\\'" . (lambda () (sql-mode)
-  (sql-highlight-postgres-keywords))))
-
-; Julia mode
-(add-to-list 'load-path "~/.emacs.d/julia")
-(require 'julia-mode)
-
-; Jade mode
-; $ git clone https://github.com/brianc/jade-mode.git
-(add-to-list 'load-path "~/.emacs.d/jade-mode")
-(require 'sws-mode)
-(require 'jade-mode)
-(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
-(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
-
-; Markdown mode
-; $ git clone https://github.com/defunkt/markdown-mode.git
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-; TeX mode
-; M-q (format selection)
-(setq-default fill-column 80)
-
-; Gnuplot mode
-; $ git clone https://github.com/mkmcc/gnuplot-mode.git
-(add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
-(require 'gnuplot-mode)
-(add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
-
-; XML format
-; $ sudo apt-get install libxml2-utils
-; M-x xml-format RET (format XML)
-(defun xml-format ()
-  (interactive)
-  (save-excursion
-    (shell-command-on-region (mark) (point) "xmllint --format -"
-      (buffer-name) t)))
 
 ; Org mode
 ; $ git clone git://orgmode.org/org-mode.git
@@ -163,6 +139,31 @@
 (setq org-log-done t)
 ; agenda files directory
 (setq org-agenda-files '("~/Dropbox/orgfiles"))
+
+; Jade mode
+; $ git clone https://github.com/brianc/jade-mode.git
+(add-to-list 'load-path "~/.emacs.d/jade-mode")
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+
+; Markdown mode
+; $ git clone https://github.com/defunkt/markdown-mode.git
+(add-to-list 'load-path "~/.emacs.d/markdown-mode")
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+; Gnuplot mode
+; $ git clone https://github.com/mkmcc/gnuplot-mode.git
+(add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
+(require 'gnuplot-mode)
+(add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
+
+; Julia mode
+(add-to-list 'load-path "~/.emacs.d/julia")
+(require 'julia-mode)
 
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
