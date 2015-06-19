@@ -96,8 +96,7 @@
 (setq-default fill-column 80)
 
 ; JS2 mode
-; $ git clone git://github.com/mooz/js2-mode.git
-; $ make
+; $ git clone https://github.com/mooz/js2-mode.git
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -106,7 +105,6 @@
 
 ; Haskell mode
 ; $ git clone https://github.com/haskell/haskell-mode.git
-; $ make
 (add-to-list 'load-path "~/.emacs.d/haskell-mode")
 (require 'haskell-mode-autoloads)
 ; haskell indentation
@@ -116,8 +114,7 @@
 (add-to-list 'auto-mode-alist '("build\\'" . haskell-mode))
 
 ; Org mode
-; $ git clone git://orgmode.org/org-mode.git
-; $ make autoloads
+; $ git clone https://orgmode.org/org-mode.git
 ;
 ; * headline folding -> S-Tab
 ; [[link][title]] -> C-c C-o
@@ -167,7 +164,6 @@
 
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
-; $ make
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
