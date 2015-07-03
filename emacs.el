@@ -168,6 +168,7 @@
 ; $ git clone https://github.com/magit/magit.git
 (add-to-list 'load-path "~/.emacs.d/magit/lisp")
 (require 'magit)
+(global-set-key (kbd "C-x g") ’magit-status)
 
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
