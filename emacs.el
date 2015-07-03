@@ -162,6 +162,13 @@
 (add-to-list 'load-path "~/.emacs.d/julia")
 (require 'julia-mode)
 
+; Magit mode
+; $ git clone https://github.com/magnars/dash.el.git
+(add-to-list 'load-path "~/.emacs.d/dash")
+; $ git clone https://github.com/magit/magit.git
+(add-to-list 'load-path "~/.emacs.d/magit/lisp")
+(require 'magit)
+
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
 (add-to-list 'load-path "~/.emacs.d/evil")
