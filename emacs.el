@@ -157,6 +157,7 @@
 (add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
 (require 'gnuplot-mode)
 (add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
+(add-to-list 'auto-mode-alist '("\\.gnuplot\\'" . gnuplot-mode))
 
 ; Julia mode
 (add-to-list 'load-path "~/.emacs.d/julia")

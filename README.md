@@ -7,6 +7,7 @@ Config files for:
 3. [Emacs](http://www.gnu.org/software/emacs/)
 4. [Vim](http://www.vim.org/)
 5. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
+6. [gnuplot](http://www.gnuplot.info/)
 
 # Install
 
