@@ -18,7 +18,9 @@ main = shakeArgs shakeOptions { shakeFiles = ".build/" } $ do
   "update" ~> do
     putNormal "** updating repos"
     cmd "bash -c " [ "function updateRepo { echo [ $1 ]; cd ~/.emacs.d"
-      ++ "; if cd $1; then ${3:-git} pull; else ${3:-git} clone $2; fi }"
+      ++ "; if cd $1; then git pull; else git clone $2; fi }"
+      ++ "\nfunction updateRepoHG { echo [ $1 ]; cd ~/.emacs.d"
+      ++ "; if cd $1; then hg pull -u; else hg clone $2; fi }"
       ++ "; updateRepo 'zenburn-emacs' 'https://github.com/bbatsov/zenburn-emacs.git'"
       ++ " && updateRepo 'js2-mode' 'https://github.com/mooz/js2-mode.git'"
       ++ " && cd ~/.emacs.d/js2-mode && make"
@@ -32,7 +34,7 @@ main = shakeArgs shakeOptions { shakeFiles = ".build/" } $ do
       ++ " && updateRepo 'dash' 'https://github.com/magnars/dash.el.git dash'"
       ++ " && updateRepo 'magit' 'https://github.com/magit/magit.git'"
       ++ " && cd ~/.emacs.d/magit && make"
-      ++ " && updateRepo 'evil' 'https://bitbucket.org/lyro/evil' 'hg'"
+      ++ " && updateRepoHG 'evil' 'https://bitbucket.org/lyro/evil'"
       ++ " && cd ~/.emacs.d/evil && make" ]
 
   "clean" ~> do
