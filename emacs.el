@@ -56,6 +56,12 @@
 ; elisp indentation
 (setq lisp-indent-offset 2)
 
+; Rainbow delimiters mode
+; $ git clone https://github.com/Fanael/rainbow-delimiters.git
+(add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 ; terminal copy/paste to/from clipboard
 ; $ sudo apt-get install xsel
 (setq x-select-enable-clipboard t)
