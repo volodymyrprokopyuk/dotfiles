@@ -8,6 +8,7 @@ Config files for:
 4. [Vim](http://www.vim.org/)
 5. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
 6. [gnuplot](http://www.gnuplot.info/)
+7. [Vifm](http://vifm.info/)
 
 # Install
 

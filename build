@@ -13,7 +13,8 @@ main = shakeArgs shakeOptions { shakeFiles = ".build/" } $ do
     cmd "bash -c " [ "cp .bash.sh ~/" ++ " && cp .tmux.conf ~/"
       ++ " && cp .vimrc ~/" ++ " && cp .psqlrc ~/" ++ " && cp .gnuplot ~/"
       ++ " && mkdir -p ~/.emacs.d && cp em ~/.emacs.d && chmod 755 ~/.emacs.d/em"
-      ++ " && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d" ]
+      ++ " && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d"
+      ++ " && mkdir -p ~/.vifm && cp vifmrc ~/.vifm" ]
 
   "update" ~> do
     putNormal "** updating repos"
@@ -41,4 +42,4 @@ main = shakeArgs shakeOptions { shakeFiles = ".build/" } $ do
   "clean" ~> do
     putNormal "** removing dotfiles"
     cmd "bash -c " [ "rm ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.gnuplot"
-      ++ " ~/.emacs.d/em ~/.emacs.d/emacs.el" ]
+      ++ " ~/.emacs.d/em ~/.emacs.d/emacs.el ~/.vifm/vifmrc" ]

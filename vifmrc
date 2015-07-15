@@ -1,0 +1,33 @@
+" time format
+set timefmt="%d %b %H:%M"
+
+" view columns
+windo set viewcolumns=-80%{name}..,10%{mtime},10%{size}
+
+" status line
+set statusline=" %-45t   %A   %10u:%-10g   %d   %8s   (selected %E)"
+
+" search
+set ignorecase
+set smartcase
+set nohlsearch
+set incsearch
+
+" yank directory
+nnoremap yd :!echo %d | xsel --clipboard --input %i<cr>
+" yank file
+nnoremap yf :!echo %c | xsel --clipboard --input %i<cr>
+" yank path
+nnoremap ydf :!echo %c:p | xsel --clipboard --input %i<cr>
+
+" home directory
+nnoremap ~ :cd<cr>
+" last directory
+nnoremap - :cd -<cr>
+" make dir
+nnoremap md :mkdir<space>
+" touch file
+nnoremap mf :touch<space>
+
+" view
+nnoremap w :view<cr>
