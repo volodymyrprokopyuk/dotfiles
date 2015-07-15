@@ -15,6 +15,8 @@ alias egrep='egrep --color'
 alias less='less -r'
 # mc color scheme
 alias mc='mc -S xoria256'
+# vifm file manager
+alias fm='vifm'
 # colored man
 man() {
   env \
