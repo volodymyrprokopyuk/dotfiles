@@ -165,10 +165,6 @@
 (add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
 (add-to-list 'auto-mode-alist '("\\.gnuplot\\'" . gnuplot-mode))
 
-; Julia mode
-(add-to-list 'load-path "~/.emacs.d/julia")
-(require 'julia-mode)
-
 ; Magit mode
 ; $ git clone https://github.com/magnars/dash.el.git
 (add-to-list 'load-path "~/.emacs.d/dash")
