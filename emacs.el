@@ -109,6 +109,11 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
 
+; OCaml mode
+; $ git clone https://github.com/ocaml/tuareg.git
+(add-to-list 'load-path "~/.emacs.d/tuareg")
+(load "tuareg-site-file")
+
 ; Haskell mode
 ; $ git clone https://github.com/haskell/haskell-mode.git
 (add-to-list 'load-path "~/.emacs.d/haskell-mode")
