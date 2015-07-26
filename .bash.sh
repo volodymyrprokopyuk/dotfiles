@@ -33,10 +33,10 @@ man() {
 # install NVM
 source ~/.nvm/nvm.sh
 source ~/.nvm/bash_completion
+# install OCaml
+source ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 # install ConTeXt
 export OSFONTDIR=/usr/local/share/fonts
 source ~/context/tex/setuptex
 # add Cabal to PATH
 export PATH=~/.cabal/bin:$PATH
-# add Julia to PATH
-export PATH=~/julia/usr/bin:$PATH
