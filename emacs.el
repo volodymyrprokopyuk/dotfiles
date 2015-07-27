@@ -121,8 +121,11 @@
 ; haskell indentation
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (setq haskell-indent-offset 2)
-; Shake mode
-(add-to-list 'auto-mode-alist '("build\\'" . haskell-mode))
+
+; Ninja mode
+; $ git clone https://github.com/martine/ninja.git
+(add-to-list 'load-path "~/.emacs.d/ninja")
+(require 'ninja-mode)
 
 ; Org mode
 ; $ git clone https://orgmode.org/org-mode.git
