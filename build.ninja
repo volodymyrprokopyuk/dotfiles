@@ -1,0 +1,24 @@
+rule install
+  command = cp .bash.sh ~/ && cp .tmux.conf ~/ && cp .vimrc ~/ $
+    && cp .psqlrc ~/ && cp .gnuplot ~/ $
+    && mkdir -p ~/.emacs.d && cp em ~/.emacs.d && chmod 755 ~/.emacs.d/em $
+    && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
+    && mkdir -p ~/.vifm && cp vifmrc ~/.vifm
+  description = [ install ]
+
+build install: install
+
+rule update
+  command = bash update.sh
+  description = [ update ]
+
+build update: update
+
+rule clean
+  command = rm ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.gnuplot $
+    ~/.emacs.d/em ~/.emacs.d/emacs.el ~/.vifm/vifmrc
+  description = [ clean ]
+
+build clean: clean
+
+default install

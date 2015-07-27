@@ -12,12 +12,10 @@ Config files for:
 
 # Install
 
-#### Install [Shake](http://shakebuild.com/)
+#### Install [Ninja](https://martine.github.io/ninja/)
 
 ```bash
-$ sudo apt-get install ghc haskell-platform
-$ cabal update
-$ cabal install shake
+$ sudo apt-get install ninja-build
 ```
 
 #### Install config files
