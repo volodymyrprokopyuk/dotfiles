@@ -21,7 +21,7 @@ $ sudo apt-get install ninja-build
 #### Install config files
 
 ```bash
-$ ./build
+$ ninja
 ```
 
 #### Attach Bash config
