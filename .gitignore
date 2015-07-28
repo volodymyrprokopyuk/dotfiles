@@ -1,5 +1,4 @@
 *~
 *.swp
-.build/
-.ninja_deps
 .ninja_log
+.ninja_deps
