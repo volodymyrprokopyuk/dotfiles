@@ -109,10 +109,11 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
 
-; OCaml mode
-; $ git clone https://github.com/ocaml/tuareg.git
-(add-to-list 'load-path "~/.emacs.d/tuareg")
-(load "tuareg-site-file")
+; Rust mode
+; $ git clone https://github.com/rust-lang/rust-mode.git
+(add-to-list 'load-path "~/.emacs.d/rust-mode")
+(autoload 'rust-mode "rust-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
 ; Haskell mode
 ; $ git clone https://github.com/haskell/haskell-mode.git

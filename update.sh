@@ -12,8 +12,7 @@ updateRepo 'zenburn-emacs' 'https://github.com/bbatsov/zenburn-emacs.git'
 updateRepo 'rainbow-delimiters' 'https://github.com/Fanael/rainbow-delimiters.git'
 updateRepo 'js2-mode' 'https://github.com/mooz/js2-mode.git' \
   && cd ~/.emacs.d/js2-mode && make
-updateRepo 'tuareg' 'https://github.com/ocaml/tuareg.git' \
-  && cd ~/.emacs.d/tuareg && make
+updateRepo 'rust-mode' 'https://github.com/rust-lang/rust-mode.git'
 updateRepo 'haskell-mode' 'https://github.com/haskell/haskell-mode.git' \
   && cd ~/.emacs.d/haskell-mode && EMACS=/usr/local/bin/emacs make
 updateRepo 'org-mode' 'https://orgmode.org/org-mode.git' \
