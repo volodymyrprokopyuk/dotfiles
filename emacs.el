@@ -116,18 +116,37 @@
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 (setq rust-indent-offset 2)
 
-; Haskell mode
-; $ git clone https://github.com/haskell/haskell-mode.git
-(add-to-list 'load-path "~/.emacs.d/haskell-mode")
-(require 'haskell-mode-autoloads)
-; haskell indentation
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(setq haskell-indent-offset 2)
+; Clojure mode
+; $ git clone https://github.com/clojure-emacs/clojure-mode.git
+(add-to-list 'load-path "~/.emacs.d/clojure-mode")
+(require 'clojure-mode)
 
 ; Ninja mode
 ; $ git clone https://github.com/martine/ninja.git
 (add-to-list 'load-path "~/.emacs.d/ninja")
 (require 'ninja-mode)
+
+; Jade mode
+; $ git clone https://github.com/brianc/jade-mode.git
+(add-to-list 'load-path "~/.emacs.d/jade-mode")
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+
+; Markdown mode
+; $ git clone https://github.com/defunkt/markdown-mode.git
+(add-to-list 'load-path "~/.emacs.d/markdown-mode")
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+; Gnuplot mode
+; $ git clone https://github.com/mkmcc/gnuplot-mode.git
+(add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
+(require 'gnuplot-mode)
+(add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
+(add-to-list 'auto-mode-alist '("\\.gnuplot\\'" . gnuplot-mode))
 
 ; Org mode
 ; $ git clone https://orgmode.org/org-mode.git
@@ -153,36 +172,6 @@
 ; agenda files directory
 (setq org-agenda-files '("~/Dropbox/orgfiles"))
 
-; Jade mode
-; $ git clone https://github.com/brianc/jade-mode.git
-(add-to-list 'load-path "~/.emacs.d/jade-mode")
-(require 'sws-mode)
-(require 'jade-mode)
-(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
-(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
-
-; Markdown mode
-; $ git clone https://github.com/defunkt/markdown-mode.git
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-; Gnuplot mode
-; $ git clone https://github.com/mkmcc/gnuplot-mode.git
-(add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
-(require 'gnuplot-mode)
-(add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
-(add-to-list 'auto-mode-alist '("\\.gnuplot\\'" . gnuplot-mode))
-
-; Magit mode
-; $ git clone https://github.com/magnars/dash.el.git
-(add-to-list 'load-path "~/.emacs.d/dash")
-; $ git clone https://github.com/magit/magit.git
-(add-to-list 'load-path "~/.emacs.d/magit/lisp")
-(require 'magit)
-(global-set-key (kbd "C-x g") 'magit-status)
-
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
 (add-to-list 'load-path "~/.emacs.d/evil")
@@ -194,5 +183,4 @@
 ; M-x ispell-change-dictionary
 ; M-x ispell-kill-ispell
 
-; M-x toggle-read-only
 ; C-x RET f unix/utf-8

@@ -13,15 +13,12 @@ updateRepo 'rainbow-delimiters' 'https://github.com/Fanael/rainbow-delimiters.gi
 updateRepo 'js2-mode' 'https://github.com/mooz/js2-mode.git' \
   && cd ~/.emacs.d/js2-mode && make
 updateRepo 'rust-mode' 'https://github.com/rust-lang/rust-mode.git'
-updateRepo 'haskell-mode' 'https://github.com/haskell/haskell-mode.git' \
-  && cd ~/.emacs.d/haskell-mode && EMACS=/usr/local/bin/emacs make
-updateRepo 'org-mode' 'https://orgmode.org/org-mode.git' \
-  && cd ~/.emacs.d/org-mode && make autoloads
+updateRepo 'clojure-mode' 'https://github.com/clojure-emacs/clojure-mode.git' \
+  && cd ~/.emacs.d/clojure-mode && make
 updateRepo 'jade-mode' 'https://github.com/brianc/jade-mode.git'
 updateRepo 'markdown-mode' 'https://github.com/defunkt/markdown-mode.git'
 updateRepo 'gnuplot-mode' 'https://github.com/mkmcc/gnuplot-mode.git'
-updateRepo 'dash' 'https://github.com/magnars/dash.el.git dash'
-updateRepo 'magit' 'https://github.com/magit/magit.git' \
-  && cd ~/.emacs.d/magit && make
+updateRepo 'org-mode' 'https://orgmode.org/org-mode.git' \
+  && cd ~/.emacs.d/org-mode && make autoloads
 updateRepoHG 'evil' 'https://bitbucket.org/lyro/evil' \
   && cd ~/.emacs.d/evil && make
