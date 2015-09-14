@@ -10,6 +10,7 @@ function updateRepoHG {
 }
 updateRepo 'zenburn-emacs' 'https://github.com/bbatsov/zenburn-emacs.git'
 updateRepo 'rainbow-delimiters' 'https://github.com/Fanael/rainbow-delimiters.git'
+updateRepo 'smex' 'https://github.com/nonsequitur/smex.git'
 updateRepo 'js2-mode' 'https://github.com/mooz/js2-mode.git' \
   && cd ~/.emacs.d/js2-mode && make
 updateRepo 'rust-mode' 'https://github.com/rust-lang/rust-mode.git'

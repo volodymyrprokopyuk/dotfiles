@@ -93,6 +93,14 @@
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
+; Smex mode
+; $ git clone https://github.com/nonsequitur/smex.git
+(add-to-list 'load-path "~/.emacs.d/smex")
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
 ; PostgreSQL mode
 (add-to-list 'auto-mode-alist '("\\.sql\\'" . (lambda () (sql-mode)
   (sql-highlight-postgres-keywords))))
