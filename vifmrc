@@ -31,3 +31,12 @@ nnoremap mf :touch<space>
 
 " view
 nnoremap w :view<cr>
+
+" PDF DjVu PS
+filextype *.pdf,*.djvu,*.ps,*.eps okular %c &
+
+" JPG PNG
+filextype *.jpg,*.png gwenview %c &
+
+" HTML
+filextype *.html,*.svg google-chrome %c &
