@@ -16,9 +16,13 @@ updateRepo 'js2-mode' 'https://github.com/mooz/js2-mode.git' \
 updateRepo 'rust-mode' 'https://github.com/rust-lang/rust-mode.git'
 updateRepo 'clojure-mode' 'https://github.com/clojure-emacs/clojure-mode.git' \
   && cd ~/.emacs.d/clojure-mode && make
-updateRepo 'jade-mode' 'https://github.com/brianc/jade-mode.git'
+updateRepo 'jade-mode' 'https://github.com/brianc/jade-mode.git' \
+  && cd ~/.emacs.d/jade-mode \
+  && emacs --batch -f batch-byte-compile jade-mode.el
 updateRepo 'markdown-mode' 'https://github.com/defunkt/markdown-mode.git'
-updateRepo 'gnuplot-mode' 'https://github.com/mkmcc/gnuplot-mode.git'
+updateRepo 'gnuplot-mode' 'https://github.com/mkmcc/gnuplot-mode.git' \
+  && cd ~/.emacs.d/gnuplot-mode \
+  && emacs --batch -f batch-byte-compile gnuplot-mode.el
 updateRepo 'org-mode' 'https://orgmode.org/org-mode.git' \
   && cd ~/.emacs.d/org-mode && make autoloads
 updateRepoHG 'evil' 'https://bitbucket.org/lyro/evil' \
