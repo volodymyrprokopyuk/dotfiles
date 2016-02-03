@@ -21,7 +21,9 @@ $ sudo apt-get install ninja-build
 #### Install config files
 
 ```bash
+$ cd dotfiles
 $ ninja
+$ ninja update
 ```
 
 #### Attach Bash config
