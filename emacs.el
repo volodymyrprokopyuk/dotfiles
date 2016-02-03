@@ -117,13 +117,6 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
 
-; Rust mode
-; $ git clone https://github.com/rust-lang/rust-mode.git
-(add-to-list 'load-path "~/.emacs.d/rust-mode")
-(autoload 'rust-mode "rust-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-(setq rust-indent-offset 2)
-
 ; Clojure mode
 ; $ git clone https://github.com/clojure-emacs/clojure-mode.git
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
