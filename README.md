@@ -21,6 +21,7 @@ $ sudo apt-get install ninja-build
 #### Install config files
 
 ```bash
+$ git clone git@github.com:volodymyrprokopyuk/dotfiles.git
 $ cd dotfiles
 $ ninja
 $ ninja update
