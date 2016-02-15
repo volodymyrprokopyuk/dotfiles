@@ -60,6 +60,6 @@ In `~/.emacs`:
 #### Install em
 
 ```bash
-$ sudo apt-get instll xsel
+$ sudo apt-get install xsel
 $ sudo ln -s ~/.emacs.d/em /usr/local/bin
 ```
