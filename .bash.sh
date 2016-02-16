@@ -31,8 +31,9 @@ man() {
 }
 
 # install NVM
-source ~/.nvm/nvm.sh
-source ~/.nvm/bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] \
+  && source "$NVM_DIR/nvm.sh" && source "$NVM_DIR/bash_completion"
 # install ConTeXt
-export OSFONTDIR=/usr/local/share/fonts
-source ~/context/tex/setuptex
+export OSFONTDIR="/usr/local/share/fonts"
+[ -s "$HOME/context/tex/setuptex" ] && source ~/context/tex/setuptex
