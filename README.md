@@ -46,6 +46,7 @@ source ~/.bash.sh
 In `~/.bashrc`:
 ```bash
 # start Tmux
+alias tmux="tmux -2"
 tmux attach-session -t "$USER" || tmux new-session -s "$USER"
 ```
 
