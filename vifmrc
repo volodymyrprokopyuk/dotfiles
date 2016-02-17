@@ -40,3 +40,6 @@ filextype *.jpg,*.png gwenview %c &
 
 " HTML
 filextype *.html,*.svg google-chrome %c &
+
+" MD
+filextype *.md pandoc %c | lynx -stdin

@@ -2,21 +2,43 @@
 
 Config files for:
 
-1. [Bash](http://www.gnu.org/software/bash/)
-2. [Tmux](http://tmux.github.io/)
-3. [Emacs](http://www.gnu.org/software/emacs/)
-4. [Vim](http://www.vim.org/)
-5. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
-6. [gnuplot](http://www.gnuplot.info/)
-7. [Vifm](http://vifm.info/)
+1. [bash](http://www.gnu.org/software/bash/)
+1. [tmux](http://tmux.github.io/)
+1. [emacs](http://www.gnu.org/software/emacs/)
+1. [vim](http://www.vim.org/)
+1. [vifm](http://vifm.info/)
+1. [mc](https://www.midnight-commander.org/)
+1. [tig](https://github.com/jonas/tig)
+1. [lynx](http://lynx.invisible-island.net/lynx.html)
+1. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
+1. [gnuplot](http://www.gnuplot.info/)
 
 # Install
 
-#### Install [Ninja](https://martine.github.io/ninja/)
+#### Install [Ninja](https://martine.github.io/ninja/) and utils
 
 ```bash
 $ sudo apt-get install ninja-build
+$ sudo apt-get install xsel
+$ sudo apt-get install libxml2-utils
+$ sudo apt-get install pandoc
+$ sudo apt-get install git
+$ sudo apt-get install mercurial
 ```
+
+#### Install apps
+
+```bash
+$ sudo apt-get install tmux
+$ sudo apt-get install emacs24
+$ sudo apt-get install vim vim-gtk
+$ sudo apt-get install mc
+$ sudo apt-get install lynx-cur
+```
+From source:
+
+- [vifm](http://vifm.info/)
+- [tig](https://github.com/jonas/tig)
 
 #### Install config files
 
@@ -61,6 +83,5 @@ In `~/.emacs`:
 #### Install em
 
 ```bash
-$ sudo apt-get install xsel
 $ sudo ln -s ~/.emacs.d/em /usr/local/bin
 ```

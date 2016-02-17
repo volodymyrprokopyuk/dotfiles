@@ -29,6 +29,10 @@ man() {
   LESS_TERMCAP_us=$'\e[04;38;5;146m' \
   man "$@"
 }
+# markdown viewer
+mdv() {
+  pandoc $1 | lynx -stdin
+}
 
 # install NVM
 export NVM_DIR="$HOME/.nvm"
