@@ -15,7 +15,7 @@ Config files for:
 
 # Install
 
-#### Install [Ninja](https://martine.github.io/ninja/) and utils
+#### Install [ninja](https://martine.github.io/ninja/) and utils
 
 ```bash
 $ sudo apt-get install ninja-build
@@ -50,7 +50,7 @@ $ ninja
 $ ninja update
 ```
 
-#### Attach Bash config
+#### Attach bash config
 
 In `~/.bashrc`:
 ```bash
@@ -64,7 +64,7 @@ In `~/.bash_profile`:
 source ~/.bash.sh
 ```
 
-#### Start Tmux
+#### Start tmux
 
 In `~/.bashrc`:
 ```bash
@@ -73,7 +73,7 @@ alias tmux="tmux -2"
 tmux attach-session -t "$USER" || tmux new-session -s "$USER"
 ```
 
-#### Attach Emacs config
+#### Attach emacs config
 
 In `~/.emacs`:
 ```elisp
