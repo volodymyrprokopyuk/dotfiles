@@ -23,6 +23,8 @@ $ sudo apt-get install xsel
 $ sudo apt-get install libxml2-utils
 $ sudo apt-get install pandoc
 $ sudo apt-get install python-pygments
+$ sudo apt-get install htop
+$ sudo apt-get install curl
 $ sudo apt-get install git
 $ sudo apt-get install mercurial
 ```
