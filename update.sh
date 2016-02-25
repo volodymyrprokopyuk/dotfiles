@@ -3,11 +3,13 @@ function updateRepo {
   cd ~/.emacs.d;
   if cd $1; then git pull; else git clone $2; fi
 }
+
 function updateRepoHG {
   echo [ $1 ];
   cd ~/.emacs.d;
   if cd $1; then hg pull -u; else hg clone $2; fi
 }
+
 updateRepo 'zenburn-emacs' 'https://github.com/bbatsov/zenburn-emacs.git'
 updateRepo 'rainbow-delimiters' 'https://github.com/Fanael/rainbow-delimiters.git'
 updateRepo 'smex' 'https://github.com/nonsequitur/smex.git'
@@ -22,6 +24,9 @@ updateRepo 'markdown-mode' 'https://github.com/defunkt/markdown-mode.git'
 updateRepo 'gnuplot-mode' 'https://github.com/mkmcc/gnuplot-mode.git' \
   && cd ~/.emacs.d/gnuplot-mode \
   && emacs --batch -f batch-byte-compile gnuplot-mode.el
+updateRepo 'yasnippet' '--recursive https://github.com/capitaomorte/yasnippet.git' \
+  && cd ~/.emacs.d/yasnippet \
+  && emacs --batch -f batch-byte-compile yasnippet.el
 updateRepo 'org-mode' 'https://orgmode.org/org-mode.git' \
   && cd ~/.emacs.d/org-mode && make autoloads
 updateRepoHG 'evil' 'https://bitbucket.org/lyro/evil' \

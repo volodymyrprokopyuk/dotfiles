@@ -149,6 +149,13 @@
 (add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
 (add-to-list 'auto-mode-alist '("\\.gnuplot\\'" . gnuplot-mode))
 
+; YASnippet mode
+; $ git clone https://github.com/capitaomorte/yasnippet.git
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(yas-global-mode 1)
+
 ; Org mode
 ; $ git clone https://orgmode.org/org-mode.git
 ;

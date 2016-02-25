@@ -3,6 +3,7 @@ rule install
     && cp .psqlrc ~/ && cp .gnuplot ~/ $
     && mkdir -p ~/.emacs.d && cp em ~/.emacs.d && chmod 755 ~/.emacs.d/em $
     && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
+    && cp -R snippets ~/.emacs.d $
     && mkdir -p ~/.vifm && cp vifmrc ~/.vifm
   description = [ install ]
 
