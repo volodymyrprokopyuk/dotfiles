@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# key: it
+# name: Mocha.js it
+# expand-env: ((yas-indent-line 'fixed))
+# --
+it('${1:description}', function() {
+  $0
+});
