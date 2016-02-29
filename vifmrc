@@ -45,4 +45,4 @@ filextype *.html,*.svg google-chrome %c &
 filextype *.md pandoc %c | lynx -stdin
 
 " source code syntax highlighting
-fileviewer *[^/] pygmentize -O style=native -f console256
+fileviewer *[^/] pygmentize -O style=native -f console256 -g
