@@ -7,7 +7,7 @@
   "plugins": {
     "istanbul": {
       "dir": "./coverage"
-      , "reporters": [ "text-summary", "lcov" ]
+      , "reporters": [ "text", "text-summary", "lcov" ]
       , "include": [ "/*.js", "/*.html" ]
       , "exclude": [ ]
     }
