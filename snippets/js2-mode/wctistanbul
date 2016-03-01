@@ -8,8 +8,8 @@
     "istanbul": {
       "dir": "./coverage"
       , "reporters": [ "text-summary", "lcov" ]
-      , "include": [ "**/*.js" ]
-      , "exclude": [ "/polymer/polymer.js" ]
+      , "include": [ "/*.js", "/*.html" ]
+      , "exclude": [ ]
     }
   }
 }
