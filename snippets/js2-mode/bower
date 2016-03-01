@@ -9,7 +9,7 @@
   , "description": "${3:Component description}"
   , "main": "$1.html"
   , "dependencies": {
-    "polymer": "Polyemr/polymer#^1.2.4"
+    "polymer": "Polymer/polymer#^1.2.4"
   }, "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^4.2.1"
   }
