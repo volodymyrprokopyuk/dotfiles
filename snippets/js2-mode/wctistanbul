@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+# key: wctistanbul
+# name: WCT Istanbul
+# expand-env: ((yas-indent-line 'fixed))
+# --
+{
+  "plugins": {
+    "istanbul": {
+      "dir": "./coverage"
+      , "reporters": [ "text-summary", "lcov" ]
+      , "include": [ "**/*.js" ]
+      , "exclude": [ "/polymer/polymer.js" ]
+    }
+  }
+}
