@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# key: dom-repeat
+# name: Polymer repeat
+# expand-env: ((yas-indent-line 'fixed))
+# --
+template(is="dom-repeat" items="[[ ${1:items} ]]")

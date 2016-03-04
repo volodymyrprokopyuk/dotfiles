@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# key: dom-if
+# name: Polymer if
+# expand-env: ((yas-indent-line 'fixed))
+# --
+template(is="dom-if" if="[[ ${1:if} ]]")
