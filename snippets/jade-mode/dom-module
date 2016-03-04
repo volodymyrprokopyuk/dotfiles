@@ -7,4 +7,4 @@ dom-module#${1:new-component}
   template
     $0
   script
-    include ${2:newComponent.js}
+    include $1.js
