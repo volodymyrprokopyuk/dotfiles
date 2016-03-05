@@ -4,3 +4,4 @@
 # expand-env: ((yas-indent-line 'fixed))
 # --
 template(is="dom-if" if="[[ ${1:if} ]]")
+  $0
