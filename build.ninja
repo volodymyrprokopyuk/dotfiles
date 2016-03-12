@@ -1,6 +1,6 @@
 rule install
   command = cp .bash.sh ~/ && cp .tmux.conf ~/ && cp .vimrc ~/ $
-    && cp .psqlrc ~/ && cp .gnuplot ~/ $
+    && cp .psqlrc ~/ $
     && mkdir -p ~/.emacs.d && cp em ~/.emacs.d && chmod 755 ~/.emacs.d/em $
     && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
     && cp -R snippets ~/.emacs.d $
@@ -16,7 +16,7 @@ rule update
 build update: update
 
 rule clean
-  command = rm ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.gnuplot $
+  command = rm ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.psqlrc $
     ~/.emacs.d/em ~/.emacs.d/emacs.el ~/.vifm/vifmrc
   description = [ clean ]
 

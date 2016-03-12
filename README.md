@@ -11,7 +11,6 @@ Config files for:
 1. [tig](https://github.com/jonas/tig)
 1. [lynx](http://lynx.invisible-island.net/lynx.html)
 1. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
-1. [gnuplot](http://www.gnuplot.info/)
 
 # Install
 
