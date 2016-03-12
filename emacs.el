@@ -137,6 +137,12 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+; Cucumber mode
+; $ git clone https://github.com/michaelklishin/cucumber.el.git
+(add-to-list 'load-path "~/.emacs.d/cucumber.el")
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\\.feature\\'" . feature-mode))
+
 ; Clojure mode
 ; $ git clone https://github.com/clojure-emacs/clojure-mode.git
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")

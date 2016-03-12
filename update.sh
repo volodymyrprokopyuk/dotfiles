@@ -25,6 +25,9 @@ updateRepo 'jade-mode' 'https://github.com/brianc/jade-mode.git' \
 updateRepo 'markdown-mode' 'https://github.com/defunkt/markdown-mode.git' \
   && cd ~/.emacs.d/markdown-mode \
   && emacs --batch -f batch-byte-compile markdown-mode.el
+updateRepo 'cucumber.el' 'https://github.com/michaelklishin/cucumber.el.git' \
+  && cd ~/.emacs.d/cucumber.el \
+  && emacs --batch -f batch-byte-compile feature-mode.el
 updateRepo 'clojure-mode' 'https://github.com/clojure-emacs/clojure-mode.git' \
   && cd ~/.emacs.d/clojure-mode && make
 
