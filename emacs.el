@@ -20,13 +20,12 @@
 ; show matching parenthesis
 (show-paren-mode 1)
 
-; font
+; Source Code Pro
 (set-default-font "Source Code Pro Light 13")
 ; set correct font in GUI with emacs server
 (setq default-frame-alist '((font . "Source Code Pro Light 13")))
 
-; color
-; Zenburn
+; Zenburn color
 ; $ git clone https://github.com/bbatsov/zenburn-emacs.git
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
 (load-theme 'zenburn t)
@@ -89,7 +88,7 @@
 
 ; XML format
 ; $ sudo apt-get install libxml2-utils
-; M-x xml-format RET (format XML)
+; M-x xml-format RET -> format XML
 (defun xml-format ()
   (interactive)
   (save-excursion
@@ -101,7 +100,7 @@
   (sql-highlight-postgres-keywords))))
 
 ; TeX mode
-; M-q format selected text
+; M-q -> format selected text
 (setq-default fill-column 80)
 
 ; Ninja mode
@@ -131,6 +130,7 @@
 
 ; Emmet mode
 ; $ git clone https://github.com/smihica/emmet-mode.git
+; C-j -> expand line
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
 (require 'emmet-mode)
 (add-hook 'web-mode-hook 'emmet-mode)
