@@ -129,6 +129,12 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 
+; Emmet mode
+; $ git clone https://github.com/smihica/emmet-mode.git
+(add-to-list 'load-path "~/.emacs.d/emmet-mode")
+(require 'emmet-mode)
+(add-hook 'web-mode-hook 'emmet-mode)
+
 ; Jade mode
 ; $ git clone https://github.com/brianc/jade-mode.git
 (add-to-list 'load-path "~/.emacs.d/jade-mode")

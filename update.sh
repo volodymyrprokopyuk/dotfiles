@@ -22,6 +22,9 @@ updateRepo 'js2-mode' 'https://github.com/mooz/js2-mode.git' \
 updateRepo 'web-mode' 'https://github.com/fxbois/web-mode.git' \
   && cd ~/.emacs.d/web-mode \
   && emacs --batch -f batch-byte-compile web-mode.el
+updateRepo 'emmet-mode' 'https://github.com/smihica/emmet-mode.git' \
+  && cd ~/.emacs.d/emmet-mode \
+  && emacs --batch -f batch-byte-compile emmet-mode.el
 updateRepo 'jade-mode' 'https://github.com/brianc/jade-mode.git' \
   && cd ~/.emacs.d/jade-mode \
   && emacs --batch -f batch-byte-compile jade-mode.el
