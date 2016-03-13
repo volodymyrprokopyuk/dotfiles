@@ -19,6 +19,9 @@ updateRepo 'ninja' 'https://github.com/martine/ninja.git' \
   && emacs --batch -f batch-byte-compile ninja-mode.el
 updateRepo 'js2-mode' 'https://github.com/mooz/js2-mode.git' \
   && cd ~/.emacs.d/js2-mode && make
+updateRepo 'web-mode' 'https://github.com/fxbois/web-mode.git' \
+  && cd ~/.emacs.d/web-mode \
+  && emacs --batch -f batch-byte-compile web-mode.el
 updateRepo 'jade-mode' 'https://github.com/brianc/jade-mode.git' \
   && cd ~/.emacs.d/jade-mode \
   && emacs --batch -f batch-byte-compile jade-mode.el

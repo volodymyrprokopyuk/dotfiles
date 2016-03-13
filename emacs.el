@@ -45,16 +45,12 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
-; elisp indentation
-(setq lisp-indent-offset 2)
-; JS indentation
-(setq-default js2-basic-offset 2)
-; CSS indentation
-(setq css-indent-offset 2)
-; bash indentation
-(setq sh-basic-offset 2)
 ; C/C++ indentation
 (setq c-basic-offset 2)
+; bash indentation
+(setq sh-basic-offset 2)
+; elisp indentation
+(setq lisp-indent-offset 2)
 
 ; Rainbow delimiters mode
 ; $ git clone https://github.com/Fanael/rainbow-delimiters.git
@@ -89,8 +85,7 @@
         (shell-command-to-string "xsel --clipboard --output")))
           (unless (string= (car kill-ring) xsel-output) xsel-output )))
   (setq interprogram-cut-function 'xsel-cut-function)
-  (setq interprogram-paste-function 'xsel-paste-function))
-)
+  (setq interprogram-paste-function 'xsel-paste-function)))
 
 ; XML format
 ; $ sudo apt-get install libxml2-utils
@@ -121,14 +116,26 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+(setq-default js2-basic-offset 2)
+
+; Web mode
+; $ git clone https://github.com/fxbois/web-mode.git
+(add-to-list 'load-path "~/.emacs.d/web-mode")
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-attr-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
 ; Jade mode
 ; $ git clone https://github.com/brianc/jade-mode.git
 (add-to-list 'load-path "~/.emacs.d/jade-mode")
-(require 'sws-mode)
 (require 'jade-mode)
-(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
+(require 'sws-mode)
 (add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
 
 ; Markdown mode
 ; $ git clone https://github.com/defunkt/markdown-mode.git
