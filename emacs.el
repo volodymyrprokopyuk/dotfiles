@@ -21,9 +21,9 @@
 (show-paren-mode 1)
 
 ; Source Code Pro
-(set-default-font "Source Code Pro Light 13")
+(set-default-font "Source Code Pro Light 14")
 ; set correct font in GUI with emacs server
-(setq default-frame-alist '((font . "Source Code Pro Light 13")))
+(setq default-frame-alist '((font . "Source Code Pro Light 14")))
 
 ; Zenburn color
 ; $ git clone https://github.com/bbatsov/zenburn-emacs.git
@@ -64,6 +64,14 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+; Helm mode
+; $ git clone https://github.com/jwiegley/emacs-async.git
+; $ git clone https://github.com/emacs-helm/helm.git
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+(require 'helm-config)
+(helm-mode 1)
 
 ; RecentFiles mode
 (recentf-mode 1)

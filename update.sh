@@ -13,6 +13,11 @@ function updateRepoHG {
 updateRepo 'zenburn-emacs' 'https://github.com/bbatsov/zenburn-emacs.git'
 updateRepo 'rainbow-delimiters' 'https://github.com/Fanael/rainbow-delimiters.git'
 updateRepo 'smex' 'https://github.com/nonsequitur/smex.git'
+updateRepo 'emacs-async' 'https://github.com/jwiegley/emacs-async.git' \
+  && cd ~/.emacs.d/emacs-async \
+  && emacs --batch -f batch-byte-compile async.el
+updateRepo 'helm' 'https://github.com/emacs-helm/helm.git' \
+  && cd ~/.emacs.d/helm && make
 
 updateRepo 'ninja' 'https://github.com/martine/ninja.git' \
   && cd ~/.emacs.d/ninja && cp misc/ninja-mode.el . \
