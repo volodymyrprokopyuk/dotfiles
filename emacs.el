@@ -59,19 +59,19 @@
 
 ; Smex mode
 ; $ git clone https://github.com/nonsequitur/smex.git
-(add-to-list 'load-path "~/.emacs.d/smex")
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;(add-to-list 'load-path "~/.emacs.d/smex")
+;(require 'smex)
+;(smex-initialize)
+;(global-set-key (kbd "M-x") 'smex)
+;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ; Helm mode
 ; $ git clone https://github.com/jwiegley/emacs-async.git
 ; $ git clone https://github.com/emacs-helm/helm.git
-(add-to-list 'load-path "~/.emacs.d/emacs-async")
-(add-to-list 'load-path "~/.emacs.d/helm")
-(require 'helm-config)
-(helm-mode 1)
+;(add-to-list 'load-path "~/.emacs.d/emacs-async")
+;(add-to-list 'load-path "~/.emacs.d/helm")
+;(require 'helm-config)
+;(helm-mode 1)
 
 ; RecentFiles mode
 (recentf-mode 1)
@@ -181,6 +181,7 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+;(evil-ex-define-cmd "ls" 'ibuffer)
 
 ; Spell mode
 ; M-x ispell
