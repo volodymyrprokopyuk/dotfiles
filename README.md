@@ -79,7 +79,7 @@ tmux attach-session -t "$USER" || tmux new-session -s "$USER"
 In `~/.emacs`:
 ```elisp
 ; Emacs config
-(load "~/.emacs.d/emacs.el")
+(load "~/.emacs.d/emacs")
 ```
 
 #### Install em

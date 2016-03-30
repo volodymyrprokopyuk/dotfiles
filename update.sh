@@ -10,6 +10,8 @@ function updateRepoHG {
   if cd $1; then hg pull -u; else hg clone $2; fi
 }
 
+#cd ~/.emacs.d && emacs --batch -f batch-byte-compile emacs.el
+
 updateRepo 'zenburn-emacs' 'https://github.com/bbatsov/zenburn-emacs.git'
 updateRepo 'rainbow-delimiters' 'https://github.com/Fanael/rainbow-delimiters.git'
 updateRepo 'smex' 'https://github.com/nonsequitur/smex.git'
