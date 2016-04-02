@@ -82,10 +82,14 @@
 ; Helm mode
 ; $ git clone https://github.com/jwiegley/emacs-async.git
 ; $ git clone https://github.com/emacs-helm/helm.git
-;(add-to-list 'load-path "~/.emacs.d/emacs-async")
-;(add-to-list 'load-path "~/.emacs.d/helm")
-;(require 'helm-config)
-;(helm-mode 1)
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+(require 'helm)
+(require 'helm-config)
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "M-x") 'helm-M-x)
+(helm-mode 1)
 
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
