@@ -33,6 +33,14 @@
   (setq interprogram-cut-function 'xsel-cut-function)
   (setq interprogram-paste-function 'xsel-paste-function)))
 
+; XML format
+; $ sudo apt-get install libxml2-utils
+(defun xml-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "xmllint --format -"
+      (buffer-name) t)))
+
 ; WiteSpace mode
 (require 'whitespace)
 (global-whitespace-mode t)
@@ -58,7 +66,7 @@
 (setq-default c-basic-offset 2)
 
 ; Source Code Pro font
-(set-frame-font "Source Code Pro Light 16")
+(set-frame-font "Source Code Pro Light 14")
 
 ; Zenburn color
 ; $ git clone https://github.com/bbatsov/zenburn-emacs.git
@@ -70,6 +78,21 @@
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+; Helm mode
+; $ git clone https://github.com/jwiegley/emacs-async.git
+; $ git clone https://github.com/emacs-helm/helm.git
+;(add-to-list 'load-path "~/.emacs.d/emacs-async")
+;(add-to-list 'load-path "~/.emacs.d/helm")
+;(require 'helm-config)
+;(helm-mode 1)
+
+; YASnippet mode
+; $ git clone https://github.com/capitaomorte/yasnippet.git
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(yas-global-mode 1)
 
 ; JS2 mode
 ; $ git clone https://github.com/mooz/js2-mode.git
@@ -98,82 +121,39 @@
 (autoload 'emmet-mode "emmet-mode" nil t)
 (add-hook 'web-mode-hook 'emmet-mode)
 
-;; ; Smex mode
-;; ; $ git clone https://github.com/nonsequitur/smex.git
-;; ;(add-to-list 'load-path "~/.emacs.d/smex")
-;; ;(require 'smex)
-;; ;(smex-initialize)
-;; ;(global-set-key (kbd "M-x") 'smex)
-;; ;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;;
-;; ; Helm mode
-;; ; $ git clone https://github.com/jwiegley/emacs-async.git
-;; ; $ git clone https://github.com/emacs-helm/helm.git
-;; ;(add-to-list 'load-path "~/.emacs.d/emacs-async")
-;; ;(add-to-list 'load-path "~/.emacs.d/helm")
-;; ;(require 'helm-config)
-;; ;(helm-mode 1)
-;;
-;; ; XML format
-;; ; $ sudo apt-get install libxml2-utils
-;; ; M-x xml-format RET -> format XML
-;; (defun xml-format ()
-;;   (interactive)
-;;   (save-excursion
-;;     (shell-command-on-region (mark) (point) "xmllint --format -"
-;;       (buffer-name) t)))
-;;
-;; ; PostgreSQL mode
-;; (add-to-list 'auto-mode-alist '("\\.sql\\'" . (lambda () (sql-mode)
-;;   (sql-highlight-postgres-keywords))))
-;;
-;; ; Ninja mode
-;; ; $ git clone https://github.com/martine/ninja.git
-;; (add-to-list 'load-path "~/.emacs.d/ninja")
-;; (require 'ninja-mode)
-;;
-;; ; Jade mode
-;; ; $ git clone https://github.com/brianc/jade-mode.git
-;; (add-to-list 'load-path "~/.emacs.d/jade-mode")
-;; (require 'jade-mode)
-;; (require 'sws-mode)
-;; (add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
-;; (add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
-;;
-;; ; Markdown mode
-;; ; $ git clone https://github.com/defunkt/markdown-mode.git
-;; (add-to-list 'load-path "~/.emacs.d/markdown-mode")
-;; (autoload 'markdown-mode "markdown-mode"
-;;   "Major mode for editing Markdown files" t)
-;; (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-;;
-;; ; Cucumber mode
-;; ; $ git clone https://github.com/michaelklishin/cucumber.el.git
-;; (add-to-list 'load-path "~/.emacs.d/cucumber.el")
-;; (require 'feature-mode)
-;; (add-to-list 'auto-mode-alist '("\\.feature\\'" . feature-mode))
-;;
-;; ; Clojure mode
-;; ; $ git clone https://github.com/clojure-emacs/clojure-mode.git
-;; (add-to-list 'load-path "~/.emacs.d/clojure-mode")
-;; (require 'clojure-mode)
-;;
-;; ; YASnippet mode
-;; ; $ git clone https://github.com/capitaomorte/yasnippet.git
-;; (add-to-list 'load-path "~/.emacs.d/yasnippet")
-;; (require 'yasnippet)
-;; (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-;; (yas-global-mode 1)
+; Markdown mode
+; $ git clone https://github.com/jrblevin/markdown-mode.git
+(add-to-list 'load-path "~/.emacs.d/markdown-mode")
+(autoload 'markdown-mode "markdown-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+; Jade mode
+; $ git clone https://github.com/brianc/jade-mode.git
+(add-to-list 'load-path "~/.emacs.d/jade-mode")
+(autoload 'jade-mode "jade-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+
+; Clojure mode
+; $ git clone https://github.com/clojure-emacs/clojure-mode.git
+(add-to-list 'load-path "~/.emacs.d/clojure-mode")
+(autoload 'clojure-mode "clojure-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
+
+; Cucumber mode
+; $ git clone https://github.com/michaelklishin/cucumber.el.git
+(add-to-list 'load-path "~/.emacs.d/cucumber.el")
+(autoload 'feature-mode "feature-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.feature\\'" . feature-mode))
+
+; Ninja mode
+; $ git clone https://github.com/martine/ninja.git
+(add-to-list 'load-path "~/.emacs.d/ninja")
+(autoload 'ninja-mode "ninja-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.ninja\\'" . ninja-mode))
 
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
-
-; Spell mode
-; M-x ispell
-; M-x ispell-change-dictionary
-; M-x ispell-kill-ispell
-
-; C-x RET f unix/utf-8
