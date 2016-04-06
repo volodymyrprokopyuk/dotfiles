@@ -24,22 +24,22 @@ $ sudo apt-get install pandoc
 $ sudo apt-get install python-pygments
 $ sudo apt-get install htop
 $ sudo apt-get install curl
-$ sudo apt-get install git
 $ sudo apt-get install mercurial
 ```
 
 #### Install apps
 
 ```bash
-$ sudo apt-get install tmux
-$ sudo apt-get install emacs24
 $ sudo apt-get install vim vim-gtk
 $ sudo apt-get install mc
 $ sudo apt-get install lynx-cur
 ```
 From source:
 
+- [tmux](https://tmux.github.io/)
+- [emacs](https://www.gnu.org/software/emacs/)
 - [vifm](http://vifm.info/)
+- [git](https://git-scm.com/)
 - [tig](https://github.com/jonas/tig)
 
 #### Install config files
@@ -54,12 +54,6 @@ $ ninja update
 #### Attach bash config
 
 In `~/.bashrc`:
-```bash
-# Bash config
-source ~/.bash.sh
-```
-
-In `~/.bash_profile`:
 ```bash
 # Bash config
 source ~/.bash.sh
@@ -80,10 +74,4 @@ In `~/.emacs`:
 ```elisp
 ; Emacs config
 (load "~/.emacs.d/emacs")
-```
-
-#### Install em
-
-```bash
-$ sudo ln -s ~/.emacs.d/em /usr/local/bin
 ```

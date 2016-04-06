@@ -1,3 +1,6 @@
+" emacs editor
+set vicmd="em -nw"
+
 " time format
 set timefmt="%d %b %H:%M"
 

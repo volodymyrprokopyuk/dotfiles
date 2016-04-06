@@ -1,16 +1,16 @@
-# 256 color mode
+# 256 color terminal
 export TERM=screen-256color
-# editor
-export EDITOR=vim
-# vim mode
+# terminal vim mode
 set -o vi
-# emacs terminal server mode
+# emacs server mode
 alias em='em -nw'
+# terminal editor
+export EDITOR=em
 
 # colored ls
 alias ls='ls --color=auto'
-# colored egrep
-alias egrep='egrep --color'
+# colored grep
+alias grep='grep --color=auto'
 # colored less
 alias less='less -r'
 # mc color scheme
@@ -30,10 +30,21 @@ man() {
   man "$@"
 }
 
+# install Git
+[ -s "$HOME/bin/git-completion.bash" ] \
+  && source "$HOME/bin/git-completion.bash"
+[ -s "$HOME/bin/git-prompt.sh" ] \
+  && source "$HOME/bin/git-prompt.sh" \
+  && export GIT_PS1_SHOWDIRTYSTATE=1 \
+  && PS1='\[\033[0;37m\]\[\033[0;35m\]\u@\h\[\033[0;37m\]:\[\033[0;34m\]\w\[\033[0;33m\]$(__git_ps1 " (%s)") \[\033[0;36m\]>\[\033[0;00m\] '
 # install NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] \
   && source "$NVM_DIR/nvm.sh" && source "$NVM_DIR/bash_completion"
 # install ConTeXt
 export OSFONTDIR="/usr/local/share/fonts"
-[ -s "$HOME/context/tex/setuptex" ] && source ~/context/tex/setuptex
+[ -s "$HOME/context/tex/setuptex" ] \
+  && source ~/context/tex/setuptex
+
+# local software PATH
+PATH="$HOME/bin":$PATH
