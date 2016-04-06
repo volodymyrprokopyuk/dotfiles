@@ -159,3 +159,7 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+
+; Ibuffer mode
+(evil-ex-define-cmd "ls" 'ibuffer)
+(evil-set-initial-state 'ibuffer-mode 'normal)
