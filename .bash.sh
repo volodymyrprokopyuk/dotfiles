@@ -48,3 +48,4 @@ export OSFONTDIR="/usr/local/share/fonts"
 
 # local software PATH
 PATH="$HOME/bin":$PATH
+MANPATH="$HOME/share/man":$MANPATH
