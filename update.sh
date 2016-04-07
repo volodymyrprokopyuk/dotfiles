@@ -1,53 +1,67 @@
 function updateGit {
-  echo [ $1 ];
-  cd ~/.emacs.d;
-  if cd $1; then git pull; else git clone $2; fi
+  DIR=${2##*/}; DIR=${DIR%.*}
+  echo [ $DIR ]
+  mkdir -p $1 && cd $1
+  if cd $DIR; then git pull; else git clone $2; fi
 }
 
 function updateHg {
-  echo [ $1 ];
-  cd ~/.emacs.d;
-  if cd $1; then hg pull -u; else hg clone $2; fi
+  DIR=${2##*/}; DIR=${DIR%.*}
+  echo [ $DIR ]
+  mkdir -p $1 && cd $1
+  if cd $DIR; then hg pull -u; else hg clone $2; fi
 }
 
 function compileEmacs {
-  cd ~/.emacs.d/$1;
-  for file in *.el; do
-    if [[ -f $file ]]; then
-      emacs --batch -Q -L . -f batch-byte-compile $file;
+  DIR=${2##*/}; DIR=${DIR%.*}
+  cd "$1/$DIR"
+  for FILE in *.el; do
+    if [[ -f $FILE ]]; then
+      emacs --batch -Q -L . -f batch-byte-compile $FILE
     fi
   done
 }
 
-updateGit 'zenburn-emacs' 'https://github.com/bbatsov/zenburn-emacs.git'
-  compileEmacs 'zenburn-emacs'
-updateGit 'rainbow-delimiters' 'https://github.com/Fanael/rainbow-delimiters.git'
-  compileEmacs 'rainbow-delimiters'
+BASE_DIR="$HOME/bin"
 
-updateGit 'emacs-async' 'https://github.com/jwiegley/emacs-async.git'
-  compileEmacs 'emacs-async'
-updateGit 'helm' 'https://github.com/emacs-helm/helm.git'
-  cd ~/.emacs.d/helm && make
-updateGit 'yasnippet' '--recursive https://github.com/capitaomorte/yasnippet.git'
-  compileEmacs 'yasnippet'
+GIT_URL='https://github.com/nojhan/liquidprompt.git'
+updateGit $BASE_DIR $GIT_URL
 
-updateGit 'js2-mode' 'https://github.com/mooz/js2-mode.git'
-  cd ~/.emacs.d/js2-mode && make
-updateGit 'web-mode' 'https://github.com/fxbois/web-mode.git'
-  compileEmacs 'web-mode'
-updateGit 'emmet-mode' 'https://github.com/smihica/emmet-mode.git'
-  compileEmacs 'emmet-mode'
-updateGit 'markdown-mode' 'https://github.com/jrblevin/markdown-mode.git'
-  compileEmacs 'markdown-mode'
-updateGit 'jade-mode' 'https://github.com/brianc/jade-mode.git'
-  compileEmacs 'jade-mode'
-updateGit 'clojure-mode' 'https://github.com/clojure-emacs/clojure-mode.git'
-  compileEmacs 'clojure-mode'
-updateGit 'cucumber.el' 'https://github.com/michaelklishin/cucumber.el.git'
-  compileEmacs 'cucumber.el'
-updateGit 'ninja' 'https://github.com/martine/ninja.git'
-  cp ~/.emacs.d/ninja/misc/ninja-mode.el ~/.emacs.d/ninja
-  compileEmacs 'ninja'
+GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
+curl $GIT_URL -o "$BASE_DIR/git-completion.bash"
 
-updateHg 'evil' 'https://bitbucket.org/lyro/evil'
-  cd ~/.emacs.d/evil && make
+BASE_DIR="$HOME/.emacs.d"
+
+GIT_URL='https://github.com/bbatsov/zenburn-emacs.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/Fanael/rainbow-delimiters.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+
+GIT_URL='https://github.com/jwiegley/emacs-async.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/emacs-helm/helm.git'
+updateGit $BASE_DIR $GIT_URL && cd "$BASE_DIR/helm" && make
+GIT_URL='https://github.com/capitaomorte/yasnippet.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+
+GIT_URL='https://github.com/mooz/js2-mode.git'
+updateGit $BASE_DIR $GIT_URL && cd "$BASE_DIR/js2-mode" && make
+GIT_URL='https://github.com/fxbois/web-mode.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/smihica/emmet-mode.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/jrblevin/markdown-mode.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/brianc/jade-mode.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/clojure-emacs/clojure-mode.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/michaelklishin/cucumber.el.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/martine/ninja.git'
+updateGit $BASE_DIR $GIT_URL \
+  && cp "$BASE_DIR/ninja/misc/ninja-mode.el" "$BASE_DIR/ninja" \
+  && compileEmacs $BASE_DIR $GIT_URL
+
+GIT_URL='https://bitbucket.org/lyro/evil'
+updateHg $BASE_DIR $GIT_URL && cd "$BASE_DIR/evil" && make

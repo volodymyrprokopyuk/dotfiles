@@ -1,3 +1,7 @@
+# local software PATH
+PATH="$HOME/bin":$PATH
+MANPATH="$HOME/share/man":$MANPATH
+
 # 256 color terminal
 export TERM=screen-256color
 # terminal vim mode
@@ -30,13 +34,12 @@ man() {
   man "$@"
 }
 
+# install Liquid Prompt
+[ -s "$HOME/bin/liquidprompt/liquidprompt" ] \
+  && [[ $- = *i* ]] && source "$HOME/bin/liquidprompt/liquidprompt"
 # install Git
 [ -s "$HOME/bin/git-completion.bash" ] \
   && source "$HOME/bin/git-completion.bash"
-[ -s "$HOME/bin/git-prompt.sh" ] \
-  && source "$HOME/bin/git-prompt.sh" \
-  && export GIT_PS1_SHOWDIRTYSTATE=1 \
-  && PS1='\[\033[0;37m\]\[\033[0;35m\]\u@\h\[\033[0;37m\]:\[\033[0;34m\]\w\[\033[0;33m\]$(__git_ps1 " (%s)") \[\033[0;36m\]>\[\033[0;00m\] '
 # install NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] \
@@ -45,7 +48,3 @@ export NVM_DIR="$HOME/.nvm"
 export OSFONTDIR="/usr/local/share/fonts"
 [ -s "$HOME/context/tex/setuptex" ] \
   && source ~/context/tex/setuptex
-
-# local software PATH
-PATH="$HOME/bin":$PATH
-MANPATH="$HOME/share/man":$MANPATH
