@@ -2,7 +2,7 @@ rule install
   command = cp .bash.sh ~ && cp .tmux.conf ~ && cp .vimrc ~ && cp .psqlrc ~ $
     && mkdir -p ~/.vifm && cp vifmrc ~/.vifm $
     && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
-    && mkdir -p ~/bin && cp em ~/bin && chmod 755 ~/bin/em $
+    && mkdir -p ~/local/bin && cp em ~/local/bin && chmod 755 ~/local/bin/em $
     && cp -R snippets ~/.emacs.d
   description = [ install ]
 

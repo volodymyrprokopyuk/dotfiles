@@ -1,6 +1,6 @@
 # local software PATH
-PATH="$HOME/bin":$PATH
-MANPATH="$HOME/share/man":$MANPATH
+PATH="$HOME/local/bin":$PATH
+MANPATH="$HOME/local/share/man":$MANPATH
 
 # 256 color terminal
 export TERM=screen-256color
@@ -35,11 +35,11 @@ man() {
 }
 
 # install Liquid Prompt
-[ -s "$HOME/bin/liquidprompt/liquidprompt" ] \
-  && [[ $- = *i* ]] && source "$HOME/bin/liquidprompt/liquidprompt"
+[ -s "$HOME/local/bin/liquidprompt/liquidprompt" ] \
+  && [[ $- = *i* ]] && source "$HOME/local/bin/liquidprompt/liquidprompt"
 # install Git
-[ -s "$HOME/bin/git-completion.bash" ] \
-  && source "$HOME/bin/git-completion.bash"
+[ -s "$HOME/local/bin/git-completion.bash" ] \
+  && source "$HOME/local/bin/git-completion.bash"
 # install NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] \

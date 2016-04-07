@@ -22,7 +22,7 @@ function compileEmacs {
   done
 }
 
-BASE_DIR="$HOME/bin"
+BASE_DIR="$HOME/local/bin"
 
 GIT_URL='https://github.com/nojhan/liquidprompt.git'
 updateGit $BASE_DIR $GIT_URL
