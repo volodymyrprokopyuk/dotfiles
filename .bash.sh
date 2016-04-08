@@ -40,6 +40,9 @@ man() {
 # install Git
 [ -s "$HOME/local/bin/git-completion.bash" ] \
   && source "$HOME/local/bin/git-completion.bash"
+git config --global user.name 'Volodymyr Prokopyuk'
+git config --global user.email 'volodymyrprokopyuk@gmail.com'
+git config --global core.editor 'em -nw'
 git config --global alias.lg "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # install NVM
 export NVM_DIR="$HOME/.nvm"
