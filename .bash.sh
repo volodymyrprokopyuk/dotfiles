@@ -9,7 +9,7 @@ set -o vi
 # emacs server mode
 alias em='em -nw'
 # terminal editor
-export EDITOR=em
+export EDITOR='em -nw'
 
 # colored ls
 alias ls='ls --color=auto'
