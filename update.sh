@@ -28,6 +28,7 @@ GIT_URL='https://github.com/nojhan/liquidprompt.git'
 updateGit $BASE_DIR $GIT_URL
 
 GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
+echo [ 'git-completion' ]
 curl $GIT_URL -o "$BASE_DIR/git-completion.bash"
 
 BASE_DIR="$HOME/.emacs.d"
