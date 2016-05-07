@@ -50,6 +50,7 @@ git config --global alias.cm "commit"
 git config --global alias.ch "checkout"
 git config --global alias.chb "checkout -b"
 git config --global alias.bs "branch -a -vv"
+git config --global alias.rs "remote -v"
 alias tig='tig --all'
 # install NVM
 export NVM_DIR="$HOME/.nvm"
