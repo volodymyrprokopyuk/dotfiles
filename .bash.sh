@@ -49,7 +49,7 @@ git config --global alias.s "status -sb"
 git config --global alias.cm "commit"
 git config --global alias.ch "checkout"
 git config --global alias.chb "checkout -b"
-git config --global alias.bs "branch -v"
+git config --global alias.bs "branch -a -vv"
 alias tig='tig --all'
 # install NVM
 export NVM_DIR="$HOME/.nvm"
