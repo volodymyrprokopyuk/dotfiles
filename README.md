@@ -16,7 +16,6 @@ Config files for:
 #### Install utils and apps
 
 ```bash
-$ sudo apt-get install ninja-build
 $ sudo apt-get install xsel
 $ sudo apt-get install libxml2-utils
 $ sudo apt-get install curl
@@ -28,6 +27,7 @@ $ sudo apt-get install mc
 
 From source:
 
+- [ninja](https://ninja-build.org/)
 - [tmux](https://tmux.github.io/)
 - [emacs](https://www.gnu.org/software/emacs/)
 - [vifm](http://vifm.info/)
