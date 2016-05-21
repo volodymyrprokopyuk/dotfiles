@@ -52,6 +52,9 @@ git config --global alias.chb "checkout -b"
 git config --global alias.bs "branch -a -vv"
 git config --global alias.rs "remote -v"
 alias tig='tig --all'
+# install Ninja
+[ -s "$HOME/local/bin/ninja-completion.bash" ] \
+  && source "$HOME/local/bin/ninja-completion.bash"
 # install NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] \
