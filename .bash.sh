@@ -34,6 +34,11 @@ man() {
   man "$@"
 }
 
+# Bash aliases
+alias l='ls -lah'
+alias mf='touch'
+alias md='mkdir'
+
 # install Liquid Prompt
 [ -s "$HOME/local/bin/liquidprompt/liquidprompt" ] \
   && [[ $- = *i* ]] && source "$HOME/local/bin/liquidprompt/liquidprompt"
