@@ -37,6 +37,11 @@ curl $GIT_URL -o $BASE_DIR/git-completion.bash
 echo [ 'ninja-completion' ]
 GIT_URL='https://raw.githubusercontent.com/ninja-build/ninja/master/misc/bash-completion'
 curl $GIT_URL -o $BASE_DIR/ninja-completion.bash
+echo [ 'kerl' ]
+GIT_URL='https://raw.githubusercontent.com/kerl/kerl/master/kerl'
+curl $GIT_URL -o $BASE_DIR/kerl && chmod 755 $BASE_DIR/kerl
+GIT_URL='https://raw.githubusercontent.com/kerl/kerl/master/bash_completion/kerl'
+curl $GIT_URL -o $BASE_DIR/kerl-completion.bash
 
 BASE_DIR=$HOME/.emacs.d
 
