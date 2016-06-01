@@ -65,6 +65,8 @@ alias tig='tig --all'
   && source $HOME/local/erlang/activate
 [ -s $HOME/local/bin/kerl-completion.bash ] \
   && source $HOME/local/bin/kerl-completion.bash
+# install Elixir
+[ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
 # install NVM
 export NVM_DIR=$HOME/.nvm
 [ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
