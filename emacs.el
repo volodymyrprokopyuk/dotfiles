@@ -140,6 +140,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-elixir")
 (autoload 'elixir-mode "elixir-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
+(add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
 
 ; Clojure mode
 ; $ git clone https://github.com/clojure-emacs/clojure-mode.git
