@@ -21,7 +21,7 @@ function compileEmacs {
   cd $1/$DIR
   for FILE in *.el; do
     if [[ -f $FILE ]]; then
-      emacs --batch -Q -L . -f batch-byte-compile $FILE
+      emacs --batch -Q -L . -L ../helm -f batch-byte-compile $FILE
     fi
   done
 }
@@ -58,6 +58,9 @@ updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'helm' ]
 GIT_URL='https://github.com/emacs-helm/helm.git'
 updateGit $BASE_DIR $GIT_URL && make
+echo [ 'helm-ag' ]
+GIT_URL='https://github.com/syohex/emacs-helm-ag.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'yasnippet' ]
 GIT_URL='https://github.com/capitaomorte/yasnippet.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
