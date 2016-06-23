@@ -87,15 +87,16 @@
 (require 'helm)
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
-(helm-mode 1)
 (global-set-key (kbd "M-s r") 'helm-mini)
 (global-set-key (kbd "M-s s") 'helm-occur)
+(helm-mode 1)
 
 ; Helm Ag mode
 ; $ git clone https://github.com/syohex/emacs-helm-ag.git
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
 (global-set-key (kbd "M-s f") 'helm-ag-project-root)
+(global-set-key (kbd "M-s a") 'helm-ag-buffers)
 
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
