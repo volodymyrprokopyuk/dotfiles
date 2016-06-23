@@ -33,6 +33,7 @@ From source:
 - [vifm](http://vifm.info/)
 - [git](https://git-scm.com/)
 - [tig](https://github.com/jonas/tig)
+- [ag](https://github.com/ggreer/the_silver_searcher)
 
 #### Install config files
 
