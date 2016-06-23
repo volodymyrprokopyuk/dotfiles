@@ -89,7 +89,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (helm-mode 1)
 (global-set-key (kbd "M-s r") 'helm-mini)
-(global-set-key (kbd "M-s b") 'helm-occur)
+(global-set-key (kbd "M-s s") 'helm-occur)
 
 ; Helm Ag mode
 ; $ git clone https://github.com/syohex/emacs-helm-ag.git
