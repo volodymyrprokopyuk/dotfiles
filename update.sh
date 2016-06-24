@@ -34,6 +34,21 @@ updateGit $BASE_DIR $GIT_URL
 echo [ 'git-completion' ]
 GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
 curl $GIT_URL -o $BASE_DIR/git-completion.bash
+echo [ 'git-aliases' ]
+git config --global user.name "Volodymyr Prokopyuk"
+git config --global user.email "volodymyrprokopyuk@gmail.com"
+git config --global core.editor "em -nw"
+git config --global core.pager "less -r"
+git config --global alias.l "log --all --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+git config --global alias.s "status -sb"
+git config --global alias.d "diff --color-words"
+git config --global alias.dc "diff --color-words --cached"
+git config --global alias.a "!git add -A && git s"
+git config --global alias.cm "commit"
+git config --global alias.ch "checkout"
+git config --global alias.chb "checkout -b"
+git config --global alias.bs "branch -a -vv"
+git config --global alias.rs "remote -v"
 echo [ 'ninja-completion' ]
 GIT_URL='https://raw.githubusercontent.com/ninja-build/ninja/master/misc/bash-completion'
 curl $GIT_URL -o $BASE_DIR/ninja-completion.bash

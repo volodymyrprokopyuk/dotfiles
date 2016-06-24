@@ -45,17 +45,6 @@ alias md='mkdir'
 # install Git
 [ -s $HOME/local/bin/git-completion.bash ] \
   && source $HOME/local/bin/git-completion.bash
-git config --global user.name "Volodymyr Prokopyuk"
-git config --global user.email "volodymyrprokopyuk@gmail.com"
-git config --global core.editor "em -nw"
-git config --global alias.l "log --all --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
-git config --global alias.a "add -A"
-git config --global alias.s "status -sb"
-git config --global alias.cm "commit"
-git config --global alias.ch "checkout"
-git config --global alias.chb "checkout -b"
-git config --global alias.bs "branch -a -vv"
-git config --global alias.rs "remote -v"
 alias tig='tig --all'
 # install Ninja
 [ -s $HOME/local/bin/ninja-completion.bash ] \
