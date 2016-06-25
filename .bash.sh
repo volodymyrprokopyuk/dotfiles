@@ -56,6 +56,7 @@ alias tig='tig --all'
   && source $HOME/local/bin/kerl-completion.bash
 # install Elixir
 [ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
+alias iexm='eix -S mix'
 # install NVM
 export NVM_DIR=$HOME/.nvm
 [ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
