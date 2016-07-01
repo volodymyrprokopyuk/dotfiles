@@ -13,6 +13,7 @@ export EDITOR='em -nw'
 
 # colored ls
 alias ls='ls --color=auto'
+alias ll='ls -lah'
 # colored grep
 alias grep='grep --color=auto'
 # colored less
