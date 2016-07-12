@@ -105,6 +105,20 @@
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (yas-global-mode 1)
 
+; neotree mode
+; $ git clone https://github.com/jaypei/emacs-neotree.git
+(add-to-list 'load-path "~/.emacs.d/emacs-neotree")
+(require 'neotree)
+(add-hook 'neotree-mode-hook
+  (lambda ()
+    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "l") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "h") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+    (define-key evil-normal-state-local-map (kbd "a") 'neotree-hidden-file-toggle)
+    (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)))
+(global-set-key (kbd "M-s d") 'neotree-toggle)
+
 ; JS2 mode
 ; $ git clone https://github.com/mooz/js2-mode.git
 (add-to-list 'load-path "~/.emacs.d/js2-mode")

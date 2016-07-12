@@ -79,6 +79,9 @@ updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'yasnippet' ]
 GIT_URL='https://github.com/capitaomorte/yasnippet.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+echo [ 'neotree' ]
+GIT_URL='https://github.com/jaypei/emacs-neotree.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 
 echo [ 'js2-mode' ]
 GIT_URL='https://github.com/mooz/js2-mode.git'
