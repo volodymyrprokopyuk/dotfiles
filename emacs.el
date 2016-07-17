@@ -159,6 +159,7 @@
 (add-to-list 'load-path "~/.emacs.d/jade-mode")
 (autoload 'jade-mode "jade-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+(add-to-list 'auto-mode-alist '("\\.pug\\'" . jade-mode))
 
 ; Elixir mode
 ; $ git clone https://github.com/elixir-lang/emacs-elixir
