@@ -109,6 +109,7 @@
 ; $ git clone https://github.com/jaypei/emacs-neotree.git
 (add-to-list 'load-path "~/.emacs.d/emacs-neotree")
 (require 'neotree)
+(setq neo-smart-open t)
 (add-hook 'neotree-mode-hook
   (lambda ()
     (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
