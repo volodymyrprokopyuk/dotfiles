@@ -65,3 +65,5 @@ export NVM_DIR=$HOME/.nvm
 # install ConTeXt
 export OSFONTDIR=/usr/local/share/fonts
 [ -s $HOME/context/tex/setuptex ] && source $HOME/context/tex/setuptex
+# install IDEA
+[ -s $HOME/local/idea/bin/idea ] && PATH=$HOME/local/idea/bin:$PATH
