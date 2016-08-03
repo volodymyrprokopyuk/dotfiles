@@ -65,3 +65,6 @@ export NVM_DIR=$HOME/.nvm
 # install ConTeXt
 export OSFONTDIR=/usr/local/share/fonts
 [ -s $HOME/context/tex/setuptex ] && source $HOME/context/tex/setuptex
+# install Gradle
+export GRADLE_HOME=$HOME/local/gradle
+[ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
