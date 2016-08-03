@@ -43,6 +43,8 @@ alias md='mkdir'
 # install Liquid Prompt
 [ -s $HOME/local/bin/liquidprompt/liquidprompt ] \
   && [[ $- = *i* ]] && source $HOME/local/bin/liquidprompt/liquidprompt
+# install fasd
+[ -s $HOME/local/bin/fasd ] && eval "$(fasd --init auto)"
 # install Git
 [ -s $HOME/local/bin/git-completion.bash ] \
   && source $HOME/local/bin/git-completion.bash

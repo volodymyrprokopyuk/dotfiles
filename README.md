@@ -4,6 +4,8 @@ Config files for:
 
 1. [bash](http://www.gnu.org/software/bash/)
 1. [tmux](http://tmux.github.io/)
+1. [liquidprompt](https://github.com/nojhan/liquidprompt)
+1. [fasd](https://github.com/clvv/fasd)
 1. [emacs](http://www.gnu.org/software/emacs/)
 1. [vim](http://www.vim.org/)
 1. [vifm](http://vifm.info/)
