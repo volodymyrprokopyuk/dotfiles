@@ -52,6 +52,7 @@ alias tig='tig --all'
 # install Ninja
 [ -s $HOME/local/bin/ninja-completion.bash ] \
   && source $HOME/local/bin/ninja-completion.bash
+alias ninja='ninja -v'
 # install Kerl
 [ -s $HOME/local/erlang/activate ] \
   && source $HOME/local/erlang/activate
