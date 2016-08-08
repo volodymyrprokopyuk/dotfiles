@@ -4,20 +4,17 @@ rule install
     && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
     && mkdir -p ~/local/bin && cp em ~/local/bin && chmod 755 ~/local/bin/em $
     && cp -R snippets ~/.emacs.d
-  description = [ install ]
 
 build install: install
 
 rule update
   command = bash update.sh
-  description = [ update ]
 
 build update: update
 
 rule clean
   command = rm -rf ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.tigrc ~/.psqlrc ~/.vifm $
     ~/.emacs.d
-  description = [ clean ]
 
 build clean: clean
 

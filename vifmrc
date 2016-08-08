@@ -28,9 +28,9 @@ nnoremap ~ :cd<cr>
 " last directory
 nnoremap - :cd -<cr>
 " make dir
-nnoremap md :mkdir<space>
+nnoremap md :!mkdir -p<space>
 " touch file
-nnoremap mf :touch<space>
+nnoremap mf :!touch<space>
 
 " view
 nnoremap w :view<cr>
