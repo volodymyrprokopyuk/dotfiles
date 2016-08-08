@@ -97,6 +97,8 @@
 (require 'helm-ag)
 (global-set-key (kbd "M-s f") 'helm-ag-project-root)
 (global-set-key (kbd "M-s a") 'helm-ag-buffers)
+(custom-set-variables
+ '(helm-ag-command-option "--ignore *~"))
 
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
