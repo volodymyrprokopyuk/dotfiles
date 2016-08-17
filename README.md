@@ -19,6 +19,9 @@ Config files for:
 
 ```bash
 $ sudo apt-get install xsel
+$ sudo apt-get install archivemount
+$ sudo apt-get install fuse-zip
+$ sudo apt-get install fuseiso
 $ sudo apt-get install libxml2-utils
 $ sudo apt-get install curl
 $ sudo apt-get install mercurial

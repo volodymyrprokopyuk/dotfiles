@@ -32,9 +32,6 @@ nnoremap md :!mkdir -p<space>
 " touch file
 nnoremap mf :!touch<space>
 
-" view
-nnoremap w :view<cr>
-
 " PDF, DjVu, PS
 filextype *.pdf,*.djvu,*.ps,*.eps okular %c &
 
@@ -44,13 +41,6 @@ filextype *.jpg,*.png gwenview %c &
 " HTML
 filextype *.html,*.svg google-chrome %c &
 
-" ZIP, JAR, WAR
-filetype *.zip,*.jar,*.war
-  \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-  \ zip -sf %c | less,
-  \ tar -xf %c
-fileviewer *.zip,*.jar,*.war zip -sf %c
-
 " TAR, TAR.GZ, TAR.BZ2, TAR.TXZ
 filetype *.tar,*.tar.gz,*.tgz,*.tar.bz2,*.tbz2,*.tar.xz,*.txz
   \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR
@@ -59,13 +49,10 @@ fileviewer *.tar.gz,*.tgz tar -tzf %c
 fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
 fileviewer *.tar.txz,*.txz xz --list %c
 
-" RAR
-filetype *.rar FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR
-fileviewer *.rar unrar v %c
+" ZIP, JAR, WAR
+filetype *.zip,*.jar,*.war
+  \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR
+fileviewer *.zip,*.jar,*.war zip -sf %c
 
 " ISO
 filetype *.iso FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR
-
-" 7Z
-filetype *.7z FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR
-fileviewer *.7z 7z l %c
