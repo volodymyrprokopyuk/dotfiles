@@ -16,7 +16,7 @@ alias ..='cd ..'
 alias md='mkdir -p'
 # colored ls
 alias ls='ls --color=auto'
-alias l='ls -lah'
+alias l='ls -lAh'
 # colored grep
 alias grep='grep --color=auto'
 # colored less
