@@ -54,12 +54,7 @@ In `~/.bashrc`:
 ```bash
 # Bash config
 source ~/.bash.sh
-```
 
-#### Start tmux
-
-In `~/.bashrc`:
-```bash
 # start Tmux
 alias tmux='tmux -2'
 tmux attach-session -t $USER || tmux new-session -s $USER
