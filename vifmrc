@@ -53,6 +53,3 @@ fileviewer *.tar.txz,*.txz xz --list %c
 filetype *.zip,*.jar,*.war
   \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR
 fileviewer *.zip,*.jar,*.war zip -sf %c
-
-" ISO
-filetype *.iso FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR

@@ -21,7 +21,6 @@ Config files for:
 $ sudo apt-get install xsel
 $ sudo apt-get install archivemount
 $ sudo apt-get install fuse-zip
-$ sudo apt-get install fuseiso
 $ sudo apt-get install libxml2-utils
 $ sudo apt-get install curl
 $ sudo apt-get install mercurial
@@ -62,8 +61,8 @@ source ~/.bash.sh
 In `~/.bashrc`:
 ```bash
 # start Tmux
-alias tmux="tmux -2"
-tmux attach-session -t "$USER" || tmux new-session -s "$USER"
+alias tmux='tmux -2'
+tmux attach-session -t $USER || tmux new-session -s $USER
 ```
 
 #### Attach emacs config
