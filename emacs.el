@@ -192,6 +192,8 @@
 
 ; Evil mode
 ; $ git clone https://gitorious.org/evil/evil.git
+(add-to-list 'load-path "~/.emacs.d/goto-chg")
+(require 'goto-chg)
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)

@@ -120,6 +120,10 @@ mkdir -p $BASE_DIR/ninja && curl $GIT_URL -o $BASE_DIR/ninja/ninja-mode.el
 GIT_URL='https://github.com/ninja-build/ninja.git'
 compileEmacs $BASE_DIR $GIT_URL
 
+echo [ 'goto-chg' ]
+GIT_URL='https://www.emacswiki.org/emacs/download/goto-chg.el'
+mkdir -p $BASE_DIR/goto-chg && curl $GIT_URL -o $BASE_DIR/goto-chg/goto-chg.el
+compileEmacs $BASE_DIR $GIT_URL
 echo [ 'evil' ]
 GIT_URL='https://bitbucket.org/lyro/evil'
 updateHg $BASE_DIR $GIT_URL && make
