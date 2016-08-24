@@ -55,6 +55,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ; indentation
+; C-c C-s => show offset variable
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
@@ -65,7 +66,6 @@
 ; C indentation
 (setq-default c-basic-offset 2)
 ; Java indentation
-; C-c C-s => show offset variable
 (defun java-indent-config-hook ()
   (c-set-offset 'arglist-intro '+)
   (c-set-offset 'arglist-cont-nonempty '+))
@@ -137,6 +137,7 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
 (setq-default js2-basic-offset 2)
+(setq-default js-indent-level 2)
 
 ; Web mode
 ; $ git clone https://github.com/fxbois/web-mode.git
