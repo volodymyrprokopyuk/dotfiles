@@ -65,10 +65,11 @@
 ; C indentation
 (setq-default c-basic-offset 2)
 ; Java indentation
-(defun java-indent-config ()
+; C-c C-s => show offset variable
+(defun java-indent-config-hook ()
   (c-set-offset 'arglist-intro '+)
   (c-set-offset 'arglist-cont-nonempty '+))
-(add-hook 'java-mode-hook 'java-indent-config)
+(add-hook 'java-mode-hook 'java-indent-config-hook)
 
 ; Source Code Pro font
 (set-frame-font "Source Code Pro Light 14")
@@ -150,7 +151,7 @@
 
 ; Emmet mode
 ; $ git clone https://github.com/smihica/emmet-mode.git
-; C-j -> expand line
+; C-j => expand line
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
 (autoload 'emmet-mode "emmet-mode" nil t)
 (add-hook 'web-mode-hook 'emmet-mode)
