@@ -68,7 +68,8 @@
 ; Java indentation
 (defun java-indent-config-hook ()
   (c-set-offset 'arglist-intro '+)
-  (c-set-offset 'arglist-cont-nonempty '+))
+  (c-set-offset 'arglist-cont-nonempty '+)
+  (c-set-offset 'arglist-close '+))
 (add-hook 'java-mode-hook 'java-indent-config-hook)
 
 ; Source Code Pro font
