@@ -41,13 +41,6 @@ man() {
 # install Liquid Prompt
 [ -s $HOME/local/bin/liquidprompt/liquidprompt ] \
   && [[ $- = *i* ]] && source $HOME/local/bin/liquidprompt/liquidprompt
-# install fasd
-[ -s $HOME/local/bin/fasd ] && eval "$(fasd --init auto)"
-alias c='fasd_cd -d'
-alias o='d -e vifm'
-alias e="f -e em\ -nw"
-#alias e="f -e vim"
-_fasd_bash_hook_cmd_complete c o e
 # install Git
 [ -s $HOME/local/bin/git-completion.bash ] \
   && source $HOME/local/bin/git-completion.bash

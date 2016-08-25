@@ -31,9 +31,6 @@ BASE_DIR=$HOME/local/bin
 echo [ 'liquidprompt' ]
 GIT_URL='https://github.com/nojhan/liquidprompt.git'
 updateGit $BASE_DIR $GIT_URL
-echo [ 'fasd' ]
-GIT_URL='https://raw.githubusercontent.com/clvv/fasd/master/fasd'
-curl $GIT_URL -o $BASE_DIR/fasd && chmod 755 $BASE_DIR/fasd
 echo [ 'git-completion' ]
 GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
 curl $GIT_URL -o $BASE_DIR/git-completion.bash
