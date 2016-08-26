@@ -25,6 +25,8 @@ alias less='less -r'
 alias mc='mc -S xoria256'
 # vifm file manager
 alias fm='vifm'
+# ag
+alias ag='ag --hidden --ignore *~ --ignore .git'
 # colored man
 man() {
   env \
