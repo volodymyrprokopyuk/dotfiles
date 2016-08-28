@@ -86,6 +86,37 @@
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters" nil t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+; Powerline mode
+; git clone https://github.com/milkypostman/powerline.git
+(add-to-list 'load-path "~/.emacs.d/powerline")
+(require 'powerline)
+;(powerline-center-evil-theme)
+; git clone https://github.com/AnthonyDiGirolamo/airline-themes.git
+(add-to-list 'load-path "~/.emacs.d/airline-themes")
+(require 'cl)
+(require 'airline-themes)
+(setq-default custom-safe-themes t)
+(load-theme 'airline-molokai)
+;(load-theme 'airline-badwolf)
+;(load-theme 'airline-hybridline)
+
+; Neotree mode
+; $ git clone https://github.com/jaypei/emacs-neotree.git
+(add-to-list 'load-path "~/.emacs.d/emacs-neotree")
+(require 'neotree)
+(setq neo-smart-open t)
+(add-hook 'neotree-mode-hook
+  (lambda ()
+    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "l") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "h") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
+    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+    (define-key evil-normal-state-local-map (kbd "c") 'neotree-change-root)
+    (define-key evil-normal-state-local-map (kbd "a") 'neotree-hidden-file-toggle)
+    (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)))
+(global-set-key (kbd "M-s d") 'neotree-toggle)
+
 ; Helm mode
 ; $ git clone https://github.com/jwiegley/emacs-async.git
 ; $ git clone https://github.com/emacs-helm/helm.git
@@ -113,23 +144,6 @@
 (require 'yasnippet)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (yas-global-mode 1)
-
-; neotree mode
-; $ git clone https://github.com/jaypei/emacs-neotree.git
-(add-to-list 'load-path "~/.emacs.d/emacs-neotree")
-(require 'neotree)
-(setq neo-smart-open t)
-(add-hook 'neotree-mode-hook
-  (lambda ()
-    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-    (define-key evil-normal-state-local-map (kbd "l") 'neotree-enter)
-    (define-key evil-normal-state-local-map (kbd "h") 'neotree-enter)
-    (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
-    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-    (define-key evil-normal-state-local-map (kbd "c") 'neotree-change-root)
-    (define-key evil-normal-state-local-map (kbd "a") 'neotree-hidden-file-toggle)
-    (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)))
-(global-set-key (kbd "M-s d") 'neotree-toggle)
 
 ; JS2 mode
 ; $ git clone https://github.com/mooz/js2-mode.git

@@ -66,6 +66,14 @@ updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'rainbow-delimiters' ]
 GIT_URL='https://github.com/Fanael/rainbow-delimiters.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+echo [ 'powerline' ]
+GIT_URL='https://github.com/milkypostman/powerline.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+GIT_URL='https://github.com/AnthonyDiGirolamo/airline-themes.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+echo [ 'neotree' ]
+GIT_URL='https://github.com/jaypei/emacs-neotree.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 
 echo [ 'emacs-async' ]
 GIT_URL='https://github.com/jwiegley/emacs-async.git'
@@ -78,9 +86,6 @@ GIT_URL='https://github.com/syohex/emacs-helm-ag.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'yasnippet' ]
 GIT_URL='https://github.com/capitaomorte/yasnippet.git'
-updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
-echo [ 'neotree' ]
-GIT_URL='https://github.com/jaypei/emacs-neotree.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 
 echo [ 'js2-mode' ]
