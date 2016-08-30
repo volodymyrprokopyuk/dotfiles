@@ -69,8 +69,6 @@ updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'powerline' ]
 GIT_URL='https://github.com/milkypostman/powerline.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
-GIT_URL='https://github.com/AnthonyDiGirolamo/airline-themes.git'
-updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'neotree' ]
 GIT_URL='https://github.com/jaypei/emacs-neotree.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL

@@ -90,15 +90,7 @@
 ; git clone https://github.com/milkypostman/powerline.git
 (add-to-list 'load-path "~/.emacs.d/powerline")
 (require 'powerline)
-;(powerline-center-evil-theme)
-; git clone https://github.com/AnthonyDiGirolamo/airline-themes.git
-(add-to-list 'load-path "~/.emacs.d/airline-themes")
-(require 'cl)
-(require 'airline-themes)
-(setq-default custom-safe-themes t)
-(load-theme 'airline-molokai)
-;(load-theme 'airline-badwolf)
-;(load-theme 'airline-hybridline)
+(powerline-center-evil-theme)
 
 ; Neotree mode
 ; $ git clone https://github.com/jaypei/emacs-neotree.git
