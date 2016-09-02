@@ -21,7 +21,7 @@ function compileEmacs {
   cd $1/$DIR
   for FILE in *.el; do
     if [[ -f $FILE ]]; then
-      emacs --batch -Q -L . -L ../helm -f batch-byte-compile $FILE
+      emacs --batch -Q -L . -L ../dash.el -L ../helm -f batch-byte-compile $FILE
     fi
   done
 }
@@ -60,6 +60,13 @@ curl $GIT_URL -o $BASE_DIR/kerl-completion.bash
 
 BASE_DIR=$HOME/.emacs.d
 
+echo [ 'dash' ]
+GIT_URL='https://github.com/magnars/dash.el.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+echo [ 'emacs-async' ]
+GIT_URL='https://github.com/jwiegley/emacs-async.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+
 echo [ 'zenburn' ]
 GIT_URL='https://github.com/bbatsov/zenburn-emacs.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
@@ -73,9 +80,6 @@ echo [ 'neotree' ]
 GIT_URL='https://github.com/jaypei/emacs-neotree.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 
-echo [ 'emacs-async' ]
-GIT_URL='https://github.com/jwiegley/emacs-async.git'
-updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'helm' ]
 GIT_URL='https://github.com/emacs-helm/helm.git'
 updateGit $BASE_DIR $GIT_URL && make
