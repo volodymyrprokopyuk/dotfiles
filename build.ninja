@@ -3,7 +3,7 @@ rule install
     && cp .psqlrc ~ && mkdir -p ~/.vifm && cp vifmrc ~/.vifm $
     && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
     && mkdir -p ~/local/bin && cp em ~/local/bin && chmod 755 ~/local/bin/em $
-    && cp -R snippets ~/.emacs.d
+    && cp -R snippets ~/.emacs.d && cp .eslintrc.js ~
 
 build install: install
 
@@ -14,7 +14,7 @@ build update: update
 
 rule clean
   command = rm -rf ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.tigrc ~/.psqlrc ~/.vifm $
-    ~/.emacs.d
+    ~/.emacs.d ~/.eslintrc.js
 
 build clean: clean
 

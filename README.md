@@ -10,6 +10,7 @@ Config files for:
 1. [vifm](http://vifm.info/)
 1. [mc](https://www.midnight-commander.org/)
 1. [tig](https://github.com/jonas/tig)
+1. [eslint](http://eslint.org/)
 1. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
 
 # Install
