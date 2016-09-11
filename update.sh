@@ -31,9 +31,9 @@ BASE_DIR=$HOME/local/bin
 echo [ 'liquidprompt' ]
 GIT_URL='https://github.com/nojhan/liquidprompt.git'
 updateGit $BASE_DIR $GIT_URL
-echo [ 'git-completion' ]
-GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
-curl $GIT_URL -o $BASE_DIR/git-completion.bash
+#echo [ 'git-completion' ]
+#GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
+#curl $GIT_URL -o $BASE_DIR/git-completion.bash
 echo [ 'git-aliases' ]
 git config --global user.name "Volodymyr Prokopyuk"
 git config --global user.email "volodymyrprokopyuk@gmail.com"
@@ -49,14 +49,14 @@ git config --global alias.ch "checkout"
 git config --global alias.chb "checkout -b"
 git config --global alias.bs "branch -a -vv"
 git config --global alias.rs "remote -v"
-echo [ 'ninja-completion' ]
-GIT_URL='https://raw.githubusercontent.com/ninja-build/ninja/master/misc/bash-completion'
-curl $GIT_URL -o $BASE_DIR/ninja-completion.bash
+#echo [ 'ninja-completion' ]
+#GIT_URL='https://raw.githubusercontent.com/ninja-build/ninja/master/misc/bash-completion'
+#curl $GIT_URL -o $BASE_DIR/ninja-completion.bash
 echo [ 'kerl' ]
 GIT_URL='https://raw.githubusercontent.com/kerl/kerl/master/kerl'
 curl $GIT_URL -o $BASE_DIR/kerl && chmod 755 $BASE_DIR/kerl
-GIT_URL='https://raw.githubusercontent.com/kerl/kerl/master/bash_completion/kerl'
-curl $GIT_URL -o $BASE_DIR/kerl-completion.bash
+#GIT_URL='https://raw.githubusercontent.com/kerl/kerl/master/bash_completion/kerl'
+#curl $GIT_URL -o $BASE_DIR/kerl-completion.bash
 
 BASE_DIR=$HOME/.emacs.d
 

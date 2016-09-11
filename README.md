@@ -2,7 +2,7 @@
 
 Config files for:
 
-1. [bash](http://www.gnu.org/software/bash/)
+1. [zsh](http://www.zsh.org/)
 1. [tmux](http://tmux.github.io/)
 1. [liquidprompt](https://github.com/nojhan/liquidprompt)
 1. [emacs](http://www.gnu.org/software/emacs/)
@@ -13,9 +13,9 @@ Config files for:
 1. [eslint](http://eslint.org/)
 1. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
 
-# Install
+# Installation
 
-#### Install utils and apps
+## Install utils and apps
 
 ```bash
 $ sudo apt-get install xsel
@@ -31,6 +31,7 @@ $ sudo apt-get install mc
 
 From source:
 
+- [zsh](http://www.zsh.org/)
 - [ninja](https://ninja-build.org/)
 - [tmux](https://tmux.github.io/)
 - [emacs](https://www.gnu.org/software/emacs/)
@@ -39,7 +40,14 @@ From source:
 - [tig](https://github.com/jonas/tig)
 - [ag](https://github.com/ggreer/the_silver_searcher)
 
-#### Install config files
+## Install zsh
+
+```bash
+$ which zsh | sudo tee -a /etc/shells
+$ chsh -s $(which zsh)
+```
+
+## Install config files
 
 ```bash
 $ git clone git@github.com:volodymyrprokopyuk/dotfiles.git
@@ -48,19 +56,15 @@ $ ninja
 $ ninja update
 ```
 
-#### Attach bash config
+## Attach zsh config
 
-In `~/.bashrc`:
+In `~/.zshrc`:
 ```bash
-# Bash config
-source ~/.bash.sh
-
-# start Tmux
-alias tmux='tmux -2'
-tmux attach-session -t $USER || tmux new-session -s $USER
+# zsh config
+source ~/.zsh.sh
 ```
 
-#### Attach emacs config
+## Attach emacs config
 
 In `~/.emacs`:
 ```elisp

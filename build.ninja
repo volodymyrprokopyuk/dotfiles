@@ -1,5 +1,5 @@
 rule install
-  command = cp .bash.sh ~ && cp .tmux.conf ~ && cp .vimrc ~ && cp .tigrc ~ $
+  command = cp .zsh.sh ~ && cp .tmux.conf ~ && cp .vimrc ~ && cp .tigrc ~ $
     && cp .psqlrc ~ && mkdir -p ~/.vifm && cp vifmrc ~/.vifm $
     && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
     && mkdir -p ~/local/bin && cp em ~/local/bin && chmod 755 ~/local/bin/em $
@@ -13,7 +13,7 @@ rule update
 build update: update
 
 rule clean
-  command = rm -rf ~/.bash.sh ~/.tmux.conf ~/.vimrc ~/.tigrc ~/.psqlrc ~/.vifm $
+  command = rm -rf ~/.zsh.sh ~/.tmux.conf ~/.vimrc ~/.tigrc ~/.psqlrc ~/.vifm $
     ~/.emacs.d ~/.eslintrc.js
 
 build clean: clean

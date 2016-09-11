@@ -11,6 +11,10 @@ alias em='em -nw'
 # terminal editor
 export EDITOR='em -nw'
 
+# start tmux
+alias tmux="tmux -2"
+[[ -z "$TMUX" ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
+
 # Bash aliases
 alias ..='cd ..'
 alias md='mkdir -p'
@@ -44,18 +48,18 @@ man() {
 [ -s $HOME/local/bin/liquidprompt/liquidprompt ] \
   && [[ $- = *i* ]] && source $HOME/local/bin/liquidprompt/liquidprompt
 # install Git
-[ -s $HOME/local/bin/git-completion.bash ] \
-  && source $HOME/local/bin/git-completion.bash
+#[ -s $HOME/local/bin/git-completion.bash ] \
+#  && source $HOME/local/bin/git-completion.bash
 alias tig='tig --all'
 # install Ninja
-[ -s $HOME/local/bin/ninja-completion.bash ] \
-  && source $HOME/local/bin/ninja-completion.bash
+#[ -s $HOME/local/bin/ninja-completion.bash ] \
+#  && source $HOME/local/bin/ninja-completion.bash
 alias ninja='ninja -v'
 # install Kerl
 [ -s $HOME/local/erlang/activate ] \
   && source $HOME/local/erlang/activate
-[ -s $HOME/local/bin/kerl-completion.bash ] \
-  && source $HOME/local/bin/kerl-completion.bash
+#[ -s $HOME/local/bin/kerl-completion.bash ] \
+#  && source $HOME/local/bin/kerl-completion.bash
 # install Elixir
 [ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
 alias iexm='iex -S mix'
@@ -64,8 +68,8 @@ export NVM_DIR=$HOME/.nvm
 [ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
 [ -s $NVM_DIR/bash_completion ] && source $NVM_DIR/bash_completion
 # install ConTeXt
-export OSFONTDIR=/usr/local/share/fonts
-[ -s $HOME/context/tex/setuptex ] && source $HOME/context/tex/setuptex
+#export OSFONTDIR=/usr/local/share/fonts
+#[ -s $HOME/context/tex/setuptex ] && source $HOME/context/tex/setuptex
 # install Gradle
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
