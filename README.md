@@ -68,6 +68,6 @@ source ~/.zsh.sh
 
 In `~/.emacs`:
 ```elisp
-; Emacs config
+; emacs config
 (load "~/.emacs.d/emacs")
 ```
