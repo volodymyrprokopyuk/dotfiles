@@ -1,3 +1,26 @@
+# colors
+# setopt
+# exports
+# prompt
+# completion
+# aliases
+# bindkeys
+# functions
+# history
+# hooks
+
+setopt appendhistory autocd extendedglob nomatch
+unsetopt beep notify
+
+HISTFILE=~/.histfile
+HISTSIZE=5000
+SAVEHIST=10000
+
+bindkey -v
+
+autoload -Uz compinit
+compinit
+
 # local software PATH
 PATH=$HOME/local/bin:$PATH
 MANPATH=$HOME/local/share/man:$MANPATH

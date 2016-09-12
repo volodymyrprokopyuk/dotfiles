@@ -56,14 +56,6 @@ $ ninja
 $ ninja update
 ```
 
-## Attach zsh config
-
-In `~/.zshrc`:
-```bash
-# zsh config
-source ~/.zsh.sh
-```
-
 ## Attach emacs config
 
 In `~/.emacs`:
