@@ -1,38 +1,24 @@
-# colors
-# setopt
-# exports
-# prompt
-# completion
-# aliases
-# bindkeys
-# functions
-# history
-# hooks
-
-setopt appendhistory autocd extendedglob nomatch
-unsetopt beep notify
-
-HISTFILE=~/.histfile
-HISTSIZE=5000
-SAVEHIST=10000
-
-bindkey -v
-
-autoload -Uz compinit
-compinit
-
-# local software PATH
-PATH=$HOME/local/bin:$PATH
-MANPATH=$HOME/local/share/man:$MANPATH
-
+# local software path
+export PATH=$HOME/local/bin:$PATH
+export MANPATH=$HOME/local/share/man:$MANPATH
+export INFOPATH=$HOME/local/share/info:$INFOPATH
 # 256 color terminal
 export TERM=screen-256color
-# terminal vim mode
-set -o vi
-# emacs server mode
-alias em='em -nw'
 # terminal editor
+alias em='em -nw'
 export EDITOR='em -nw'
+
+# terminal vim mode
+bindkey -v
+# history
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+bindkey "^R" history-incremental-search-backward
+# completion
+autoload -Uz compinit && compinit
+
+setopt appendhistory autocd
 
 # start tmux
 alias tmux="tmux -2"
