@@ -55,11 +55,3 @@ $ cd dotfiles
 $ ninja
 $ ninja update
 ```
-
-## Attach emacs config
-
-In `~/.emacs`:
-```elisp
-; emacs config
-(load "~/.emacs.d/emacs")
-```
