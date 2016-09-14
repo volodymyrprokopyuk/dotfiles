@@ -53,6 +53,12 @@ man() {
   man $@
 }
 
+# install Zsh history substring search
+[ -s $HOME/local/bin/zsh-history-substring-search/zsh-history-substring-search.zsh ] \
+  && [[ $- = *i* ]] && source $HOME/local/bin/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 # install Liquid Prompt
 [ -s $HOME/local/bin/liquidprompt/liquidprompt ] \
   && [[ $- = *i* ]] && source $HOME/local/bin/liquidprompt/liquidprompt
