@@ -51,38 +51,39 @@ man() {
   man $@
 }
 
-# install Zsh history substring search
-[ -s $HOME/local/bin/zsh-history-substring-search/zsh-history-substring-search.zsh ] \
-  && [[ $- = *i* ]] && source $HOME/local/bin/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
 # install Liquid Prompt
-[ -s $HOME/local/bin/liquidprompt/liquidprompt ] \
-  && [[ $- = *i* ]] && source $HOME/local/bin/liquidprompt/liquidprompt
+[ -s $HOME/.zsh/liquidprompt/liquidprompt ] \
+  && [[ $- = *i* ]] && source $HOME/.zsh/liquidprompt/liquidprompt
+
 # install Git
 #[ -s $HOME/local/bin/git-completion.bash ] \
 #  && source $HOME/local/bin/git-completion.bash
 alias tig='tig --all'
+
 # install Ninja
 #[ -s $HOME/local/bin/ninja-completion.bash ] \
 #  && source $HOME/local/bin/ninja-completion.bash
 alias ninja='ninja -v'
+
 # install Kerl
 [ -s $HOME/local/erlang/activate ] \
   && source $HOME/local/erlang/activate
 #[ -s $HOME/local/bin/kerl-completion.bash ] \
 #  && source $HOME/local/bin/kerl-completion.bash
+
 # install Elixir
 [ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
 alias iexm='iex -S mix'
+
 # install NVM
 export NVM_DIR=$HOME/.nvm
 [ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
 [ -s $NVM_DIR/bash_completion ] && source $NVM_DIR/bash_completion
+
 # install ConTeXt
 #export OSFONTDIR=/usr/local/share/fonts
 #[ -s $HOME/context/tex/setuptex ] && source $HOME/context/tex/setuptex
+
 # install Gradle
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH

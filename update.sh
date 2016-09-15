@@ -26,18 +26,6 @@ function compileEmacs {
   done
 }
 
-BASE_DIR=$HOME/local/bin
-
-echo [ 'zsh-history-substring-search' ]
-GIT_URL='https://github.com/zsh-users/zsh-history-substring-search.git'
-updateGit $BASE_DIR $GIT_URL
-
-echo [ 'liquidprompt' ]
-GIT_URL='https://github.com/nojhan/liquidprompt.git'
-updateGit $BASE_DIR $GIT_URL
-#echo [ 'git-completion' ]
-#GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
-#curl $GIT_URL -o $BASE_DIR/git-completion.bash
 echo [ 'git-aliases' ]
 git config --global user.name "Volodymyr Prokopyuk"
 git config --global user.email "volodymyrprokopyuk@gmail.com"
@@ -53,6 +41,18 @@ git config --global alias.ch "checkout"
 git config --global alias.chb "checkout -b"
 git config --global alias.bs "branch -a -vv"
 git config --global alias.rs "remote -v"
+
+BASE_DIR=$HOME/.zsh
+
+echo [ 'liquidprompt' ]
+GIT_URL='https://github.com/nojhan/liquidprompt.git'
+updateGit $BASE_DIR $GIT_URL
+
+BASE_DIR=$HOME/local/bin
+
+#echo [ 'git-completion' ]
+#GIT_URL='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
+#curl $GIT_URL -o $BASE_DIR/git-completion.bash
 #echo [ 'ninja-completion' ]
 #GIT_URL='https://raw.githubusercontent.com/ninja-build/ninja/master/misc/bash-completion'
 #curl $GIT_URL -o $BASE_DIR/ninja-completion.bash
