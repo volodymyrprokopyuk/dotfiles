@@ -48,6 +48,10 @@ echo [ 'liquidprompt' ]
 GIT_URL='https://github.com/nojhan/liquidprompt.git'
 updateGit $BASE_DIR $GIT_URL
 
+echo [ 'liquidprompt' ]
+GIT_URL='https://github.com/zsh-users/zsh-autosuggestions.git'
+updateGit $BASE_DIR $GIT_URL
+
 BASE_DIR=$HOME/local/bin
 
 #echo [ 'git-completion' ]

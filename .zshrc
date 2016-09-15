@@ -55,6 +55,11 @@ man() {
 [ -s $HOME/.zsh/liquidprompt/liquidprompt ] \
   && [[ $- = *i* ]] && source $HOME/.zsh/liquidprompt/liquidprompt
 
+# install Zsh Autosuggestions
+[ -s $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] \
+  && [[ $- = *i* ]] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^[;' autosuggest-accept
+
 # install Git
 #[ -s $HOME/local/bin/git-completion.bash ] \
 #  && source $HOME/local/bin/git-completion.bash
