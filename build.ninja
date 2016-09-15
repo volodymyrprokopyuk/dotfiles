@@ -1,5 +1,5 @@
 rule install
-  command = cp .zshrc ~ && mkdir -p ~/.zsh && cp .tmux.conf ~ $
+  command = cp .zshrc ~ && mkdir -p ~/.zsh/completions && cp .tmux.conf ~ $
     && cp .emacs ~ && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
     && mkdir -p ~/local/bin && cp em ~/local/bin && chmod 755 ~/local/bin/em $
     && cp -R snippets ~/.emacs.d $

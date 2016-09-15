@@ -1,45 +1,34 @@
-# local software path
 export PATH=$HOME/local/bin:$PATH
 export MANPATH=$HOME/local/share/man:$MANPATH
 export INFOPATH=$HOME/local/share/info:$INFOPATH
-# 256 color terminal
-export TERM=screen-256color
-# terminal editor
-alias em='em -nw'
-export EDITOR='em -nw'
 
-# terminal vim mode
+export TERM=screen-256color
+export EDITOR='em -nw'
 bindkey -v
-# history
+
+setopt appendhistory
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 bindkey "^R" history-incremental-search-backward
-# completion
-autoload -Uz compinit && compinit
 
-setopt appendhistory autocd
 
-# start tmux
 alias tmux="tmux -2"
 [[ -z "$TMUX" ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
 
-# Bash aliases
+setopt autocd
 alias ..='cd ..'
-alias md='mkdir -p'
-# colored ls
+alias em='em -nw'
+alias fm='vifm'
 alias ls='ls --color=auto'
 alias l='ls -lAh'
-# colored grep
-alias grep='grep --color=auto'
-# colored less
 alias less='less -r'
-# vifm file manager
-alias fm='vifm'
-# ag
+alias grep='grep --color=auto'
 alias ag='ag --hidden --ignore *~ --ignore .git'
-# colored man
-man() {
+alias tig='tig --all'
+alias ninja='ninja -v'
+
+function man() {
   env \
   LESS_TERMCAP_mb=$'\e[01;31m' \
   LESS_TERMCAP_md=$'\e[01;38;5;74m' \
@@ -51,44 +40,41 @@ man() {
   man $@
 }
 
-# install Liquid Prompt
-[ -s $HOME/.zsh/liquidprompt/liquidprompt ] \
-  && [[ $- = *i* ]] && source $HOME/.zsh/liquidprompt/liquidprompt
+# install liquid prompt
+ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-# install Zsh Autosuggestions
-[ -s $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] \
-  && [[ $- = *i* ]] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# install zsh autosuggestions
+ZPACKAGE=$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 bindkey '^[;' autosuggest-accept
 
-# install Git
-#[ -s $HOME/local/bin/git-completion.bash ] \
-#  && source $HOME/local/bin/git-completion.bash
-alias tig='tig --all'
+# install zsh syntax highlighting
+ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-# install Ninja
-#[ -s $HOME/local/bin/ninja-completion.bash ] \
-#  && source $HOME/local/bin/ninja-completion.bash
-alias ninja='ninja -v'
+# install zsh completions
+fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/completions $fpath)
+[[ $- = *i* ]] && autoload -Uz compinit && compinit
 
-# install Kerl
-[ -s $HOME/local/erlang/activate ] \
-  && source $HOME/local/erlang/activate
-#[ -s $HOME/local/bin/kerl-completion.bash ] \
-#  && source $HOME/local/bin/kerl-completion.bash
+# install nvm
+export NVM_DIR=$HOME/.nvm
+ZPACKAGE=$NVM_DIR/nvm.sh
+[ -s $ZPACKAGE ] && source $ZPACKAGE
 
-# install Elixir
+# install kerl
+ZPACKAGE=$HOME/local/erlang/activate
+[ -s $ZPACKAGE ] && source $ZPACKAGE
+
+# add elixir to path
 [ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
 alias iexm='iex -S mix'
 
-# install NVM
-export NVM_DIR=$HOME/.nvm
-[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
-[ -s $NVM_DIR/bash_completion ] && source $NVM_DIR/bash_completion
-
-# install ConTeXt
-#export OSFONTDIR=/usr/local/share/fonts
-#[ -s $HOME/context/tex/setuptex ] && source $HOME/context/tex/setuptex
-
-# install Gradle
+# add gradle to path
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
+
+# install context
+export OSFONTDIR=/usr/local/share/fonts
+ZPACKAGE=$HOME/context/tex/setuptex
+[ -s $ZPACKAGE ] && source $ZPACKAGE
