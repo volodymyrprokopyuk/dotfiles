@@ -75,6 +75,6 @@ export GRADLE_HOME=$HOME/local/gradle
 [ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
 
 # install context
-export OSFONTDIR=/usr/local/share/fonts
-ZPACKAGE=$HOME/context/tex/setuptex
-[ -s $ZPACKAGE ] && source $ZPACKAGE
+#export OSFONTDIR=/usr/local/share/fonts
+#ZPACKAGE=$HOME/context/tex/setuptex
+#[ -s $ZPACKAGE ] && source $ZPACKAGE
