@@ -116,9 +116,6 @@ updateGitWithReset $BASE_DIR $GIT_URL \
     -e "s/(pkg-info-version-info 'elixir-mode)/\"VERSION\"/g" \
     elixir-mode.el \
   && compileEmacs $BASE_DIR $GIT_URL
-echo [ 'clojure-mode' ]
-GIT_URL='https://github.com/clojure-emacs/clojure-mode.git'
-updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 echo [ 'cucumber-mode' ]
 GIT_URL='https://github.com/michaelklishin/cucumber.el.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL

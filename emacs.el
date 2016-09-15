@@ -184,13 +184,6 @@
 (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
 (add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
 
-; Clojure mode
-; $ git clone https://github.com/clojure-emacs/clojure-mode.git
-(add-to-list 'load-path "~/.emacs.d/clojure-mode")
-(autoload 'clojure-mode "clojure-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
-
 ; Cucumber mode
 ; $ git clone https://github.com/michaelklishin/cucumber.el.git
 (add-to-list 'load-path "~/.emacs.d/cucumber.el")
