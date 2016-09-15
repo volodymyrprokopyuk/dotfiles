@@ -1,6 +1,6 @@
 rule install
-  command = cp .zshrc ~ && cp .tmux.conf ~ && cp .vimrc ~ && cp .tigrc ~ $
-    && cp .psqlrc ~ && mkdir -p ~/.vifm && cp vifmrc ~/.vifm $
+  command = cp .zshrc ~ && cp .tmux.conf ~ && cp .tigrc ~ && cp .psqlrc ~ $
+    && mkdir -p ~/.vifm && cp vifmrc ~/.vifm $
     && cp .emacs ~ && mkdir -p ~/.emacs.d && cp emacs.el ~/.emacs.d $
     && mkdir -p ~/local/bin && cp em ~/local/bin && chmod 755 ~/local/bin/em $
     && cp -R snippets ~/.emacs.d && cp .eslintrc.js ~
@@ -13,7 +13,7 @@ rule update
 build update: update
 
 rule clean
-  command = rm -rf ~/.zshrc ~/.tmux.conf ~/.vimrc ~/.tigrc ~/.psqlrc ~/.vifm $
+  command = rm -rf ~/.zshrc ~/.tmux.conf ~/.tigrc ~/.psqlrc ~/.vifm $
     ~/.emacs ~/.emacs.d ~/.eslintrc.js
 
 build clean: clean

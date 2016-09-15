@@ -6,9 +6,7 @@ Config files for:
 1. [tmux](http://tmux.github.io/)
 1. [liquidprompt](https://github.com/nojhan/liquidprompt)
 1. [emacs](http://www.gnu.org/software/emacs/)
-1. [vim](http://www.vim.org/)
 1. [vifm](http://vifm.info/)
-1. [mc](https://www.midnight-commander.org/)
 1. [tig](https://github.com/jonas/tig)
 1. [eslint](http://eslint.org/)
 1. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
@@ -25,8 +23,6 @@ $ sudo apt-get install libxml2-utils
 $ sudo apt-get install curl
 $ sudo apt-get install mercurial
 $ sudo apt-get install htop
-$ sudo apt-get install vim vim-gtk
-$ sudo apt-get install mc
 ```
 
 From source:

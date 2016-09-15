@@ -34,8 +34,6 @@ alias l='ls -lAh'
 alias grep='grep --color=auto'
 # colored less
 alias less='less -r'
-# mc color scheme
-alias mc='mc -S xoria256'
 # vifm file manager
 alias fm='vifm'
 # ag
