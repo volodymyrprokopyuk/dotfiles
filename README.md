@@ -1,19 +1,17 @@
-# Dotfiles
-
-Config files for:
+# Configuration for
 
 1. [zsh](http://www.zsh.org/)
 1. [tmux](http://tmux.github.io/)
-1. [liquidprompt](https://github.com/nojhan/liquidprompt)
 1. [emacs](http://www.gnu.org/software/emacs/)
 1. [vifm](http://vifm.info/)
+1. [git](https://git-scm.com/)
 1. [tig](https://github.com/jonas/tig)
-1. [eslint](http://eslint.org/)
 1. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
+1. [eslint](http://eslint.org/)
 
 # Installation
 
-## Install utils and apps
+## Install from repository
 
 ```bash
 $ sudo apt-get install xsel
@@ -22,10 +20,9 @@ $ sudo apt-get install fuse-zip
 $ sudo apt-get install libxml2-utils
 $ sudo apt-get install curl
 $ sudo apt-get install mercurial
-$ sudo apt-get install htop
 ```
 
-From source:
+## Install from source
 
 - [zsh](http://www.zsh.org/)
 - [ninja](https://ninja-build.org/)
