@@ -1,31 +1,36 @@
-export PATH=$HOME/local/bin:$PATH
-export MANPATH=$HOME/local/share/man:$MANPATH
-export INFOPATH=$HOME/local/share/info:$INFOPATH
+alias tmux='tmux -2'
+[[ $- = *i* ]] && [[ -z $TMUX ]] \
+  && (tmux attach-session -t $USER || tmux new-session -s $USER)
+
+setopt AUTO_CD
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt EXTENDED_HISTORY
 
 export TERM=screen-256color
 export EDITOR='em -nw'
 bindkey -v
 
-setopt appendhistory
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
-bindkey "^R" history-incremental-pattern-search-backward
+export PATH=$HOME/local/bin:$PATH
+export MANPATH=$HOME/local/share/man:$MANPATH
+export INFOPATH=$HOME/local/share/info:$INFOPATH
 
+export HISTFILE=~/.histfile
+export HISTSIZE=10000
+export SAVEHIST=10000
+bindkey '^R' history-incremental-pattern-search-backward
 
-alias tmux="tmux -2"
-[[ -z "$TMUX" ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
-
-setopt autocd
 alias em='em -nw'
 alias fm='vifm'
-alias ls='ls --color=auto'
-alias l='ls -lAh'
-alias less='less -r'
-alias grep='grep --color=auto'
-alias ag='ag --hidden --ignore *~ --ignore .git'
 alias tig='tig --all'
 alias ninja='ninja -v'
+alias ls='ls --color=auto'
+alias l='ls -lAh'
+alias grep='grep --color=auto'
+alias ag='ag --hidden --ignore *~ --ignore .git'
+alias less='less -r'
 alias info='info --vi-keys'
 
 function man() {
@@ -62,6 +67,10 @@ export NVM_DIR=$HOME/.nvm
 ZPACKAGE=$NVM_DIR/nvm.sh
 [ -s $ZPACKAGE ] && source $ZPACKAGE
 
+# add gradle to path
+export GRADLE_HOME=$HOME/local/gradle
+[ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
+
 # install kerl
 ZPACKAGE=$HOME/local/erlang/activate
 [ -s $ZPACKAGE ] && source $ZPACKAGE
@@ -69,10 +78,6 @@ ZPACKAGE=$HOME/local/erlang/activate
 # add elixir to path
 [ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
 alias iexm='iex -S mix'
-
-# add gradle to path
-export GRADLE_HOME=$HOME/local/gradle
-[ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
 
 # install context
 #export OSFONTDIR=/usr/local/share/fonts
