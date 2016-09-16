@@ -26,6 +26,7 @@ alias grep='grep --color=auto'
 alias ag='ag --hidden --ignore *~ --ignore .git'
 alias tig='tig --all'
 alias ninja='ninja -v'
+alias info='info --vi-keys'
 
 function man() {
   env \
