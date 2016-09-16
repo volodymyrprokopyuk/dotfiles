@@ -10,14 +10,13 @@ setopt appendhistory
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-bindkey "^R" history-incremental-search-backward
+bindkey "^R" history-incremental-pattern-search-backward
 
 
 alias tmux="tmux -2"
 [[ -z "$TMUX" ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
 
 setopt autocd
-alias ..='cd ..'
 alias em='em -nw'
 alias fm='vifm'
 alias ls='ls --color=auto'
