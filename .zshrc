@@ -1,3 +1,11 @@
+export PATH=$HOME/local/bin:$PATH
+export MANPATH=$HOME/local/share/man:$MANPATH
+export INFOPATH=$HOME/local/share/info:$INFOPATH
+
+export TERM=screen-256color
+export EDITOR='em -nw'
+bindkey -v
+
 alias tmux='tmux -2'
 [[ $- = *i* ]] && [[ -z $TMUX ]] \
   && (tmux attach-session -t $USER || tmux new-session -s $USER)
@@ -8,14 +16,6 @@ setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt EXTENDED_HISTORY
-
-export TERM=screen-256color
-export EDITOR='em -nw'
-bindkey -v
-
-export PATH=$HOME/local/bin:$PATH
-export MANPATH=$HOME/local/share/man:$MANPATH
-export INFOPATH=$HOME/local/share/info:$INFOPATH
 
 export HISTFILE=~/.histfile
 export HISTSIZE=10000
