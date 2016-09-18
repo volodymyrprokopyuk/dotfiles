@@ -18,7 +18,7 @@ $ sudo apt-get install xsel
 $ sudo apt-get install archivemount
 $ sudo apt-get install fuse-zip
 $ sudo apt-get install libxml2-utils
-$ sudo apt-get install curl
+$ sudo apt-get install libcurl4-openssl-dev
 $ sudo apt-get install mercurial
 ```
 
