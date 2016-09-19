@@ -73,7 +73,7 @@
 (add-hook 'java-mode-hook 'java-indent-config-hook)
 
 ; Source Code Pro font
-(set-frame-font "Source Code Pro Light 14")
+(set-frame-font "Source Code Pro Light 16")
 
 ; Zenburn color
 ; $ git clone https://github.com/bbatsov/zenburn-emacs.git
