@@ -17,9 +17,9 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt EXTENDED_HISTORY
 
-export HISTFILE=~/.histfile
-export HISTSIZE=10000
-export SAVEHIST=10000
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
 bindkey '^R' history-incremental-pattern-search-backward
 
 alias em='em -nw'
