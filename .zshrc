@@ -51,6 +51,7 @@ function extract {
     case $1 in
       (*.tar.gz|*.tgz) tar xzf $1 ;;
       (*.tar.bz2|*.tbz2) tar xjf $1 ;;
+      (*.tar.xz|*.txz) tar xJf $1 ;;
       (*.tar) tar xf $1 ;;
       (*.gz) gunzip $1 ;;
       (*.bz2) bunzip2 $1 ;;
