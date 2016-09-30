@@ -66,6 +66,10 @@ function extract {
   fi
 }
 
+function apt-update {
+  sudo sh -c 'apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean'
+}
+
 # install liquid prompt
 ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
