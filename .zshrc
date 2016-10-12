@@ -105,6 +105,6 @@ ZPACKAGE=$HOME/local/erlang/activate
 alias iexm='iex -S mix'
 
 # install context
-#export OSFONTDIR=/usr/local/share/fonts
-#ZPACKAGE=$HOME/context/tex/setuptex
-#[ -s $ZPACKAGE ] && source $ZPACKAGE
+export OSFONTDIR=/usr/local/share/fonts
+ZPACKAGE=$HOME/local/context/tex/setuptex
+[ -s $ZPACKAGE ] && source $ZPACKAGE
