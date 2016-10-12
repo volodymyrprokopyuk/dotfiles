@@ -103,8 +103,3 @@ ZPACKAGE=$HOME/local/erlang/activate
 # add elixir to path
 [ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
 alias iexm='iex -S mix'
-
-# install context
-export OSFONTDIR=/usr/local/share/fonts
-ZPACKAGE=$HOME/local/context/tex/setuptex
-[ -s $ZPACKAGE ] && source $ZPACKAGE
