@@ -6,6 +6,8 @@
 (scroll-bar-mode -1)
 ; disable StartupScreen
 (setq inhibit-startup-screen t)
+; calendar week start day
+(setq calendar-week-start-day 1)
 
 ; show line numbers
 (global-linum-mode t)
