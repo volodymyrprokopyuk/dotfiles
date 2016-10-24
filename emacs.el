@@ -163,6 +163,7 @@
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
 (autoload 'emmet-mode "emmet-mode" nil t)
 (add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'nxml-mode-hook 'emmet-mode)
 
 ; Markdown mode
 ; $ git clone https://github.com/jrblevin/markdown-mode.git
