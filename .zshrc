@@ -87,14 +87,18 @@ ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
 
-# install nvm
-export NVM_DIR=$HOME/.nvm
-ZPACKAGE=$NVM_DIR/nvm.sh
-[ -s $ZPACKAGE ] && source $ZPACKAGE
+# add java to path
+export JAVA_HOME=$HOME/local/java
+[ -s $HOME/local/java/bin/java ] && PATH=$HOME/local/java/bin:$PATH
 
 # add gradle to path
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
+
+# install nvm
+export NVM_DIR=$HOME/.nvm
+ZPACKAGE=$NVM_DIR/nvm.sh
+[ -s $ZPACKAGE ] && source $ZPACKAGE
 
 # install kerl
 ZPACKAGE=$HOME/local/erlang/activate
