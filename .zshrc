@@ -95,6 +95,10 @@ export JAVA_HOME=$HOME/local/java
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
 
+# add maven to path
+export M2_HOME=$HOME/local/maven
+[ -s $HOME/local/maven/bin/mvn ] && PATH=$HOME/local/maven/bin:$PATH
+
 # install nvm
 export NVM_DIR=$HOME/.nvm
 ZPACKAGE=$NVM_DIR/nvm.sh
