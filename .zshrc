@@ -30,6 +30,7 @@ alias ls='ls --color=auto'
 alias l='ls -lAh'
 alias grep='grep --color=auto'
 alias ag='ag --hidden --ignore *~ --ignore .git'
+alias agf='ag -g'
 alias less='less -r'
 alias info='info --vi-keys'
 
@@ -45,8 +46,8 @@ function man {
   man $@
 }
 
-function extract {
-  echo Extracting $1 ...
+function unpack {
+  echo Unpacking $1 ...
   if [ -f $1 ] ; then
     case $1 in
       (*.tar.gz|*.tgz) tar xzf $1 ;;
@@ -66,7 +67,7 @@ function extract {
   fi
 }
 
-function apt-update {
+function apt-upgrade {
   sudo sh -c 'apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean'
 }
 
