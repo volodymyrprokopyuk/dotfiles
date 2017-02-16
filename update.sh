@@ -158,5 +158,5 @@ mkdir -p $BASE_DIR/goto-chg && curl $GIT_URL -o $BASE_DIR/goto-chg/goto-chg.el
 compileEmacs $BASE_DIR $GIT_URL
 
 echo [ 'evil' ]
-GIT_URL='https://bitbucket.org/lyro/evil'
-updateHg $BASE_DIR $GIT_URL && make
+GIT_URL='https://github.com/emacs-evil/evil'
+updateGit $BASE_DIR $GIT_URL && make
