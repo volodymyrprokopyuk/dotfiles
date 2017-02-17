@@ -22,20 +22,18 @@ HISTSIZE=10000
 SAVEHIST=10000
 bindkey '^R' history-incremental-pattern-search-backward
 
-alias em='em -nw'
+alias e='em -nw'
+alias l='ls -A -l -h --color=auto'
+alias ag='ag --hidden --ignore *~ --ignore .git'
+alias s='ag'
+alias sf='ag -g'
+
+alias less='less -r'
+alias info='info --vi-keys'
+alias grep='grep -r -n --color=auto'
 alias fm='vifm'
 alias tig='tig --all'
 alias ninja='ninja -v'
-alias ls='ls --color=auto'
-alias l='ls -lAh'
-alias grep='grep -r -n --color=auto'
-alias ag='ag --hidden --ignore *~ --ignore .git'
-alias less='less -r'
-alias info='info --vi-keys'
-
-alias e='em'
-alias s='ag'
-alias sf='ag -g'
 
 function man {
   env \
