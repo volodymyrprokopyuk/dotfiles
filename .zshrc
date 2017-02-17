@@ -28,11 +28,14 @@ alias tig='tig --all'
 alias ninja='ninja -v'
 alias ls='ls --color=auto'
 alias l='ls -lAh'
-alias grep='grep --color=auto'
+alias grep='grep -r -n --color=auto'
 alias ag='ag --hidden --ignore *~ --ignore .git'
-alias agf='ag -g'
 alias less='less -r'
 alias info='info --vi-keys'
+
+alias e='em'
+alias s='ag'
+alias sf='ag -g'
 
 function man {
   env \
