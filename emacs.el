@@ -42,6 +42,8 @@
   (save-excursion
     (shell-command-on-region (mark) (point) "xmllint --format -"
       (buffer-name) t)))
+(add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.wsdl\\'" . nxml-mode))
 
 ; WiteSpace mode
 (require 'whitespace)
@@ -130,7 +132,7 @@
 (global-set-key (kbd "M-s f") 'helm-ag-project-root)
 (global-set-key (kbd "M-s a") 'helm-ag-buffers)
 (custom-set-variables
- '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
+  '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
