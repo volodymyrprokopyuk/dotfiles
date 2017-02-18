@@ -27,6 +27,7 @@ alias l='ls -A -l -h --color=auto'
 alias ag='ag --hidden --ignore *~ --ignore .git'
 alias s='ag'
 alias sf='ag -g'
+alias g='git'
 
 alias less='less -r'
 alias info='info --vi-keys'
