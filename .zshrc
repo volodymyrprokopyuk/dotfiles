@@ -24,9 +24,9 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 alias e='em -nw'
 alias l='ls -A -l -h --color=auto'
-alias ag='ag --hidden --ignore *~ --ignore .git'
-alias s='ag'
-alias sf='ag -g'
+alias _ag="ag --hidden --ignore *~ --ignore .git --color-match '1;31'"
+alias s='_ag'
+alias sf='_ag -g'
 alias g='git'
 
 alias less='less -r'
