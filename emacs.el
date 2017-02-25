@@ -124,26 +124,32 @@
     (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)))
 (global-set-key (kbd "M-s d") 'neotree-toggle)
 
-; Helm mode
-; $ git clone https://github.com/jwiegley/emacs-async.git
-; $ git clone https://github.com/emacs-helm/helm.git
-(add-to-list 'load-path "~/.emacs.d/emacs-async")
-(add-to-list 'load-path "~/.emacs.d/helm")
-(require 'helm)
-(require 'helm-config)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-s r") 'helm-mini)
-(global-set-key (kbd "M-s s") 'helm-occur)
-(helm-mode 1)
+; Ivy mode
+; $ git clone https://github.com/abo-abo/swiper.git
+(add-to-list 'load-path "~/.emacs.d/swiper")
+(require 'ivy)
+(ivy-mode 1)
 
-; Helm Ag mode
-; $ git clone https://github.com/syohex/emacs-helm-ag.git
-(add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
-(require 'helm-ag)
-(global-set-key (kbd "M-s f") 'helm-ag-project-root)
-(global-set-key (kbd "M-s a") 'helm-ag-buffers)
-(custom-set-variables
-  '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
+;; ; Helm mode
+;; ; $ git clone https://github.com/jwiegley/emacs-async.git
+;; ; $ git clone https://github.com/emacs-helm/helm.git
+;; (add-to-list 'load-path "~/.emacs.d/emacs-async")
+;; (add-to-list 'load-path "~/.emacs.d/helm")
+;; (require 'helm)
+;; (require 'helm-config)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-s r") 'helm-mini)
+;; (global-set-key (kbd "M-s s") 'helm-occur)
+;; (helm-mode 1)
+;;
+;; ; Helm Ag mode
+;; ; $ git clone https://github.com/syohex/emacs-helm-ag.git
+;; (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
+;; (require 'helm-ag)
+;; (global-set-key (kbd "M-s f") 'helm-ag-project-root)
+;; (global-set-key (kbd "M-s a") 'helm-ag-buffers)
+;; (custom-set-variables
+;;   '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
