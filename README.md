@@ -16,10 +16,11 @@
 
 ```bash
 $ sudo apt-get install xsel
+$ sudo apt-get install libxml2-utis
+$ sudo apt-get install unrar
+$ sudo apt-get install jq
 $ sudo apt-get install archivemount
 $ sudo apt-get install fuse-zip
-$ sudo apt-get install libxml2-utis
-$ sudo apt-get install jq
 $ sudo apt-get install libcurl4-openssl-dev
 $ sudo apt-get install mercurial
 ```

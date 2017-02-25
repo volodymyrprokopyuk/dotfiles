@@ -59,7 +59,7 @@ function unpack {
       (*.gz) gunzip $1 ;;
       (*.bz2) bunzip2 $1 ;;
       (*.zip) unzip $1 ;;
-      (*.rar) rar x $1 ;;
+      (*.rar) unrar x $1 ;;
       (*.Z) uncompress $1 ;;
       (*.7z) 7z x $1 ;;
       (*) echo "'$1' unknown archive format" ;;
