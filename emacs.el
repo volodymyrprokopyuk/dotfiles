@@ -68,6 +68,8 @@
 (setq-default whitespace-style '(face tab-mark trailing lines-tail))
 ; remove trailing blanks on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+; automatically format text when typing
+(add-hook 'text-mode-hook 'auto-fill-mode)
 
 ; indentation
 ; C-c C-s => show offset variable
@@ -176,6 +178,9 @@
 (require 'yasnippet)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (yas-global-mode 1)
+
+; Emacs List mode
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ; JS2 mode
 ; $ git clone https://github.com/mooz/js2-mode.git
