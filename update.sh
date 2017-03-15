@@ -91,6 +91,10 @@ echo [ 'zenburn' ]
 GIT_URL='https://github.com/bbatsov/zenburn-emacs.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 
+echo [ 'spacemacs-theme' ]
+GIT_URL='https://github.com/nashamri/spacemacs-theme.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+
 echo [ 'rainbow-delimiters' ]
 GIT_URL='https://github.com/Fanael/rainbow-delimiters.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL

@@ -92,10 +92,16 @@
 ; Source Code Pro font
 (set-frame-font "Source Code Pro Light 16")
 
-; Zenburn color
+; Zenburn theme
 ; $ git clone https://github.com/bbatsov/zenburn-emacs.git
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
-(load-theme 'zenburn t)
+;(load-theme 'zenburn t)
+
+; Spacemacs theme
+; $ git clone https://github.com/nashamri/spacemacs-theme.git
+(add-to-list 'load-path "~/.emacs.d/spacemacs-theme")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/spacemacs-theme")
+(load-theme 'spacemacs-dark t)
 
 ; Rainbow delimiters mode
 ; $ git clone https://github.com/Fanael/rainbow-delimiters.git
