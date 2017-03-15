@@ -25,6 +25,14 @@ $ sudo apt-get install libcurl4-openssl-dev
 $ sudo apt-get install mercurial
 ```
 
+## Install Emacs
+
+```bash
+sudo add-apt-repository ppa:ubuntu-elisp/ppa
+sudo apt-get update
+sudo apt-get install emacs-snapshot
+```
+
 ## Install from source
 
 - [zsh](http://www.zsh.org/)
