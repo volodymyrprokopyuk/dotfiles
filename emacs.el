@@ -95,13 +95,13 @@
 ; Zenburn theme
 ; $ git clone https://github.com/bbatsov/zenburn-emacs.git
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
-;(load-theme 'zenburn t)
+(load-theme 'zenburn t)
 
 ; Spacemacs theme
 ; $ git clone https://github.com/nashamri/spacemacs-theme.git
 (add-to-list 'load-path "~/.emacs.d/spacemacs-theme")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/spacemacs-theme")
-(load-theme 'spacemacs-dark t)
+;(load-theme 'spacemacs-dark t)
 
 ; Rainbow delimiters mode
 ; $ git clone https://github.com/Fanael/rainbow-delimiters.git
@@ -109,11 +109,20 @@
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters" nil t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-; Powerline mode
+; Powerline
 ; git clone https://github.com/milkypostman/powerline.git
 (add-to-list 'load-path "~/.emacs.d/powerline")
 (require 'powerline)
-(powerline-center-evil-theme)
+;(powerline-center-evil-theme)
+
+; Spaceline
+; git clone https://github.com/TheBB/spaceline.git
+(add-to-list 'load-path "~/.emacs.d/s.el")
+(add-to-list 'load-path "~/.emacs.d/dash.el")
+(add-to-list 'load-path "~/.emacs.d/spaceline")
+(require 'spaceline)
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
 
 ; Neotree mode
 ; $ git clone https://github.com/jaypei/emacs-neotree.git

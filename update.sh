@@ -79,6 +79,10 @@ curl $GIT_URL -o $BASE_DIR/kerl && chmod 755 $BASE_DIR/kerl
 
 BASE_DIR=$HOME/.emacs.d
 
+echo [ 's' ]
+GIT_URL='https://github.com/magnars/s.el.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+
 echo [ 'dash' ]
 GIT_URL='https://github.com/magnars/dash.el.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
@@ -101,6 +105,10 @@ updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 
 echo [ 'powerline' ]
 GIT_URL='https://github.com/milkypostman/powerline.git'
+updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
+
+echo [ 'spaceline' ]
+GIT_URL='https://github.com/TheBB/spaceline.git'
 updateGit $BASE_DIR $GIT_URL && compileEmacs $BASE_DIR $GIT_URL
 
 echo [ 'neotree' ]
