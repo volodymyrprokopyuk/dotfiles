@@ -175,7 +175,7 @@
 (require 'helm)
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-s l") 'helm-mini)
+(global-set-key (kbd "M-s ;") 'helm-mini)
 (global-set-key (kbd "M-s s") 'helm-occur)
 (helm-mode 1)
 
