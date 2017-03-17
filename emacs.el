@@ -42,6 +42,7 @@
   (save-excursion
     (shell-command-on-region (mark) (point) "xmllint --format -"
       (buffer-name) t)))
+
 ; nXML fold
 (require 'hideshow)
 (require 'sgml-mode)
@@ -99,8 +100,8 @@
 
 ; Spacemacs theme
 ; $ git clone https://github.com/nashamri/spacemacs-theme.git
-(add-to-list 'load-path "~/.emacs.d/spacemacs-theme")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/spacemacs-theme")
+;(add-to-list 'load-path "~/.emacs.d/spacemacs-theme")
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/spacemacs-theme")
 ;(load-theme 'spacemacs-dark t)
 
 ; Rainbow delimiters mode
@@ -126,66 +127,65 @@
 
 ; Neotree mode
 ; $ git clone https://github.com/jaypei/emacs-neotree.git
-(add-to-list 'load-path "~/.emacs.d/emacs-neotree")
-(require 'neotree)
-(setq neo-smart-open t)
-(add-hook 'neotree-mode-hook
-  (lambda ()
-    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-    (define-key evil-normal-state-local-map (kbd "l") 'neotree-enter)
-    (define-key evil-normal-state-local-map (kbd "h") 'neotree-enter)
-    (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
-    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-    (define-key evil-normal-state-local-map (kbd "c") 'neotree-change-root)
-    (define-key evil-normal-state-local-map (kbd "a") 'neotree-hidden-file-toggle)
-    (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)))
-(global-set-key (kbd "M-s d") 'neotree-toggle)
+;(add-to-list 'load-path "~/.emacs.d/emacs-neotree")
+;(require 'neotree)
+;(setq neo-smart-open t)
+;(add-hook 'neotree-mode-hook
+;  (lambda ()
+;    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+;    (define-key evil-normal-state-local-map (kbd "l") 'neotree-enter)
+;    (define-key evil-normal-state-local-map (kbd "h") 'neotree-enter)
+;    (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
+;    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+;    (define-key evil-normal-state-local-map (kbd "c") 'neotree-change-root)
+;    (define-key evil-normal-state-local-map (kbd "a") 'neotree-hidden-file-toggle)
+;    (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)))
+;(global-set-key (kbd "M-s d") 'neotree-toggle)
 
 ; Ivy mode
 ; $ git clone https://github.com/abo-abo/swiper.git
-(add-to-list 'load-path "~/.emacs.d/swiper")
-(require 'ivy)
-(require 'swiper)
-(require 'counsel)
-(ivy-mode 1)
+;(add-to-list 'load-path "~/.emacs.d/swiper")
+;(require 'ivy)
+;(require 'swiper)
+;(require 'counsel)
+;(ivy-mode 1)
+;
+;(setq ivy-use-virtual-buffers t)
+;(setq ivy-count-format "(%d/%d) ")
+;
+;(global-set-key (kbd "C-s") 'swiper)
+;(global-set-key (kbd "M-x") 'counsel-M-x)
+;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+;(global-set-key (kbd "<f1> l") 'counsel-find-library)
+;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+;
+;(global-set-key (kbd "C-c g") 'counsel-git)
+;(global-set-key (kbd "C-c j") 'counsel-git-grep)
+;(global-set-key (kbd "C-c k") 'counsel-ag)
+;(global-set-key (kbd "C-x l") 'counsel-locate)
 
-(setq ivy-use-virtual-buffers t)
-(setq ivy-count-format "(%d/%d) ")
+; Helm mode
+; $ git clone https://github.com/jwiegley/emacs-async.git
+; $ git clone https://github.com/emacs-helm/helm.git
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+(require 'helm)
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-s l") 'helm-mini)
+(global-set-key (kbd "M-s s") 'helm-occur)
+(helm-mode 1)
 
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> l") 'counsel-find-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-
-(global-set-key (kbd "C-c g") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
-(global-set-key (kbd "C-x l") 'counsel-locate)
-
-;; ; Helm mode
-;; ; $ git clone https://github.com/jwiegley/emacs-async.git
-;; ; $ git clone https://github.com/emacs-helm/helm.git
-;; (add-to-list 'load-path "~/.emacs.d/emacs-async")
-;; (add-to-list 'load-path "~/.emacs.d/helm")
-;; (require 'helm)
-;; (require 'helm-config)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
-;; (global-set-key (kbd "M-s r") 'helm-mini)
-;; (global-set-key (kbd "M-s s") 'helm-occur)
-;; (helm-mode 1)
-;;
-;; ; Helm Ag mode
-;; ; $ git clone https://github.com/syohex/emacs-helm-ag.git
-;; (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
-;; (require 'helm-ag)
-;; (global-set-key (kbd "M-s f") 'helm-ag-project-root)
-;; (global-set-key (kbd "M-s a") 'helm-ag-buffers)
-;; (custom-set-variables
-;;   '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
+; Helm Ag mode
+; $ git clone https://github.com/syohex/emacs-helm-ag.git
+(add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
+(require 'helm-ag)
+(global-set-key (kbd "M-s f") 'helm-ag-project-root)
+(custom-set-variables
+  '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
@@ -233,24 +233,24 @@
 
 ; Jade mode
 ; $ git clone https://github.com/brianc/jade-mode.git
-(add-to-list 'load-path "~/.emacs.d/jade-mode")
-(autoload 'jade-mode "jade-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
-(add-to-list 'auto-mode-alist '("\\.pug\\'" . jade-mode))
+;(add-to-list 'load-path "~/.emacs.d/jade-mode")
+;(autoload 'jade-mode "jade-mode" nil t)
+;(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+;(add-to-list 'auto-mode-alist '("\\.pug\\'" . jade-mode))
 
 ; Elixir mode
 ; $ git clone https://github.com/elixir-lang/emacs-elixir
-(add-to-list 'load-path "~/.emacs.d/emacs-elixir")
-(autoload 'elixir-mode "elixir-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
-(add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
-(add-to-list 'auto-mode-alist '("\\.gradle\\'" . elixir-mode))
+;(add-to-list 'load-path "~/.emacs.d/emacs-elixir")
+;(autoload 'elixir-mode "elixir-mode" nil t)
+;(add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
+;(add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
+;(add-to-list 'auto-mode-alist '("\\.gradle\\'" . elixir-mode))
 
 ; Cucumber mode
 ; $ git clone https://github.com/michaelklishin/cucumber.el.git
-(add-to-list 'load-path "~/.emacs.d/cucumber.el")
-(autoload 'feature-mode "feature-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.feature\\'" . feature-mode))
+;(add-to-list 'load-path "~/.emacs.d/cucumber.el")
+;(autoload 'feature-mode "feature-mode" nil t)
+;(add-to-list 'auto-mode-alist '("\\.feature\\'" . feature-mode))
 
 ; Ninja mode
 ; $ git clone https://github.com/martine/ninja.git
