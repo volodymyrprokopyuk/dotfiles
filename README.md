@@ -15,14 +15,21 @@
 ## Install from repository
 
 ```bash
-$ sudo apt-get install xsel
-$ sudo apt-get install libxml2-utis
-$ sudo apt-get install unrar
-$ sudo apt-get install jq
-$ sudo apt-get install archivemount
-$ sudo apt-get install fuse-zip
-$ sudo apt-get install libcurl4-openssl-dev
-$ sudo apt-get install mercurial
+sudo apt-get install xsel
+sudo apt-get install libxml2-utis
+sudo apt-get install unrar
+sudo apt-get install jq
+sudo apt-get install archivemount
+sudo apt-get install fuse-zip
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install mercurial
+```
+
+## Install Ansible
+```bash
+sudo add-apt-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
 ```
 
 ## Install Emacs
@@ -48,15 +55,15 @@ sudo apt-get install emacs-snapshot
 ## Install zsh
 
 ```bash
-$ which zsh | sudo tee -a /etc/shells
-$ chsh -s $(which zsh)
+which zsh | sudo tee -a /etc/shells
+chsh -s $(which zsh)
 ```
 
 ## Install config files
 
 ```bash
-$ git clone git@github.com:volodymyrprokopyuk/dotfiles.git
-$ cd dotfiles
-$ ninja
-$ ninja update
+git clone git@github.com:volodymyrprokopyuk/dotfiles.git
+cd dotfiles
+ninja
+ninja update
 ```
