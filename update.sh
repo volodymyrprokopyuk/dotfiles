@@ -147,6 +147,10 @@ echo [ 'markdown-mode' ]
 GIT_URL='https://github.com/jrblevin/markdown-mode.git'
 gitUpdate $BASE_DIR $GIT_URL && emacsCompile $BASE_DIR $GIT_URL
 
+echo [ 'yaml-mode' ]
+GIT_URL='https://github.com/yoshiki/yaml-mode.git'
+gitUpdate $BASE_DIR $GIT_URL && emacsCompile $BASE_DIR $GIT_URL
+
 #echo [ 'jade-mode' ]
 #GIT_URL='https://github.com/brianc/jade-mode.git'
 #gitUpdate $BASE_DIR $GIT_URL && emacsCompile $BASE_DIR $GIT_URL

@@ -231,6 +231,13 @@
 (autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+; YAML mode
+; $ git clone https://github.com/yoshiki/yaml-mode.git
+(add-to-list 'load-path "~/.emacs.d/yaml-mode")
+(autoload 'yaml-mode "yaml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
 ; Jade mode
 ; $ git clone https://github.com/brianc/jade-mode.git
 ;(add-to-list 'load-path "~/.emacs.d/jade-mode")
