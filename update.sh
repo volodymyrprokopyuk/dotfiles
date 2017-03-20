@@ -127,6 +127,10 @@ echo [ 'helm-ag' ]
 GIT_URL='https://github.com/syohex/emacs-helm-ag.git'
 gitUpdate $BASE_DIR $GIT_URL && emacsCompile $BASE_DIR $GIT_URL
 
+echo [ 'company-mode' ]
+GIT_URL='https://github.com/company-mode/company-mode.git'
+gitUpdate $BASE_DIR $GIT_URL && emacsCompile $BASE_DIR $GIT_URL
+
 echo [ 'yasnippet' ]
 GIT_URL='https://github.com/capitaomorte/yasnippet.git'
 gitUpdate $BASE_DIR $GIT_URL && emacsCompile $BASE_DIR $GIT_URL

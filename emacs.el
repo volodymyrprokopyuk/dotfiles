@@ -187,6 +187,13 @@
 (custom-set-variables
   '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 
+; Company mode
+; $ git clone https://github.com/company-mode/company-mode.git
+(add-to-list 'load-path "~/.emacs.d/company-mode")
+(require 'company)
+(global-set-key (kbd "M-s SPC") 'company-complete)
+(add-hook 'after-init-hook 'global-company-mode)
+
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
