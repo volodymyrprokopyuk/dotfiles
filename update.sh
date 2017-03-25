@@ -43,23 +43,23 @@ git config --global alias.chb "checkout -b"
 git config --global alias.bs "branch -a -vv"
 git config --global alias.rs "remote -v"
 
-BASE_DIR=$HOME/.zsh
-
-echo [ 'liquidprompt' ]
-GIT_URL='https://github.com/nojhan/liquidprompt.git'
-gitUpdate $BASE_DIR $GIT_URL
-
-echo [ 'zsh-completions' ]
-GIT_URL='https://github.com/zsh-users/zsh-completions.git'
-gitUpdate $BASE_DIR $GIT_URL
-
-echo [ 'zsh-autosuggestions' ]
-GIT_URL='https://github.com/zsh-users/zsh-autosuggestions.git'
-gitUpdate $BASE_DIR $GIT_URL
-
-echo [ 'zsh-syntax-highlighting' ]
-GIT_URL='https://github.com/zsh-users/zsh-syntax-highlighting.git'
-gitUpdate $BASE_DIR $GIT_URL
+#BASE_DIR=$HOME/.zsh
+#
+#echo [ 'liquidprompt' ]
+#GIT_URL='https://github.com/nojhan/liquidprompt.git'
+#gitUpdate $BASE_DIR $GIT_URL
+#
+#echo [ 'zsh-completions' ]
+#GIT_URL='https://github.com/zsh-users/zsh-completions.git'
+#gitUpdate $BASE_DIR $GIT_URL
+#
+#echo [ 'zsh-autosuggestions' ]
+#GIT_URL='https://github.com/zsh-users/zsh-autosuggestions.git'
+#gitUpdate $BASE_DIR $GIT_URL
+#
+#echo [ 'zsh-syntax-highlighting' ]
+#GIT_URL='https://github.com/zsh-users/zsh-syntax-highlighting.git'
+#gitUpdate $BASE_DIR $GIT_URL
 
 BASE_DIR=$HOME/.zsh/completions
 

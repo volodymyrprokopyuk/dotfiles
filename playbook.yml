@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+  #pre_tasks:
+  #  - name: Update apt package index files from sources
+  #    apt: update_cache=yes cache_valid_time=3600
+  #    become: yes
+
+  roles:
+    - common
+    - tmux
+    - zsh

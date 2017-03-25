@@ -1,0 +1,7 @@
+---
+zsh_package_home: ~/.zsh
+zsh_packages:
+  - https://github.com/nojhan/liquidprompt.git
+  - https://github.com/zsh-users/zsh-completions.git
+  - https://github.com/zsh-users/zsh-autosuggestions.git
+  - https://github.com/zsh-users/zsh-syntax-highlighting.git

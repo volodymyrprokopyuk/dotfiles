@@ -1,0 +1,4 @@
+---
+#- name: Install Git package
+#  apt: name=git state=latest
+#  become: yes
