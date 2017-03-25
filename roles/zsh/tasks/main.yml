@@ -13,5 +13,5 @@
 - name: Install Zsh extensions
   git:
     repo: "{{ item }}"
-    dest: "{{ zsh_package_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"
-  with_items: "{{ zsh_packages }}"
+    dest: "{{ zsh_extension_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"
+  with_items: "{{ zsh_extensions }}"
