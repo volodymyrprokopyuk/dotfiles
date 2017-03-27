@@ -8,6 +8,9 @@
   #    become: yes
 
   roles:
-    - common
-    - tmux
-    - zsh
+    #- common
+    #- tmux
+    #- zsh
+    - emacs
+    #- git
+    #- kerl

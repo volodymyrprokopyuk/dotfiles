@@ -15,6 +15,7 @@ setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt EXTENDED_HISTORY
+setopt EXTENDED_GLOB
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -86,7 +87,7 @@ ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 # install zsh completions
-fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/completions $fpath)
+fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
 
 # add java to path

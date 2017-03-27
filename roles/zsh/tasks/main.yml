@@ -10,6 +10,9 @@
 - name: Configure Zsh
   copy: src=.zshrc dest=~
 
+- name: Create ~/.zsh/extra-completions directory
+  file: path={{ zsh_extension_home }}/extra-completions state=directory
+
 - name: Install Zsh extensions
   git:
     repo: "{{ item }}"
