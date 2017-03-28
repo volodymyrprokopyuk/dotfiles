@@ -1,8 +1,0 @@
----
-#- name: Install Curl package
-#  apt: name=curl state=latest
-#  become: yes
-
-#- name: Install Git package
-#  apt: name=git state=latest
-#  become: yes

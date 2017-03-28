@@ -1,12 +1,4 @@
 ---
-#- name: Add Emacs ppa:ubuntu-elisp/ppa
-#  apt_repository: repo=ppa:ubuntu-elisp/ppa update_cache=yes
-#  become: yes
-
-#- name: Install Emacs package
-#  apt: name=emacs-snapshot state=latest
-#  become: yes
-
 #- name: Install em
 #  copy: src=em dest=~/local/bin/em mode=755
 

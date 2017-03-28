@@ -1,7 +1,3 @@
 ---
-#- name: Install Tmux package
-#  apt: name=tmux state=latest
-#  become: yes
-
 - name: Configure Tmux
   copy: src=.tmux.conf dest=~

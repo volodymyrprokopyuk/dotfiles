@@ -1,12 +1,4 @@
 ---
-#- name: Install Zsh package
-#  apt: name=zsh state=latest
-#  become: yes
-
-#- name: Change shell to Zsh
-#  shell: chsh -s $(which zsh)
-#  become: yes
-
 - name: Configure Zsh
   copy: src=.zshrc dest=~
 
