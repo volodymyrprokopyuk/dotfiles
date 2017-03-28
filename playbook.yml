@@ -3,9 +3,9 @@
   gather_facts: no
 
   roles:
-    - { role: init, become: yes }
+    #- { role: init, become: yes }
     #- tmux
     #- zsh
-    #- emacs
+    - emacs
     #- git
     #- kerl

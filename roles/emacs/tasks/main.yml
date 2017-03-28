@@ -1,79 +1,81 @@
 ---
-#- name: Install em
-#  copy: src=em dest=~/local/bin/em mode=755
+- name: Install em
+  copy: src=em dest=~/local/bin/em mode=755
 
-#- name: Link Emacs configuration
-#  copy: src=.emacs dest=~
+- name: Link Emacs configuration
+  copy: src=.emacs dest=~
 
-#- name: Configure Emacs
-#  copy: src=emacs.el dest=~/.emacs.d/emacs.el
+- name: Configure Emacs
+  copy: src=emacs.el dest=~/.emacs.d/emacs.el
 
-#- name: Create directories for extensions from EmacsWiki
-#  file: path={{ emacs_extension_home }}/{{ item | basename }} state=directory
-#  with_items: "{{ emacs_extensions_emacswiki }}"
-
-- name: Install Emacs extensions from EmacsWiki
-  get_url:
-    url: "{{ item }}"
-    dest: "{{ emacs_extension_home }}/{{ item | basename }}/{{ item | basename }}"
+- name: Create directories for extensions from EmacsWiki
+  file: path={{ emacs_extension_home }}/{{ item | basename }} state=directory
   with_items: "{{ emacs_extensions_emacswiki }}"
 
-- name: Install Emacs extensions from GitHub
-  git:
-    repo: "{{ item }}"
-    dest: "{{ emacs_extension_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"
-  with_items: "{{ emacs_extensions_github }}"
-
-- name: Compile Emacs extensions
-  shell: >
-    emacs --batch -Q
-    -L {{ emacs_extension_home }}/epl
-    -L {{ emacs_extension_home }}/pkg-info.el
-    -L {{ emacs_extension_home }}/goto-chg.el
-    -L {{ emacs_extension_home }}/s.el
-    -L {{ emacs_extension_home }}/dash.el
-    -L {{ emacs_extension_home }}/emacs-async
-    -L {{ emacs_extension_home }}/zenburn-emacs
-    -L {{ emacs_extension_home }}/rainbow-delimiters
-    -L {{ emacs_extension_home }}/powerline
-    -L {{ emacs_extension_home }}/spaceline
-    -L {{ emacs_extension_home }}/helm
-    -L {{ emacs_extension_home }}/emacs-helm-ag
-    -L {{ emacs_extension_home }}/company-mode
-    -L {{ emacs_extension_home }}/yasnippet
-    -L {{ emacs_extension_home }}/js2-mode
-    -L {{ emacs_extension_home }}/web-mode
-    -L {{ emacs_extension_home }}/emmet-mode
-    -L {{ emacs_extension_home }}/markdown-mode
-    -L {{ emacs_extension_home }}/yaml-mode
-    -L {{ emacs_extension_home }}/emacs-elixir
-    -L {{ emacs_extension_home }}/evil
-    -f batch-byte-compile {{ emacs_extension_home }}/{{ item }}/*.el
-  with_items:
-    - epl
-    - pkg-info.el
-    - goto-chg.el
-    - s.el
-    - dash.el
-    - emacs-async
-    - zenburn-emacs
-    - rainbow-delimiters
-    - powerline
-    - spaceline
-    #- helm
-    - emacs-helm-ag
-    - company-mode
-    - yasnippet
-    - js2-mode
-    - web-mode
-    - emmet-mode
-    - markdown-mode
-    - yaml-mode
-    - emacs-elixir
-    #- evil
-
-- name: Make Emacs extensions
-  command: make chdir={{ emacs_extension_home }}/{{ item }}/
-  with_items:
-    - helm
-    - evil
+#- name: Install Emacs extensions from EmacsWiki
+#  get_url:
+#    url: "{{ item }}"
+#    dest: "{{ emacs_extension_home }}/{{ item | basename }}/{{ item | basename }}"
+#  with_items: "{{ emacs_extensions_emacswiki }}"
+#
+#- name: Install Emacs extensions from GitHub
+#  git:
+#    repo: "{{ item }}"
+#    dest: "{{ emacs_extension_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"
+#  with_items: "{{ emacs_extensions_github }}"
+#
+#- name: Compile Emacs extensions
+#  shell: >
+#    emacs --batch -Q
+#    -L {{ emacs_extension_home }}/epl
+#    -L {{ emacs_extension_home }}/pkg-info.el
+#    -L {{ emacs_extension_home }}/goto-chg.el
+#    -L {{ emacs_extension_home }}/s.el
+#    -L {{ emacs_extension_home }}/dash.el
+#    -L {{ emacs_extension_home }}/emacs-async
+#    -L {{ emacs_extension_home }}/zenburn-emacs
+#    -L {{ emacs_extension_home }}/rainbow-delimiters
+#    -L {{ emacs_extension_home }}/powerline
+#    -L {{ emacs_extension_home }}/spaceline
+#    -L {{ emacs_extension_home }}/helm
+#    -L {{ emacs_extension_home }}/emacs-helm-ag
+#    -L {{ emacs_extension_home }}/company-mode
+#    -L {{ emacs_extension_home }}/smartparens
+#    -L {{ emacs_extension_home }}/yasnippet
+#    -L {{ emacs_extension_home }}/js2-mode
+#    -L {{ emacs_extension_home }}/web-mode
+#    -L {{ emacs_extension_home }}/emmet-mode
+#    -L {{ emacs_extension_home }}/markdown-mode
+#    -L {{ emacs_extension_home }}/yaml-mode
+#    -L {{ emacs_extension_home }}/emacs-elixir
+#    -L {{ emacs_extension_home }}/evil
+#    -f batch-byte-compile {{ emacs_extension_home }}/{{ item }}/*.el
+#  with_items:
+#    - epl
+#    - pkg-info.el
+#    - goto-chg.el
+#    - s.el
+#    - dash.el
+#    - emacs-async
+#    - zenburn-emacs
+#    - rainbow-delimiters
+#    - powerline
+#    - spaceline
+#    #- helm
+#    - emacs-helm-ag
+#    - company-mode
+#    - smartparens
+#    - yasnippet
+#    - js2-mode
+#    - web-mode
+#    - emmet-mode
+#    - markdown-mode
+#    - yaml-mode
+#    - emacs-elixir
+#    #- evil
+#
+#- name: Make Emacs extensions
+#  command: make chdir={{ emacs_extension_home }}/{{ item }}/
+#  with_items:
+#    - helm
+#    - evil
