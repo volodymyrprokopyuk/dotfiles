@@ -3,12 +3,7 @@
 1. [zsh](http://www.zsh.org/)
 1. [tmux](http://tmux.github.io/)
 1. [emacs](http://www.gnu.org/software/emacs/)
-1. [vscode](https://code.visualstudio.com/)
-1. [vifm](http://vifm.info/)
 1. [git](https://git-scm.com/)
-1. [tig](https://github.com/jonas/tig)
-1. [psql](http://www.postgresql.org/docs/9.4/static/app-psql.html)
-1. [eslint](http://eslint.org/)
 
 # Installation
 
@@ -48,13 +43,7 @@ sudo apt-get install emacs-snapshot
 ## Install from source
 
 - [zsh](http://www.zsh.org/)
-- [ninja](https://ninja-build.org/)
 - [tmux](https://tmux.github.io/)
-- [emacs](https://www.gnu.org/software/emacs/)
-- [vscode](https://code.visualstudio.com/)
-- [vifm](http://vifm.info/)
-- [git](https://git-scm.com/)
-- [tig](https://github.com/jonas/tig)
 - [ag](https://github.com/ggreer/the_silver_searcher)
 
 ## Install zsh

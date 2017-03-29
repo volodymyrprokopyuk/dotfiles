@@ -6,7 +6,10 @@
   copy: src=.emacs dest=~
 
 - name: Configure Emacs
-  copy: src=emacs.el dest=~/.emacs.d/emacs.el
+  copy: src=emacs.el dest={{ emacs_extension_home }}
+
+- name: Install Yasnippet snippets
+  copy: src=snippets dest={{ emacs_extension_home }}
 
 - name: Create directories for extensions from EmacsWiki
   file: path={{ emacs_extension_home }}/{{ item | basename }} state=directory

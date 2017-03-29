@@ -151,6 +151,7 @@
 (add-to-list 'load-path "~/.emacs.d/smartparens")
 (require 'smartparens-config)
 (add-hook 'prog-mode-hook 'smartparens-mode)
+(add-hook 'text-mode-hook 'smartparens-mode)
 
 ; YASnippet mode
 ; $ git clone https://github.com/capitaomorte/yasnippet.git
