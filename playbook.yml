@@ -4,8 +4,8 @@
 
   roles:
     #- { role: init, become: yes }
-    #- tmux
-    #- zsh
+    - tmux
+    - zsh
     - emacs
-    #- git
-    #- kerl
+    - git
+    - kerl
