@@ -19,7 +19,6 @@
 (show-paren-mode 1)
 
 ; terminal clipboard yank/paste
-; $ sudo apt-get install xsel
 (setq x-select-enable-clipboard t)
 (unless window-system
   (when (getenv "DISPLAY")
@@ -36,7 +35,6 @@
   (setq interprogram-paste-function 'xsel-paste-function)))
 
 ; XML format
-; $ sudo apt-get install libxml2-utils
 (defun xml-format ()
   (interactive)
   (save-excursion
@@ -91,38 +89,35 @@
 (add-hook 'java-mode-hook 'java-indent-config-hook)
 
 ; Source Code Pro font
-(set-frame-font "Source Code Pro Light 16")
+(set-frame-font "Source Code Pro Light 15")
+
+; common extensions
+(add-to-list 'load-path "~/.emacs.d/epl")
+(add-to-list 'load-path "~/.emacs.d/pkg-info.el")
+(add-to-list 'load-path "~/.emacs.d/s.el")
+(add-to-list 'load-path "~/.emacs.d/dash.el")
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
 
 ; Zenburn theme
-; $ git clone https://github.com/bbatsov/zenburn-emacs.git
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
 (load-theme 'zenburn t)
 
 ; Rainbow delimiters mode
-; $ git clone https://github.com/Fanael/rainbow-delimiters.git
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters" nil t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-; Powerline
-; git clone https://github.com/milkypostman/powerline.git
+; Powerline/Spaceline modeline
 (add-to-list 'load-path "~/.emacs.d/powerline")
-(require 'powerline)
-;(powerline-center-evil-theme)
-
-; Spaceline
-; git clone https://github.com/TheBB/spaceline.git
-(add-to-list 'load-path "~/.emacs.d/s.el")
-(add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/spaceline")
-(require 'spaceline)
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
+(spaceline-helm-mode 1)
+(setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+(setq powerline-default-separator 'wave)
+(spaceline-compile)
 
 ; Helm mode
-; $ git clone https://github.com/jwiegley/emacs-async.git
-; $ git clone https://github.com/emacs-helm/helm.git
-(add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
 (require 'helm)
 (require 'helm-config)
@@ -132,7 +127,6 @@
 (helm-mode 1)
 
 ; Helm Ag mode
-; $ git clone https://github.com/syohex/emacs-helm-ag.git
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
 (global-set-key (kbd "M-s f") 'helm-ag-project-root)
@@ -140,21 +134,18 @@
   '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 
 ; Company mode
-; $ git clone https://github.com/company-mode/company-mode.git
 (add-to-list 'load-path "~/.emacs.d/company-mode")
 (require 'company)
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ; Smartparens mode
-; $ git clone https://github.com/Fuco1/smartparens.git
 (add-to-list 'load-path "~/.emacs.d/smartparens")
 (require 'smartparens-config)
 (add-hook 'prog-mode-hook 'smartparens-mode)
 (add-hook 'text-mode-hook 'smartparens-mode)
 
 ; YASnippet mode
-; $ git clone https://github.com/capitaomorte/yasnippet.git
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
 (require 'yasnippet)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
@@ -164,7 +155,6 @@
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ; JS2 mode
-; $ git clone https://github.com/mooz/js2-mode.git
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -173,7 +163,6 @@
 (setq-default js-indent-level 2)
 
 ; Web mode
-; $ git clone https://github.com/fxbois/web-mode.git
 (add-to-list 'load-path "~/.emacs.d/web-mode")
 (autoload 'web-mode "web-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
@@ -184,7 +173,6 @@
 (setq web-mode-code-indent-offset 2)
 
 ; Emmet mode
-; $ git clone https://github.com/smihica/emmet-mode.git
 ; C-j => expand line
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
 (autoload 'emmet-mode "emmet-mode" nil t)
@@ -192,22 +180,17 @@
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
 ; Markdown mode
-; $ git clone https://github.com/jrblevin/markdown-mode.git
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ; YAML mode
-; $ git clone https://github.com/yoshiki/yaml-mode.git
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
 ; Elixir mode
-; $ git clone https://github.com/elixir-lang/emacs-elixir
-(add-to-list 'load-path "~/.emacs.d/epl")
-(add-to-list 'load-path "~/.emacs.d/pkg-info.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-elixir")
 (autoload 'elixir-mode "elixir-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
@@ -215,7 +198,6 @@
 (add-to-list 'auto-mode-alist '("\\.gradle\\'" . elixir-mode))
 
 ; Evil mode
-; $ git clone https://gitorious.org/evil/evil.git
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 (add-to-list 'load-path "~/.emacs.d/evil")
