@@ -88,26 +88,26 @@
   (c-set-offset 'arglist-close '+))
 (add-hook 'java-mode-hook 'java-indent-config-hook)
 
-; Source Code Pro font
+; Source Code Pro Font
 (set-frame-font "Source Code Pro Light 15")
 
-; common extensions
+; Common Extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
 (add-to-list 'load-path "~/.emacs.d/pkg-info.el")
 (add-to-list 'load-path "~/.emacs.d/s.el")
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 
-; Zenburn theme
+; Zenburn Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
 (load-theme 'zenburn t)
 
-; Rainbow delimiters mode
+; Rainbow Delimiters Mode
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters" nil t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-; Powerline/Spaceline modeline
+; Powerline/Spaceline Modeline
 (add-to-list 'load-path "~/.emacs.d/powerline")
 (add-to-list 'load-path "~/.emacs.d/spaceline")
 (require 'spaceline-config)
@@ -117,7 +117,13 @@
 (setq powerline-default-separator 'wave)
 (spaceline-compile)
 
-; Helm mode
+; Smartparens Mode
+(add-to-list 'load-path "~/.emacs.d/smartparens")
+(require 'smartparens-config)
+(add-hook 'prog-mode-hook 'smartparens-mode)
+(add-hook 'text-mode-hook 'smartparens-mode)
+
+; Helm Mode
 (add-to-list 'load-path "~/.emacs.d/helm")
 (require 'helm)
 (require 'helm-config)
@@ -126,35 +132,29 @@
 (global-set-key (kbd "M-s s") 'helm-occur)
 (helm-mode 1)
 
-; Helm Ag mode
+; Helm Ag Mode
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
 (global-set-key (kbd "M-s f") 'helm-ag-project-root)
 (custom-set-variables
   '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 
-; Company mode
+; Company Mode
 (add-to-list 'load-path "~/.emacs.d/company-mode")
 (require 'company)
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
-; Smartparens mode
-(add-to-list 'load-path "~/.emacs.d/smartparens")
-(require 'smartparens-config)
-(add-hook 'prog-mode-hook 'smartparens-mode)
-(add-hook 'text-mode-hook 'smartparens-mode)
-
-; YASnippet mode
+; YASnippet Mode
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
 (require 'yasnippet)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (yas-global-mode 1)
 
-; Emacs List mode
+; Emacs Lisp Mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
-; JS2 mode
+; JS2 Mode
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -162,7 +162,7 @@
 (setq-default js2-basic-offset 2)
 (setq-default js-indent-level 2)
 
-; Web mode
+; Web Mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
 (autoload 'web-mode "web-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
@@ -172,38 +172,38 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 
-; Emmet mode
+; Emmet Mode
 ; C-j => expand line
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
 (autoload 'emmet-mode "emmet-mode" nil t)
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
-; Markdown mode
+; Markdown Mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-; YAML mode
+; YAML Mode
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
-; Elixir mode
+; Elixir Mode
 (add-to-list 'load-path "~/.emacs.d/emacs-elixir")
 (autoload 'elixir-mode "elixir-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
 (add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
 (add-to-list 'auto-mode-alist '("\\.gradle\\'" . elixir-mode))
 
-; Evil mode
+; Evil Mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
 
-; Ibuffer mode
+; Ibuffer Mode
 (evil-ex-define-cmd "ls" 'ibuffer)
 (evil-set-initial-state 'ibuffer-mode 'normal)

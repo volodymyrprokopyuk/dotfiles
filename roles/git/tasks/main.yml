@@ -10,6 +10,7 @@
     git config --global alias.s "status -sb"
     git config --global alias.d "diff --color-words"
     git config --global alias.dc "diff --color-words --cached"
+    git config --global alias.ds "diff --stat"
     git config --global alias.l "log --all --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 
     git config --global alias.bs "branch -a -vv"

@@ -40,10 +40,10 @@
     -L {{ emacs_extension_home }}/rainbow-delimiters
     -L {{ emacs_extension_home }}/powerline
     -L {{ emacs_extension_home }}/spaceline
+    -L {{ emacs_extension_home }}/smartparens
     -L {{ emacs_extension_home }}/helm
     -L {{ emacs_extension_home }}/emacs-helm-ag
     -L {{ emacs_extension_home }}/company-mode
-    -L {{ emacs_extension_home }}/smartparens
     -L {{ emacs_extension_home }}/yasnippet
     -L {{ emacs_extension_home }}/js2-mode
     -L {{ emacs_extension_home }}/web-mode
@@ -64,10 +64,10 @@
     - rainbow-delimiters
     - powerline
     - spaceline
+    - smartparens
     #- helm
     - emacs-helm-ag
     - company-mode
-    - smartparens
     - yasnippet
     - js2-mode
     - web-mode
