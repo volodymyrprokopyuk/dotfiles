@@ -43,6 +43,7 @@
     -L {{ emacs_extension_home }}/smartparens
     -L {{ emacs_extension_home }}/helm
     -L {{ emacs_extension_home }}/emacs-helm-ag
+    -L {{ emacs_extension_home }}/helm-git-grep
     -L {{ emacs_extension_home }}/company-mode
     -L {{ emacs_extension_home }}/yasnippet
     -L {{ emacs_extension_home }}/js2-mode
@@ -51,6 +52,7 @@
     -L {{ emacs_extension_home }}/markdown-mode
     -L {{ emacs_extension_home }}/yaml-mode
     -L {{ emacs_extension_home }}/emacs-elixir
+    -L {{ emacs_extension_home }}/otp/lib/tools/emacs
     -L {{ emacs_extension_home }}/evil
     -f batch-byte-compile {{ emacs_extension_home }}/{{ item }}/*.el
   with_items:
@@ -67,6 +69,7 @@
     - smartparens
     #- helm
     - emacs-helm-ag
+    - helm-git-grep
     - company-mode
     - yasnippet
     - js2-mode
@@ -75,6 +78,7 @@
     - markdown-mode
     - yaml-mode
     - emacs-elixir
+    - otp/lib/tools/emacs
     #- evil
 
 - name: Make Emacs extensions

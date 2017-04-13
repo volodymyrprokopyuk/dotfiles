@@ -129,15 +129,21 @@
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-s ;") 'helm-mini)
-(global-set-key (kbd "M-s s") 'helm-occur)
+(global-set-key (kbd "M-s o") 'helm-occur)
 (helm-mode 1)
 
 ; Helm Ag Mode
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
-(global-set-key (kbd "M-s f") 'helm-ag-project-root)
 (custom-set-variables
+  '(helm-ag-base-command "ag --nocolor --nogroup")
   '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
+(global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
+
+; Helm Git Grep Mode
+(add-to-list 'load-path "~/.emacs.d/helm-git-grep")
+(require 'helm-git-grep)
+(global-set-key (kbd "M-s g") 'helm-git-grep)
 
 ; Company Mode
 (add-to-list 'load-path "~/.emacs.d/company-mode")
@@ -196,6 +202,12 @@
 (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
 (add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
 (add-to-list 'auto-mode-alist '("\\.gradle\\'" . elixir-mode))
+
+; Erlang Mode
+(add-to-list 'load-path "~/.emacs.d/otp/lib/tools/emacs")
+(require 'erlang-start)
+(setq erlang-root-dir "~/local/erlang")
+(add-to-list 'exec-path "~/local/erlang/bin")
 
 ; Evil Mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
