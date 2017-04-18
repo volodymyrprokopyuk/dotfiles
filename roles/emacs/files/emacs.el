@@ -154,7 +154,7 @@
 ; Flycheck Mode
 (add-to-list 'load-path "~/.emacs.d/flycheck")
 (require 'flycheck)
-(global-flycheck-mode 1)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ; YASnippet Mode
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
