@@ -98,16 +98,16 @@
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 
-; Zenburn Theme
+; Zenburn Theme (done)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
 (load-theme 'zenburn t)
 
-; Rainbow Delimiters Mode
+; Rainbow Delimiters Mode (done)
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters" nil t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-; Powerline/Spaceline Modeline
+; Powerline/Spaceline Modeline (done)
 (add-to-list 'load-path "~/.emacs.d/powerline")
 (add-to-list 'load-path "~/.emacs.d/spaceline")
 (require 'spaceline-config)
@@ -132,7 +132,7 @@
 (global-set-key (kbd "M-s o") 'helm-occur)
 (helm-mode 1)
 
-; Helm Ag Mode
+; Helm Ag Mode (done)
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
 (custom-set-variables
@@ -140,7 +140,7 @@
   '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
-; Helm Git Grep Mode
+; Helm Git Grep Mode (done)
 (add-to-list 'load-path "~/.emacs.d/helm-git-grep")
 (require 'helm-git-grep)
 (global-set-key (kbd "M-s g") 'helm-git-grep)
@@ -150,6 +150,11 @@
 (require 'company)
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
+
+; Flycheck Mode
+(add-to-list 'load-path "~/.emacs.d/flycheck")
+(require 'flycheck)
+(global-flycheck-mode 1)
 
 ; YASnippet Mode
 (add-to-list 'load-path "~/.emacs.d/yasnippet")

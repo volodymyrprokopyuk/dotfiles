@@ -45,6 +45,7 @@
     -L {{ emacs_extension_home }}/emacs-helm-ag
     -L {{ emacs_extension_home }}/helm-git-grep
     -L {{ emacs_extension_home }}/company-mode
+    -L {{ emacs_extension_home }}/flycheck
     -L {{ emacs_extension_home }}/yasnippet
     -L {{ emacs_extension_home }}/js2-mode
     -L {{ emacs_extension_home }}/web-mode
@@ -71,6 +72,7 @@
     - emacs-helm-ag
     - helm-git-grep
     - company-mode
+    - flycheck
     - yasnippet
     - js2-mode
     - web-mode

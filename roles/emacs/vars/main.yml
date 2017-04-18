@@ -22,6 +22,8 @@ emacs_extensions_github:
   - https://github.com/syohex/emacs-helm-ag.git
   - https://github.com/yasuyk/helm-git-grep.git
   - https://github.com/company-mode/company-mode.git
+  # syntax checking
+  - https://github.com/flycheck/flycheck.git
   # snippets
   - https://github.com/capitaomorte/yasnippet.git
   # languages
