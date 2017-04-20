@@ -155,6 +155,9 @@
 (add-to-list 'load-path "~/.emacs.d/flycheck")
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(global-set-key (kbd "M-s c n") 'flycheck-next-error)
+(global-set-key (kbd "M-s c p") 'flycheck-previous-error)
+(global-set-key (kbd "M-s c l") 'flycheck-list-errors)
 
 ; YASnippet Mode
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
@@ -220,6 +223,13 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+
+; Evil Flycheck Mode
+(evil-define-key 'normal flycheck-error-list-mode-map
+  "q" 'quit-window
+  "n" #'flycheck-error-list-next-error
+  "p" #'flycheck-error-list-previous-error
+  (kbd "RET") #'flycheck-error-list-goto-error)
 
 ; Ibuffer Mode
 (evil-ex-define-cmd "ls" 'ibuffer)
