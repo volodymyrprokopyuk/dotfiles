@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-
 export ANSIBLE_NOCOWS=1
 
 read -d '' USAGE << EOM
-./play
+Usage: ./play option
+
+Options:
   -gc | --git-config
   -g  | --git
 
