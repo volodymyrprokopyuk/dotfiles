@@ -1,0 +1,78 @@
+---
+- name: Create directories in {{ emacs_home }} for extensions from EmacsWiki
+  file: path={{ emacs_home }}/{{ item | basename }} state=directory
+  with_items: "{{ emacs_extensions_emacswiki }}"
+
+- name: Install Emacs extensions into {{ emacs_home }} from EmacsWiki
+  get_url:
+    url: "{{ item }}"
+    dest: "{{ emacs_home }}/{{ item | basename }}/{{ item | basename }}"
+  with_items: "{{ emacs_extensions_emacswiki }}"
+
+- name: Install Emacs extensions into {{ emacs_home }} from GitHub
+  git:
+    repo: "{{ item }}"
+    dest: "{{ emacs_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"
+  with_items: "{{ emacs_extensions_github }}"
+
+- name: Compile Emacs extensions in {{ emacs_home }}
+  shell: >
+    emacs --batch -Q
+    -L {{ emacs_home }}/epl
+    -L {{ emacs_home }}/pkg-info.el
+    -L {{ emacs_home }}/goto-chg.el
+    -L {{ emacs_home }}/s.el
+    -L {{ emacs_home }}/dash.el
+    -L {{ emacs_home }}/emacs-async
+    -L {{ emacs_home }}/zenburn-emacs
+    -L {{ emacs_home }}/rainbow-delimiters
+    -L {{ emacs_home }}/powerline
+    -L {{ emacs_home }}/spaceline
+    -L {{ emacs_home }}/smartparens
+    -L {{ emacs_home }}/helm
+    -L {{ emacs_home }}/emacs-helm-ag
+    -L {{ emacs_home }}/helm-git-grep
+    -L {{ emacs_home }}/company-mode
+    -L {{ emacs_home }}/flycheck
+    -L {{ emacs_home }}/yasnippet
+    -L {{ emacs_home }}/js2-mode
+    -L {{ emacs_home }}/web-mode
+    -L {{ emacs_home }}/emmet-mode
+    -L {{ emacs_home }}/markdown-mode
+    -L {{ emacs_home }}/yaml-mode
+    -L {{ emacs_home }}/emacs-elixir
+    -L {{ emacs_home }}/otp/lib/tools/emacs
+    -L {{ emacs_home }}/evil
+    -f batch-byte-compile {{ emacs_home }}/{{ item }}/*.el
+  with_items:
+    - epl
+    - pkg-info.el
+    - goto-chg.el
+    - s.el
+    - dash.el
+    - emacs-async
+    - zenburn-emacs
+    - rainbow-delimiters
+    - powerline
+    - spaceline
+    - smartparens
+    #- helm
+    - emacs-helm-ag
+    - helm-git-grep
+    - company-mode
+    - flycheck
+    - yasnippet
+    - js2-mode
+    - web-mode
+    - emmet-mode
+    - markdown-mode
+    - yaml-mode
+    - emacs-elixir
+    - otp/lib/tools/emacs
+    #- evil
+
+- name: Make Emacs extensions in {{ emacs_home }}
+  command: make chdir={{ emacs_home }}/{{ item }}/
+  with_items:
+    - helm
+    - evil

@@ -1,5 +1,5 @@
 ---
-emacs_extension_home: ~/.emacs.d
+emacs_home: ~/.emacs.d
 emacs_extensions_emacswiki:
   # util
   - https://www.emacswiki.org/emacs/download/goto-chg.el

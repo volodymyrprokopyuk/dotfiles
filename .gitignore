@@ -1,5 +1,3 @@
 *~
 *.swp
 *.retry
-.ninja_log
-.ninja_deps
