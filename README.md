@@ -34,12 +34,14 @@ sudo apt-get install emacs-snapshot
 
 Install dotfiles
 ```bash
+cd ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git
 ```
 
 # Update & Configuration
 
 ```bash
+cd ~/dotfiles
 ./play
 ```
 
