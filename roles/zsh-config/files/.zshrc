@@ -4,6 +4,7 @@ export INFOPATH=$HOME/local/share/info:$INFOPATH
 
 export TERM=screen-256color
 export EDITOR='em -nw'
+export ANSIBLE_NOCOWS=1
 
 alias tmux='tmux -2'
 [[ $- = *i* ]] && [[ -z $TMUX ]] \

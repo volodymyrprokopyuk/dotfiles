@@ -3,13 +3,13 @@
   file: path={{ emacs_home }}/{{ item | basename }} state=directory
   with_items: "{{ emacs_extensions_emacswiki }}"
 
-- name: Install Emacs extensions into {{ emacs_home }} from EmacsWiki
+- name: Install Emacs extensions from EmacsWiki into {{ emacs_home }}
   get_url:
     url: "{{ item }}"
     dest: "{{ emacs_home }}/{{ item | basename }}/{{ item | basename }}"
   with_items: "{{ emacs_extensions_emacswiki }}"
 
-- name: Install Emacs extensions into {{ emacs_home }} from GitHub
+- name: Install Emacs extensions from GitHub into {{ emacs_home }}
   git:
     repo: "{{ item }}"
     dest: "{{ emacs_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"

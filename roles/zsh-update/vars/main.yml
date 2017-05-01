@@ -1,5 +1,5 @@
 ---
-zsh_extension_home: ~/.zsh
+zsh_home: ~/.zsh
 zsh_extensions:
   - https://github.com/nojhan/liquidprompt.git
   - https://github.com/zsh-users/zsh-completions.git

@@ -1,0 +1,9 @@
+---
+- name: Create ~/.zsh/extra-completions directory
+  file: path={{ zsh_home }}/extra-completions state=directory
+
+- name: Install Zsh extensions into {{ zsh_home }}
+  git:
+    repo: "{{ item }}"
+    dest: "{{ zsh_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"
+  with_items: "{{ zsh_extensions }}"

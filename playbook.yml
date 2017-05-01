@@ -11,6 +11,14 @@
     - role: emacs-config
       tags: emacs-config, emacs, config
 
+    - role: zsh-update
+      tags: zsh-update, zsh, update
+    - role: zsh-config
+      tags: zsh-config, zsh, config
+
+    - role: tmux-config
+      tags: tmux-config, tmux, config
+
     #- { role: init, become: yes }
     #- tmux
     #- zsh

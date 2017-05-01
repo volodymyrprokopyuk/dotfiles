@@ -1,0 +1,3 @@
+---
+- name: Install .zshrc into ~
+  copy: src=.zshrc dest=~

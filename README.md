@@ -32,6 +32,19 @@ sudo apt-get update
 sudo apt-get install emacs-snapshot
 ```
 
+Install Zsh:
+
+```bash
+sudo apt-get install zsh
+chsh -s $(which zsh)
+```
+
+Install Tmux:
+
+```bash
+sudo apt-get install tmux
+```
+
 Install dotfiles
 ```bash
 cd ~
@@ -43,11 +56,4 @@ git clone git@github.com:volodymyrprokopyuk/dotfiles.git
 ```bash
 cd ~/dotfiles
 ./play
-```
-
-## Install zsh
-
-```bash
-which zsh | sudo tee -a /etc/shells
-chsh -s $(which zsh)
 ```

@@ -12,6 +12,13 @@ Options:
   -ec | --emacs-config
   -e  | --emacs
 
+  -zu | --zsh-update
+  -zc | --zsh-config
+  -z  | --zsh
+
+  -tc | --tmux-config
+  -t  | --tmux
+
   -au | --all-update
   -ac | --all-config
   -a  | -all
@@ -38,6 +45,25 @@ case $1 in
     ;;
   -e|--emacs)
     $ANSIBLE_PLAYBOOK --tags emacs
+    ;;
+
+  # zsh
+  -zu|--zsh-update)
+    $ANSIBLE_PLAYBOOK --tags zsh-update
+    ;;
+  -zc|--zsh-config)
+    $ANSIBLE_PLAYBOOK --tags zsh-config
+    ;;
+  -z|--zsh)
+    $ANSIBLE_PLAYBOOK --tags zsh
+    ;;
+
+  # tmux
+  -tc|--tmux-config)
+    $ANSIBLE_PLAYBOOK --tags tmux-config
+    ;;
+  -t|--tmux)
+    $ANSIBLE_PLAYBOOK --tags tmux
     ;;
 
   # all
