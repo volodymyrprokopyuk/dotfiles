@@ -3,6 +3,7 @@
   shell: |
     git config --global user.name "Volodymyr Prokopyuk"
     git config --global user.email "volodymyrprokopyuk@gmail.com"
+    git config --global push.default simple
 
     git config --global core.editor "em -nw"
     git config --global core.pager "less -r"
