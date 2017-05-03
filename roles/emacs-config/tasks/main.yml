@@ -1,10 +1,4 @@
 ---
-- name: Create ~/local/bin directory
-  file: path=~/local/bin state=directory
-
-- name: Install em into ~/local/bin directory
-  copy: src=em dest=~/local/bin mode=755
-
 - name: Install .emacs into ~
   copy: src=.emacs dest=~
 

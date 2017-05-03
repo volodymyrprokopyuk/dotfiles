@@ -3,7 +3,8 @@ export MANPATH=$HOME/local/share/man:$MANPATH
 export INFOPATH=$HOME/local/share/info:$INFOPATH
 
 export TERM=screen-256color
-export EDITOR='em -nw'
+export ALTERNATE_EDITOR=''
+export EDITOR='emacsclient -t'
 export ANSIBLE_NOCOWS=1
 
 alias tmux='tmux -2'
@@ -23,19 +24,15 @@ HISTSIZE=10000
 SAVEHIST=10000
 bindkey '^R' history-incremental-pattern-search-backward
 
-alias e='em -nw'
+alias e='emacsclient -t'
 alias l='ls -A -l -h --color=auto'
 alias _ag="ag --hidden --ignore *~ --ignore .git --color-match '1;31'"
 alias s='_ag'
 alias sf='_ag -g'
 alias g='git'
 
-alias less='less -r'
 alias info='info --vi-keys'
 alias grep='grep -r -n --color=auto'
-alias fm='vifm'
-alias tig='tig --all'
-alias ninja='ninja -v'
 
 function man {
   env \

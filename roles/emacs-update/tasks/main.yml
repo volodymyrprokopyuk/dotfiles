@@ -72,7 +72,9 @@
     #- evil
 
 - name: Make Emacs extensions in {{ emacs_home }}
-  command: make chdir={{ emacs_home }}/{{ item }}/
+  shell: EMACSLOADPATH="{{ emacs_home }}/emacs-async:" make
+  args:
+    chdir: "{{ emacs_home }}/{{ item }}/"
   with_items:
     - helm
     - evil
