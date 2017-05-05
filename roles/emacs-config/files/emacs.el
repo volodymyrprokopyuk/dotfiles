@@ -1,17 +1,25 @@
+;;; emacs.el --- Emacs configuration
+
+;;; Commentary:
+
+;;; Code:
+
 ; disable Toolbar
 (tool-bar-mode -1)
 ; disable Menubar
 (menu-bar-mode -1)
 ; disable Scrollbar
 (scroll-bar-mode -1)
-; disable StartupScreen
+; disable Startup Screen
 (setq inhibit-startup-screen t)
-; calendar week start day
-(setq calendar-week-start-day 1)
+(add-hook 'calendar-mode-hook
+  ; set calendar week start day to Monday
+  '(lambda () (setq calendar-week-start-day 1)))
 
 ; show line numbers
 (global-linum-mode t)
-(setq linum-format "%d ")
+(add-hook 'linum-mode-hook
+  '(lambda () (setq linum-format "%d ")))
 ; highlight current line
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#333333")
@@ -19,7 +27,7 @@
 (show-paren-mode 1)
 
 ; terminal clipboard yank/paste
-(setq x-select-enable-clipboard t)
+(setq select-enable-clipboard t)
 (unless window-system
   (when (getenv "DISPLAY")
     (defun xsel-cut-function (text &optional push)
@@ -36,6 +44,7 @@
 
 ; XML format
 (defun xml-format ()
+  "Format XML region using xmllint."
   (interactive)
   (save-excursion
     (shell-command-on-region (mark) (point) "xmllint --format -"
@@ -83,6 +92,7 @@
 (setq-default c-basic-offset 2)
 ; Java indentation
 (defun java-indent-config-hook ()
+  "Configure Java indentation."
   (c-set-offset 'arglist-intro '+)
   (c-set-offset 'arglist-cont-nonempty '+)
   (c-set-offset 'arglist-close '+))
@@ -125,7 +135,6 @@
 
 ; Helm Mode
 (add-to-list 'load-path "~/.emacs.d/helm")
-(require 'helm)
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-s ;") 'helm-mini)
@@ -155,6 +164,7 @@
 (add-to-list 'load-path "~/.emacs.d/flycheck")
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(setq-default flycheck-emacs-lisp-load-path 'inherit)
 (global-set-key (kbd "M-s c n") 'flycheck-next-error)
 (global-set-key (kbd "M-s c p") 'flycheck-previous-error)
 (global-set-key (kbd "M-s c l") 'flycheck-list-errors)
@@ -181,10 +191,12 @@
 (autoload 'web-mode "web-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-attr-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
+(add-hook 'web-mode-hook
+  '(lambda ()
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-attr-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)))
 
 ; Emmet Mode
 ; C-j => expand line
@@ -214,8 +226,9 @@
 ; Erlang Mode
 (add-to-list 'load-path "~/.emacs.d/otp/lib/tools/emacs")
 (require 'erlang-start)
-(setq erlang-root-dir "~/local/erlang")
 (add-to-list 'exec-path "~/local/erlang/bin")
+(add-hook 'erlang-mode
+  '(lambda () (setq erlang-root-dir "~/local/erlang")))
 
 ; Evil Mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
@@ -234,3 +247,5 @@
 ; Ibuffer Mode
 (evil-ex-define-cmd "ls" 'ibuffer)
 (evil-set-initial-state 'ibuffer-mode 'normal)
+
+;;; emacs.el ends here

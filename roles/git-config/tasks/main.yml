@@ -1,5 +1,5 @@
 ---
-- name: Set Git aliases
+- name: Install Git aliases into ~/.gitconfig
   shell: |
     git config --global user.name "Volodymyr Prokopyuk"
     git config --global user.email "volodymyrprokopyuk@gmail.com"
