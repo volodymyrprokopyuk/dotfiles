@@ -18,10 +18,3 @@
 
     - role: tmux-config
       tags: tmux-config, tmux, config
-
-    #- { role: init, become: yes }
-    #- tmux
-    #- zsh
-    #- emacs
-    #- git
-    #- kerl
