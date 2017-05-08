@@ -24,6 +24,7 @@
     -L {{ emacs_home }}/s.el
     -L {{ emacs_home }}/dash.el
     -L {{ emacs_home }}/emacs-async
+    -L {{ emacs_home }}/exec-path-from-shell
     -L {{ emacs_home }}/zenburn-emacs
     -L {{ emacs_home }}/rainbow-delimiters
     -L {{ emacs_home }}/powerline
@@ -51,6 +52,7 @@
     - s.el
     - dash.el
     - emacs-async
+    - exec-path-from-shell
     - zenburn-emacs
     - rainbow-delimiters
     - powerline

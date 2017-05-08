@@ -10,6 +10,7 @@ emacs_extensions_github:
   - https://github.com/magnars/s.el.git
   - https://github.com/magnars/dash.el.git
   - https://github.com/jwiegley/emacs-async.git
+  - https://github.com/purcell/exec-path-from-shell.git
   # theme
   - https://github.com/bbatsov/zenburn-emacs.git
   - https://github.com/Fanael/rainbow-delimiters.git

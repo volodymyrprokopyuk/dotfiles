@@ -3,16 +3,13 @@
 Install utilities:
 
 ```bash
-sudo apt-get install xsel
-sudo apt-get install libxml2-utils
+sudo apt-get install xsel libxml2-utils
 ```
 
 Install tools:
 
 ```bash
-sudo apt-get install git
-sudo apt-get install silversearcher-ag
-sudo apt-get install unrar
+sudo apt-get install git silversearcher-ag htop unrar
 ```
 
 Install Ansible:
@@ -65,6 +62,12 @@ nvm ls-remote
 nvm ls
 nvm install <version>
 nvm alias default <version>
+```
+
+Install Node tools
+
+```bash
+npm install -g jsonlint js-yaml
 ```
 
 # Update & Configuration

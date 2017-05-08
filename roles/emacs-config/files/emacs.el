@@ -99,7 +99,7 @@
 (add-hook 'java-mode-hook 'java-indent-config-hook)
 
 ; Source Code Pro Font
-(set-frame-font "Source Code Pro Light 15")
+(set-frame-font "Source Code Pro Light 14")
 
 ; Common Extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
@@ -107,6 +107,11 @@
 (add-to-list 'load-path "~/.emacs.d/s.el")
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
+
+; Add $PATH to exec-path
+(add-to-list 'load-path "~/.emacs.d/exec-path-from-shell")
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
 
 ; Zenburn Theme (done)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
