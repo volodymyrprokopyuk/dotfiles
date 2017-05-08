@@ -46,9 +46,16 @@ sudo apt-get install tmux
 ```
 
 Install dotfiles
+
 ```bash
 cd ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git
+```
+
+Install Java
+
+```bash
+sudo apt-get install openjdk-8-jre openjdk-8-jdk
 ```
 
 # Update & Configuration

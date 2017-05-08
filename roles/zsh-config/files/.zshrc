@@ -71,44 +71,43 @@ function apt-upgrade {
   sudo sh -c 'apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean'
 }
 
-# install liquid prompt
+# Install Liquidprompt
 ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-# install zsh autosuggestions
+# Install Zsh autosuggestions
 ZPACKAGE=$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 bindkey '^[;' autosuggest-accept
 
-# install zsh syntax highlighting
+# Install Zsh syntax highlighting
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-# install zsh completions
+# Install Zsh completions
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
 
-# add java to path
-export JAVA_HOME=$HOME/local/java
-[ -s $HOME/local/java/bin/java ] && PATH=$HOME/local/java/bin:$PATH
+# Install Java
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
-# add gradle to path
-export GRADLE_HOME=$HOME/local/gradle
-[ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
-
-# add maven to path
+# Install Maven
 export M2_HOME=$HOME/local/maven
 [ -s $HOME/local/maven/bin/mvn ] && PATH=$HOME/local/maven/bin:$PATH
 
-# install nvm
+# Install Gradle
+export GRADLE_HOME=$HOME/local/gradle
+[ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
+
+# Install NVM
 export NVM_DIR=$HOME/.nvm
 ZPACKAGE=$NVM_DIR/nvm.sh
 [ -s $ZPACKAGE ] && source $ZPACKAGE
 
-# install kerl
+# Install Kerl
 ZPACKAGE=$HOME/local/erlang/activate
 [ -s $ZPACKAGE ] && source $ZPACKAGE
 
-# add elixir to path
+# Install Elixir
 [ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
 alias iexm='iex -S mix'
