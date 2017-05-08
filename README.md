@@ -58,6 +58,15 @@ Install Java
 sudo apt-get install openjdk-8-jre openjdk-8-jdk
 ```
 
+Install Node
+
+```bash
+nvm ls-remote
+nvm ls
+nvm install <version>
+nvm alias default <version>
+```
+
 # Update & Configuration
 
 ```bash
