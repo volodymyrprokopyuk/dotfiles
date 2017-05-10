@@ -62,7 +62,7 @@
     - emacs-helm-ag
     - helm-git-grep
     - company-mode
-    - flycheck
+    #- flycheck
     - yasnippet
     - js2-mode
     - web-mode

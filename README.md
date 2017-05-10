@@ -49,6 +49,12 @@ cd ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git
 ```
 
+Install Emacs tools:
+
+```elisp
+M-x package-install RET flycheck
+```
+
 Install Java
 
 ```bash

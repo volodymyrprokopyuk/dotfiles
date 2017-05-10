@@ -101,6 +101,11 @@
 ; Source Code Pro Font
 (set-frame-font "Source Code Pro Light 14")
 
+; MELPA package.el repository
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
 ; Common Extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
 (add-to-list 'load-path "~/.emacs.d/pkg-info.el")
