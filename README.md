@@ -73,7 +73,7 @@ nvm alias default <version>
 Install Node tools
 
 ```bash
-npm install -g jsonlint js-yaml
+npm install -g eslint js-yaml
 ```
 
 # Update & Configuration

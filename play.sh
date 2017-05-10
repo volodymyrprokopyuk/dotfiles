@@ -19,6 +19,9 @@ Options:
   -tc | --tmux-config
   -t  | --tmux
 
+  -eslc | --eslint-config
+  -esl  | --eslint
+
   -au | --all-update
   -ac | --all-config
   -a  | -all
@@ -64,6 +67,14 @@ case $1 in
     ;;
   -t|--tmux)
     $ANSIBLE_PLAYBOOK --tags tmux
+    ;;
+
+  # eslint
+  -eslc|--eslint-config)
+    $ANSIBLE_PLAYBOOK --tags eslint-config
+    ;;
+  -esl|--eslint)
+    $ANSIBLE_PLAYBOOK --tags eslint
     ;;
 
   # all
