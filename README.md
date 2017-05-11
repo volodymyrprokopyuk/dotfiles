@@ -3,13 +3,13 @@
 Install utilities:
 
 ```bash
-sudo apt-get install xsel libxml2-utils
+sudo apt-get install unrar xsel libxml2-utils tidy-html5
 ```
 
 Install tools:
 
 ```bash
-sudo apt-get install git silversearcher-ag htop unrar
+sudo apt-get install git silversearcher-ag htop
 ```
 
 Install Ansible:
@@ -42,26 +42,26 @@ Install Tmux:
 sudo apt-get install tmux
 ```
 
-Install dotfiles
+Install dotfiles:
 
 ```bash
 cd ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git
 ```
 
-Install Emacs tools:
+Install Emacs utilities:
 
 ```elisp
 M-x package-install RET flycheck
 ```
 
-Install Java
+Install Java:
 
 ```bash
 sudo apt-get install openjdk-8-jre openjdk-8-jdk
 ```
 
-Install Node
+Install Node:
 
 ```bash
 nvm ls-remote
@@ -70,10 +70,10 @@ nvm install <version>
 nvm alias default <version>
 ```
 
-Install Node tools
+Install Node utilities:
 
 ```bash
-npm install -g eslint js-yaml
+npm install -g eslint js-yaml csslint
 ```
 
 # Update & Configuration

@@ -179,6 +179,10 @@
 (global-set-key (kbd "M-s c p") 'flycheck-previous-error)
 (global-set-key (kbd "M-s c l") 'flycheck-list-errors)
 
+(with-eval-after-load 'flycheck
+  (flycheck-add-mode 'html-tidy 'web-mode)
+  (flycheck-add-mode 'css-csslint 'web-mode))
+
 ; YASnippet Mode
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
 (require 'yasnippet)
