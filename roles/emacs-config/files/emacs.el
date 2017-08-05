@@ -50,20 +50,6 @@
     (shell-command-on-region (mark) (point) "xmllint --format -"
       (buffer-name) t)))
 
-; nXML fold
-(require 'hideshow)
-(require 'sgml-mode)
-(require 'nxml-mode)
-(add-to-list 'hs-special-modes-alist
-  '(nxml-mode " *<!--\\| *<[^/>]*[^/]>" "-->\\|</[^/>]*[^/]>" "<!--"
-     sgml-skip-tag-forward nil))
-(add-hook 'nxml-mode-hook 'hs-minor-mode)
-(define-key nxml-mode-map (kbd "za") 'hs-toggle-hiding)
-(define-key nxml-mode-map (kbd "zf") 'hs-hide-all)
-(define-key nxml-mode-map (kbd "zu") 'hs-show-all)
-(add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.wsdl\\'" . nxml-mode))
-
 ; WiteSpace mode
 (require 'whitespace)
 (global-whitespace-mode t)
