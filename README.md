@@ -3,7 +3,7 @@
 Install utilities:
 
 ```bash
-sudo apt-get install unrar xsel libxml2-utils tidy-html5
+sudo apt-get install unrar xsel libxml2-utils
 ```
 
 Install tools:
@@ -49,12 +49,6 @@ cd ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git
 ```
 
-Install Emacs utilities:
-
-```elisp
-M-x package-install RET flycheck
-```
-
 Install Java:
 
 ```bash
@@ -73,7 +67,7 @@ nvm alias default <version>
 Install Node utilities:
 
 ```bash
-npm install -g eslint js-yaml csslint
+npm install -g js-beautify eslint
 ```
 
 # Update & Configuration
