@@ -1,9 +1,3 @@
-;;; emacs.el --- Emacs configuration
-
-;;; Commentary:
-
-;;; Code:
-
 ; disable Toolbar
 (tool-bar-mode -1)
 ; disable Menubar
@@ -80,11 +74,6 @@
 ; Source Code Pro Font
 (set-frame-font "Source Code Pro Light 14")
 
-; MELPA package.el repository
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
-
 ; Common Extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
 (add-to-list 'load-path "~/.emacs.d/pkg-info.el")
@@ -148,19 +137,6 @@
 (require 'company)
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
-
-; Flycheck Mode
-(add-to-list 'load-path "~/.emacs.d/flycheck")
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq-default flycheck-emacs-lisp-load-path 'inherit)
-(global-set-key (kbd "M-s c n") 'flycheck-next-error)
-(global-set-key (kbd "M-s c p") 'flycheck-previous-error)
-(global-set-key (kbd "M-s c l") 'flycheck-list-errors)
-
-(with-eval-after-load 'flycheck
-  (flycheck-add-mode 'html-tidy 'web-mode)
-  (flycheck-add-mode 'css-csslint 'web-mode))
 
 ; YASnippet Mode
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
@@ -230,15 +206,6 @@
 (require 'evil)
 (evil-mode 1)
 
-; Evil Flycheck Mode
-(evil-define-key 'normal flycheck-error-list-mode-map
-  "q" 'quit-window
-  "n" #'flycheck-error-list-next-error
-  "p" #'flycheck-error-list-previous-error
-  (kbd "RET") #'flycheck-error-list-goto-error)
-
 ; Ibuffer Mode
 (evil-ex-define-cmd "ls" 'ibuffer)
 (evil-set-initial-state 'ibuffer-mode 'normal)
-
-;;; emacs.el ends here
