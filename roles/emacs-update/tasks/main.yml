@@ -34,7 +34,6 @@
     -L {{ emacs_home }}/emacs-helm-ag
     -L {{ emacs_home }}/helm-git-grep
     -L {{ emacs_home }}/company-mode
-    -L {{ emacs_home }}/aggressive-indent-mode
     -L {{ emacs_home }}/flycheck
     -L {{ emacs_home }}/yasnippet
     -L {{ emacs_home }}/js2-mode
@@ -63,7 +62,6 @@
     - emacs-helm-ag
     - helm-git-grep
     - company-mode
-    - aggressive-indent-mode
     #- flycheck
     #- yasnippet
     - js2-mode
