@@ -76,13 +76,6 @@
 (setq-default sh-basic-offset 2)
 ; C indentation
 (setq-default c-basic-offset 2)
-; Java indentation
-(defun java-indent-config-hook ()
-  "Configure Java indentation."
-  (c-set-offset 'arglist-intro '+)
-  (c-set-offset 'arglist-cont-nonempty '+)
-  (c-set-offset 'arglist-close '+))
-(add-hook 'java-mode-hook 'java-indent-config-hook)
 
 ; Source Code Pro Font
 (set-frame-font "Source Code Pro Light 14")
