@@ -138,6 +138,11 @@
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
+; Aggressive Indent Mode
+(add-to-list 'load-path "~/.emacs.d/aggressive-indent-mode")
+(require 'aggressive-indent)
+(global-aggressive-indent-mode 1)
+
 ; YASnippet Mode
 ;(add-to-list 'load-path "~/.emacs.d/yasnippet")
 ;(require 'yasnippet)

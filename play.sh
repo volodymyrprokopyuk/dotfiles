@@ -24,12 +24,12 @@ Options:
 
   -au | --all-update
   -ac | --all-config
-  -a  | -all
+  -a  | --all
 EOM
 
 ANSIBLE_PLAYBOOK='ansible-playbook -i "localhost," playbook.yml'
 
-case $1 in
+case "$1" in
 
   # git
   -gc|--git-config)
@@ -90,7 +90,7 @@ case $1 in
 
   # usage
   *)
-    echo "$USAGE"
+    echo "${USAGE}"
     exit -1
     ;;
 esac
