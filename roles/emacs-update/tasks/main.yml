@@ -63,14 +63,14 @@
     - helm-git-grep
     - company-mode
     #- flycheck
-    - yasnippet
+    #- yasnippet
     - js2-mode
     - web-mode
     - emmet-mode
     - markdown-mode
     - yaml-mode
-    - emacs-elixir
-    - otp/lib/tools/emacs
+    #- emacs-elixir
+    #- otp/lib/tools/emacs
     #- evil
 
 - name: Make Emacs extensions in {{ emacs_home }}

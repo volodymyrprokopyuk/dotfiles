@@ -139,10 +139,10 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 ; YASnippet Mode
-(add-to-list 'load-path "~/.emacs.d/yasnippet")
-(require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-(yas-global-mode 1)
+;(add-to-list 'load-path "~/.emacs.d/yasnippet")
+;(require 'yasnippet)
+;(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+;(yas-global-mode 1)
 
 ; Emacs Lisp Mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
@@ -186,18 +186,18 @@
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
 ; Elixir Mode
-(add-to-list 'load-path "~/.emacs.d/emacs-elixir")
-(autoload 'elixir-mode "elixir-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
-(add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
-(add-to-list 'auto-mode-alist '("\\.gradle\\'" . elixir-mode))
+;(add-to-list 'load-path "~/.emacs.d/emacs-elixir")
+;(autoload 'elixir-mode "elixir-mode" nil t)
+;(add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
+;(add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
+;(add-to-list 'auto-mode-alist '("\\.gradle\\'" . elixir-mode))
 
 ; Erlang Mode
-(add-to-list 'load-path "~/.emacs.d/otp/lib/tools/emacs")
-(require 'erlang-start)
-(add-to-list 'exec-path "~/local/erlang/bin")
-(add-hook 'erlang-mode
-  '(lambda () (setq erlang-root-dir "~/local/erlang")))
+;(add-to-list 'load-path "~/.emacs.d/otp/lib/tools/emacs")
+;(require 'erlang-start)
+;(add-to-list 'exec-path "~/local/erlang/bin")
+;(add-hook 'erlang-mode
+;  '(lambda () (setq erlang-root-dir "~/local/erlang")))
 
 ; Evil Mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")

@@ -26,14 +26,14 @@ emacs_extensions_github:
   # syntax checking
   #- https://github.com/flycheck/flycheck.git
   # snippets
-  - https://github.com/capitaomorte/yasnippet.git
+  #- https://github.com/capitaomorte/yasnippet.git
   # languages
   - https://github.com/mooz/js2-mode.git
   - https://github.com/fxbois/web-mode.git
   - https://github.com/smihica/emmet-mode.git
   - https://github.com/jrblevin/markdown-mode.git
   - https://github.com/yoshiki/yaml-mode.git
-  - https://github.com/elixir-lang/emacs-elixir.git
-  - https://github.com/erlang/otp.git
+  #- https://github.com/elixir-lang/emacs-elixir.git
+  #- https://github.com/erlang/otp.git
   # evil
   - https://github.com/emacs-evil/evil.git
