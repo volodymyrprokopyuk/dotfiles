@@ -19,5 +19,5 @@
     - role: tmux-config
       tags: tmux-config, tmux, config
 
-    - role: eslint-config
-      tags: eslint-config, eslint, config
+    - role: js-config
+      tags: js-config, eslint, config

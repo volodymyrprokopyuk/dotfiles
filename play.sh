@@ -6,21 +6,21 @@ Usage: ./play option
 
 Options:
   -gc | --git-config
-  -g  | --git
+  -ga | --git-all
 
   -eu | --emacs-update
   -ec | --emacs-config
-  -e  | --emacs
+  -ea | --emacs-all
 
   -zu | --zsh-update
   -zc | --zsh-config
-  -z  | --zsh
+  -za | --zsh-all
 
   -tc | --tmux-config
-  -t  | --tmux
+  -ta | --tmux-all
 
-  -eslc | --eslint-config
-  -esl  | --eslint
+  -jsc | --js-config
+  -jsa | --js-all
 
   -au | --all-update
   -ac | --all-config
