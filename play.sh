@@ -19,6 +19,7 @@ Options:
   -tc | --tmux-config
   -ta | --tmux-all
 
+  -jsu | --js-update
   -jsc | --js-config
   -jsa | --js-all
 
@@ -35,7 +36,7 @@ case "$1" in
   -gc|--git-config)
     $ANSIBLE_PLAYBOOK --tags git-config
     ;;
-  -g|--git)
+  -ga|--git-all)
     $ANSIBLE_PLAYBOOK --tags git
     ;;
 
@@ -46,7 +47,7 @@ case "$1" in
   -ec|--emacs-config)
     $ANSIBLE_PLAYBOOK --tags emacs-config
     ;;
-  -e|--emacs)
+  -ea|--emacs-all)
     $ANSIBLE_PLAYBOOK --tags emacs
     ;;
 
@@ -57,7 +58,7 @@ case "$1" in
   -zc|--zsh-config)
     $ANSIBLE_PLAYBOOK --tags zsh-config
     ;;
-  -z|--zsh)
+  -za|--zsh-all)
     $ANSIBLE_PLAYBOOK --tags zsh
     ;;
 
@@ -65,16 +66,19 @@ case "$1" in
   -tc|--tmux-config)
     $ANSIBLE_PLAYBOOK --tags tmux-config
     ;;
-  -t|--tmux)
+  -ta|--tmux-all)
     $ANSIBLE_PLAYBOOK --tags tmux
     ;;
 
-  # eslint
-  -eslc|--eslint-config)
-    $ANSIBLE_PLAYBOOK --tags eslint-config
+  # js
+  -jsu|--js-update)
+    $ANSIBLE_PLAYBOOK --tags js-update
     ;;
-  -esl|--eslint)
-    $ANSIBLE_PLAYBOOK --tags eslint
+  -jsc|--js-config)
+    $ANSIBLE_PLAYBOOK --tags js-config
+    ;;
+  -jsa|--js-all)
+    $ANSIBLE_PLAYBOOK --tags js
     ;;
 
   # all
