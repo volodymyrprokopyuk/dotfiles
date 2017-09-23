@@ -128,9 +128,9 @@
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
 ; Helm Git Grep Mode (done)
-(add-to-list 'load-path "~/.emacs.d/helm-git-grep")
-(require 'helm-git-grep)
-(global-set-key (kbd "M-s g") 'helm-git-grep)
+;(add-to-list 'load-path "~/.emacs.d/helm-git-grep")
+;(require 'helm-git-grep)
+;(global-set-key (kbd "M-s g") 'helm-git-grep)
 
 ; Company Mode
 (add-to-list 'load-path "~/.emacs.d/company-mode")
