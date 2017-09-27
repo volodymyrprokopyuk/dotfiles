@@ -48,8 +48,8 @@
 (require 'whitespace)
 (global-whitespace-mode t)
 (global-whitespace-toggle-options t)
-; 80 columns margin
-(setq-default whitespace-line-column 80)
+; 120 columns margin
+(setq-default whitespace-line-column 120)
 ; M-q -> format selected text
 (setq-default fill-column 80)
 ; show tab marks, trailing blanks, long lines
