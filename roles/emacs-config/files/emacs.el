@@ -51,7 +51,7 @@
 ; 120 columns margin
 (setq-default whitespace-line-column 120)
 ; M-q -> format selected text
-(setq-default fill-column 80)
+(setq-default fill-column 120)
 ; show tab marks, trailing blanks, long lines
 (setq-default whitespace-style '(face tab-mark trailing lines-tail))
 ; remove trailing blanks on save
