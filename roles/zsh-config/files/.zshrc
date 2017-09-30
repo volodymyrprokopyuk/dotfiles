@@ -1,6 +1,4 @@
 export PATH=$HOME/local/bin:$PATH
-export MANPATH=$HOME/local/share/man:$MANPATH
-export INFOPATH=$HOME/local/share/info:$INFOPATH
 
 export TERM=screen-256color
 export ALTERNATE_EDITOR=''
