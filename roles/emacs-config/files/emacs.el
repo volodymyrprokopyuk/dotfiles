@@ -128,6 +128,11 @@
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
+; Avy Mode
+(add-to-list 'load-path "~/.emacs.d/avy")
+(require 'avy)
+(global-set-key (kbd "M-s j") 'avy-goto-char-timer)
+
 ; Emacs Lisp Mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 

@@ -33,6 +33,7 @@
     -L {{ emacs_home }}/helm
     -L {{ emacs_home }}/emacs-helm-ag
     -L {{ emacs_home }}/company-mode
+    -L {{ emacs_home }}/avy
     -L {{ emacs_home }}/js2-mode
     -L {{ emacs_home }}/web-mode
     -L {{ emacs_home }}/emmet-mode
@@ -56,6 +57,7 @@
     #- helm
     - emacs-helm-ag
     - company-mode
+    - avy
     - js2-mode
     - web-mode
     - emmet-mode
