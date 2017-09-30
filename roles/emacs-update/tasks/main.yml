@@ -33,7 +33,6 @@
     -L {{ emacs_home }}/helm
     -L {{ emacs_home }}/emacs-helm-ag
     -L {{ emacs_home }}/company-mode
-    -L {{ emacs_home }}/flycheck
     -L {{ emacs_home }}/yasnippet
     -L {{ emacs_home }}/js2-mode
     -L {{ emacs_home }}/web-mode
@@ -60,7 +59,6 @@
     #- helm
     - emacs-helm-ag
     - company-mode
-    #- flycheck
     #- yasnippet
     - js2-mode
     - web-mode
