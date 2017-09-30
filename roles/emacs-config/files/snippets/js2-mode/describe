@@ -1,8 +1,0 @@
-# -*- coding: utf-8 -*-
-# key: describe
-# name: Mocha.js describe
-# expand-env: ((yas-indent-line 'fixed))
-# --
-describe('${1:module or function:}', function() {
-  $0
-});

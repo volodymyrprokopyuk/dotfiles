@@ -4,6 +4,3 @@
 
 - name: Install emacs.el into {{ emacs_home }}
   copy: src=emacs.el dest={{ emacs_home }}
-
-#- name: Install Yasnippet snippets into {{ emacs_home }}
-#  copy: src=snippets dest={{ emacs_home }}

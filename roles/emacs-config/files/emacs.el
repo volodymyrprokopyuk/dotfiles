@@ -133,12 +133,6 @@
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
-; YASnippet Mode
-;(add-to-list 'load-path "~/.emacs.d/yasnippet")
-;(require 'yasnippet)
-;(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-;(yas-global-mode 1)
-
 ; Emacs Lisp Mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 

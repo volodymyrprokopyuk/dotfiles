@@ -1,6 +1,0 @@
-# -*- coding: utf-8 -*-
-# key: import
-# name: HTML Import
-# expand-env: ((yas-indent-line 'fixed))
-# --
-link(rel="import" href="/${1:new-component}/$1.html")
