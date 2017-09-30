@@ -32,7 +32,6 @@
     -L {{ emacs_home }}/smartparens
     -L {{ emacs_home }}/helm
     -L {{ emacs_home }}/emacs-helm-ag
-    -L {{ emacs_home }}/helm-git-grep
     -L {{ emacs_home }}/company-mode
     -L {{ emacs_home }}/flycheck
     -L {{ emacs_home }}/yasnippet
@@ -60,7 +59,6 @@
     - smartparens
     #- helm
     - emacs-helm-ag
-    - helm-git-grep
     - company-mode
     #- flycheck
     #- yasnippet
