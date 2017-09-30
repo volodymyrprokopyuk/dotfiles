@@ -103,11 +103,3 @@ export GRADLE_HOME=$HOME/local/gradle
 export NVM_DIR=$HOME/.nvm
 ZPACKAGE=$NVM_DIR/nvm.sh
 [ -s $ZPACKAGE ] && source $ZPACKAGE
-
-# Install Kerl
-ZPACKAGE=$HOME/local/erlang/activate
-[ -s $ZPACKAGE ] && source $ZPACKAGE
-
-# Install Elixir
-[ -s $HOME/local/elixir/bin/elixir ] && PATH=$HOME/local/elixir/bin:$PATH
-alias iexm='iex -S mix'

@@ -28,7 +28,5 @@ emacs_extensions_github:
   - https://github.com/smihica/emmet-mode.git
   - https://github.com/jrblevin/markdown-mode.git
   - https://github.com/yoshiki/yaml-mode.git
-  #- https://github.com/elixir-lang/emacs-elixir.git
-  #- https://github.com/erlang/otp.git
   # evil
   - https://github.com/emacs-evil/evil.git
