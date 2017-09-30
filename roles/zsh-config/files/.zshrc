@@ -8,8 +8,7 @@ export EDITOR='emacsclient -t'
 export ANSIBLE_NOCOWS=1
 
 alias tmux='tmux -2'
-[[ $- = *i* ]] && [[ -z $TMUX ]] \
-  && (tmux attach-session -t $USER || tmux new-session -s $USER)
+[[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
 
 setopt AUTO_CD
 setopt APPEND_HISTORY
@@ -35,40 +34,40 @@ alias info='info --vi-keys'
 alias grep='grep -r -n --color=auto'
 
 function man {
-  env \
-  LESS_TERMCAP_mb=$'\e[01;31m' \
-  LESS_TERMCAP_md=$'\e[01;38;5;74m' \
-  LESS_TERMCAP_me=$'\e[0m' \
-  LESS_TERMCAP_se=$'\e[0m' \
-  LESS_TERMCAP_so=$'\e[38;5;246m' \
-  LESS_TERMCAP_ue=$'\e[0m' \
-  LESS_TERMCAP_us=$'\e[04;38;5;146m' \
-  man $@
+    env \
+    LESS_TERMCAP_mb=$'\e[01;31m' \
+    LESS_TERMCAP_md=$'\e[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[38;5;246m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[04;38;5;146m' \
+    man $@
 }
 
 function unpack {
-  echo Unpacking $1 ...
-  if [ -f $1 ] ; then
-    case $1 in
-      (*.tar.gz|*.tgz) tar xzf $1 ;;
-      (*.tar.bz2|*.tbz2) tar xjf $1 ;;
-      (*.tar.xz|*.txz) tar xJf $1 ;;
-      (*.tar) tar xf $1 ;;
-      (*.gz) gunzip $1 ;;
-      (*.bz2) bunzip2 $1 ;;
-      (*.zip) unzip $1 ;;
-      (*.rar) unrar x $1 ;;
-      (*.Z) uncompress $1 ;;
-      (*.7z) 7z x $1 ;;
-      (*) echo "'$1' unknown archive format" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+    echo Unpacking $1 ...
+    if [ -f $1 ] ; then
+        case $1 in
+        (*.tar.gz|*.tgz) tar xzf $1 ;;
+        (*.tar.bz2|*.tbz2) tar xjf $1 ;;
+        (*.tar.xz|*.txz) tar xJf $1 ;;
+        (*.tar) tar xf $1 ;;
+        (*.gz) gunzip $1 ;;
+        (*.bz2) bunzip2 $1 ;;
+        (*.zip) unzip $1 ;;
+        (*.rar) unrar x $1 ;;
+        (*.Z) uncompress $1 ;;
+        (*.7z) 7z x $1 ;;
+        (*) echo "'$1' unknown archive format" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 function apt-upgrade {
-  sudo sh -c 'apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean'
+    sudo sh -c 'apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean'
 }
 
 # Install Liquidprompt

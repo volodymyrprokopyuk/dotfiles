@@ -6,14 +6,12 @@
 (scroll-bar-mode -1)
 ; disable Startup Screen
 (setq inhibit-startup-screen t)
-(add-hook 'calendar-mode-hook
-  ; set calendar week start day to Monday
-  '(lambda () (setq calendar-week-start-day 1)))
+; set calendar week start day to Monday
+(add-hook 'calendar-mode-hook '(lambda () (setq calendar-week-start-day 1)))
 
 ; show line numbers
 (global-linum-mode t)
-(add-hook 'linum-mode-hook
-  '(lambda () (setq linum-format "%d ")))
+(add-hook 'linum-mode-hook '(lambda () (setq linum-format "%d ")))
 ; highlight current line
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#333333")
@@ -23,26 +21,23 @@
 ; terminal clipboard yank/paste
 (setq select-enable-clipboard t)
 (unless window-system
-  (when (getenv "DISPLAY")
-    (defun xsel-cut-function (text &optional push)
-      (with-temp-buffer
-        (insert text)
-        (call-process-region (point-min) (point-max)
-          "xsel" nil 0 nil "--clipboard" "--input")))
-    (defun xsel-paste-function()
-      (let ((xsel-output
-        (shell-command-to-string "xsel --clipboard --output")))
-          (unless (string= (car kill-ring) xsel-output) xsel-output )))
-  (setq interprogram-cut-function 'xsel-cut-function)
-  (setq interprogram-paste-function 'xsel-paste-function)))
+    (when (getenv "DISPLAY")
+        (defun xsel-cut-function (text &optional push)
+            (with-temp-buffer
+                (insert text)
+                (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+        (defun xsel-paste-function()
+            (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+                (unless (string= (car kill-ring) xsel-output) xsel-output )))
+        (setq interprogram-cut-function 'xsel-cut-function)
+        (setq interprogram-paste-function 'xsel-paste-function)))
 
 ; XML format
 (defun xml-format ()
-  "Format XML region using xmllint."
-  (interactive)
-  (save-excursion
-    (shell-command-on-region (mark) (point) "xmllint --format -"
-      (buffer-name) t)))
+    "Format XML region using xmllint."
+    (interactive)
+    (save-excursion
+        (shell-command-on-region (mark) (point) "xmllint --format -" (buffer-name) t)))
 
 ; WiteSpace mode
 (require 'whitespace)
@@ -62,14 +57,14 @@
 ; indentation
 ; C-c C-s => show offset variable
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
+(setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 ; Emacs Lisp indentation
-(setq-default lisp-indent-offset 2)
+(setq-default lisp-indent-offset 4)
 ; Bash indentation
-(setq-default sh-basic-offset 2)
+(setq-default sh-basic-offset 4)
 ; C indentation
-(setq-default c-basic-offset 2)
+(setq-default c-basic-offset 4)
 
 ; Source Code Pro Font
 (set-frame-font "Source Code Pro Light 14")
@@ -123,8 +118,8 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
 (custom-set-variables
-  '(helm-ag-base-command "ag --nocolor --nogroup")
-  '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
+    '(helm-ag-base-command "ag --nocolor --nogroup")
+    '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
 ; Company Mode
@@ -141,8 +136,8 @@
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
-(setq-default js2-basic-offset 2)
-(setq-default js-indent-level 2)
+(setq-default js2-basic-offset 4)
+(setq-default js-indent-level 4)
 
 ; Web Mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
@@ -150,11 +145,11 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-hook 'web-mode-hook
-  '(lambda ()
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-attr-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)))
+    '(lambda ()
+        (setq web-mode-markup-indent-offset 4)
+        (setq web-mode-attr-indent-offset 4)
+        (setq web-mode-css-indent-offset 4)
+        (setq web-mode-code-indent-offset 4)))
 
 ; Emmet Mode
 ; C-j => expand line

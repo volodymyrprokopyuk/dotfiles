@@ -19,7 +19,7 @@
     - role: tmux-config
       tags: tmux-config, tmux, config
 
-    - role: js-update
-      tags: js-update, js, update
-    - role: js-config
-      tags: js-config, eslint, config
+    #- role: js-update
+    #  tags: js-update, js, update
+    #- role: js-config
+    #  tags: js-config, eslint, config
