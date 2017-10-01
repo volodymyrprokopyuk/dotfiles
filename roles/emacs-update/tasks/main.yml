@@ -34,6 +34,7 @@
     -L {{ emacs_home }}/emacs-helm-ag
     -L {{ emacs_home }}/company-mode
     -L {{ emacs_home }}/avy
+    -L {{ emacs_home }}/magit
     -L {{ emacs_home }}/js2-mode
     -L {{ emacs_home }}/web-mode
     -L {{ emacs_home }}/emmet-mode
@@ -58,6 +59,7 @@
     - emacs-helm-ag
     - company-mode
     - avy
+    #- magit
     - js2-mode
     - web-mode
     - emmet-mode
@@ -72,3 +74,11 @@
   with_items:
     - helm
     - evil
+
+- name: Make Emacs extensions in {{ emacs_home }}
+  shell: LOAD_PATH="-L {{ emacs_home }}/magit/lisp -L {{ emacs_home }}/dash.el -L {{ emacs_home }}/with-editor" make
+  args:
+    chdir: "{{ emacs_home }}/{{ item }}/"
+  with_items:
+    - with-editor
+    - magit

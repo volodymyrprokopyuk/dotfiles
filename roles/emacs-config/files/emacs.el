@@ -133,6 +133,15 @@
 (require 'avy)
 (global-set-key (kbd "M-s j") 'avy-goto-char-timer)
 
+; Magit Mode
+(add-to-list 'load-path "~/.emacs.d/with-editor")
+(add-to-list 'load-path "~/.emacs.d/magit/lisp")
+(require 'magit)
+;(load "~/.emacs.d/magit/lisp/magit-autoloads.el")
+(with-eval-after-load 'info
+    (info-initialize)
+    (add-to-list 'Info-directory-list "~/.emacs.d/magit/Documentation/"))
+
 ; Emacs Lisp Mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 

@@ -3,7 +3,7 @@
 Install utilities:
 
 ```bash
-sudo apt-get install unrar xsel libxml2-utils
+sudo apt-get install unrar xsel libxml2-utils texinfo
 ```
 
 Install tools:
