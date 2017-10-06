@@ -34,3 +34,4 @@ emacs_extensions_github:
   - https://github.com/yoshiki/yaml-mode.git
   # evil
   - https://github.com/emacs-evil/evil.git
+  - https://github.com/emacs-evil/evil-surround.git

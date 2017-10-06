@@ -41,6 +41,7 @@
     -L {{ emacs_home }}/markdown-mode
     -L {{ emacs_home }}/yaml-mode
     -L {{ emacs_home }}/evil
+    -L {{ emacs_home }}/evil-surround
     -f batch-byte-compile {{ emacs_home }}/{{ item }}/*.el
   with_items:
     - epl
@@ -66,6 +67,7 @@
     - markdown-mode
     - yaml-mode
     #- evil
+    #- evil-surround
 
 - name: Make Emacs extensions in {{ emacs_home }}
   shell: EMACSLOADPATH="{{ emacs_home }}/emacs-async:" make
@@ -74,6 +76,7 @@
   with_items:
     - helm
     - evil
+    - evil-surround
 
 - name: Make Emacs extensions in {{ emacs_home }}
   shell: LOAD_PATH="-L {{ emacs_home }}/magit/lisp -L {{ emacs_home }}/dash.el -L {{ emacs_home }}/with-editor" make

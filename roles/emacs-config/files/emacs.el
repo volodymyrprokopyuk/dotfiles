@@ -194,3 +194,8 @@
 ; Ibuffer mode
 (evil-ex-define-cmd "ls" 'ibuffer)
 (evil-set-initial-state 'ibuffer-mode 'normal)
+
+; Evil Surround mode
+(add-to-list 'load-path "~/.emacs.d/evil-surround")
+(require 'evil-surround)
+(global-evil-surround-mode 1)
