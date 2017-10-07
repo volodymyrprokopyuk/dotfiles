@@ -113,6 +113,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-s ;") 'helm-mini)
 (global-set-key (kbd "M-s o") 'helm-occur)
+(global-set-key (kbd "M-s r") 'helm-recentf)
 (helm-mode 1)
 
 ; Helm Ag mode (done)
