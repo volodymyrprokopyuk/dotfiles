@@ -22,4 +22,4 @@
     - role: js-update
       tags: js-update, js, update
     - role: js-config
-      tags: js-config, eslint, config
+      tags: js-config, js, config
