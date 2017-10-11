@@ -34,13 +34,6 @@
         (setq interprogram-cut-function 'xsel-cut-function)
         (setq interprogram-paste-function 'xsel-paste-function)))
 
-; XML format
-(defun xml-format ()
-    "Format XML region using xmllint."
-    (interactive)
-    (save-excursion
-        (shell-command-on-region (mark) (point) "xmllint --format -" (buffer-name) t)))
-
 ; WiteSpace mode
 (require 'whitespace)
 (global-whitespace-mode t)
@@ -155,6 +148,16 @@
 (setq-default js2-basic-offset 4)
 (setq-default js-indent-level 4)
 
+; JS/JSON format
+(defun js-format ()
+    "Format JS region using js-beautify"
+    (interactive)
+    (save-excursion
+        (shell-command-on-region (mark) (point) "js-beautify --config ~/.jsbeautifyrc --type js -" (buffer-name) t)))
+
+(eval-after-load 'js '(define-key js-mode-map (kbd "M-s \\") 'js-format))
+(eval-after-load 'js2-mode '(define-key js2-mode-map (kbd "M-s \\") 'js-format))
+
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
 (autoload 'web-mode "web-mode" nil t)
@@ -167,6 +170,24 @@
         (setq web-mode-css-indent-offset 4)
         (setq web-mode-code-indent-offset 4)))
 
+; HTML format
+(defun html-format ()
+    "Format HTML region using js-beautify"
+    (interactive)
+    (save-excursion
+        (shell-command-on-region (mark) (point) "js-beautify --config ~/.jsbeautifyrc --type html -" (buffer-name) t))
+    (web-mode))
+
+(eval-after-load 'web-mode '(define-key web-mode-map (kbd "M-s \\") 'html-format))
+
+; CSS format
+(defun css-format ()
+    "Format CSS region using js-beautify"
+    (interactive)
+    (save-excursion
+        (shell-command-on-region (mark) (point) "js-beautify --config ~/.jsbeautifyrc --type css -" (buffer-name) t))
+    (web-mode))
+
 ; Emmet mode
 ; C-j => expand line
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
@@ -178,6 +199,15 @@
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+; XML format
+(defun xml-format ()
+    "Format XML region with xmllint"
+    (interactive)
+    (save-excursion
+        (shell-command-on-region (mark) (point) "XMLLINT_INDENT='    ' xmllint --format -" (buffer-name) t)))
+
+(eval-after-load 'nxml-mode '(define-key nxml-mode-map (kbd "M-s \\") 'xml-format))
 
 ; YAML mode
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
