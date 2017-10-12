@@ -109,6 +109,11 @@
 (global-set-key (kbd "M-s r") 'helm-recentf)
 (helm-mode 1)
 
+; Helm Swoop mode
+(add-to-list 'load-path "~/.emacs.d/helm-swoop")
+(require 'helm-swoop)
+(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+
 ; Helm Ag mode (done)
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
