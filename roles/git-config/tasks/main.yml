@@ -1,22 +1,30 @@
 ---
-- name: Install Git aliases into ~/.gitconfig
-  shell: |
-    git config --global user.name "Volodymyr Prokopyuk"
-    git config --global user.email "volodymyrprokopyuk@gmail.com"
-    git config --global push.default simple
+- name: Configure Git user name in ~/.gitconfig
+  git_config: scope=global name=user.name value="Volodymyr Prokopyuk"
 
-    git config --global alias.s "status -sb"
-    git config --global alias.d "diff --color-words"
-    git config --global alias.dc "diff --color-words --cached"
-    git config --global alias.ds "diff --stat"
-    git config --global alias.l "log --all --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+- name: Configure Git user email in ~/.gitconfig
+  git_config: scope=global name=user.email value="volodymyrprokopyuk@gmail.com"
 
-    git config --global alias.bs "branch -a -vv"
-    git config --global alias.rs "remote -v"
+- name: Configure Git push default in ~/.gitconfig
+  git_config: scope=global name=push.default value=simple
 
-    git config --global alias.cl "clone"
-    git config --global alias.a "!git add -A && git s"
-    git config --global alias.cm "commit"
+- name: Configure Git status alias in ~/.gitconfig
+  git_config: scope=global name=alias.s value="status -sb"
 
-    git config --global alias.ch "checkout"
-    git config --global alias.chb "checkout -b"
+- name: Configure Git diff alias in ~/.gitconfig
+  git_config: scope=global name=alias.d value="diff"
+
+- name: Configure Git diff stat alias in ~/.gitconfig
+  git_config: scope=global name=alias.ds value="diff --stat"
+
+- name: Configure Git log alias in ~/.gitconfig
+  git_config: scope=global name=alias.l value='log --all --color --graph --abbrev-commit --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
+
+- name: Configure Git add alias in ~/.gitconfig
+  git_config: scope=global name=alias.a value="!git add -A && git s"
+
+- name: Configure Git commit alias in ~/.gitconfig
+  git_config: scope=global name=alias.cm value="commit"
+
+- name: Configure Git checkout alias in ~/.gitconfig
+  git_config: scope=global name=alias.ch value="checkout"
