@@ -21,15 +21,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 bindkey '^R' history-incremental-pattern-search-backward
 
-alias e='emacsclient -t'
-alias l='ls -A -l -h --color=auto'
-alias _ag="ag --hidden --ignore *~ --ignore .git --color-match '1;31'"
-alias s='_ag'
-alias sf='_ag -g'
-alias g='git'
-
-alias info='info --vi-keys'
-alias grep='grep -r -n --color=auto'
+alias ee='emacsclient -t'
+alias ll='ls -A -l -h --color=auto'
+alias ss="ag --hidden --ignore *~ --ignore .git --color-match '1;31'"
 
 function man {
     env \
