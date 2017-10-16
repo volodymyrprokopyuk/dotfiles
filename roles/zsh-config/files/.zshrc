@@ -79,6 +79,11 @@ ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
 
+# Install fzf
+ZPACKAGE=$HOME/.fzf.zsh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore *~ --ignore .git -g ""'
+
 # Install Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 

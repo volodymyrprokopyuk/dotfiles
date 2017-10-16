@@ -7,3 +7,9 @@
     repo: "{{ item }}"
     dest: "{{ zsh_home }}/{{ item | basename | regex_replace('\\.git$', '') }}"
   with_items: "{{ zsh_extensions }}"
+
+- name: Clone fzf into ~/.fzf
+  git: repo="{{ fzf_repo }}" dest=~/.fzf
+
+- name: Install fzf into ~/.fzf
+  shell: ~/.fzf/install --all --64 --key-bindings --completion --no-update-rc --no-bash --no-fish

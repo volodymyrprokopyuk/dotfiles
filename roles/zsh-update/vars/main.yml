@@ -5,3 +5,4 @@ zsh_extensions:
   - https://github.com/zsh-users/zsh-completions.git
   - https://github.com/zsh-users/zsh-autosuggestions.git
   - https://github.com/zsh-users/zsh-syntax-highlighting.git
+fzf_repo: https://github.com/junegunn/fzf.git
