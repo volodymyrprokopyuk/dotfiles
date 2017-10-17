@@ -23,7 +23,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 alias ee='emacsclient -t'
 alias ll='ls -A -l -h --color=auto'
-alias ss="ag --hidden --ignore *~ --ignore .git --color-match '1;31'"
+alias ss="ag --hidden --ignore *~ --ignore .git --ignore .idea --color-match '1;31'"
 
 function man {
     env \
@@ -82,7 +82,7 @@ fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 # Install fzf
 ZPACKAGE=$HOME/.fzf.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore *~ --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore *~ --ignore .git --ignore .idea -g ""'
 export FZF_DEFAULT_OPTS="--cycle"
 
 # Install Java
