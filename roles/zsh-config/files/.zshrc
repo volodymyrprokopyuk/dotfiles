@@ -83,6 +83,7 @@ fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 ZPACKAGE=$HOME/.fzf.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore *~ --ignore .git -g ""'
+export FZF_DEFAULT_OPTS="--cycle"
 
 # Install Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
