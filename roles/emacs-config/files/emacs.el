@@ -119,7 +119,7 @@
 (require 'helm-ag)
 (custom-set-variables
     '(helm-ag-base-command "ag --nocolor --nogroup")
-    '(helm-ag-command-option "--hidden --ignore *~ --ignore .git"))
+    '(helm-ag-command-option "--hidden --ignore *~ --ignore .git --ignore .idea"))
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
 ; Company mode
