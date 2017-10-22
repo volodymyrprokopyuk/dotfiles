@@ -28,6 +28,7 @@ emacs_extensions_github:
   # git
   - https://github.com/magit/magit.git
   # languages
+  - https://github.com/Emacs-Kotlin-Mode-Maintainers/kotlin-mode.git
   - https://github.com/mooz/js2-mode.git
   - https://github.com/fxbois/web-mode.git
   - https://github.com/smihica/emmet-mode.git

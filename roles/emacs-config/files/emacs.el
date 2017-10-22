@@ -145,6 +145,12 @@
 ; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
+; Kotlin mode
+(add-to-list 'load-path "~/.emacs.d/kotlin-mode")
+(autoload 'kotlin-mode "kotlin-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
+(add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode))
+
 ; JS2 mode
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (autoload 'js2-mode "js2-mode" nil t)

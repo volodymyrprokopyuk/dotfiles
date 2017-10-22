@@ -36,6 +36,7 @@
     -L {{ emacs_home }}/company-mode
     -L {{ emacs_home }}/avy
     -L {{ emacs_home }}/magit
+    -L {{ emacs_home }}/kotlin-mode
     -L {{ emacs_home }}/js2-mode
     -L {{ emacs_home }}/web-mode
     -L {{ emacs_home }}/emmet-mode
@@ -63,6 +64,7 @@
     - company-mode
     - avy
     #- magit
+    - kotlin-mode
     - js2-mode
     - web-mode
     - emmet-mode
