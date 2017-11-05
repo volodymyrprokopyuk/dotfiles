@@ -63,7 +63,11 @@ function apt-upgrade {
 }
 
 # Install Liquidprompt
-ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
+#ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
+#[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+
+# Install PowerLevel9k
+ZPACKAGE=$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 # Install Zsh autosuggestions
