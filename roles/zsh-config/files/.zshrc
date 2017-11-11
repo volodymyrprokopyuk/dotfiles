@@ -70,6 +70,7 @@ function apt-upgrade {
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{green}┌─%f"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{green}└─➤ %f"
+#POWERLEVEL9K_DIR_BOLD=true
 ZPACKAGE=$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
