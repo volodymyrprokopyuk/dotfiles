@@ -9,7 +9,7 @@ sudo apt-get install unrar xsel libxml2-utils texinfo
 Install tools:
 
 ```bash
-sudo apt-get install git silversearcher-ag htop
+sudo apt-get install git meld silversearcher-ag htop
 ```
 
 Install Ansible:
