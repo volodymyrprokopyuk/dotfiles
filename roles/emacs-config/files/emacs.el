@@ -233,6 +233,12 @@
 (require 'evil)
 (evil-mode 1)
 
+; move selected lines up (K) and down (J)
+(define-key evil-visual-state-map "J"
+    (concat ":m '>+1" (kbd "RET") "gv=gv"))
+(define-key evil-visual-state-map "K"
+    (concat ":m '<-2" (kbd "RET") "gv=gv"))
+
 ; Ibuffer mode
 (evil-ex-define-cmd "ls" 'ibuffer)
 (evil-set-initial-state 'ibuffer-mode 'normal)
