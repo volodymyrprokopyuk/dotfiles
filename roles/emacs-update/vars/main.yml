@@ -37,3 +37,4 @@ emacs_extensions_github:
   # evil
   - https://github.com/emacs-evil/evil.git
   - https://github.com/emacs-evil/evil-surround.git
+  - https://github.com/redguardtoo/evil-nerd-commenter.git

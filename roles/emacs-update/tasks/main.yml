@@ -44,6 +44,7 @@
     -L {{ emacs_home }}/yaml-mode
     -L {{ emacs_home }}/evil
     -L {{ emacs_home }}/evil-surround
+    -L {{ emacs_home }}/evil-nerd-commenter
     -f batch-byte-compile {{ emacs_home }}/{{ item }}/*.el
   with_items:
     - epl
@@ -72,6 +73,7 @@
     - yaml-mode
     #- evil
     #- evil-surround
+    - evil-nerd-commenter
 
 - name: Make Emacs extensions in {{ emacs_home }}
   shell: EMACSLOADPATH="{{ emacs_home }}/emacs-async:" make
