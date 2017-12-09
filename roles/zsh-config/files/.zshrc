@@ -95,10 +95,15 @@ export FZF_DEFAULT_OPTS="--cycle"
 
 # Install Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # Install Gradle
 export GRADLE_HOME=$HOME/local/gradle
-[ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
+[ -s $GRADLE_HOME/bin/gradle ] && PATH=$GRADLE_HOME/bin:$PATH
+
+# Install Tomcat
+export CATALINA_HOME=$HOME/local/tomcat
+[ -s $CATALINA_HOME/bin/catalina.sh ] && PATH=$CATALINA_HOME/bin:$PATH
 
 # Install NVM
 export NVM_DIR=$HOME/.nvm
