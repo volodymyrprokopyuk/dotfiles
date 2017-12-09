@@ -96,10 +96,6 @@ export FZF_DEFAULT_OPTS="--cycle"
 # Install Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
-# Install Maven
-export M2_HOME=$HOME/local/maven
-[ -s $HOME/local/maven/bin/mvn ] && PATH=$HOME/local/maven/bin:$PATH
-
 # Install Gradle
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $HOME/local/gradle/bin/gradle ] && PATH=$HOME/local/gradle/bin:$PATH
