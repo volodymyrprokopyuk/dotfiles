@@ -135,6 +135,8 @@
 
 ; Magit mode
 (add-to-list 'load-path "~/.emacs.d/with-editor")
+(add-to-list 'load-path "~/.emacs.d/magit-popup")
+(add-to-list 'load-path "~/.emacs.d/ghub")
 (add-to-list 'load-path "~/.emacs.d/magit/lisp")
 (load "~/.emacs.d/magit/lisp/magit-autoloads.el")
 (with-eval-after-load 'info

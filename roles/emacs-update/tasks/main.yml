@@ -85,9 +85,11 @@
     - evil-surround
 
 - name: Make Emacs extensions in {{ emacs_home }}
-  shell: LOAD_PATH="-L {{ emacs_home }}/magit/lisp -L {{ emacs_home }}/dash.el -L {{ emacs_home }}/with-editor" make
+  shell: LOAD_PATH="-L {{ emacs_home }}/magit/lisp -L {{ emacs_home }}/dash.el -L {{ emacs_home }}/with-editor -L {{ emacs_home }}/magit-popup -L {{ emacs_home }}/ghub" make
   args:
     chdir: "{{ emacs_home }}/{{ item }}/"
   with_items:
     - with-editor
+    - magit-popup
+    - ghub
     - magit

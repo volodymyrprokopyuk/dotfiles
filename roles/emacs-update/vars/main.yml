@@ -12,6 +12,8 @@ emacs_extensions_github:
   - https://github.com/jwiegley/emacs-async.git
   - https://github.com/purcell/exec-path-from-shell.git
   - https://github.com/magit/with-editor.git
+  - https://github.com/magit/magit-popup.git
+  - https://github.com/magit/ghub.git
   # theme
   - https://github.com/bbatsov/zenburn-emacs.git
   - https://github.com/Fanael/rainbow-delimiters.git
