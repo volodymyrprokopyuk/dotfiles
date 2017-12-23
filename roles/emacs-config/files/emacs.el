@@ -144,6 +144,10 @@
     (add-to-list 'Info-directory-list "~/.emacs.d/magit/Documentation/"))
 (global-set-key (kbd "C-x g") 'magit-status)
 
+; Git modes (gitattributes, gitconfig, gitignore)
+(add-to-list 'load-path "~/.emacs.d/git-modes")
+(load "~/.emacs.d/git-modes/git-modes-autoloads.el")
+
 ; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 

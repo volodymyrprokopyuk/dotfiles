@@ -11,9 +11,6 @@ emacs_extensions_github:
   - https://github.com/magnars/dash.el.git
   - https://github.com/jwiegley/emacs-async.git
   - https://github.com/purcell/exec-path-from-shell.git
-  - https://github.com/magit/with-editor.git
-  - https://github.com/magit/magit-popup.git
-  - https://github.com/magit/ghub.git
   # theme
   - https://github.com/bbatsov/zenburn-emacs.git
   - https://github.com/Fanael/rainbow-delimiters.git
@@ -28,7 +25,11 @@ emacs_extensions_github:
   - https://github.com/company-mode/company-mode.git
   - https://github.com/abo-abo/avy.git
   # git
+  - https://github.com/magit/with-editor.git
+  - https://github.com/magit/magit-popup.git
+  - https://github.com/magit/ghub.git
   - https://github.com/magit/magit.git
+  - https://github.com/magit/git-modes.git
   # languages
   - https://github.com/Emacs-Kotlin-Mode-Maintainers/kotlin-mode.git
   - https://github.com/mooz/js2-mode.git
