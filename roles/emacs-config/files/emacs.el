@@ -46,6 +46,9 @@
 (setq-default whitespace-style '(face tab-mark trailing lines-tail))
 ; remove trailing blanks on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+; put newline at the end of a file
+(setq require-final-newline t)
+(setq mode-require-final-newline t)
 ; automatically format text when typing
 (add-hook 'text-mode-hook 'auto-fill-mode)
 
