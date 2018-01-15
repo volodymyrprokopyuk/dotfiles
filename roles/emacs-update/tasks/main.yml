@@ -21,6 +21,7 @@
     -L {{ emacs_home }}/epl
     -L {{ emacs_home }}/pkg-info.el
     -L {{ emacs_home }}/goto-chg.el
+    -L {{ emacs_home }}/key-chord.el
     -L {{ emacs_home }}/s.el
     -L {{ emacs_home }}/dash.el
     -L {{ emacs_home }}/emacs-async
@@ -50,6 +51,7 @@
     - epl
     - pkg-info.el
     - goto-chg.el
+    - key-chord.el
     - s.el
     - dash.el
     - emacs-async

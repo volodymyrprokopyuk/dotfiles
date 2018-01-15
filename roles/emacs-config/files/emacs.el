@@ -235,12 +235,22 @@
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
+
 ; Evil mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
+
+(add-to-list 'load-path "~/.emacs.d/key-chord.el")
+(require 'key-chord)
+(key-chord-mode 1)
+(setq key-chord-two-keys-delay 0.5)
+
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+
+; exit insert mode
+(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
 
 ; move selected lines up (K) and down (J)
 (define-key evil-visual-state-map "J"

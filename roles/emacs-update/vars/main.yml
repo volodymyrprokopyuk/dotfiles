@@ -3,6 +3,7 @@ emacs_home: ~/.emacs.d
 emacs_extensions_emacswiki:
   # util
   - https://www.emacswiki.org/emacs/download/goto-chg.el
+  - https://www.emacswiki.org/emacs/download/key-chord.el
 emacs_extensions_github:
   # util
   - https://github.com/cask/epl.git
