@@ -3,13 +3,13 @@
 Install utilities:
 
 ```bash
-sudo apt-get install unrar xsel libxml2-utils texinfo
+sudo apt-get install unrar xsel texinfo
 ```
 
 Install tools:
 
 ```bash
-sudo apt-get install git meld silversearcher-ag htop
+sudo apt-get install git silversearcher-ag htop xmlstarlet jq meld
 ```
 
 Install Ansible:

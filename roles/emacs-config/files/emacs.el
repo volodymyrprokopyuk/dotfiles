@@ -168,15 +168,23 @@
 (setq-default js2-basic-offset 4)
 (setq-default js-indent-level 4)
 
-; JS/JSON format
+; JS format
 (defun js-format ()
     "Format JS region using js-beautify"
     (interactive)
     (save-excursion
         (shell-command-on-region (mark) (point) "js-beautify --config ~/.jsbeautifyrc --type js -" (buffer-name) t)))
 
-(eval-after-load 'js '(define-key js-mode-map (kbd "M-s \\") 'js-format))
 (eval-after-load 'js2-mode '(define-key js2-mode-map (kbd "M-s \\") 'js-format))
+
+; JSON format
+(defun json-format ()
+    "Format JSON region using jq"
+    (interactive)
+    (save-excursion
+        (shell-command-on-region (mark) (point) "jq --indent 4 ." (buffer-name) t)))
+
+(eval-after-load 'js '(define-key js-mode-map (kbd "M-s \\") 'json-format))
 
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
@@ -222,10 +230,10 @@
 
 ; XML format
 (defun xml-format ()
-    "Format XML region with xmllint"
+    "Format XML region with xmlstarlet"
     (interactive)
     (save-excursion
-        (shell-command-on-region (mark) (point) "XMLLINT_INDENT='    ' xmllint --format -" (buffer-name) t)))
+        (shell-command-on-region (mark) (point) "xmlstarlet format --indent-spaces 4" (buffer-name) t)))
 
 (eval-after-load 'nxml-mode '(define-key nxml-mode-map (kbd "M-s \\") 'xml-format))
 
@@ -234,7 +242,6 @@
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
-
 
 ; Evil mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
