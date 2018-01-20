@@ -154,6 +154,9 @@
 ; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
+; Ediff mode
+(setq ediff-split-window-function 'split-window-horizontally)
+
 ; Kotlin mode
 (add-to-list 'load-path "~/.emacs.d/kotlin-mode")
 (autoload 'kotlin-mode "kotlin-mode" nil t)
