@@ -9,7 +9,7 @@
   git_config: scope=global name=push.default value=simple
 
 - name: Configure Git status alias in ~/.gitconfig
-  git_config: scope=global name=alias.s value="status -sb"
+  git_config: scope=global name=alias.s value="!git status -sb && git stash list"
 
 - name: Configure Git diff alias in ~/.gitconfig
   git_config: scope=global name=alias.d value="diff"
