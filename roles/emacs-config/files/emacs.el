@@ -281,3 +281,6 @@
 (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
 (require 'evil-nerd-commenter)
 (evilnc-default-hotkeys)
+
+; set Evil insert mode on message commit
+(add-hook 'git-commit-mode-hook 'evil-insert-state)
