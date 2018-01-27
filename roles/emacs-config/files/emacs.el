@@ -121,7 +121,7 @@
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
 (defun helm-do-ag-project-root-search-file-names ()
-    "Searches file names in a project usgin ag -g <pattern> command line tool"
+    "Searches file names in a project using ag -g <pattern> command line tool"
     (interactive)
     (let ((helm-ag-command-option (concat helm-ag-command-option " -g")))
         (helm-do-ag-project-root)))
