@@ -32,7 +32,6 @@
     -L {{ emacs_home }}/spaceline
     -L {{ emacs_home }}/smartparens
     -L {{ emacs_home }}/helm
-    -L {{ emacs_home }}/helm-swoop
     -L {{ emacs_home }}/emacs-helm-ag
     -L {{ emacs_home }}/company-mode
     -L {{ emacs_home }}/avy
@@ -62,7 +61,6 @@
     - spaceline
     - smartparens
     #- helm
-    - helm-swoop
     - emacs-helm-ag
     - company-mode
     - avy
