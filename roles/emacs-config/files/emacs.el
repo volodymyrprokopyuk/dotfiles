@@ -125,6 +125,14 @@
     '(helm-ag-command-option "--hidden --ignore *~ --ignore .git --ignore .idea"))
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
+(defun helm-do-ag-project-root-search-file-names ()
+    "Searches file names in a project usgin ag -g <pattern> command line tool"
+    (interactive)
+    (let ((helm-ag-command-option (concat helm-ag-command-option " -g")))
+        (helm-do-ag-project-root)))
+
+(global-set-key (kbd "M-s f") 'helm-do-ag-project-root-search-file-names)
+
 ; Company mode
 (add-to-list 'load-path "~/.emacs.d/company-mode")
 (require 'company)
