@@ -1,9 +1,15 @@
 # Installation
 
+Install build tools:
+
+```bash
+sudo apt-get install build-essential texinfo
+```
+
 Install utilities:
 
 ```bash
-sudo apt-get install unrar xsel texinfo
+sudo apt-get install unrar xsel
 ```
 
 Install tools:
@@ -45,8 +51,7 @@ sudo apt-get install tmux
 Install dotfiles:
 
 ```bash
-cd ~
-git clone git@github.com:volodymyrprokopyuk/dotfiles.git
+git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 ```
 
 Install Java:
@@ -73,6 +78,6 @@ npm install -g js-beautify eslint
 # Update & Configuration
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 ./play
 ```
