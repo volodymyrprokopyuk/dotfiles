@@ -1,4 +1,7 @@
 ---
+- name: Install .gitignore into ~
+  copy: src=.gitignore dest=~
+
 - name: Configure Git user name in ~/.gitconfig
   git_config: scope=global name=user.name value="Volodymyr Prokopyuk"
 
