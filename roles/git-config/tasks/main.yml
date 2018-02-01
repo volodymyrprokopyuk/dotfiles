@@ -9,7 +9,10 @@
   git_config: scope=global name=user.email value="volodymyrprokopyuk@gmail.com"
 
 - name: Configure Git push default in ~/.gitconfig
-  git_config: scope=global name=push.default value=simple
+  git_config: scope=global name=push.default value="simple"
+
+- name: Configure Git status to show untracked files in ~/.gitconfig
+  git_config: scope=global name=status.showUntrackedFiles value="all"
 
 - name: Configure Git status alias in ~/.gitconfig
   git_config: scope=global name=alias.s value="!git status -sb && git stash list"
