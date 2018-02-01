@@ -29,6 +29,9 @@
 - name: Configure Git diff cached stat alias in ~/.gitconfig
   git_config: scope=global name=alias.dcs value="diff --cached --stat"
 
+- name: Configure Git diff check alias in ~/.gitconfig
+  git_config: scope=global name=alias.dch value="diff --check"
+
 - name: Configure Git log alias in ~/.gitconfig
   git_config: scope=global name=alias.l value='log --all --graph --abbrev-commit --pretty=format:"%C(red)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(yellow)%s%C(reset) %C(green)<%an>%C(reset) %C(blue)(%cr)%C(reset)"'
 
