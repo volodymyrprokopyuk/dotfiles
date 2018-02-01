@@ -42,7 +42,7 @@
   git_config: scope=global name=alias.a value="!git add -A && git s"
 
 - name: Configure Git commit alias in ~/.gitconfig
-  git_config: scope=global name=alias.cm value="commit"
+  git_config: scope=global name=alias.cm value="!git dch && git commit"
 
 - name: Configure Git checkout alias in ~/.gitconfig
   git_config: scope=global name=alias.ch value="checkout"
