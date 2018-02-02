@@ -11,6 +11,9 @@
 - name: Configure Git push default in ~/.gitconfig
   git_config: scope=global name=push.default value="simple"
 
+- name: Configure Git pull rebase with preserve in ~/.gitconfig
+  git_config: scope=global name=pull.rebase value="preserve"
+
 - name: Configure Git status to show untracked files in ~/.gitconfig
   git_config: scope=global name=status.showUntrackedFiles value="all"
 
