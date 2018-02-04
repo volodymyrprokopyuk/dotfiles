@@ -53,6 +53,12 @@
 - name: Configure Git log grep file alias in ~/.gitconfig
   git_config: scope=global name=alias.lgf value='log -p -M --follow --abbrev-commit --pretty=format:"%C(bold blue)commit%C(reset) %C(red)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(yellow)%s%C(reset) %C(green)<%an>%C(reset) %C(blue)(%cr)%C(reset)\n" -G'
 
+- name: Configure Git branch merged alias in ~/.gitconfig
+  git_config: scope=global name=alias.brm value="branch --merged"
+
+- name: Configure Git branch no merged alias in ~/.gitconfig
+  git_config: scope=global name=alias.brnm value="branch --no-merged"
+
 - name: Configure Git add alias in ~/.gitconfig
   git_config: scope=global name=alias.a value="!git add -A && git s"
 
