@@ -19,6 +19,9 @@
     - role: tmux-config
       tags: tmux-config, tmux, config
 
+    - role: editorconfig
+      tags: editorconfig, config
+
     #- role: js-update
     #  tags: js-update, js, update
     #- role: js-config

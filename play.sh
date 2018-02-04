@@ -19,6 +19,8 @@ Options:
     -tc | --tmux-config
     -ta | --tmux-all
 
+    -edc | --editorconfig
+
     -jsu | --js-update
     -jsc | --js-config
     -jsa | --js-all
@@ -68,6 +70,11 @@ case "$1" in
         ;;
     -ta|--tmux-all)
         $ANSIBLE_PLAYBOOK --tags tmux
+        ;;
+
+    # editorconfig
+    -edc|--editorconfig)
+        $ANSIBLE_PLAYBOOK --tags editorconfig
         ;;
 
     # js
