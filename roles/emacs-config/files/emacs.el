@@ -20,6 +20,12 @@
 ; highlight matching parenthesis
 (show-paren-mode 1)
 
+; Recentf mode
+(recentf-mode 1)
+(setq recentf-max-menu-items 24)
+(add-to-list 'recentf-exclude (expand-file-name "~/.emacs.d/recentf"))
+(run-with-timer 3600 (* 60 60) 'recentf-save-list)
+
 ; terminal clipboard yank/paste
 (setq select-enable-clipboard t)
 (unless window-system
