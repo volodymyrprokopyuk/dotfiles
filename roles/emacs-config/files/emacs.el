@@ -99,6 +99,7 @@
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode 1)
+(spaceline-toggle-minor-modes-off)
 (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
 (setq powerline-default-separator 'wave)
 (spaceline-compile)
