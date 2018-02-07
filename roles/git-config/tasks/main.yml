@@ -8,6 +8,9 @@
 - name: Configure Git user email in ~/.gitconfig
   git_config: scope=global name=user.email value="volodymyrprokopyuk@gmail.com"
 
+- name: Configure Git core excludesfile in ~/.gitconfig
+  git_config: scope=global name=core.excludesfile value="~/.gitignore"
+
 - name: Configure Git push default in ~/.gitconfig
   git_config: scope=global name=push.default value="simple"
 
