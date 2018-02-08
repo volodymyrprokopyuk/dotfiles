@@ -140,6 +140,7 @@
 (require 'company)
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-dabbrev-downcase nil)
 
 ; Avy mode
 (add-to-list 'load-path "~/.emacs.d/avy")
