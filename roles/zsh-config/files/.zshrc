@@ -94,7 +94,6 @@ export FZF_DEFAULT_OPTS="--cycle"
 
 # Install Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # Install Gradle
 export GRADLE_HOME=$HOME/local/gradle

@@ -62,6 +62,9 @@
 - name: Configure Git branch no merged alias in ~/.gitconfig
   git_config: scope=global name=alias.brnm value="branch --no-merged"
 
+- name: Configure Git branches alias in ~/.gitconfig
+  git_config: scope=global name=alias.brs value="branch -a -vv"
+
 - name: Configure Git add alias in ~/.gitconfig
   git_config: scope=global name=alias.a value="!git add -A && git s"
 
