@@ -22,7 +22,7 @@ SAVEHIST=10000
 bindkey '^R' history-incremental-pattern-search-backward
 
 alias ee='emacsclient -t'
-alias ll='ls -A -l -h --color=auto'
+alias ll='ls -a -l -h --color=auto'
 alias ss="ag --hidden --ignore *~ --ignore .git --ignore .idea --color-match '1;31'"
 
 function man {
