@@ -99,6 +99,10 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $GRADLE_HOME/bin/gradle ] && PATH=$GRADLE_HOME/bin:$PATH
 
+# Install Maven
+export M2_HOME=$HOME/local/maven
+[ -s $M2_HOME/bin/mvn ] && PATH=$M2_HOME/bin:$PATH
+
 # Install Tomcat
 export CATALINA_HOME=$HOME/local/tomcat
 [ -s $CATALINA_HOME/bin/catalina.sh ] && PATH=$CATALINA_HOME/bin:$PATH
