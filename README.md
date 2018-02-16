@@ -60,6 +60,17 @@ Install Java:
 sudo apt-get install openjdk-8-jre openjdk-8-jdk
 ```
 
+Install Docker:
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo systemctl enable docker
+```
+
 Install Node:
 
 ```bash
