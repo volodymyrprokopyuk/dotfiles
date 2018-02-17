@@ -77,6 +77,7 @@ docker stop postgres-test
 docker rm postgres-test
 # host: localhost, port: 5432, user: postgres, password: postgres-password, database: postgres
 docker run --name postgres-test -e POSTGRES_PASSWORD=postgres-password -d -p 5432:5432 postgres
+docker start postgres-test
 docker ps
 docker exec -it postgres-test bash
 su - postgres
