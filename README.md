@@ -71,6 +71,26 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker
 ```
 
+Install PostgreSQL:
+```bash
+docker stop postgres-test
+docker rm postgres-test
+# host: localhost, port: 5432, user: postgres, password: postgres-password, database: postgres
+docker run --name postgres-test -e POSTGRES_PASSWORD=postgres-password -d -p 5432:5432 postgres
+docker ps
+docker exec -it postgres-test bash
+su - postgres
+psql
+CREATE DATABASE testdatabase;
+CREATE USER testuser WITH ENCRYPTED PASSWORD 'testpassword';
+GRANT ALL PRIVILEGES ON DATABASE testdatabase TO testuser;
+# host: localhost, port: 5432, user: testuser, password: testpassword, database: testdatabase
+psql -U testuser -d testdatabase
+CREATE SCHEMA testschema;
+CREATE TABLE IF NOT EXISTS testschema.testtable(id SERIAL, first_name TEXT, last_name TEXT, PRIMARY KEY (id));
+INSERT INTO testschema.testtable(first_name, last_name) VALUES ('Volodymyr', 'Prokopyuk');
+```
+
 Install Node:
 
 ```bash
