@@ -99,6 +99,10 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export GRADLE_HOME=$HOME/local/gradle
 [ -s $GRADLE_HOME/bin/gradle ] && PATH=$GRADLE_HOME/bin:$PATH
 
+# Install Liquibase
+export LIQUIBASE_HOME=$HOME/local/liquibase
+[ -s $LIQUIBASE_HOME/liquibase ] && PATH=$LIQUIBASE_HOME:$PATH
+
 # Install Maven
 export M2_HOME=$HOME/local/maven
 [ -s $M2_HOME/bin/mvn ] && PATH=$M2_HOME/bin:$PATH
