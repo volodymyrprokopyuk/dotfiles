@@ -76,7 +76,9 @@ Install PostgreSQL:
 docker stop postgres-test
 docker rm postgres-test
 # host: localhost, port: 5432, user: postgres, password: postgres-password, database: postgres
-docker run --name postgres-test -e POSTGRES_PASSWORD=postgres-password -d -p 5432:5432 postgres
+docker run --name postgres-test \
+    -e POSTGRES_PASSWORD=postgres-password \
+    -d -p 5432:5432 postgres
 docker start postgres-test
 docker ps
 docker exec -it postgres-test bash
@@ -90,6 +92,22 @@ psql -U testuser -d testdatabase
 CREATE SCHEMA testschema;
 CREATE TABLE IF NOT EXISTS testschema.testtable(id SERIAL, first_name TEXT, last_name TEXT, PRIMARY KEY (id));
 INSERT INTO testschema.testtable(first_name, last_name) VALUES ('Volodymyr', 'Prokopyuk');
+```
+
+Install Keycloak:
+```bash
+# host: localhost, port: 8080, user: testuser, password: testpassword
+docker run --name keycloak-test --net=host \
+    -e KEYCLOAK_LOGLEVEL=DEBUG \
+    -e KEYCLOAK_USER=testuser \
+    -e KEYCLOAK_PASSWORD=testpassword \
+    -e POSTGRES_ADDR=127.0.0.1 \
+    -e POSTGRES_PORT=5432 \
+    -e POSTGRES_DATABASE=testdatabase \
+    -e POSTGRES_USER=testuser \
+    -e POSTGRES_PASSWORD=testpassword \
+    -d -p 8080:8080 jboss/keycloak
+docker logs -f keycloak-test
 ```
 
 Install Node:
