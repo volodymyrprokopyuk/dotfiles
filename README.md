@@ -1,5 +1,12 @@
 # Installation
 
+Install fonts:
+```bash
+cp SourceCodePro ~/.fonts
+fc-cache -f -v
+fc-list | grep SourceCodePro
+```
+
 Install build tools:
 
 ```bash
