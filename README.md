@@ -80,41 +80,50 @@ sudo systemctl enable docker
 
 Install PostgreSQL:
 ```bash
-docker stop postgres-test
-docker rm postgres-test
-# host: localhost, port: 5432, user: postgres, password: postgres-password, database: postgres
-docker run --name postgres-test \
-    -e POSTGRES_PASSWORD=postgres-password \
-    -d -p 5432:5432 postgres
-docker start postgres-test
-docker ps
-docker exec -it postgres-test bash
+# host: localhost, port: 5432, user: postgres, password: postgres, database: postgres
+docker run -d --name postgres \
+    -e POSTGRES_PASSWORD=postgres \
+    -p 5432:5432 \
+    postgres
+
+docker exec -it postgres bash
 su - postgres
 psql
-CREATE DATABASE testdatabase;
-CREATE USER testuser WITH ENCRYPTED PASSWORD 'testpassword';
-GRANT ALL PRIVILEGES ON DATABASE testdatabase TO testuser;
-# host: localhost, port: 5432, user: testuser, password: testpassword, database: testdatabase
-psql -U testuser -d testdatabase
-CREATE SCHEMA testschema;
-CREATE TABLE IF NOT EXISTS testschema.testtable(id SERIAL, first_name TEXT, last_name TEXT, PRIMARY KEY (id));
-INSERT INTO testschema.testtable(first_name, last_name) VALUES ('Volodymyr', 'Prokopyuk');
+CREATE DATABASE people;
+CREATE USER family WITH ENCRYPTED PASSWORD 'family';
+GRANT ALL PRIVILEGES ON DATABASE people TO family;
+
+# host: localhost, port: 5432, user: family, password: family, database: people
+psql -U family -d people
+CREATE SCHEMA family;
+CREATE TABLE IF NOT EXISTS family.person(id SERIAL, first_name TEXT, last_name TEXT, PRIMARY KEY (id));
+INSERT INTO family.person(first_name, last_name) VALUES ('Volodymyr', 'Prokopyuk');
+SELECT * FROM family.person;
 ```
 
 Install Keycloak:
 ```bash
-# host: localhost, port: 8080, user: testuser, password: testpassword
-docker run --name keycloak-test --net=host \
+# host: localhost, port: 5432, user: keycloak, password: keycloak, database: keycloak
+docker exec -it postgres bash
+su - postgres
+psql
+CREATE DATABASE keycloak;
+CREATE USER keycloak WITH ENCRYPTED PASSWORD 'keycloak';
+GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
+
+# host: localhost, port: 9090, user: admin, password: admin
+docker run -d --name keycloak \
     -e KEYCLOAK_LOGLEVEL=DEBUG \
-    -e KEYCLOAK_USER=testuser \
-    -e KEYCLOAK_PASSWORD=testpassword \
+    -e KEYCLOAK_USER=admin \
+    -e KEYCLOAK_PASSWORD=admin \
     -e POSTGRES_ADDR=127.0.0.1 \
     -e POSTGRES_PORT=5432 \
-    -e POSTGRES_DATABASE=testdatabase \
-    -e POSTGRES_USER=testuser \
-    -e POSTGRES_PASSWORD=testpassword \
-    -d -p 8080:8080 jboss/keycloak
-docker logs -f keycloak-test
+    -e POSTGRES_DATABASE=keycloak \
+    -e POSTGRES_USER=keycloak \
+    -e POSTGRES_PASSWORD=keycloak \
+    --net=host \
+    jboss/keycloak -Djboss.socket.binding.port-offset=1010
+docker logs -f keycloak
 ```
 
 Install Node:
