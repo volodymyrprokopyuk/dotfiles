@@ -8,6 +8,10 @@ Options:
     -gc | --git-config
     -ga | --git-all
 
+    -du | --diff-update
+    -dc | --diff-config
+    -da | --diff-all
+
     -eu | --emacs-update
     -ec | --emacs-config
     -ea | --emacs-all
@@ -40,6 +44,17 @@ case "$1" in
         ;;
     -ga|--git-all)
         $ANSIBLE_PLAYBOOK --tags git
+        ;;
+
+    # diff
+    -du|--diff-update)
+        $ANSIBLE_PLAYBOOK --tags diff-update
+        ;;
+    -dc|--diff-config)
+        $ANSIBLE_PLAYBOOK --tags diff-config
+        ;;
+    -da|--diff-all)
+        $ANSIBLE_PLAYBOOK --tags diff
         ;;
 
     # emacs

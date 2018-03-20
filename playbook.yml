@@ -6,6 +6,11 @@
     - role: git-config
       tags: git-config, git, config
 
+    - role: diff-update
+      tags: diff-update, diff, update
+    - role: diff-config
+      tags: diff-config, diff, config
+
     - role: emacs-update
       tags: emacs-update, emacs, update
     - role: emacs-config

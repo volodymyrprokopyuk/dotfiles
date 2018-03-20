@@ -1,0 +1,6 @@
+---
+- name: Configure Git diff to user diff-so-fancy
+  git_config: scope=global name=core.pager value="diff-so-fancy | less --tabs=4 -RFX"
+
+- name: Configure git-diff to use diff-so-fancy and suggested colors
+  command: diff-so-fancy --set-defaults
