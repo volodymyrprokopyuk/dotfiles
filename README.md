@@ -135,7 +135,7 @@ SELECT * FROM family.person;
 go
 ```
 
-Install Keycloak:
+Install Keycloak (PostgreSQL):
 ```bash
 # host: localhost, port: 5432, user: keycloak, password: keycloak, database: keycloak
 docker exec -it postgres bash
@@ -158,6 +158,31 @@ docker run -d --name keycloak \
     --net=host \
     jboss/keycloak -Djboss.socket.binding.port-offset=1010
 docker logs -f keycloak
+```
+
+Install MongoDB:
+```bash
+# host: localhost, port: 27017
+docker run -d --name mongo mongo
+```
+
+Install Elasticsearch:
+```bash
+# host: localhost, port: TODO
+docker run -d --name elasticsearch \
+    TODO
+```
+
+Install Graylog (MongoDB, Elasticsearch):
+```bash
+# host: localhost, port: 9100, user: admin, password: admin
+docker run -d --name graylog \
+    -e GRAYLOG_PASSWORD_SECRET=GraylogPasswordSecret \
+    -e GRAYLOG_ROOT_PASSWORD_SHA2=$(echo admin | shasum -a 256) \
+    -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9100/api" \
+    --net=host \
+    -p 9100:9000 \
+    graylog2/server
 ```
 
 Install Node:
