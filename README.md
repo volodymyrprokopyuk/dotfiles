@@ -168,9 +168,28 @@ docker run -d --name mongo mongo
 
 Install Elasticsearch:
 ```bash
-# host: localhost, port: TODO
+# host: localhost, REST port: 9200, transport port: 9300
 docker run -d --name elasticsearch \
-    TODO
+    -e "discovery.type=single-node" \
+    -p 9200:9200 -p 9300:9300 \
+    docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+```
+
+Install Elasticsearch for Graylog:
+```bash
+# host: localhost, REST port: 9200, transport port: 9300
+docker run -d --name glelasticsearch \
+    -e "discovery.type=single-node" \
+    -e "cluster.name=graylog" \
+    -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 \
+    docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+
+sudo sysctl -w vm.max_map_count=262144
+
+docker run -d --name glelasticsearch \
+    -e "http.host=0.0.0.0" \
+    -e "xpack.security.enabled=false" \
+    docker.elastic.co/elasticsearch/elasticsearch:6.2.3
 ```
 
 Install Graylog (MongoDB, Elasticsearch):
@@ -178,10 +197,10 @@ Install Graylog (MongoDB, Elasticsearch):
 # host: localhost, port: 9100, user: admin, password: admin
 docker run -d --name graylog \
     -e GRAYLOG_PASSWORD_SECRET=GraylogPasswordSecret \
-    -e GRAYLOG_ROOT_PASSWORD_SHA2=$(echo admin | shasum -a 256) \
-    -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9100/api" \
-    --net=host \
-    -p 9100:9000 \
+    -e GRAYLOG_ROOT_PASSWORD_SHA2="$(echo admin | shasum -a 256)" \
+    -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
+    --link mongo:mongo --link glelasticsearch:elasticsearch \
+    -p 9000:9000 -p 12201:12201 -p 514:514 \
     graylog2/server
 ```
 
