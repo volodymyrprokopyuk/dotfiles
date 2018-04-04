@@ -1,11 +1,11 @@
 export PATH=$HOME/local/bin:$PATH
 
 export TERM=screen-256color
-export ALTERNATE_EDITOR=''
-export EDITOR='emacsclient -t'
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"
 export ANSIBLE_NOCOWS=1
 
-alias tmux='tmux -2'
+alias tmux="tmux -2"
 [[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
 
 setopt AUTO_CD
@@ -19,13 +19,13 @@ setopt EXTENDED_GLOB
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-bindkey '^R' history-incremental-pattern-search-backward
+bindkey "^R" history-incremental-pattern-search-backward
 
-alias ee='emacsclient -t'
-alias ll='ls -a -l -h --color=auto'
+alias ee="emacsclient -t"
+alias ll="ls -a -l -h --color=auto"
 alias ss="ag --hidden --ignore '*~' --ignore .git --ignore .idea --color-match '1;31'"
 
-function man {
+man() {
     env \
     LESS_TERMCAP_mb=$'\e[01;31m' \
     LESS_TERMCAP_md=$'\e[01;38;5;74m' \
@@ -37,7 +37,7 @@ function man {
     man $@
 }
 
-function unpack {
+unpack() {
     echo Unpacking $1 ...
     if [ -f $1 ] ; then
         case $1 in
@@ -58,8 +58,12 @@ function unpack {
     fi
 }
 
-function apt-upgrade {
-    sudo sh -c 'apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean'
+apt-upgrade() {
+    sudo sh -c "apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean"
+}
+
+jwt() {
+    sed -e "s/\./\n/g" <<< $(cut -d . -f 1,2 <<< $1) | base64 -d | jq
 }
 
 # Install Liquidprompt
@@ -76,7 +80,7 @@ ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
 # Install Zsh autosuggestions
 ZPACKAGE=$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-bindkey '^[;' autosuggest-accept
+bindkey "^[;" autosuggest-accept
 
 # Install Zsh syntax highlighting
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -89,7 +93,7 @@ fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 # Install fzf
 ZPACKAGE=$HOME/.fzf.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-export FZF_DEFAULT_COMMAND='ag --nocolor --nogroup --hidden --ignore *~ --ignore .git --ignore .idea -g ""'
+export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --ignore '*~' --ignore .git --ignore .idea -g ''"
 export FZF_DEFAULT_OPTS="--cycle"
 
 # Install Java
