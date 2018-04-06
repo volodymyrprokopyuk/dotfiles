@@ -135,6 +135,20 @@ SELECT * FROM family.person;
 go
 ```
 
+Install RabbitMQ:
+```bash
+# host: localhost, port: 5672, management port: 15672, user: guest, password: guest
+docker run -d --name rabbitmq \
+    --hostname rabbitmq \
+    -p 5672:5672 \
+    -p 15672:15672 \
+    rabbitmq:3-management
+
+docker exec -it rabbitmq bash
+rabbitmqctl list_users
+rabbitmqadmin list exchanges
+```
+
 Install Keycloak (PostgreSQL):
 ```bash
 # host: localhost, port: 5432, user: keycloak, password: keycloak, database: keycloak
@@ -163,7 +177,7 @@ docker logs -f keycloak
 Install MongoDB:
 ```bash
 # host: localhost, port: 27017
-docker run -d --name mongo mongo
+docker run -d --name mongodb mongo
 ```
 
 Install Elasticsearch:
