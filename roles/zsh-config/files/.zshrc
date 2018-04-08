@@ -63,7 +63,9 @@ apt-upgrade() {
 }
 
 jwt() {
-    sed -e "s/\./\n/g" <<< $(cut -d . -f 1,2 <<< $1) | base64 -d | jq
+    cut -d . -f 1 <<< $1 | base64 -d | jq # JWT Header
+    cut -d . -f 2 <<< $1 | base64 -d | jq # JWT Body
+    # JWT Signature
 }
 
 # Install Liquidprompt
