@@ -239,3 +239,21 @@ npm install -g js-beautify eslint
 cd ~/.dotfiles
 ./play
 ```
+
+Install and use locally generated SSH key on a remote server:
+```bash
+# generate SSH key pair locally. Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
+# file parmissions: ~/.ssh = 700, ~/.ssh/id_rsa* = 600
+ssh-keygen -t rsa -b 2048
+# copy SSH key to a remote host. Provide remote host username and password
+ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
+# connect to the remote host using SSH key but not password. Provide passphrase
+ssh -i ~/.ssh/id_rsa_<provider> <username>@<host>
+# configure SSH key alias in ~/.ssh/config
+Host <alias>
+    HostName <host>
+    User <user>
+    IdentityFile ~/.ssh/id_rsa<provider>
+# connect to the remote host using SSH key alias. Provide passphrase
+ssh <alias>
+```
