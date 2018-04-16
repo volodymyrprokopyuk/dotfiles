@@ -135,6 +135,66 @@ SELECT * FROM family.person;
 go
 ```
 
+## SQL Server Administration
+
+### Login (Server instance)
+```sql
+SELECT * FROM sys.server_principals
+```
+
+Login > User
+```sql
+SELECT sp.name login, dp.name [user]
+FROM sys.server_principals sp JOIN sys.database_principals dp ON dp.sid = sp.sid
+```
+
+### User (Database principal)
+```sql
+SELECT * FROM sys.database_principals
+```
+
+User > Schema
+```sql
+SELECT dp.name [user], s.name [schema]
+FROM sys.database_principals dp JOIN sys.schemas s ON s.principal_id = dp.principal_id
+```
+
+User > Role
+```sql
+SELECT dpu.name [user], dpr.name [role]
+FROM sys.database_role_members drm
+    JOIN sys.database_principals dpu ON dpu.principal_id = drm.member_principal_id
+    JOIN sys.database_principals dpr ON dpr.principal_id = drm.role_principal_id
+```
+
+User > Permissions
+```sql
+SELECT dp.class_desc [object], dp.permission_name [permission], dp.state_desc [grant]
+FROM sys.database_permissions dp
+WHERE dp.grantee_principal_id = (SELECT principal_id FROM sys.database_principals WHERE name = '<USER>')
+```
+
+### Role (Security permissions)
+```sql
+SELECT * FROM sys.database_principals dp WHERE dp.[type] = 'R'
+```
+
+### Schema (Database obejcts)
+```sql
+SELECT * FROM sys.schemas
+```
+
+### Effective permissions
+```sql
+SELECT * FROM fn_my_permissions(NULL, 'SERVER')
+SELECT * FROM fn_my_permissions(NULL, 'DATABASE')
+SELECT * FROM fn_my_permissions('family', 'LOGIN')
+SELECT * FROM fn_my_permissions('family', 'USER')
+SELECT * FROM fn_my_permissions('db_owner', 'ROLE')
+SELECT * FROM fn_my_permissions('family', 'SCHEMA')
+SELECT * FROM fn_my_permissions('family.fullName', 'OBJECT')
+```
+
 Install RabbitMQ:
 ```bash
 # host: localhost, port: 5672, management port: 15672, user: guest, password: guest
