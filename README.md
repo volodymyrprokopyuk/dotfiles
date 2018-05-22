@@ -22,7 +22,7 @@ sudo apt-get install unrar xsel
 Install tools:
 
 ```bash
-sudo apt-get install git silversearcher-ag htop xmlstarlet jq
+sudo apt-get install git silversearcher-ag htop xmlstarlet jq pwgen
 ```
 
 Install Ansible:
