@@ -252,6 +252,9 @@
 
 (eval-after-load 'nxml-mode '(define-key nxml-mode-map (kbd "M-s \\") 'xml-format))
 
+; XSD mode
+(add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
+
 ; YAML mode
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
 (autoload 'yaml-mode "yaml-mode" nil t)
