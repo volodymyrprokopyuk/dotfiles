@@ -27,6 +27,9 @@
     - role: editorconfig
       tags: editorconfig, config
 
+    - role: docker-compose-update
+      tags: docker-compose-update, docker-compose, update
+
     #- role: js-update
     #  tags: js-update, js, update
     #- role: js-config

@@ -25,6 +25,8 @@ Options:
 
     -edc | --editorconfig
 
+    -dcu | --docker-compose-update
+
     -jsu | --js-update
     -jsc | --js-config
     -jsa | --js-all
@@ -90,6 +92,11 @@ case "$1" in
     # editorconfig
     -edc|--editorconfig)
         $ANSIBLE_PLAYBOOK --tags editorconfig
+        ;;
+
+    # docker-compose
+    -dcu|--docker-compose-update)
+        $ANSIBLE_PLAYBOOK --tags docker-compose-update
         ;;
 
     # js
