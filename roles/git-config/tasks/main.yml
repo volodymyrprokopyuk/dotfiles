@@ -14,6 +14,9 @@
 - name: Configure Git push default in ~/.gitconfig
   git_config: scope=global name=push.default value="simple"
 
+- name: Configure Git diff algorithm in ~/.gitconfig
+  git_config: scope=global name=diff.algorithm value="histogram"
+
 - name: Configure Git pull rebase with preserve in ~/.gitconfig
   git_config: scope=global name=pull.rebase value="preserve"
 
@@ -57,13 +60,13 @@
   git_config: scope=global name=alias.lgf value='log -p -M --follow --abbrev-commit --pretty=format:"%C(bold blue)commit%C(reset) %C(red)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(yellow)%s%C(reset) %C(green)<%an>%C(reset) %C(blue)(%cr)%C(reset)\n" -G'
 
 - name: Configure Git branch merged alias in ~/.gitconfig
-  git_config: scope=global name=alias.brm value="branch --merged"
+  git_config: scope=global name=alias.bm value="branch --merged"
 
 - name: Configure Git branch no merged alias in ~/.gitconfig
-  git_config: scope=global name=alias.brnm value="branch --no-merged"
+  git_config: scope=global name=alias.bnm value="branch --no-merged"
 
 - name: Configure Git branches alias in ~/.gitconfig
-  git_config: scope=global name=alias.brs value="branch -a -vv"
+  git_config: scope=global name=alias.bb value="branch -a -vv"
 
 - name: Configure Git add alias in ~/.gitconfig
   git_config: scope=global name=alias.a value="!git add -A && git s"
