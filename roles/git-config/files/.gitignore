@@ -5,6 +5,9 @@
 .gradle/
 build/
 
+# Maven
+target/
+
 # IntelliJ
 .idea/
 *.iml
