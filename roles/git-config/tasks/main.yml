@@ -23,6 +23,9 @@
 - name: Configure Git status to show untracked files in ~/.gitconfig
   git_config: scope=global name=status.showUntrackedFiles value="all"
 
+- name: Configure Git credential helper in ~/.gitconfig
+  git_config: scope=global name=credential.helper value="cache --timeout=86400"
+
 - name: Configure Git status alias in ~/.gitconfig
   git_config: scope=global name=alias.s value="!git status -sb && git stash list"
 
