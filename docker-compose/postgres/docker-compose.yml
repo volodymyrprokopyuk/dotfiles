@@ -1,0 +1,15 @@
+---
+version: '3'
+
+services:
+  # host: localhost, port: 5432, user: postgres, password: postgres, database: postgres
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      # host: localhost, port: 5432, user: family, password: family, database: people
+      - ./init_database.sql:/docker-entrypoint-initdb.d/001-init_database.sql
+    ports:
+      - "5432:5432"
+    restart: always

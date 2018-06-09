@@ -78,7 +78,7 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker
 ```
 
-Install PostgreSQL:
+Install PostgreSQL (done):
 ```bash
 # host: localhost, port: 5432, user: postgres, password: postgres, database: postgres
 docker run -d --name postgres \
