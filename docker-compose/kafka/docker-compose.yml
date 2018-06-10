@@ -1,0 +1,23 @@
+---
+version: "3"
+
+services:
+  zookeeper:
+    image: zookeeper
+    ports:
+      - "2181"
+    restart: always
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    #command: /opt/kafka/bin/kafka-topics.sh --create --topic testTopic --replication-factor 1 --partitions 1 --zookeeper zookeeper:2181
+    #command: /opt/kafka/bin/kafka-topics.sh --describe --topic testTopic --zookeeper zookeeper:2181
+    #command: /opt/kafka/bin/kafka-console-producer.sh --broker-list kafka:9092 --topic testTopic
+    #command: /opt/kafka/bin/kafka-console-consumer.sh --topic testTopic --from-beginning --bootstrap-server kafka:9092
+    restart: always
