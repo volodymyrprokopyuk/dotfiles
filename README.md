@@ -31,6 +31,9 @@ Install Ansible:
 sudo apt-get install openssh-server
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
+
+sudo add-apt-repository -y ppa:ansible/ansible
+sudo apt-get update
 sudo apt-get install ansible
 ```
 
