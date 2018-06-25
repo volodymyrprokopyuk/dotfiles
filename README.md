@@ -320,3 +320,13 @@ Host <alias>
 # connect to the remote host using SSH key alias. Provide passphrase
 ssh <alias>
 ```
+
+Convert private key and certificate from PEM into JKS format:
+```bash
+cat key.pem cert.pem > key-cert.pem
+# enter new export password: changeit
+openssl pkcs12 -export -in key-cert.pem -out key-cert.p12
+# provide source keystore password: changeit
+# enter new destination keystore password: changeit
+keytool -importkeystore -srckeystore key-cert.p12 -srcstoretype pkcs12 -destkeystore key-cert.jks
+```
