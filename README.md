@@ -330,3 +330,13 @@ openssl pkcs12 -export -in key-cert.pem -out key-cert.p12
 # enter new destination keystore password: changeit
 keytool -importkeystore -srckeystore key-cert.p12 -srcstoretype pkcs12 -destkeystore key-cert.jks
 ```
+
+Show JKS details:
+```bash
+keytool -v -list -keystore key-cert.jks
+```
+
+Import certificate into cacerts:
+```bash
+keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass <changeit> -noprompt -alias <alias> -file cert.pem
+```
