@@ -321,6 +321,14 @@ Host <alias>
 ssh <alias>
 ```
 
+Show local / remote PEM certificate details:
+```bash
+# local file
+openssl x509 -inform pem -noout -text -in cert.pem
+# remote host
+echo | openssl s_client -showcerts -servername <host> -connect <host>:<port> 2>/dev/null | openssl x509 -inform pem -noout -text
+```
+
 Convert private key and certificate from PEM into JKS format:
 ```bash
 cat key.pem cert.pem > key-cert.pem
