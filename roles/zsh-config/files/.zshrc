@@ -100,7 +100,9 @@ fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
 
 # Install fzf
-ZPACKAGE=$HOME/.fzf.zsh
+ZPACKAGE=/usr/share/fzf/key-bindings.zsh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+ZPACKAGE=/usr/share/fzf/completion.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --ignore '*~' --ignore .git --ignore .idea -g ''"
 export FZF_DEFAULT_OPTS="--no-height --cycle"
