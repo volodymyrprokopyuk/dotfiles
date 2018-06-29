@@ -70,7 +70,7 @@
 (setq-default c-basic-offset 4)
 
 ; Source Code Pro font
-(set-frame-font "Source Code Pro Light 14")
+(set-frame-font "Source Code Pro Light 13")
 
 ; common extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
