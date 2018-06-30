@@ -106,5 +106,5 @@ ZPACKAGE=/usr/share/fzf/completion.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --ignore '*~' --ignore .git --ignore .idea -g ''"
 export FZF_DEFAULT_OPTS="--no-height --cycle"
-export FZF_CTRL_T_OPTS="--preview 'cat {} || (ls -alh --color=always {} | grep -v '~$') | head -200'"
+export FZF_CTRL_T_OPTS="--preview '(cat {} || (ls -alh --color=always {} | grep -v '~$')) 2> /dev/null | head -200'"
 export FZF_ALT_C_OPTS="--preview 'ls -alh --color=always {} | grep -v '~$' | head -200'"
