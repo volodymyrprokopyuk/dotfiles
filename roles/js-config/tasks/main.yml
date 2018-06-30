@@ -1,6 +1,0 @@
----
-- name: Install .eslintrc.yml into ~
-  copy: src=.eslintrc.yml dest=~
-
-- name: Install .jsbeautifyrc into ~
-  copy: src=.jsbeautifyrc dest=~

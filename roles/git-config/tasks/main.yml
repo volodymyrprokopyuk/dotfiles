@@ -1,5 +1,5 @@
 ---
-- name: Install .gitignore into ~
+- name: Copy .gitignore into ~
   copy: src=.gitignore dest=~
 
 - name: Configure Git user name in ~/.gitconfig

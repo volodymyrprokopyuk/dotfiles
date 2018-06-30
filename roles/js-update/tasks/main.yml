@@ -1,3 +1,0 @@
----
-- name: Update Node global utilities (js-beautify)
-  shell: npm update -g js-beautify

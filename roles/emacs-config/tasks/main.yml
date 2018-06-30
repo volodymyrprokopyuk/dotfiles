@@ -1,6 +1,6 @@
 ---
-- name: Install .emacs into ~
+- name: Copy .emacs into ~
   copy: src=.emacs dest=~
 
-- name: Install emacs.el into {{ emacs_home }}
+- name: Copy emacs.el into {{ emacs_home }}
   copy: src=emacs.el dest={{ emacs_home }}
