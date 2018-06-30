@@ -60,19 +60,15 @@
     - powerline
     - spaceline
     - smartparens
-    #- helm
     - emacs-helm-ag
     - company-mode
     - avy
-    #- magit
     - kotlin-mode
     - js2-mode
     - web-mode
     - emmet-mode
     - markdown-mode
     - yaml-mode
-    #- evil
-    #- evil-surround
     - evil-nerd-commenter
 
 - name: Make Emacs extensions in {{ emacs_home }}

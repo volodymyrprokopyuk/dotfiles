@@ -17,8 +17,8 @@ setopt EXTENDED_HISTORY
 setopt EXTENDED_GLOB
 
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000
+SAVEHIST=1000
 bindkey "^R" history-incremental-pattern-search-backward
 
 alias ee="emacsclient -t"
@@ -37,7 +37,7 @@ man() {
     man $@
 }
 
-unpack() {
+ex() {
     echo Unpacking $1 ...
     if [ -f $1 ] ; then
         case $1 in
@@ -58,8 +58,8 @@ unpack() {
     fi
 }
 
-apt-upgrade() {
-    sudo sh -c "apt-get update && apt-get dist-upgrade --yes && apt-get autoremove && apt-get autoclean"
+pacman-upgrade() {
+    sudo sh -c "pacman -Syu; echo ':: Removing orphan packages'; pacman -Rsn $(pacman -Qdtq); pacman -Sc --noconfirm"
 }
 
 jwt() {
@@ -108,27 +108,3 @@ export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --ignore '*~' --igno
 export FZF_DEFAULT_OPTS="--no-height --cycle"
 export FZF_CTRL_T_OPTS="--preview 'cat {} || (ls -alh --color=always {} | grep -v '~$') | head -200'"
 export FZF_ALT_C_OPTS="--preview 'ls -alh --color=always {} | grep -v '~$' | head -200'"
-
-# # Install Java
-# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-
-# # Install Gradle
-# export GRADLE_HOME=$HOME/local/gradle
-# [ -s $GRADLE_HOME/bin/gradle ] && PATH=$GRADLE_HOME/bin:$PATH
-
-# # Install Liquibase
-# export LIQUIBASE_HOME=$HOME/local/liquibase
-# [ -s $LIQUIBASE_HOME/liquibase ] && PATH=$LIQUIBASE_HOME:$PATH
-
-# # Install Maven
-# export M2_HOME=$HOME/local/maven
-# [ -s $M2_HOME/bin/mvn ] && PATH=$M2_HOME/bin:$PATH
-
-# # Install Tomcat
-# export CATALINA_HOME=$HOME/local/tomcat
-# [ -s $CATALINA_HOME/bin/catalina.sh ] && PATH=$CATALINA_HOME/bin:$PATH
-
-# # Install NVM
-# export NVM_DIR=$HOME/.nvm
-# ZPACKAGE=$NVM_DIR/nvm.sh
-# [ -s $ZPACKAGE ] && source $ZPACKAGE
