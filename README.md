@@ -1,73 +1,27 @@
 # Installation
 
-Install fonts:
 ```bash
-cp SourceCodePro ~/.fonts
-fc-cache -f -v
-fc-list | grep SourceCodePro
-```
-
-Install build tools:
-
-```bash
-sudo apt-get install build-essential texinfo
-```
-
-Install utilities:
-
-```bash
-sudo apt-get install unrar xsel
-```
-
-Install tools:
-
-```bash
-sudo apt-get install git silversearcher-ag htop xmlstarlet jq apg pwgen
-```
-
-Install Ansible:
-
-```bash
-sudo apt-get install openssh-server
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
-
-sudo add-apt-repository -y ppa:ansible/ansible
-sudo apt-get update
-sudo apt-get install ansible
-```
-
-Install Emacs:
-
-```bash
-sudo add-apt-repository -y ppa:ubuntu-elisp/ppa
-sudo apt-get update
-sudo apt-get install emacs-snapshot
-```
-
-Install Zsh:
-
-```bash
-sudo apt-get install zsh
 chsh -s $(which zsh)
+pacman -S yaourt adobe-source-code-pro-fonts xsel tmux emacs the_silver_searcher fzf ansible docker diff-so-fancy xmlstarlet jq pwgen
+yaourt dropbox google-chrome skypeforlinux-stable-bin apg
 ```
-
-Install Tmux:
+# `pacman` usage:
 
 ```bash
-sudo apt-get install tmux
-```
-
-Install dotfiles:
-
-```bash
-git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
-```
-
-Install Java:
-
-```bash
-sudo apt-get install openjdk-8-jre openjdk-8-jdk
+# update the repository database
+sudo pacman -Sy
+# search the repository database
+pacman -Ss | i <package>
+# query an installed package
+pacman -Qs | i <package>
+# upgrade the system
+sudo pacman -Syu
+# install a package
+sudo pacman -S <package>
+# remove a package, its configuration and dependencies
+sudo pacman -Rns <package>
+# list all files owned by a package
+pacman -Ql <package>
 ```
 
 Install Docker:
@@ -282,7 +236,6 @@ docker run -d --name graylog \
 ```
 
 Install Node:
-
 ```bash
 nvm ls-remote
 nvm ls
@@ -291,16 +244,8 @@ nvm alias default <version>
 ```
 
 Install Node utilities:
-
 ```bash
 npm install -g js-beautify eslint
-```
-
-# Update & Configuration
-
-```bash
-cd ~/.dotfiles
-./play
 ```
 
 Install and use locally generated SSH key on a remote server:
