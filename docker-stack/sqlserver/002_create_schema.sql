@@ -22,7 +22,7 @@ CREATE OR ALTER PROCEDURE family.sp_find_person
 AS BEGIN
     SELECT p.id, p.first_name, p.last_name
     FROM family.person p
-    WHERE p.first_name = @first_name AND p.last_name = @last_name;
+    WHERE p.first_name = @first_name AND p.last_name = @last_name
 END
 go
 
