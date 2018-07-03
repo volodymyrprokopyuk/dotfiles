@@ -6,7 +6,7 @@ services:
   sqlserver:
     image: "microsoft/mssql-server-linux:2017-GA"
     environment:
-      ACCEPT_EULA: Y
+      ACCEPT_EULA: "Y"
       MSSQL_PID: Developer
       SA_PASSWORD: 'Password!1'
     # volumes:
@@ -19,4 +19,3 @@ services:
     #   - ["/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "'Password!1'", "-d", "master", "-i", "/init.sql/init_database.sql"]
     ports:
       - "1433:1433"
-    restart: always

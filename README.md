@@ -1,11 +1,22 @@
 # Installation
 
 ```bash
-chsh -s $(which zsh)
-pacman -S yaourt adobe-source-code-pro-fonts xsel tmux emacs the_silver_searcher fzf ansible docker diff-so-fancy xmlstarlet jq pwgen
+# install software with pacman from core, extra and community repositories
+pacman -S yaourt adobe-source-code-pro-fonts xsel tmux emacs the_silver_searcher fzf ansible docker diff-so-fancy xmlstarlet jq pwgen dbeaver
+# install software with yaourt from AUR
 yaourt dropbox google-chrome skypeforlinux-stable-bin apg
+# configure zsh
+chsh -s $(which zsh)
+# configure docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo systemctl enable docker
+sudo systemctl start docker
+# configure docker swarm
+docker swarm init
+docker stack deploy -c docker-stack/<stack-name>/docker-compose.yml <stack-name>
 ```
-# `pacman` usage:
+# pacman usage:
 
 ```bash
 # update the repository database
@@ -22,17 +33,6 @@ sudo pacman -S <package>
 sudo pacman -Rns <package>
 # list all files owned by a package
 pacman -Ql <package>
-```
-
-Install Docker:
-```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
-sudo apt-get update
-sudo apt-get install docker-ce
-sudo groupadd docker
-sudo usermod -aG docker $USER
-sudo systemctl enable docker
 ```
 
 Install PostgreSQL (done):
