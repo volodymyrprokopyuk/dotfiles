@@ -9,13 +9,9 @@ services:
       ACCEPT_EULA: "Y"
       MSSQL_PID: Developer
       SA_PASSWORD: 'Password!1'
-    # volumes:
-    #   # host: localhost, port: 1433, user: family, password: Password!1, database: people
-    #   - ./init_database.sql:/init.sql/init_database.sql
-    #   - ./init.sh:/init.sql/init.sh
-    # command: ["/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "'Password!1'", "-d", "master", "-i", "/init.sql/init_database.sql"]
-    #   - /init.sql/init.sh
-    #   - /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password!1' -d master -i /init.sql/init_database.sql
-    #   - ["/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "'Password!1'", "-d", "master", "-i", "/init.sql/init_database.sql"]
+    volumes:
+      - ./001_create_database_and_user.sql:/home/001_create_database_and_user.sql
+      # host: localhost, port: 1433, user: family, password: Password!1, database: people
+      - ./002_create_schema.sql:/home/002_create_schema.sql
     ports:
       - "1433:1433"
