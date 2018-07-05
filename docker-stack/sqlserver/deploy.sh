@@ -8,7 +8,7 @@ wait_for_port() {
     local timeout=${3:-10}
     while ! nc -z $host $port; do
         sleep 1
-        ((timeout--))
+        (( timeout-- ))
         if [[ $timeout -eq 0 ]]; then
             echo "ERROR: conainer has not started correctly"
             exit 1
@@ -22,10 +22,12 @@ wait_for_port localhost 1433
 CONTAINER_ID=$(docker ps --filter "name=sqlserver" --quiet)
 echo "CONTAINER_ID=$CONTAINER_ID"
 
-echo "Creating database and user with permissions"
-docker exec -it $CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password!1' -d master -i /home/001_create_database_and_user.sql
+echo "Creating database and users with permissions"
+docker exec -it $CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password1!' -d master -t 10 -i /home/001_create_database_and_users.sql
 echo "Creating database schema"
-docker exec -it $CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U family -P 'Password!1' -d people -i /home/002_create_schema.sql
+docker exec -it $CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U family_ddl -P 'Password1!' -d people -t 10 -i /home/002_create_schema.sql
+echo "Testing DML"
+docker exec -it $CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U family_dml -P 'Password1!' -d people -t 10 -i /home/003_test_dml.sql
 
 docker logs -f $CONTAINER_ID
 
