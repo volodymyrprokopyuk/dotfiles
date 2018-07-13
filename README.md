@@ -34,29 +34,6 @@ sudo pacman -Rns <package>
 pacman -Ql <package>
 ```
 
-Install PostgreSQL (done):
-```bash
-# host: localhost, port: 5432, user: postgres, password: postgres, database: postgres
-docker run -d --name postgres \
-    -e POSTGRES_PASSWORD=postgres \
-    -p 5432:5432 \
-    postgres
-
-docker exec -it postgres bash
-su - postgres
-psql
-CREATE DATABASE people;
-CREATE USER family WITH ENCRYPTED PASSWORD 'family';
-GRANT ALL PRIVILEGES ON DATABASE people TO family;
-
-# host: localhost, port: 5432, user: family, password: family, database: people
-psql -U family -d people
-CREATE SCHEMA family;
-CREATE TABLE IF NOT EXISTS family.person(id SERIAL NOT NULL, first_name TEXT NOT NULL, last_name TEXT NOT NULL, PRIMARY KEY (id));
-INSERT INTO family.person(first_name, last_name) VALUES ('Volodymyr', 'Prokopyuk');
-SELECT * FROM family.person;
-```
-
 ## SQL Server Administration
 
 ### Login (Server instance)
