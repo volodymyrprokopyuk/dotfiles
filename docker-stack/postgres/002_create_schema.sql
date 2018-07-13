@@ -5,23 +5,25 @@ CREATE TABLE IF NOT EXISTS family.person(
     PRIMARY KEY (id)
 );
 
--- CREATE OR ALTER PROCEDURE family.sp_find_person
---     @first_name NVARCHAR(100),
---     @last_name NVARCHAR(100)
--- AS BEGIN
---     SELECT p.id, p.first_name, p.last_name
---     FROM family.person p
---     WHERE p.first_name = @first_name AND p.last_name = @last_name
--- END
--- go
+CREATE OR REPLACE FUNCTION family.fn_find_person(
+    ar_first_name TEXT,
+    ar_last_name TEXT
+) RETURNS SETOF family.person
+AS $$
+    SELECT p.id, p.first_name, p.last_name
+    FROM family.person p
+    WHERE p.first_name = ar_first_name AND p.last_name = ar_last_name;
+$$ LANGUAGE sql;
 
--- CREATE OR ALTER FUNCTION family.fn_full_name(
---     @first_name NVARCHAR(100),
---     @last_name NVARCHAR(100)
--- ) RETURNS NVARCHAR(400)
--- AS BEGIN
---     DECLARE @full_name NVARCHAR(400)
---     SET @full_name = @first_name + ' ' + @last_name
---     RETURN @full_name
--- END
--- go
+CREATE OR REPLACE FUNCTION family.fn_full_name(
+    ar_first_name TEXT,
+    ar_last_name TEXT
+) RETURNS TEXT
+AS $$
+DECLARE
+    full_name TEXT;
+BEGIN
+    full_name = ar_first_name || ' ' || ar_last_name;
+    RETURN full_name;
+END;
+$$ LANGUAGE plpgsql;
