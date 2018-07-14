@@ -59,7 +59,7 @@ ex() {
 }
 
 pacman-upgrade() {
-    sudo sh -c "pacman -Syu; echo ':: Removing orphan packages'; pacman -Rsn $(pacman -Qdtq); pacman -Sc --noconfirm"
+    sudo sh -c "pacman -Syu; echo ':: Removing orphan packages'; pacman -Rsn $(pacman -Qdtq); pacman -Sc --noconfirm; yaourt -Syua"
 }
 
 jwt() {
