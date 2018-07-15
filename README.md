@@ -2,9 +2,13 @@
 
 ```bash
 # install software with pacman from core, extra and community repositories
-pacman -S yay adobe-source-code-pro-fonts xsel tmux emacs the_silver_searcher fzf ansible docker diff-so-fancy xmlstarlet jq pwgen openbsd-netcat dbeaver
+pacman -S yay adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy
+pacman -S ansible docker
+pacman -S xmlstarlet jq pwgen openbsd-netcat sysstat iotop
+pacman -S dbeaver
 # install software with yay from AUR
-yay -S dropbox google-chrome skypeforlinux-preview-bin apg
+yay -S dropbox google-chrome skypeforlinux-preview-bin
+yay -S apg
 # configure zsh
 chsh -s $(which zsh)
 # configure docker
