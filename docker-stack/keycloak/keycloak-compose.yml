@@ -1,0 +1,23 @@
+---
+version: "3"
+
+services:
+  # host: localhost, port: 9090, user: admin, password: Password1!
+  keycloak:
+    image: "jboss/keycloak:4.1.0.Final"
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: 'Password1!'
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: 'Password1!'
+    ports:
+      - "9090:8080"
+    networks:
+      - postgres_default
+networks:
+  postgres_default:
+    external: true

@@ -112,31 +112,6 @@ rabbitmqctl list_users
 rabbitmqadmin list exchanges
 ```
 
-Install Keycloak (PostgreSQL):
-```bash
-# host: localhost, port: 5432, user: keycloak, password: keycloak, database: keycloak
-docker exec -it postgres bash
-su - postgres
-psql
-CREATE DATABASE keycloak;
-CREATE USER keycloak WITH ENCRYPTED PASSWORD 'keycloak';
-GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
-
-# host: localhost, port: 9090, user: admin, password: admin
-docker run -d --name keycloak \
-    -e KEYCLOAK_LOGLEVEL=DEBUG \
-    -e KEYCLOAK_USER=admin \
-    -e KEYCLOAK_PASSWORD=admin \
-    -e POSTGRES_ADDR=127.0.0.1 \
-    -e POSTGRES_PORT=5432 \
-    -e POSTGRES_DATABASE=keycloak \
-    -e POSTGRES_USER=keycloak \
-    -e POSTGRES_PASSWORD=keycloak \
-    --net=host \
-    jboss/keycloak -Djboss.socket.binding.port-offset=1010
-docker logs -f keycloak
-```
-
 Install MongoDB:
 ```bash
 # host: localhost, port: 27017
