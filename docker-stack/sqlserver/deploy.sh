@@ -20,7 +20,7 @@ wait_for_port() {
     done
 }
 
-docker stack deploy -c docker-compose.yml sqlserver
+docker stack deploy -c sqlserver-stack.yml sqlserver
 wait_for_port $HOST $PORT
 
 CONTAINER_ID=$(docker ps --filter "name=sqlserver" --quiet)

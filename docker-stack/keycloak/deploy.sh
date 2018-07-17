@@ -22,7 +22,7 @@ wait_for_port() {
     done
 }
 
-docker stack deploy -c postgres-compose.yml postgres
+docker stack deploy -c postgres-stack.yml postgres
 wait_for_port $POSTGRES_HOST $POSTGRES_PORT
 
 POSTGRES_CONTAINER_ID=$(docker ps --filter "name=postgres" --quiet)
@@ -35,7 +35,7 @@ docker exec -it $POSTGRES_CONTAINER_ID psql -h $POSTGRES_HOST -p $POSTGRES_PORT 
 
 # docker stack rm postgres
 
-docker stack deploy -c keycloak-compose.yml keycloak
+docker stack deploy -c keycloak-stack.yml keycloak
 wait_for_port $KEYCLOAK_HOST $KEYCLOAK_PORT
 
 KEYCLOAK_CONTAINER_ID=$(docker ps --filter "name=keycloak" --quiet)

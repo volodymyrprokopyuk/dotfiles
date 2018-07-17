@@ -20,7 +20,7 @@ wait_for_port() {
     done
 }
 
-docker stack deploy -c docker-compose.yml postgres
+docker stack deploy -c postgres-stack.yml postgres
 wait_for_port $HOST $PORT
 
 CONTAINER_ID=$(docker ps --filter "name=postgres" --quiet)

@@ -4,7 +4,7 @@ version: "3"
 services:
   # host: localhost, port: 1433, user: sa, password Password1!, database: master
   sqlserver:
-    image: "microsoft/mssql-server-linux:2017-GA"
+    image: "microsoft/mssql-server-linux:2017-CU8"
     environment:
       ACCEPT_EULA: "Y"
       MSSQL_PID: Developer
