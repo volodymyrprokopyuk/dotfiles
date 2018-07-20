@@ -6,7 +6,7 @@ POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 KEYCLOAK_HOST=localhost
 KEYCLOAK_PORT=9090
-TIMEOUT=10
+TIMEOUT=30
 
 wait_for_port() {
     local host=${1:?"ERROR: host is not defined"}
@@ -29,7 +29,7 @@ POSTGRES_CONTAINER_ID=$(docker ps --filter "name=postgres" --quiet)
 echo "POSTGRES_CONTAINER_ID=$POSTGRES_CONTAINER_ID"
 
 echo "Creating database and users with permissions"
-docker exec -it $POSTGRES_CONTAINER_ID psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U postgres -d postgres -f /home/001_create_database_and_users.sql
+docker exec -it $POSTGRES_CONTAINER_ID psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U postgres -d postgres -f /home/postgres_create_database_and_users.sql
 
 # docker logs -f $POSTGRES_CONTAINER_ID
 
@@ -40,6 +40,9 @@ wait_for_port $KEYCLOAK_HOST $KEYCLOAK_PORT
 
 KEYCLOAK_CONTAINER_ID=$(docker ps --filter "name=keycloak" --quiet)
 echo "KEYCLOAK_CONTAINER_ID=$KEYCLOAK_CONTAINER_ID"
+
+echo "Creating realm, clients, users and roles"
+docker exec -it $KEYCLOAK_CONTAINER_ID bash /home/keycloak_create_users_and_roles.sh
 
 docker logs -f $KEYCLOAK_CONTAINER_ID
 

@@ -4,7 +4,7 @@ set -eu
 
 HOST=localhost
 PORT=5432
-TIMEOUT=10
+TIMEOUT=30
 
 wait_for_port() {
     local host=${1:?"ERROR: host is not defined"}

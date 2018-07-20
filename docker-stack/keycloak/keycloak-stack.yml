@@ -14,6 +14,8 @@ services:
       DB_DATABASE: keycloak
       DB_USER: keycloak
       DB_PASSWORD: 'Password1!'
+    volumes:
+      - ./keycloak_create_users_and_roles.sh:/home/keycloak_create_users_and_roles.sh
     ports:
       - "9090:8080"
     networks:
