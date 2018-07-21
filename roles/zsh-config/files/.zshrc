@@ -59,7 +59,8 @@ ex() {
 }
 
 pacman-upgrade() {
-    sudo sh -c "pacman -Syu; echo ':: Removing orphan packages'; pacman -Rsn $(pacman -Qdtq); pacman -Sc --noconfirm; yay -Syua"
+    yay -Syua
+    sudo sh -c "echo ':: Removing orphan packages'; pacman -Rsn $(pacman -Qdtq); pacman -Sc --noconfirm"
 }
 
 jwt() {
