@@ -25,18 +25,22 @@ docker swarm init
 ```bash
 # update the repository database
 sudo pacman -Sy
-# search the repository database
-pacman -Ss | i <package>
-# query an installed package
-pacman -Qs | i <package>
 # upgrade the system
 sudo pacman -Syu
+# search the remote repository database for a package
+pacman -Ss[i] <package>
+# query the local repository database for the installed package
+pacman -Qs[i] <package>
 # install a package
 sudo pacman -S <package>
 # remove a package, its configuration and dependencies
-sudo pacman -Rns <package>
+sudo pacman -Rsn <package>
 # list all files owned by a package
 pacman -Ql <package>
+# show which package the file belongs to
+pacman -Qo <file path>
+# show dependency tree of a package
+pactree <package>
 ```
 
 ## SQL Server Administration
