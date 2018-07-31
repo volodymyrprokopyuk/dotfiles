@@ -17,13 +17,13 @@ setopt EXTENDED_HISTORY
 setopt EXTENDED_GLOB
 
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 bindkey "^R" history-incremental-pattern-search-backward
 
 alias ee="emacsclient -t"
 alias ll="ls -alh --color=auto"
-alias ss="ag --hidden --ignore '*~' --ignore .git --ignore .idea --color-match '1;31'"
+alias gg="ag --hidden --follow --ignore '*~' --ignore .git --ignore .idea --color-match '1;31'"
 
 man() {
     env \
