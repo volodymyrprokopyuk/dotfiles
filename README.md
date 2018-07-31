@@ -20,7 +20,7 @@ sudo systemctl start docker
 # configure docker swarm
 docker swarm init
 ```
-# pacman usage:
+# pacman / yay usage:
 
 ```bash
 # update the repository database
@@ -41,6 +41,8 @@ pacman -Ql <package>
 pacman -Qo <file path>
 # show dependency tree of a package
 pactree <package>
+# show system statistics
+yay -Ps
 ```
 
 ## SQL Server Administration
