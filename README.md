@@ -2,7 +2,7 @@
 
 ```bash
 # install software with pacman from core, extra and community repositories
-pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
+sudo pacman-mirrors --fasttrack 5 && pacman -Syyu
 pacman -S yay adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy
 pacman -S ansible docker
 pacman -S xmlstarlet jq pwgen ipcalc openbsd-netcat sysstat iotop ethtool
@@ -180,7 +180,7 @@ Install and use locally generated SSH key on a remote server:
 ```bash
 # generate SSH key pair locally. Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
 # file parmissions: ~/.ssh = 700, ~/.ssh/id_rsa* = 600
-ssh-keygen -t rsa -b 2048
+ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
 # copy SSH key to a remote host. Provide remote host username and password
 ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
 # connect to the remote host using SSH key but not password. Provide passphrase
