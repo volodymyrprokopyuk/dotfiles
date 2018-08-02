@@ -1,0 +1,6 @@
+---
+- name: Install awscli into ~/.local
+  pip:
+    name: awscli
+    state: latest
+    extra_args: --user

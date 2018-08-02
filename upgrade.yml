@@ -24,3 +24,6 @@
 
     - role: editor-config
       tags: editor-config, editor, config
+
+    - role: aws-upgrade
+      tags: aws-upgrade, aws, upgrade

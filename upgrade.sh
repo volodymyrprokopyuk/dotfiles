@@ -22,6 +22,8 @@ Options:
 
     -edc | --editor-config
 
+    -amu | --aws-upgrade
+
     -au | --all-upgrade
     -ac | --all-config
     -a  | --all
@@ -71,6 +73,11 @@ case "$1" in
     # editor-config
     -edc|--editor-config)
         $ANSIBLE_PLAYBOOK --tags editor-config
+        ;;
+
+    # aws-upgrade
+    -amu|--aws-upgrade)
+        $ANSIBLE_PLAYBOOK --tags aws-upgrade
         ;;
 
     # all

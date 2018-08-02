@@ -1,4 +1,4 @@
-export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export TERM=screen-256color
 export ALTERNATE_EDITOR=""
@@ -99,6 +99,10 @@ ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Install Zsh completions
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
+
+# Install aws completions
+ZPACKAGE=$HOME/.local/bin/aws_zsh_completer.sh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 # Install fzf
 ZPACKAGE=/usr/share/fzf/key-bindings.zsh
