@@ -1,0 +1,14 @@
+---
+version: "3"
+
+services:
+  # host: localhost, port: 3306, user: root, password: Password1!, database: mysql
+  mariadb:
+    image: "mariadb:10.3"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Password1!'
+    volumes:
+      - ./001_create_database_and_users.sql:/home/001_create_database_and_users.sql
+      # host: localhost, port: 3306, user: vld, password: Password1!, database: people
+    ports:
+      - "3306:3306"
