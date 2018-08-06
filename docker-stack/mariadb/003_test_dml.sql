@@ -1,8 +1,8 @@
-INSERT INTO family.person(first_name, last_name)
+INSERT INTO person(first_name, last_name)
 VALUES ('Volodymyr', 'Prokopyuk');
 
-SELECT * FROM family.person;
+SELECT * FROM person;
 
-SELECT family.fn_find_person('Volodymyr', 'Prokopyuk');
+CALL sp_find_person('Volodymyr', 'Prokopyuk');
 
-SELECT family.fn_full_name(p.first_name, p.last_name) full_name FROM family.person p;
+SELECT fn_full_name(p.first_name, p.last_name) full_name FROM person p;

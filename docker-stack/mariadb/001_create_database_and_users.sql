@@ -1,3 +1,3 @@
 CREATE DATABASE people;
-GRANT USAGE ON people.* TO 'vld'@'localhost' IDENTIFIED BY 'Password1!';
-GRANT ALL ON people.* TO 'vld'@'localhost';
+GRANT USAGE ON *.* TO 'vld'@'localhost' IDENTIFIED BY 'Password1!';
+GRANT ALL ON *.* TO 'vld'@'localhost';

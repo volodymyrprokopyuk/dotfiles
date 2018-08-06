@@ -47,9 +47,9 @@ wait_for_mysql $CONTAINER_ID $HOST $PORT root 'Password1!'
 echo "Creating database and users with permissions"
 docker exec -it $CONTAINER_ID mysql -h$HOST -P$PORT -uroot -p'Password1!' -e"source /home/001_create_database_and_users.sql"
 echo "Creating database schema"
-docker exec -it $CONTAINER_ID mysql -h$HOST -P$PORT -uvld -p'Password1!' -e"select 'vld';" people
-# echo "Testing DML"
-# docker exec -it $CONTAINER_ID psql -h $HOST -p $PORT -U family_ddl_dml -d people -f /home/003_test_dml.sql
+docker exec -it $CONTAINER_ID mysql -h$HOST -P$PORT -uvld -p'Password1!' -e"source /home/002_create_schema.sql" people
+echo "Testing DML"
+docker exec -it $CONTAINER_ID mysql -h$HOST -P$PORT -uvld -p'Password1!' -e"source /home/003_test_dml.sql" people
 
 docker logs -f $CONTAINER_ID
 
