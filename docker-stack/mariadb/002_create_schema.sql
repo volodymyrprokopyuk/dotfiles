@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS person(
-    person_id INT NOT NULL auto_increment,
+    person_id SERIAL NOT NULL,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     PRIMARY KEY (person_id)
