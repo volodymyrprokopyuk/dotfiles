@@ -17,7 +17,7 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo systemctl enable docker
 sudo systemctl start docker
-# configure docker swarm
+# logout, login and then configure docker swarm
 docker swarm init
 ```
 # pacman / yay usage:
