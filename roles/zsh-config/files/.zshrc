@@ -60,7 +60,6 @@ ex() {
 
 pacman-upgrade() {
     yay -Syu
-    yay -Syua
     sudo sh -c "echo ':: Removing orphan packages'; pacman -Rsn $(pacman -Qdtq); pacman -Sc --noconfirm"
 }
 

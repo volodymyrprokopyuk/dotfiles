@@ -1,9 +1,13 @@
 # Installation
 
 ```bash
+# install yay with makepkg from git
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 # install software with pacman from core, extra and community repositories
 sudo pacman-mirrors --fasttrack 5 && pacman -Syyu
-pacman -S yay adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy
+pacman -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy
 pacman -S ansible docker
 pacman -S xmlstarlet jq pwgen ipcalc openbsd-netcat sysstat iotop ethtool
 pacman -S dbeaver-ce
