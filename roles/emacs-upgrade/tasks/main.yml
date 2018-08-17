@@ -42,6 +42,7 @@
     -L {{ emacs_home }}/emmet-mode
     -L {{ emacs_home }}/markdown-mode
     -L {{ emacs_home }}/yaml-mode
+    -L {{ emacs_home }}/dockerfile-mode
     -L {{ emacs_home }}/evil
     -L {{ emacs_home }}/evil-surround
     -L {{ emacs_home }}/evil-nerd-commenter
@@ -69,6 +70,7 @@
     - emmet-mode
     - markdown-mode
     - yaml-mode
+    - dockerfile-mode
     - evil-nerd-commenter
 
 - name: Make Emacs extensions in {{ emacs_home }}

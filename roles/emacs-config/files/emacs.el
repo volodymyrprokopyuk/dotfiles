@@ -261,6 +261,11 @@
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
+; Dockerfile mode
+(add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
+(autoload 'dockerfile-mode "dockerfile-mode" nil t)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
 ; Evil mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
