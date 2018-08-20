@@ -10,7 +10,7 @@ sudo pacman-mirrors --fasttrack 5 && pacman -Syyu
 pacman -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy
 pacman -S ansible docker
 pacman -S xmlstarlet jq pwgen ipcalc openbsd-netcat sysstat iotop ethtool
-pacman -S dbeaver-ce
+pacman -S intellij-idea-ce dbeaver-ce
 # install software with yay from AUR
 yay -S dropbox google-chrome skypeforlinux-preview-bin
 yay -S apg
