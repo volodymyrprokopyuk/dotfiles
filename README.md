@@ -13,7 +13,7 @@ pacman -S xmlstarlet jq pwgen ipcalc openbsd-netcat sysstat iotop ethtool
 pacman -S intellij-idea-ce dbeaver-ce
 # install software with yay from AUR
 yay -S dropbox google-chrome skypeforlinux-preview-bin
-yay -S apg
+yay -S apg yamllint
 # configure zsh
 chsh -s $(which zsh)
 # configure docker
