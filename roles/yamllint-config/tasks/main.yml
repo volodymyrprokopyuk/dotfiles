@@ -1,0 +1,6 @@
+---
+- name: Create ~/.config/yamllint directory
+  file: path=~/.config/yamllint state=directory
+
+- name: Copy config into ~/.config/yamllint
+  copy: src=config dest=~/.config/yamllint/config

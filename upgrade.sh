@@ -22,6 +22,8 @@ Options:
 
     -edc | --editor-config
 
+    -ylc | --yamllint-config
+
     -amu | --aws-upgrade
 
     -au | --all-upgrade
@@ -73,6 +75,11 @@ case "$1" in
     # editor-config
     -edc|--editor-config)
         $ANSIBLE_PLAYBOOK --tags editor-config
+        ;;
+
+    # yamllint-config
+    -ylc|--yamllint-config)
+        $ANSIBLE_PLAYBOOK --tags yamllint-config
         ;;
 
     # aws-upgrade

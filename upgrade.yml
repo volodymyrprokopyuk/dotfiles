@@ -25,5 +25,8 @@
     - role: editor-config
       tags: editor-config, editor, config
 
+    - role: yamllint-config
+      tags: yamllint-config, yamllint, config
+
     - role: aws-upgrade
       tags: aws-upgrade, aws, upgrade
