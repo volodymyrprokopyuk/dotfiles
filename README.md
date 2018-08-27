@@ -198,6 +198,16 @@ Host <alias>
 ssh <alias>
 ```
 
+Add private SSH key identities to the SSH authentication agent
+```bash
+# start SSH authentication agent
+eval $(ssh-agent)
+# add private SSH key identities to the SSH authentication agent. Provide passphrase
+ssh-add ~/.ssh/id_rsa*~*.pub
+# show added to the SSH authentication agent private SSH key identities
+ssh-add -L
+```
+
 Show local / remote PEM certificate details:
 ```bash
 # local file
