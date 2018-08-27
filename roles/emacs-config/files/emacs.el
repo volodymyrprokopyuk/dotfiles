@@ -153,7 +153,8 @@
 (add-to-list 'load-path "~/.emacs.d/ghub")
 (add-to-list 'load-path "~/.emacs.d/magit/lisp")
 (load "~/.emacs.d/magit/lisp/magit-autoloads.el")
-(add-hook  'find-file-hook 'git-commit-setup-check-buffer)
+;; Start Emacs server with Magit
+;; % emacsclient -e "(magit-status)"
 (with-eval-after-load 'info
     (info-initialize)
     (add-to-list 'Info-directory-list "~/.emacs.d/magit/Documentation/"))
