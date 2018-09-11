@@ -24,12 +24,6 @@ emacs_extensions_github:
   - https://github.com/syohex/emacs-helm-ag.git
   - https://github.com/company-mode/company-mode.git
   - https://github.com/abo-abo/avy.git
-  # git
-  - https://github.com/magit/with-editor.git
-  - https://github.com/magit/magit-popup.git
-  - https://github.com/magit/ghub.git
-  - https://github.com/magit/magit.git
-  - https://github.com/magit/git-modes.git
   # languages
   - https://github.com/Emacs-Kotlin-Mode-Maintainers/kotlin-mode.git
   - https://github.com/mooz/js2-mode.git

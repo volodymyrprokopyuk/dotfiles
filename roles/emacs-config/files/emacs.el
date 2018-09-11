@@ -147,23 +147,6 @@
 (require 'avy)
 (global-set-key (kbd "M-s j") 'avy-goto-char-timer)
 
-; Magit mode
-(add-to-list 'load-path "~/.emacs.d/with-editor")
-(add-to-list 'load-path "~/.emacs.d/magit-popup")
-(add-to-list 'load-path "~/.emacs.d/ghub")
-(add-to-list 'load-path "~/.emacs.d/magit/lisp")
-(load "~/.emacs.d/magit/lisp/magit-autoloads.el")
-;; Start Emacs server with Magit
-;; % emacsclient -e "(magit-status)"
-(with-eval-after-load 'info
-    (info-initialize)
-    (add-to-list 'Info-directory-list "~/.emacs.d/magit/Documentation/"))
-(global-set-key (kbd "C-x g") 'magit-status)
-
-; Git modes (gitattributes, gitconfig, gitignore)
-(add-to-list 'load-path "~/.emacs.d/git-modes")
-(load "~/.emacs.d/git-modes/git-modes-autoloads.el")
-
 ; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
