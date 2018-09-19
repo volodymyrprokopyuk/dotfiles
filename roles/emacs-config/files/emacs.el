@@ -295,5 +295,10 @@
 (require 'evil-nerd-commenter)
 (evilnc-default-hotkeys)
 
-; set Evil insert mode on message commit
-(add-hook 'git-commit-mode-hook 'evil-insert-state)
+; Evil Goggles mode
+(add-to-list 'load-path "~/.emacs.d/evil-goggles")
+(require 'evil-goggles)
+(evil-goggles-mode)
+(setq evil-goggles-duration 0.500)
+(custom-set-faces
+    '(evil-goggles-default-face ((t (:inherit isearch-fail)))))

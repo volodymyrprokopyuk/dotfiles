@@ -45,6 +45,7 @@
     -L {{ emacs_home }}/evil
     -L {{ emacs_home }}/evil-surround
     -L {{ emacs_home }}/evil-nerd-commenter
+    -L {{ emacs_home }}/evil-goggles
     -f batch-byte-compile {{ emacs_home }}/{{ item }}/*.el
   with_items:
     - epl
@@ -73,10 +74,11 @@
     - evil-nerd-commenter
 
 - name: Make Emacs extensions in {{ emacs_home }}
-  shell: EMACSLOADPATH="{{ emacs_home }}/emacs-async:" make
+  shell: EMACSLOADPATH="{{ emacs_home }}/emacs-async:{{ emacs_home }}/evil:" make
   args:
     chdir: "{{ emacs_home }}/{{ item }}/"
   with_items:
     - helm
     - evil
     - evil-surround
+    - evil-goggles
