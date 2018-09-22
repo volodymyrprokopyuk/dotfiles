@@ -24,6 +24,8 @@ Options:
 
     -ylc | --yamllint-config
 
+    -plc | --pylint-config
+
     -amu | --aws-upgrade
 
     -au | --all-upgrade
@@ -80,6 +82,11 @@ case "$1" in
     # yamllint-config
     -ylc|--yamllint-config)
         $ANSIBLE_PLAYBOOK --tags yamllint-config
+        ;;
+
+    # pylint-config
+    -plc|--pylint-config)
+        $ANSIBLE_PLAYBOOK --tags pylint-config
         ;;
 
     # aws-upgrade

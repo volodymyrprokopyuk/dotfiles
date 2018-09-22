@@ -28,5 +28,8 @@
     - role: yamllint-config
       tags: yamllint-config, yamllint, config
 
+    - role: pylint-config
+      tags: pylint-config, pylint, config
+
     - role: aws-upgrade
       tags: aws-upgrade, aws, upgrade
