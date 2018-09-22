@@ -23,7 +23,7 @@ bindkey "^R" history-incremental-pattern-search-backward
 
 alias ee="emacsclient -t"
 alias ll="ls -alh --color=auto"
-alias gg="ag --hidden --follow --ignore '*~' --ignore .git --ignore .idea --color-match '1;31'"
+alias gg="ag --hidden --follow --ignore '*~' --ignore .git --ignore .idea --ignore __pycache__ --color-match '1;31'"
 
 man() {
     env \
