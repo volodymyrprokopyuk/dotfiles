@@ -5,15 +5,14 @@
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-# install software with pacman from core, extra and community repositories
+# install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && pacman -Syyu
-pacman -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
-pacman -S ansible docker
-pacman -S xmlstarlet jq pwgen ipcalc openbsd-netcat sysstat iotop ethtool
-pacman -S intellij-idea-ce dbeaver-ce
-# install software with yay from AUR
+yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
+yay -S xmlstarlet jq pwgen apg ipcalc openbsd-netcat sysstat iotop ethtool
+yay -S yamllint python-pylint flake8
+yay -S ansible docker
+yay -S intellij-idea-ce dbeaver-ce
 yay -S dropbox google-chrome skypeforlinux-preview-bin
-yay -S apg yamllint
 # configure zsh
 chsh -s $(which zsh)
 # configure docker
