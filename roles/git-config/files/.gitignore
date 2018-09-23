@@ -11,3 +11,7 @@ target/
 # IntelliJ
 .idea/
 *.iml
+
+# Python
+__pycache__/
+.pytest_cache/
