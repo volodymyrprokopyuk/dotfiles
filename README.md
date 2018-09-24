@@ -48,6 +48,14 @@ pactree <package>
 yay -Ps
 ```
 
+# Python Virtual Environment
+
+```bash
+python -m venv <env>
+source <env>/bin/activate
+deactivate
+```
+
 ## SQL Server Administration
 
 ### Login (Server instance)
