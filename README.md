@@ -12,7 +12,7 @@ yay -S xmlstarlet jq pwgen apg ipcalc openbsd-netcat sysstat iotop ethtool
 yay -S yamllint python-pylint flake8
 yay -S ansible docker
 yay -S intellij-idea-ce dbeaver-ce
-yay -S dropbox google-chrome skypeforlinux-preview-bin
+yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
 # configure zsh
 chsh -s $(which zsh)
 # configure docker
