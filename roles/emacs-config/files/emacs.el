@@ -171,6 +171,9 @@
 (setq-default js2-basic-offset 4)
 (setq-default js-indent-level 4)
 
+; CQL mode
+(add-to-list 'auto-mode-alist '("\\.cql\\'" . sql-mode))
+
 ; JS format
 (defun js-format ()
     "Format JS region using js-beautify"
