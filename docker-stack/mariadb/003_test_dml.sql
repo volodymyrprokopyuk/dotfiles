@@ -1,4 +1,4 @@
-INSERT INTO person(first_name, last_name)
+INSERT INTO person (first_name, last_name)
 VALUES ('Volodymyr', 'Prokopyuk');
 
 SELECT * FROM person;

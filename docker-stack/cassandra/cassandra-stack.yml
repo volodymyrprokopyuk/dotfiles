@@ -1,0 +1,13 @@
+---
+version: "3"
+
+services:
+  # host: localhost, port: 9042
+  cassandra:
+    image: "cassandra:3.11"
+    volumes:
+      - ./001_create_keyspace.cql:/home/001_create_keyspace.cql
+      - ./002_create_schema.cql:/home/002_create_schema.cql
+      - ./003_test_dml.cql:/home/003_test_dml.cql
+    ports:
+      - "9042:9042"
