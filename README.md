@@ -8,10 +8,10 @@ makepkg -si
 # install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
-yay -S xmlstarlet jq pwgen apg ipcalc openbsd-netcat sysstat iotop ethtool
-yay -S yamllint python-pylint flake8
+yay -S xmlstarlet jq pwgen apg openbsd-netcat
 yay -S ansible docker
-yay -S intellij-idea-ce dbeaver-ce
+yay -S pgcli mycli
+yay -S intellij-idea-ce
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
 # configure zsh
 chsh -s $(which zsh)

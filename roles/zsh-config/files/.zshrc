@@ -58,11 +58,6 @@ ex() {
     fi
 }
 
-pacman-upgrade() {
-    yay -Syu
-    sudo sh -c "echo ':: Removing orphan packages'; pacman -Rsn $(pacman -Qdtq); pacman -Sc --noconfirm"
-}
-
 jwt() {
     cut -d . -f 1 <<< $1 | base64 -d | jq # JWT Header
     cut -d . -f 2 <<< $1 | base64 -d | jq # JWT Body
