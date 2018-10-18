@@ -44,6 +44,8 @@ pacman -Ql <package>
 pacman -Qo <file path>
 # show dependency tree of a package
 pactree <package>
+# clean package cache
+yay -Sc
 # show system statistics
 yay -Ps
 ```
