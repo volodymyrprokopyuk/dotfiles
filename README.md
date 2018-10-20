@@ -10,7 +10,7 @@ sudo pacman-mirrors --fasttrack 5 && pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
 yay -S xmlstarlet jq pwgen apg openbsd-netcat
 yay -S ansible docker
-yay -S pgcli mycli
+yay -S ptpython pgcli mycli
 yay -S intellij-idea-ce
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
 # configure zsh
