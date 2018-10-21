@@ -20,18 +20,35 @@ wait_for_port() {
     done
 }
 
+wait_for_psql() {
+    local container_id=${1:?"ERROR: container id is not definec"}
+    local host=${2:?"ERROR: host is not defined"}
+    local port=${3:?"ERROR: port is not defined"}
+    local user=${4:?"ERROR: user is not defined"}
+    local timeout=${5:-$TIMEOUT}
+    while ! docker exec -it $container_id psql -h $host -p $port -U $user -c "\q"; do
+        sleep 1
+        (( timeout-- ))
+        if [[ $timeout -eq 0 ]]; then
+            echo "ERROR: PostgreSQL server has not started correctly"
+            exit 1
+        fi
+    done
+}
+
 docker stack deploy -c postgres-stack.yml postgres
 wait_for_port $HOST $PORT
 
 CONTAINER_ID=$(docker ps --filter "name=postgres" --quiet)
 echo "CONTAINER_ID=$CONTAINER_ID"
+wait_for_psql $CONTAINER_ID $HOST $PORT postgres
 
 echo "Creating database and users with permissions"
 docker exec -it $CONTAINER_ID psql -h $HOST -p $PORT -U postgres -d postgres -f /home/001_create_database_and_users.sql
 echo "Creating database schema"
-docker exec -it $CONTAINER_ID psql -h $HOST -p $PORT -U family_ddl_dml -d people -f /home/002_create_schema.sql
+docker exec -it $CONTAINER_ID psql -h $HOST -p $PORT -U vld -d people -f /home/002_create_schema.sql
 echo "Testing DML"
-docker exec -it $CONTAINER_ID psql -h $HOST -p $PORT -U family_ddl_dml -d people -f /home/003_test_dml.sql
+docker exec -it $CONTAINER_ID psql -h $HOST -p $PORT -U vld -d people -f /home/003_test_dml.sql
 
 docker logs -f $CONTAINER_ID
 
