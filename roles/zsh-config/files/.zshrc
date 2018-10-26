@@ -72,8 +72,8 @@ gll() {
 }
 
 # Install Liquidprompt
-ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+# ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
+# [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 # Install PowerLevel9k
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -87,6 +87,14 @@ ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
 #ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
 #autoload -U promptinit; promptinit
 #prompt spaceship
+
+# Install Pure
+fpath=($HOME/.zsh/pure $fpath)
+ln -sf $HOME/.zsh/pure/pure.zsh $HOME/.zsh/pure/prompt_pure_setup
+ln -sf $HOME/.zsh/pure/async.zsh $HOME/.zsh/pure/async
+autoload -U promptinit; promptinit
+prompt pure
+
 
 # Install Zsh autosuggestions
 ZPACKAGE=$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
