@@ -23,7 +23,7 @@ sudo systemctl start docker
 # logout, login and then configure docker swarm
 docker swarm init
 ```
-# pacman / yay usage:
+# pacman/yay usage:
 
 ```bash
 # update the repository database
@@ -40,6 +40,8 @@ yay -S <package>
 yay -Rsn <package>
 # clean package cache
 yay -Sc
+# show explicitly installed packages
+yay -Qe
 # list all files owned by a package
 yay -Ql <package>
 # show which package the file belongs to
