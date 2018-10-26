@@ -27,27 +27,27 @@ docker swarm init
 
 ```bash
 # update the repository database
-sudo pacman -Sy
+yay -Sy
 # upgrade the system
-sudo pacman -Syu
+yay -Syu
 # search the remote repository database for a package
-pacman -Ss[i] <package>
+yay -Ss[i] <package>
 # query the local repository database for the installed package
-pacman -Qs[i] <package>
+yay -Qs[i] <package>
 # install a package
-sudo pacman -S <package>
+yay -S <package>
 # remove a package, its configuration and dependencies
-sudo pacman -Rsn <package>
-# list all files owned by a package
-pacman -Ql <package>
-# show which package the file belongs to
-pacman -Qo <file path>
-# show dependency tree of a package
-pactree <package>
+yay -Rsn <package>
 # clean package cache
 yay -Sc
+# list all files owned by a package
+yay -Ql <package>
+# show which package the file belongs to
+yay -Qo <file path>
 # show system statistics
 yay -Ps
+# show dependency tree of a package
+pactree <package>
 ```
 
 # Python Virtual Environment
