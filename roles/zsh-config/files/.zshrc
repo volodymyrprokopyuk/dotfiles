@@ -72,28 +72,28 @@ gll() {
 }
 
 # Install Liquidprompt
-# ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
-# [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 # Install PowerLevel9k
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{green}┌─%f"
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{green}└─➤ %f"
-#ZPACKAGE=$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme
-#[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{green}┌─%f"
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{green}└─➤ %f"
+# ZPACKAGE=$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme
+# [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 # Install Spaceship Prompt
-#fpath=($HOME/.zsh/spaceship-prompt $fpath)
-#ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
-#autoload -U promptinit; promptinit
-#prompt spaceship
+# fpath=($HOME/.zsh/spaceship-prompt $fpath)
+# ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
+# autoload -U promptinit; promptinit
+# prompt spaceship
 
 # Install Pure
-fpath=($HOME/.zsh/pure $fpath)
-ln -sf $HOME/.zsh/pure/pure.zsh $HOME/.zsh/pure/prompt_pure_setup
-ln -sf $HOME/.zsh/pure/async.zsh $HOME/.zsh/pure/async
-autoload -U promptinit; promptinit
-prompt pure
+# fpath=($HOME/.zsh/pure $fpath)
+# ln -sf $HOME/.zsh/pure/pure.zsh $HOME/.zsh/pure/prompt_pure_setup
+# ln -sf $HOME/.zsh/pure/async.zsh $HOME/.zsh/pure/async
+# autoload -U promptinit; promptinit
+# prompt pure
 
 
 # Install Zsh autosuggestions
