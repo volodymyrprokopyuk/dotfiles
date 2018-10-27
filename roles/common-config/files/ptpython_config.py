@@ -22,7 +22,7 @@ def configure(repl):
     repl.show_line_numbers = False
 
     # Show status bar.
-    repl.show_status_bar = True
+    repl.show_status_bar = False
 
     # When the sidebar is visible, also show the help text.
     repl.show_sidebar_help = True
@@ -34,7 +34,7 @@ def configure(repl):
     repl.wrap_lines = True
 
     # Mouse support.
-    repl.enable_mouse_support = True
+    repl.enable_mouse_support = False
 
     # Complete while typing. (Don't require tab before the
     # completion menu is shown.)
