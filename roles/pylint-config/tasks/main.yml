@@ -1,3 +1,0 @@
----
-- name: Copy flake8 into ~/.config
-  copy: src=flake8 dest=~/.config

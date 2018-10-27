@@ -9,27 +9,21 @@
     - role: diff-config
       tags: diff-config, diff, config
 
-    - role: emacs-upgrade
-      tags: emacs-upgrade, emacs, upgrade
-    - role: emacs-config
-      tags: emacs-config, emacs, config
+    - role: tmux-config
+      tags: tmux-config, tmux, config
+
+    - role: common-config
+      tags: common-config, common, config
 
     - role: zsh-upgrade
       tags: zsh-upgrade, zsh, upgrade
     - role: zsh-config
       tags: zsh-config, zsh, config
 
-    - role: tmux-config
-      tags: tmux-config, tmux, config
-
-    - role: editor-config
-      tags: editor-config, editor, config
-
-    - role: yamllint-config
-      tags: yamllint-config, yamllint, config
-
-    - role: pylint-config
-      tags: pylint-config, pylint, config
+    - role: emacs-upgrade
+      tags: emacs-upgrade, emacs, upgrade
+    - role: emacs-config
+      tags: emacs-config, emacs, config
 
     - role: aws-upgrade
       tags: aws-upgrade, aws, upgrade

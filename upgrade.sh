@@ -10,23 +10,19 @@ Options:
 
     -dc | --diff-config
 
-    -eu | --emacs-upgrade
-    -ec | --emacs-config
-    -ea | --emacs-all
+    -tc | --tmux-config
+
+    -cc | --common-config
 
     -zu | --zsh-upgrade
     -zc | --zsh-config
     -za | --zsh-all
 
-    -tc | --tmux-config
+    -eu | --emacs-upgrade
+    -ec | --emacs-config
+    -ea | --emacs-all
 
-    -edc | --editor-config
-
-    -ylc | --yamllint-config
-
-    -plc | --pylint-config
-
-    -amu | --aws-upgrade
+    -awsu | --aws-upgrade
 
     -au | --all-upgrade
     -ac | --all-config
@@ -47,15 +43,14 @@ case "$1" in
         $ANSIBLE_PLAYBOOK --tags diff-config
         ;;
 
-    # emacs
-    -eu|--emacs-upgrade)
-        $ANSIBLE_PLAYBOOK --tags emacs-upgrade
+    # tmux
+    -tc|--tmux-config)
+        $ANSIBLE_PLAYBOOK --tags tmux-config
         ;;
-    -ec|--emacs-config)
-        $ANSIBLE_PLAYBOOK --tags emacs-config
-        ;;
-    -ea|--emacs-all)
-        $ANSIBLE_PLAYBOOK --tags emacs
+
+    # editor-config
+    -cc|--common-config)
+        $ANSIBLE_PLAYBOOK --tags common-config
         ;;
 
     # zsh
@@ -69,28 +64,19 @@ case "$1" in
         $ANSIBLE_PLAYBOOK --tags zsh
         ;;
 
-    # tmux
-    -tc|--tmux-config)
-        $ANSIBLE_PLAYBOOK --tags tmux-config
+    # emacs
+    -eu|--emacs-upgrade)
+        $ANSIBLE_PLAYBOOK --tags emacs-upgrade
         ;;
-
-    # editor-config
-    -edc|--editor-config)
-        $ANSIBLE_PLAYBOOK --tags editor-config
+    -ec|--emacs-config)
+        $ANSIBLE_PLAYBOOK --tags emacs-config
         ;;
-
-    # yamllint-config
-    -ylc|--yamllint-config)
-        $ANSIBLE_PLAYBOOK --tags yamllint-config
-        ;;
-
-    # pylint-config
-    -plc|--pylint-config)
-        $ANSIBLE_PLAYBOOK --tags pylint-config
+    -ea|--emacs-all)
+        $ANSIBLE_PLAYBOOK --tags emacs
         ;;
 
     # aws-upgrade
-    -amu|--aws-upgrade)
+    -awsu|--aws-upgrade)
         $ANSIBLE_PLAYBOOK --tags aws-upgrade
         ;;
 
