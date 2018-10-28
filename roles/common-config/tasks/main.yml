@@ -7,3 +7,6 @@
 
 - name: Copy config.py into ~/.ptpython
   copy: src=ptpython_config.py dest=~/.ptpython/config.py
+
+- name: Copy .myclirc into ~
+  copy: src=.myclirc dest=~
