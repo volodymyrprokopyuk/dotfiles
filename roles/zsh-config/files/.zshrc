@@ -3,6 +3,7 @@ export PATH=$HOME/.local/bin:$PATH
 export TERM=screen-256color
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"
+export LESS="-XFR"
 export ANSIBLE_NOCOWS=1
 
 alias tmux="tmux -2"
