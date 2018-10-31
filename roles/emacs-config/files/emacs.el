@@ -22,7 +22,7 @@
 
 ; Recentf mode
 (recentf-mode 1)
-(setq recentf-max-menu-items 24)
+(setq recentf-max-menu-items 512)
 (add-to-list 'recentf-exclude (expand-file-name "~/.emacs.d/recentf"))
 (run-with-timer 3600 (* 60 60) 'recentf-save-list)
 
