@@ -100,7 +100,7 @@ ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
 # Install Zsh autosuggestions
 ZPACKAGE=$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-bindkey "^[;" autosuggest-accept
+bindkey "^[j" autosuggest-accept
 
 # Install Zsh syntax highlighting
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
