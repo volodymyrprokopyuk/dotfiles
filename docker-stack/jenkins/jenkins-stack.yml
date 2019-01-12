@@ -1,0 +1,12 @@
+---
+version: "3"
+
+services:
+  jenkins:
+    # host: localhost, port: 8999, user: admin, password: Password1!
+    image: "jenkins/jenkins:lts"
+    volumes:
+        - ./jenkins_home:/var/jenkins_home
+        - ./executors.groovy:/usr/share/jenkins/ref/init.groovy.d/executors.groovy
+    ports:
+      - "8999:8080"

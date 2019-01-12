@@ -2,3 +2,4 @@
 *.swp
 *.retry
 .idea/
+docker-stack/jenkins/jenkins_home/
