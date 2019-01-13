@@ -8,5 +8,9 @@ services:
     volumes:
         - ./jenkins_home:/var/jenkins_home
         - ./executors.groovy:/usr/share/jenkins/ref/init.groovy.d/executors.groovy
+        # New Item
+        #     > python-example, Multibranch Pipeline
+        #     > Python example, file:///home/python-example
+        - ./python-example:/home/python-example
     ports:
       - "8999:8080"
