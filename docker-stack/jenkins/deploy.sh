@@ -44,6 +44,9 @@ CONTAINER_ID=$(docker ps --filter "name=jenkins" --quiet)
 echo "CONTAINER_ID=$CONTAINER_ID"
 wait_for_jenkins $CONTAINER_ID $HOST $DOCKER_PORT
 
+echo "Installing Python..."
+docker exec -it -u root $CONTAINER_ID bash -c "apt-get update && apt-get install -y python3 python3-pip python3-venv"
+
 docker logs -f $CONTAINER_ID
 
 # docker stack rm jenkins

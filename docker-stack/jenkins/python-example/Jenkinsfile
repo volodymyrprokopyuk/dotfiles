@@ -3,21 +3,24 @@ pipeline {
 
     stages {
 
-        stage("Build") {
+        stage("Bootstrap") {
             steps {
-                echo "Building..."
+                echo "Bootstrapping..."
+                sh "./bin/bootstrap.sh"
+            }
+        }
+
+        stage("Analyze") {
+            steps {
+                echo "Analyzing..."
+                sh "./bin/analyze.sh"
             }
         }
 
         stage("Test") {
             steps {
                 echo "Testing..."
-            }
-        }
-
-        stage("Deploy") {
-            steps {
-                echo "Deploying..."
+                sh "./bin/test.sh"
             }
         }
     }
