@@ -128,7 +128,7 @@
 (require 'helm-ag)
 (custom-set-variables
     '(helm-ag-base-command "ag --nocolor --nogroup")
-    '(helm-ag-command-option "--hidden --ignore *~ --ignore .git --ignore .idea --ignore __pycache__"))
+    '(helm-ag-command-option "--hidden --ignore *~ --ignore .git --ignore .idea --ignore __pycache__ --ignore venv"))
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
 (defun helm-do-ag-project-root-search-file-names ()
