@@ -83,7 +83,7 @@ gll() {
 # ZPACKAGE=$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme
 # [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-Install Spaceship Prompt
+# Install Spaceship Prompt
 fpath=($HOME/.zsh/spaceship-prompt $fpath)
 ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
 autoload -U promptinit; promptinit
