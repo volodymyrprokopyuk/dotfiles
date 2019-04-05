@@ -71,6 +71,7 @@
     - markdown-mode
     - yaml-mode
     - dockerfile-mode
+    - evil-surround
     - evil-nerd-commenter
 
 - name: Make Emacs extensions in {{ emacs_home }}
@@ -80,5 +81,4 @@
   with_items:
     - helm
     - evil
-    - evil-surround
     - evil-goggles
