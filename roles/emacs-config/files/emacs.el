@@ -280,6 +280,10 @@
 (define-key evil-visual-state-map "K"
     (concat ":m '<-2" (kbd "RET") "gv=gv"))
 
+; treat _ as part of the word on *, #, w
+(add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'sql-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
+
 ; Ibuffer mode
 (evil-ex-define-cmd "ls" 'ibuffer)
 (evil-set-initial-state 'ibuffer-mode 'normal)
@@ -300,7 +304,7 @@
 (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
 (require 'evil-nerd-commenter)
 (evilnc-default-hotkeys)
-(global-set-key (kbd "M-j") 'evilnc-comment-or-uncomment-lines)
+(global-set-key (kbd "M-,") 'evilnc-comment-or-uncomment-lines)
 
 ; Evil Goggles mode
 (add-to-list 'load-path "~/.emacs.d/evil-goggles")
