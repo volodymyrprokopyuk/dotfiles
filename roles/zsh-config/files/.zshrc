@@ -88,6 +88,7 @@ fpath=($HOME/.zsh/spaceship-prompt $fpath)
 ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
 autoload -U promptinit; promptinit
 prompt spaceship
+SPACESHIP_EXIT_CODE_SHOW=true
 
 # Install Pure
 # fpath=($HOME/.zsh/pure $fpath)
