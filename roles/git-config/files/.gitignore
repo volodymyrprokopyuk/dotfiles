@@ -15,4 +15,5 @@ target/
 # Python
 __pycache__/
 .pytest_cache/
+htmlcov/
 pyvenv/
