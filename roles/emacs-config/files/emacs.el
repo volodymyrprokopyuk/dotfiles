@@ -283,6 +283,7 @@
 ; treat _ as part of the word on *, #, w
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'sql-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
+(add-hook 'java-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
 
 ; Ibuffer mode
 (evil-ex-define-cmd "ls" 'ibuffer)
