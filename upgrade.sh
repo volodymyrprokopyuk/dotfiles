@@ -29,7 +29,7 @@ Options:
     -a  | --all
 EOM
 
-ANSIBLE_PLAYBOOK='ansible-playbook -i "localhost," upgrade.yml'
+ANSIBLE_PLAYBOOK='ansible-playbook -i "localhost," upgrade.yaml'
 
 case "$1" in
 
