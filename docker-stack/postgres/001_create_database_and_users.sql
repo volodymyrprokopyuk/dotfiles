@@ -1,8 +1,0 @@
-DROP DATABASE people;
-CREATE DATABASE people;
-\connect people
-
-CREATE SCHEMA family;
-
-CREATE USER vld WITH ENCRYPTED PASSWORD 'Password1!';
-GRANT USAGE, CREATE ON SCHEMA family TO vld;

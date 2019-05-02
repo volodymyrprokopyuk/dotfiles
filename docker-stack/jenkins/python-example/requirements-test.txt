@@ -1,6 +1,0 @@
-pytest==4.1.1
-pytest-cov==2.6.1
-flake8==3.6.0
-bandit==1.5.1
-pylint==2.2.2
-radon==2.4.0
