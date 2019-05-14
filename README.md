@@ -11,7 +11,7 @@ yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-
 yay -S xmlstarlet jq pwgen apg openbsd-netcat
 yay -S ansible docker
 yay -S python-black flake8 python-pylint ptpython pgcli mycli
-yay -S yed sdedit
+yay -S yed plantuml
 yay -S intellij-idea-ce
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
 # configure zsh
