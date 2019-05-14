@@ -32,6 +32,7 @@ emacs_extensions_github:
   - https://github.com/jrblevin/markdown-mode.git
   - https://github.com/yoshiki/yaml-mode.git
   - https://github.com/spotify/dockerfile-mode.git
+  - https://github.com/skuro/plantuml-mode.git
   # evil
   - https://github.com/emacs-evil/evil.git
   - https://github.com/emacs-evil/evil-surround.git

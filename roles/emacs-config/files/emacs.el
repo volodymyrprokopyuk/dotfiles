@@ -258,6 +258,11 @@
 (autoload 'dockerfile-mode "dockerfile-mode" nil t)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
+; PlantUML mode
+(add-to-list 'load-path "~/.emacs.d/plantuml-mode")
+(autoload 'plantuml-mode "plantuml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
+
 ; Evil mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
