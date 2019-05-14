@@ -262,6 +262,7 @@
 (add-to-list 'load-path "~/.emacs.d/plantuml-mode")
 (autoload 'plantuml-mode "plantuml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
+(setq plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
 
 ; Evil mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
