@@ -10,7 +10,8 @@ sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
 yay -S xmlstarlet jq pwgen apg openbsd-netcat
 yay -S ansible docker
-yay -S python-black flake8 python-pylint ptpython pgcli mycli
+yay -S python-black flake8 python-pylint ptpython pgcli
+yay -S idris swi-prolog
 yay -S yed plantuml
 yay -S intellij-idea-ce
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
