@@ -193,7 +193,8 @@
 ; Prolog mode
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
-; CQL mode
+; SQL mode
+(setq sql-product 'postgres)
 (add-to-list 'auto-mode-alist '("\\.cql\\'" . sql-mode))
 
 ; Dockerfile mode
