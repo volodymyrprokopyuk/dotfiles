@@ -1,23 +1,23 @@
-; disable toolbar
+; Disable toolbar
 (tool-bar-mode -1)
-; disable menubar
+; Disable menubar
 (menu-bar-mode -1)
-; disable scrollbar
+; Disable scrollbar
 (scroll-bar-mode -1)
-; disable startup screen
+; Disable startup screen
 (setq inhibit-startup-screen t)
-; maximize emacs window on startup
+; Maximize emacs window on startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-; set calendar week start day to Monday
+; Set calendar week start day to Monday
 (add-hook 'calendar-mode-hook '(lambda () (setq calendar-week-start-day 1)))
 
-; show line numbers
+; Show line numbers
 (global-linum-mode t)
 (add-hook 'linum-mode-hook '(lambda () (setq linum-format "%d ")))
-; highlight current line
+; Highlight current line
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#333333")
-; highlight matching parenthesis
+; Highlight matching parenthesis
 (show-paren-mode 1)
 
 ; Recentf mode
@@ -26,7 +26,7 @@
 (add-to-list 'recentf-exclude (expand-file-name "~/.emacs.d/recentf"))
 (run-with-timer 3600 (* 60 60) 'recentf-save-list)
 
-; terminal clipboard yank/paste
+; Terminal clipboard yank/paste
 (setq select-enable-clipboard t)
 (unless window-system
     (when (getenv "DISPLAY")
@@ -44,21 +44,21 @@
 (require 'whitespace)
 (global-whitespace-mode t)
 (global-whitespace-toggle-options t)
-; columns margin
+; Columns margin
 (setq-default whitespace-line-column 88)
 ; M-q -> format selected text
 (setq-default fill-column 88)
-; show tab marks, trailing blanks, long lines
+; Show tab marks, trailing blanks, long lines
 (setq-default whitespace-style '(face tab-mark trailing lines-tail))
-; remove trailing blanks on save
+; Remove trailing blanks on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-; put newline at the end of a file
+; Put newline at the end of a file
 (setq require-final-newline t)
 (setq mode-require-final-newline t)
-; automatically format text when typing
+; Automatically format text when typing
 (add-hook 'text-mode-hook 'auto-fill-mode)
 
-; indentation
+; Indentation
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
@@ -71,32 +71,32 @@
 
 ; Source Code Pro font
 (set-frame-font "Source Code Pro Light 12")
-; increase/declease font size
+; Increase/declease font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
-; common extensions
+; Common extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
 (add-to-list 'load-path "~/.emacs.d/pkg-info.el")
 (add-to-list 'load-path "~/.emacs.d/s.el")
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 
-; add $PATH to exec-path
+; Add $PATH to exec-path
 (add-to-list 'load-path "~/.emacs.d/exec-path-from-shell")
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
-; Zenburn theme (done)
+; Zenburn theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
 (load-theme 'zenburn t)
 
-; Rainbow Delimiters mode (done)
+; Rainbow Delimiters mode
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters" nil t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-; Powerline/Spaceline modeline (done)
+; Powerline/Spaceline modeline
 (add-to-list 'load-path "~/.emacs.d/powerline")
 (add-to-list 'load-path "~/.emacs.d/spaceline")
 (require 'spaceline-config)
@@ -123,7 +123,7 @@
 (global-set-key (kbd "M-s l") 'helm-locate)
 (helm-mode 1)
 
-; Helm Ag mode (done)
+; Helm Ag mode
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
 (require 'helm-ag)
 (custom-set-variables
@@ -171,27 +171,6 @@
 (setq-default js2-basic-offset 4)
 (setq-default js-indent-level 4)
 
-; CQL mode
-(add-to-list 'auto-mode-alist '("\\.cql\\'" . sql-mode))
-
-; JS format
-(defun js-format ()
-    "Format JS region using js-beautify"
-    (interactive)
-    (save-excursion
-        (shell-command-on-region (mark) (point) "js-beautify --config ~/.jsbeautifyrc --type js -" (buffer-name) t)))
-
-(eval-after-load 'js2-mode '(define-key js2-mode-map (kbd "M-s \\") 'js-format))
-
-; JSON format
-(defun json-format ()
-    "Format JSON region using jq"
-    (interactive)
-    (save-excursion
-        (shell-command-on-region (mark) (point) "jq --indent 4 ." (buffer-name) t)))
-
-(eval-after-load 'js '(define-key js-mode-map (kbd "M-s \\") 'json-format))
-
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
 (autoload 'web-mode "web-mode" nil t)
@@ -204,24 +183,6 @@
         (setq web-mode-css-indent-offset 4)
         (setq web-mode-code-indent-offset 4)))
 
-; HTML format
-(defun html-format ()
-    "Format HTML region using js-beautify"
-    (interactive)
-    (save-excursion
-        (shell-command-on-region (mark) (point) "js-beautify --config ~/.jsbeautifyrc --type html -" (buffer-name) t))
-    (web-mode))
-
-(eval-after-load 'web-mode '(define-key web-mode-map (kbd "M-s \\") 'html-format))
-
-; CSS format
-(defun css-format ()
-    "Format CSS region using js-beautify"
-    (interactive)
-    (save-excursion
-        (shell-command-on-region (mark) (point) "js-beautify --config ~/.jsbeautifyrc --type css -" (buffer-name) t))
-    (web-mode))
-
 ; Emmet mode
 ; C-j => expand line
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
@@ -229,29 +190,8 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
-; Markdown mode
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(autoload 'markdown-mode "markdown-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-; XML format
-(defun xml-format ()
-    "Format XML region with xmlstarlet"
-    (interactive)
-    (save-excursion
-        (shell-command-on-region (mark) (point) "xmlstarlet format --indent-spaces 4" (buffer-name) t)))
-
-(eval-after-load 'nxml-mode '(define-key nxml-mode-map (kbd "M-s \\") 'xml-format))
-
-; XSD mode
-(add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
-
-; YAML mode
-(add-to-list 'load-path "~/.emacs.d/yaml-mode")
-(autoload 'yaml-mode "yaml-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
-(setq-default yaml-indent-offset 4)
+; CQL mode
+(add-to-list 'auto-mode-alist '("\\.cql\\'" . sql-mode))
 
 ; Dockerfile mode
 (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
@@ -263,6 +203,21 @@
 (autoload 'plantuml-mode "plantuml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
 (setq plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+
+; Markdown mode
+(add-to-list 'load-path "~/.emacs.d/markdown-mode")
+(autoload 'markdown-mode "markdown-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+; YAML mode
+(add-to-list 'load-path "~/.emacs.d/yaml-mode")
+(autoload 'yaml-mode "yaml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(setq-default yaml-indent-offset 4)
+
+; XSD mode
+(add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
 
 ; Evil mode
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
@@ -277,20 +232,20 @@
 (require 'evil)
 (evil-mode 1)
 
-; exit insert mode
+; Exit insert mode
 (key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
 
-; move selected lines up (K) and down (J)
+; Move selected lines up (K) and down (J)
 (define-key evil-visual-state-map "J"
     (concat ":m '>+1" (kbd "RET") "gv=gv"))
 (define-key evil-visual-state-map "K"
     (concat ":m '<-2" (kbd "RET") "gv=gv"))
 
-; treat _ as part of the word on *, #, w
-(add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(add-hook 'sql-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
-(add-hook 'java-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
+; Treat _ as part of the word on *, #, w
 (add-hook 'sh-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
+(add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'java-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
+(add-hook 'sql-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
 
 ; Ibuffer mode
 (evil-ex-define-cmd "ls" 'ibuffer)
