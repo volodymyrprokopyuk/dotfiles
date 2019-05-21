@@ -39,10 +39,10 @@
     -L {{ emacs_home }}/js2-mode
     -L {{ emacs_home }}/web-mode
     -L {{ emacs_home }}/emmet-mode
-    -L {{ emacs_home }}/markdown-mode
-    -L {{ emacs_home }}/yaml-mode
     -L {{ emacs_home }}/dockerfile-mode
     -L {{ emacs_home }}/plantuml-mode
+    -L {{ emacs_home }}/markdown-mode
+    -L {{ emacs_home }}/yaml-mode
     -L {{ emacs_home }}/evil
     -L {{ emacs_home }}/evil-surround
     -L {{ emacs_home }}/evil-nerd-commenter
@@ -69,10 +69,10 @@
     - js2-mode
     - web-mode
     - emmet-mode
-    - markdown-mode
-    - yaml-mode
     - dockerfile-mode
     - plantuml-mode
+    - markdown-mode
+    - yaml-mode
     - evil-surround
     - evil-nerd-commenter
 
@@ -81,6 +81,7 @@
   args:
     chdir: "{{ emacs_home }}/{{ item }}/"
   with_items:
+    - idris-mode
     - helm
     - evil
     - evil-goggles

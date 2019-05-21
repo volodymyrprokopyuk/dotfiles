@@ -29,10 +29,11 @@ emacs_extensions_github:
   - https://github.com/mooz/js2-mode.git
   - https://github.com/fxbois/web-mode.git
   - https://github.com/smihica/emmet-mode.git
-  - https://github.com/jrblevin/markdown-mode.git
-  - https://github.com/yoshiki/yaml-mode.git
+  - https://github.com/idris-hackers/idris-mode.git
   - https://github.com/spotify/dockerfile-mode.git
   - https://github.com/skuro/plantuml-mode.git
+  - https://github.com/jrblevin/markdown-mode.git
+  - https://github.com/yoshiki/yaml-mode.git
   # evil
   - https://github.com/emacs-evil/evil.git
   - https://github.com/emacs-evil/evil-surround.git

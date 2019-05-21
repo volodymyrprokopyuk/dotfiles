@@ -190,6 +190,11 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
+; Idris mode
+(add-to-list 'load-path "~/.emacs.d/idris-mode")
+(autoload 'idris-mode "idris-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.idr\\'" . idris-mode))
+
 ; Prolog mode
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
