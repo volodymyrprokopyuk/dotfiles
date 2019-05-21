@@ -190,6 +190,9 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
+; Prolog mode
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+
 ; CQL mode
 (add-to-list 'auto-mode-alist '("\\.cql\\'" . sql-mode))
 
