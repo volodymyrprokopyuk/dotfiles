@@ -1,3 +1,0 @@
----
-- name: Copy .tmux.conf into ~
-  copy: src=.tmux.conf dest=~

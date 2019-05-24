@@ -1,3 +1,0 @@
----
-- name: Copy .zshrc into ~
-  copy: src=.zshrc dest=~

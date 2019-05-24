@@ -1,6 +1,0 @@
----
-- name: Copy .emacs into ~
-  copy: src=.emacs dest=~
-
-- name: Copy emacs.el into {{ emacs_home }}
-  copy: src=emacs.el dest={{ emacs_home }}
