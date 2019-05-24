@@ -5,8 +5,6 @@
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-# Update installed software and clean up unused packages
-yay -Syu && yay -Sc
 # install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
@@ -17,6 +15,8 @@ yay -S idris swi-prolog
 yay -S yed plantuml
 yay -S intellij-idea-ce
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
+# Update installed software and clean up unused packages
+yay -Syu && yay -Sc
 # configure zsh
 chsh -s $(which zsh)
 # configure docker
@@ -74,11 +74,6 @@ nvm ls-remote
 nvm ls
 nvm install <version>
 nvm alias default <version>
-```
-
-Install Node utilities
-```bash
-npm install -g js-beautify eslint
 ```
 
 # SSH configuration
