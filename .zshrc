@@ -72,17 +72,6 @@ gll() {
     $log | $filter
 }
 
-# Install Liquidprompt
-# ZPACKAGE=$HOME/.zsh/liquidprompt/liquidprompt
-# [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-
-# Install PowerLevel9k
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{green}┌─%f"
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{green}└─➤ %f"
-# ZPACKAGE=$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme
-# [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-
 # Install Spaceship Prompt
 fpath=($HOME/.zsh/spaceship-prompt $fpath)
 ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
@@ -91,13 +80,6 @@ prompt spaceship
 SPACESHIP_CHAR_SYMBOL='▶ '
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_EXIT_CODE_SYMBOL='● '
-
-# Install Pure
-# fpath=($HOME/.zsh/pure $fpath)
-# ln -sf $HOME/.zsh/pure/pure.zsh $HOME/.zsh/pure/prompt_pure_setup
-# ln -sf $HOME/.zsh/pure/async.zsh $HOME/.zsh/pure/async
-# autoload -U promptinit; promptinit
-# prompt pure
 
 # Install Zsh syntax highlighting
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
