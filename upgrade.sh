@@ -184,7 +184,7 @@ function git_config {
     local action=config
 
     printf "$MESSAGE" $target $action "Copying .gitignore into ~"
-    cp $DOTFILES_HOME/gitignore ~/.gitignore
+    cp $DOTFILES_HOME/global_gitignore ~/.gitignore
 
     git_config_common $target $action
     git_config_aliases $target $action
@@ -422,18 +422,6 @@ function aws_upgrade {
 rm -f $LOG
 
 read_options $@
-
-echo "ALL_ACTION=$ALL_ACTION"
-echo "CONFIG_ACTION=$CONFIG_ACTION"
-echo "UPGRADE_ACTION=$UPGRADE_ACTION"
-echo
-echo "ALL_TARGET=$ALL_TARGET"
-echo "COMMON_TARGET=$COMMON_TARGET"
-echo "GIT_TARGET=$GIT_TARGET"
-echo "TMUX_TARGET=$TMUX_TARGET"
-echo "ZSH_TARGET=$ZSH_TARGET"
-echo "EMACS_TARGET=$EMACS_TARGET"
-echo "AWS_TARGET=$AWS_TARGET"
 
 # Config action
 [[ $ALL_ACTION && $ALL_TARGET \
