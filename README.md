@@ -11,6 +11,7 @@ yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-
 yay -S xmlstarlet jq pwgen apg openbsd-netcat
 yay -S ansible docker
 yay -S python-black flake8 python-pylint ptpython pgcli
+pip install --user pgcli
 yay -S idris swi-prolog
 yay -S yed plantuml
 yay -S intellij-idea-ce
@@ -74,6 +75,28 @@ nvm ls-remote
 nvm ls
 nvm install <version>
 nvm alias default <version>
+```
+
+# PostgreSQL environment
+
+```bash
+# Initialize PostgreSQL database cluster
+sudo su postgres
+initdb --locale en_US.UTF-8 --encoding UTF-8 -D /var/lib/postgres/data
+exit
+# Start/enable PostgreSQL database service
+sudo systemctl start|enable|status postgresql.service
+# Create database user
+sudo su postgres
+psql
+CREATE USER vld WITH PASSWORD 'vld' SUPERUSER;
+exit
+# Create database
+psql postgres vld
+CREATE DATABASE vlddb WITH OWNER vld;
+exit
+# Connect to database
+pgcli [-h localhost] vlddb vld
 ```
 
 # SSH configuration
