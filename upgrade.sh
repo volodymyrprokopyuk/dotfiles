@@ -120,6 +120,9 @@ function common_config {
     cp $DOTFILES_HOME/ptpython_config.py ~/.ptpython/config.py
     printf "$MESSAGE" $target $action "Copying .myclirc into ~"
     cp $DOTFILES_HOME/.myclirc ~
+    printf "$MESSAGE" $target $action "Copying config into ~/.config/pgcli"
+    mkdir -p ~/.config/pgcli
+    cp $DOTFILES_HOME/pgcli_config ~/.config/pgcli/config
 }
 
 function git_config_common {
