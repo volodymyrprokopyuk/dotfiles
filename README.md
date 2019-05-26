@@ -16,6 +16,8 @@ yay -S idris swi-prolog
 yay -S yed plantuml
 yay -S intellij-idea-ce
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
+yay -S youtube-dl
+youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
 # Update installed software and clean up unused packages
 yay -Syu && yay -Sc
 # configure zsh
@@ -27,6 +29,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 # logout, login and then configure docker swarm
 docker swarm init
+
 ```
 
 # pacman/yay usage
