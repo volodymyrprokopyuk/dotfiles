@@ -1,16 +1,16 @@
 # .dotfiles installation
 
 ```bash
-# install yay with makepkg from git
+# Install yay with makepkg from git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-# install software with yay from core, extra, community and AUR repositories
+# Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
-yay -S xmlstarlet jq pwgen apg openbsd-netcat
-yay -S ansible docker
-yay -S python-black flake8 python-pylint ptpython pgcli
+yay -S jq pwgen apg
+yay -S python-black flake8 python-pylint ptpython
+yay -S pgcli OR
 pip install --user pgcli
 yay -S idris swi-prolog
 yay -S yed plantuml
@@ -20,44 +20,44 @@ yay -S youtube-dl
 youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
 # Update installed software and clean up unused packages
 yay -Syu && yay -Sc
-# configure zsh
+# Configure zsh
 chsh -s $(which zsh)
-# configure docker
+# Install and configure docker
+yay -S docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo systemctl enable docker
 sudo systemctl start docker
-# logout, login and then configure docker swarm
+# Logout, login and then configure docker swarm
 docker swarm init
-
 ```
 
 # pacman/yay usage
 
 ```bash
-# update the repository database
+# Update the repository database
 yay -Sy
-# upgrade the system
+# Upgrade the system
 yay -Syu
-# search the remote repository database for a package
+# Search the remote repository database for a package
 yay -Ss[i] <package>
-# query the local repository database for the installed package
+# Query the local repository database for the installed package
 yay -Qs[i] <package>
-# install a package
+# Install a package
 yay -S <package>
-# remove a package, its configuration and dependencies
+# Remove a package, its configuration and dependencies
 yay -Rsn <package>
-# clean package cache
+# Clean package cache
 yay -Sc
-# show explicitly installed packages
+# Show explicitly installed packages
 yay -Qe
-# list all files owned by a package
+# List all files owned by a package
 yay -Ql <package>
-# show which package the file belongs to
+# Show which package the file belongs to
 yay -Qo <file path>
-# show system statistics
+# Show system statistics
 yay -Ps
-# show dependency tree of a package
+# Show dependency tree of a package
 pactree <package>
 ```
 
@@ -106,28 +106,29 @@ pgcli [-h localhost] vlddb vld
 
 Install and use locally generated SSH key on a remote server
 ```bash
-# generate SSH key pair locally. Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
-# file parmissions: ~/.ssh = 700, ~/.ssh/id_rsa* = 600
+# Generate SSH key pair locally
+# Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
+# File parmissions: ~/.ssh = 700, ~/.ssh/id_rsa* = 600
 ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
-# copy SSH key to a remote host. Provide remote host username and password
+# Copy SSH key to a remote host. Provide remote host username and password
 ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
-# connect to the remote host using SSH key but not password. Provide passphrase
+# Connect to the remote host using SSH key but not password. Provide passphrase
 ssh -i ~/.ssh/id_rsa_<provider> <username>@<host>
-# configure SSH key alias in ~/.ssh/config
+# Configure SSH key alias in ~/.ssh/config
 Host <alias>
     HostName <host>
     User <user>
     IdentityFile ~/.ssh/id_rsa<provider>
-# connect to the remote host using SSH key alias. Provide passphrase
+# Connect to the remote host using SSH key alias. Provide passphrase
 ssh <alias>
 ```
 
 Add private SSH key identities to the SSH authentication agent
 ```bash
-# start SSH authentication agent
+# Start SSH authentication agent
 eval $(ssh-agent)
-# add private SSH key identities to the SSH authentication agent. Provide passphrase
+# Add private SSH key identities to the SSH authentication agent. Provide passphrase
 ssh-add ~/.ssh/id_rsa*~*.pub
-# show added to the SSH authentication agent private SSH key identities
+# Show added to the SSH authentication agent private SSH key identities
 ssh-add -L
 ```
