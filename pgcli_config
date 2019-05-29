@@ -133,7 +133,7 @@ prompt = '\u@\d\n> '
 min_num_menu_lines = 4
 
 # Character used to left pad multi-line queries to match the prompt size.
-multiline_continuation_char = '-> '
+multiline_continuation_char = '->'
 
 # The string used in place of a null value.
 null_string = '<null>'
