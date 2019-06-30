@@ -9,7 +9,7 @@ makepkg -si
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
 yay -S jq pwgen apg
-yay -S python-black flake8 python-pylint ptpython
+yay -S python-black flake8 python-pylint ptpython cfn-lint
 yay -S postgresql pgcli pgadmin4 pgmodeler
 pip install --user pgcli [--upgrade]
 yay -S idris swi-prolog
