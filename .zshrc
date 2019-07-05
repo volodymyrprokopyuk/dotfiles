@@ -98,6 +98,8 @@ ZPACKAGE=/usr/share/fzf/key-bindings.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 ZPACKAGE=/usr/share/fzf/completion.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --ignore '*~' --ignore .git --ignore .idea --ignore __pycache__ --ignore pyvenv --ignore htmlcov -g ''"
+export FZF_DEFAULT_OPTS="--no-height --cycle"
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
