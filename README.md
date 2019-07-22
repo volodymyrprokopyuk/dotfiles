@@ -11,6 +11,7 @@ yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-
 yay -S jq pwgen apg
 yay -S python-black flake8 python-pylint ptpython cfn-lint
 yay -S postgresql pgcli pgadmin4 pgmodeler
+yay -S shellcheck
 pip install --user pgcli [--upgrade]
 yay -S idris swi-prolog
 yay -S yed plantuml
