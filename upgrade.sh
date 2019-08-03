@@ -286,6 +286,7 @@ https://github.com/company-mode/company-mode.git
 https://github.com/abo-abo/avy.git
 https://github.com/Emacs-Kotlin-Mode-Maintainers/kotlin-mode.git
 https://github.com/mooz/js2-mode.git
+https://github.com/emacs-typescript/typescript.el.git
 https://github.com/fxbois/web-mode.git
 https://github.com/smihica/emmet-mode.git
 https://github.com/idris-hackers/idris-mode.git
@@ -333,6 +334,7 @@ company-mode
 avy
 kotlin-mode
 js2-mode
+typescript.el
 web-mode
 emmet-mode
 dockerfile-mode
@@ -367,6 +369,7 @@ EOF
         -L $EMACS_HOME/avy \
         -L $EMACS_HOME/kotlin-mode \
         -L $EMACS_HOME/js2-mode \
+        -L $EMACS_HOME/typescript.el \
         -L $EMACS_HOME/web-mode \
         -L $EMACS_HOME/emmet-mode \
         -L $EMACS_HOME/idris-mode \

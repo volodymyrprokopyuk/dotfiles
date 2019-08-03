@@ -171,6 +171,11 @@
 (setq-default js2-basic-offset 4)
 (setq-default js-indent-level 4)
 
+; TypeScript mode
+(add-to-list 'load-path "~/.emacs.d/typescript.el")
+(autoload 'typescript-mode "typescript-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
 (autoload 'web-mode "web-mode" nil t)
