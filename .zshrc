@@ -17,16 +17,16 @@ setopt HIST_IGNORE_DUPS
 setopt EXTENDED_HISTORY
 setopt EXTENDED_GLOB
 
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+readonly HISTFILE=~/.histfile
+readonly HISTSIZE=10000
+readonly SAVEHIST=10000
 bindkey "^R" history-incremental-pattern-search-backward
 
 alias ee="emacsclient -t"
 alias ll="ls -alh --color=auto"
 alias gg="ag --hidden --follow --ignore '*~' --ignore .git --ignore .idea --ignore __pycache__ --ignore pyvenv --ignore htmlcov --color-match '1;31'"
 
-man() {
+function man {
     env \
     LESS_TERMCAP_mb=$'\e[01;31m' \
     LESS_TERMCAP_md=$'\e[01;38;5;74m' \
@@ -38,7 +38,7 @@ man() {
     man $@
 }
 
-ex() {
+function ex {
     echo Unpacking $1 ...
     if [ -f $1 ] ; then
         case $1 in
@@ -59,12 +59,6 @@ ex() {
     fi
 }
 
-jwt() {
-    cut -d . -f 1 <<< $1 | base64 -d | jq # JWT Header
-    cut -d . -f 2 <<< $1 | base64 -d | jq # JWT Body
-    # JWT Signature
-}
-
 gll() {
     local log=(git l "$@")
     local preview='p() { set -- $(echo -- "$@" | grep -o "[a-f0-9]\{7\}"); [ $# -eq 0 ] || git d --color=always $1^!; }; p {}'
@@ -77,9 +71,9 @@ fpath=($HOME/.zsh/spaceship-prompt $fpath)
 ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
 autoload -U promptinit; promptinit
 prompt spaceship
-SPACESHIP_CHAR_SYMBOL='▶ '
-SPACESHIP_EXIT_CODE_SHOW=true
-SPACESHIP_EXIT_CODE_SYMBOL='● '
+readonly SPACESHIP_CHAR_SYMBOL='▶ '
+readonly SPACESHIP_EXIT_CODE_SHOW=true
+readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
 
 # Install Zsh syntax highlighting
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -109,3 +103,8 @@ ZPACKAGE=$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 bindkey -r "^[,"
 bindkey "^[," autosuggest-accept
+
+# Install NVM
+export NVM_DIR=~/.nvm
+readonly NVM_SOURCE=/usr/share/nvm
+[[ -s $NVM_SOURCE/nvm.sh ]] && source $NVM_SOURCE/nvm.sh
