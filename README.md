@@ -74,12 +74,19 @@ deactivate
 
 # Node environment
 
-Install Node
+Install Node.js
 ```bash
+# Install NVM
+yay -S nvm
+# Install Node.js
 nvm ls-remote
 nvm ls
 nvm install <version>
 nvm alias default <version>
+# Install Yarn
+npm install yarn -g
+# Install TypeScript
+yarn global add typescript
 ```
 
 # PostgreSQL environment
