@@ -10,7 +10,6 @@ sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
 yay -S jq pwgen apg
 yay -S python-black flake8 python-pylint ptpython cfn-lint
-yay -S nvm
 yay -S postgresql pgcli pgadmin4 pgmodeler
 yay -S shellcheck
 pip install --user pgcli [--upgrade]
@@ -85,8 +84,40 @@ nvm install <version>
 nvm alias default <version>
 # Install Yarn
 npm install yarn -g
-# Install TypeScript
-yarn global add typescript
+# ./package.json
+{
+    "name": "typescript-basics",
+    "version": "0.1.0",
+    "description": "TypesScript basics",
+    "main": "main.js",
+    "author": "Volodymyr Prokopyuk",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "typescript": "3.5.3",
+        "prettier": "1.18.2",
+        "tslint": "5.18.0"
+    }
+}
+# Install dependencies
+yarn install
+# Configure TSLint
+./node_modules/.bin/tslint --init
+# ./bin/run.sh
+#!/usr/bin/env bash
+
+set -eux
+
+export PATH=./node_modules/.bin:$PATH
+readonly LINE_LENGTH=88
+readonly TAB_WIDTH=4
+readonly TARGET=main
+
+prettier --print-width=$LINE_LENGTH --tab-width=$TAB_WIDTH --no-bracket-spacing \
+    --write $TARGET.ts
+tslint $TARGET.ts
+tsc $TARGET.ts
+node $TARGET.js
 ```
 
 # PostgreSQL environment
