@@ -9,10 +9,9 @@ makepkg -si
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
 yay -S jq pwgen apg
-yay -S python-black flake8 python-pylint ptpython cfn-lint
 yay -S postgresql pgcli pgadmin4 pgmodeler
-yay -S shellcheck
 pip install --user pgcli [--upgrade]
+yay -S shellcheck
 yay -S idris swi-prolog
 yay -S yed plantuml
 yay -S intellij-idea-ce
@@ -64,16 +63,45 @@ pactree <package>
 
 # Python environment
 
-Activete/deactivate python virtual environment
 ```bash
+# Activete/deactivate Python virtual environment
 python -m venv <env>
 source <env>/bin/activate
 deactivate
+# ./requirements.txt
+awscli==1.16.209
+cfn-lint==0.22.4
+black==19.3b0
+flake8==3.7.7
+pylint==2.3.1
+# Install dependencies
+pip install -r requireemnts.txt
+# ./bin/run.sh
+#!/usr/bin/env bash
+
+set -eux
+
+readonly LINE_LENGTH=88
+readonly TEMPLATE=stack.yaml
+readonly TEST=unit_test.py
+readonly TARGET=main.py
+
+# Validate Bash scripts
+shellcheck -e <error_code> bin/*.sh
+# Validate CloudFormation templates
+aws cloudformation validate-template --template-body file://$TEMPLATE
+cfn-lint $TEMPLATE
+# Validate Python code
+black --line-length $LINE_LENGTH $TARGET
+flake8 --max-line-length=$LINE_LENGTH $TARGET
+pylint --max-line-length=$LINE_LENGTH --disable=<error_code> $TARGET
+pytest -x -v -s --disable-pytest-warnings \
+    --cov $TARGET --cov-report term --cov-report html $TEST
+python $TARGET
 ```
 
 # Node environment
 
-Install Node.js
 ```bash
 # Install NVM
 yay -S nvm
@@ -170,5 +198,5 @@ eval $(ssh-agent)
 # Add private SSH key identities to the SSH authentication agent. Provide passphrase
 ssh-add ~/.ssh/id_rsa*~*.pub
 # Show added to the SSH authentication agent private SSH key identities
-ssh-add -L
+ssh-add -l
 ```
