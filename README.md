@@ -74,6 +74,8 @@ cfn-lint==0.22.4
 black==19.3b0
 flake8==3.7.7
 pylint==2.3.1
+pytest==5.0.1
+pytest-cov==2.7.1
 # Install dependencies
 pip install -r requireemnts.txt
 # ./bin/run.sh
