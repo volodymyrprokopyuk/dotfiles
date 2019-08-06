@@ -146,7 +146,7 @@ readonly TARGET=main
 prettier --print-width $LINE_LENGTH --tab-width $TAB_WIDTH --no-bracket-spacing \
     --arrow-parens always --trailing-comma es5 --write $TARGET.ts
 tslint --format verbose $TARGET.ts
-tsc $TARGET.ts
+tsc --target es6 $TARGET.ts
 node $TARGET.js
 ```
 
