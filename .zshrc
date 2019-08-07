@@ -59,7 +59,8 @@ function ex {
     fi
 }
 
-gll() {
+# Git search log
+gsl() {
     local log=(git l "$@")
     local preview='p() { set -- $(echo -- "$@" | grep -o "[a-f0-9]\{7\}"); [ $# -eq 0 ] || git d --color=always $1^!; }; p {}'
     local filter=(fzf --ansi --no-sort --preview $preview)
