@@ -218,6 +218,12 @@
 (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
 (setq plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
 
+; Gnuplot mode
+(add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
+(autoload 'gnuplot-mode "gnuplot-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.gplot\\'" . gnuplot-mode))
+(setq gnuplot-program "/bin/gnuplot")
+
 ; Markdown mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (autoload 'markdown-mode "markdown-mode" nil t)
