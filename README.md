@@ -61,47 +61,6 @@ yay -Ps
 pactree <package>
 ```
 
-# Python environment
-
-```bash
-# Activete/deactivate Python virtual environment
-python -m venv <env>
-source <env>/bin/activate
-deactivate
-# ./requirements.txt
-awscli==1.16.209
-cfn-lint==0.22.4
-black==19.3b0
-flake8==3.7.7
-pylint==2.3.1
-pytest==5.0.1
-pytest-cov==2.7.1
-# Install dependencies
-pip install -r requireemnts.txt
-# ./bin/run.sh
-#!/usr/bin/env bash
-
-set -eux
-
-readonly LINE_LENGTH=88
-readonly TEMPLATE=stack.yaml
-readonly TEST=unit_test.py
-readonly TARGET=main.py
-
-# Validate Bash scripts
-shellcheck -e <error_code> bin/*.sh
-# Validate CloudFormation templates
-aws cloudformation validate-template --template-body file://$TEMPLATE
-cfn-lint $TEMPLATE
-# Validate Python code
-black --line-length $LINE_LENGTH $TARGET
-flake8 --max-line-length=$LINE_LENGTH $TARGET
-pylint --max-line-length=$LINE_LENGTH --disable=<error_code> $TARGET
-pytest -x -v -s --disable-pytest-warnings \
-    --cov $TARGET --cov-report term --cov-report html $TEST
-python $TARGET
-```
-
 # Node environment
 
 ```bash
@@ -114,40 +73,51 @@ nvm install <version>
 nvm alias default <version>
 # Install Yarn
 npm install yarn -g
+# Define dependencies
+yarn init
 # ./package.json
 {
-    "name": "typescript-basics",
+    "name": "typescript-ads",
     "version": "0.1.0",
-    "description": "TypesScript basics",
-    "main": "main.js",
-    "author": "Volodymyr Prokopyuk",
+    "description": "Algorithms and data structures in TypeScript",
+    "main": "index.js",
+    "repository": "https://github.com/volodymyrprokopyuk/typescript-ads",
+    "author": "Volodymyr Prokopyuk <volodymyrprokopyuk@gmail.com>",
     "license": "MIT",
     "private": true,
     "devDependencies": {
-        "typescript": "3.5.3",
         "prettier": "1.18.2",
-        "tslint": "5.18.0"
+        "tslint": "5.19.0",
+        "typescript": "3.5.3",
+        "jest": "24.9.0",
+        "@types/jest": "24.0.18"
     }
 }
 # Install dependencies
 yarn install
 # Configure TSLint
 ./node_modules/.bin/tslint --init
-# ./bin/run.sh
-#!/usr/bin/env bash
+```
 
-set -eux
+# Python environment
 
-export PATH=./node_modules/.bin:$PATH
-readonly LINE_LENGTH=88
-readonly TAB_WIDTH=4
-readonly TARGET=main
-
-prettier --print-width $LINE_LENGTH --tab-width $TAB_WIDTH --no-bracket-spacing \
-    --arrow-parens always --trailing-comma es5 --write $TARGET.ts
-tslint --format verbose $TARGET.ts
-tsc --target es6 $TARGET.ts
-node $TARGET.js
+```bash
+# Activete Python virtual environment
+python -m venv <env>
+source <env>/bin/activate
+# Define dependencies
+# ./requirements.txt
+awscli==1.16.209
+cfn-lint==0.22.4
+black==19.3b0
+flake8==3.7.7
+pylint==2.3.1
+pytest==5.0.1
+pytest-cov==2.7.1
+# Install dependencies
+pip install -r requireemnts.txt
+# Deactivate Python virtual environment
+deactivate
 ```
 
 # PostgreSQL environment

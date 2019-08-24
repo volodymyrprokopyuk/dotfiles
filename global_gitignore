@@ -1,6 +1,17 @@
 # Emacs
 *~
 
+# Node.js
+node_modules/
+yarn.lock
+
+# Python
+__pycache__/
+.pytest_cache/
+htmlcov/
+.coverage
+pyvenv/
+
 # Gradle
 .gradle/
 build/
@@ -11,10 +22,3 @@ target/
 # IntelliJ
 .idea/
 *.iml
-
-# Python
-__pycache__/
-.pytest_cache/
-htmlcov/
-.coverage
-pyvenv/
