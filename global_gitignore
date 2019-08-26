@@ -5,6 +5,7 @@
 node_modules/
 coverage/
 yarn.lock
+.tsbuildinfo
 
 # Python
 __pycache__/
