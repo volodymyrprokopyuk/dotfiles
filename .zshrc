@@ -111,4 +111,4 @@ readonly NVM_SOURCE=/usr/share/nvm
 [[ -s $NVM_SOURCE/nvm.sh ]] && source $NVM_SOURCE/nvm.sh
 
 # Install Yarn
-type yarn > /dev/null 2>&1 && export PATH=$(yarn global bin):$PATH
+type yarn > /dev/null 2>&1 && export PATH=$(yarn global bin):$PATH || true
