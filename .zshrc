@@ -4,7 +4,6 @@ export TERM=screen-256color
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"
 export LESS="-XFR"
-export ANSIBLE_NOCOWS=1
 
 alias tmux="tmux -2"
 [[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
@@ -26,6 +25,7 @@ alias ee="emacsclient -t"
 alias ll="ls -alh --color=auto"
 alias gg="ag --hidden --follow --ignore '*~' --ignore .git --ignore .idea --ignore __pycache__ --ignore pyvenv --ignore htmlcov --color-match '1;31'"
 
+# Syntax highlight man page
 function man {
     env \
     LESS_TERMCAP_mb=$'\e[01;31m' \
@@ -38,6 +38,7 @@ function man {
     man $@
 }
 
+# Extract archive
 function ex {
     echo Unpacking $1 ...
     if [ -f $1 ] ; then
