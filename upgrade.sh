@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 readonly DOTFILES_HOME=~/.dotfiles
 readonly ZSH_HOME=~/.zsh
 readonly EMACS_HOME=~/.emacs.d
@@ -28,6 +30,7 @@ readonly lgreenb="\e[1;92m"
 readonly lyellowb="\e[1;93m"
 readonly lblueb="\e[1;94m"
 
+set +e
 read -d "" USAGE <<EOF
 Usage:
     ./upgrade.sh [-c] [-u] [targets]
@@ -38,6 +41,7 @@ Options:
 Targets:
     common | git | tmux | zsh | emacs | aws
 EOF
+set -e
 
 readonly MESSAGE="${lgreen}%s ${lblue}%s ${yellowb}%s${end}\n"
 readonly FAILURE="${red}FAILURE${end}\n"
@@ -214,12 +218,14 @@ function zsh_upgrade {
     local target=zsh
     local action=upgrade
 
+    set +e
     read -d "" zsh_extensions <<EOF
 https://github.com/denysdovhan/spaceship-prompt.git
 https://github.com/zsh-users/zsh-completions.git
 https://github.com/zsh-users/zsh-autosuggestions.git
 https://github.com/zsh-users/zsh-syntax-highlighting.git
 EOF
+    set -e
 
     mkdir -p $ZSH_HOME
 
@@ -249,10 +255,12 @@ function emacs_upgrade_web {
     local target=$1
     local action=$2
 
+    set +e
     read -d "" emacs_packages <<EOF
 https://www.emacswiki.org/emacs/download/goto-chg.el
 https://www.emacswiki.org/emacs/download/key-chord.el
 EOF
+    set -e
 
     while read emacs_package; do
         printf "$MESSAGE" $target $action "Installing $emacs_package into ~/.emacs.d"
@@ -268,6 +276,7 @@ function emacs_upgrade_git {
     local target=$1
     local action=$2
 
+    set +e
     read -d "" emacs_packages <<EOF
 https://github.com/cask/epl.git
 https://github.com/lunaryorn/pkg-info.el.git
@@ -300,6 +309,7 @@ https://github.com/emacs-evil/evil-surround.git
 https://github.com/redguardtoo/evil-nerd-commenter.git
 https://github.com/edkolev/evil-goggles.git
 EOF
+    set -e
 
     while read emacs_package; do
         printf "$MESSAGE" $target $action "Installing $emacs_package into ~/.emacs.d"
@@ -316,6 +326,7 @@ function emacs_upgrade_compile {
     local target=$1
     local action=$2
 
+    set +e
     read -d "" emacs_packages <<EOF
 epl
 pkg-info.el
@@ -346,6 +357,7 @@ yaml-mode
 evil-surround
 evil-nerd-commenter
 EOF
+    set -e
 
     while read emacs_package; do
         printf "$MESSAGE" $target $action "Compiling $emacs_package in ~/.emacs.d"
@@ -392,12 +404,14 @@ function emacs_upgrade_make {
     local target=$1
     local action=$2
 
+    set +e
     read -d "" emacs_packages <<EOF
 idris-mode
 helm
 evil
 evil-goggles
 EOF
+    set -e
 
     while read emacs_package; do
         printf "$MESSAGE" $target $action "Making $emacs_package in ~/.emacs.d"
