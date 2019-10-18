@@ -7,7 +7,7 @@ cd yay
 makepkg -si
 # Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
-yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate
+yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate exa
 yay -S jq pwgen apg
 yay -S postgresql pgcli pgadmin4 pgmodeler
 pip install --user pgcli [--upgrade]

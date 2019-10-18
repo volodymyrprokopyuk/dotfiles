@@ -22,7 +22,7 @@ readonly SAVEHIST=10000
 bindkey "^R" history-incremental-pattern-search-backward
 
 alias ee="emacsclient -t"
-alias ll="ls -alh --color=auto"
+alias ll="exa --all --long --tree --git --git-ignore --ignore-glob='*~|.git'"
 alias gg="ag --hidden --follow --color-match '1;31'"
 
 # Syntax highlight man page
