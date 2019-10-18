@@ -117,6 +117,8 @@ function common_config {
     local target=common
     local action=config
 
+    printf "$MESSAGE" $target $action "Copying .agignore into ~"
+    cp $DOTFILES_HOME/.agignore ~
     printf "$MESSAGE" $target $action "Copying .editorconfig into ~"
     cp $DOTFILES_HOME/.editorconfig ~
     printf "$MESSAGE" $target $action "Copying config.py into ~/.ptpython"
@@ -446,6 +448,7 @@ rm -f $LOG
 
 read_options $@
 
+set +u
 # Config action
 [[ $ALL_ACTION && $ALL_TARGET \
     || $CONFIG_ACTION && $ALL_TARGET \
@@ -473,3 +476,4 @@ read_options $@
 [[ $ALL_ACTION && $ALL_TARGET \
     || $UPGRADE_ACTION && $ALL_TARGET \
     || $UPGRADE_ACTION && $AWS_TARGET ]] && aws_upgrade
+set -u

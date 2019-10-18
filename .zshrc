@@ -23,7 +23,7 @@ bindkey "^R" history-incremental-pattern-search-backward
 
 alias ee="emacsclient -t"
 alias ll="ls -alh --color=auto"
-alias gg="ag --hidden --follow --ignore '*~' --ignore .git --ignore .idea --ignore __pycache__ --ignore pyvenv --ignore htmlcov --color-match '1;31'"
+alias gg="ag --hidden --follow --color-match '1;31'"
 
 # Syntax highlight man page
 function man {
@@ -94,7 +94,7 @@ ZPACKAGE=/usr/share/fzf/key-bindings.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 ZPACKAGE=/usr/share/fzf/completion.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --ignore '*~' --ignore .git --ignore .idea --ignore __pycache__ --ignore pyvenv --ignore htmlcov -g ''"
+export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --follow -g ''"
 export FZF_DEFAULT_OPTS="--no-height --cycle"
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
