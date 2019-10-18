@@ -128,7 +128,7 @@
 (require 'helm-ag)
 (custom-set-variables
     '(helm-ag-base-command "ag --nocolor --nogroup")
-    '(helm-ag-command-option "--hidden --ignore *~ --ignore .git --ignore .idea --ignore __pycache__ --ignore pyvenv --ignore htmlcov"))
+    '(helm-ag-command-option "--hidden"))
 (global-set-key (kbd "M-s s") 'helm-do-ag-project-root)
 
 (defun helm-do-ag-project-root-search-file-names ()
@@ -136,7 +136,6 @@
     (interactive)
     (let ((helm-ag-command-option (concat helm-ag-command-option " -g")))
         (helm-do-ag-project-root)))
-
 (global-set-key (kbd "M-s f") 'helm-do-ag-project-root-search-file-names)
 
 ; Company mode
