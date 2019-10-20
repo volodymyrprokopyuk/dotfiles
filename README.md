@@ -7,17 +7,13 @@ cd yay
 makepkg -si
 # Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
-yay -S adobe-source-code-pro-fonts tmux emacs the_silver_searcher fzf xsel diff-so-fancy mlocate exa
-yay -S jq pwgen apg htop, glances
+yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
+yay the_silver_searcher fzf diff-so-fancyi mlocate exa bat
+yay -S httpie jq pwgen apg
 yay -S postgresql pgcli pgadmin4 pgmodeler
-pip install --user pgcli [--upgrade]
-yay -S httpie
 yay -S yed plantuml
-yay -S idris swi-prolog
-yay -S intellij-idea-ce
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
-yay -S youtube-dl
-youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
+yay -S youtube-dl # youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
 # Update installed software and clean up unused packages
 yay -Syu && yay -Sc
 # Configure zsh
