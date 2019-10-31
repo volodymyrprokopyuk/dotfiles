@@ -1,14 +1,21 @@
+# VirtualBox Manjaro configuraiton
+
+```bash
+Display configuration: 128MB, VBoxSVGA, 3D acceleration
+yay -S linux419-virtualbox-guest-modules virtualbox-guest-utils
+sudo gpasswd -a $USER vboxsf
+sudo systemctl enable vboxservice.service
+Reboot
+```
 # .dotfiles installation
 
 ```bash
 # Install yay with makepkg from git
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
+git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
-yay the_silver_searcher fzf diff-so-fancyi mlocate exa bat
+yay -S the_silver_searcher fzf diff-so-fancyi mlocate exa bat
 yay -S httpie jq pwgen apg
 yay -S postgresql pgcli pgadmin4 pgmodeler
 yay -S yed plantuml
@@ -16,7 +23,7 @@ yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
 yay -S youtube-dl # youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
 # Update installed software and clean up unused packages
 yay -Syu && yay -Sc
-# Configure zsh
+# Configure zsh (log out, then log in)
 chsh -s $(which zsh)
 # Install and configure docker
 yay -S docker
