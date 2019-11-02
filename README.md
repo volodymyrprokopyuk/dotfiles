@@ -1,11 +1,14 @@
 # VirtualBox Manjaro configuraiton
 
 ```bash
-Display configuration: 128MB, VBoxSVGA, 3D acceleration
+# Video configuration: 128MB, VBoxSVGA, 3D acceleration
 yay -S linux419-virtualbox-guest-modules virtualbox-guest-utils
-sudo gpasswd -a $USER vboxsf
+sudo usermod -G vboxsf -a $USER
 sudo systemctl enable vboxservice.service
-Reboot
+# Shared folder configuration: automount, make permanent
+sudo VBoxControl sharedfolder list # Manjaro device
+sudo mount -t vboxsf Manjaro /home/vlad/Manjaro -o uid=$(id -u),gid=$(id -g)
+# Reboot
 ```
 # .dotfiles installation
 
