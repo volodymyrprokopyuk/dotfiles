@@ -1,4 +1,4 @@
-# VirtualBox Manjaro configuraiton
+# VirtualBox Manjaro configuration
 
 ```bash
 # Video configuration: 128MB, VBoxSVGA, 3D acceleration
