@@ -134,18 +134,18 @@ sudo su postgres
 initdb --locale en_US.UTF-8 --encoding UTF-8 -D /var/lib/postgres/data
 exit
 # Start/enable PostgreSQL database service
-sudo systemctl start|enable|status postgresql.service
+sudo systemctl enable|start|status postgresql.service
 # Create database user
 sudo su postgres
 psql
-CREATE USER vld WITH PASSWORD 'vld' SUPERUSER;
+CREATE USER vlad WITH PASSWORD 'vlad' SUPERUSER;
 exit
 # Create database
-psql postgres vld
-CREATE DATABASE vlddb WITH OWNER vld;
+psql postgres vlad
+CREATE DATABASE vladdb WITH OWNER vlad;
 exit
 # Connect to database
-pgcli [-h localhost] vlddb vld
+pgcli [-h localhost] vladdb vlad
 ```
 
 # SSH configuration
