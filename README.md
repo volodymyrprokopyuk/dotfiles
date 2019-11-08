@@ -146,6 +146,11 @@ CREATE DATABASE vladdb WITH OWNER vlad;
 exit
 # Connect to database
 pgcli [-h localhost] vladdb vlad
+# Dump database schema
+pg_dump -U vlad --schema-only vladdb > vladdb_dump_schema.sql
+# Restore database schema
+psql -h localhost -p 5432 -f vladdb_dump_schema.sql \
+    -v ON_ERROR_STOP=1 -v ECHO=queries vladdb vlad
 ```
 
 # SSH configuration
