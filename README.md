@@ -161,6 +161,7 @@ Install and use locally generated SSH key on a remote server
 # Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
 # File parmissions: ~/.ssh = 700, ~/.ssh/id_rsa* = 600
 ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
+ssy-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
 # Copy SSH key to a remote host. Provide remote host username and password
 ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
 # Connect to the remote host using SSH key but not password. Provide passphrase
@@ -172,6 +173,8 @@ Host <alias>
     IdentityFile ~/.ssh/id_rsa<provider>
 # Connect to the remote host using SSH key alias. Provide passphrase
 ssh <alias>
+# Test SSH connection using SSH key
+ssh -T <alias>
 ```
 
 Add private SSH key identities to the SSH authentication agent
