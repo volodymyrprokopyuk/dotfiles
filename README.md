@@ -186,3 +186,10 @@ ssh-add ~/.ssh/id_rsa*~*.pub
 # Show added to the SSH authentication agent private SSH key identities
 ssh-add -l
 ```
+
+# Format USB drive
+```bash
+df -h
+sudo umount /dev/sdc1
+sudo mkfs.ext4 /dev/sdc1
+```
