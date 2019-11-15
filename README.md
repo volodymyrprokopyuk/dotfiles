@@ -18,7 +18,7 @@ git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
-yay -S the_silver_searcher fzf diff-so-fancyi mlocate exa bat
+yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
 yay -S httpie jq pwgen apg
 yay -S postgresql pgcli pgadmin4 pgmodeler
 yay -S yed plantuml
@@ -159,7 +159,8 @@ Install and use locally generated SSH key on a remote server
 ```bash
 # Generate SSH key pair locally
 # Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
-# File parmissions: ~/.ssh = 700, ~/.ssh/id_rsa* = 600
+# File parmissions
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_*
 ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
 ssy-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
 # Copy SSH key to a remote host. Provide remote host username and password
