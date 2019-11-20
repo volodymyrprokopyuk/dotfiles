@@ -53,6 +53,8 @@ yay -Qs[i] <package>
 yay -S <package>
 # Remove a package, its configuration and dependencies
 yay -Rsn <package>
+# Install specific package version (downgrade)
+yay -U https://archive.archlinux.org/packages/f/firefox/firefox-68.0.2-1-x86_64.pkg.tar.xz
 # Clean package cache
 yay -Sc
 # Show explicitly installed packages
