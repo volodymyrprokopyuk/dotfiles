@@ -62,11 +62,18 @@ function ex {
 }
 
 # Git search log
-gsl() {
+function gsl {
     local log=(git l "$@")
     local preview='p() { set -- $(echo -- "$@" | grep -o "[a-f0-9]\{7\}"); [ $# -eq 0 ] || git d --color=always $1^!; }; p {}'
     local filter=(fzf --ansi --no-sort --preview $preview)
     $log | $filter
+}
+
+# Merge multiple PDF files into a single PDF file
+# Usage: pdfmerge merged.pdf source1.pdf source2.pdf
+function pdfmerge {
+    gs -dNOPAUSE -dBATCH -dQUIET -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite \
+        -sOutputFile=$@
 }
 
 # Install Spaceship Prompt
