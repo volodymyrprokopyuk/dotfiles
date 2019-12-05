@@ -39,7 +39,7 @@ Options:
     -c, --config
     -u, --upgrade
 Targets:
-    common | git | tmux | zsh | emacs | aws
+    common | git | tmux | zsh | emacs
 EOF
 set -e
 
@@ -97,11 +97,6 @@ function read_options {
             emacs)
                 unset ALL_TARGET
                 EMACS_TARGET=true
-                shift
-                ;;
-            aws)
-                unset ALL_TARGET
-                AWS_TARGET=true
                 shift
                 ;;
             *)
@@ -437,14 +432,6 @@ function emacs_upgrade {
     emacs_upgrade_make $target $action
 }
 
-function aws_upgrade {
-    local target=aws
-    local action=upgrade
-
-    printf "$MESSAGE" $target $action "Installing awscli into ~/.local"
-    pip install --user awscli >>$LOG || printf $FAILURE
-}
-
 rm -f $LOG
 
 read_options $@
@@ -474,7 +461,4 @@ set +u
 [[ $ALL_ACTION && $ALL_TARGET \
     || $UPGRADE_ACTION && $ALL_TARGET \
     || $UPGRADE_ACTION && $EMACS_TARGET ]] && emacs_upgrade
-[[ $ALL_ACTION && $ALL_TARGET \
-    || $UPGRADE_ACTION && $ALL_TARGET \
-    || $UPGRADE_ACTION && $AWS_TARGET ]] && aws_upgrade
 set -u

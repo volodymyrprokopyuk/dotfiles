@@ -93,8 +93,14 @@ ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
 
-# Install aws completions
-ZPACKAGE=$HOME/.local/bin/aws_zsh_completer.sh
+# Install AWS completions
+ZPACKAGE=/usr/bin/aws_zsh_completer.sh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+
+# Install GCP completions
+ZPACKAGE=/opt/google-cloud-sdk/path.zsh.inc
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+ZPACKAGE=/opt/google-cloud-sdk/completion.zsh.inc
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 # Install fzf
