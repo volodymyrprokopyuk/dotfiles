@@ -17,7 +17,7 @@ sudo mount -t vboxsf Manjaro /home/vlad/Manjaro -o uid=$(id -u),gid=$(id -g)
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
-yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
+yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel nnn
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
 yay -S httpie jq pwgen apg
 yay -S yed plantuml
