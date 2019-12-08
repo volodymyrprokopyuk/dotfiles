@@ -21,7 +21,7 @@ readonly HISTSIZE=10000
 readonly SAVEHIST=10000
 bindkey "^R" history-incremental-pattern-search-backward
 
-alias ll="exa --all --long --git --git-ignore --ignore-glob='*~|.git|node_modules|coverage|pyvenv|__pycache__|.pytest_cache|htmlcov'"
+alias ll="exa --all --long --sort=type --git --git-ignore --ignore-glob='*~|.git|node_modules|coverage|pyvenv|__pycache__|.pytest_cache|htmlcov'"
 alias vv="bat --style full --theme zenburn --tabs 4 --map-syntax conf:ini"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
