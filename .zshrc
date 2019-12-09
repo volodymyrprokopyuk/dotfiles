@@ -31,6 +31,7 @@ alias ll="exa --all --long --sort=type --git --git-ignore --ignore-glob='*~|.git
 alias vv="bat --style full --theme zenburn --tabs 4 --map-syntax conf:ini"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
+alias mm="PAGER=bat nnn"
 
 # Syntax highlight man page
 function man {
