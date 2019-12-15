@@ -194,6 +194,12 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
+; Pug mode
+(add-to-list 'load-path "~/.emacs.d/emacs-pug-mode")
+(autoload 'pug-mode "pug-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.pug\\'" . pug-mode))
+(add-to-list 'auto-mode-alist '("\\.jade\\'" . pug-mode))
+
 ; Idris mode
 (add-to-list 'load-path "~/.emacs.d/idris-mode")
 (autoload 'idris-mode "idris-mode" nil t)

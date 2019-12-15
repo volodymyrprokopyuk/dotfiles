@@ -296,6 +296,7 @@ https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
 https://github.com/fxbois/web-mode.git
 https://github.com/smihica/emmet-mode.git
+https://github.com/hlissner/emacs-pug-mode.git
 https://github.com/idris-hackers/idris-mode.git
 https://github.com/spotify/dockerfile-mode.git
 https://github.com/skuro/plantuml-mode.git
@@ -347,6 +348,7 @@ js2-mode
 typescript.el
 web-mode
 emmet-mode
+emacs-pug-mode
 dockerfile-mode
 plantuml-mode
 gnuplot-mode
@@ -384,6 +386,7 @@ EOF
         -L $EMACS_HOME/typescript.el \
         -L $EMACS_HOME/web-mode \
         -L $EMACS_HOME/emmet-mode \
+        -L $EMACS_HOME/emacs-pug-mode \
         -L $EMACS_HOME/idris-mode \
         -L $EMACS_HOME/dockerfile-mode \
         -L $EMACS_HOME/plantuml-mode \
