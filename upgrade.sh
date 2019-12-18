@@ -5,7 +5,9 @@ set -eu
 readonly DOTFILES_HOME=~/.dotfiles
 readonly ZSH_HOME=~/.zsh
 readonly EMACS_HOME=~/.emacs.d
-readonly LOG=out.log
+readonly LOG=$DOTFILES_HOME/out.log
+
+rm -f $LOG
 
 # Colors
 readonly end="\e[0m"
@@ -281,6 +283,7 @@ https://github.com/lunaryorn/pkg-info.el.git
 https://github.com/magnars/s.el.git
 https://github.com/magnars/dash.el.git
 https://github.com/jwiegley/emacs-async.git
+https://github.com/noctuid/annalist.el.git
 https://github.com/purcell/exec-path-from-shell.git
 https://github.com/bbatsov/zenburn-emacs.git
 https://github.com/Fanael/rainbow-delimiters.git
@@ -304,6 +307,7 @@ https://github.com/mkmcc/gnuplot-mode.git
 https://github.com/jrblevin/markdown-mode.git
 https://github.com/yoshiki/yaml-mode.git
 https://github.com/emacs-evil/evil.git
+https://github.com/emacs-evil/evil-collection.git
 https://github.com/emacs-evil/evil-surround.git
 https://github.com/redguardtoo/evil-nerd-commenter.git
 https://github.com/edkolev/evil-goggles.git
@@ -334,6 +338,7 @@ key-chord.el
 s.el
 dash.el
 emacs-async
+annalist.el
 exec-path-from-shell
 zenburn-emacs
 rainbow-delimiters
@@ -354,6 +359,7 @@ plantuml-mode
 gnuplot-mode
 markdown-mode
 yaml-mode
+evil-collection
 evil-surround
 evil-nerd-commenter
 EOF
@@ -371,6 +377,7 @@ EOF
         -L $EMACS_HOME/s.el \
         -L $EMACS_HOME/dash.el \
         -L $EMACS_HOME/emacs-async \
+        -L $EMACS_HOME/annalist.el \
         -L $EMACS_HOME/exec-path-from-shell \
         -L $EMACS_HOME/zenburn-emacs \
         -L $EMACS_HOME/rainbow-delimiters \
@@ -394,6 +401,7 @@ EOF
         -L $EMACS_HOME/markdown-mode \
         -L $EMACS_HOME/yaml-mode \
         -L $EMACS_HOME/evil \
+        -L $EMACS_HOME/evil-collection \
         -L $EMACS_HOME/evil-surround \
         -L $EMACS_HOME/evil-nerd-commenter \
         -L $EMACS_HOME/evil-goggles \
