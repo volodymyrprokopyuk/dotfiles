@@ -81,6 +81,7 @@ function gsl {
 function pdfmerge {
     gs -dNOPAUSE -dBATCH -dQUIET -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite \
         -sOutputFile=$@
+    # convert -density 200 -quality 60 -compress jpeg source.pdf converted.pdf
 }
 
 # Install Spaceship Prompt

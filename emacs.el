@@ -81,7 +81,6 @@
 (add-to-list 'load-path "~/.emacs.d/s.el")
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
-(add-to-list 'load-path "~/.emacs.d/annalist.el")
 
 ; Add $PATH to exec-path
 (add-to-list 'load-path "~/.emacs.d/exec-path-from-shell")
@@ -254,16 +253,9 @@
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.5)
 
-(add-to-list 'load-path "~/.emacs.d/evil-collection")
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil)
-
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
-
-(require 'evil-collection nil t)
-(evil-collection-init 'dired)
 
 ; Exit insert mode
 (key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
