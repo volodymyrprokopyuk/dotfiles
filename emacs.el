@@ -300,3 +300,8 @@
 (setq evil-goggles-duration 0.500)
 (custom-set-faces
     '(evil-goggles-default-face ((t (:inherit isearch-fail)))))
+
+; Evil Matchit mode
+(add-to-list 'load-path "~/.emacs.d/evil-matchit")
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
