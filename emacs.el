@@ -198,7 +198,6 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-pug-mode")
 (autoload 'pug-mode "pug-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.pug\\'" . pug-mode))
-(add-to-list 'auto-mode-alist '("\\.jade\\'" . pug-mode))
 
 ; Idris mode
 (add-to-list 'load-path "~/.emacs.d/idris-mode")
