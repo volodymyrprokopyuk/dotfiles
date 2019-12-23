@@ -309,7 +309,6 @@ https://github.com/emacs-evil/evil.git
 https://github.com/emacs-evil/evil-surround.git
 https://github.com/redguardtoo/evil-nerd-commenter.git
 https://github.com/edkolev/evil-goggles.git
-https://github.com/redguardtoo/evil-matchit.git
 EOF
     set -e
 
@@ -359,7 +358,6 @@ markdown-mode
 yaml-mode
 evil-surround
 evil-nerd-commenter
-evil-matchit
 EOF
     set -e
 
@@ -401,7 +399,6 @@ EOF
         -L $EMACS_HOME/evil-surround \
         -L $EMACS_HOME/evil-nerd-commenter \
         -L $EMACS_HOME/evil-goggles \
-        -L $EMACS_HOME/evil-matchit \
         -f batch-byte-compile $emacs_package_path/*.el 2>>$LOG || printf $FAILURE
     done <<<$emacs_packages
 }
