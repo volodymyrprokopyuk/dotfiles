@@ -290,7 +290,6 @@
 ; Evil Nerd Commenter
 (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
 (require 'evil-nerd-commenter)
-(evilnc-default-hotkeys)
 (global-set-key (kbd "M-,") 'evilnc-comment-or-uncomment-lines)
 
 ; Evil Goggles mode
