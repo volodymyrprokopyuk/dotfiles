@@ -32,6 +32,13 @@ alias vv="bat --style full --theme zenburn --tabs 4 --map-syntax conf:ini"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
 
+# Regular expressions
+# - (?:...) ono-capturing group
+# - (?=...) positive lookahead
+# - (?!...) negative lookahead
+# - (?<=...) positive lookbehind
+# - (?<!...) negative lookbehind
+
 # Syntax highlight man page
 function man {
     env \
