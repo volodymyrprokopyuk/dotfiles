@@ -244,6 +244,8 @@
 (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
 
 ; Evil mode
+; f/F, t/T -> ;/,
+; */#, /? -> n/N
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 
