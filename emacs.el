@@ -244,8 +244,11 @@
 (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
 
 ; Evil mode
-; f/F, t/T -> ;/,
-; */#, /? -> n/N
+; Search line: f/F, t/T -> ;/,
+; Search file: */#, /? -> n/N
+; Move word/backword: w/b
+; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/iw/p
+; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 
@@ -292,7 +295,8 @@
 ; Evil Nerd Commenter
 (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
 (require 'evil-nerd-commenter)
-(global-set-key (kbd "M-,") 'evilnc-comment-or-uncomment-lines)
+(define-key evil-normal-state-map "gcc" 'evilnc-comment-or-uncomment-lines)
+(define-key evil-normal-state-map "gc" 'evilnc-comment-operator)
 
 ; Evil Goggles mode
 (add-to-list 'load-path "~/.emacs.d/evil-goggles")
