@@ -265,6 +265,7 @@
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.5)
 
+(setq evil-want-Y-yank-to-eol t)
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
