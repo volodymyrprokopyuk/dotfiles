@@ -246,9 +246,17 @@
 ; Evil mode
 ; Search line: f/F, t/T -> ;/,
 ; Search file: */#, /? -> n/N
-; Move word/backword: w/b
+; Move word/backward: w/W,b/B
 ; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/iw/p
 ; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
+; Marks: ma
+;     'a (go to marked line)
+;     `a (go to marked position)
+;     `` (last visited position)
+;     `. (last edited position)
+; Registers: "ayy, "ap
+; q: (query commands)
+; q/ (query searches)
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 
