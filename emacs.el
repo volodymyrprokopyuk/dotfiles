@@ -279,11 +279,19 @@
 (define-key evil-visual-state-map "K"
     (concat ":m '<-2" (kbd "RET") "gv=gv"))
 
-; Treat _ as part of the word on *, #, w
-(add-hook 'sh-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
-(add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(add-hook 'java-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
-(add-hook 'sql-mode-hook #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
+; Treat _ as part of the word on *, #, w, b
+(add-hook 'sh-mode-hook
+    #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
+(add-hook 'sql-mode-hook
+    #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
+(add-hook 'js2-mode-hook
+    #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table)))
+(add-hook 'typescript-mode-hook
+    #'(lambda () (modify-syntax-entry ?_ "w" typescript-mode-syntax-table)))
+(add-hook 'python-mode-hook
+    #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'java-mode-hook
+    #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
 
 ; Ibuffer mode
 (evil-ex-define-cmd "ls" 'ibuffer)
