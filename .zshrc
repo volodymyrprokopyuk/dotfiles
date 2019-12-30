@@ -12,6 +12,9 @@ setopt AUTO_CD
 setopt EXTENDED_GLOB
 
 # Configure history
+# Ctrl-r (search history)
+# Ctrl-p/Ctrl-n (previous/next command)
+# Ctrl-g (discard)
 readonly HISTFILE=~/.histfile
 readonly HISTSIZE=10000
 readonly SAVEHIST=10000
@@ -27,6 +30,18 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 bindkey "^R" history-incremental-pattern-search-backward
 
+# Command line editing
+# Ctrl-a/Ctrl-e (beginning/end of line)
+# Alt-f/Alt-b (forward/backward word)
+# Ctrl-w (delete word backword)
+# Ctrl-x, e (edit command line)
+# Ctrl-l (clear screen)
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey "^xe" edit-command-line
+bindkey "^x^e" edit-command-line
+
+# Alias
 alias ll="exa --all --long --sort=type --git --git-ignore --ignore-glob='*~|.git|node_modules|coverage|pyvenv|__pycache__|.pytest_cache|htmlcov'"
 alias vv="bat --style full --theme zenburn --tabs 4 --map-syntax conf:ini"
 alias gg="ag --hidden --follow --color-match '1;31'"
