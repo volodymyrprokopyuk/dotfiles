@@ -246,7 +246,7 @@
 ; Evil mode
 ; Search line: f/F, t/T -> ;/,
 ; Search file: */#, /? -> n/N
-; Move word/backward: w/W,b/B
+; Move word/backwards: w/W,b/B
 ; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/iw/p
 ; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
 ; Marks: ma
@@ -257,6 +257,10 @@
 ; Registers: "ayy, "ap
 ; q: (query commands)
 ; q/ (query searches)
+; Insert mode
+;     Ctrl-o (insert normal mode)
+;     Ctrl-w (delete word backwards)
+;     Ctrl-r {0} (paste register)
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 
