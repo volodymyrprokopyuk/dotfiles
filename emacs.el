@@ -246,7 +246,7 @@
 ; Evil mode
 ; Search line: f/F, t/T -> ;/,
 ; Search file: */#, /? -> n/N
-; Move word/backwards: w/W,b/B
+; Move word/backwards: w/W, b/B
 ; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/iw/p
 ; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
 ; Marks: ma
@@ -255,6 +255,7 @@
 ;     `` (last visited position)
 ;     `. (last edited position)
 ; Registers: "ayy, "ap
+; Shift-r (replace mode)
 ; q: (query commands)
 ; q/ (query searches)
 ; Insert mode
@@ -274,8 +275,9 @@
 (require 'evil)
 (evil-mode 1)
 
-; Exit insert mode
-(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
+; Exit insert/replace mode
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+(key-chord-define evil-replace-state-map "jk" 'evil-normal-state)
 
 ; Move selected lines up (K) and down (J)
 (define-key evil-visual-state-map "J"
