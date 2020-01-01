@@ -19,7 +19,7 @@ git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
-yay -S httpie jq pwgen apg
+yay -S jq pwgen apg
 yay -S yed plantuml
 yay -S postgresql pgcli pgadmin4 pgmodeler
 yay -S aws-cli google-cloud-sdk
