@@ -46,6 +46,12 @@ alias ll="exa --all --long --sort=type --git --git-ignore --ignore-glob='*~|.git
 alias vv="bat --style full --theme zenburn --tabs 4 --map-syntax conf:ini"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
+alias uu="curl -sSLk"
+
+# curl options
+# -s silent -S show error -L follow redirects -k insecure
+# -X request -H header -u user:password -d 'data', @file
+# -D - dump response header
 
 # Regular expressions
 # - (?:...) ono-capturing group
