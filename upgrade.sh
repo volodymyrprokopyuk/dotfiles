@@ -358,6 +358,7 @@ markdown-mode
 yaml-mode
 evil-surround
 evil-nerd-commenter
+evil-goggles
 EOF
     set -e
 
@@ -412,7 +413,6 @@ function emacs_upgrade_make {
 idris-mode
 helm
 evil
-evil-goggles
 EOF
     set -e
 
