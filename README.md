@@ -19,9 +19,10 @@ git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
-yay -S jq pwgen apg
+yay -S rofi jq
 yay -S yed plantuml
 yay -S postgresql pgcli pgadmin4 pgmodeler
+yay -S ory-hydra-bin
 yay -S aws-cli google-cloud-sdk
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
 yay -S youtube-dl # youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
