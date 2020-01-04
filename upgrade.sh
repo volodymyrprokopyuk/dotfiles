@@ -116,13 +116,6 @@ function common_config {
 
     printf "$MESSAGE" $target $action "Copying .agignore into ~"
     cp $DOTFILES_HOME/.agignore ~
-    printf "$MESSAGE" $target $action "Copying .editorconfig into ~"
-    cp $DOTFILES_HOME/.editorconfig ~
-    printf "$MESSAGE" $target $action "Copying config.py into ~/.ptpython"
-    mkdir -p ~/.ptpython
-    cp $DOTFILES_HOME/ptpython_config.py ~/.ptpython/config.py
-    printf "$MESSAGE" $target $action "Copying .myclirc into ~"
-    cp $DOTFILES_HOME/.myclirc ~
     printf "$MESSAGE" $target $action "Copying config into ~/.config/pgcli"
     mkdir -p ~/.config/pgcli
     cp $DOTFILES_HOME/pgcli_config ~/.config/pgcli/config
