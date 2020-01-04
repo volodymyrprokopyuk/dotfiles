@@ -16,7 +16,6 @@
 (add-hook 'linum-mode-hook '(lambda () (setq linum-format "%d ")))
 ; Highlight current line
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#333333")
 ; Highlight matching parenthesis
 (show-paren-mode 1)
 
@@ -90,6 +89,10 @@
 ; Zenburn theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
 (load-theme 'zenburn t)
+; Highlight current line
+(set-face-attribute 'hl-line nil :foreground nil :background "#262626")
+; Highlight visual selection
+(set-face-attribute 'region nil :foreground nil :background "#3c1414")
 
 ; Rainbow Delimiters mode
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
@@ -275,9 +278,10 @@
 (require 'evil)
 (evil-mode 1)
 
-; Exit insert/replace mode
+; Exit insert/replace/visual mode
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 (key-chord-define evil-replace-state-map "jk" 'evil-normal-state)
+(key-chord-define evil-visual-state-map "jk" 'evil-normal-state)
 
 ; Move selected lines up (K) and down (J)
 (define-key evil-visual-state-map "J"
@@ -327,4 +331,4 @@
 (evil-goggles-mode)
 (setq evil-goggles-duration 0.500)
 (custom-set-faces
-    '(evil-goggles-default-face ((t (:inherit isearch-fail)))))
+    '(evil-goggles-default-face ((t (:inherit region)))))
