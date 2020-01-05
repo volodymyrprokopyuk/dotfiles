@@ -251,8 +251,8 @@
 ; Evil mode
 ; Search line: f/F, t/T -> ;/,
 ; Search file: */#, /? -> n/N
-; Move word/backwards: w/W, b/B
-; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/iw/p
+; Move word/backwards/end: w/W, b/B, e/E
+; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/i w/s/p/t '/"/` )/}/]/>
 ; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
 ; Marks: ma
 ;     'a (go to marked line)
@@ -260,13 +260,16 @@
 ;     `` (last visited position)
 ;     `. (last edited position)
 ; Registers: "ayy, "ap
-; Shift-r (replace mode)
+; Shift-r (replace mode: . A Shift-r , a)
 ; q: (query commands)
 ; q/ (query searches)
 ; Insert mode
-;     Ctrl-o (insert normal mode)
+;     Alt-b, Alt-f (backwards, forward word)
 ;     Ctrl-w (delete word backwards)
 ;     Ctrl-r {0} (paste register)
+; Visual mode (should only be used when normal mode standard motions are not enough)
+;     o (other end of selection)
+;     Ctrl-v $ (ragged selection)
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 
@@ -284,12 +287,6 @@
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 (key-chord-define evil-replace-state-map "jk" 'evil-normal-state)
 (key-chord-define evil-visual-state-map "jk" 'evil-normal-state)
-
-; Move selected lines up (K) and down (J)
-(define-key evil-visual-state-map "J"
-    (concat ":m '>+1" (kbd "RET") "gv=gv"))
-(define-key evil-visual-state-map "K"
-    (concat ":m '<-2" (kbd "RET") "gv=gv"))
 
 ; Treat _ as part of the word on *, #, w, b
 (add-hook 'sh-mode-hook
