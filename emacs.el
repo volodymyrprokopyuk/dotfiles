@@ -87,12 +87,14 @@
 (exec-path-from-shell-initialize)
 
 ; Zenburn theme
+(setq zenburn-override-colors-alist '(("zenburn-bg" . "#333333")))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
 (load-theme 'zenburn t)
+
 ; Highlight current line
 (set-face-attribute 'hl-line nil :foreground nil :background "#262626")
 ; Highlight visual selection
-(set-face-attribute 'region nil :foreground nil :background "#3c1414")
+(set-face-attribute 'region nil :foreground nil :background "#3C1414")
 
 ; Rainbow Delimiters mode
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
@@ -330,5 +332,4 @@
 (require 'evil-goggles)
 (evil-goggles-mode)
 (setq evil-goggles-duration 0.500)
-(custom-set-faces
-    '(evil-goggles-default-face ((t (:inherit region)))))
+(custom-set-faces '(evil-goggles-default-face ((t (:inherit region)))))
