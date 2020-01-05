@@ -292,7 +292,6 @@ https://github.com/emacs-typescript/typescript.el.git
 https://github.com/fxbois/web-mode.git
 https://github.com/smihica/emmet-mode.git
 https://github.com/hlissner/emacs-pug-mode.git
-https://github.com/idris-hackers/idris-mode.git
 https://github.com/spotify/dockerfile-mode.git
 https://github.com/skuro/plantuml-mode.git
 https://github.com/mkmcc/gnuplot-mode.git
@@ -383,7 +382,6 @@ EOF
         -L $EMACS_HOME/web-mode \
         -L $EMACS_HOME/emmet-mode \
         -L $EMACS_HOME/emacs-pug-mode \
-        -L $EMACS_HOME/idris-mode \
         -L $EMACS_HOME/dockerfile-mode \
         -L $EMACS_HOME/plantuml-mode \
         -L $EMACS_HOME/gnuplot-mode \
@@ -403,7 +401,6 @@ function emacs_upgrade_make {
 
     set +e
     read -d "" emacs_packages <<EOF
-idris-mode
 helm
 evil
 EOF

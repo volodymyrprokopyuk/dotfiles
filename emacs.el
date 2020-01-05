@@ -204,11 +204,6 @@
 (autoload 'pug-mode "pug-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.pug\\'" . pug-mode))
 
-; Idris mode
-(add-to-list 'load-path "~/.emacs.d/idris-mode")
-(autoload 'idris-mode "idris-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.idr\\'" . idris-mode))
-
 ; Prolog mode
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
