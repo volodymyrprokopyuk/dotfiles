@@ -258,7 +258,7 @@
 ; Shift-r (replace mode: . A Shift-r , a)
 ; q: (query commands)
 ; q/ (query searches)
-; Insert mode
+; Insert mode/command line mode
 ;     Alt-b, Alt-f (backwards, forward word)
 ;     Ctrl-w (delete word backwards)
 ;     Ctrl-r {0} (paste register)
