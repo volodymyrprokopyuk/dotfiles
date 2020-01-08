@@ -265,6 +265,8 @@
 ; Visual mode (should only be used when normal mode standard motions are not enough)
 ;     o (other end of selection)
 ;     Ctrl-v $ (ragged selection)
+; Command line mode (ex commands)
+;     :<line>, :new, :edit, :write, :substitute, :join, :delete
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 
