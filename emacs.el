@@ -256,8 +256,8 @@
 ;     `. (last edited position)
 ; Registers: "ayy, "ap
 ; Shift-r (replace mode: . A Shift-r , a)
-; q: (query commands)
-; q/ (query searches)
+; q: (query and edit ex command history)
+; q/ (query and edit search history)
 ; Insert mode/command line mode
 ;     Alt-b, Alt-f (backwards, forward word)
 ;     Ctrl-w (delete word backwards)
