@@ -70,6 +70,7 @@
 
 ; Source Code Pro font
 (set-frame-font "Source Code Pro Light 12")
+; (set-frame-font "Jetbrains Mono 12")
 ; Increase/declease font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
