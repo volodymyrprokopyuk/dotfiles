@@ -155,7 +155,6 @@ function git_config_aliases {
     git config --global alias.bm "branch --merged"
     git config --global alias.bnm "branch --no-merged"
     git config --global alias.ch "checkout"
-    git config --global alias.cb '!git ch "$(git branch | sed "s/  //" | grep -v "^*" | fzf)"'
     git config --global alias.a "!git add -A && git s"
     git config --global alias.cm "!git dch && git commit"
 }

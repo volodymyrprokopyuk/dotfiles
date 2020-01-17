@@ -47,6 +47,7 @@ alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax conf:ini"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
 alias uu="curl -sSLk"
+alias pp="fzf --preview 'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:ini {}'"
 
 # curl options
 # -s silent -S show error -L follow redirects -k insecure
@@ -93,14 +94,6 @@ function ex {
     else
         echo "'$1' is not a valid file"
     fi
-}
-
-# Git search log
-function gsl {
-    local log=(git l "$@")
-    local preview='p() { set -- $(echo -- "$@" | grep -o "[a-f0-9]\{7\}"); [ $# -eq 0 ] || git d --color=always $1^!; }; p {}'
-    local filter=(fzf --ansi --no-sort --preview $preview)
-    $log | $filter
 }
 
 # Merge multiple PDF files into a single PDF file
