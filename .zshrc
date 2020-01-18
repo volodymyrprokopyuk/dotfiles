@@ -47,7 +47,15 @@ alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax conf:ini"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
 alias uu="curl -sSLk"
-alias pp="fzf --preview 'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:ini {}'"
+
+function pp {
+    ag --nocolor --nogroup --hidden --follow -g '' $@ \
+    | fzf \
+    --bind \
+    alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
+    --preview \
+    'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:ini {}'
+}
 
 # curl options
 # -s silent -S show error -L follow redirects -k insecure
