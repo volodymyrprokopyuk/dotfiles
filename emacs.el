@@ -128,6 +128,8 @@
 (global-set-key (kbd "M-s r") 'helm-recentf)
 (global-set-key (kbd "M-s l") 'helm-locate)
 (helm-mode 1)
+(define-key helm-map (kbd "M-j") 'helm-next-line)
+(define-key helm-map (kbd "M-k") 'helm-previous-line)
 
 ; Helm Ag mode
 (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
@@ -150,6 +152,8 @@
 (global-set-key (kbd "M-s SPC") 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-dabbrev-downcase nil)
+(define-key company-active-map (kbd "M-j") #'company-select-next)
+(define-key company-active-map (kbd "M-k") #'company-select-previous)
 
 ; Avy mode
 (add-to-list 'load-path "~/.emacs.d/avy")
