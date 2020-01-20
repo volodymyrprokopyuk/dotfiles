@@ -52,7 +52,7 @@ function pp {
     ag --nocolor --nogroup --hidden --follow -g '' $@ \
     | fzf \
     --bind \
-    alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
+    ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
     --preview \
     'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:ini {}'
 }
@@ -145,7 +145,7 @@ ZPACKAGE=/usr/share/fzf/key-bindings.zsh
 ZPACKAGE=/usr/share/fzf/completion.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --follow -g ''"
-export FZF_DEFAULT_OPTS="--no-height --cycle"
+export FZF_DEFAULT_OPTS="--no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
