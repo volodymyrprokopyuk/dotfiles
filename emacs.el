@@ -251,7 +251,7 @@
 ; Evil mode
 ; Search line: f/F, t/T -> ;/,
 ; Search file: */#, /? -> n/N
-; Move word/backwards/end: w/W, b/B, e/E
+; Move word/backwards/end: w/W, b/B, e/E, ge/gE
 ; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/i w/s/p/t '/"/` )/}/]/>
 ; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
 ; Marks: ma
