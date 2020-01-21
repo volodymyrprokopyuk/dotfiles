@@ -250,8 +250,8 @@
 
 ; Evil mode
 ; Move word/backwards/end: w/W, b/B, e/E, ge/gE
-; Search line: f/F, t/T -> ;/,
-; Search file: /?, */# -> n/N
+; Search single char in line: f/F, t/T -> ;/,
+; Search regexp in file: /?, */# -> n/N
 ; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/i w/s/p/t '/"/` )/}/]/>
 ; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
 ; Marks: ma
