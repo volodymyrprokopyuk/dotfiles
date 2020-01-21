@@ -158,7 +158,7 @@
 ; Avy mode
 (add-to-list 'load-path "~/.emacs.d/avy")
 (require 'avy)
-(global-set-key (kbd "M-s j") 'avy-goto-char-timer)
+(global-set-key (kbd "M-j") 'avy-goto-char-timer)
 
 ; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
@@ -249,9 +249,9 @@
 (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
 
 ; Evil mode
-; Search line: f/F, t/T -> ;/,
-; Search file: */#, /? -> n/N
 ; Move word/backwards/end: w/W, b/B, e/E, ge/gE
+; Search line: f/F, t/T -> ;/,
+; Search file: /?, */# -> n/N
 ; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/i w/s/p/t '/"/` )/}/]/>
 ; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
 ; Marks: ma
