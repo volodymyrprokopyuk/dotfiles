@@ -249,11 +249,14 @@
 (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
 
 ; Evil mode
-; Move word/backwards/end: w/W, b/B, e/E, ge/gE
-; Search single char in line: f/F, t/T -> ;/,
-; Search regexp in file: /?, */# -> n/N
-; Operator + motion/text object: d, c, y, >, <, gc + ^, $, a/i w/s/p/t '/"/` )/}/]/>
-; Operator + operator: acts on the current line: dd, >>, guu, gUU, g~~, gcc
+; Motions
+;     Move word/backwards/end: w/W, b/B, e/E, ge/gE
+;     Beginning/end of line: 0, ^, $,
+;     Search single char in line: f/F, t/T -> ;/,
+;     Search regexp in file: /?, */# -> n/N
+; Text objects: i/a w/s/p/t '/"/` )/}/]/>
+; Operator + motion/text object: y, c, d, >, <, gc + $, it
+; Operator + operator: acts on the current line: cc, dd, >>, <<, gcc, guu, gUU, g~~
 ; Marks: ma
 ;     'a (go to marked line)
 ;     `a (go to marked position)
