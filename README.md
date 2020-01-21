@@ -47,6 +47,8 @@ docker swarm init
 yay -Sy
 # Upgrade the system
 yay -Syu
+# Show packages to upgrade
+yay -Qu
 # Search the remote repository database for a package
 yay -Ss[i] <package>
 # Query the local repository database for the installed package
