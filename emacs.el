@@ -255,13 +255,19 @@
 ;     Search single char in line: f/F, t/T -> ;/,
 ;     Search regexp in file: /?, */# -> n/N
 ; Text objects: i/a w/s/p/t '/"/` )/}/]/>
+;     Change inside: ci_
+;     Delete around: da_
 ; Operator + motion/text object: y, c, d, >, <, gc + $, it
 ; Operator + operator: acts on the current line: cc, dd, >>, <<, gcc, guu, gUU, g~~
-; Marks: ma
-;     'a (go to marked line)
-;     `a (go to marked position)
-;     `` (last visited position)
+; Marks: m[mM]
+;     m buffer local mark
+;     M globally accesible mark
+;     `m (go to marked position)
+;     'm (go to marked line)
 ;     `. (last edited position)
+;     `` (last visited position)
+; Change list: g;/g,
+; Jump list: Ctrl-o/Ctrl-i
 ; Registers: "ayy, "ap
 ; Shift-r (replace mode: . A Shift-r , a)
 ; q: (query and edit ex command history)
@@ -273,8 +279,6 @@
 ; Visual mode (should only be used when normal mode standard motions are not enough)
 ;     o (other end of selection)
 ;     Ctrl-v $ (ragged selection)
-; Jump list: Ctrl-o/Ctrl-i
-; Change list: g;/g,
 (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
 (require 'goto-chg)
 
@@ -312,6 +316,8 @@
 (evil-set-initial-state 'ibuffer-mode 'normal)
 
 ; Evil Surround mode
+; Normal mode: ys, cs, ds
+; Visual mode: S
 (add-to-list 'load-path "~/.emacs.d/evil-surround")
 (require 'evil-surround)
 (global-evil-surround-mode 1)
