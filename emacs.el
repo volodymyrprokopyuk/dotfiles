@@ -120,6 +120,7 @@
 (add-hook 'text-mode-hook 'smartparens-mode)
 
 ; Helm mode
+; Ctrl-y paste into mini buffer
 (add-to-list 'load-path "~/.emacs.d/helm")
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
