@@ -250,25 +250,22 @@
 (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
 
 ; Evil mode
-; Motions
-;     Move word/backwards/end: w/W, b/B, e/E, ge/gE
+; Motions within a buffer
+;     Word/backwards/end: w/W, b/B, e/E, ge/gE
 ;     Beginning/end of line: 0, ^, $,
-;     Search single char in line: f/F, t/T -> ;/,
-;     Search regexp in file: /?, */# -> n/N
+;     Search single char in current line: f/F, t/T -> ;/,
+;     Search regexp in a buffer: /?, */# -> n/N
 ; Text objects: i/a w/s/p/t '/"/` )/}/]/>
 ;     Change inside: ci_
 ;     Delete around: da_
-; Operator + motion/text object: y, c, d, >, <, gc + $, it
+; Operator + motion/text object: y, c, d, >, <, gc + w, it
 ; Operator + operator: acts on the current line: cc, dd, >>, <<, gcc, guu, gUU, g~~
 ; Marks: m[mM]
-;     m buffer local mark
-;     M globally accesible mark
+;     m mark in a buffer
+;     M global mark
 ;     `m (go to marked position)
-;     'm (go to marked line)
-;     `. (last edited position)
-;     `` (last visited position)
-; Change list: g;/g,
-; Jump list: Ctrl-o/Ctrl-i
+; Change list in a buffer: g;/g,
+; Jump list between buffers in a window: Ctrl-o/Ctrl-i
 ; Registers: "ayy, "ap
 ; Shift-r (replace mode: . A Shift-r , a)
 ; q: (query and edit ex command history)
