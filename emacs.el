@@ -266,14 +266,16 @@
 ;     `m (go to marked position)
 ; Change list in a buffer: g;/g,
 ; Jump list between buffers in a window: Ctrl-o/Ctrl-i
-; Registers: "ayy, "ap
+; Registers: "ryy, "rp
+;     r overwrite
+;     R append
 ; Shift-r (replace mode: . A Shift-r , a)
 ; q: (query and edit ex command history)
 ; q/ (query and edit search history)
 ; Insert mode/command line mode
 ;     Alt-b, Alt-f (backwards, forward word)
 ;     Ctrl-w (delete word backwards)
-;     Ctrl-r {0} (paste register)
+;     Ctrl-r {0} (paste yank register)
 ; Visual mode (should only be used when normal mode standard motions are not enough)
 ;     o (other end of selection)
 ;     Ctrl-v $ (ragged selection)
