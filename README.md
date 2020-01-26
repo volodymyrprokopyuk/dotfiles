@@ -99,7 +99,7 @@ yarn init
     "private": true,
     "devDependencies": {
         "prettier": "1.18.2",
-        "tslint": "5.19.0",
+        "eslint": "6.8.0",
         "typescript": "3.5.3",
         "jest": "24.9.0",
         "@types/jest": "24.0.18"
@@ -108,7 +108,7 @@ yarn init
 # Install dependencies
 yarn install
 # Configure TSLint
-./node_modules/.bin/tslint --init
+./node_modules/.bin/eslint --init
 ```
 
 # Python environment
