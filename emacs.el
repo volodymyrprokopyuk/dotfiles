@@ -275,7 +275,7 @@
 ; Insert mode/command line mode
 ;     Alt-b, Alt-f (backwards, forward word)
 ;     Ctrl-w (delete word backwards)
-;     Ctrl-r {0} (paste yank register)
+;     Ctrl-r "/0 (paste unnamed/yank register)
 ; Visual mode (should only be used when normal mode standard motions are not enough)
 ;     o (other end of selection)
 ;     Ctrl-v $ (ragged selection)
