@@ -63,7 +63,7 @@ function pp {
 # -D - dump response header
 
 # Regular expressions
-# - (?:...) ono-capturing group
+# - (?:...) non-capturing group
 # - (?=...) positive lookahead
 # - (?!...) negative lookahead
 # - (?<=...) positive lookbehind
