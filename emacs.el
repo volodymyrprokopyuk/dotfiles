@@ -235,6 +235,7 @@
 (setq gnuplot-program "/bin/gnuplot")
 
 ; Terraform mode
+(add-to-list 'load-path "~/.emacs.d/emacs-hcl-mode")
 (add-to-list 'load-path "~/.emacs.d/emacs-terraform-mode")
 (autoload 'terraform-mode "terraform-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
@@ -264,8 +265,8 @@
 ; Text objects: i/a w/s/p/t '/"/` )/}/]/>
 ;     Change inside: ci_
 ;     Delete around: da_
-; Operator + motion/text object: y, c, d, >, <, gc + w, it
-; Operator + operator: acts on the current line: cc, dd, >>, <<, gcc, guu, gUU, g~~
+; Operator + motion/text object: y, c, d, >, <, =, gc + w, it
+; Operator + operator: acts on the current line: cc, dd, >>, <<, ==, gcc, guu, gUU, g~~
 ; Marks: m[mM]
 ;     m mark in a buffer
 ;     M global mark
