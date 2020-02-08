@@ -294,6 +294,8 @@ https://github.com/hlissner/emacs-pug-mode.git
 https://github.com/spotify/dockerfile-mode.git
 https://github.com/skuro/plantuml-mode.git
 https://github.com/mkmcc/gnuplot-mode.git
+https://github.com/syohex/emacs-hcl-mode.git
+https://github.com/syohex/emacs-terraform-mode.git
 https://github.com/jrblevin/markdown-mode.git
 https://github.com/yoshiki/yaml-mode.git
 https://github.com/emacs-evil/evil.git
@@ -345,6 +347,8 @@ emacs-pug-mode
 dockerfile-mode
 plantuml-mode
 gnuplot-mode
+emacs-hcl-mode
+emacs-terraform-mode
 markdown-mode
 yaml-mode
 evil-surround
@@ -384,6 +388,8 @@ EOF
         -L $EMACS_HOME/dockerfile-mode \
         -L $EMACS_HOME/plantuml-mode \
         -L $EMACS_HOME/gnuplot-mode \
+        -L $EMACS_HOME/emacs-hcl-mode \
+        -L $EMACS_HOME/emacs-terraform-mode \
         -L $EMACS_HOME/markdown-mode \
         -L $EMACS_HOME/yaml-mode \
         -L $EMACS_HOME/evil \

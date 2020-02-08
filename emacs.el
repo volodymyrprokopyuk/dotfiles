@@ -234,6 +234,12 @@
 (add-to-list 'auto-mode-alist '("\\.gplot\\'" . gnuplot-mode))
 (setq gnuplot-program "/bin/gnuplot")
 
+; Terraform mode
+(add-to-list 'load-path "~/.emacs.d/emacs-terraform-mode")
+(autoload 'terraform-mode "terraform-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
+(custom-set-variables '(terraform-indent-level 4))
+
 ; Markdown mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (autoload 'markdown-mode "markdown-mode" nil t)
