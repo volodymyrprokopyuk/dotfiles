@@ -4,6 +4,7 @@
 # Video configuration: 128MB, VBoxSVGA, 3D acceleration
 yay -S linux419-virtualbox-guest-modules virtualbox-guest-utils
 sudo usermod -G vboxsf -a $USER
+newgrp vboxsf
 sudo systemctl enable vboxservice.service
 # Shared folder configuration: automount, make permanent
 sudo VBoxControl sharedfolder list # Manjaro device
@@ -32,9 +33,10 @@ chsh -s $(which zsh)
 # Install and configure docker
 yay -S docker
 sudo groupadd docker
-sudo usermod -aG docker $USER
-sudo systemctl enable docker
-sudo systemctl start docker
+sudo usermod -G docker -a $USER
+newgrp docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
 # Logout, login and then configure docker swarm
 docker swarm init
 ```
@@ -110,27 +112,6 @@ yarn install
 ./node_modules/.bin/eslint --init
 ```
 
-# Python environment
-
-```bash
-# Activete Python virtual environment
-python -m venv <env>
-source <env>/bin/activate
-# Define dependencies
-# ./requirements.txt
-awscli==1.16.209
-cfn-lint==0.22.4
-black==19.3b0
-flake8==3.7.7
-pylint==2.3.1
-pytest==5.0.1
-pytest-cov==2.7.1
-# Install dependencies
-pip install -r requireemnts.txt
-# Deactivate Python virtual environment
-deactivate
-```
-
 # PostgreSQL environment
 
 ```bash
@@ -156,6 +137,26 @@ pg_dump -U vlad --schema-only vladdb > vladdb_dump_schema.sql
 # Restore database schema
 psql -h localhost -p 5432 -f vladdb_dump_schema.sql \
     -v ON_ERROR_STOP=1 -v ECHO=queries vladdb vlad
+```
+
+# Users and groups management
+
+```bash
+# Show users
+cat /etc/passwd
+# Show groups
+cat /etc/group
+# Show groups that user belongs to
+groups $USER
+```
+
+# systemd management
+
+```bash
+# Show services
+systemctl [list-units] --type=service --state=active
+# Manage service
+sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
 ```
 
 # SSH configuration
@@ -194,6 +195,7 @@ ssh-add -l
 ```
 
 # Format USB drive
+
 ```bash
 df -h
 sudo umount /dev/sdc1
