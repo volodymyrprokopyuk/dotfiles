@@ -21,7 +21,7 @@ sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 yay -S adobe-source-code-pro-fonts jetbrains-mono tmux zsh emacs xsel
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
 yay -S jq
-yay -S yed plantuml
+yay -S inkscape plantuml
 yay -S postgresql pgcli pgadmin4 pgmodeler
 yay -S aws-cli google-cloud-sdk terraform
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
