@@ -18,10 +18,10 @@ sudo mount -t vboxsf Manjaro /home/vlad/Manjaro -o uid=$(id -u),gid=$(id -g)
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
-yay -S adobe-source-code-pro-fonts jetbrains-mono tmux zsh emacs xsel
+yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
 yay -S jq
-yay -S inkscape plantuml
+yay -S inkscape plantuml gnuplot
 yay -S postgresql pgcli pgadmin4 pgmodeler
 yay -S aws-cli google-cloud-sdk terraform
 yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
