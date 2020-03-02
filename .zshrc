@@ -109,7 +109,10 @@ function ex {
 function pdfmerge {
     gs -dNOPAUSE -dBATCH -dQUIET -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite \
         -sOutputFile=$@
-    # convert -density 200 -quality 60 -compress jpeg source.pdf converted.pdf
+    # Reduce size/quality of a PDF from merged JPEG images
+    # convert -density 200 -quality 60 -compress jpeg input.pdf output.pdf
+    # Convert the first page of a PDF to PNG
+    # convert -density 300 -quality 90 -alpha remove 'input.pdf[0]' output.png
 }
 
 # Install Spaceship Prompt
