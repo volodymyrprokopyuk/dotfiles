@@ -1,44 +1,28 @@
-# VirtualBox Manjaro configuration
-
-```bash
-# Video configuration: 128MB, VBoxSVGA, 3D acceleration
-yay -S linux419-virtualbox-guest-modules virtualbox-guest-utils
-sudo usermod -G vboxsf -a $USER
-newgrp vboxsf
-sudo systemctl enable vboxservice.service
-# Shared folder configuration: automount, make permanent
-sudo VBoxControl sharedfolder list # Manjaro device
-sudo mount -t vboxsf Manjaro /home/vlad/Manjaro -o uid=$(id -u),gid=$(id -g)
-# Reboot
-```
 # .dotfiles installation
 
 ```bash
 # Install yay with makepkg from git
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+# Enable color in pacman/yay output
+sudo sed -i -e 's/^#Color$/Color/' /etc/pacman.conf
 # Install software with yay from core, extra, community and AUR repositories
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
-yay -S adobe-source-code-pro-fonts tmux zsh emacs xsel
-yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
-yay -S jq
-yay -S inkscape plantuml gnuplot
-yay -S postgresql pgcli pgadmin4 pgmodeler
-yay -S aws-cli google-cloud-sdk terraform
-yay -S dropbox google-chrome gnome-keyring skypeforlinux-preview-bin
-yay -S youtube-dl # youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
 # Update installed software and clean up unused packages
 yay -Syu && yay -Sc
+# Install tools
+yay -S adobe-source-code-pro-fonts
+yay -S tmux zsh emacs xsel
+yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
+yay -S jq
 # Configure zsh (log out, then log in)
 chsh -s $(which zsh)
-# Install and configure docker
-yay -S docker
-sudo groupadd docker
-sudo usermod -G docker -a $USER
-newgrp docker
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-# Logout, login and then configure docker swarm
-docker swarm init
+# Install applications
+yay -S inkscape plantuml gnuplot
+yay -S dropbox google-chrome
+# Install cloud tools
+yay -S aws-cli google-cloud-sdk terraform
+# youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
+yay -S youtube-dl
 ```
 
 # pacman/yay usage
@@ -72,6 +56,18 @@ yay -Qo <file path>
 yay -Ps
 # Show dependency tree of a package
 pactree <package>
+```
+
+# Docker environment
+
+```bash
+# Install and configure docker
+yay -S docker
+sudo groupadd docker
+sudo usermod -G docker -a $USER
+newgrp docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
 ```
 
 # Node environment
@@ -115,6 +111,8 @@ yarn install
 # PostgreSQL environment
 
 ```bash
+# Install PostgreSQL server, client, and tools
+yay -S postgresql pgcli pgmodeler
 # Initialize PostgreSQL database cluster
 sudo su postgres
 initdb --locale en_US.UTF-8 --encoding UTF-8 -D /var/lib/postgres/data
@@ -139,7 +137,9 @@ psql -h localhost -p 5432 -f vladdb_dump_schema.sql \
     -v ON_ERROR_STOP=1 -v ECHO=queries vladdb vlad
 ```
 
-# Users and groups management
+# System environment
+
+## Users and groups management
 
 ```bash
 # Show users
@@ -150,7 +150,7 @@ cat /etc/group
 groups $USER
 ```
 
-# systemd management
+## systemd management
 
 ```bash
 # Show services
@@ -159,7 +159,15 @@ systemctl [list-units] --type=service --state=active
 sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
 ```
 
-# SSH configuration
+## Format USB drive
+
+```bash
+df -h
+sudo umount /dev/sdc1
+sudo mkfs.ext4 /dev/sdc1
+```
+
+## SSH configuration
 
 Install and use locally generated SSH key on a remote server
 ```bash
@@ -194,10 +202,16 @@ ssh-add ~/.ssh/id_rsa*~*.pub
 ssh-add -l
 ```
 
-# Format USB drive
+## VirtualBox Manjaro configuration
 
 ```bash
-df -h
-sudo umount /dev/sdc1
-sudo mkfs.ext4 /dev/sdc1
+# Video configuration: 128MB, VBoxSVGA, 3D acceleration
+yay -S linux419-virtualbox-guest-modules virtualbox-guest-utils
+sudo usermod -G vboxsf -a $USER
+newgrp vboxsf
+sudo systemctl enable vboxservice.service
+# Shared folder configuration: automount, make permanent
+sudo VBoxControl sharedfolder list # Manjaro device
+sudo mount -t vboxsf Manjaro /home/vlad/Manjaro -o uid=$(id -u),gid=$(id -g)
+# Reboot
 ```
