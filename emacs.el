@@ -186,6 +186,11 @@
 (autoload 'typescript-mode "typescript-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
+; R mode
+(add-to-list 'load-path "~/.emacs.d/ESS/lisp")
+(autoload 'ess-r-mode "ess-r-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
+
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
 (autoload 'web-mode "web-mode" nil t)
