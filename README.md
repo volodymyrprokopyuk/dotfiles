@@ -108,6 +108,12 @@ yarn install
 ./node_modules/.bin/eslint --init
 ```
 
+# R environment
+
+```bash
+yay -S openblas r
+```
+
 # PostgreSQL environment
 
 ```bash
