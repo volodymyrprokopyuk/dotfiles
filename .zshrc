@@ -47,6 +47,7 @@ alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:ini'"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
 alias uu="curl -sSLk"
+alias R="R --quiet"
 
 function pp {
     ag --nocolor --nogroup --hidden --follow -g '' $@ \
