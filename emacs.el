@@ -68,6 +68,12 @@
 ; C indentation
 (setq-default c-basic-offset 4)
 
+; Flyspell mode
+(global-set-key (kbd "<f8>") 'flyspell-buffer)
+; ]s next word
+; [s previous word
+; z= show suggestions
+
 ; Source Code Pro font
 (set-frame-font "Source Code Pro Light 12")
 ; (set-frame-font "Jetbrains Mono 12")
