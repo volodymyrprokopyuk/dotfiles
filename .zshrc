@@ -105,56 +105,6 @@ function ex {
     fi
 }
 
-# Merge multiple PDF files into a single PDF file
-# Usage: pdfmerge merged.pdf source1.pdf source2.pdf
-function pdfmerge {
-    gs -dNOPAUSE -dBATCH -dQUIET -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite \
-        -sOutputFile=$@
-    # Reduce size/quality of a PDF from merged JPEG images
-    # convert -density 200 -quality 60 -compress jpeg input.pdf output.pdf
-    # Convert the first page of a PDF to PNG
-    # convert -density 300 -quality 90 -alpha remove 'input.pdf[0]' output.png
-}
-
-# Copy and organize photos into albums
-# Usage: copy_photos "${ROOT_DIR}/My photos" "${ROOT_DIR}/My albums"
-function copy_photos {
-    local source_path="${1:?ERROR: source path is not provided}"
-    local destination_path="${2:?ERROR: destination path is not provided}"
-
-    function copy_photo {
-        local photo="${1:?ERROR: photo is not provided}"
-        local destination_path="${2:?ERROR: destination path is not provided}"
-
-        echo -n "${photo}"
-        local timestamp=$(
-            exiv2 "${photo}" \
-            | grep -oP '(?<=Image timestamp : ).+$' | sed 's/:/-/;s/:/-/'
-        )
-        if [[ -z "${timestamp}" ]]; then
-           echo " FAILED (no image timestamp)"
-           return 1
-        fi
-        local date=$(date -d "${timestamp}" +'%Y-%m-%d')
-        local time=$(date -d "${timestamp}" +'%H:%M:%S')
-        if [[ -z "${date}" ]] || [[ -z "${time}" ]]; then
-            echo " FAILED (invalid image timestamp ${timestamp})"
-            return 1
-        fi
-        local hash=$(sha1sum "${photo}" | grep -oP '^\S+')
-        local file="${date}_${time}_${hash}.jpg"
-        local date_path=$(date -d "${timestamp}" +'%Y/%Y-%m-%d')
-        local path="${destination_path}/${date_path}"
-        mkdir -p "${path}"
-        cp "${photo}" "${path}/${file}"
-        echo " DONE"
-    }
-    export -f copy_photo
-
-    find "${source_path}" -type f -iregex '.*\.\(jpg\|jpeg\)$' \
-         -exec bash -c "copy_photo \"{}\" \"${destination_path}\"" \;
-}
-
 # Install Spaceship Prompt
 fpath=($HOME/.zsh/spaceship-prompt $fpath)
 ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
