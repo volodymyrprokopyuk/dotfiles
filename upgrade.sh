@@ -253,6 +253,8 @@ function emacs_upgrade_web {
     read -d "" emacs_packages <<EOF
 https://www.emacswiki.org/emacs/download/goto-chg.el
 https://www.emacswiki.org/emacs/download/key-chord.el
+https://www.emacswiki.org/emacs/download/pos-tip.el
+http://mumble.net/~campbell/emacs/paredit.el
 EOF
     set -e
 
@@ -274,6 +276,7 @@ function emacs_upgrade_git {
     read -d "" emacs_packages <<EOF
 https://github.com/cask/epl.git
 https://github.com/lunaryorn/pkg-info.el.git
+https://github.com/Lindydancer/faceup.git
 https://github.com/magnars/s.el.git
 https://github.com/magnars/dash.el.git
 https://github.com/jwiegley/emacs-async.git
@@ -287,11 +290,12 @@ https://github.com/emacs-helm/helm.git
 https://github.com/syohex/emacs-helm-ag.git
 https://github.com/company-mode/company-mode.git
 https://github.com/abo-abo/avy.git
-https://github.com/Emacs-Kotlin-Mode-Maintainers/kotlin-mode.git
 https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
+https://github.com/greghendershott/racket-mode.git
 https://github.com/JuliaEditorSupport/julia-emacs.git
 https://github.com/emacs-ess/ESS.git
+https://github.com/Emacs-Kotlin-Mode-Maintainers/kotlin-mode.git
 https://github.com/fxbois/web-mode.git
 https://github.com/smihica/emmet-mode.git
 https://github.com/hlissner/emacs-pug-mode.git
@@ -330,6 +334,9 @@ epl
 pkg-info.el
 goto-chg.el
 key-chord.el
+pos-tip.el
+paredit.el
+faceup
 s.el
 dash.el
 emacs-async
@@ -342,11 +349,12 @@ smartparens
 emacs-helm-ag
 company-mode
 avy
-kotlin-mode
 js2-mode
 typescript.el
+racket-mode
 julia-emacs
 ESS/lisp
+kotlin-mode
 web-mode
 emmet-mode
 emacs-pug-mode
@@ -372,6 +380,9 @@ EOF
         -L $EMACS_HOME/pkg-info.el \
         -L $EMACS_HOME/goto-chg.el \
         -L $EMACS_HOME/key-chord.el \
+        -L $EMACS_HOME/pos-tip.el \
+        -L $EMACS_HOME/paredit.el \
+        -L $EMACS_HOME/faceup \
         -L $EMACS_HOME/s.el \
         -L $EMACS_HOME/dash.el \
         -L $EMACS_HOME/emacs-async \
@@ -385,11 +396,12 @@ EOF
         -L $EMACS_HOME/emacs-helm-ag \
         -L $EMACS_HOME/company-mode \
         -L $EMACS_HOME/avy \
-        -L $EMACS_HOME/kotlin-mode \
         -L $EMACS_HOME/js2-mode \
         -L $EMACS_HOME/typescript.el \
+        -L $EMACS_HOME/racket-mode \
         -L $EMACS_HOME/julia-emacs \
         -L $EMACS_HOME/ESS/lisp \
+        -L $EMACS_HOME/kotlin-mode \
         -L $EMACS_HOME/web-mode \
         -L $EMACS_HOME/emmet-mode \
         -L $EMACS_HOME/emacs-pug-mode \

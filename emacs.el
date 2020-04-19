@@ -84,6 +84,9 @@
 ; Common extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
 (add-to-list 'load-path "~/.emacs.d/pkg-info.el")
+(add-to-list 'load-path "~/.emacs.d/pos-tip.el")
+(add-to-list 'load-path "~/.emacs.d/paredit.el")
+(add-to-list 'load-path "~/.emacs.d/faceup")
 (add-to-list 'load-path "~/.emacs.d/s.el")
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
@@ -173,12 +176,6 @@
 ; Ediff mode
 (setq ediff-split-window-function 'split-window-horizontally)
 
-; Kotlin mode
-(add-to-list 'load-path "~/.emacs.d/kotlin-mode")
-(autoload 'kotlin-mode "kotlin-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
-(add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode))
-
 ; JS2 mode
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (autoload 'js2-mode "js2-mode" nil t)
@@ -192,10 +189,21 @@
 (autoload 'typescript-mode "typescript-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
+; Racket mode
+(add-to-list 'load-path "~/.emacs.d/racket-mode")
+(autoload 'racket-mode "racket-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
+
 ; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
 (autoload 'ess-r-mode "ess-r-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
+
+; Kotlin mode
+(add-to-list 'load-path "~/.emacs.d/kotlin-mode")
+(autoload 'kotlin-mode "kotlin-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
+(add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode))
 
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
