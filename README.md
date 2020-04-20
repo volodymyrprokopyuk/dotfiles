@@ -109,6 +109,12 @@ yarn install
 ./node_modules/.bin/eslint --init
 ```
 
+# Racket environment
+
+```bash
+yay -S racket-minimal
+```
+
 # R environment
 
 ```bash
