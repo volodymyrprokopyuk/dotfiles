@@ -199,12 +199,6 @@
 (autoload 'ess-r-mode "ess-r-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
 
-; Kotlin mode
-(add-to-list 'load-path "~/.emacs.d/kotlin-mode")
-(autoload 'kotlin-mode "kotlin-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
-(add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode))
-
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
 (autoload 'web-mode "web-mode" nil t)

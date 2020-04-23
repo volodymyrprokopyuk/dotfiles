@@ -295,7 +295,6 @@ https://github.com/emacs-typescript/typescript.el.git
 https://github.com/greghendershott/racket-mode.git
 https://github.com/JuliaEditorSupport/julia-emacs.git
 https://github.com/emacs-ess/ESS.git
-https://github.com/Emacs-Kotlin-Mode-Maintainers/kotlin-mode.git
 https://github.com/fxbois/web-mode.git
 https://github.com/smihica/emmet-mode.git
 https://github.com/hlissner/emacs-pug-mode.git
@@ -354,7 +353,6 @@ typescript.el
 racket-mode
 julia-emacs
 ESS/lisp
-kotlin-mode
 web-mode
 emmet-mode
 emacs-pug-mode
@@ -401,7 +399,6 @@ EOF
         -L $EMACS_HOME/racket-mode \
         -L $EMACS_HOME/julia-emacs \
         -L $EMACS_HOME/ESS/lisp \
-        -L $EMACS_HOME/kotlin-mode \
         -L $EMACS_HOME/web-mode \
         -L $EMACS_HOME/emmet-mode \
         -L $EMACS_HOME/emacs-pug-mode \
