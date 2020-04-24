@@ -255,6 +255,7 @@ https://www.emacswiki.org/emacs/download/goto-chg.el
 https://www.emacswiki.org/emacs/download/key-chord.el
 https://www.emacswiki.org/emacs/download/pos-tip.el
 http://mumble.net/~campbell/emacs/paredit.el
+https://raw.githubusercontent.com/gnu-smalltalk/smalltalk/master/smalltalk-mode.el
 EOF
     set -e
 
@@ -335,6 +336,7 @@ goto-chg.el
 key-chord.el
 pos-tip.el
 paredit.el
+smalltalk-mode.el
 faceup
 s.el
 dash.el
@@ -380,6 +382,7 @@ EOF
         -L $EMACS_HOME/key-chord.el \
         -L $EMACS_HOME/pos-tip.el \
         -L $EMACS_HOME/paredit.el \
+        -L $EMACS_HOME/smalltalk-mode.el \
         -L $EMACS_HOME/faceup \
         -L $EMACS_HOME/s.el \
         -L $EMACS_HOME/dash.el \
