@@ -14,7 +14,7 @@ yay -S adobe-source-code-pro-fonts
 yay -S tmux zsh emacs xsel
 yay -S aspell aspell-en aspell-es
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
-yay -S jq
+yay -S jq rclone
 # Configure zsh (log out, then log in)
 chsh -s $(which zsh)
 # Install applications
