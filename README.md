@@ -109,16 +109,22 @@ yarn install
 ./node_modules/.bin/eslint --init
 ```
 
+# R environment
+
+```bash
+yay -S openblas r
+```
+
 # Racket environment
 
 ```bash
 yay -S racket-minimal
 ```
 
-# R environment
+# Pharo environment
 
 ```bash
-yay -S openblas r
+yay -S pharo-launcher
 ```
 
 # PostgreSQL environment
