@@ -172,14 +172,6 @@ systemctl [list-units] --type=service --state=active
 sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
 ```
 
-## Format USB drive
-
-```bash
-df -h
-sudo umount /dev/sdc1
-sudo mkfs.ext4 /dev/sdc1
-```
-
 ## SSH configuration
 
 Install and use locally generated SSH key on a remote server
@@ -213,6 +205,14 @@ eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa*~*.pub
 # Show added to the SSH authentication agent private SSH key identities
 ssh-add -l
+```
+
+## Format USB drive
+
+```bash
+df -h
+sudo umount /dev/sdc1
+sudo mkfs.ext4 /dev/sdc1
 ```
 
 ## VirtualBox Manjaro configuration
