@@ -115,10 +115,10 @@ yarn install
 yay -S openblas r
 ```
 
-# Racket environment
+# Scheme environment
 
 ```bash
-yay -S racket-minimal
+yay -S gambit-c
 ```
 
 # Pharo environment
