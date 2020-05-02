@@ -118,7 +118,15 @@ yay -S openblas r
 # Scheme environment
 
 ```bash
+# Install Gambit
 yay -S gambit-c
+# Build and install Gerbil
+sudo mv /usr/bin/gsc /usr/bin/gsc-ghs
+sudo mv /usr/bin/gambitc /usr/bin/gsc
+git clone https://github.com/vyzo/gerbil.git
+cd gerbil
+git checkout v0.15.1
+cd src && ./build.sh
 ```
 
 # Pharo environment

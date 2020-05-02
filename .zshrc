@@ -1,4 +1,4 @@
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/Projects/gerbil/bin:$PATH
 
 export TERM=screen-256color
 export ALTERNATE_EDITOR=""
