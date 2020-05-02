@@ -335,6 +335,10 @@
     #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'java-mode-hook
     #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
+(add-hook 'ess-r-mode-hook
+    #'(lambda () (modify-syntax-entry ?_ "w" ess-r-mode-syntax-table)))
+(add-hook 'racket-mode-hook
+    #'(lambda () (modify-syntax-entry ?- "w" racket-mode-syntax-table)))
 
 ; Ibuffer mode
 (evil-ex-define-cmd "ls" 'ibuffer)
