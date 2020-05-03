@@ -112,7 +112,7 @@ yarn install
 # R environment
 
 ```bash
-yay -S openblas r
+yay -S tk openblas r
 ```
 
 # Scheme environment
