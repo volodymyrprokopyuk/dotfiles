@@ -189,6 +189,16 @@
 (autoload 'typescript-mode "typescript-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
+; Gambit mode
+;; (add-to-list 'load-path "~/.emacs.d/gambit.el")
+;; (autoload 'gambit "gambit" nil t)
+;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . gambit))
+
+; Gerbil mode
+(add-to-list 'load-path "~/.emacs.d/gerbil.el")
+(autoload 'gerbil "gerbil" nil t)
+(add-to-list 'auto-mode-alist '("\\.scm\\'" . gerbil))
+
 ; Racket mode
 (add-to-list 'load-path "~/.emacs.d/racket-mode")
 (autoload 'racket-mode "racket-mode" nil t)
