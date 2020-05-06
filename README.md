@@ -144,7 +144,7 @@ yay -S postgresql pgcli pgmodeler
 sudo su postgres
 initdb --locale en_US.UTF-8 --encoding UTF-8 -D /var/lib/postgres/data
 exit
-# Start/enable PostgreSQL database service
+# Enable/start/status PostgreSQL database service
 sudo systemctl enable|start|status postgresql.service
 # Create database user
 sudo su postgres
