@@ -112,7 +112,12 @@ yarn install
 # R environment
 
 ```bash
+# Install R
 yay -S tk openblas r
+# Install package
+install.packages("pryr")
+# Load package
+library(pryr)
 ```
 
 # Scheme environment
