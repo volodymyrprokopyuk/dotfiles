@@ -20,6 +20,7 @@ chsh -s $(which zsh)
 # Install applications
 yay -S inkscape plantuml gnuplot
 yay -S dropbox google-chrome
+yay -S maxima gap magma pari sundials
 # Install cloud tools
 yay -S aws-cli google-cloud-sdk terraform
 # youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
