@@ -204,11 +204,6 @@
 (autoload 'racket-mode "racket-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
 
-; Smalltalk mode
-(add-to-list 'load-path "~/.emacs.d/smalltalk-mode.el")
-(autoload 'smalltalk-mode "smalltalk-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.st\\'" . smalltalk-mode))
-
 ; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
 (autoload 'ess-r-mode "ess-r-mode" nil t)

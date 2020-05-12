@@ -13,6 +13,7 @@ yay -Syu && yay -Sc
 yay -S adobe-source-code-pro-fonts
 yay -S tmux zsh emacs xsel
 yay -S aspell aspell-en aspell-es
+yay -S hunspell hunspell-en_US hunspell-es_es
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
 yay -S jq rclone
 # Configure zsh (log out, then log in)
