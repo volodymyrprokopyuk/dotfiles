@@ -294,6 +294,7 @@ https://github.com/company-mode/company-mode.git
 https://github.com/abo-abo/avy.git
 https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
+https://gitlab.com/jaor/geiser.git
 https://github.com/greghendershott/racket-mode.git
 https://github.com/JuliaEditorSupport/julia-emacs.git
 https://github.com/emacs-ess/ESS.git
@@ -354,6 +355,7 @@ company-mode
 avy
 js2-mode
 typescript.el
+geiser/elisp
 racket-mode
 julia-emacs
 ESS/lisp
@@ -402,6 +404,7 @@ EOF
         -L $EMACS_HOME/avy \
         -L $EMACS_HOME/js2-mode \
         -L $EMACS_HOME/typescript.el \
+        -L $EMACS_HOME/geiser/elisp \
         -L $EMACS_HOME/racket-mode \
         -L $EMACS_HOME/julia-emacs \
         -L $EMACS_HOME/ESS/lisp \

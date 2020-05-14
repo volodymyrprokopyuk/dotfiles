@@ -199,10 +199,15 @@
 ;; (autoload 'gerbil "gerbil" nil t)
 ;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . gerbil))
 
+; Geiser mode
+(add-to-list 'load-path "~/.emacs.d/geiser/elisp")
+(autoload 'geiser-gambit "geiser-gambit" nil t)
+(add-to-list 'auto-mode-alist '("\\.scm\\'" . geiser-gambit))
+
 ; Racket mode
-(add-to-list 'load-path "~/.emacs.d/racket-mode")
-(autoload 'racket-mode "racket-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
+;; (add-to-list 'load-path "~/.emacs.d/racket-mode")
+;; (autoload 'racket-mode "racket-mode" nil t)
+;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
 
 ; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
