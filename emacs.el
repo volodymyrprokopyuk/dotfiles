@@ -195,14 +195,14 @@
 ;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . gambit))
 
 ; Gerbil mode
-(add-to-list 'load-path "~/.emacs.d/gerbil.el")
-(autoload 'gerbil "gerbil" nil t)
-(add-to-list 'auto-mode-alist '("\\.scm\\'" . gerbil))
+;; (add-to-list 'load-path "~/.emacs.d/gerbil.el")
+;; (autoload 'gerbil "gerbil" nil t)
+;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . gerbil))
 
 ; Racket mode
 (add-to-list 'load-path "~/.emacs.d/racket-mode")
 (autoload 'racket-mode "racket-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
+(add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
 
 ; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
