@@ -189,25 +189,10 @@
 (autoload 'typescript-mode "typescript-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
-; Gambit mode
-;; (add-to-list 'load-path "~/.emacs.d/gambit.el")
-;; (autoload 'gambit "gambit" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . gambit))
-
-; Gerbil mode
-;; (add-to-list 'load-path "~/.emacs.d/gerbil.el")
-;; (autoload 'gerbil "gerbil" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . gerbil))
-
-; Geiser mode
-(add-to-list 'load-path "~/.emacs.d/geiser/elisp")
-(autoload 'geiser-gambit "geiser-gambit" nil t)
-(add-to-list 'auto-mode-alist '("\\.scm\\'" . geiser-gambit))
-
 ; Racket mode
-;; (add-to-list 'load-path "~/.emacs.d/racket-mode")
-;; (autoload 'racket-mode "racket-mode" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
+(add-to-list 'load-path "~/.emacs.d/racket-mode")
+(autoload 'racket-mode "racket-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
 
 ; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
