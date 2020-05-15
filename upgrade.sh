@@ -255,6 +255,7 @@ https://www.emacswiki.org/emacs/download/goto-chg.el
 https://www.emacswiki.org/emacs/download/key-chord.el
 https://www.emacswiki.org/emacs/download/pos-tip.el
 http://mumble.net/~campbell/emacs/paredit.el
+http://git.savannah.gnu.org/cgit/emacs/elpa.git/plain/packages/sml-mode/sml-mode.el
 EOF
     set -e
 
@@ -293,6 +294,7 @@ https://github.com/abo-abo/avy.git
 https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
 https://github.com/greghendershott/racket-mode.git
+https://github.com/MatthewFluet/company-mlton.git
 https://github.com/JuliaEditorSupport/julia-emacs.git
 https://github.com/emacs-ess/ESS.git
 https://github.com/fxbois/web-mode.git
@@ -351,6 +353,8 @@ avy
 js2-mode
 typescript.el
 racket-mode
+sml-mode.el
+company-mlton
 julia-emacs
 ESS/lisp
 web-mode
@@ -397,6 +401,8 @@ EOF
         -L $EMACS_HOME/js2-mode \
         -L $EMACS_HOME/typescript.el \
         -L $EMACS_HOME/racket-mode \
+        -L $EMACS_HOME/sml-mode.el \
+        -L $EMACS_HOME/company-mlton \
         -L $EMACS_HOME/julia-emacs \
         -L $EMACS_HOME/ESS/lisp \
         -L $EMACS_HOME/web-mode \

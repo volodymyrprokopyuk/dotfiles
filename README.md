@@ -111,17 +111,6 @@ yarn install
 ./node_modules/.bin/eslint --init
 ```
 
-# R environment
-
-```bash
-# Install R
-yay -S tk openblas r
-# Install package
-install.packages("pryr")
-# Load package
-library(pryr)
-```
-
 # Scheme environment
 
 ```bash
@@ -136,10 +125,21 @@ git checkout v0.15.1
 cd src && ./build.sh
 ```
 
-# Pharo environment
+# SML environment
 
 ```bash
-yay -S pharo-launcher
+yay -S mlton
+```
+
+# R environment
+
+```bash
+# Install R
+yay -S tk openblas r
+# Install package
+install.packages("pryr")
+# Load package
+library(pryr)
 ```
 
 # PostgreSQL environment

@@ -189,10 +189,21 @@
 (autoload 'typescript-mode "typescript-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
-; Racket mode
+; Scheme mode
 (add-to-list 'load-path "~/.emacs.d/racket-mode")
 (autoload 'racket-mode "racket-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
+
+; SML mode
+(add-to-list 'load-path "~/.emacs.d/sml-mode.el")
+(autoload 'sml-mode "sml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.sml\\'" . sml-mode))
+(add-to-list 'auto-mode-alist '("\\.sig\\'" . sml-mode))
+
+; Company MLton mode
+(add-to-list 'load-path "~/.emacs.d/company-mlton")
+(require 'company-mlton)
+(add-hook 'sml-mode-hook #'company-mlton-init)
 
 ; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
