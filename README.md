@@ -128,7 +128,7 @@ cd src && ./build.sh
 # SML environment
 
 ```bash
-yay -S mlton
+yay -S smlnj mlton
 ```
 
 # R environment
