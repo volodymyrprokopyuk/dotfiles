@@ -329,6 +329,8 @@
 (key-chord-define evil-visual-state-map "jk" 'evil-normal-state)
 
 ; Treat _ as part of the word on *, #, w, b
+(add-hook 'emacs-lisp-mode-hook
+    #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
 (add-hook 'sh-mode-hook
     #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 (add-hook 'sql-mode-hook
