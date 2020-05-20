@@ -209,6 +209,10 @@
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
 (autoload 'ess-r-mode "ess-r-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
+; Comment with a single #
+(defun ess-mode-hook-setup ()
+  (setq comment-add 0))
+(add-hook 'ess-mode-hook 'ess-mode-hook-setup)
 
 ; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
