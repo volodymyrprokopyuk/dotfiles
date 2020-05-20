@@ -169,6 +169,8 @@
 (add-to-list 'load-path "~/.emacs.d/avy")
 (require 'avy)
 (global-set-key (kbd "M-j") 'avy-goto-char-timer)
+; Smart-case search
+(setq avy-case-fold-search nil)
 
 ; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
