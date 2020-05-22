@@ -115,7 +115,7 @@ yarn install
 
 ```bash
 # Install Gambit
-yay -S gambit-c
+yay -S gambit-c mit-scheme guile-git
 # Build and install Gerbil
 sudo mv /usr/bin/gsc /usr/bin/gsc-ghs
 sudo mv /usr/bin/gambitc /usr/bin/gsc
