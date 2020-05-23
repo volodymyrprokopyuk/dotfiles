@@ -114,15 +114,7 @@ yarn install
 # Scheme environment
 
 ```bash
-# Install Gambit
-yay -S gambit-c mit-scheme guile-git
-# Build and install Gerbil
-sudo mv /usr/bin/gsc /usr/bin/gsc-ghs
-sudo mv /usr/bin/gambitc /usr/bin/gsc
-git clone https://github.com/vyzo/gerbil.git
-cd gerbil
-git checkout v0.15.1
-cd src && ./build.sh
+yay -S guile
 ```
 
 # SML environment
