@@ -347,8 +347,6 @@
     #'(lambda () (modify-syntax-entry ?- "w" sh-mode-syntax-table)))
 (add-hook 'sql-mode-hook
     #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
-(add-hook 'sql-mode-hook
-    #'(lambda () (modify-syntax-entry ?- "w" sql-mode-syntax-table)))
 (add-hook 'js2-mode-hook
     #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table)))
 (add-hook 'typescript-mode-hook
