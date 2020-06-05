@@ -295,7 +295,6 @@ https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
 https://gitlab.com/jaor/geiser.git
 https://github.com/greghendershott/racket-mode.git
-https://github.com/MatthewFluet/company-mlton.git
 https://github.com/JuliaEditorSupport/julia-emacs.git
 https://github.com/emacs-ess/ESS.git
 https://github.com/fxbois/web-mode.git
@@ -356,7 +355,6 @@ typescript.el
 geiser/elisp
 racket-mode
 sml-mode.el
-company-mlton
 julia-emacs
 ESS/lisp
 web-mode
@@ -405,7 +403,6 @@ EOF
         -L $EMACS_HOME/geiser/elisp \
         -L $EMACS_HOME/racket-mode \
         -L $EMACS_HOME/sml-mode.el \
-        -L $EMACS_HOME/company-mlton \
         -L $EMACS_HOME/julia-emacs \
         -L $EMACS_HOME/ESS/lisp \
         -L $EMACS_HOME/web-mode \
