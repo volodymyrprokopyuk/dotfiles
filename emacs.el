@@ -207,9 +207,9 @@
 (add-to-list 'auto-mode-alist '("\\.sml\\'" . sml-mode))
 (add-to-list 'auto-mode-alist '("\\.sig\\'" . sml-mode))
 ;; Company MLton mode
-(add-to-list 'load-path "~/.emacs.d/company-mlton")
-(require 'company-mlton)
-(add-hook 'sml-mode-hook #'company-mlton-init)
+;; (add-to-list 'load-path "~/.emacs.d/company-mlton")
+;; (require 'company-mlton)
+;; (add-hook 'sml-mode-hook #'company-mlton-init)
 
 ;; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
