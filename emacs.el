@@ -196,7 +196,7 @@
 (autoload 'racket-mode "racket-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
 ;; Normal (not aligned) identation
-(put 'use-modules 'racket-indent-function 1)
+(put 'normal-ident 'racket-indent-function 1)
 ;; Keywords, builtins, and type highlighting
 (font-lock-add-keywords 'racket-mode
     `((,(regexp-opt '("my-keyword1" "my-keyword2") t) . font-lock-keyword-face)
