@@ -195,6 +195,13 @@
 (add-to-list 'load-path "~/.emacs.d/racket-mode")
 (autoload 'racket-mode "racket-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
+;; Normal (not aligned) identation
+(put 'use-modules 'racket-indent-function 1)
+;; Keywords, builtins, and type highlighting
+(font-lock-add-keywords 'racket-mode
+    `((,(regexp-opt '("my-keyword1" "my-keyword2") t) . font-lock-keyword-face)
+      (,(regexp-opt '("my-builtin1" "my-builtin2") t) . font-lock-builtin-face)
+      (,(regexp-opt '("MyType1" "MyType2") t) . font-lock-type-face)))
 ;; Scheme REPL mode
 (add-to-list 'load-path "~/.emacs.d/geiser/elisp")
 (autoload 'geiser "geiser" nil t)
