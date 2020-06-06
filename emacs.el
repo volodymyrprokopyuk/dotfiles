@@ -128,6 +128,12 @@
 (add-hook 'prog-mode-hook 'smartparens-mode)
 (add-hook 'text-mode-hook 'smartparens-mode)
 
+;; Expand region mode
+(add-to-list 'load-path "~/.emacs.d/expand-region.el")
+(require 'expand-region)
+(global-set-key (kbd "M-,") 'er/expand-region)
+(global-set-key (kbd "M-m") 'er/contract-region)
+
 ;; Helm mode
 ;; Ctrl-y paste into mini buffer
 (add-to-list 'load-path "~/.emacs.d/helm")

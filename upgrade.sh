@@ -287,6 +287,7 @@ https://github.com/Fanael/rainbow-delimiters.git
 https://github.com/milkypostman/powerline.git
 https://github.com/TheBB/spaceline.git
 https://github.com/Fuco1/smartparens.git
+https://github.com/magnars/expand-region.el.git
 https://github.com/emacs-helm/helm.git
 https://github.com/syohex/emacs-helm-ag.git
 https://github.com/company-mode/company-mode.git
@@ -347,6 +348,7 @@ rainbow-delimiters
 powerline
 spaceline
 smartparens
+expand-region.el
 emacs-helm-ag
 company-mode
 avy
@@ -394,6 +396,7 @@ EOF
         -L $EMACS_HOME/powerline \
         -L $EMACS_HOME/spaceline \
         -L $EMACS_HOME/smartparens \
+        -L $EMACS_HOME/expand-region.el \
         -L $EMACS_HOME/helm \
         -L $EMACS_HOME/emacs-helm-ag \
         -L $EMACS_HOME/company-mode \
