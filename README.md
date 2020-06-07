@@ -120,7 +120,7 @@ yay -S guile
 # SML environment
 
 ```bash
-yay -S smlnj mlton mlkit polyml smlsharp
+yay -S smlnj polyml mlton mlkit smlsharp cakeml
 ```
 
 # R environment
