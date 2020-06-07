@@ -208,6 +208,12 @@
     `((,(regexp-opt '("my-keyword1" "my-keyword2") t) . font-lock-keyword-face)
       (,(regexp-opt '("my-builtin1" "my-builtin2") t) . font-lock-builtin-face)
       (,(regexp-opt '("MyType1" "MyType2") t) . font-lock-type-face)))
+;; Rebind expand region mode keys
+(defun racket-mode-hook-setup ()
+    (local-set-key (kbd "M-,") 'er/expand-region)
+    (local-set-key (kbd "M-m") 'er/contract-region))
+(add-hook 'racket-mode-hook 'racket-mode-hook-setup)
+
 ;; Scheme REPL mode
 (add-to-list 'load-path "~/.emacs.d/geiser/elisp")
 (autoload 'geiser "geiser" nil t)
