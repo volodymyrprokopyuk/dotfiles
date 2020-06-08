@@ -178,6 +178,32 @@
 ;; Smart-case search
 (setq avy-case-fold-search nil)
 
+;; Ace window mode
+(add-to-list 'load-path "~/.emacs.d/ace-window")
+(require 'ace-window)
+(global-set-key (kbd "M-o") 'ace-window)
+;; s - split horizontally
+;; v - split vertically
+;; x - delete window
+;; X - delete other windows
+;; j - switch buffer in window
+;; o - switch buffer in other window
+(setq aw-dispatch-always t
+    aw-keys '(?a ?d ?f ?k ?l)
+    aw-dispatch-alist
+    '((?s aw-split-window-vert "Split Vert Window")
+         (?v aw-split-window-horz "Split Horz Window")
+         (?x aw-delete-window "Delete Window")
+         (?X delete-other-windows "Delete Other Windows")
+         (?j aw-switch-buffer-in-window "Select Buffer")
+         (?o aw-switch-buffer-other-window "Switch Buffer Other Window")
+         (?m aw-swap-window "Swap Windows")
+         (?M aw-move-window "Move Window")
+         (?n aw-flip-window)
+         (?c aw-copy-window "Copy Window")
+         (?c aw-split-window-fair "Split Fair Window")
+         (?? aw-show-dispatch-help)))
+
 ;; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
