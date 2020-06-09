@@ -187,7 +187,7 @@
 ;; x - delete window
 ;; X - delete other windows
 ;; j - switch buffer in window
-;; o - switch buffer in other window
+;; m - swap window
 (setq aw-dispatch-always t
     aw-keys '(?a ?d ?f ?k ?l)
     aw-dispatch-alist
@@ -199,9 +199,9 @@
          (?o aw-switch-buffer-other-window "Switch Buffer Other Window")
          (?m aw-swap-window "Swap Windows")
          (?M aw-move-window "Move Window")
-         (?n aw-flip-window)
+         (?n aw-flip-window "Flip window")
          (?c aw-copy-window "Copy Window")
-         (?c aw-split-window-fair "Split Fair Window")
+         (?= aw-split-window-fair "Split Fair Window")
          (?? aw-show-dispatch-help)))
 
 ;; Emacs Lisp mode
