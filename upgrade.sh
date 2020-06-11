@@ -132,6 +132,7 @@ function git_config_common {
     git config --global user.email "volodymyrprokopyuk@gmail.com"
     git config --global core.excludesfile "~/.gitignore"
     git config --global push.default "simple"
+    git config --global pull.rebase false
     git config --global diff.algorithm "histogram"
     git config --global status.showUntrackedFiles "all"
     git config --global credential.helper "cache --timeout=86400"
