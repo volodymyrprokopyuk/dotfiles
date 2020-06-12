@@ -114,7 +114,7 @@ yarn install
 # Scheme environment
 
 ```bash
-yay -S guile
+yay -S guile gauche
 ```
 
 # SML environment
