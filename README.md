@@ -15,7 +15,7 @@ yay -S tmux zsh emacs xsel
 yay -S aspell aspell-en aspell-es
 yay -S hunspell hunspell-en_US hunspell-es_es
 yay -S the_silver_searcher fzf diff-so-fancy mlocate exa bat
-yay -S jq rclone
+yay -S jq
 # Configure zsh (log out, then log in)
 chsh -s $(which zsh)
 # Install applications
@@ -120,7 +120,7 @@ yay -S guile gauche
 # SML environment
 
 ```bash
-yay -S smlnj polyml mlton mlkit smlsharp cakeml
+yay -S smlnj
 ```
 
 # R environment
