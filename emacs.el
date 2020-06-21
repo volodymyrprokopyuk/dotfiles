@@ -231,7 +231,7 @@
 (put 'normal-ident 'racket-indent-function 1)
 ;; Keywords, builtins, and type highlighting
 (font-lock-add-keywords 'racket-mode
-    `((,(regexp-opt '("my-keyword1" "my-keyword2") t) . font-lock-keyword-face)
+    `((,(regexp-opt '("define*" "lambda*") t) . font-lock-keyword-face)
       (,(regexp-opt '("my-builtin1" "my-builtin2") t) . font-lock-builtin-face)
       (,(regexp-opt '("MyType1" "MyType2") t) . font-lock-type-face)))
 ;; Rebind expand region mode keys
