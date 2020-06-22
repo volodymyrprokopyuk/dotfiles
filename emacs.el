@@ -240,12 +240,6 @@
     (local-set-key (kbd "M-m") 'er/contract-region))
 (add-hook 'racket-mode-hook 'racket-mode-hook-setup)
 
-;; Scheme REPL mode
-(add-to-list 'load-path "~/.emacs.d/geiser/elisp")
-(autoload 'geiser "geiser" nil t)
-(setq geiser-active-implementations '(guile))
-(global-set-key (kbd "M-s >") 'geiser)
-
 ;; SML mode
 (add-to-list 'load-path "~/.emacs.d/sml-mode.el")
 (autoload 'sml-mode "sml-mode" nil t)
