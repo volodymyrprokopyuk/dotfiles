@@ -295,7 +295,6 @@ https://github.com/emacs-helm/helm.git
 https://github.com/syohex/emacs-helm-ag.git
 https://github.com/company-mode/company-mode.git
 https://github.com/abo-abo/avy.git
-https://github.com/abo-abo/ace-window.git
 https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
 https://github.com/greghendershott/racket-mode.git
@@ -355,7 +354,6 @@ expand-region.el
 emacs-helm-ag
 company-mode
 avy
-ace-window
 js2-mode
 typescript.el
 racket-mode
@@ -404,7 +402,6 @@ EOF
         -L $EMACS_HOME/emacs-helm-ag \
         -L $EMACS_HOME/company-mode \
         -L $EMACS_HOME/avy \
-        -L $EMACS_HOME/ace-window \
         -L $EMACS_HOME/js2-mode \
         -L $EMACS_HOME/typescript.el \
         -L $EMACS_HOME/racket-mode \
