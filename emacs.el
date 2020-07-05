@@ -202,12 +202,24 @@
 (autoload 'racket-mode "racket-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
 ;; Normal (not aligned) identation
-(put 'normal-ident 'racket-indent-function 1)
+(put 'test-assert 'racket-indent-function 1)
+(put 'test-eq 'racket-indent-function 1)
+(put 'test-eqv 'racket-indent-function 1)
+(put 'test-equal 'racket-indent-function 1)
+(put 'test-approximate 'racket-indent-function 1)
+(put 'test-error 'racket-indent-function 1)
 ;; Keywords, builtins, and type highlighting
 (font-lock-add-keywords 'racket-mode
-    `((,(regexp-opt '("define*" "lambda*") t) . font-lock-keyword-face)
-      (,(regexp-opt '("my-builtin1" "my-builtin2") t) . font-lock-builtin-face)
-      (,(regexp-opt '("MyType1" "MyType2") t) . font-lock-type-face)))
+    `((,(regexp-opt
+            '("define*" "lambda*" "define-module" "use-modules") t)
+          . font-lock-keyword-face)
+         (,(regexp-opt
+               '("test-begin" "test-end" "test-assert" "test-eq" "test-eqv" "test-equal"
+                    "test-approximate" "test-error" "test-skip") t)
+             . font-lock-builtin-face)
+         (,(regexp-opt
+               '("MyType1" "MyType2") t)
+             . font-lock-type-face)))
 ;; Rebind expand region mode keys
 (defun racket-mode-hook-setup ()
     (local-set-key (kbd "M-,") 'er/expand-region)
