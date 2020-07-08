@@ -225,6 +225,14 @@
     (local-set-key (kbd "M-,") 'er/expand-region)
     (local-set-key (kbd "M-m") 'er/contract-region))
 (add-hook 'racket-mode-hook 'racket-mode-hook-setup)
+;; Replace lambda word with greek letter
+(defun fp-replace-lambda-with-greek-letter ()
+    (font-lock-add-keywords nil
+        `(("\\<lambda\\>"
+              (0 (progn (compose-region (match-beginning 0) (match-end 0)
+                            ,(make-char 'greek-iso8859-7 107)) nil))))))
+(add-hook 'racket-mode-hook 'fp-replace-lambda-with-greek-letter)
+(add-hook 'emacs-lisp-mode-hook 'fp-replace-lambda-with-greek-letter)
 
 ;; SML mode
 (add-to-list 'load-path "~/.emacs.d/sml-mode.el")
