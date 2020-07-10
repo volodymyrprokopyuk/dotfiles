@@ -234,7 +234,6 @@
          "test-skip"))
 (setq scm-types
     '("MyType1" "MyType2"))
-
 (font-lock-add-keywords 'racket-mode
     `((,(regexp-opt scm-keywords t) . font-lock-keyword-face)
          (,(regexp-opt
