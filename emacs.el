@@ -209,10 +209,10 @@
 (put 'test-approximate 'racket-indent-function 1)
 (put 'test-error 'racket-indent-function 1)
 ;; Keywords, builtins, and types highlighting
-(setq scm-keywords
+(defconst scm-keywords
     '("define*" "lambda*"
          "define-module" "use-modules"))
-(setq scm-hash-table-builtins
+(defconst scm-hash-table-builtins
     '("make-hash-table" "hash-table-copy" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
          "hash-table?"
@@ -224,7 +224,7 @@
          "hash-table-size"
          "hash-table-keys" "hash-table-values"
          "hash-table-walk" "hash-table-fold"))
-(setq scm-unit-test-builtins
+(defconst scm-unit-test-builtins
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
          "test-assert"
@@ -232,7 +232,7 @@
          "test-approximate"
          "test-error" "test-expect-fail"
          "test-skip"))
-(setq scm-types
+(defconst scm-types
     '("MyType1" "MyType2"))
 (font-lock-add-keywords 'racket-mode
     `((,(regexp-opt scm-keywords t) . font-lock-keyword-face)
