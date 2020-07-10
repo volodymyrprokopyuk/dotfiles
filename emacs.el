@@ -212,7 +212,7 @@
 (defconst scm-keywords
     '("define*" "lambda*"
          "define-module" "use-modules"))
-(defconst scm-hash-table-builtins
+(defconst scm-hash-table-builtins ;; SRFI-69
     '("make-hash-table" "hash-table-copy" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
          "hash-table?"
@@ -224,7 +224,12 @@
          "hash-table-size"
          "hash-table-keys" "hash-table-values"
          "hash-table-walk" "hash-table-fold"))
-(defconst scm-unit-test-builtins
+(defconst scm-record-type-builtins ;; SRFI-9
+    '("define-record-type"))
+(defconst scm-random-source-builtins ;; SRFI-27
+    '("default-random-source" "random-source-randomize!"
+         "random-integer" "random-real"))
+(defconst scm-unit-test-builtins ;; SRFI-64
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
          "test-assert"
@@ -239,6 +244,8 @@
          (,(regexp-opt
                (append
                    scm-hash-table-builtins
+                   scm-record-type-builtins
+                   scm-random-source-builtins
                    scm-unit-test-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
