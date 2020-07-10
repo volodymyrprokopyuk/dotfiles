@@ -209,17 +209,52 @@
 (put 'test-approximate 'racket-indent-function 1)
 (put 'test-error 'racket-indent-function 1)
 ;; Keywords, builtins, and type highlighting
+(setq scm-keywords
+    '("define*"
+         "lambda*"
+         "define-module"
+         "use-modules"))
+(setq scm-hash-table-builtins
+    '("make-hash-table"
+         "hash-table-copy"
+         "hash-table-merge!"
+         "alist->hash-table"
+         "hash-table->alist"
+         "hash-table?"
+         "hash-table-exists?"
+         "hash-table-ref"
+         "hash-table-ref/default"
+         "hash-table-set!"
+         "hash-table-update!"
+         "hash-table-update!/default"
+         "hash-table-delete!"
+         "hash-table-size"
+         "hash-table-keys"
+         "hash-table-values"
+         "hash-table-walk"
+         "hash-table-fold"))
+(setq scm-unit-test-builtins
+    '("test-begin"
+         "test-end"
+         "test-assert"
+         "test-eq"
+         "test-eqv"
+         "test-equal"
+         "test-approximate"
+         "test-error"
+         "test-skip"))
+(setq scm-types
+    '("MyType1"
+         "MyType2"))
+
 (font-lock-add-keywords 'racket-mode
-    `((,(regexp-opt
-            '("define*" "lambda*" "define-module" "use-modules") t)
-          . font-lock-keyword-face)
+    `((,(regexp-opt scm-keywords t) . font-lock-keyword-face)
          (,(regexp-opt
-               '("test-begin" "test-end" "test-assert" "test-eq" "test-eqv" "test-equal"
-                    "test-approximate" "test-error" "test-skip") t)
-             . font-lock-builtin-face)
-         (,(regexp-opt
-               '("MyType1" "MyType2") t)
-             . font-lock-type-face)))
+               (append
+                   scm-hash-table-builtins
+                   scm-unit-test-builtins)
+               t) . font-lock-builtin-face)
+         (,(regexp-opt scm-types t) . font-lock-type-face)))
 ;; Rebind expand region mode keys
 (defun racket-mode-hook-setup ()
     (local-set-key (kbd "M-,") 'er/expand-region)
