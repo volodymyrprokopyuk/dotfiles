@@ -211,7 +211,8 @@
 ;; Keywords, builtins, and types highlighting
 (defconst scm-keywords
     '("define*" "lambda*"
-         "define-module" "use-modules"))
+         "define-module" "use-modules"
+         "receive"))
 (defconst scm-hash-table-builtins ;; SRFI-69
     '("make-hash-table" "hash-table-copy" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
@@ -237,6 +238,10 @@
          "test-approximate"
          "test-error" "test-expect-fail"
          "test-skip"))
+(defconst scm-list-library-builtings ;; SRFI-1
+    '("list-tabulate" "iota"
+         "list="
+         "concatenate" "append-reverse" "zip" "unzip1" "unzip2" "unzip3" "unzip4"))
 (defconst scm-types
     '("MyType1" "MyType2"))
 (font-lock-add-keywords 'racket-mode
@@ -246,6 +251,7 @@
                    scm-hash-table-builtins
                    scm-record-type-builtins
                    scm-random-source-builtins
+                   scm-list-library-builtings
                    scm-unit-test-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
