@@ -213,6 +213,8 @@
     '("define*" "lambda*"
          "define-module" "use-modules"
          "receive"))
+(defconst scm-builtins
+    '("1+" "1-"))
 (defconst scm-hash-table-builtins ;; SRFI-69
     '("make-hash-table" "hash-table-copy" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
@@ -240,14 +242,18 @@
          "test-skip"))
 (defconst scm-list-library-builtings ;; SRFI-1
     '("list-tabulate" "iota"
-         "list="
-         "concatenate" "append-reverse" "zip" "unzip1" "unzip2" "unzip3" "unzip4"))
+         "concatenate" "zip" "unzip1" "unzip2" "unzip3" "unzip4"
+         "fold" "fold-right" "unfold" "unfold-right"
+         "find" "find-tail" "take-while" "drop-while" "span" "break"
+         "every" "list-index"
+         "delete" "delete-duplicates"))
 (defconst scm-types
     '("MyType1" "MyType2"))
 (font-lock-add-keywords 'racket-mode
     `((,(regexp-opt scm-keywords t) . font-lock-keyword-face)
          (,(regexp-opt
                (append
+                   scm-builtins
                    scm-hash-table-builtins
                    scm-record-type-builtins
                    scm-random-source-builtins
