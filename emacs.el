@@ -240,13 +240,27 @@
          "test-approximate"
          "test-error" "test-expect-fail"
          "test-skip"))
-(defconst scm-list-library-builtings ;; SRFI-1
+(defconst scm-list-library-builtins ;; SRFI-1
     '("list-tabulate" "iota"
          "concatenate" "zip" "unzip1" "unzip2" "unzip3" "unzip4"
          "fold" "fold-right" "unfold" "unfold-right"
          "find" "find-tail" "take-while" "drop-while" "span" "break"
-         "every" "list-index"
+         "every" "any" "list-index"
          "delete" "delete-duplicates"))
+(defconst scm-string-library-builtins ;; SRFI-13
+    '("string-tabulate"
+         "string-null?" "string-every" "string-any"
+         "string-take" "string-drop" "string-take-right" "string-drop-right"
+         "string-pad" "string-pad-right" "string-trim-right" "string-trim-both"
+         "string=" "string<>" "string<" "string>" "string<=" "string>="
+         "string-ci=" "string-ci<>" "string-ci<" "string-ci>" "string-ci<=" "string-ci>="
+         "string-hash" "string-hash-ci"
+         "string-index" "string-index-right" "string-skip" "string-skip-right"
+         "string-count" "string-contains" "string-contains-ci"
+         "string-reverse" "string-concatenate" "xsubstring"
+         "string-map" "string-for-each" "string-for-each-index"
+         "string-fold" "string-fold-right" "string-unfold" "string-unfold-right"
+         "string-tokenize" "string-filter" "string-delete"))
 (defconst scm-types
     '("MyType1" "MyType2"))
 (font-lock-add-keywords 'racket-mode
@@ -257,7 +271,8 @@
                    scm-hash-table-builtins
                    scm-record-type-builtins
                    scm-random-source-builtins
-                   scm-list-library-builtings
+                   scm-list-library-builtins
+                   scm-string-library-builtins
                    scm-unit-test-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
