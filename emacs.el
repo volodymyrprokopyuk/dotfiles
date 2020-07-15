@@ -216,7 +216,7 @@
 (defconst scm-builtins
     '("1+" "1-"))
 (defconst scm-hash-table-builtins ;; SRFI-69
-    '("make-hash-table" "hash-table-copy" "hash-table-merge!"
+    '("make-hash-table" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
          "hash-table?"
          "hash-table-exists?"
@@ -232,14 +232,6 @@
 (defconst scm-random-source-builtins ;; SRFI-27
     '("default-random-source" "random-source-randomize!"
          "random-integer" "random-real"))
-(defconst scm-unit-test-builtins ;; SRFI-64
-    '("test-begin" "test-end"
-         "test-group" "test-group-with-cleanup"
-         "test-assert"
-         "test-eq" "test-eqv" "test-equal"
-         "test-approximate"
-         "test-error" "test-expect-fail"
-         "test-skip"))
 (defconst scm-list-library-builtins ;; SRFI-1
     '("list-tabulate" "iota"
          "concatenate" "zip" "unzip1" "unzip2" "unzip3" "unzip4"
@@ -261,6 +253,23 @@
          "string-map" "string-for-each" "string-for-each-index"
          "string-fold" "string-fold-right" "string-unfold" "string-unfold-right"
          "string-tokenize" "string-filter" "string-delete"))
+(defconst scm-charset-library-builtins ;; SRFI-14
+    '("char-set" "char-set?" "char-set=" "char-set<=" "char-set-hash"
+         "list->char-set" "char-set->list" "string->char-set" "char-set->string"
+         "char-set-fold" "char-set-unfold" "char-set-for-each" "char-set-map"
+         "char-set-filter"
+         "char-set-size" "char-set-count"
+         "char-set-contains?" "char-set-every" "char-set-any"
+         "char-set-adjoin" "char-set-delete"
+         "char-set-union" "char-set-intersection" "char-set-difference" "char-set-xor"))
+(defconst scm-unit-test-builtins ;; SRFI-64
+    '("test-begin" "test-end"
+         "test-group" "test-group-with-cleanup"
+         "test-assert"
+         "test-eq" "test-eqv" "test-equal"
+         "test-approximate"
+         "test-error" "test-expect-fail"
+         "test-skip"))
 (defconst scm-types
     '("MyType1" "MyType2"))
 (font-lock-add-keywords 'racket-mode
@@ -273,6 +282,7 @@
                    scm-random-source-builtins
                    scm-list-library-builtins
                    scm-string-library-builtins
+                   scm-charset-library-builtins
                    scm-unit-test-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
