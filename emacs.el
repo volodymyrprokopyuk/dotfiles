@@ -261,7 +261,8 @@
          "char-set-size" "char-set-count"
          "char-set-contains?" "char-set-every" "char-set-any"
          "char-set-adjoin" "char-set-delete"
-         "char-set-union" "char-set-intersection" "char-set-difference" "char-set-xor"))
+         "char-set-union" "char-set-intersection" "char-set-difference" "char-set-xor"
+         "char-set-complement"))
 (defconst scm-unit-test-builtins ;; SRFI-64
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
