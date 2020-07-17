@@ -214,7 +214,7 @@
          "define-module" "use-modules"
          "receive"))
 (defconst scm-builtins
-    '("1+" "1-"))
+    '("1+" "1-" "set-car!" "set-cdr!"))
 (defconst scm-hash-table-builtins ;; SRFI-69
     '("make-hash-table" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
