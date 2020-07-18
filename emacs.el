@@ -263,6 +263,13 @@
          "char-set-adjoin" "char-set-delete"
          "char-set-union" "char-set-intersection" "char-set-difference" "char-set-xor"
          "char-set-complement"))
+(defconst scm-vector-library-builtins ;; SRFI-133
+    '("vector-unfold" "vector-unfold-right" "vector-append" "vector-concatenate"
+         "vector-empty?" "vector=" "vector-fold" "vector-fold-right"
+         "vector-map" "vector-for-each" "vector-count"
+         "vector-index" "vector-index-right" "vector-skip" "vector-skip-right"
+         "vector-any" "vector-every" "vector-partition" "vector-swap!"
+         "vector-fill!" "vector-reverse!"))
 (defconst scm-unit-test-builtins ;; SRFI-64
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
@@ -284,6 +291,7 @@
                    scm-list-library-builtins
                    scm-string-library-builtins
                    scm-charset-library-builtins
+                   scm-vector-library-builtins
                    scm-unit-test-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
