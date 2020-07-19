@@ -212,6 +212,7 @@
 (defconst scm-keywords
     '("define*" "lambda*"
          "define-module" "use-modules"
+         "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "receive"))
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!"))
