@@ -211,9 +211,9 @@
 ;; Keywords, builtins, and types highlighting
 (defconst scm-keywords
     '("define*" "lambda*"
-         "define-module" "use-modules"
+         "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
-         "receive"))
+         "define-module" "use-modules"))
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!"))
 (defconst scm-hash-table-builtins ;; SRFI-69
