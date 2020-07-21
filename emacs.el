@@ -215,7 +215,8 @@
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "define-module" "use-modules"))
 (defconst scm-builtins
-    '("1+" "1-" "set-car!" "set-cdr!"))
+    '("1+" "1-" "set-car!" "set-cdr!"
+         "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"))
 (defconst scm-hash-table-builtins ;; SRFI-69
     '("make-hash-table" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
