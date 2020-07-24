@@ -210,7 +210,7 @@
 (put 'test-error 'racket-indent-function 1)
 ;; Keywords, builtins, and types highlighting
 (defconst scm-keywords
-    '("define*" "lambda*"
+    '("define*" "lambda*" "let*"
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "define-module" "use-modules"))
