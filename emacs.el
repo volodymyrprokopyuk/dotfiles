@@ -272,6 +272,12 @@
          "vector-index" "vector-index-right" "vector-skip" "vector-skip-right"
          "vector-any" "vector-every" "vector-partition" "vector-swap!"
          "vector-fill!" "vector-reverse!"))
+(defconst scm-irregex-library-builtins ;; SRFI-115
+    '("irregex" "irregex?"
+         "irregex-search" "irregex-match"
+         "irregex-substring"
+         "irregex-replace" "irregex-replace/all"
+         "irregex-split" "irregex-extract" "irregex-fold"))
 (defconst scm-unit-test-builtins ;; SRFI-64
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
@@ -294,6 +300,7 @@
                    scm-string-library-builtins
                    scm-charset-library-builtins
                    scm-vector-library-builtins
+                   scm-irregex-library-builtins
                    scm-unit-test-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
