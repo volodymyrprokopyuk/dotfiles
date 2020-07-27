@@ -278,6 +278,10 @@
          "irregex-substring"
          "irregex-replace" "irregex-replace/all"
          "irregex-split" "irregex-extract" "irregex-fold"))
+(defconst scm-comprehensions-builtins ;; SRFI-42
+    '("do-ec" "list-ec" "append-ec" "string-ec" "string-append-ec" "vector-ec"
+         "fold-ec" "fold3-ec" ":list" ":string" ":vector" ":range" ":real-range"
+         ":char-range" ":port" ":parallel" ":while" ":until"))
 (defconst scm-unit-test-builtins ;; SRFI-64
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
@@ -301,6 +305,7 @@
                    scm-charset-library-builtins
                    scm-vector-library-builtins
                    scm-irregex-library-builtins
+                   scm-comprehensions-builtins
                    scm-unit-test-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
