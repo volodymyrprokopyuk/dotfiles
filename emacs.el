@@ -290,6 +290,9 @@
          "test-approximate"
          "test-error" "test-expect-fail"
          "test-skip"))
+(defconst scm-data-structure-builtins
+    '("make-stack" "stack-null?" "push" "pop" "peek"
+         "make-queue" "queue-null?" "enqueue" "dequeue" "front"))
 (defconst scm-types
     '("MyType1" "MyType2"))
 (font-lock-add-keywords 'racket-mode
@@ -306,7 +309,8 @@
                    scm-vector-library-builtins
                    scm-irregex-library-builtins
                    scm-comprehensions-builtins
-                   scm-unit-test-builtins)
+                   scm-unit-test-builtins
+                   scm-data-structure-builtins)
                t) . font-lock-builtin-face)
          (,(regexp-opt scm-types t) . font-lock-type-face)))
 ;; Rebind expand region mode keys
