@@ -235,7 +235,7 @@
     '("default-random-source" "random-source-randomize!"
          "random-integer" "random-real"))
 (defconst scm-list-library-builtins ;; SRFI-1
-    '("list-tabulate" "iota"
+    '("list-tabulate" "iota" "list="
          "concatenate" "zip" "unzip1" "unzip2" "unzip3" "unzip4"
          "fold" "fold-right" "unfold" "unfold-right"
          "find" "find-tail" "take-while" "drop-while" "span" "break"
