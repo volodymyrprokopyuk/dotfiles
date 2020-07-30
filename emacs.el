@@ -213,6 +213,7 @@
     '("define*" "lambda*" "let*"
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
+         "define-record-type"
          "define-module" "use-modules"))
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!"
