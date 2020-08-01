@@ -287,7 +287,7 @@
          ":char-range" ":port" ":parallel" ":while" ":until"))
 (defconst scm-date-time-builtins ;; SRFI-19
     '("current-time" "current-date"
-         "make-time" "time-nanosecond" "time-second"
+         "make-time" "time-nanosecond" "time-second" "time-utc" "time-duration"
          "time<=?" "time<?" "time=?" "time>=?" "time>?"
          "time-difference" "add-duration" "subtract-duration"
          "make-date" "date-nanosecond" "date-second" "date-minute" "date-hour"
