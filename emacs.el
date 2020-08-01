@@ -218,6 +218,8 @@
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"))
+(defconst scm-port-builtins
+    '("put-string" "get-string-all"))
 (defconst scm-hash-table-builtins ;; SRFI-69
     '("make-hash-table" "hash-table-merge!"
          "alist->hash-table" "hash-table->alist"
@@ -283,8 +285,15 @@
     '("do-ec" "list-ec" "append-ec" "string-ec" "string-append-ec" "vector-ec"
          "fold-ec" "fold3-ec" ":list" ":string" ":vector" ":range" ":real-range"
          ":char-range" ":port" ":parallel" ":while" ":until"))
-(defconst scm-port-builtins
-    '("put-string" "get-string-all"))
+(defconst scm-date-time-builtins ;; SRFI-19
+    '("current-time" "current-date"
+         "make-time" "time-nanosecond" "time-second"
+         "time<=?" "time<?" "time=?" "time>=?" "time>?"
+         "time-difference" "add-duration" "subtract-duration"
+         "make-date" "date-nanosecond" "date-second" "date-minute" "date-hour"
+         "date-day" "date-month" "date-year" "date-zone-offset" "date-year-day"
+         "date-week-day" "date-week-number" "date->time-utc" "time-utc->date"
+         "date->string" "string->date"))
 (defconst scm-unit-test-builtins ;; SRFI-64
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
@@ -303,6 +312,7 @@
          (,(regexp-opt
                (append
                    scm-builtins
+                   scm-port-builtins
                    scm-hash-table-builtins
                    scm-record-type-builtins
                    scm-random-source-builtins
@@ -312,7 +322,7 @@
                    scm-vector-library-builtins
                    scm-irregex-library-builtins
                    scm-comprehensions-builtins
-                   scm-port-builtins
+                   scm-date-time-builtins
                    scm-unit-test-builtins
                    scm-data-structure-builtins)
                t) . font-lock-builtin-face)
