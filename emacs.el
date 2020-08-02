@@ -283,8 +283,9 @@
          "irregex-split" "irregex-extract" "irregex-fold"))
 (defconst scm-comprehensions-builtins ;; SRFI-42
     '("do-ec" "list-ec" "append-ec" "string-ec" "string-append-ec" "vector-ec"
-         "fold-ec" "fold3-ec" ":list" ":string" ":vector" ":range" ":real-range"
-         ":char-range" ":port" ":parallel" ":while" ":until"))
+         "fold-ec" "fold3-ec" "any?-ec" "every?-ec" "first-ec" "last-ec"
+         ":list" ":string" ":vector" ":range" ":real-range" ":char-range" ":port"
+         ":parallel" ":while" ":until"))
 (defconst scm-time-date-builtins ;; SRFI-19
     '("current-time" "current-date"
          "make-time" "time-nanosecond" "time-second" "time-utc" "time-duration"
