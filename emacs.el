@@ -213,6 +213,7 @@
     '("define*" "lambda*" "let*"
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
+         "raise" "with-exception-handler" "guard" ;; SRFI-34
          "define-record-type"
          "define-module" "use-modules"))
 (defconst scm-builtins
@@ -295,6 +296,8 @@
          "date-day" "date-month" "date-year" "date-zone-offset" "date-year-day"
          "date-week-day" "date-week-number" "date->time-utc" "time-utc->date"
          "date->string" "string->date"))
+(defconst scm-condition-builtins ;; SRFI-34,35
+    '("define-condition-type" "condition"))
 (defconst scm-unit-test-builtins ;; SRFI-64
     '("test-begin" "test-end"
          "test-group" "test-group-with-cleanup"
@@ -324,6 +327,7 @@
                    scm-irregex-library-builtins
                    scm-comprehensions-builtins
                    scm-time-date-builtins
+                   scm-condition-builtins
                    scm-unit-test-builtins
                    scm-data-structure-builtins)
                t) . font-lock-builtin-face)
