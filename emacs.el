@@ -380,11 +380,6 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
-;; Pug mode
-(add-to-list 'load-path "~/.emacs.d/emacs-pug-mode")
-(autoload 'pug-mode "pug-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.pug\\'" . pug-mode))
-
 ;; Prolog mode
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
@@ -396,25 +391,6 @@
 (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
 (autoload 'dockerfile-mode "dockerfile-mode" nil t)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
-
-;; PlantUML mode
-(add-to-list 'load-path "~/.emacs.d/plantuml-mode")
-(autoload 'plantuml-mode "plantuml-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
-(setq plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
-
-;; Gnuplot mode
-(add-to-list 'load-path "~/.emacs.d/gnuplot-mode")
-(autoload 'gnuplot-mode "gnuplot-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.gplot\\'" . gnuplot-mode))
-(setq gnuplot-program "/bin/gnuplot")
-
-;; Terraform mode
-(add-to-list 'load-path "~/.emacs.d/emacs-hcl-mode")
-(add-to-list 'load-path "~/.emacs.d/emacs-terraform-mode")
-(autoload 'terraform-mode "terraform-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
-(custom-set-variables '(terraform-indent-level 4))
 
 ;; Markdown mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
