@@ -13,14 +13,17 @@ function copy_photos {
         local destination_path="${2:?ERROR: destination path is not provided}"
 
         echo -n "${photo}"
-        local timestamp=$(
-            exiv2 "${photo}" \
-            | grep -oP '(?<=Image timestamp : ).+$' | sed 's/:/-/;s/:/-/'
-        )
-        if [[ -z "${timestamp}" ]]; then
-           echo " FAILED (no image timestamp)"
-           return 1
-        fi
+
+        # local timestamp=$(
+        #     exiv2 "${photo}" \
+        #     | grep -oP '(?<=Image timestamp : ).+$' | sed 's/:/-/;s/:/-/'
+        # )
+        # if [[ -z "${timestamp}" ]]; then
+        #    echo " FAILED (no image timestamp)"
+        #    return 1
+        # fi
+        local timestamp="2005-04-02 00:00:00"
+
         local date=$(date -d "${timestamp}" +'%Y-%m-%d')
         local time=$(date -d "${timestamp}" +'%H:%M:%S')
         if [[ -z "${date}" ]] || [[ -z "${time}" ]]; then
