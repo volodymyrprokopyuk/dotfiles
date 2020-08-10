@@ -87,6 +87,7 @@
 (add-to-list 'load-path "~/.emacs.d/pos-tip.el")
 (add-to-list 'load-path "~/.emacs.d/paredit.el")
 (add-to-list 'load-path "~/.emacs.d/faceup")
+(add-to-list 'load-path "~/.emacs.d/popup-el")
 (add-to-list 'load-path "~/.emacs.d/s.el")
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
@@ -177,6 +178,12 @@
 (global-set-key (kbd "M-j") 'avy-goto-char-timer)
 ;; Smart-case search
 (setq avy-case-fold-search nil)
+
+;; Dumb jump mode
+;; gd
+(add-to-list 'load-path "~/.emacs.d/dumb-jump")
+(require 'dumb-jump)
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 ;; Emacs Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)

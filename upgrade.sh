@@ -281,6 +281,7 @@ function emacs_upgrade_git {
 https://github.com/cask/epl.git
 https://github.com/lunaryorn/pkg-info.el.git
 https://github.com/Lindydancer/faceup.git
+https://github.com/auto-complete/popup-el.git
 https://github.com/magnars/s.el.git
 https://github.com/magnars/dash.el.git
 https://github.com/jwiegley/emacs-async.git
@@ -295,6 +296,7 @@ https://github.com/emacs-helm/helm.git
 https://github.com/syohex/emacs-helm-ag.git
 https://github.com/company-mode/company-mode.git
 https://github.com/abo-abo/avy.git
+https://github.com/jacktasia/dumb-jump.git
 https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
 https://github.com/greghendershott/racket-mode.git
@@ -336,6 +338,7 @@ key-chord.el
 pos-tip.el
 paredit.el
 faceup
+popup-el
 s.el
 dash.el
 emacs-async
@@ -349,6 +352,7 @@ expand-region.el
 emacs-helm-ag
 company-mode
 avy
+dumb-jump
 js2-mode
 typescript.el
 racket-mode
@@ -378,6 +382,7 @@ EOF
         -L $EMACS_HOME/pos-tip.el \
         -L $EMACS_HOME/paredit.el \
         -L $EMACS_HOME/faceup \
+        -L $EMACS_HOME/popup-el \
         -L $EMACS_HOME/s.el \
         -L $EMACS_HOME/dash.el \
         -L $EMACS_HOME/emacs-async \
@@ -392,6 +397,7 @@ EOF
         -L $EMACS_HOME/emacs-helm-ag \
         -L $EMACS_HOME/company-mode \
         -L $EMACS_HOME/avy \
+        -L $EMACS_HOME/dumb-jump \
         -L $EMACS_HOME/js2-mode \
         -L $EMACS_HOME/typescript.el \
         -L $EMACS_HOME/racket-mode \
