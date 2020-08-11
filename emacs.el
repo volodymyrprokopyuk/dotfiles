@@ -123,6 +123,13 @@
 (setq powerline-default-separator 'wave)
 (spaceline-compile)
 
+;; Hydra mode
+(add-to-list 'load-path "~/.emacs.d/hydra")
+(require 'hydra)
+(defhydra hydra-zoom (global-map "<f2>") "zoom"
+    ("i" text-scale-increase "in")
+    ("o" text-scale-decrease "out"))
+
 ;; Smartparens mode
 (add-to-list 'load-path "~/.emacs.d/smartparens")
 (require 'smartparens-config)

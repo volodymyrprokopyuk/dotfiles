@@ -290,6 +290,7 @@ https://github.com/bbatsov/zenburn-emacs.git
 https://github.com/Fanael/rainbow-delimiters.git
 https://github.com/milkypostman/powerline.git
 https://github.com/TheBB/spaceline.git
+https://github.com/abo-abo/hydra.git
 https://github.com/Fuco1/smartparens.git
 https://github.com/magnars/expand-region.el.git
 https://github.com/emacs-helm/helm.git
@@ -347,6 +348,7 @@ zenburn-emacs
 rainbow-delimiters
 powerline
 spaceline
+hydra
 smartparens
 expand-region.el
 emacs-helm-ag
@@ -391,6 +393,8 @@ EOF
         -L $EMACS_HOME/rainbow-delimiters \
         -L $EMACS_HOME/powerline \
         -L $EMACS_HOME/spaceline \
+        -L $EMACS_HOME/hydra \
+        -L $EMACS_HOME/hydra/targets \
         -L $EMACS_HOME/smartparens \
         -L $EMACS_HOME/expand-region.el \
         -L $EMACS_HOME/helm \
