@@ -230,9 +230,13 @@
          "raise" "with-exception-handler" "guard" ;; SRFI-34
          "define-record-type"
          "define-module" "use-modules"))
+(defconst scm-goops-keywords
+    '("define-class" "slot-set!" "slot-ref" "define-method"))
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"))
+(defconst scm-goops-builtins
+    '("make" "make-instance"))
 (defconst scm-port-builtins
     '("put-string" "get-string-all"))
 (defconst scm-hash-table-builtins ;; SRFI-69
@@ -326,10 +330,12 @@
 (defconst scm-types
     '("MyType1" "MyType2"))
 (font-lock-add-keywords 'racket-mode
-    `((,(regexp-opt scm-keywords t) . font-lock-keyword-face)
+    `((,(regexp-opt
+            (append scm-keywords scm-goops-keywords) t) . font-lock-keyword-face)
          (,(regexp-opt
                (append
                    scm-builtins
+                   scm-goops-builtins
                    scm-port-builtins
                    scm-hash-table-builtins
                    scm-record-type-builtins
