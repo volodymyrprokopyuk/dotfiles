@@ -231,12 +231,12 @@
          "define-record-type"
          "define-module" "use-modules"))
 (defconst scm-goops-keywords
-    '("define-class" "slot-set!" "slot-ref" "define-method"))
+    '("define-class" "slot-set!" "slot-ref" "define-method" "define-generic"))
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"))
 (defconst scm-goops-builtins
-    '("make" "make-instance"))
+    '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
 (defconst scm-port-builtins
     '("put-string" "get-string-all"))
 (defconst scm-hash-table-builtins ;; SRFI-69
