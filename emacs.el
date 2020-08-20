@@ -109,7 +109,7 @@
 
 ;; Rainbow Delimiters mode
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
-(autoload 'rainbow-delimiters-mode "rainbow-delimiters" nil t)
+(autoload 'rainbow-delimiters-mode "rainbow-delimiters.elc" nil t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; Powerline/Spaceline modeline
@@ -200,7 +200,7 @@
 
 ;; JS2 mode
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
-(autoload 'js2-mode "js2-mode" nil t)
+(autoload 'js2-mode "js2-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
 (setq-default js2-basic-offset 4)
@@ -208,12 +208,12 @@
 
 ;; TypeScript mode
 (add-to-list 'load-path "~/.emacs.d/typescript.el")
-(autoload 'typescript-mode "typescript-mode" nil t)
+(autoload 'typescript-mode "typescript-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
 ;; Scheme mode
 (add-to-list 'load-path "~/.emacs.d/racket-mode")
-(autoload 'racket-mode "racket-mode" nil t)
+(autoload 'racket-mode "racket-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.scm\\'" . racket-mode))
 ;; Normal (not aligned) identation
 (put 'test-assert 'racket-indent-function 1)
@@ -368,13 +368,13 @@
 
 ;; SML mode
 (add-to-list 'load-path "~/.emacs.d/sml-mode.el")
-(autoload 'sml-mode "sml-mode" nil t)
+(autoload 'sml-mode "sml-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.sml\\'" . sml-mode))
 (add-to-list 'auto-mode-alist '("\\.sig\\'" . sml-mode))
 
 ;; R mode
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
-(autoload 'ess-r-mode "ess-r-mode" nil t)
+(autoload 'ess-r-mode "ess-r-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
 ;; Comment with a single #
 (defun ess-mode-hook-setup ()
@@ -383,7 +383,7 @@
 
 ;; Web mode
 (add-to-list 'load-path "~/.emacs.d/web-mode")
-(autoload 'web-mode "web-mode" nil t)
+(autoload 'web-mode "web-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-hook 'web-mode-hook
@@ -396,7 +396,7 @@
 ;; Emmet mode
 ;; C-j => expand line
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
-(autoload 'emmet-mode "emmet-mode" nil t)
+(autoload 'emmet-mode "emmet-mode.elc" nil t)
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'nxml-mode-hook 'emmet-mode)
 
@@ -409,17 +409,17 @@
 
 ;; Dockerfile mode
 (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
-(autoload 'dockerfile-mode "dockerfile-mode" nil t)
+(autoload 'dockerfile-mode "dockerfile-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 ;; Markdown mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(autoload 'markdown-mode "markdown-mode" nil t)
+(autoload 'markdown-mode "markdown-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; YAML mode
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
-(autoload 'yaml-mode "yaml-mode" nil t)
+(autoload 'yaml-mode "yaml-mode.elc" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 (setq-default yaml-indent-offset 4)
