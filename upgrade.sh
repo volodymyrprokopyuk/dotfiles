@@ -243,9 +243,9 @@ function emacs_config {
 
     printf "$MESSAGE" $target $action "Copying .emacs into ~"
     cp $DOTFILES_HOME/.emacs ~
-    printf "$MESSAGE" $target $action "Copying emacs.el into ~/.emacs.d"
-    mkdir -p $EMACS_HOME
-    cp $DOTFILES_HOME/emacs.el $EMACS_HOME
+    printf "$MESSAGE" $target $action "Copying emacs.el into ~/.emacs.d/config"
+    mkdir -p $EMACS_HOME/config
+    cp $DOTFILES_HOME/emacs.el $EMACS_HOME/config
 }
 
 function emacs_upgrade_web {
@@ -369,6 +369,7 @@ yaml-mode
 evil-surround
 evil-nerd-commenter
 evil-goggles
+config
 EOF
     set -e
 
