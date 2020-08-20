@@ -1,3 +1,6 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Define Emacs configuration
+
 (defun config-emacs-window ()
     ;; Disable toolbar
     (tool-bar-mode -1)
@@ -10,53 +13,64 @@
     ;; Maximize Emacs window on startup
     (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
-(config-emacs-window)
+(defun config-clipboard-yank-paste ()
+    (setq select-enable-clipboard t)
+    (unless window-system
+        (when (getenv "DISPLAY")
+            (defun xsel-cut-function (text &optional push)
+                (with-temp-buffer
+                    (insert text)
+                    (call-process-region (point-min) (point-max)
+                        "xsel" nil 0 nil "--clipboard" "--input")))
+            (defun xsel-paste-function()
+                (let ((xsel-output
+                          (shell-command-to-string "xsel --clipboard --output")))
+                    (unless (string= (car kill-ring) xsel-output) xsel-output)))
+            (setq interprogram-cut-function 'xsel-cut-function)
+            (setq interprogram-paste-function 'xsel-paste-function))))
 
-;; Show line numbers
-(global-linum-mode t)
-(add-hook 'linum-mode-hook '(lambda () (setq linum-format "%d ")))
-;; Highlight current line
-(global-hl-line-mode 1)
+(defun config-emacs-font ()
+    (set-frame-font "Source Code Pro Light 12"))
+
+(defun config-color-scheme ()
+    (setq zenburn-override-colors-alist '(("zenburn-bg" . "#333333")))
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
+    (load-theme 'zenburn t))
+
+(defun config-whitespace ()
+    (require 'whitespace)
+    (global-whitespace-mode t)
+    (global-whitespace-toggle-options t)
+    (setq-default whitespace-line-column 88)
+    ;; M-q -> format selected text
+    (setq-default fill-column 88)
+    (add-hook 'text-mode-hook 'auto-fill-mode)
+    (setq-default whitespace-style '(face tab-mark trailing lines-tail))
+    (add-hook 'before-save-hook 'delete-trailing-whitespace)
+    (setq require-final-newline t)
+    (setq mode-require-final-newline t))
+
+(defun config-current-line ()
+    (global-hl-line-mode 1)
+    ;; Highlight current line
+    (set-face-attribute 'hl-line nil :foreground nil :background "#262626")
+    ;; Highlight visual selection
+    (set-face-attribute 'region nil :foreground nil :background "#3C1414"))
+
+(defun config-line-number ()
+    (global-linum-mode t)
+    (setq linum-format "%d "))
+
+
+
+(defun config-recent-file ()
+    (recentf-mode 1)
+    (setq recentf-max-saved-items 50)
+    (setq recentf-exclude '("\\.tmp"))
+    (run-with-timer 3600 (* 60 60) 'recentf-save-list))
+
 ;; Highlight matching parenthesis
 (show-paren-mode 1)
-
-;; Recentf mode
-(recentf-mode 1)
-(setq recentf-max-menu-items 512)
-(add-to-list 'recentf-exclude (expand-file-name "~/.emacs.d/recentf"))
-(run-with-timer 3600 (* 60 60) 'recentf-save-list)
-
-;; Terminal clipboard yank/paste
-(setq select-enable-clipboard t)
-(unless window-system
-    (when (getenv "DISPLAY")
-        (defun xsel-cut-function (text &optional push)
-            (with-temp-buffer
-                (insert text)
-                (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
-        (defun xsel-paste-function()
-            (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
-                (unless (string= (car kill-ring) xsel-output) xsel-output )))
-        (setq interprogram-cut-function 'xsel-cut-function)
-        (setq interprogram-paste-function 'xsel-paste-function)))
-
-;; WiteSpace mode
-(require 'whitespace)
-(global-whitespace-mode t)
-(global-whitespace-toggle-options t)
-;; Columns margin
-(setq-default whitespace-line-column 88)
-;; M-q -> format selected text
-(setq-default fill-column 88)
-;; Show tab marks, trailing blanks, long lines
-(setq-default whitespace-style '(face tab-mark trailing lines-tail))
-;; Remove trailing blanks on save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-;; Put newline at the end of a file
-(setq require-final-newline t)
-(setq mode-require-final-newline t)
-;; Automatically format text when typing
-(add-hook 'text-mode-hook 'auto-fill-mode)
 
 ;; Indentation
 (setq-default indent-tabs-mode nil)
@@ -70,17 +84,29 @@
 (setq-default c-basic-offset 4)
 
 ;; Flyspell mode
-(global-set-key (kbd "<f8>") 'flyspell-buffer)
+;; (global-set-key (kbd "<f8>") 'flyspell-buffer)
 ;; ]s next word
 ;; [s previous word
 ;; z= show suggestions
 
-;; Source Code Pro font
-(set-frame-font "Source Code Pro Light 12")
-;; (set-frame-font "Jetbrains Mono 12")
 ;; Increase/declease font size
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
+;; (global-set-key (kbd "C-+") 'text-scale-increase)
+;; (global-set-key (kbd "C--") 'text-scale-decrease)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Apply Emacs configuration
+
+(config-emacs-window)
+(config-clipboard-yank-paste)
+(config-emacs-font)
+(config-color-scheme)
+(config-whitespace)
+(config-current-line)
+(config-line-number)
+
+(config-recent-file)
 
 ;; Common extensions
 (add-to-list 'load-path "~/.emacs.d/epl")
@@ -97,16 +123,6 @@
 (add-to-list 'load-path "~/.emacs.d/exec-path-from-shell")
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
-
-;; Zenburn theme
-(setq zenburn-override-colors-alist '(("zenburn-bg" . "#333333")))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
-(load-theme 'zenburn t)
-
-;; Highlight current line
-(set-face-attribute 'hl-line nil :foreground nil :background "#262626")
-;; Highlight visual selection
-(set-face-attribute 'region nil :foreground nil :background "#3C1414")
 
 ;; Rainbow Delimiters mode
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
