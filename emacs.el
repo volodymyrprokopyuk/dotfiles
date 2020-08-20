@@ -1,15 +1,16 @@
-;; Disable toolbar
-(tool-bar-mode -1)
-;; Disable menubar
-(menu-bar-mode -1)
-;; Disable scrollbar
-(scroll-bar-mode -1)
-;; Disable startup screen
-(setq inhibit-startup-screen t)
-;; Maximize emacs window on startup
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-;; Set calendar week start day to Monday
-(add-hook 'calendar-mode-hook '(lambda () (setq calendar-week-start-day 1)))
+(defun config-emacs-window ()
+    ;; Disable toolbar
+    (tool-bar-mode -1)
+    ;; Disable menubar
+    (menu-bar-mode -1)
+    ;; Disable scrollbar
+    (scroll-bar-mode -1)
+    ;; Disable startup screen
+    (setq inhibit-startup-screen t)
+    ;; Maximize Emacs window on startup
+    (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
+
+(config-emacs-window)
 
 ;; Show line numbers
 (global-linum-mode t)
