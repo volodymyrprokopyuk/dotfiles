@@ -326,6 +326,49 @@ EOF
     done <<<$emacs_packages
 }
 
+readonly EMACS_LOAD_PATH="
+-L $EMACS_HOME/epl \
+-L $EMACS_HOME/pkg-info.el \
+-L $EMACS_HOME/goto-chg.el \
+-L $EMACS_HOME/key-chord.el \
+-L $EMACS_HOME/pos-tip.el \
+-L $EMACS_HOME/paredit.el \
+-L $EMACS_HOME/faceup \
+-L $EMACS_HOME/popup-el \
+-L $EMACS_HOME/s.el \
+-L $EMACS_HOME/dash.el \
+-L $EMACS_HOME/emacs-async \
+-L $EMACS_HOME/exec-path-from-shell \
+-L $EMACS_HOME/zenburn-emacs \
+-L $EMACS_HOME/rainbow-delimiters \
+-L $EMACS_HOME/powerline \
+-L $EMACS_HOME/spaceline \
+-L $EMACS_HOME/hydra \
+-L $EMACS_HOME/hydra/targets \
+-L $EMACS_HOME/smartparens \
+-L $EMACS_HOME/expand-region.el \
+-L $EMACS_HOME/helm \
+-L $EMACS_HOME/emacs-helm-ag \
+-L $EMACS_HOME/company-mode \
+-L $EMACS_HOME/avy \
+-L $EMACS_HOME/dumb-jump \
+-L $EMACS_HOME/js2-mode \
+-L $EMACS_HOME/typescript.el \
+-L $EMACS_HOME/racket-mode \
+-L $EMACS_HOME/sml-mode.el \
+-L $EMACS_HOME/julia-emacs \
+-L $EMACS_HOME/ESS/lisp \
+-L $EMACS_HOME/web-mode \
+-L $EMACS_HOME/emmet-mode \
+-L $EMACS_HOME/dockerfile-mode \
+-L $EMACS_HOME/markdown-mode \
+-L $EMACS_HOME/yaml-mode \
+-L $EMACS_HOME/evil \
+-L $EMACS_HOME/evil-surround \
+-L $EMACS_HOME/evil-nerd-commenter \
+-L $EMACS_HOME/evil-goggles \
+"
+
 function emacs_upgrade_compile {
     local target=$1
     local action=$2
@@ -369,7 +412,6 @@ yaml-mode
 evil-surround
 evil-nerd-commenter
 evil-goggles
-config
 EOF
     set -e
 
@@ -377,48 +419,8 @@ EOF
         printf "$MESSAGE" $target $action "Compiling $emacs_package in ~/.emacs.d"
         local emacs_package_path=$EMACS_HOME/$emacs_package
         cd $emacs_package_path
-        emacs --batch -Q \
-        -L $EMACS_HOME/epl \
-        -L $EMACS_HOME/pkg-info.el \
-        -L $EMACS_HOME/goto-chg.el \
-        -L $EMACS_HOME/key-chord.el \
-        -L $EMACS_HOME/pos-tip.el \
-        -L $EMACS_HOME/paredit.el \
-        -L $EMACS_HOME/faceup \
-        -L $EMACS_HOME/popup-el \
-        -L $EMACS_HOME/s.el \
-        -L $EMACS_HOME/dash.el \
-        -L $EMACS_HOME/emacs-async \
-        -L $EMACS_HOME/exec-path-from-shell \
-        -L $EMACS_HOME/zenburn-emacs \
-        -L $EMACS_HOME/rainbow-delimiters \
-        -L $EMACS_HOME/powerline \
-        -L $EMACS_HOME/spaceline \
-        -L $EMACS_HOME/hydra \
-        -L $EMACS_HOME/hydra/targets \
-        -L $EMACS_HOME/smartparens \
-        -L $EMACS_HOME/expand-region.el \
-        -L $EMACS_HOME/helm \
-        -L $EMACS_HOME/emacs-helm-ag \
-        -L $EMACS_HOME/company-mode \
-        -L $EMACS_HOME/avy \
-        -L $EMACS_HOME/dumb-jump \
-        -L $EMACS_HOME/js2-mode \
-        -L $EMACS_HOME/typescript.el \
-        -L $EMACS_HOME/racket-mode \
-        -L $EMACS_HOME/sml-mode.el \
-        -L $EMACS_HOME/julia-emacs \
-        -L $EMACS_HOME/ESS/lisp \
-        -L $EMACS_HOME/web-mode \
-        -L $EMACS_HOME/emmet-mode \
-        -L $EMACS_HOME/dockerfile-mode \
-        -L $EMACS_HOME/markdown-mode \
-        -L $EMACS_HOME/yaml-mode \
-        -L $EMACS_HOME/evil \
-        -L $EMACS_HOME/evil-surround \
-        -L $EMACS_HOME/evil-nerd-commenter \
-        -L $EMACS_HOME/evil-goggles \
-        -f batch-byte-compile $emacs_package_path/*.el 2>>$LOG || printf $FAILURE
+        emacs --batch -Q $EMACS_LOAD_PATH \
+            -f batch-byte-compile $emacs_package_path/*.el 2>>$LOG || printf $FAILURE
     done <<<$emacs_packages
 }
 
@@ -442,16 +444,26 @@ EOF
     done <<<$emacs_packages
 }
 
+function emacs_upgrade_compile_config {
+    local target=$1
+    local action=$2
+
+    printf "$MESSAGE" $target $action "Compiling config in ~/.emacs.d"
+    emacs --batch -Q $EMACS_LOAD_PATH \
+        -f batch-byte-compile $EMACS_HOME/config/*.el 2>>$LOG || printf $FAILURE
+}
+
 function emacs_upgrade {
     local target=emacs
     local action=upgrade
 
     mkdir -p $EMACS_HOME
 
-    emacs_upgrade_web $target $action
-    emacs_upgrade_git $target $action
-    emacs_upgrade_compile $target $action
-    emacs_upgrade_make $target $action
+    # emacs_upgrade_web $target $action
+    # emacs_upgrade_git $target $action
+    # emacs_upgrade_compile $target $action
+    # emacs_upgrade_make $target $action
+    emacs_upgrade_compile_config $target $action
 }
 
 rm -f $LOG
