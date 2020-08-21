@@ -246,6 +246,8 @@ function emacs_config {
     printf "$MESSAGE" $target $action "Copying emacs.el into ~/.emacs.d/config"
     mkdir -p $EMACS_HOME/config
     cp $DOTFILES_HOME/emacs.el $EMACS_HOME/config
+    printf "$MESSAGE" $target $action "Copying scheme.el into ~/.emacs.d/config"
+    cp $DOTFILES_HOME/scheme.el $EMACS_HOME/config
 }
 
 function emacs_upgrade_web {
