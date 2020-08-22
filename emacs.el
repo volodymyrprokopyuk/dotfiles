@@ -275,10 +275,10 @@
     (load "~/.emacs.d/config/scheme"))
 
 (defun config-sql ()
-    (add-hook 'sql-mode-hook #'(lambda () (setq sql-product 'postgres))
+    (setq sql-product 'postgres)
     ;; Treat _ as part of the word on *, #, w, b, e
     (add-hook 'sql-mode-hook
-        #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))))
+        #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
 
 (defun config-zsh ()
     (setq-default sh-basic-offset 4)
@@ -289,6 +289,44 @@
     (add-hook 'sh-mode-hook
         #'(lambda () (modify-syntax-entry ?- "w" sh-mode-syntax-table))))
 
+(defun config-javascript ()
+    (add-to-list 'load-path "~/.emacs.d/js2-mode")
+    (autoload 'js2-mode "js2-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+    (setq-default js2-basic-offset 4)
+    (setq-default js-indent-level 4)
+    ;; Treat _ as part of the word on *, #, w, b, e
+    (add-hook 'js2-mode-hook
+        #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table))))
+
+(defun config-typescript ()
+    (add-to-list 'load-path "~/.emacs.d/typescript.el")
+    (autoload 'typescript-mode "typescript-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+    ;; Treat _ as part of the word on *, #, w, b, e
+    (add-hook 'typescript-mode-hook
+        #'(lambda () (modify-syntax-entry ?_ "w" typescript-mode-syntax-table))))
+
+(defun config-r ()
+    (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
+    (autoload 'ess-r-mode "ess-r-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
+    ;; Treat _ as part of the word on *, #, w, b, e
+    (add-hook 'ess-r-mode-hook
+        #'(lambda () (modify-syntax-entry ?_ "w" ess-r-mode-syntax-table)))
+    ;; Start comment with single #
+    (add-hook 'ess-mode-hook #'(lambda () (setq comment-add 0))))
+
+(defun config-prolog ()
+    (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode)))
+
+(defun config-sml ()
+    (add-to-list 'load-path "~/.emacs.d/sml-mode.el")
+    (autoload 'sml-mode "sml-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.sml\\'" . sml-mode))
+    (add-to-list 'auto-mode-alist '("\\.sig\\'" . sml-mode)))
+
 (defun config-elisp ()
     (setq-default lisp-indent-offset 4)
     ;; Treat - as part of the word on *, #, w, b, e
@@ -296,6 +334,14 @@
         #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
     (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
     (setq ediff-split-window-function 'split-window-horizontally))
+
+(defun config-c ()
+    (setq-default c-basic-offset 4)
+    ;; Treat _ as part of the word on *, #, w, b, e
+    (add-hook 'java-mode-hook
+        #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
+    (add-hook 'python-mode-hook
+        #'(lambda () (modify-syntax-entry ?_ "w"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Apply Emacs configuration
@@ -346,15 +392,16 @@
 (config-scheme) ;; pos-tip.el
 (config-sql)
 (config-zsh)
+(config-javascript)
+(config-typescript)
+(config-r)
+(config-prolog)
+(config-sml)
 (config-elisp)
+(config-c)
 
 ;; Markup languages
 
-
-
-
-;; C indentation
-(setq-default c-basic-offset 4)
 
 ;; Flyspell mode
 ;; (global-set-key (kbd "<f8>") 'flyspell-buffer)
@@ -367,35 +414,6 @@
 ;; (add-to-list 'load-path "~/.emacs.d/pkg-info.el")
 ;; (add-to-list 'load-path "~/.emacs.d/paredit.el")
 ;; (add-to-list 'load-path "~/.emacs.d/faceup")
-
-
-;; ;; JS2 mode
-;; (add-to-list 'load-path "~/.emacs.d/js2-mode")
-;; (autoload 'js2-mode "js2-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
-;; (setq-default js2-basic-offset 4)
-;; (setq-default js-indent-level 4)
-
-;; ;; TypeScript mode
-;; (add-to-list 'load-path "~/.emacs.d/typescript.el")
-;; (autoload 'typescript-mode "typescript-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-
-;; ;; SML mode
-;; (add-to-list 'load-path "~/.emacs.d/sml-mode.el")
-;; (autoload 'sml-mode "sml-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.sml\\'" . sml-mode))
-;; (add-to-list 'auto-mode-alist '("\\.sig\\'" . sml-mode))
-
-;; ;; R mode
-;; (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
-;; (autoload 'ess-r-mode "ess-r-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
-;; ;; Comment with a single #
-;; (defun ess-mode-hook-setup ()
-;;   (setq comment-add 0))
-;; (add-hook 'ess-mode-hook 'ess-mode-hook-setup)
 
 ;; ;; Web mode
 ;; (add-to-list 'load-path "~/.emacs.d/web-mode")
@@ -416,10 +434,6 @@
 ;; (add-hook 'web-mode-hook 'emmet-mode)
 ;; (add-hook 'nxml-mode-hook 'emmet-mode)
 
-;; ;; Prolog mode
-;; (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
-
-
 ;; ;; Dockerfile mode
 ;; (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
 ;; (autoload 'dockerfile-mode "dockerfile-mode.elc" nil t)
@@ -439,15 +453,3 @@
 
 ;; ;; XSD mode
 ;; (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
-
-;; ;; Treat _ as part of the word on *, #, w, b
-;; (add-hook 'js2-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table)))
-;; (add-hook 'typescript-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?_ "w" typescript-mode-syntax-table)))
-;; (add-hook 'python-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?_ "w")))
-;; (add-hook 'java-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
-;; (add-hook 'ess-r-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?_ "w" ess-r-mode-syntax-table)))
