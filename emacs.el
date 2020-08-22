@@ -13,7 +13,7 @@
     ;; Maximize Emacs window on startup
     (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
-(defun config-clipboard-yank-paste ()
+(defun config-clipboard ()
     (setq select-enable-clipboard t)
     (unless window-system
         (when (getenv "DISPLAY")
@@ -32,7 +32,7 @@
 (defun config-font ()
     (set-frame-font "Source Code Pro Light 12"))
 
-(defun config-color-scheme ()
+(defun config-color ()
     (setq zenburn-override-colors-alist '(("zenburn-bg" . "#333333")))
     (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
     (load-theme 'zenburn t))
@@ -49,6 +49,7 @@
     (setq linum-format "%d "))
 
 ;; M-q format width of the selected text
+
 (defun config-whitespace ()
     (require 'whitespace)
     (global-whitespace-mode t)
@@ -90,6 +91,7 @@
     (spaceline-compile))
 
 ;; Ctrl-y paste into the mini buffer
+
 (defun config-helm ()
     (add-to-list 'load-path "~/.emacs.d/helm")
     (require 'helm-config)
@@ -104,6 +106,7 @@
 
 ;; Alt-s s search files content in a project
 ;; Alt-s f find files in a project
+
 (defun config-helm-ag ()
     (add-to-list 'load-path "~/.emacs.d/emacs-helm-ag")
     (require 'helm-ag)
@@ -121,6 +124,7 @@
 ;; Tab complete the common part of suggestion list
 ;; Enter complete with the first suggestion
 ;; Alt-s Space trigger completion
+
 (defun config-company ()
     (add-to-list 'load-path "~/.emacs.d/company-mode")
     (require 'company)
@@ -160,6 +164,7 @@
 ;; Visual mode (should only be used when normal mode standard motions are not enough)
 ;;     o (other end of selection)
 ;;     Ctrl-v $ (ragged selection)
+
 (defun config-evil ()
     (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
     (require 'goto-chg)
@@ -182,6 +187,7 @@
 
 ;; Normal mode: ys, cs, ds
 ;; Visual mode: S
+
 (defun config-evil-surround ()
     (add-to-list 'load-path "~/.emacs.d/evil-surround")
     (require 'evil-surround)
@@ -194,6 +200,7 @@
 
 ;; gcc comment a line
 ;; gc<movement> comment a movement
+
 (defun config-evil-commenter ()
     (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
     (require 'evil-nerd-commenter)
@@ -208,6 +215,7 @@
     (custom-set-faces '(evil-goggles-default-face ((t (:inherit region))))))
 
 ;; Alt-j jump to a visible position in a buffer
+
 (defun config-avy ()
     (add-to-list 'load-path "~/.emacs.d/avy")
     (require 'avy)
@@ -231,6 +239,7 @@
 
 ;; Alt-, expand region
 ;; Alt-m contract region
+
 (defun config-expand-region ()
     (add-to-list 'load-path "~/.emacs.d/expand-region.el")
     (autoload 'er/expand-region "expand-region.elc" nil t)
@@ -238,6 +247,7 @@
     (global-set-key (kbd "M-m") 'er/contract-region))
 
 ;; gd go to definition
+
 (defun config-dumb-jump ()
     (add-to-list 'load-path "~/.emacs.d/dumb-jump")
     (autoload 'dumb-jump-xref-activate "dumb-jump.elc" nil t)
@@ -264,6 +274,29 @@
     (add-hook 'racket-mode-hook #'racket-mode-hook-setup)
     (load "~/.emacs.d/config/scheme"))
 
+(defun config-sql ()
+    (add-hook 'sql-mode-hook #'(lambda () (setq sql-product 'postgres))
+    ;; Treat _ as part of the word on *, #, w, b, e
+    (add-hook 'sql-mode-hook
+        #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))))
+
+(defun config-zsh ()
+    (setq-default sh-basic-offset 4)
+    (add-hook 'sh-mode-hook #'(lambda () (sh-set-shell "zsh")))
+    ;; Treat -, _ as part of the word on *, #, w, b, e
+    (add-hook 'sh-mode-hook
+        #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
+    (add-hook 'sh-mode-hook
+        #'(lambda () (modify-syntax-entry ?- "w" sh-mode-syntax-table))))
+
+(defun config-elisp ()
+    (setq-default lisp-indent-offset 4)
+    ;; Treat - as part of the word on *, #, w, b, e
+    (add-hook 'emacs-lisp-mode-hook
+        #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
+    (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+    (setq ediff-split-window-function 'split-window-horizontally))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Apply Emacs configuration
 
@@ -279,13 +312,13 @@
 
 ;; Basic editor
 (config-window)
-(config-clipboard-yank-paste)
+(config-clipboard)
 (config-font)
 ;; Zoom font in and out
 (defhydra hydra-zoom (global-map "<f2>") "zoom"
     ("i" text-scale-increase "in")
     ("o" text-scale-decrease "out"))
-(config-color-scheme)
+(config-color)
 (config-current-line)
 (config-line-number)
 (config-whitespace)
@@ -309,16 +342,17 @@
 (config-expand-region)
 (config-dumb-jump) ;; popup-el
 
-;; Programming modes
+;; Programming languages
 (config-scheme) ;; pos-tip.el
+(config-sql)
+(config-zsh)
+(config-elisp)
+
+;; Markup languages
 
 
 
 
-;; Emacs Lisp indentation
-(setq-default lisp-indent-offset 4)
-;; Bash indentation
-(setq-default sh-basic-offset 4)
 ;; C indentation
 (setq-default c-basic-offset 4)
 
@@ -334,11 +368,6 @@
 ;; (add-to-list 'load-path "~/.emacs.d/paredit.el")
 ;; (add-to-list 'load-path "~/.emacs.d/faceup")
 
-;; ;; Emacs Lisp mode
-;; (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-
-;; ;; Ediff mode
-;; (setq ediff-split-window-function 'split-window-horizontally)
 
 ;; ;; JS2 mode
 ;; (add-to-list 'load-path "~/.emacs.d/js2-mode")
@@ -390,9 +419,6 @@
 ;; ;; Prolog mode
 ;; (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
-;; ;; SQL mode
-;; (setq sql-product 'postgres)
-;; (add-to-list 'auto-mode-alist '("\\.cql\\'" . sql-mode))
 
 ;; ;; Dockerfile mode
 ;; (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
@@ -415,14 +441,6 @@
 ;; (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
 
 ;; ;; Treat _ as part of the word on *, #, w, b
-;; (add-hook 'emacs-lisp-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
-;; (add-hook 'sh-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
-;; (add-hook 'sh-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?- "w" sh-mode-syntax-table)))
-;; (add-hook 'sql-mode-hook
-;;     #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
 ;; (add-hook 'js2-mode-hook
 ;;     #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table)))
 ;; (add-hook 'typescript-mode-hook
