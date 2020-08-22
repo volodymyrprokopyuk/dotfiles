@@ -343,6 +343,39 @@
     (add-hook 'python-mode-hook
         #'(lambda () (modify-syntax-entry ?_ "w"))))
 
+(defun config-markdown ()
+    (add-to-list 'load-path "~/.emacs.d/markdown-mode")
+    (autoload 'markdown-mode "markdown-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
+
+
+(defun config-web ()
+    (add-to-list 'load-path "~/.emacs.d/web-mode")
+    (autoload 'web-mode "web-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+    (add-hook 'web-mode-hook
+        #'(lambda ()
+              (setq web-mode-markup-indent-offset 4)
+              (setq web-mode-attr-indent-offset 4)
+              (setq web-mode-css-indent-offset 4)
+              (setq web-mode-code-indent-offset 4))))
+
+(defun config-yaml ()
+    (add-to-list 'load-path "~/.emacs.d/yaml-mode")
+    (autoload 'yaml-mode "yaml-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+    (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+    (setq-default yaml-indent-offset 4))
+
+(defun config-xml ()
+    (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode)))
+
+(defun config-docker ()
+    (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
+    (autoload 'dockerfile-mode "dockerfile-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Apply Emacs configuration
 
@@ -352,6 +385,8 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/popup-el")
 (add-to-list 'load-path "~/.emacs.d/pos-tip.el")
+(add-to-list 'load-path "~/.emacs.d/faceup")
+;; (add-to-list 'load-path "~/.emacs.d/paredit.el")
 
 (add-to-list 'load-path "~/.emacs.d/hydra")
 (require 'hydra)
@@ -389,7 +424,7 @@
 (config-dumb-jump) ;; popup-el
 
 ;; Programming languages
-(config-scheme) ;; pos-tip.el
+(config-scheme) ;; pos-tip.el faceup
 (config-sql)
 (config-zsh)
 (config-javascript)
@@ -401,55 +436,8 @@
 (config-c)
 
 ;; Markup languages
-
-
-;; Flyspell mode
-;; (global-set-key (kbd "<f8>") 'flyspell-buffer)
-;; ]s next word
-;; [s previous word
-;; z= show suggestions
-
-;; Common extensions
-;; (add-to-list 'load-path "~/.emacs.d/epl")
-;; (add-to-list 'load-path "~/.emacs.d/pkg-info.el")
-;; (add-to-list 'load-path "~/.emacs.d/paredit.el")
-;; (add-to-list 'load-path "~/.emacs.d/faceup")
-
-;; ;; Web mode
-;; (add-to-list 'load-path "~/.emacs.d/web-mode")
-;; (autoload 'web-mode "web-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-;; (add-hook 'web-mode-hook
-;;     '(lambda ()
-;;         (setq web-mode-markup-indent-offset 4)
-;;         (setq web-mode-attr-indent-offset 4)
-;;         (setq web-mode-css-indent-offset 4)
-;;         (setq web-mode-code-indent-offset 4)))
-
-;; ;; Emmet mode
-;; ;; C-j => expand line
-;; (add-to-list 'load-path "~/.emacs.d/emmet-mode")
-;; (autoload 'emmet-mode "emmet-mode.elc" nil t)
-;; (add-hook 'web-mode-hook 'emmet-mode)
-;; (add-hook 'nxml-mode-hook 'emmet-mode)
-
-;; ;; Dockerfile mode
-;; (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
-;; (autoload 'dockerfile-mode "dockerfile-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
-
-;; ;; Markdown mode
-;; (add-to-list 'load-path "~/.emacs.d/markdown-mode")
-;; (autoload 'markdown-mode "markdown-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-;; ;; YAML mode
-;; (add-to-list 'load-path "~/.emacs.d/yaml-mode")
-;; (autoload 'yaml-mode "yaml-mode.elc" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-;; (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
-;; (setq-default yaml-indent-offset 4)
-
-;; ;; XSD mode
-;; (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
+(config-markdown)
+(config-web)
+(config-yaml)
+(config-xml)
+(config-docker)

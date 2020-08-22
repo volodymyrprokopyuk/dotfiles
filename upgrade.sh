@@ -280,40 +280,37 @@ function emacs_upgrade_git {
 
     set +e
     read -d "" emacs_packages <<EOF
-https://github.com/cask/epl.git
-https://github.com/lunaryorn/pkg-info.el.git
-https://github.com/Lindydancer/faceup.git
-https://github.com/auto-complete/popup-el.git
+https://github.com/abo-abo/hydra.git
 https://github.com/magnars/s.el.git
 https://github.com/magnars/dash.el.git
 https://github.com/jwiegley/emacs-async.git
-https://github.com/purcell/exec-path-from-shell.git
+https://github.com/auto-complete/popup-el.git
+https://github.com/Lindydancer/faceup.git
 https://github.com/bbatsov/zenburn-emacs.git
-https://github.com/Fanael/rainbow-delimiters.git
+https://github.com/purcell/exec-path-from-shell.git
 https://github.com/milkypostman/powerline.git
 https://github.com/TheBB/spaceline.git
-https://github.com/abo-abo/hydra.git
-https://github.com/Fuco1/smartparens.git
-https://github.com/magnars/expand-region.el.git
 https://github.com/emacs-helm/helm.git
 https://github.com/syohex/emacs-helm-ag.git
 https://github.com/company-mode/company-mode.git
-https://github.com/abo-abo/avy.git
-https://github.com/jacktasia/dumb-jump.git
-https://github.com/mooz/js2-mode.git
-https://github.com/emacs-typescript/typescript.el.git
-https://github.com/greghendershott/racket-mode.git
-https://github.com/JuliaEditorSupport/julia-emacs.git
-https://github.com/emacs-ess/ESS.git
-https://github.com/fxbois/web-mode.git
-https://github.com/smihica/emmet-mode.git
-https://github.com/spotify/dockerfile-mode.git
-https://github.com/jrblevin/markdown-mode.git
-https://github.com/yoshiki/yaml-mode.git
 https://github.com/emacs-evil/evil.git
 https://github.com/emacs-evil/evil-surround.git
 https://github.com/redguardtoo/evil-nerd-commenter.git
 https://github.com/edkolev/evil-goggles.git
+https://github.com/abo-abo/avy.git
+https://github.com/Fanael/rainbow-delimiters.git
+https://github.com/Fuco1/smartparens.git
+https://github.com/magnars/expand-region.el.git
+https://github.com/jacktasia/dumb-jump.git
+https://github.com/greghendershott/racket-mode.git
+https://github.com/mooz/js2-mode.git
+https://github.com/emacs-typescript/typescript.el.git
+https://github.com/JuliaEditorSupport/julia-emacs.git
+https://github.com/emacs-ess/ESS.git
+https://github.com/jrblevin/markdown-mode.git
+https://github.com/fxbois/web-mode.git
+https://github.com/yoshiki/yaml-mode.git
+https://github.com/spotify/dockerfile-mode.git
 EOF
     set -e
 
@@ -329,46 +326,43 @@ EOF
 }
 
 readonly EMACS_LOAD_PATH="
--L $EMACS_HOME/epl \
--L $EMACS_HOME/pkg-info.el \
+-L $EMACS_HOME/hydra \
+-L $EMACS_HOME/hydra/targets \
 -L $EMACS_HOME/goto-chg.el \
 -L $EMACS_HOME/key-chord.el \
 -L $EMACS_HOME/pos-tip.el \
 -L $EMACS_HOME/paredit.el \
--L $EMACS_HOME/faceup \
--L $EMACS_HOME/popup-el \
 -L $EMACS_HOME/s.el \
 -L $EMACS_HOME/dash.el \
 -L $EMACS_HOME/emacs-async \
--L $EMACS_HOME/exec-path-from-shell \
+-L $EMACS_HOME/popup-el \
+-L $EMACS_HOME/faceup \
 -L $EMACS_HOME/zenburn-emacs \
--L $EMACS_HOME/rainbow-delimiters \
+-L $EMACS_HOME/exec-path-from-shell \
 -L $EMACS_HOME/powerline \
 -L $EMACS_HOME/spaceline \
--L $EMACS_HOME/hydra \
--L $EMACS_HOME/hydra/targets \
--L $EMACS_HOME/smartparens \
--L $EMACS_HOME/expand-region.el \
 -L $EMACS_HOME/helm \
 -L $EMACS_HOME/emacs-helm-ag \
 -L $EMACS_HOME/company-mode \
--L $EMACS_HOME/avy \
--L $EMACS_HOME/dumb-jump \
--L $EMACS_HOME/js2-mode \
--L $EMACS_HOME/typescript.el \
--L $EMACS_HOME/racket-mode \
--L $EMACS_HOME/sml-mode.el \
--L $EMACS_HOME/julia-emacs \
--L $EMACS_HOME/ESS/lisp \
--L $EMACS_HOME/web-mode \
--L $EMACS_HOME/emmet-mode \
--L $EMACS_HOME/dockerfile-mode \
--L $EMACS_HOME/markdown-mode \
--L $EMACS_HOME/yaml-mode \
 -L $EMACS_HOME/evil \
 -L $EMACS_HOME/evil-surround \
 -L $EMACS_HOME/evil-nerd-commenter \
 -L $EMACS_HOME/evil-goggles \
+-L $EMACS_HOME/avy \
+-L $EMACS_HOME/rainbow-delimiters \
+-L $EMACS_HOME/smartparens \
+-L $EMACS_HOME/expand-region.el \
+-L $EMACS_HOME/dumb-jump \
+-L $EMACS_HOME/racket-mode \
+-L $EMACS_HOME/js2-mode \
+-L $EMACS_HOME/typescript.el \
+-L $EMACS_HOME/julia-emacs \
+-L $EMACS_HOME/ESS/lisp \
+-L $EMACS_HOME/sml-mode.el \
+-L $EMACS_HOME/markdown-mode \
+-L $EMACS_HOME/web-mode \
+-L $EMACS_HOME/yaml-mode \
+-L $EMACS_HOME/dockerfile-mode \
 "
 
 function emacs_upgrade_compile {
@@ -377,43 +371,40 @@ function emacs_upgrade_compile {
 
     set +e
     read -d "" emacs_packages <<EOF
-epl
-pkg-info.el
+hydra
 goto-chg.el
 key-chord.el
 pos-tip.el
 paredit.el
-faceup
-popup-el
 s.el
 dash.el
 emacs-async
-exec-path-from-shell
+popup-el
+faceup
 zenburn-emacs
-rainbow-delimiters
+exec-path-from-shell
 powerline
 spaceline
-hydra
-smartparens
-expand-region.el
 emacs-helm-ag
 company-mode
-avy
-dumb-jump
-js2-mode
-typescript.el
-racket-mode
-sml-mode.el
-julia-emacs
-ESS/lisp
-web-mode
-emmet-mode
-dockerfile-mode
-markdown-mode
-yaml-mode
 evil-surround
 evil-nerd-commenter
 evil-goggles
+avy
+rainbow-delimiters
+smartparens
+expand-region.el
+dumb-jump
+racket-mode
+js2-mode
+typescript.el
+julia-emacs
+ESS/lisp
+sml-mode.el
+markdown-mode
+web-mode
+yaml-mode
+dockerfile-mode
 EOF
     set -e
 
