@@ -258,8 +258,8 @@ function emacs_upgrade_web {
     read -d "" emacs_packages <<EOF
 https://www.emacswiki.org/emacs/download/goto-chg.el
 https://www.emacswiki.org/emacs/download/key-chord.el
-https://www.emacswiki.org/emacs/download/pos-tip.el
 http://mumble.net/~campbell/emacs/paredit.el
+https://www.emacswiki.org/emacs/download/pos-tip.el
 http://git.savannah.gnu.org/cgit/emacs/elpa.git/plain/packages/sml-mode/sml-mode.el
 EOF
     set -e
@@ -327,12 +327,12 @@ EOF
 readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/goto-chg.el \
 -L $EMACS_HOME/key-chord.el \
--L $EMACS_HOME/pos-tip.el \
--L $EMACS_HOME/paredit.el \
 -L $EMACS_HOME/s.el \
 -L $EMACS_HOME/dash.el \
 -L $EMACS_HOME/emacs-async \
 -L $EMACS_HOME/popup-el \
+-L $EMACS_HOME/paredit.el \
+-L $EMACS_HOME/pos-tip.el \
 -L $EMACS_HOME/faceup \
 -L $EMACS_HOME/zenburn-emacs \
 -L $EMACS_HOME/exec-path-from-shell \
@@ -370,12 +370,12 @@ function emacs_upgrade_compile {
     read -d "" emacs_packages <<EOF
 goto-chg.el
 key-chord.el
-pos-tip.el
-paredit.el
 s.el
 dash.el
 emacs-async
 popup-el
+paredit.el
+pos-tip.el
 faceup
 zenburn-emacs
 exec-path-from-shell

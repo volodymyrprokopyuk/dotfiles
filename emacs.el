@@ -386,9 +386,9 @@
 (add-to-list 'load-path "~/.emacs.d/dash.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/popup-el")
+(add-to-list 'load-path "~/.emacs.d/paredit.el")
 (add-to-list 'load-path "~/.emacs.d/pos-tip.el")
 (add-to-list 'load-path "~/.emacs.d/faceup")
-;; (add-to-list 'load-path "~/.emacs.d/paredit.el")
 
 ;; Basic editor
 (config-window)
@@ -419,7 +419,7 @@
 (config-dumb-jump) ;; popup-el
 
 ;; Programming languages
-(config-scheme) ;; pos-tip.el faceup
+(config-scheme) ;; paredit.el pos-tip.el faceup
 (config-sql)
 (config-zsh)
 (config-javascript)
