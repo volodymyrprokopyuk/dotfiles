@@ -30,7 +30,9 @@
             (setq interprogram-paste-function 'xsel-paste-function))))
 
 (defun config-font ()
-    (set-frame-font "Source Code Pro Light 12"))
+    (set-frame-font "Source Code Pro Light 12")
+    (global-set-key (kbd "C-+") 'text-scale-increase)
+    (global-set-key (kbd "C--") 'text-scale-decrease))
 
 (defun config-color ()
     (setq zenburn-override-colors-alist '(("zenburn-bg" . "#333333")))
@@ -388,17 +390,10 @@
 (add-to-list 'load-path "~/.emacs.d/faceup")
 ;; (add-to-list 'load-path "~/.emacs.d/paredit.el")
 
-(add-to-list 'load-path "~/.emacs.d/hydra")
-(require 'hydra)
-
 ;; Basic editor
 (config-window)
 (config-clipboard)
 (config-font)
-;; Zoom font in and out
-(defhydra hydra-zoom (global-map "<f2>") "zoom"
-    ("i" text-scale-increase "in")
-    ("o" text-scale-decrease "out"))
 (config-color)
 (config-current-line)
 (config-line-number)

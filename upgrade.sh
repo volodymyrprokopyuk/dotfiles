@@ -280,7 +280,6 @@ function emacs_upgrade_git {
 
     set +e
     read -d "" emacs_packages <<EOF
-https://github.com/abo-abo/hydra.git
 https://github.com/magnars/s.el.git
 https://github.com/magnars/dash.el.git
 https://github.com/jwiegley/emacs-async.git
@@ -326,8 +325,6 @@ EOF
 }
 
 readonly EMACS_LOAD_PATH="
--L $EMACS_HOME/hydra \
--L $EMACS_HOME/hydra/targets \
 -L $EMACS_HOME/goto-chg.el \
 -L $EMACS_HOME/key-chord.el \
 -L $EMACS_HOME/pos-tip.el \
@@ -371,7 +368,6 @@ function emacs_upgrade_compile {
 
     set +e
     read -d "" emacs_packages <<EOF
-hydra
 goto-chg.el
 key-chord.el
 pos-tip.el
@@ -452,10 +448,10 @@ function emacs_upgrade {
 
     mkdir -p $EMACS_HOME
 
-    # emacs_upgrade_web $target $action
-    # emacs_upgrade_git $target $action
-    # emacs_upgrade_compile $target $action
-    # emacs_upgrade_make $target $action
+    emacs_upgrade_web $target $action
+    emacs_upgrade_git $target $action
+    emacs_upgrade_compile $target $action
+    emacs_upgrade_make $target $action
     emacs_upgrade_compile_config $target $action
 }
 
