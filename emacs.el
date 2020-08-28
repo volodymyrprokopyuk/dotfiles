@@ -228,6 +228,8 @@
 (defun config-parentheses ()
     ;; Highlight matching parenthesis
     (show-paren-mode 1)
+    (set-face-background 'show-paren-match (face-background 'region))
+    (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
     ;; Show in different collors nested matching parentheses
     (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
     (require 'rainbow-delimiters)
