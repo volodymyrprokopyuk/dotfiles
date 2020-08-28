@@ -22,7 +22,9 @@ function copy_photos {
         #    echo " FAILED (no image timestamp)"
         #    return 1
         # fi
-        local timestamp="2006-01-24 00:00:00"
+        # echo -n " ${timestamp}"
+
+        local timestamp="2007-01-12 00:00:00"
 
         local date=$(date -d "${timestamp}" +'%Y-%m-%d')
         local time=$(date -d "${timestamp}" +'%H:%M:%S')
@@ -33,7 +35,7 @@ function copy_photos {
         local hash=$(sha1sum "${photo}" | grep -oP '^\S+')
 
         local file="${date}_${time}_${hash}.jpg"
-        # local file="${date}_${time}_${hash}.avi"
+        # local file="${date}_${time}_${hash}.mov"
 
         local date_path=$(date -d "${timestamp}" +'%Y/%Y-%m-%d')
         local path="${destination_path}/${date_path}"
@@ -45,7 +47,7 @@ function copy_photos {
 
     find "${source_path}" -type f -iregex '.*\.\(jpg\|jpeg\)$' \
          -exec bash -c "copy_photo \"{}\" \"${destination_path}\"" \;
-    # find "${source_path}" -type f -iregex '.*\.\(avi\)$' \
+    # find "${source_path}" -type f -iregex '.*\.\(mov\)$' \
     #      -exec bash -c "copy_photo \"{}\" \"${destination_path}\"" \;
 }
 

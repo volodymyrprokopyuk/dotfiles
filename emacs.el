@@ -350,7 +350,6 @@
     (autoload 'markdown-mode "markdown-mode.elc" nil t)
     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
-
 (defun config-web ()
     (add-to-list 'load-path "~/.emacs.d/web-mode")
     (autoload 'web-mode "web-mode.elc" nil t)
