@@ -298,6 +298,7 @@ https://github.com/redguardtoo/evil-nerd-commenter.git
 https://github.com/edkolev/evil-goggles.git
 https://github.com/abo-abo/avy.git
 https://github.com/Fanael/rainbow-delimiters.git
+https://github.com/tsdh/highlight-parentheses.el.git
 https://github.com/Fuco1/smartparens.git
 https://github.com/magnars/expand-region.el.git
 https://github.com/jacktasia/dumb-jump.git
@@ -347,6 +348,7 @@ readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/evil-goggles \
 -L $EMACS_HOME/avy \
 -L $EMACS_HOME/rainbow-delimiters \
+-L $EMACS_HOME/highlight-parentheses.el \
 -L $EMACS_HOME/smartparens \
 -L $EMACS_HOME/expand-region.el \
 -L $EMACS_HOME/dumb-jump \
@@ -388,6 +390,7 @@ evil-nerd-commenter
 evil-goggles
 avy
 rainbow-delimiters
+highlight-parentheses.el
 smartparens
 expand-region.el
 dumb-jump

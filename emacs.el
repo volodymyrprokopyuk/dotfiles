@@ -226,7 +226,7 @@
     (global-set-key (kbd "M-j") 'avy-goto-char-timer)
 
 (defun config-parentheses ()
-    ;; Highlight matching parenthesis
+    ;; Highlight matching parentheses
     (show-paren-mode 1)
     (set-face-background 'show-paren-match (face-background 'region))
     (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
@@ -235,6 +235,12 @@
     (require 'rainbow-delimiters)
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'text-mode-hook #'rainbow-delimiters-mode)
+    ;; Highlight surrounding parentheses
+    (add-to-list 'load-path "~/.emacs.d/highlight-parentheses.el")
+    (require 'highlight-parentheses)
+    (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
+    (add-hook 'text-mode-hook #'highlight-parentheses-mode)
+    (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
     ;; Handle parentheses smart way
     (add-to-list 'load-path "~/.emacs.d/smartparens")
     (require 'smartparens-config)
