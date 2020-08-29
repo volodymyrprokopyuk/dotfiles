@@ -241,6 +241,7 @@
     (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
     (add-hook 'text-mode-hook #'highlight-parentheses-mode)
     (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
+    (setq hl-paren-colors '("firebrick1" avy-lead-face-0 avy-lead-face))
     ;; Handle parentheses smart way
     (add-to-list 'load-path "~/.emacs.d/smartparens")
     (require 'smartparens-config)
