@@ -237,6 +237,54 @@ EOF
     done <<<$zsh_extensions
 }
 
+readonly EMACS_LOAD_PATH="
+-L $EMACS_HOME/goto-chg.el \
+-L $EMACS_HOME/key-chord.el \
+-L $EMACS_HOME/s.el \
+-L $EMACS_HOME/dash.el \
+-L $EMACS_HOME/emacs-async \
+-L $EMACS_HOME/popup-el \
+-L $EMACS_HOME/paredit.el \
+-L $EMACS_HOME/pos-tip.el \
+-L $EMACS_HOME/faceup \
+-L $EMACS_HOME/zenburn-emacs \
+-L $EMACS_HOME/exec-path-from-shell \
+-L $EMACS_HOME/powerline \
+-L $EMACS_HOME/spaceline \
+-L $EMACS_HOME/helm \
+-L $EMACS_HOME/emacs-helm-ag \
+-L $EMACS_HOME/company-mode \
+-L $EMACS_HOME/evil \
+-L $EMACS_HOME/evil-surround \
+-L $EMACS_HOME/evil-nerd-commenter \
+-L $EMACS_HOME/evil-goggles \
+-L $EMACS_HOME/avy \
+-L $EMACS_HOME/rainbow-delimiters \
+-L $EMACS_HOME/highlight-parentheses.el \
+-L $EMACS_HOME/smartparens \
+-L $EMACS_HOME/expand-region.el \
+-L $EMACS_HOME/dumb-jump \
+-L $EMACS_HOME/racket-mode \
+-L $EMACS_HOME/js2-mode \
+-L $EMACS_HOME/typescript.el \
+-L $EMACS_HOME/julia-emacs \
+-L $EMACS_HOME/ESS/lisp \
+-L $EMACS_HOME/sml-mode.el \
+-L $EMACS_HOME/markdown-mode \
+-L $EMACS_HOME/web-mode \
+-L $EMACS_HOME/yaml-mode \
+-L $EMACS_HOME/dockerfile-mode \
+"
+
+function emacs_config_compile {
+    local target=$1
+    local action=$2
+
+    printf "$MESSAGE" $target $action "Compiling config in ~/.emacs.d"
+    emacs --batch -Q $EMACS_LOAD_PATH \
+        -f batch-byte-compile $EMACS_HOME/config/*.el 2>>$LOG || printf $FAILURE
+}
+
 function emacs_config {
     local target=emacs
     local action=config
@@ -248,6 +296,8 @@ function emacs_config {
     cp $DOTFILES_HOME/emacs.el $EMACS_HOME/config
     printf "$MESSAGE" $target $action "Copying scheme.el into ~/.emacs.d/config"
     cp $DOTFILES_HOME/scheme.el $EMACS_HOME/config
+
+    emacs_config_compile $target $action
 }
 
 function emacs_upgrade_web {
@@ -325,45 +375,6 @@ EOF
     done <<<$emacs_packages
 }
 
-readonly EMACS_LOAD_PATH="
--L $EMACS_HOME/goto-chg.el \
--L $EMACS_HOME/key-chord.el \
--L $EMACS_HOME/s.el \
--L $EMACS_HOME/dash.el \
--L $EMACS_HOME/emacs-async \
--L $EMACS_HOME/popup-el \
--L $EMACS_HOME/paredit.el \
--L $EMACS_HOME/pos-tip.el \
--L $EMACS_HOME/faceup \
--L $EMACS_HOME/zenburn-emacs \
--L $EMACS_HOME/exec-path-from-shell \
--L $EMACS_HOME/powerline \
--L $EMACS_HOME/spaceline \
--L $EMACS_HOME/helm \
--L $EMACS_HOME/emacs-helm-ag \
--L $EMACS_HOME/company-mode \
--L $EMACS_HOME/evil \
--L $EMACS_HOME/evil-surround \
--L $EMACS_HOME/evil-nerd-commenter \
--L $EMACS_HOME/evil-goggles \
--L $EMACS_HOME/avy \
--L $EMACS_HOME/rainbow-delimiters \
--L $EMACS_HOME/highlight-parentheses.el \
--L $EMACS_HOME/smartparens \
--L $EMACS_HOME/expand-region.el \
--L $EMACS_HOME/dumb-jump \
--L $EMACS_HOME/racket-mode \
--L $EMACS_HOME/js2-mode \
--L $EMACS_HOME/typescript.el \
--L $EMACS_HOME/julia-emacs \
--L $EMACS_HOME/ESS/lisp \
--L $EMACS_HOME/sml-mode.el \
--L $EMACS_HOME/markdown-mode \
--L $EMACS_HOME/web-mode \
--L $EMACS_HOME/yaml-mode \
--L $EMACS_HOME/dockerfile-mode \
-"
-
 function emacs_upgrade_compile {
     local target=$1
     local action=$2
@@ -436,15 +447,6 @@ EOF
     done <<<$emacs_packages
 }
 
-function emacs_upgrade_compile_config {
-    local target=$1
-    local action=$2
-
-    printf "$MESSAGE" $target $action "Compiling config in ~/.emacs.d"
-    emacs --batch -Q $EMACS_LOAD_PATH \
-        -f batch-byte-compile $EMACS_HOME/config/*.el 2>>$LOG || printf $FAILURE
-}
-
 function emacs_upgrade {
     local target=emacs
     local action=upgrade
@@ -455,7 +457,6 @@ function emacs_upgrade {
     emacs_upgrade_git $target $action
     emacs_upgrade_compile $target $action
     emacs_upgrade_make $target $action
-    emacs_upgrade_compile_config $target $action
 }
 
 rm -f $LOG
