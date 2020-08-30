@@ -203,6 +203,7 @@
 
 ;; gcc comment a line
 ;; gc<movement> comment a movement
+;; gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 
 (defun config-evil-commenter ()
     (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
