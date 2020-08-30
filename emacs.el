@@ -166,6 +166,7 @@
 ;; Visual mode (should only be used when normal mode standard motions are not enough)
 ;;     o (other end of selection)
 ;;     Ctrl-v $ (ragged selection)
+;; F1 k <key> show key binding
 
 (defun config-evil ()
     (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
@@ -242,7 +243,7 @@
     (add-hook 'text-mode-hook #'highlight-parentheses-mode)
     (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
     (setq hl-paren-colors '("firebrick1" nil nil nil))
-    ;; Handle parentheses smart way
+    ;; Handle parentheses automatically
     (add-to-list 'load-path "~/.emacs.d/smartparens")
     (require 'smartparens-config)
     (add-hook 'prog-mode-hook #'smartparens-mode)

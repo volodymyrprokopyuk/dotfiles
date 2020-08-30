@@ -451,10 +451,10 @@ function emacs_upgrade {
 
     mkdir -p $EMACS_HOME
 
-    # emacs_upgrade_web $target $action
-    # emacs_upgrade_git $target $action
-    # emacs_upgrade_compile $target $action
-    # emacs_upgrade_make $target $action
+    emacs_upgrade_web $target $action
+    emacs_upgrade_git $target $action
+    emacs_upgrade_compile $target $action
+    emacs_upgrade_make $target $action
     emacs_upgrade_compile_config $target $action
 }
 
