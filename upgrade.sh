@@ -252,6 +252,7 @@ readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/powerline \
 -L $EMACS_HOME/spaceline \
 -L $EMACS_HOME/helm \
+-L $EMACS_HOME/helm-xref \
 -L $EMACS_HOME/emacs-helm-ag \
 -L $EMACS_HOME/company-mode \
 -L $EMACS_HOME/evil \
@@ -340,6 +341,7 @@ https://github.com/purcell/exec-path-from-shell.git
 https://github.com/milkypostman/powerline.git
 https://github.com/TheBB/spaceline.git
 https://github.com/emacs-helm/helm.git
+https://github.com/brotzeit/helm-xref.git
 https://github.com/syohex/emacs-helm-ag.git
 https://github.com/company-mode/company-mode.git
 https://github.com/emacs-evil/evil.git
@@ -394,6 +396,7 @@ zenburn-emacs
 exec-path-from-shell
 powerline
 spaceline
+helm-xref
 emacs-helm-ag
 company-mode
 evil-surround

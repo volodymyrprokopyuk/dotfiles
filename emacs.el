@@ -104,7 +104,9 @@
     (global-set-key (kbd "M-s l") 'helm-locate)
     (helm-mode 1)
     (define-key helm-map (kbd "M-j") 'helm-next-line)
-    (define-key helm-map (kbd "M-k") 'helm-previous-line))
+    (define-key helm-map (kbd "M-k") 'helm-previous-line)
+    (add-to-list 'load-path "~/.emacs.d/helm-xref")
+    (require 'helm-xref))
 
 ;; Alt-s s search files content in a project
 ;; Alt-s f find files in a project
