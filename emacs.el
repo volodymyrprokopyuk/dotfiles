@@ -254,7 +254,7 @@
 
 ;; gd go to definition
 
-(defun config-dumb-jump ()
+(defun config-go-to-definition ()
     (add-to-list 'load-path "~/.emacs.d/dumb-jump")
     (autoload 'dumb-jump-xref-activate "dumb-jump.elc" nil t)
     (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
@@ -413,8 +413,7 @@
 
 ;; Common programming
 (config-parentheses)
-(config-expand-region)
-(config-dumb-jump) ;; popup-el
+(config-go-to-definition) ;; popup-el
 
 ;; Programming languages
 (config-scheme) ;; paredit.el pos-tip.el faceup
