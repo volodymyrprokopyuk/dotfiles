@@ -273,11 +273,6 @@
                   (0 (progn (compose-region (match-beginning 0) (match-end 0)
                                 ,(make-char 'greek-iso8859-7 107)) nil))))))
     (add-hook 'racket-mode-hook #'replace-lambda-with-greek-letter)
-    ;; Rebind expand region mode keys
-    (defun racket-mode-hook-setup ()
-        (local-set-key (kbd "M-,") 'er/expand-region)
-        (local-set-key (kbd "M-m") 'er/contract-region))
-    (add-hook 'racket-mode-hook #'racket-mode-hook-setup)
     (load "~/.emacs.d/config/scheme"))
 
 (defun config-sql ()
