@@ -263,7 +263,6 @@ readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/rainbow-delimiters \
 -L $EMACS_HOME/highlight-parentheses.el \
 -L $EMACS_HOME/smartparens \
--L $EMACS_HOME/expand-region.el \
 -L $EMACS_HOME/dumb-jump \
 -L $EMACS_HOME/racket-mode \
 -L $EMACS_HOME/js2-mode \
@@ -352,7 +351,6 @@ https://github.com/abo-abo/avy.git
 https://github.com/Fanael/rainbow-delimiters.git
 https://github.com/tsdh/highlight-parentheses.el.git
 https://github.com/Fuco1/smartparens.git
-https://github.com/magnars/expand-region.el.git
 https://github.com/jacktasia/dumb-jump.git
 https://github.com/greghendershott/racket-mode.git
 https://github.com/mooz/js2-mode.git
@@ -406,7 +404,6 @@ avy
 rainbow-delimiters
 highlight-parentheses.el
 smartparens
-expand-region.el
 dumb-jump
 racket-mode
 js2-mode

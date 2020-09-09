@@ -252,15 +252,6 @@
     (add-hook 'prog-mode-hook #'smartparens-mode)
     (add-hook 'text-mode-hook #'smartparens-mode))
 
-;; Alt-, expand region
-;; Alt-m contract region
-
-(defun config-expand-region ()
-    (add-to-list 'load-path "~/.emacs.d/expand-region.el")
-    (autoload 'er/expand-region "expand-region.elc" nil t)
-    (global-set-key (kbd "M-,") 'er/expand-region)
-    (global-set-key (kbd "M-m") 'er/contract-region))
-
 ;; gd go to definition
 
 (defun config-dumb-jump ()
