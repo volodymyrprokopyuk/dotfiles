@@ -271,7 +271,12 @@
         (font-lock-add-keywords nil
             `(("\\<lambda\\>"
                   (0 (progn (compose-region (match-beginning 0) (match-end 0)
-                                ,(make-char 'greek-iso8859-7 107)) nil))))))
+                                ,(make-char 'greek-iso8859-7 107)) nil)))))
+        (font-lock-add-keywords nil
+            `(("-lambda\\>"
+                  (0 (progn (compose-region (+ (match-beginning 0) 1) (match-end 0)
+                                ,(make-char 'greek-iso8859-7 107)) nil)))))
+        )
     (add-hook 'racket-mode-hook #'replace-lambda-with-greek-letter)
     (load "~/.emacs.d/config/scheme"))
 
