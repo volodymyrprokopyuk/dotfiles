@@ -6,7 +6,7 @@
 (put 'test-approximate 'racket-indent-function 1)
 (put 'test-error 'racket-indent-function 1)
 
-;; Keywords, builtins, and types highlighting
+;; Keywords highlighting
 (defconst scm-keywords
     '("define*" "lambda*" "let*"
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
@@ -18,9 +18,12 @@
 (defconst scm-goops-keywords
     '("define-class" "slot-set!" "slot-ref" "define-method" "define-generic"))
 
+;; Builtins highlighting
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!"
-         "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"))
+         "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"
+         "acons" "assq-set!" "assv-set!" "assoc-set!" "assq" "assv" "assoc"
+         "assq-remove!" "assv-remove!" "assoc-remove!"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
@@ -129,6 +132,7 @@
     '("make-stack" "stack-null?" "push" "pop" "peek"
          "make-queue" "queue-null?" "enqueue" "dequeue" "front"))
 
+;; Types highlighting
 (defconst scm-types
     '("MyType1" "MyType2"))
 
