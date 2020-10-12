@@ -13,7 +13,8 @@
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "raise" "with-exception-handler" "guard" ;; SRFI-34
          "define-record-type"
-         "define-module" "use-modules"))
+         "define-module" "use-modules"
+         "call-with-current-continuation" "call/cc"))
 
 (defconst scm-goops-keywords
     '("define-class" "slot-set!" "slot-ref" "define-method" "define-generic"))
