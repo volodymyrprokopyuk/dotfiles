@@ -154,3 +154,6 @@ readonly NVM_SOURCE=/usr/share/nvm
 
 # Install Yarn
 type yarn > /dev/null 2>&1 && export PATH=$(yarn global bin):$PATH || true
+
+# Install Gauche
+export GAUCHE_READ_EDIT=1
