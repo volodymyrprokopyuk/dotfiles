@@ -14,7 +14,8 @@
          "raise" "with-exception-handler" "guard" ;; SRFI-34
          "define-record-type"
          "define-module" "use-modules"
-         "call-with-current-continuation" "call/cc"))
+         "call-with-current-continuation" "call/cc"
+         "cut"))
 
 (defconst scm-goops-keywords
     '("define-class" "slot-set!" "slot-ref" "define-method" "define-generic"))
