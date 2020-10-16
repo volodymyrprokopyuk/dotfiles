@@ -267,17 +267,20 @@
     (add-hook 'racket-mode-hook
         #'(lambda () (modify-syntax-entry ?- "w" racket-mode-syntax-table)))
     ;; Replace lambda word with greek letter
-    (defun replace-lambda-with-greek-letter ()
+    (defun replace-keyword-with-greek-letter ()
         (font-lock-add-keywords nil
-            `(("\\<lambda\\>"
+            `(("\\<lambda\\>" ;; lambda
                   (0 (progn (compose-region (match-beginning 0) (match-end 0)
                                 ,(make-char 'greek-iso8859-7 107)) nil)))))
         (font-lock-add-keywords nil
-            `(("-lambda\\>"
+            `(("-lambda\\>" ;; lambda
                   (0 (progn (compose-region (+ (match-beginning 0) 1) (match-end 0)
                                 ,(make-char 'greek-iso8859-7 107)) nil)))))
-        )
-    (add-hook 'racket-mode-hook #'replace-lambda-with-greek-letter)
+        (font-lock-add-keywords nil
+            `(("\\<cut\\>" ;; sigma
+                  (0 (progn (compose-region (match-beginning 0) (match-end 0)
+                                ,(make-char 'greek-iso8859-7 115)) nil))))))
+    (add-hook 'racket-mode-hook #'replace-keyword-with-greek-letter)
     (load "~/.emacs.d/config/scheme"))
 
 (defun config-sql ()
