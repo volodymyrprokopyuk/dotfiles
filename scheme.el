@@ -22,7 +22,7 @@
 
 ;; Builtins highlighting
 (defconst scm-builtins
-    '("1+" "1-" "set-car!" "set-cdr!"
+    '("1+" "1-" "set-car!" "set-cdr!" "inc!" "dec!" "update!"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"
          "acons" "assq-set!" "assv-set!" "assoc-set!" "assq" "assv" "assoc"
          "assq-remove!" "assv-remove!" "assoc-remove!"))
