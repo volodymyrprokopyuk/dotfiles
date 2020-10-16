@@ -15,7 +15,7 @@
          "define-record-type"
          "define-module" "use-modules"
          "call-with-current-continuation" "call/cc"
-         "cut" "cute")) ;; SRFI-26
+         "cut" "cute" "$" "$*")) ;; SRFI-26
 
 (defconst scm-goops-keywords
     '("define-class" "slot-set!" "slot-ref" "define-method" "define-generic"))
