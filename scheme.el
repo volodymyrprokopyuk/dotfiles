@@ -8,7 +8,7 @@
 
 ;; Keywords highlighting
 (defconst scm-keywords
-    '("define*" "lambda*" "let*"
+    '("define*" "lambda*" "let*" "and-let*"
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "raise" "with-exception-handler" "guard" ;; SRFI-34
