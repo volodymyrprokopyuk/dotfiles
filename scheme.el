@@ -8,12 +8,16 @@
 
 ;; Keywords highlighting
 (defconst scm-keywords
-    '("define*" "lambda*" "let*" "and-let*"
+    '("letrec-syntax"
+         "load" "include" "require"
+         "define*" "lambda*" "let*" "letrec*" "and-let*"
+         "define-values" "set!-values"
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "raise" "with-exception-handler" "guard" ;; SRFI-34
          "define-record-type"
-         "define-module" "use-modules"
+         "define-module" "use-modules" "use" "select-module" "with-module" "import" "export"
+         "export-all" "extend"
          "call-with-current-continuation" "call/cc"
          "cut" "cute" "$" "$*")) ;; SRFI-26
 
@@ -25,7 +29,9 @@
     '("1+" "1-" "set-car!" "set-cdr!" "inc!" "dec!" "update!"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"
          "acons" "assq-set!" "assv-set!" "assoc-set!" "assq" "assv" "assoc"
-         "assq-remove!" "assv-remove!" "assoc-remove!"))
+         "assq-remove!" "assv-remove!" "assoc-remove!"
+         "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
+         "errorf" "syntax-error" "syntax-errorf"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
