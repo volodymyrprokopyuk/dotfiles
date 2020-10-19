@@ -31,7 +31,8 @@
          "acons" "assq-set!" "assv-set!" "assoc-set!" "assq" "assv" "assoc"
          "assq-remove!" "assv-remove!" "assoc-remove!"
          "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
-         "errorf" "syntax-error" "syntax-errorf"))
+         "errorf" "syntax-error" "syntax-errorf"
+         "subtype?"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
