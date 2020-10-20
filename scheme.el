@@ -33,7 +33,9 @@
          "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
          "errorf" "syntax-error" "syntax-errorf"
          "compare" "default-hash" "portable-hash" "comparator-hash" "combine-hash-value"
-         "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?"))
+         "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?"
+         "exact" "inexact" "exact?" "inexact?" "finite?" "infinite?" "min&max" "approx=?"
+         "quotient&remainder" "square" "make-rectangular" "make-polar"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
