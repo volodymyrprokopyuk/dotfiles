@@ -32,7 +32,8 @@
          "assq-remove!" "assv-remove!" "assoc-remove!"
          "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
          "errorf" "syntax-error" "syntax-errorf"
-         "subtype?"))
+         "compare" "default-hash" "portable-hash" "comparator-hash" "combine-hash-value"
+         "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
