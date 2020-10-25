@@ -1,4 +1,5 @@
 ;; Normal (not aligned) identation
+(put 'and-let* 'racket-indent-function 1)
 (put 'test-assert 'racket-indent-function 1)
 (put 'test-eq 'racket-indent-function 1)
 (put 'test-eqv 'racket-indent-function 1)
@@ -16,8 +17,8 @@
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "raise" "with-exception-handler" "guard" ;; SRFI-34
          "define-record-type"
-         "define-module" "use-modules" "use" "select-module" "with-module" "import" "export"
-         "export-all" "extend"
+         "define-module" "use-modules" "use" "select-module" "with-module" "import"
+         "export" "export-all" "extend"
          "call-with-current-continuation" "call/cc"
          "cut" "cute" "$" "$*")) ;; SRFI-26
 
@@ -35,7 +36,13 @@
          "compare" "default-hash" "portable-hash" "comparator-hash" "combine-hash-value"
          "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?"
          "exact" "inexact" "exact?" "inexact?" "finite?" "infinite?" "min&max" "approx=?"
-         "quotient&remainder" "square" "make-rectangular" "make-polar"))
+         "quotient&remainder" "square" "make-rectangular" "make-polar"
+         "undefined" "get-keyword"
+         "string->regexp" "rxmatch" "rxmatch-substring" "rxmatch-substrings"
+         "regexp-replace" "regexp-replace-all"
+         "hash-table" "hash-table-unfold" "hash-table-get" "hash-table-put!"
+         "hash-table-contains?" "hash-table-delete" "hash-table-push!"
+         "hash-table-pop!" "ref" "hash-table-map" "hash-table-for-each"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
@@ -84,7 +91,7 @@
          "string-reverse" "string-concatenate" "xsubstring"
          "string-map" "string-for-each" "string-for-each-index"
          "string-fold" "string-fold-right" "string-unfold" "string-unfold-right"
-         "string-tokenize" "string-filter" "string-delete"))
+         "string-tokenize" "string-filter" "string-delete" "string-scan"))
 
 (defconst scm-charset-library-builtins ;; SRFI-14
     '("char-set" "char-set?" "char-set=" "char-set<=" "char-set-hash"
@@ -100,7 +107,7 @@
 (defconst scm-vector-library-builtins ;; SRFI-133
     '("vector-unfold" "vector-unfold-right" "vector-append" "vector-concatenate"
          "vector-empty?" "vector=" "vector-fold" "vector-fold-right"
-         "vector-map" "vector-for-each" "vector-count"
+         "vector-map" "vector-for-each" "vector-count" "vector-tabulate"
          "vector-index" "vector-index-right" "vector-skip" "vector-skip-right"
          "vector-any" "vector-every" "vector-partition" "vector-swap!"
          "vector-fill!" "vector-reverse!"))
