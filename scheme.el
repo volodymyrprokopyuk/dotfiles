@@ -16,11 +16,11 @@
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
          "raise" "with-exception-handler" "guard" ;; SRFI-34
-         "define-record-type"
+         "define-record-type" "define-condition-type"
          "define-module" "use-modules" "use" "select-module" "with-module" "import"
-         "export" "export-all" "extend"
+         "export" "export-all" "extend" "dynamic-wind" "unwind-protect"
          "call-with-current-continuation" "call/cc"
-         "cut" "cute" "$" "$*")) ;; SRFI-26
+         "cut" "cute" "$" "$*" ".$" "~" "delay" "force" "lazy" "eager")) ;; SRFI-26
 
 (defconst scm-goops-keywords
     '("define-class" "slot-set!" "slot-ref" "define-method" "define-generic"))
@@ -37,12 +37,12 @@
          "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?"
          "exact" "inexact" "exact?" "inexact?" "finite?" "infinite?" "min&max" "approx=?"
          "quotient&remainder" "square" "make-rectangular" "make-polar"
-         "undefined" "get-keyword"
+         "undefined" "get-keyword" "complement"
          "string->regexp" "rxmatch" "rxmatch-substring" "rxmatch-substrings"
          "regexp-replace" "regexp-replace-all"
          "hash-table" "hash-table-unfold" "hash-table-get" "hash-table-put!"
          "hash-table-contains?" "hash-table-delete" "hash-table-push!"
-         "hash-table-pop!" "ref" "hash-table-map" "hash-table-for-each"))
+         "hash-table-pop!" "hash-table-map" "hash-table-for-each"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
