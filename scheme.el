@@ -42,7 +42,8 @@
          "regexp-replace" "regexp-replace-all"
          "hash-table" "hash-table-unfold" "hash-table-get" "hash-table-put!"
          "hash-table-contains?" "hash-table-delete" "hash-table-push!"
-         "hash-table-pop!" "hash-table-map" "hash-table-for-each"))
+         "hash-table-pop!" "hash-table-map" "hash-table-for-each"
+         "call-with-string-io" "with-string-io"))
 
 (defconst scm-goops-builtins
     '("make" "make-instance" "merge-generics" "next-method" "class-of" "is-a?"))
