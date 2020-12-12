@@ -15,6 +15,7 @@
          "define-values" "set!-values"
          "values" "call-with-values" "receive" "let-values" "let*-values" ;; SRFI-8,11
          "match" "match-lambda" "match-lambda*" "match-let" "match-let*" "match-letrec"
+         "match-define"
          "raise" "with-exception-handler" "guard" ;; SRFI-34
          "define-record-type" "define-condition-type"
          "define-module" "use-modules" "use" "select-module" "with-module" "import"
