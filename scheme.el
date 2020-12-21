@@ -1,5 +1,6 @@
 ;; Normal (not aligned) identation
 (put 'and-let* 'racket-indent-function 1)
+(put 'let-args 'racket-indent-function 1)
 (put 'test-assert 'racket-indent-function 1)
 (put 'test-eq 'racket-indent-function 1)
 (put 'test-eqv 'racket-indent-function 1)
@@ -9,7 +10,7 @@
 
 ;; Keywords highlighting
 (defconst scm-keywords
-    '("letrec-syntax"
+    '("letrec-syntax" "parametrize" "define-constant"
          "load" "include" "require"
          "define*" "lambda*" "let*" "letrec*" "and-let*"
          "define-values" "set!-values"
@@ -28,12 +29,12 @@
 
 ;; Builtins highlighting
 (defconst scm-builtins
-    '("1+" "1-" "set-car!" "set-cdr!" "inc!" "dec!" "update!" "index"
+    '("1+" "1-" "set-car!" "set-cdr!" "inc!" "dec!" "update!" "index" "let-args"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"
          "acons" "assq-set!" "assv-set!" "assoc-set!" "assq" "assv" "assoc"
-         "assq-remove!" "assv-remove!" "assoc-remove!"
+         "assq-remove!" "assv-remove!" "assoc-remove!" "make-parameter"
          "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
-         "errorf" "syntax-error" "syntax-errorf"
+         "errorf" "syntax-error" "syntax-errorf" "any-pred" "every-pred"
          "compare" "default-hash" "portable-hash" "comparator-hash" "combine-hash-value"
          "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?"
          "exact" "inexact" "exact?" "inexact?" "finite?" "infinite?" "min&max" "approx=?"
