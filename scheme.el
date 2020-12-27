@@ -36,7 +36,7 @@
          "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
          "errorf" "syntax-error" "syntax-errorf" "any-pred" "every-pred"
          "compare" "default-hash" "portable-hash" "comparator-hash" "combine-hash-value"
-         "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?"
+         "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?" "map-with-index"
          "exact" "inexact" "exact?" "inexact?" "finite?" "infinite?" "min&max" "approx=?"
          "quotient&remainder" "square" "make-rectangular" "make-polar"
          "undefined" "get-keyword" "complement"
