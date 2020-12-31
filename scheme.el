@@ -38,7 +38,7 @@
          "compare" "default-hash" "portable-hash" "comparator-hash" "combine-hash-value"
          "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?" "map-with-index"
          "exact" "inexact" "exact?" "inexact?" "finite?" "infinite?" "min&max" "approx=?"
-         "quotient&remainder" "square" "make-rectangular" "make-polar"
+         "quotient&remainder" "square" "make-rectangular" "make-polar" "pprint"
          "undefined" "get-keyword" "complement"
          "string->regexp" "rxmatch" "rxmatch-substring" "rxmatch-substrings"
          "regexp-replace" "regexp-replace-all"
