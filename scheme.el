@@ -39,7 +39,7 @@
          "comparator-compare" "default-comparator" "<?" "<?" "<=?" ">=?" ">?" "map-with-index"
          "exact" "inexact" "exact?" "inexact?" "finite?" "infinite?" "min&max" "approx=?"
          "quotient&remainder" "square" "make-rectangular" "make-polar" "pprint"
-         "undefined" "get-keyword" "complement"
+         "undefined" "get-keyword" "complement" "reduce" "reduce-right"
          "string->regexp" "rxmatch" "rxmatch-substring" "rxmatch-substrings"
          "regexp-replace" "regexp-replace-all"
          "hash-table" "hash-table-unfold" "hash-table-get" "hash-table-put!"

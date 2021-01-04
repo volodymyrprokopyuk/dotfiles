@@ -137,29 +137,34 @@ library(pryr)
 
 ```bash
 # Install PostgreSQL server, client, and tools
-yay -S postgresql pgcli pgmodeler
+yay -S postgresql
+# Create PostgreSQL data directory
+sudo mkdir /var/lib/postgres/data
+sudo chown -R postgres:postgres /var/lib/postgres/data
+sudo chmod 755 -R /var/lib/postgres/*
 # Initialize PostgreSQL database cluster
 sudo su postgres
 initdb --locale en_US.UTF-8 --encoding UTF-8 -D /var/lib/postgres/data
 exit
-# Enable/start/status PostgreSQL database service
-sudo systemctl enable|start|status postgresql.service
+# Enable/disable/start/stop/restart/status PostgreSQL database service
+sudo systemctl enable|disable|start|stop|restart|status postgresql.service
+# Show PostgreSQL log
+journalctl -u postgresql.service
 # Create database user
-sudo su postgres
-psql
+psql postgres postgres
 CREATE USER vlad WITH PASSWORD 'vlad' SUPERUSER;
 exit
 # Create database
 psql postgres vlad
-CREATE DATABASE vladdb WITH OWNER vlad;
+CREATE DATABASE playground WITH OWNER vlad;
 exit
 # Connect to database
-pgcli [-h localhost] vladdb vlad
+psql playground vlad
 # Dump database schema
-pg_dump -U vlad --schema-only vladdb > vladdb_dump_schema.sql
+pg_dump -U vlad --schema-only playground > playground_dump_schema.sql
 # Restore database schema
-psql -h localhost -p 5432 -f vladdb_dump_schema.sql \
-    -v ON_ERROR_STOP=1 -v ECHO=queries vladdb vlad
+psql -h localhost -p 5432 -f playground_dump_schema.sql \
+    -v ON_ERROR_STOP=1 -v ECHO=queries playground vlad
 ```
 
 # System environment
