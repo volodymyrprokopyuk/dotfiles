@@ -19,7 +19,7 @@ yay -S jq
 # Configure zsh (log out, then log in)
 chsh -s $(which zsh)
 # Install applications
-yay -S inkscape plantuml gnuplot
+yay -S inkscape plantuml
 yay -S dropbox google-chrome tor-browser
 # Install cloud tools
 yay -S aws-cli google-cloud-sdk terraform
@@ -113,7 +113,7 @@ yarn install
 # Scheme environment
 
 ```bash
-yay -S guile-git gauche-git
+yay -S gauche
 ```
 
 # SML environment

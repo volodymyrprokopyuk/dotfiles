@@ -116,13 +116,6 @@ function common_config {
 
     printf "$MESSAGE" $target $action "Copying .agignore into ~"
     cp $DOTFILES_HOME/.agignore ~
-    printf "$MESSAGE" $target $action "Copying config into ~/.config/pgcli"
-    mkdir -p ~/.config/pgcli
-    cp $DOTFILES_HOME/pgcli_config ~/.config/pgcli/config
-    printf "$MESSAGE" $target $action "Copying .guile into ~"
-    cp $DOTFILES_HOME/.guile ~
-    printf "$MESSAGE" $target $action "Copying .gnuplot into ~"
-    cp $DOTFILES_HOME/.gnuplot ~
 }
 
 function git_config_common {
