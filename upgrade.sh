@@ -181,7 +181,7 @@ function git_config {
     local action=config
 
     printf "$MESSAGE" $target $action "Copying .gitignore into ~"
-    cp $DOTFILES_HOME/global_gitignore ~/.gitignore
+    cp $DOTFILES_HOME/gitignore ~/.gitignore
 
     git_config_common $target $action
     git_config_aliases $target $action
