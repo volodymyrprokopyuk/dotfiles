@@ -167,6 +167,13 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
     -v ON_ERROR_STOP=1 -v ECHO=queries playground vlad
 ```
 
+## psql commands
+
+- General `\c`, `\conninfo`, `\du`, `\l`, `\dn`, `\g`, `\r`, `\q`
+- Relations `\d`, `\dtvmi`
+- Functions `\df`, `\dfnptaw`, `\sf`
+- Editing `\e`, `\ef`
+
 # System environment
 
 ## Users and groups management
