@@ -31,8 +31,7 @@
 (defconst scm-builtins
     '("1+" "1-" "set-car!" "set-cdr!" "inc!" "dec!" "update!" "index" "let-args"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"
-         "acons" "assq-set!" "assv-set!" "assoc-set!" "assq" "assv" "assoc"
-         "assq-remove!" "assv-remove!" "assoc-remove!" "make-parameter"
+         "acons" "assq-ref" "assv-ref" "assoc-ref" "make-parameter"
          "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
          "errorf" "syntax-error" "syntax-errorf" "any-pred" "every-pred"
          "compare" "default-hash" "portable-hash" "comparator-hash" "combine-hash-value"
