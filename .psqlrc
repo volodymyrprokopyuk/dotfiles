@@ -1,2 +1,4 @@
 \set ECHO queries
 \set ON_ERROR_STOP on
+\pset linestyle unicode
+\pset null NULL
