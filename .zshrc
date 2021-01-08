@@ -1,6 +1,7 @@
 export TERM=screen-256color
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"
+export PAGER=less
 export LESS="-XFR"
 
 alias tmux="tmux -2"
