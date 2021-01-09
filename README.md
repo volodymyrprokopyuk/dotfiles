@@ -10,7 +10,7 @@ sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 # Update installed software and clean up unused packages
 yay -Syu && yay -Sc
 # Install tools
-yay -S adobe-source-code-pro-fonts
+yay -S adobe-source-code-pro-fonts ttf-jetbrains-mono
 yay -S tmux zsh emacs xsel
 yay -S aspell aspell-en aspell-es
 yay -S hunspell hunspell-en_US hunspell-es_es
