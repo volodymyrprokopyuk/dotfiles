@@ -41,7 +41,7 @@ bindkey "^xe" edit-command-line
 bindkey "^x^e" edit-command-line
 
 # Alias
-alias ll="exa --all --long --sort=type --git --git-ignore --ignore-glob='*~|.git|node_modules|coverage|pyvenv|__pycache__|.pytest_cache|htmlcov'"
+alias ll="exa --all --long --sort=type --color-scale --git --git-ignore --ignore-glob='*~|.git|node_modules'"
 alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:ini'"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
