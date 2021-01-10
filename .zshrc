@@ -42,7 +42,7 @@ bindkey "^x^e" edit-command-line
 
 # Alias
 alias ll="exa --all --long --sort=type --color-scale --git --git-ignore --ignore-glob='*~|.git|node_modules'"
-alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:ini'"
+alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:INI'"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
 alias uu="curl -sSLk"
