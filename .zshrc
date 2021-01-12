@@ -2,7 +2,7 @@ export TERM=screen-256color
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"
 export PAGER=less
-export LESS="-XFR"
+export LESS="-RF"
 
 alias tmux="tmux -2"
 [[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
