@@ -29,7 +29,7 @@
 
 ;; Builtins highlighting
 (defconst scm-builtins
-    '("1+" "1-" "set-car!" "set-cdr!" "inc!" "dec!" "update!" "index" "let-args"
+    '("set-car!" "set-cdr!" "inc!" "dec!" "update!" "index" "let-args"
          "sorted?" "sort" "sort!" "stable-sort" "stable-sort!" "merge" "merge!"
          "acons" "assq-ref" "assv-ref" "assoc-ref" "make-parameter"
          "trace-macro" "macroexpand" "macroexpand-1" "macroexpand-all"
