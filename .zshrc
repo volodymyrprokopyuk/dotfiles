@@ -4,6 +4,8 @@ export EDITOR="emacsclient -t"
 export PAGER=less
 export LESS="-RF"
 
+source /usr/share/LS_COLORS/dircolors.sh
+
 alias tmux="tmux -2"
 [[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
 
@@ -41,20 +43,22 @@ bindkey "^xe" edit-command-line
 bindkey "^x^e" edit-command-line
 
 # Alias
-alias ll="exa --all --long --sort=type --color-scale --git --git-ignore --ignore-glob='*~|.git|node_modules'"
+alias ll="exa --all --long --sort=type --color-scale --git --git-ignore --ignore-glob='*~|.git'"
 alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:INI'"
+alias ff="fd --follow --hidden --exclude .git"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
 alias uu="curl -sSLk"
 alias R="R --quiet"
 
 function pp {
-    ag --nocolor --nogroup --hidden --follow -g '' $@ \
+    # ag --nocolor --nogroup --hidden --follow -g '' $@ \
+    fd --follow --hidden --exclude .git --color never $@ \
     | fzf \
     --bind \
     ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
     --preview \
-    'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:ini {}'
+    'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:INI {}'
 }
 
 # curl options

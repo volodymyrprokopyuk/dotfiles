@@ -1,27 +1,2 @@
 # Emacs
 *~
-
-# Node.js
-node_modules/
-coverage/
-yarn.lock
-yarn-error.log
-.tsbuildinfo
-
-# Python
-__pycache__/
-.pytest_cache/
-htmlcov/
-.coverage
-pyvenv/
-
-# Gradle
-.gradle/
-build/
-
-# Maven
-target/
-
-# IntelliJ
-.idea/
-*.iml

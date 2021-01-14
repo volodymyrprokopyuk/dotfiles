@@ -164,7 +164,7 @@ function git_config_diff {
     local action=$2
 
     printf "$MESSAGE" $target $action "Configuring Git diff in ~/.gitconfig"
-    git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+    git config --global core.pager "diff-so-fancy | less --tabs=4 -RF"
     git config --global color.ui "true"
     git config --global color.diff-highlight.oldNormal "red bold"
     git config --global color.diff-highlight.oldHighlight "red bold 52"
