@@ -53,7 +53,7 @@ alias R="R --quiet"
 
 function pp {
     # ag --nocolor --nogroup --hidden --follow -g '' $@ \
-    fd --follow --hidden --exclude .git --color never $@ \
+    fd --type file --follow --hidden --exclude .git --color always $@ \
     | fzf \
     --bind \
     ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
@@ -141,7 +141,7 @@ ZPACKAGE=/usr/share/fzf/key-bindings.zsh
 ZPACKAGE=/usr/share/fzf/completion.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --follow -g ''"
-export FZF_DEFAULT_OPTS="--no-height --cycle --bind alt-j:down,alt-k:up"
+export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
