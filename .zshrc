@@ -4,7 +4,8 @@ export EDITOR="emacsclient -t"
 export PAGER=less
 export LESS="-RF"
 
-source /usr/share/LS_COLORS/dircolors.sh
+ZPACKAGE=/usr/share/LS_COLORS/dircolors.sh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
 alias tmux="tmux -2"
 [[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
