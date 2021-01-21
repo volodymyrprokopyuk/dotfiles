@@ -174,6 +174,17 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 - Functions `\df`, `\dfnptaw`, `\sf`
 - Editing `\e`, `\ef`
 
+# BaseX environment
+
+```bash
+# Install BaseX server and client
+yay -S basex
+# Install systemd unit file
+sudo cp basex.service /etc/systemd/system
+# Enable/disable/start/stop/restart/status BaseX database service
+sudo systemctl enable|disable|start|stop|restart|status basex.service
+```
+
 # System environment
 
 ## Users and groups management

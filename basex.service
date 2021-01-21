@@ -1,0 +1,14 @@
+[Unit]
+Description=BaseX XML database server
+After=network.target
+
+[Service]
+User=vlad
+Group=vlad
+Type=simple
+ExecStart=/usr/share/java/basex/bin/basexserver
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
