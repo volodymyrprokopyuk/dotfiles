@@ -136,7 +136,7 @@ library(pryr)
 # PostgreSQL environment
 
 ```bash
-# Install PostgreSQL server, client, and tools
+# Install PostgreSQL server, client and tools
 yay -S postgresql
 # Create PostgreSQL data directory
 sudo mkdir /var/lib/postgres/data
@@ -179,10 +179,27 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 ```bash
 # Install BaseX server and client
 yay -S basex
+# Create BaseX user and group
+sudo useradd -M -U -c 'BaseX XML database server' basex
+# Create BaseX data and log directories and configuration file
+sudo mkdir -p /var/lib/basex/data /var/lib/basex/log
+sudo cp .basex /var/lib/basex
+sudo chown -R basex:basex /var/lib/basex
+sudo chmod 755 -R /var/lib/basex
 # Install systemd unit file
 sudo cp basex.service /etc/systemd/system
 # Enable/disable/start/stop/restart/status BaseX database service
 sudo systemctl enable|disable|start|stop|restart|status basex.service
+# Show BaseX log
+journalctl -u basex.service
+# Create database user
+basexclient -U admin -P admin -c "CREATE USER vlad (vlad)" \
+    -c "GRANT ADMIN ON * TO vlad"
+# Create database
+basexclient -U vlad -P vlad -c "CREATE DATABASE bookstore" \
+    -c "ADD TO bookstore bookstore.xml"
+# Connect to database
+basexclient -U vlad -P vlad -c "OPEN bookstore" "/*"
 ```
 
 # System environment

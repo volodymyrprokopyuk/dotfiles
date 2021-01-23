@@ -3,9 +3,10 @@ Description=BaseX XML database server
 After=network.target
 
 [Service]
-User=vlad
-Group=vlad
+User=basex
+Group=basex
 Type=simple
+WorkingDirectory=/var/lib/basex
 ExecStart=/usr/share/java/basex/bin/basexserver
 Restart=always
 RestartSec=10
