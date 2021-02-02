@@ -289,7 +289,9 @@
     (setq sql-product 'postgres)
     ;; Treat _ as part of the word on *, #, w, b, e
     (add-hook 'sql-mode-hook
-        #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
+        #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table)))
+    (add-hook 'sql-mode-hook
+        #'(lambda () (setq comment-start "/*") (setq comment-end "*/"))))
 
 (defun config-zsh ()
     (setq-default sh-basic-offset 4)
