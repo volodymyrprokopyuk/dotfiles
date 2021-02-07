@@ -5,3 +5,4 @@
 \set HISTCONTROL ignoredups
 \pset linestyle unicode
 \pset null NULL
+\x auto
