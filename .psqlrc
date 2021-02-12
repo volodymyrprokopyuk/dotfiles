@@ -4,5 +4,5 @@
 \set HISTSIZE 10000
 \set HISTCONTROL ignoredups
 \pset linestyle unicode
-\pset null NULL
+\pset null ×
 \x auto
