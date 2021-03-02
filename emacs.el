@@ -285,6 +285,11 @@
     (add-hook 'racket-mode-hook #'replace-keyword-with-greek-letter)
     (load "~/.emacs.d/config/scheme"))
 
+(defun config-scala ()
+    (add-to-list 'load-path "~/.emacs.d/emacs-scala-mode")
+    (autoload 'scala-mode "scala-mode.elc" nil t)
+    (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode)))
+
 (defun config-sql ()
     (setq sql-product 'postgres)
     ;; Treat _ as part of the word on *, #, w, b, e
@@ -427,6 +432,7 @@
 
 ;; Programming languages
 (config-scheme) ;; paredit.el pos-tip.el faceup
+(config-scala)
 (config-sql)
 (config-zsh)
 (config-javascript)
