@@ -165,30 +165,9 @@ function git_config_diff {
 
     printf "$MESSAGE" $target $action "Configuring Git diff in ~/.gitconfig"
     git config --global core.pager "delta"
-    git config --global delta.side-by-side "true"
-    # git config --global delta.plus-color "#012800"
-    # git config --global delta.minus-color "#340001"
+    git config --global include.path "/etc/gitconfig.delta"
+    git config --global delta.features "woolly-mammoth"
     git config --global delta.syntax-theme "zenburn"
-    # git config --global interactive.diffFilter "delta --color-only"
-}
-
-function git_config_diff2 {
-    local target=$1
-    local action=$2
-
-    printf "$MESSAGE" $target $action "Configuring Git diff in ~/.gitconfig"
-    git config --global core.pager "diff-so-fancy | less --tabs=4 -RF"
-    git config --global color.ui "true"
-    git config --global color.diff-highlight.oldNormal "red bold"
-    git config --global color.diff-highlight.oldHighlight "red bold 52"
-    git config --global color.diff-highlight.newNormal "green bold"
-    git config --global color.diff-highlight.newHighlight "green bold 22"
-    git config --global color.diff.meta "yellow"
-    git config --global color.diff.frag "magenta bold"
-    git config --global color.diff.commit "yellow bold"
-    git config --global color.diff.old "red bold"
-    git config --global color.diff.new "green bold"
-    git config --global color.diff.whitespace "red reverse"
 }
 
 function git_config {
