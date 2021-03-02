@@ -14,7 +14,7 @@ yay -S adobe-source-code-pro-fonts ttf-jetbrains-mono ttf-fira-code
 yay -S tmux zsh emacs xsel
 yay -S aspell aspell-en aspell-es
 yay -S hunspell hunspell-en_US hunspell-es_es
-yay -S the_silver_searcher fzf exa bat fd git-delta diff-so-fancy mlocate lscolors-git
+yay -S the_silver_searcher fzf exa bat fd git-delta mlocate lscolors-git
 yay -S jq
 # Configure zsh (log out, then log in)
 chsh -s $(which zsh)
