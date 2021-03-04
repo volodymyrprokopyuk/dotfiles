@@ -111,7 +111,7 @@
          "vector-empty?" "vector=" "vector-fold" "vector-fold-right"
          "vector-map" "vector-for-each" "vector-count" "vector-tabulate"
          "vector-index" "vector-index-right" "vector-skip" "vector-skip-right"
-         "vector-any" "vector-every" "vector-partition" "vector-swap!"
+         "vector-any" "vector-every" "vector-partition" "vector-swap!" "make-vector"
          "vector-fill!" "vector-reverse!"))
 
 (defconst scm-irregex-library-builtins ;; SRFI-115
