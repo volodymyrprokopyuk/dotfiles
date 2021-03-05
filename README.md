@@ -116,12 +116,6 @@ yarn install
 yay -S gauche
 ```
 
-# SML environment
-
-```bash
-yay -S smlnj
-```
-
 # R environment
 
 ```bash
@@ -173,6 +167,19 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 - Relations `\d`, `\dtvmi`
 - Functions `\df`, `\dfnptaw`, `\sf`
 - Editing `\e`, `\ef`
+
+# Kafka environment
+
+```bash
+# Install Kafka broker, Zookeeper server and Kafka client
+yay -S kafka kafkacat
+# Enable/disable/start/stop/restart/status Zookeeper server
+sudo systemctl enable|disable|start|stop|restart|status zookeeper.service
+# Enable/disable/start/stop/restart/status Kafka broker
+sudo systemctl enable|disable|start|stop|restart|status kafka.service
+# Show Kafka broker metadata
+kat -L
+```
 
 # BaseX environment
 

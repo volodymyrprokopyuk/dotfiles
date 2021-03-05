@@ -164,5 +164,9 @@ type yarn > /dev/null 2>&1 && export PATH=$(yarn global bin):$PATH || true
 # Install Gauche
 export GAUCHE_READ_EDIT=1
 
+# Install Kafka
+readonly KAFKA_BROKER=localhost:9092
+alias kat="kafkacat -b $KAFKA_BROKER"
+
 # Install BaseX
 export PATH=/usr/share/java/basex/bin:$PATH
