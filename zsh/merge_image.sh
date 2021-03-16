@@ -3,7 +3,7 @@
 set -eu
 
 # Merge multiple image files into a single PDF file
-# Usage: ./merge_jpg.sh output.pdf input1.jpg input2.png
+# Usage: ./merge_image.sh output.pdf input1.jpg input2.png
 function merge_image {
     local output="${1?ERROR: missing target}"
     shift
