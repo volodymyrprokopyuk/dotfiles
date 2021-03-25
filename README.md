@@ -1,30 +1,27 @@
 # .dotfiles installation
 
 ```bash
-# Install yay with makepkg from git
-git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+# Install yay with pacman from AUR
+pacman -S yay
 # Enable color in pacman/yay output
 sudo sed -i -e 's/^#Color$/Color/' /etc/pacman.conf
 # Install software with yay from core, extra, community and AUR repositories
-sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
+sudo pacman-mirrors --fasttrack 5
+sudo pacman -Syyu
 # Update installed software and clean up unused packages
 yay -Syu && yay -Sc
 # Install tools
+yay -S base-devel
 yay -S adobe-source-code-pro-fonts ttf-jetbrains-mono ttf-fira-code
 yay -S tmux zsh emacs xsel
-yay -S aspell aspell-en aspell-es
-yay -S hunspell hunspell-en_US hunspell-es_es
 yay -S the_silver_searcher fzf exa bat fd git-delta mlocate lscolors-git
-yay -S jq
+# Clone the dotfiles repository into ~
+git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 # Configure zsh (log out, then log in)
 chsh -s $(which zsh)
 # Install applications
 yay -S inkscape plantuml
-yay -S dropbox google-chrome tor-browser
-# Install cloud tools
-yay -S aws-cli google-cloud-sdk terraform
-# youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 'URL'
-yay -S youtube-dl
+yay -S dropbox
 ```
 
 # pacman/yay usage
