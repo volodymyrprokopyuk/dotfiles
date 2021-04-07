@@ -113,6 +113,12 @@ yarn install
 yay -S gauche
 ```
 
+# Scala environment
+
+```bash
+yay -S scala
+```
+
 # R environment
 
 ```bash
