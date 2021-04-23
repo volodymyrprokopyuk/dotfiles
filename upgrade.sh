@@ -257,7 +257,6 @@ readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/typescript.el \
 -L $EMACS_HOME/julia-emacs \
 -L $EMACS_HOME/ESS/lisp \
--L $EMACS_HOME/sml-mode.el \
 -L $EMACS_HOME/markdown-mode \
 -L $EMACS_HOME/web-mode \
 -L $EMACS_HOME/yaml-mode \
@@ -298,7 +297,6 @@ https://www.emacswiki.org/emacs/download/goto-chg.el
 https://www.emacswiki.org/emacs/download/key-chord.el
 http://mumble.net/~campbell/emacs/paredit.el
 https://www.emacswiki.org/emacs/download/pos-tip.el
-http://git.savannah.gnu.org/cgit/emacs/elpa.git/plain/packages/sml-mode/sml-mode.el
 EOF
     set -e
 
@@ -400,7 +398,6 @@ js2-mode
 typescript.el
 julia-emacs
 ESS/lisp
-sml-mode.el
 markdown-mode
 web-mode
 yaml-mode

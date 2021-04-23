@@ -337,12 +337,6 @@
 (defun config-prolog ()
     (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode)))
 
-(defun config-sml ()
-    (add-to-list 'load-path "~/.emacs.d/sml-mode.el")
-    (autoload 'sml-mode "sml-mode.elc" nil t)
-    (add-to-list 'auto-mode-alist '("\\.sml\\'" . sml-mode))
-    (add-to-list 'auto-mode-alist '("\\.sig\\'" . sml-mode)))
-
 (defun config-elisp ()
     (setq-default lisp-indent-offset 4)
     ;; Treat - as part of the word on *, #, w, b, e
@@ -439,7 +433,6 @@
 (config-typescript)
 (config-r)
 (config-prolog)
-(config-sml)
 (config-elisp)
 (config-c)
 
