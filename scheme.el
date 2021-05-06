@@ -25,7 +25,8 @@
          "cut" "cute" "$" "$*" ".$" "~" "delay" "force" "lazy" "eager")) ;; SRFI-26
 
 (defconst scm-goops-keywords
-    '("define-class" "slot-set!" "slot-ref" "define-method" "define-generic"))
+    '("define-class" "slot-set!" "slot-ref" "class-slot-set!" "class-slot-ref"
+        "define-method"))
 
 ;; Builtins highlighting
 (defconst scm-builtins

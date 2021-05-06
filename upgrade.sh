@@ -335,7 +335,7 @@ https://github.com/redguardtoo/evil-nerd-commenter.git
 https://github.com/edkolev/evil-goggles.git
 https://github.com/abo-abo/avy.git
 https://github.com/Fanael/rainbow-delimiters.git
-https://github.com/tsdh/highlight-parentheses.el.git
+https://git.sr.ht/~tsdh/highlight-parentheses.el
 https://github.com/Fuco1/smartparens.git
 https://github.com/jacktasia/dumb-jump.git
 https://github.com/greghendershott/racket-mode.git
