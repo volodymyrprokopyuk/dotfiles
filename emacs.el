@@ -173,7 +173,7 @@
 ;; F1 k <key> show key binding
 
 (defun config-evil ()
-    (add-to-list 'load-path "~/.emacs.d/goto-chg.el")
+    (add-to-list 'load-path "~/.emacs.d/goto-chg")
     (require 'goto-chg)
     (setq evil-want-Y-yank-to-eol t)
     (add-to-list 'load-path "~/.emacs.d/evil")
@@ -183,7 +183,7 @@
     (evil-ex-define-cmd "ls" 'ibuffer)
     (evil-set-initial-state 'ibuffer-mode 'normal)
     ;; Enable key combinations
-    (add-to-list 'load-path "~/.emacs.d/key-chord.el")
+    (add-to-list 'load-path "~/.emacs.d/key-chord")
     (require 'key-chord)
     (key-chord-mode 1)
     (setq key-chord-two-keys-delay 0.5)
@@ -394,7 +394,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/popup-el")
 (add-to-list 'load-path "~/.emacs.d/paredit.el")
-(add-to-list 'load-path "~/.emacs.d/pos-tip.el")
+(add-to-list 'load-path "~/.emacs.d/pos-tip")
 (add-to-list 'load-path "~/.emacs.d/faceup")
 
 ;; Basic editor
@@ -425,7 +425,7 @@
 (config-go-to-definition) ;; popup-el
 
 ;; Programming languages
-(config-scheme) ;; paredit.el pos-tip.el faceup
+(config-scheme) ;; paredit.el pos-tip faceup
 (config-scala)
 (config-sql)
 (config-zsh)

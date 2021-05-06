@@ -225,14 +225,14 @@ EOF
 }
 
 readonly EMACS_LOAD_PATH="
--L $EMACS_HOME/goto-chg.el \
--L $EMACS_HOME/key-chord.el \
+-L $EMACS_HOME/goto-chg \
+-L $EMACS_HOME/key-chord \
 -L $EMACS_HOME/s.el \
 -L $EMACS_HOME/dash.el \
 -L $EMACS_HOME/emacs-async \
 -L $EMACS_HOME/popup-el \
 -L $EMACS_HOME/paredit.el \
--L $EMACS_HOME/pos-tip.el \
+-L $EMACS_HOME/pos-tip \
 -L $EMACS_HOME/faceup \
 -L $EMACS_HOME/zenburn-emacs \
 -L $EMACS_HOME/exec-path-from-shell \
@@ -293,10 +293,7 @@ function emacs_upgrade_web {
 
     set +e
     read -d "" emacs_packages <<EOF
-https://www.emacswiki.org/emacs/download/goto-chg.el
-https://www.emacswiki.org/emacs/download/key-chord.el
 http://mumble.net/~campbell/emacs/paredit.el
-https://www.emacswiki.org/emacs/download/pos-tip.el
 EOF
     set -e
 
@@ -316,6 +313,9 @@ function emacs_upgrade_git {
 
     set +e
     read -d "" emacs_packages <<EOF
+https://github.com/emacs-evil/goto-chg.git
+https://github.com/emacsorphanage/key-chord.git
+https://github.com/pitkali/pos-tip.git
 https://github.com/magnars/s.el.git
 https://github.com/magnars/dash.el.git
 https://github.com/jwiegley/emacs-async.git
@@ -368,14 +368,14 @@ function emacs_upgrade_compile {
 
     set +e
     read -d "" emacs_packages <<EOF
-goto-chg.el
-key-chord.el
+goto-chg
+key-chord
 s.el
 dash.el
 emacs-async
 popup-el
 paredit.el
-pos-tip.el
+pos-tip
 faceup
 zenburn-emacs
 exec-path-from-shell
