@@ -257,6 +257,7 @@ readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/typescript.el \
 -L $EMACS_HOME/julia-emacs \
 -L $EMACS_HOME/ESS/lisp \
+-L $EMACS_HOME/j-mode \
 -L $EMACS_HOME/markdown-mode \
 -L $EMACS_HOME/web-mode \
 -L $EMACS_HOME/yaml-mode \
@@ -344,6 +345,7 @@ https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
 https://github.com/JuliaEditorSupport/julia-emacs.git
 https://github.com/emacs-ess/ESS.git
+https://github.com/zellio/j-mode.git
 https://github.com/jrblevin/markdown-mode.git
 https://github.com/fxbois/web-mode.git
 https://github.com/yoshiki/yaml-mode.git
@@ -398,6 +400,7 @@ js2-mode
 typescript.el
 julia-emacs
 ESS/lisp
+j-mode
 markdown-mode
 web-mode
 yaml-mode
