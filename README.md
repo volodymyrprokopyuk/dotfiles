@@ -113,6 +113,12 @@ yarn install
 yay -S gauche
 ```
 
+# J environment
+
+```bash
+yay -S j9-git
+```
+
 # Scala environment
 
 ```bash

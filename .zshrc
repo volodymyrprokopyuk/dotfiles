@@ -50,6 +50,7 @@ alias ff="fd --follow --hidden --exclude .git"
 alias gg="ag --hidden --follow --color-match '1;31'"
 alias ee="emacsclient -t"
 alias uu="curl -sSLk"
+alias jc="j9 --console"
 alias R="R --quiet"
 
 function pp {
