@@ -117,6 +117,9 @@ yay -S gauche
 
 ```bash
 yay -S j9-git
+load 'pacman'
+'install' jpkg 'debug/dissect'
+require 'debug/dissect'
 ```
 
 # Scala environment
