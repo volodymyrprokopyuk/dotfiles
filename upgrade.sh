@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -eu
 
@@ -190,12 +190,22 @@ function tmux_config {
     cp $DOTFILES_HOME/.tmux.conf ~
 }
 
+function zsh_config_compile {
+    local target=$1
+    local action=$2
+
+    printf "$MESSAGE" $target $action "Compiling .zshrc in ~"
+    zcompile ~/.zshrc
+}
+
 function zsh_config {
     local target=zsh
     local action=config
 
     printf "$MESSAGE" $target $action "Copying .zshrc into ~"
     cp $DOTFILES_HOME/.zshrc ~
+
+    zsh_config_compile $target $action
 }
 
 function zsh_upgrade {
