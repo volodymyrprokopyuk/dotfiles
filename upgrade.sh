@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -eu
 
@@ -279,7 +279,7 @@ function emacs_config_compile {
     local action=$2
 
     printf "$MESSAGE" $target $action "Compiling config in ~/.emacs.d"
-    emacs --batch -Q $EMACS_LOAD_PATH \
+    emacs --batch -Q \
         -f batch-byte-compile $EMACS_HOME/config/*.el 2>>$LOG || printf $FAILURE
 }
 
