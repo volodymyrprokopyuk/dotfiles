@@ -68,7 +68,7 @@
 
 (defun config-indentation ()
     (setq-default indent-tabs-mode nil)
-    (setq-default tab-width 4)
+    (setq-default tab-width 2)
     (setq indent-line-function 'insert-tab))
 
 (defun config-recent-file ()
@@ -297,7 +297,7 @@
         #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
 
 (defun config-zsh ()
-    (setq-default sh-basic-offset 4)
+    (setq-default sh-basic-offset 2)
     (add-hook 'sh-mode-hook #'(lambda () (sh-set-shell "zsh")))
     ;; Treat -, _ as part of the word on *, #, w, b, e
     (add-hook 'sh-mode-hook
@@ -310,8 +310,8 @@
     (autoload 'js2-mode "js2-mode.elc" nil t)
     (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
     (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
-    (setq-default js2-basic-offset 4)
-    (setq-default js-indent-level 4)
+    (setq-default js2-basic-offset 2)
+    (setq-default js-indent-level 2)
     ;; Treat _ as part of the word on *, #, w, b, e
     (add-hook 'js2-mode-hook
         #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table))))
@@ -338,7 +338,7 @@
     (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode)))
 
 (defun config-elisp ()
-    (setq-default lisp-indent-offset 4)
+    (setq-default lisp-indent-offset 2)
     ;; Treat - as part of the word on *, #, w, b, e
     (add-hook 'emacs-lisp-mode-hook
         #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
@@ -346,7 +346,7 @@
     (setq ediff-split-window-function 'split-window-horizontally))
 
 (defun config-c ()
-    (setq-default c-basic-offset 4)
+    (setq-default c-basic-offset 2)
     ;; Treat _ as part of the word on *, #, w, b, e
     (add-hook 'java-mode-hook
         #'(lambda () (modify-syntax-entry ?_ "w" java-mode-syntax-table)))
@@ -370,17 +370,17 @@
     (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
     (add-hook 'web-mode-hook
         #'(lambda ()
-              (setq web-mode-markup-indent-offset 4)
-              (setq web-mode-attr-indent-offset 4)
-              (setq web-mode-css-indent-offset 4)
-              (setq web-mode-code-indent-offset 4))))
+              (setq web-mode-markup-indent-offset 2)
+              (setq web-mode-attr-indent-offset 2)
+              (setq web-mode-css-indent-offset 2)
+              (setq web-mode-code-indent-offset 2))))
 
 (defun config-yaml ()
     (add-to-list 'load-path "~/.emacs.d/yaml-mode")
     (autoload 'yaml-mode "yaml-mode.elc" nil t)
     (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
     (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
-    (setq-default yaml-indent-offset 4))
+    (setq-default yaml-indent-offset 2))
 
 (defun config-xml ()
     (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode)))
