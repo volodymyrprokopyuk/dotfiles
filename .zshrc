@@ -7,7 +7,7 @@ export LESS="-RF"
 ZPACKAGE=/usr/share/LS_COLORS/dircolors.sh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-alias tmux="tmux -2"
+function tmux { tmux -2 $@ }
 [[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
 
 setopt AUTO_CD
@@ -44,14 +44,16 @@ bindkey "^xe" edit-command-line
 bindkey "^x^e" edit-command-line
 
 # Alias
-alias ll="exa --all --long --sort=type --color-scale --git --git-ignore --ignore-glob='*~|.git'"
-alias vv="bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:INI'"
-alias ff="fd --follow --hidden --exclude .git"
-alias gg="ag --hidden --follow --color-match '1;31'"
-alias ee="emacsclient -t"
-alias uu="curl -sSLk"
-alias jc="j9 --console"
-alias R="R --quiet"
+function ll {
+  exa --all --long --sort=type --color-scale --git --git-ignore \
+      --ignore-glob='*~|.git' $@
+}
+function vv { bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:INI' $@ }
+function ff { fd --follow --hidden --exclude .git $@ }
+function gg { ag --hidden --follow --color-match '1;31' $@ }
+function ee { emacsclient -t $@ }
+function jc { j9 --console $@ }
+function R { R --quiet $@ }
 
 function pp {
     # ag --nocolor --nogroup --hidden --follow -g '' $@ \

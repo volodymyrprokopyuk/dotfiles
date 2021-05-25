@@ -205,7 +205,7 @@ function zsh_config {
     printf "$MESSAGE" $target $action "Copying .zshrc into ~"
     cp $DOTFILES_HOME/.zshrc ~
 
-    zsh_config_compile $target $action
+    # zsh_config_compile $target $action
 }
 
 function zsh_upgrade {
