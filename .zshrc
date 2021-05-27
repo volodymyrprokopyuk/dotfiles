@@ -7,8 +7,8 @@ export LESS="-RF"
 ZPACKAGE=/usr/share/LS_COLORS/dircolors.sh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-function tmux { tmux -2 $@ }
-[[ $- = *i* ]] && [[ -z $TMUX ]] && (tmux attach-session -t $USER || tmux new-session -s $USER)
+[[ $- = *i* ]] && [[ -z $TMUX ]] && \
+  (tmux -2 attach-session -t $USER || tmux -2 new-session -s $USER)
 
 setopt AUTO_CD
 setopt EXTENDED_GLOB
