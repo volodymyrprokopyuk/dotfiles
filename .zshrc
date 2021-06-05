@@ -52,8 +52,8 @@ function vv { bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:IN
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { ag --hidden --follow --color-match '1;31' $@ }
 function ee { emacsclient -t $@ }
+function rc { R --quiet $@ }
 function jc { j9 --console $@ }
-function R { R --quiet $@ }
 
 function pp {
     # ag --nocolor --nogroup --hidden --follow -g '' $@ \

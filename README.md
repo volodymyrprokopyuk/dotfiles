@@ -134,9 +134,9 @@ yay -S scala
 # Install R
 yay -S tk openblas r
 # Install package
-install.packages("pryr")
+install.packages("ggplot2")
 # Load package
-library(pryr)
+library(ggplot2)
 ```
 
 # PostgreSQL environment
