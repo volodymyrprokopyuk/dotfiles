@@ -52,7 +52,7 @@ function vv { bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:IN
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { ag --hidden --follow --color-match '1;31' $@ }
 function ee { emacsclient -t $@ }
-function rc { R --quiet $@ }
+function rc { R --quiet --no-save $@ }
 function jc { j9 --console $@ }
 
 function pp {
