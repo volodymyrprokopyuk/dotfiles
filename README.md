@@ -135,6 +135,8 @@ yay -S scala
 yay -S tk openblas r
 # Install package
 install.packages("ggplot2")
+# Update packages
+update.packages()
 # Load package
 library(ggplot2)
 ```
