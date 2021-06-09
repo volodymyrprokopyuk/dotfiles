@@ -118,6 +118,8 @@ function common_config {
     cp $DOTFILES_HOME/.agignore ~
     printf "$MESSAGE" $target $action "Copying .psqlrc into ~"
     cp $DOTFILES_HOME/.psqlrc ~
+    printf "$MESSAGE" $target $action "Copying .Rprofile into ~"
+    cp $DOTFILES_HOME/.Rprofile ~
 }
 
 function git_config_common {

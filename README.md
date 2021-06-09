@@ -138,7 +138,7 @@ install.packages("ggplot2")
 # Update packages
 update.packages()
 # Load package
-library("ggplot2")
+library(ggplot2)
 ```
 
 # PostgreSQL environment
