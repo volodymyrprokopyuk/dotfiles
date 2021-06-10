@@ -132,7 +132,7 @@ yay -S scala
 
 ```bash
 # Install R
-yay -S tk openblas r
+yay -S gcc-fortran openblas r
 # Install package
 install.packages("ggplot2")
 # Update packages
