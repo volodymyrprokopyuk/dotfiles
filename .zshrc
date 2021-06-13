@@ -45,8 +45,7 @@ bindkey "^x^e" edit-command-line
 
 # Alias
 function ll {
-  exa --all --long --sort=type --color-scale --git --git-ignore \
-      --ignore-glob='*~|.git' $@
+  exa --all --long --sort=type --color-scale --git --ignore-glob='*~|.git' $@
 }
 function vv { bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:INI' $@ }
 function ff { fd --follow --hidden --exclude .git $@ }
