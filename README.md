@@ -1,6 +1,6 @@
 # .dotfiles installation
 
-```bash
+```zsh
 # Install yay with pacman from AUR
 pacman -S yay
 # Enable color in pacman/yay output
@@ -26,7 +26,7 @@ yay -S dropbox
 
 # pacman/yay usage
 
-```bash
+```zsh
 # Update the repository database
 yay -Sy
 # Upgrade the system
@@ -57,82 +57,11 @@ yay -Ps
 pactree <package>
 ```
 
-# Docker environment
-
-```bash
-# Install and configure docker
-yay -S docker
-sudo groupadd docker
-sudo usermod -G docker -a $USER
-newgrp docker
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-```
-
-# Node environment
-
-```bash
-# Install NVM
-yay -S nvm
-# Install Node.js
-nvm ls-remote
-nvm ls
-nvm install <version>
-nvm alias default <version>
-# Install Yarn
-npm install yarn -g
-# Define dependencies
-yarn init
-# ./package.json
-{
-    "name": "typescript-ads",
-    "version": "0.1.0",
-    "description": "Algorithms and data structures in TypeScript",
-    "main": "index.js",
-    "repository": "https://github.com/volodymyrprokopyuk/typescript-ads",
-    "author": "Volodymyr Prokopyuk <volodymyrprokopyuk@gmail.com>",
-    "license": "MIT",
-    "private": true,
-    "devDependencies": {
-        "prettier": "1.18.2",
-        "eslint": "6.8.0",
-        "typescript": "3.5.3",
-        "jest": "24.9.0",
-        "@types/jest": "24.0.18"
-    }
-}
-# Install dependencies
-yarn install
-# Configure TSLint
-./node_modules/.bin/eslint --init
-```
-
-# Scheme environment
-
-```bash
-yay -S gauche
-```
-
-# J environment
-
-```bash
-yay -S j9-git
-load 'pacman'
-'install' jpkg 'debug/dissect'
-require 'debug/dissect'
-```
-
-# Scala environment
-
-```bash
-yay -S scala
-```
-
 # R environment
 
-```bash
+```zsh
 # Install R
-yay -S gcc-fortran openblas r
+yay -S gcc-fortran openblas littler r
 # Install package
 install.packages("ggplot2")
 # Update packages
@@ -141,9 +70,15 @@ update.packages()
 library(ggplot2)
 ```
 
+# Scheme environment
+
+```zsh
+yay -S gauche
+```
+
 # PostgreSQL environment
 
-```bash
+```zsh
 # Install PostgreSQL server, client and tools
 yay -S postgresql
 # Create PostgreSQL data directory
@@ -182,9 +117,60 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 - Functions `\df`, `\dfnptaw`, `\sf`
 - Editing `\e`, `\ef`
 
+
+# Docker environment
+
+```zsh
+# Install and configure docker
+yay -S docker
+sudo groupadd docker
+sudo usermod -G docker -a $USER
+newgrp docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+```
+
+# Node environment
+
+```zsh
+# Install NVM
+yay -S nvm
+# Install Node.js
+nvm ls-remote
+nvm ls
+nvm install <version>
+nvm alias default <version>
+# Install Yarn
+npm install yarn -g
+# Define dependencies
+yarn init
+# ./package.json
+{
+    "name": "typescript-ads",
+    "version": "0.1.0",
+    "description": "Algorithms and data structures in TypeScript",
+    "main": "index.js",
+    "repository": "https://github.com/volodymyrprokopyuk/typescript-ads",
+    "author": "Volodymyr Prokopyuk <volodymyrprokopyuk@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "prettier": "1.18.2",
+        "eslint": "6.8.0",
+        "typescript": "3.5.3",
+        "jest": "24.9.0",
+        "@types/jest": "24.0.18"
+    }
+}
+# Install dependencies
+yarn install
+# Configure TSLint
+./node_modules/.bin/eslint --init
+```
+
 # Kafka environment
 
-```bash
+```zsh
 # Install Kafka broker, Zookeeper server and Kafka client
 yay -S kafka kafkacat
 # Enable/disable/start/stop/restart/status Zookeeper server
@@ -197,7 +183,7 @@ kat -L
 
 # BaseX environment
 
-```bash
+```zsh
 # Install BaseX server and client
 yay -S basex
 # Create BaseX user and group
@@ -227,7 +213,7 @@ basexclient -U vlad -P vlad -c "OPEN bookstore" "/*"
 
 ## Users and groups management
 
-```bash
+```zsh
 # Show users
 cat /etc/passwd
 # Show groups
@@ -238,7 +224,7 @@ groups $USER
 
 ## systemd management
 
-```bash
+```zsh
 # Show services
 systemctl [list-units] --type=service --state=active
 # Manage service
@@ -248,7 +234,7 @@ sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
 ## SSH configuration
 
 Install and use locally generated SSH key on a remote server
-```bash
+```zsh
 # Generate SSH key pair locally
 # Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
 # File parmissions
@@ -271,7 +257,7 @@ ssh -T <alias>
 ```
 
 Add private SSH key identities to the SSH authentication agent
-```bash
+```zsh
 # Start SSH authentication agent
 eval $(ssh-agent)
 # Add private SSH key identities to the SSH authentication agent. Provide passphrase
@@ -282,7 +268,7 @@ ssh-add -l
 
 ## Format USB drive
 
-```bash
+```zsh
 df -h
 sudo umount /dev/sdc1
 sudo mkfs.ext4 /dev/sdc1
@@ -290,7 +276,7 @@ sudo mkfs.ext4 /dev/sdc1
 
 ## VirtualBox Manjaro configuration
 
-```bash
+```zsh
 # Video configuration: 128MB, VBoxSVGA, 3D acceleration
 yay -S linux419-virtualbox-guest-modules virtualbox-guest-utils
 sudo usermod -G vboxsf -a $USER
