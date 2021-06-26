@@ -367,11 +367,6 @@
   (add-hook 'python-mode-hook
     #'(lambda () (modify-syntax-entry ?_ "w"))))
 
-(defun config-j ()
-  (add-to-list 'load-path "~/.emacs.d/j-mode")
-  (autoload 'j-mode "j-mode.elc" nil t)
-  (add-to-list 'auto-mode-alist '("\\.ij[rstp]\\'" . j-mode)))
-
 (defun config-markdown ()
   (add-to-list 'load-path "~/.emacs.d/markdown-mode")
   (autoload 'markdown-mode "markdown-mode.elc" nil t)
@@ -451,7 +446,6 @@
 (config-javascript)
 (config-typescript)
 (config-r)
-(config-j)
 (config-prolog)
 (config-elisp)
 (config-c)

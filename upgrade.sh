@@ -273,7 +273,6 @@ readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/poly-noweb \
 -L $EMACS_HOME/poly-markdown \
 -L $EMACS_HOME/poly-R \
--L $EMACS_HOME/j-mode \
 -L $EMACS_HOME/markdown-mode \
 -L $EMACS_HOME/web-mode \
 -L $EMACS_HOME/yaml-mode \
@@ -365,7 +364,6 @@ https://github.com/polymode/polymode.git
 https://github.com/polymode/poly-noweb.git
 https://github.com/polymode/poly-markdown.git
 https://github.com/polymode/poly-R.git
-https://github.com/zellio/j-mode.git
 https://github.com/jrblevin/markdown-mode.git
 https://github.com/fxbois/web-mode.git
 https://github.com/yoshiki/yaml-mode.git
@@ -424,7 +422,6 @@ polymode
 poly-noweb
 poly-markdown
 poly-R
-j-mode
 markdown-mode
 web-mode
 yaml-mode
