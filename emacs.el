@@ -329,11 +329,8 @@
   (autoload 'ess-r-mode "ess-r-mode.elc" nil t)
   (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
   ;; R indentation
-  (setq ess-indent-offset 2)
-  (setq ess-offset-arguments 2)
-  (setq ess-offset-arguments-newline 2)
-  (setq ess-offset-block 2)
-  (setq ess-offset-continued 2)
+  (add-hook 'ess-r-mode-hook
+    #'(lambda () (ess-set-style 'RStudio)))
   ;; Treat _ as part of the word on *, #, w, b, e
   (add-hook 'ess-r-mode-hook
     #'(lambda () (modify-syntax-entry ?_ "w" ess-r-mode-syntax-table)))

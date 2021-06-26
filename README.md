@@ -68,6 +68,8 @@ install.packages("ggplot2")
 update.packages()
 # Load package
 library(ggplot2)
+# Remove package
+remove.packages("ggplot2")
 ```
 
 # Scheme environment
