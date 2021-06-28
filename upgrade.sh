@@ -264,7 +264,6 @@ readonly EMACS_LOAD_PATH="
 -L $EMACS_HOME/smartparens \
 -L $EMACS_HOME/dumb-jump \
 -L $EMACS_HOME/racket-mode \
--L $EMACS_HOME/emacs-scala-mode \
 -L $EMACS_HOME/js2-mode \
 -L $EMACS_HOME/typescript.el \
 -L $EMACS_HOME/julia-emacs \
@@ -355,7 +354,6 @@ https://git.sr.ht/~tsdh/highlight-parentheses.el
 https://github.com/Fuco1/smartparens.git
 https://github.com/jacktasia/dumb-jump.git
 https://github.com/greghendershott/racket-mode.git
-https://github.com/hvesalai/emacs-scala-mode.git
 https://github.com/mooz/js2-mode.git
 https://github.com/emacs-typescript/typescript.el.git
 https://github.com/JuliaEditorSupport/julia-emacs.git
@@ -413,7 +411,6 @@ highlight-parentheses.el
 smartparens
 dumb-jump
 racket-mode
-emacs-scala-mode
 js2-mode
 typescript.el
 julia-emacs
