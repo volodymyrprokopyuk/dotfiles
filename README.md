@@ -64,8 +64,10 @@ pactree <package>
 yay -S gcc-fortran openblas littler r
 # Install package
 install.packages("ggplot2")
+# List installed packages
+installed.packages(.Library)
 # Update packages
-update.packages()
+update.packages(ask = F)
 # Load package
 library(ggplot2)
 # Remove package

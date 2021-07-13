@@ -331,6 +331,13 @@
     #'(lambda () (modify-syntax-entry ?_ "w" ess-r-mode-syntax-table)))
   ;; Start comment with single #
   (add-hook 'ess-mode-hook #'(lambda () (setq comment-add 0)))
+  ;; Enable company-mode
+  (setq ess-use-company nil)
+  (add-hook 'ess-mode-hook
+    #'(lambda ()
+        (make-variable-buffer-local 'company-backends)
+        (add-to-list 'company-backends
+          '(company-R-args company-R-objects company-dabbrev-code :separate))))
   ;; Rmarkdown
   (add-to-list 'load-path "~/.emacs.d/polymode")
   (add-to-list 'load-path "~/.emacs.d/poly-noweb")
