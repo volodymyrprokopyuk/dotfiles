@@ -1,9 +1,8 @@
 local({
   r <- getOption("repos")
   r["CRAN"] <- "https://cloud.r-project.org"
-  options(repos = r)})
+  options(repos = r)
+})
 
 options(browser = "firefox")
 options(digits.secs = 6)
-
-suppressMessages(library(tidyverse))
