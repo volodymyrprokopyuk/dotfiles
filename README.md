@@ -62,16 +62,25 @@ pactree <package>
 ```zsh
 # Install R
 yay -S gcc-fortran openblas littler r
+```
+
+```r
 # Install package
-install.packages("ggplot2")
+install.packages("remotes")
+remotes::install_github("Rdatatable/data.table")
 # List installed packages
-installed.packages(.Library)
+gg version ~/R/**/<package>/DESCRIPTION
 # Update packages
 update.packages(ask = F)
 # Load package
 library(ggplot2)
 # Remove package
 remove.packages("ggplot2")
+# renv project private package library
+renv::init(bare = T) initialize project
+-> install.packages() into a private package library
+-> renv::snapshot() lock dependencies to renv.lock
+-> renv::restore() restore or revert library state
 ```
 
 # Scheme environment
