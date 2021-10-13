@@ -130,6 +130,7 @@ function git_config_common {
     git config --global user.name "Volodymyr Prokopyuk"
     git config --global user.email "volodymyrprokopyuk@gmail.com"
     git config --global core.excludesfile "~/.gitignore"
+    git config --global init.defaultBranch "master"
     git config --global push.default "simple"
     git config --global pull.rebase false
     git config --global diff.algorithm "histogram"
