@@ -1,8 +1,3 @@
-local({
-  r <- getOption("repos")
-  r["CRAN"] <- "https://cloud.r-project.org"
-  options(repos = r)
-})
-
-options(browser = "firefox")
+options(repos = c(getOption("repos"), c(CRAN = "https://cloud.r-project.org")))
 options(digits.secs = 6)
+options(browser = "firefox")

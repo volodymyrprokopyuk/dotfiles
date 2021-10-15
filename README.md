@@ -78,7 +78,8 @@ library(ggplot2)
 remove.packages("ggplot2")
 # renv project private package library
 renv::init(bare = T) initialize project
--> install.packages() into a private package library
+-> install.packages(...) + library(...) into a private package library
+-> renv::status() check the renv.lock synchronization status
 -> renv::snapshot() lock dependencies to renv.lock
 -> renv::restore() restore or revert library state
 ```
@@ -134,13 +135,23 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 # Docker environment
 
 ```zsh
-# Install and configure docker
+# Install and configure Docker
 yay -S docker
 sudo groupadd docker
 sudo usermod -G docker -a $USER
 newgrp docker
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
+# Image management
+docker build <user>/<image>:<version> .
+docker images -a
+docker rmi <image_id>
+docker system prune [-a]
+# Container management
+docker run --rm -it --mount type=bind,src=host,dst=container,[readonly] \
+  <image> <command>
+docker ps -a
+docker rm <container_id>
 ```
 
 # Node environment
