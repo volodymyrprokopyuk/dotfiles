@@ -9,7 +9,7 @@ sudo sed -i -e 's/^#Color$/Color/' /etc/pacman.conf
 sudo pacman-mirrors --fasttrack 5
 sudo pacman -Syyu
 # Update installed software and clean up unused packages
-yay -Syu && yay -Sc
+yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 # Install tools
 yay -S base-devel
 yay -S adobe-source-code-pro-fonts ttf-jetbrains-mono ttf-fira-code
@@ -45,6 +45,8 @@ yay -Rsn <package>
 yay -U https://archive.archlinux.org/packages/f/firefox/firefox-68.0.2-1-x86_64.pkg.tar.xz
 # Clean package cache
 yay -Sc
+# Clean unneeded dependencies
+yay -Yc
 # Show explicitly installed packages
 yay -Qe
 # List all files owned by a package
