@@ -52,7 +52,6 @@ function ff { fd --follow --hidden --exclude .git $@ }
 function gg { ag --hidden --follow --color-match '1;31' $@ }
 function ee { emacsclient -t $@ }
 function Rc { R --quiet --no-save $@ }
-function jc { j9 --console $@ }
 
 function pp {
     # ag --nocolor --nogroup --hidden --follow -g '' $@ \
@@ -63,18 +62,6 @@ function pp {
     --preview \
     'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:INI {}'
 }
-
-# curl options
-# -s silent -S show error -L follow redirects -k insecure
-# -X request -H header -u user:password -d 'data', @file
-# -D - dump response header
-
-# Regular expressions
-# - (?:...) non-capturing group
-# - (?=...) positive lookahead
-# - (?!...) negative lookahead
-# - (?<=...) positive lookbehind
-# - (?<!...) negative lookbehind
 
 # Syntax highlight man page
 function man {
@@ -124,9 +111,13 @@ readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
+# Install Zsh autocomplete
+ZPACKAGE=$HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+
 # Install Zsh completions
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
-[[ $- = *i* ]] && autoload -Uz compinit && compinit
+[[ $- = *i* ]] # && autoload -Uz compinit && compinit
 
 # Install AWS completions
 ZPACKAGE=/usr/bin/aws_zsh_completer.sh
@@ -165,10 +156,3 @@ type yarn > /dev/null 2>&1 && export PATH=$(yarn global bin):$PATH || true
 
 # Install Gauche
 export GAUCHE_READ_EDIT=1
-
-# Install Kafka
-readonly KAFKA_BROKER=localhost:9092
-alias kat="kafkacat -b $KAFKA_BROKER"
-
-# Install BaseX
-export PATH=/usr/share/java/basex/bin:$PATH
