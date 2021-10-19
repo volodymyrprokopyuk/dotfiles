@@ -111,13 +111,9 @@ readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
 
-# Install Zsh autocomplete
-ZPACKAGE=$HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-
 # Install Zsh completions
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
-[[ $- = *i* ]] # && autoload -Uz compinit && compinit
+[[ $- = *i* ]] && autoload -Uz compinit && compinit
 
 # Install AWS completions
 ZPACKAGE=/usr/bin/aws_zsh_completer.sh

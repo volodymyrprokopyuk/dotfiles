@@ -219,7 +219,6 @@ function zsh_upgrade {
     read -d "" zsh_extensions <<EOF
 https://github.com/denysdovhan/spaceship-prompt.git
 https://github.com/zsh-users/zsh-syntax-highlighting.git
-https://github.com/marlonrichert/zsh-autocomplete.git
 https://github.com/zsh-users/zsh-completions.git
 https://github.com/zsh-users/zsh-autosuggestions.git
 EOF
