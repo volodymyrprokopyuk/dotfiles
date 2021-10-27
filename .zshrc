@@ -107,6 +107,11 @@ readonly SPACESHIP_CHAR_SYMBOL='▶ '
 readonly SPACESHIP_EXIT_CODE_SHOW=true
 readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
 
+# Install Zsh autopair
+ZPACKAGE=$HOME/.zsh/zsh-autopair/autopair.zsh
+[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+autopair-init
+
 # Install Zsh syntax highlighting
 ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE

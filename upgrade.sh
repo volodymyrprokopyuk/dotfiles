@@ -221,6 +221,7 @@ https://github.com/denysdovhan/spaceship-prompt.git
 https://github.com/zsh-users/zsh-syntax-highlighting.git
 https://github.com/zsh-users/zsh-completions.git
 https://github.com/zsh-users/zsh-autosuggestions.git
+https://github.com/hlissner/zsh-autopair.git
 EOF
     set -e
 
