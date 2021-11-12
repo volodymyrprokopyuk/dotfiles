@@ -5,6 +5,7 @@ set -eu
 readonly DOTFILES_HOME=~/.dotfiles
 readonly ZSH_HOME=~/.zsh
 readonly EMACS_HOME=~/.emacs.d
+readonly DOOM_HOME=~/.doom.d
 readonly LOG=$DOTFILES_HOME/out.log
 
 rm -f $LOG
@@ -289,7 +290,7 @@ function emacs_config_compile {
         -f batch-byte-compile $EMACS_HOME/config/*.el 2>>$LOG || printf $FAILURE
 }
 
-function emacs_config {
+function _emacs_config {
     local target=emacs
     local action=config
 
@@ -302,6 +303,15 @@ function emacs_config {
     cp $DOTFILES_HOME/scheme.el $EMACS_HOME/config
 
     emacs_config_compile $target $action
+}
+
+function emacs_config {
+    local target=emacs
+    local action=config
+
+    printf "$MESSAGE" $target $action "Copying *.el into ~/.doom.d"
+    mkdir -p $DOOM_HOME
+    cp $DOTFILES_HOME/*.el $DOOM_HOME
 }
 
 function emacs_upgrade_web {

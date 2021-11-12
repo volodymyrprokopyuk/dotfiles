@@ -14,7 +14,7 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 yay -S base-devel
 yay -S adobe-source-code-pro-fonts ttf-jetbrains-mono ttf-fira-code
 yay -S tmux zsh emacs xsel
-yay -S the_silver_searcher fzf exa bat fd git-delta mlocate lscolors-git
+yay -S the_silver_searcher ripgrep fzf exa bat fd git-delta mlocate lscolors-git
 # Clone the dotfiles repository into ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 # Configure zsh (log out, then log in)
@@ -59,11 +59,18 @@ yay -Ps
 pactree <package>
 ```
 
+# Doom Emacs
+
+```zsh
+git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
+~/.emacs.d/bin/doom install
+```
+
 # R environment
 
 ```zsh
 # Install R
-yay -S gcc-fortran openblas littler r
+yay -S gcc-fortran openblas r
 ```
 
 ```r
@@ -73,17 +80,11 @@ remotes::install_github("Rdatatable/data.table")
 # List installed packages
 gg version ~/R/**/<package>/DESCRIPTION
 # Update packages
-update.packages(ask = F)
+update.packages(ask = F, checkBuilt=TRUE)
 # Load package
 library(ggplot2)
 # Remove package
 remove.packages("ggplot2")
-# renv project private package library
-renv::init(bare = T) initialize project
--> install.packages(...) + library(...) into a private package library
--> renv::status() check the renv.lock synchronization status
--> renv::snapshot() lock dependencies to renv.lock
--> renv::restore() restore or revert library state
 ```
 
 # Scheme environment
