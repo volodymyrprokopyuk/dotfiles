@@ -69,7 +69,7 @@
   (global-hl-line-mode 1)
   (set-face-attribute 'hl-line nil :foreground nil :background "#262626")
   ;; Highlight visual selection
-  (set-face-attribute 'region nil :foreground nil :background "#3C1414"))
+  (set-face-attribute 'region nil :foreground nil :background "#801515"))
 
 (defun config-evil ()
   ;; Enable key combinations
