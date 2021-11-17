@@ -90,7 +90,9 @@
   (set-face-attribute 'region nil :foreground nil :background "#801515"))
 
 (defun config-completion ()
-  (add-hook 'after-init-hook #'global-company-mode))
+  (add-hook 'after-init-hook #'global-company-mode)
+  (evil-define-key nil company-active-map (kbd "M-j") #'company-select-next)
+  (evil-define-key nil company-active-map (kbd "M-k") #'company-select-previous))
 
 (defun config-evil ()
   ;; Enable key combinations
