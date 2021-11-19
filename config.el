@@ -67,10 +67,10 @@
         (with-temp-buffer
           (insert text)
           (call-process-region (point-min) (point-max)
-            "xsel" nil 0 nil "--clipboard" "--input")))
+                               "xsel" nil 0 nil "--clipboard" "--input")))
       (defun xsel-paste-function()
         (let ((xsel-output
-                (shell-command-to-string "xsel --clipboard --output")))
+               (shell-command-to-string "xsel --clipboard --output")))
           (unless (string= (car kill-ring) xsel-output) xsel-output)))
       (setq interprogram-cut-function 'xsel-cut-function)
       (setq interprogram-paste-function 'xsel-paste-function))))
@@ -106,6 +106,22 @@
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
+(defun config-r ()
+  ;; Treat _ as part of the word on *, #, w, b, e
+  (add-hook 'ess-r-mode-hook
+            #'(lambda () (modify-syntax-entry ?_ "w" ess-r-mode-syntax-table)))
+  ;; R indentation
+  (add-hook 'ess-r-mode-hook #'(lambda () (ess-set-style 'RStudio)))
+  ;; Start comment with single #
+  (add-hook 'ess-mode-hook #'(lambda () (setq comment-add 0)))
+  ;; Enable company-mode
+  (setq ess-use-company nil)
+  (add-hook 'ess-mode-hook
+            #'(lambda ()
+                (make-variable-buffer-local 'company-backends)
+                (add-to-list 'company-backends
+                             '(company-R-args company-R-objects company-dabbrev-code :separate)))))
+
 ;; Editor
 (config-doom)
 (config-clipboard)
@@ -116,5 +132,6 @@
 (config-evil)
 
 ;; Programming languages
+(config-r)
 
 ;; Markup languages
