@@ -106,6 +106,10 @@
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
+(defun config-zsh ()
+  (setq-default sh-basic-offset 2)
+  (add-hook 'sh-mode-hook #'(lambda () (sh-set-shell "zsh"))))
+
 (defun config-r ()
   ;; Treat _ as part of the word on *, #, w, b, e
   (add-hook 'ess-r-mode-hook
@@ -132,6 +136,7 @@
 (config-evil)
 
 ;; Programming languages
+(config-zsh)
 (config-r)
 
 ;; Markup languages
