@@ -126,6 +126,13 @@
                 (add-to-list 'company-backends
                              '(company-R-args company-R-objects company-dabbrev-code :separate)))))
 
+(defun config-javascript ()
+  (setq-default js2-basic-offset 2)
+  (setq-default js-indent-level 2))
+
+(defun config-yaml ()
+  (setq-default yaml-indent-offset 2))
+
 ;; Editor
 (config-doom)
 (config-clipboard)
@@ -135,8 +142,10 @@
 (config-completion)
 (config-evil)
 
-;; Programming languages
+;; Programming
 (config-zsh)
 (config-r)
+(config-javascript)
 
-;; Markup languages
+;; Markup
+(config-yaml)

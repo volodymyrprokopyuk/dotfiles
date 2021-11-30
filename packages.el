@@ -49,5 +49,13 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+;; Editor
 (package! key-chord)
 (package! zenburn-theme)
+
+;; Programming
+(package! js2-mode)
+
+;; Markup
+(package! yaml-mode)
+(package! dockerfile-mode)

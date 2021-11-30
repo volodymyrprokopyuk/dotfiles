@@ -1,7 +1,8 @@
 export PATH=$HOME/.emacs.d/bin:$PATH
 export TERM=screen-256color
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"
+# export EDITOR="emacsclient -t"
+export EDITOR="emacs -nw"
 export PAGER=less
 export LESS="-RF"
 

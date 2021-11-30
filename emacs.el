@@ -291,25 +291,25 @@
   (add-hook 'sql-mode-hook
     #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
 
-(defun config-zsh ()
-  (setq-default sh-basic-offset 2)
-  (add-hook 'sh-mode-hook #'(lambda () (sh-set-shell "zsh")))
-  ;; Treat -, _ as part of the word on *, #, w, b, e
-  (add-hook 'sh-mode-hook
-    #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
-  (add-hook 'sh-mode-hook
-    #'(lambda () (modify-syntax-entry ?- "w" sh-mode-syntax-table))))
+;; (defun config-zsh ()
+;;   (setq-default sh-basic-offset 2)
+;;   (add-hook 'sh-mode-hook #'(lambda () (sh-set-shell "zsh")))
+;;   ;; Treat -, _ as part of the word on *, #, w, b, e
+;;   (add-hook 'sh-mode-hook
+;;     #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
+;;   (add-hook 'sh-mode-hook
+;;     #'(lambda () (modify-syntax-entry ?- "w" sh-mode-syntax-table))))
 
-(defun config-javascript ()
-  (add-to-list 'load-path "~/.emacs.d/js2-mode")
-  (autoload 'js2-mode "js2-mode.elc" nil t)
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
-  (setq-default js2-basic-offset 2)
-  (setq-default js-indent-level 2)
-  ;; Treat _ as part of the word on *, #, w, b, e
-  (add-hook 'js2-mode-hook
-    #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table))))
+;; (defun config-javascript ()
+;;   (add-to-list 'load-path "~/.emacs.d/js2-mode")
+;;   (autoload 'js2-mode "js2-mode.elc" nil t)
+;;   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+;;   (setq-default js2-basic-offset 2)
+;;   (setq-default js-indent-level 2)
+;;   ;; Treat _ as part of the word on *, #, w, b, e
+;;   (add-hook 'js2-mode-hook
+;;     #'(lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table))))
 
 (defun config-typescript ()
   (add-to-list 'load-path "~/.emacs.d/typescript.el")
@@ -396,10 +396,10 @@
 (defun config-xml ()
   (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode)))
 
-(defun config-docker ()
-  (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
-  (autoload 'dockerfile-mode "dockerfile-mode.elc" nil t)
-  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+;; (defun config-docker ()
+;;   (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
+;;   (autoload 'dockerfile-mode "dockerfile-mode.elc" nil t)
+;;   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Apply Emacs configuration
