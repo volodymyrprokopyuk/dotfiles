@@ -54,6 +54,7 @@
 (package! zenburn-theme)
 
 ;; Programming
+(package! nim-mode)
 (package! js2-mode)
 
 ;; Markup

@@ -63,7 +63,9 @@ pactree <package>
 
 ```zsh
 git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
-~/.emacs.d/bin/doom install
+doom install
+doom sync
+doom upgrade
 ```
 
 # R environment
