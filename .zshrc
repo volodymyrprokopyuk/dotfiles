@@ -1,21 +1,22 @@
-export PATH=$HOME/.emacs.d/bin:$PATH
 export TERM=screen-256color
-export ALTERNATE_EDITOR=""
-# export EDITOR="emacsclient -t"
-export EDITOR="emacs -nw"
+export EDITOR='emacsclient -t'
 export PAGER=less
-export LESS="-RF"
+export LESS='-RF'
 
-ZPACKAGE=/usr/share/LS_COLORS/dircolors.sh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+function path_add { [[ -d $1 ]] && export PATH=$1:$PATH }
+function script_source { [[ -s $1 ]] && [[ $- = *i* ]] && source $1 }
 
+# ls colors
+script_source /usr/share/LS_COLORS/dircolors.sh
+
+# Tmux
 [[ $- = *i* ]] && [[ -z $TMUX ]] && \
   (tmux -2 attach-session -t $USER || tmux -2 new-session -s $USER)
 
 setopt AUTO_CD
 setopt EXTENDED_GLOB
 
-# Configure history
+# Zsh history
 # Ctrl-r (search history)
 # Ctrl-p/Ctrl-n (previous/next command)
 # Ctrl-g (discard)
@@ -32,7 +33,7 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
-bindkey "^R" history-incremental-pattern-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
 
 # Command line editing
 # Ctrl-a/Ctrl-e (beginning/end of line)
@@ -42,120 +43,75 @@ bindkey "^R" history-incremental-pattern-search-backward
 # Ctrl-l (clear screen)
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey "^xe" edit-command-line
-bindkey "^x^e" edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 # Alias
-function ll {
-  exa --all --long --sort=type --color-scale --git --ignore-glob='*~|.git' $@
-}
+function ll { exa --all --long --sort=type --color-scale --git --ignore-glob='*~|.git' $@ }
 function vv { bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:INI' $@ }
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { ag --hidden --follow --color-match '1;31' $@ }
 function ee { emacsclient -t $@ }
 function RR { R --quiet --no-save $@ }
-
 function pp {
-    # ag --nocolor --nogroup --hidden --follow -g '' $@ \
-    fd --type file --follow --hidden --exclude .git --color always $@ \
-    | fzf \
-    --bind \
-    ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
-    --preview \
-    'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:INI {}'
+  # ag --nocolor --nogroup --hidden --follow -g '' $@ \
+  fd --type file --follow --hidden --exclude .git --color always $@ \
+  | fzf \
+  --bind \
+  ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
+  --preview \
+  'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:INI {}'
 }
 
-# Syntax highlight man page
+# man
 function man {
-    env \
-    LESS_TERMCAP_mb=$'\e[01;31m' \
-    LESS_TERMCAP_md=$'\e[01;38;5;74m' \
-    LESS_TERMCAP_me=$'\e[0m' \
-    LESS_TERMCAP_se=$'\e[0m' \
-    LESS_TERMCAP_so=$'\e[38;5;246m' \
-    LESS_TERMCAP_ue=$'\e[0m' \
-    LESS_TERMCAP_us=$'\e[04;38;5;146m' \
-    man $@
+  env \
+  LESS_TERMCAP_mb=$'\e[01;31m' \
+  LESS_TERMCAP_md=$'\e[01;38;5;74m' \
+  LESS_TERMCAP_me=$'\e[0m' \
+  LESS_TERMCAP_se=$'\e[0m' \
+  LESS_TERMCAP_so=$'\e[38;5;246m' \
+  LESS_TERMCAP_ue=$'\e[0m' \
+  LESS_TERMCAP_us=$'\e[04;38;5;146m' \
+  man $@
 }
 
-# Extract archive
-function ex {
-    echo Unpacking $1 ...
-    if [ -f $1 ] ; then
-        case $1 in
-        (*.tar.gz|*.tgz) tar xzf $1 ;;
-        (*.tar.bz2|*.tbz2) tar xjf $1 ;;
-        (*.tar.xz|*.txz) tar xJf $1 ;;
-        (*.tar) tar xf $1 ;;
-        (*.gz) gunzip $1 ;;
-        (*.bz2) bunzip2 $1 ;;
-        (*.zip) unzip $1 ;;
-        (*.rar) unrar x $1 ;;
-        (*.Z) uncompress $1 ;;
-        (*.7z) 7z x $1 ;;
-        (*) echo "'$1' unknown archive format" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
-
-# Install Spaceship Prompt
+# Spaceship prompt
 fpath=($HOME/.zsh/spaceship-prompt $fpath)
 ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
-autoload -U promptinit; promptinit
-prompt spaceship
+[[ $- = *i* ]] && autoload -U promptinit; promptinit
+[[ $- = *i* ]] && prompt spaceship
 readonly SPACESHIP_CHAR_SYMBOL='▶ '
 readonly SPACESHIP_EXIT_CODE_SHOW=true
 readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
 
-# Install Zsh autopair
-ZPACKAGE=$HOME/.zsh/zsh-autopair/autopair.zsh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-autopair-init
+# Zsh autopair
+script_source $HOME/.zsh/zsh-autopair/autopair.zsh
+[[ $- = *i* ]] && autopair-init
 
-# Install Zsh syntax highlighting
-ZPACKAGE=$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+# Zsh syntax highlighting
+script_source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Install Zsh completions
+# Zsh completions
 fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
 [[ $- = *i* ]] && autoload -Uz compinit && compinit
 
-# Install AWS completions
-ZPACKAGE=/usr/bin/aws_zsh_completer.sh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-
-# Install GCP completions
-ZPACKAGE=/opt/google-cloud-sdk/path.zsh.inc
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-ZPACKAGE=/opt/google-cloud-sdk/completion.zsh.inc
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-
-# Install fzf
-ZPACKAGE=/usr/share/fzf/key-bindings.zsh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-ZPACKAGE=/usr/share/fzf/completion.zsh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
+# fzf
+script_source /usr/share/fzf/key-bindings.zsh
+script_source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --follow -g ''"
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
 
-# Install Zsh autosuggestions
-ZPACKAGE=$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -s $ZPACKAGE ] && [[ $- = *i* ]] && source $ZPACKAGE
-bindkey -r "^[,"
-bindkey "^[," autosuggest-accept
+# Zsh autosuggestions
+script_source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey -r '^[,'
+bindkey '^[,' autosuggest-accept
 
-# Install NVM
-export NVM_DIR=~/.nvm
-readonly NVM_SOURCE=/usr/share/nvm
-[[ -s $NVM_SOURCE/nvm.sh ]] && source $NVM_SOURCE/nvm.sh
+# Doom Emacs
+path_add $HOME/.emacs.d/bin
 
-# Install Yarn
-type yarn > /dev/null 2>&1 && export PATH=$(yarn global bin):$PATH || true
-
-# Install Gauche
-export GAUCHE_READ_EDIT=1
+# Nim
+path_add $HOME/.nimble/bin

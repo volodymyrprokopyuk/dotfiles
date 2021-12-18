@@ -110,6 +110,22 @@
   (setq-default sh-basic-offset 2)
   (add-hook 'sh-mode-hook #'(lambda () (sh-set-shell "zsh"))))
 
+;; (defun config-nim ()
+;;   (make-variable-buffer-local 'company-backends)
+;;   (add-to-list 'company-backends '(company-dabbrev-code :separate)))
+
+;; (defun config-nim ()
+;;   (add-hook 'nim-mode-hook
+;;             #'(lambda ()
+;;         (make-variable-buffer-local 'company-backends)
+;;         (add-to-list 'company-backends '(company-dabbrev-code :separate)))))
+
+(defun config-nim ()
+  (add-hook 'nim-mode-hook
+            '(lambda ()
+               (set (make-local-variable 'company-backends)
+                    '((company-dabbrev-code))))))
+
 (defun config-r ()
   ;; Treat _ as part of the word on *, #, w, b, e
   (add-hook 'ess-r-mode-hook
@@ -144,6 +160,10 @@
 
 ;; Programming
 (config-zsh)
+;; (add-hook 'nim-mode-hook #'config-nim)
+;; (config-nim)
+(eval-after-load "company"
+  '(add-to-list 'company-backends 'company-dabbrev-code))
 (config-r)
 (config-javascript)
 

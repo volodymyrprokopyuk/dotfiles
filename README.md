@@ -68,6 +68,15 @@ doom sync
 doom upgrade
 ```
 
+# Nim environment
+
+```zsh
+yay -S choosenim
+choosenim versions
+choosenim [update] stable
+choosenim show
+```
+
 # R environment
 
 ```zsh
