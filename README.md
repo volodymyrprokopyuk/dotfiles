@@ -73,8 +73,9 @@ doom upgrade
 ```zsh
 yay -S choosenim
 choosenim versions
-choosenim [update] stable
+choosenim [update] stable | <version>
 choosenim show
+choosenim remove <version>
 ```
 
 # R environment
@@ -178,85 +179,6 @@ docker rm <container_id>
 docker exec -it [-u 0] <container_id> ls
 docker exec -it <container_id> sh -c 'ls /*'
 docker exec -i <container_id> sh -c 'cat container_file' < host_file
-```
-
-# Node environment
-
-```zsh
-# Install NVM
-yay -S nvm
-# Install Node.js
-nvm ls-remote
-nvm ls
-nvm install <version>
-nvm alias default <version>
-# Install Yarn
-npm install yarn -g
-# Define dependencies
-yarn init
-# ./package.json
-{
-    "name": "typescript-ads",
-    "version": "0.1.0",
-    "description": "Algorithms and data structures in TypeScript",
-    "main": "index.js",
-    "repository": "https://github.com/volodymyrprokopyuk/typescript-ads",
-    "author": "Volodymyr Prokopyuk <volodymyrprokopyuk@gmail.com>",
-    "license": "MIT",
-    "private": true,
-    "devDependencies": {
-        "prettier": "1.18.2",
-        "eslint": "6.8.0",
-        "typescript": "3.5.3",
-        "jest": "24.9.0",
-        "@types/jest": "24.0.18"
-    }
-}
-# Install dependencies
-yarn install
-# Configure TSLint
-./node_modules/.bin/eslint --init
-```
-
-# Kafka environment
-
-```zsh
-# Install Kafka broker, Zookeeper server and Kafka client
-yay -S kafka kafkacat
-# Enable/disable/start/stop/restart/status Zookeeper server
-sudo systemctl enable|disable|start|stop|restart|status zookeeper.service
-# Enable/disable/start/stop/restart/status Kafka broker
-sudo systemctl enable|disable|start|stop|restart|status kafka.service
-# Show Kafka broker metadata
-kat -L
-```
-
-# BaseX environment
-
-```zsh
-# Install BaseX server and client
-yay -S basex
-# Create BaseX user and group
-sudo useradd -M -U -c 'BaseX XML database server' basex
-# Create BaseX data and log directories and configuration file
-sudo mkdir -p /var/lib/basex/data /var/lib/basex/log
-sudo cp .basex /var/lib/basex
-sudo chown -R basex:basex /var/lib/basex
-sudo chmod 755 -R /var/lib/basex
-# Install systemd unit file
-sudo cp basex.service /etc/systemd/system
-# Enable/disable/start/stop/restart/status BaseX database service
-sudo systemctl enable|disable|start|stop|restart|status basex.service
-# Show BaseX log
-journalctl -u basex.service
-# Create database user
-basexclient -U admin -P admin -c "CREATE USER vlad (vlad)" \
-    -c "GRANT ADMIN ON * TO vlad"
-# Create database
-basexclient -U vlad -P vlad -c "CREATE DATABASE bookstore" \
-    -c "ADD TO bookstore bookstore.xml"
-# Connect to database
-basexclient -U vlad -P vlad -c "OPEN bookstore" "/*"
 ```
 
 # System environment
