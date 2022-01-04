@@ -59,13 +59,21 @@ yay -Ps
 pactree <package>
 ```
 
+# Zinit
+
+```zsh
+mkdir -p ~/.local/share/zinit
+git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git
+zinit self-update
+```
+
 # Doom Emacs
 
 ```zsh
 git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
-doom install
-doom sync
-doom upgrade
+doom install # packages
+doom sync # config
+doom upgrade # doom and packages
 ```
 
 # Nim environment

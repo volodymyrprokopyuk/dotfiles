@@ -76,25 +76,20 @@ function man {
   man $@
 }
 
+# Zinit
+script_source $HOME/.local/share/zinit/zinit.git/zinit.zsh
+
 # Spaceship prompt
-fpath=($HOME/.zsh/spaceship-prompt $fpath)
-ln -sf $HOME/.zsh/spaceship-prompt/spaceship.zsh $HOME/.zsh/spaceship-prompt/prompt_spaceship_setup
-[[ $- = *i* ]] && autoload -U promptinit; promptinit
-[[ $- = *i* ]] && prompt spaceship
+zinit light denysdovhan/spaceship-prompt.git
 readonly SPACESHIP_CHAR_SYMBOL='▶ '
 readonly SPACESHIP_EXIT_CODE_SHOW=true
 readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
 
-# Zsh autopair
-script_source $HOME/.zsh/zsh-autopair/autopair.zsh
-[[ $- = *i* ]] && autopair-init
-
 # Zsh syntax highlighting
-script_source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+zinit light zsh-users/zsh-syntax-highlighting.git
 
 # Zsh completions
-fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/extra-completions $fpath)
-[[ $- = *i* ]] && autoload -Uz compinit && compinit
+zinit light zsh-users/zsh-completions.git
 
 # fzf
 script_source /usr/share/fzf/key-bindings.zsh
@@ -106,7 +101,7 @@ bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
 
 # Zsh autosuggestions
-script_source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zinit light zsh-users/zsh-autosuggestions.git
 bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
 
