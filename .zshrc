@@ -90,6 +90,7 @@ zinit light zsh-users/zsh-syntax-highlighting.git
 
 # Zsh completions
 zinit light zsh-users/zsh-completions.git
+autoload -U compinit && compinit
 
 # fzf
 script_source /usr/share/fzf/key-bindings.zsh

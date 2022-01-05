@@ -64,7 +64,8 @@ pactree <package>
 ```zsh
 mkdir -p ~/.local/share/zinit
 git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git
-zinit self-update
+zinit self-update # zinit
+zinit update # packages
 ```
 
 # Doom Emacs
