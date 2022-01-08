@@ -13,9 +13,6 @@ script_source /usr/share/LS_COLORS/dircolors.sh
 [[ $- = *i* ]] && [[ -z $TMUX ]] && \
   (tmux -2 attach-session -t $USER || tmux -2 new-session -s $USER)
 
-setopt AUTO_CD
-setopt EXTENDED_GLOB
-
 # Zsh history
 # Ctrl-r (search history)
 # Ctrl-p/Ctrl-n (previous/next command)
@@ -52,7 +49,6 @@ function vv { bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:IN
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { ag --hidden --follow --color-match '1;31' $@ }
 function ee { emacsclient -t $@ }
-function RR { R --quiet --no-save $@ }
 function pp {
   # ag --nocolor --nogroup --hidden --follow -g '' $@ \
   fd --type file --follow --hidden --exclude .git --color always $@ \
@@ -92,19 +88,15 @@ zinit light zsh-users/zsh-syntax-highlighting.git
 zinit light zsh-users/zsh-completions.git
 autoload -U compinit && compinit
 
-# fzf
-script_source /usr/share/fzf/key-bindings.zsh
-script_source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND="ag --nocolor --nogroup --hidden --follow -g ''"
-export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
-export FZF_COMPLETION_TRIGGER=''
-bindkey '^T' fzf-completion
-bindkey '^I' $fzf_default_completion
-
 # Zsh autosuggestions
 zinit light zsh-users/zsh-autosuggestions.git
 bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
+
+# Fzf
+script_source /usr/share/fzf/key-bindings.zsh
+script_source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
