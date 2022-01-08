@@ -81,8 +81,8 @@ readonly SPACESHIP_CHAR_SYMBOL='▶ '
 readonly SPACESHIP_EXIT_CODE_SHOW=true
 readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
 
-# Zsh syntax highlighting
-zinit light zsh-users/zsh-syntax-highlighting.git
+# Zsh fast syntax highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting.git
 
 # Zsh completions
 zinit light zsh-users/zsh-completions.git
