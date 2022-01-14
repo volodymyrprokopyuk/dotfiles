@@ -92,7 +92,9 @@ bindkey '^[,' autosuggest-accept
 # Fzf
 script_source /usr/share/fzf/key-bindings.zsh
 script_source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_COMMAND='fd --follow --hidden --exclude .git --color always'
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
