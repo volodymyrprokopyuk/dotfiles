@@ -14,7 +14,7 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 yay -S base-devel
 yay -S adobe-source-code-pro-fonts ttf-jetbrains-mono ttf-fira-code
 yay -S tmux zsh emacs xsel
-yay -S the_silver_searcher ripgrep fzf exa bat fd git-delta mlocate lscolors-git
+yay -S fd ripgrep fzf exa bat git-delta lscolors-git mlocate
 # Clone the dotfiles repository into ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 # Configure zsh (log out, then log in)

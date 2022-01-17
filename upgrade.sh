@@ -115,8 +115,6 @@ function common_config {
     local target=common
     local action=config
 
-    printf "$MESSAGE" $target $action "Copying .agignore into ~"
-    cp $DOTFILES_HOME/.agignore ~
     printf "$MESSAGE" $target $action "Copying .psqlrc into ~"
     cp $DOTFILES_HOME/.psqlrc ~
     printf "$MESSAGE" $target $action "Copying .Rprofile into ~"
@@ -169,9 +167,7 @@ function git_config_diff {
 
     printf "$MESSAGE" $target $action "Configuring Git diff in ~/.gitconfig"
     git config --global core.pager "delta"
-    git config --global include.path "/etc/gitconfig.delta"
-    git config --global delta.features "woolly-mammoth"
-    git config --global delta.syntax-theme "zenburn"
+    git config --global delta.syntax-theme "OneHalfDark"
 }
 
 function git_config {

@@ -39,14 +39,13 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-# Alias
+# Tools
 function ll { exa --all --long --sort=type --color-scale --git --ignore-glob='*~|.git' $@ }
-function vv { bat --style plain --theme zenburn --tabs 4 --map-syntax '*.conf:INI' $@ }
+function vv { bat --style plain --theme OneHalfDark --tabs 2 --map-syntax '*.conf:INI' $@ }
 function ff { fd --follow --hidden --exclude .git $@ }
-function gg { ag --hidden --follow --color-match '1;31' $@ }
+function gg { rg --hidden --follow $@ }
 function ee { emacsclient -t $@ }
 function pp {
-  # ag --nocolor --nogroup --hidden --follow -g '' $@ \
   fd --type file --follow --hidden --exclude .git --color always $@ \
   | fzf \
   --bind \
@@ -55,7 +54,7 @@ function pp {
   'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:INI {}'
 }
 
-# man
+# Man
 function man {
   env \
   LESS_TERMCAP_mb=$'\e[01;31m' \
