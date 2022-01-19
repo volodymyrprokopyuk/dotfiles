@@ -1,5 +1,6 @@
 export TERM=screen-256color
 export EDITOR='emacsclient -t'
+export ALTERNATE_EDITOR='emacsclient -t'
 export PAGER=less
 export LESS='-RF'
 
