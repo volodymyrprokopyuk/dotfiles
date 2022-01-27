@@ -40,7 +40,7 @@ proc configGit() =
   """
   removeFile fmt "{home}/.gitconfig"
   for cmd in cmds.split('\n'): shell cmd
-  let gitignore = ["*~", "ok", ""]
+  let gitignore = ["*~", ""]
   writeFile fmt "{home}/.gitignore", gitignore.join "\n"
 
 proc configTmux() =
