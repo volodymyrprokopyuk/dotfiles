@@ -224,12 +224,12 @@
 
 ;; Alt-j jump to a visible position in a buffer
 
-(defun config-avy ()
-  (add-to-list 'load-path "~/.emacs.d/avy")
-  (require 'avy)
-  ;; Smart-case search when jumping
-  (setq avy-case-fold-search nil))
-(global-set-key (kbd "M-j") 'avy-goto-char-timer)
+;; (defun config-avy ()
+;;   (add-to-list 'load-path "~/.emacs.d/avy")
+;;   (require 'avy)
+;;   ;; Smart-case search when jumping
+;;   (setq avy-case-fold-search nil))
+;; (global-set-key (kbd "M-j") 'avy-goto-char-timer)
 
 (defun config-parentheses ()
   ;; Highlight matching parentheses

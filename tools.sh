@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-exec nim r tools.nim $@
+exec nim --verbosity:0 r tools.nim $@
