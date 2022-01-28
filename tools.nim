@@ -2,10 +2,10 @@ import std/strutils, std/strformat, std/parseopt, std/os, std/osproc
 
 let home = getHomeDir()
 
-proc shell(cmd: string) =
+template shell(cmd: string) =
   let exitCode = execCmd cmd
   if exitCode != 0:
-    raise newException(Defect, fmt "non-zero exit code {exitCode}")
+    raise newException(OSError, "non-zero exit code: " & $exitCode)
 
 proc configGit() =
   let cmds = """
@@ -74,7 +74,7 @@ proc configureTools() =
         configZsh()
         configEmacs()
         configPsql()
-      else: raise newException(Defect, fmt "unknown tool: {value}")
-    else: raise newException(Defect, fmt "unknown option: {key}")
+      else: raise newException(ValueError, fmt "unknown tool: {value}")
+    else: raise newException(ValueError, fmt "unknown option: {key}")
 
 configureTools()
