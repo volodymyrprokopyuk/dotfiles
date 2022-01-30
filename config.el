@@ -1,63 +1,9 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
+;; -*- lexical-binding: t; -*-
 
 (defun config-doom ()
-  ;; Maximize Emacs window on startup
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-  ;; Disable exit confirmation
-  (setq confirm-kill-emacs nil))
+  (setq confirm-kill-emacs nil)
+  (setq display-line-numbers-type t))
 
 (defun config-clipboard ()
   (setq select-enable-clipboard t)
@@ -106,49 +52,6 @@
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
-(defun config-zsh ()
-  (setq-default sh-basic-offset 2)
-  (add-hook 'sh-mode-hook #'(lambda () (sh-set-shell "zsh"))))
-
-;; (defun config-nim ()
-;;   (make-variable-buffer-local 'company-backends)
-;;   (add-to-list 'company-backends '(company-dabbrev-code :separate)))
-
-;; (defun config-nim ()
-;;   (add-hook 'nim-mode-hook
-;;             #'(lambda ()
-;;         (make-variable-buffer-local 'company-backends)
-;;         (add-to-list 'company-backends '(company-dabbrev-code :separate)))))
-
-(defun config-nim ()
-  (add-hook 'nim-mode-hook
-            '(lambda ()
-               (set (make-local-variable 'company-backends)
-                    '((company-dabbrev-code))))))
-
-(defun config-r ()
-  ;; Treat _ as part of the word on *, #, w, b, e
-  (add-hook 'ess-r-mode-hook
-            #'(lambda () (modify-syntax-entry ?_ "w" ess-r-mode-syntax-table)))
-  ;; R indentation
-  (add-hook 'ess-r-mode-hook #'(lambda () (ess-set-style 'RStudio)))
-  ;; Start comment with single #
-  (add-hook 'ess-mode-hook #'(lambda () (setq comment-add 0)))
-  ;; Enable company-mode
-  (setq ess-use-company nil)
-  (add-hook 'ess-mode-hook
-            #'(lambda ()
-                (make-variable-buffer-local 'company-backends)
-                (add-to-list 'company-backends
-                             '(company-R-args company-R-objects company-dabbrev-code :separate)))))
-
-(defun config-javascript ()
-  (setq-default js2-basic-offset 2)
-  (setq-default js-indent-level 2))
-
-(defun config-yaml ()
-  (setq-default yaml-indent-offset 2))
-
 ;; Editor
 (config-doom)
 (config-clipboard)
@@ -159,13 +62,5 @@
 (config-evil)
 
 ;; Programming
-(config-zsh)
-;; (add-hook 'nim-mode-hook #'config-nim)
-;; (config-nim)
-(eval-after-load "company"
-  '(add-to-list 'company-backends 'company-dabbrev-code))
-(config-r)
-(config-javascript)
 
 ;; Markup
-(config-yaml)
