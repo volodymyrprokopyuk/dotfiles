@@ -12,8 +12,6 @@
        ophints
        (popup +defaults)
        vc-gutter
-       vi-tilde-fringe
-       workspaces
 
        :editor
        (evil +everywhere)
@@ -28,17 +26,17 @@
 
        :tools
        lookup
-       docke r
+       docker
 
        :os
 
        :lang
-       emacs-lisp
        json
-       markdown
-       nim
-       sh
        yaml
+       markdown
+       emacs-lisp
+       sh
+       nim
 
        :email
 

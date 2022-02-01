@@ -85,6 +85,8 @@ choosenim versions
 choosenim [update] stable | <version>
 choosenim show
 choosenim remove <version>
+nimble refresh # package list
+nimble install <package>[@<version>]
 ```
 
 # R environment
