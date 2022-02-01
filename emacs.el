@@ -52,24 +52,22 @@
 ;;   (global-linum-mode t)
 ;;   (setq linum-format "%d "))
 
-;; M-q format width of the selected text
+;; (defun config-whitespace ()
+;;   (require 'whitespace)
+;;   (global-whitespace-mode t)
+;;   (global-whitespace-toggle-options t)
+;;   (setq-default whitespace-line-column 88)
+;;   (setq-default fill-column 88)
+;;   (add-hook 'text-mode-hook #'auto-fill-mode)
+;;   (setq-default whitespace-style '(face tab-mark trailing lines-tail))
+;;   (add-hook 'before-save-hook #'delete-trailing-whitespace)
+;;   (setq require-final-newline t)
+;;   (setq mode-require-final-newline t))
 
-(defun config-whitespace ()
-  (require 'whitespace)
-  (global-whitespace-mode t)
-  (global-whitespace-toggle-options t)
-  (setq-default whitespace-line-column 88)
-  (setq-default fill-column 88)
-  (add-hook 'text-mode-hook #'auto-fill-mode)
-  (setq-default whitespace-style '(face tab-mark trailing lines-tail))
-  (add-hook 'before-save-hook #'delete-trailing-whitespace)
-  (setq require-final-newline t)
-  (setq mode-require-final-newline t))
-
-(defun config-indentation ()
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 2)
-  (setq indent-line-function 'insert-tab))
+;; (defun config-indentation ()
+;;   (setq-default indent-tabs-mode nil)
+;;   (setq-default tab-width 2)
+;;   (setq indent-line-function 'insert-tab))
 
 ;; (defun config-recent-file ()
 ;;   (recentf-mode 1)
@@ -93,8 +91,6 @@
 ;;   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
 ;;   (setq powerline-default-separator 'wave)
 ;;   (spaceline-compile))
-
-;; Ctrl-y paste into the mini buffer
 
 ;; (defun config-helm ()
 ;;   (add-to-list 'load-path "~/.emacs.d/helm")
@@ -127,10 +123,6 @@
 ;;       (helm-do-ag-project-root)))
 ;;   (global-set-key (kbd "M-s f") 'helm-ag-project-root-search-file-name))
 
-;; Tab complete the common part of suggestion list
-;; Enter complete with the first suggestion
-;; Alt-s Space trigger completion
-
 ;; (defun config-company ()
 ;;   (add-to-list 'load-path "~/.emacs.d/company-mode")
 ;;   (require 'company)
@@ -141,6 +133,11 @@
 ;;   (define-key company-active-map (kbd "M-k") #'company-select-previous))
 
 ;; Evil mode
+;; Tab complete the common part of suggestion list
+;; Enter complete with the selected suggestion
+;; C-SPC trigger completion window
+;; M-q format width of the selected text
+;; Ctrl-y paste into the mini buffer
 ;; Motions within a buffer
 ;;   Word/backwards/end: w/W, b/B, e/E, ge/gE
 ;;   Beginning/end of line: 0, ^, $,

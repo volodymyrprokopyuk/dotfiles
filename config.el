@@ -1,9 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Editor
+
 (defun config-doom ()
+  ;; Maximize window on startup
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-  (setq confirm-kill-emacs nil)
-  (setq display-line-numbers-type t))
+  ;; Skip confirmation on exit
+  (setq confirm-kill-emacs nil))
 
 (defun config-clipboard ()
   (setq select-enable-clipboard t)
@@ -35,15 +38,33 @@
   ;; Highlight visual selection
   (set-face-attribute 'region nil :foreground nil :background "#801515"))
 
+(defun config-whitespace ()
+  ;; Enable global whitespace mode
+  (require 'whitespace)
+  (global-whitespace-mode t)
+  (global-whitespace-toggle-options t)
+  ;; Highlight line content exceeding the limit
+  (setq-default whitespace-line-column 80)
+  (setq-default whitespace-style '(face tab-mark trailing lines-tail))
+  ;; Open new line after exceeding the limit
+  (setq-default fill-column 80)
+  (add-hook 'text-mode-hook #'auto-fill-mode))
+
 (defun config-completion ()
+  ;; Enable global company mode
   (add-hook 'after-init-hook #'global-company-mode)
+  ;; Use M-j, M-k for company completion selection
   (evil-define-key nil company-active-map (kbd "M-j") #'company-select-next)
-  (evil-define-key nil company-active-map (kbd "M-k") #'company-select-previous))
+  (evil-define-key nil company-active-map (kbd "M-k") #'company-select-previous)
+  ;; Use M-j, M-k for vertico completion selection
+  (evil-define-key nil vertico-map (kbd "M-j") #'vertico-next)
+  (evil-define-key nil vertico-map (kbd "M-k") #'vertico-previous))
 
 (defun config-evil ()
   ;; Enable key combinations
   (require 'key-chord)
   (key-chord-mode 1)
+  ;; Set key chord detection delay
   (setq key-chord-two-keys-delay 0.5)
   ;; Exit insert/replace/visual mode on jk
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
@@ -52,15 +73,34 @@
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
+;; Programming
+
+(defun config-elisp ()
+  ;; Treat - as part of the word on *, #, w, b, e
+  (add-hook 'emacs-lisp-mode-hook
+            #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
+
+(defun config-zsh ()
+  ;; Treat _ as part of the word on *, #, w, b, e
+  (add-hook 'sh-mode-hook
+            #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table))))
+
+(defun config-nim ()
+  ;; Treat _ as part of the word on *, #, w, b, e
+  (add-hook 'nim-mode-hook
+            #'(lambda () (modify-syntax-entry ?_ "w" nim-mode-syntax-table))))
+
 ;; Editor
 (config-doom)
 (config-clipboard)
 (config-font)
 (config-theme)
 (config-current-line)
+(config-whitespace)
 (config-completion)
 (config-evil)
 
 ;; Programming
-
-;; Markup
+(config-elisp)
+(config-zsh)
+(config-nim)
