@@ -50,6 +50,22 @@
   (setq-default fill-column 80)
   (add-hook 'text-mode-hook #'auto-fill-mode))
 
+(defun config-parentheses ()
+  ;; Highlight matching parentheses
+  (require 'rainbow-delimiters)
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'text-mode-hook #'rainbow-delimiters-mode)
+  ;; Highlight surrounding parentheses
+  (require 'highlight-parentheses)
+  (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
+  (add-hook 'text-mode-hook #'highlight-parentheses-mode)
+  (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
+  (setq hl-paren-colors '("firebrick1" nil nil nil))
+  ;; Handle parentheses automatically
+  (require 'smartparens-config)
+  (add-hook 'prog-mode-hook #'smartparens-mode)
+  (add-hook 'text-mode-hook #'smartparens-mode))
+
 (defun config-completion ()
   ;; Enable global company mode
   (add-hook 'after-init-hook #'global-company-mode)
@@ -85,6 +101,12 @@
   (add-hook 'sh-mode-hook
             #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table))))
 
+(defun config-sql ()
+  (setq sql-product 'postgres)
+  ;; Treat _ as part of the word on *, #, w, b, e
+  (add-hook 'sql-mode-hook
+            #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
+
 (defun config-nim ()
   ;; Treat _ as part of the word on *, #, w, b, e
   (add-hook 'nim-mode-hook
@@ -97,10 +119,12 @@
 (config-theme)
 (config-current-line)
 (config-whitespace)
+(config-parentheses)
 (config-completion)
 (config-evil)
 
 ;; Programming
 (config-elisp)
 (config-zsh)
+(config-sql)
 (config-nim)

@@ -30,11 +30,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
 # Command line editing
-# Ctrl-a/Ctrl-e beginning/end of line
-# Alt-f/Alt-b forward/backward word
-# Ctrl-w delete word backword
-# Ctrl-x, e edit command line
-# Ctrl-l clear screen
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line

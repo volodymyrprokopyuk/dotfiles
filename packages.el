@@ -3,7 +3,4 @@
 ;; Editor
 (package! key-chord)
 (package! zenburn-theme)
-
-;; Programming
-
-;; Markup
+(package! highlight-parentheses)

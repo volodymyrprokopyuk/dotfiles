@@ -1,4 +1,4 @@
-import std/strformat, std/parseopt, std/os, std/osproc, pkg/regex
+import std/[strformat, parseopt, os, osproc], pkg/regex
 
 type
   MediaType = enum mtImage, mtVideo

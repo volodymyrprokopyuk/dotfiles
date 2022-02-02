@@ -1,4 +1,4 @@
-import std/strutils, std/strformat, std/parseopt, std/os, std/osproc
+import std/[strutils, strformat, parseopt, os, osproc]
 
 let home = getHomeDir()
 

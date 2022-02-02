@@ -68,6 +68,15 @@ zinit self-update # zinit
 zinit update # packages
 ```
 
+```
+Command line editing
+Ctrl-a/Ctrl-e beginning/end of line
+Alt-f/Alt-b forward/backward word
+Ctrl-w delete word backword
+Ctrl-x, e edit command line
+Ctrl-l clear screen
+```
+
 # Doom Emacs
 
 ```zsh
@@ -75,6 +84,52 @@ git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
 doom install # packages
 doom sync # config
 doom upgrade # doom and packages
+```
+
+```
+Evil mode
+Tab complete the common part of suggestion list
+Enter complete with the selected suggestion
+C-SPC trigger completion window
+M-q format width of the selected text
+Ctrl-y paste into the mini buffer
+Motions within a buffer
+  Word/backwards/end: w/W, b/B, e/E, ge/gE
+  Beginning/end of line: 0, ^, $,
+  Search single char in current line: f/F, t/T -> ;/,
+  Search regexp in a buffer: /?, */# -> n/N
+Text objects: i/a w/s/p/t '/"/` )/}/]/>
+  Change inside: ci_
+  Delete around: da_
+Operator + motion/text object: y, c, d, >, <, =, gc + w, it
+Operator + operator: acts on the current line: cc, dd, >>, <<, ==, gcc, guu, gUU, g~~
+Marks: m[mM]
+  m mark in a buffer
+  M global mark
+  `m (go to marked position)
+Change list in a buffer: g;/g,
+Jump list between buffers in a window: Ctrl-o/Ctrl-i
+Registers: "ryy, "rp
+  r overwrite
+  R append
+Shift-r (replace mode: . A Shift-r , a)
+q: (query and edit ex command history)
+q/ (query and edit search history)
+Insert mode/command line mode
+  Alt-b, Alt-f (backwards, forward word)
+  Ctrl-w (delete word backwards)
+  Ctrl-r "/0 (paste unnamed/yank register)
+Visual mode (should only be used when normal mode standard motions are not enough)
+  o (other end of selection)
+  Ctrl-v $ (ragged selection)
+F1 k <key> show key binding
+Evil surround
+Normal mode: ys, cs, ds
+Visual mode: S
+Evil commenter
+gcc comment a line
+gc<movement> comment a movement
+gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 ```
 
 # Nim environment
@@ -87,33 +142,6 @@ choosenim show
 choosenim remove <version>
 nimble refresh # package list
 nimble install <package>[@<version>]
-```
-
-# R environment
-
-```zsh
-# Install R
-yay -S gcc-fortran openblas r
-```
-
-```r
-# Install package
-install.packages("remotes")
-remotes::install_github("Rdatatable/data.table")
-# List installed packages
-gg version ~/R/**/<package>/DESCRIPTION
-# Update packages
-update.packages(ask = F, checkBuilt=TRUE)
-# Load package
-library(ggplot2)
-# Remove package
-remove.packages("ggplot2")
-```
-
-# Scheme environment
-
-```zsh
-yay -S gauche
 ```
 
 # PostgreSQL environment
@@ -255,18 +283,4 @@ ssh-add -l
 df -h
 sudo umount /dev/sdc1
 sudo mkfs.ext4 /dev/sdc1
-```
-
-## VirtualBox Manjaro configuration
-
-```zsh
-# Video configuration: 128MB, VBoxSVGA, 3D acceleration
-yay -S linux419-virtualbox-guest-modules virtualbox-guest-utils
-sudo usermod -G vboxsf -a $USER
-newgrp vboxsf
-sudo systemctl enable vboxservice.service
-# Shared folder configuration: automount, make permanent
-sudo VBoxControl sharedfolder list # Manjaro device
-sudo mount -t vboxsf Manjaro /home/vlad/Manjaro -o uid=$(id -u),gid=$(id -g)
-# Reboot
 ```
