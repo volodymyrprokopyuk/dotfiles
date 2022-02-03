@@ -48,7 +48,9 @@
   (setq-default whitespace-style '(face tab-mark trailing lines-tail))
   ;; Open new line after exceeding the limit
   (setq-default fill-column 80)
-  (add-hook 'text-mode-hook #'auto-fill-mode))
+  (add-hook 'text-mode-hook #'auto-fill-mode)
+  ;; Wrap long lines
+  (global-visual-line-mode t))
 
 (defun config-parentheses ()
   ;; Highlight matching parentheses
