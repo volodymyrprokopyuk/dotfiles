@@ -1,31 +1,25 @@
-import std/[strformat, parseopt, os, osproc], pkg/regex
+import std/[strutils, strformat, parseopt, os, osproc, times, sha1], pkg/regex
 
 type
   MediaType = enum mtImage, mtVideo
   Media = object
     mType: MediaType
     source: string
-    # tstamp: times
+    tStamp: DateTime
     digest: string
-    sink: string
 
 const
-  reImageSource = re"(?i:jpe?g)"
-  cmdImageTstamp = "exiv2 -K Exif.Image.DateTime -P v"
-  reImageTstamp = re"(?P<y>\d{4}):(?P<m>\d{2}):(?P<d>\d{2}) (?P<H>\d{2}):(?P<M>\d{2}):(?P<S>\d{2})"
-  reVideoSource = re"(?i:mp4|mov|avi)"
-  cmdVideoTstamp = "ffprobe -v quiet -select_streams v:0 -show_entries stream_tags=creation_time -of default=nw=1:nk=1"
-  reVideoTstamp = re"(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})T(?P<H>\d{2}):(?P<M>\d{2}):(?P<S>\d{2})"
+  reImageSource = re"\.(?i:jpe?g)"
+  cmdImageTStamp = "exiv2 -K Exif.Image.DateTime -P v"
+  reImageTStamp = re"(?P<tStamp>\d{4}:\d{2}:\d{2} \d{2}:\d{2}:\d{2})"
+  fmtImageTStamp = "yyyy:MM:dd HH:mm:ss"
+  reVideoSource = re"\.(?i:mp4|mov|avi)"
+  cmdVideoTStamp = "ffprobe -v quiet -select_streams v:0 -show_entries stream_tags=creation_time -of default=nw=1:nk=1"
+  reVideoTStamp = re"(?P<tStamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})"
+  fmtVideoTStamp = "yyyy-MM-dd'T'HH:mm:ss"
 
-iterator walkMedia(sourceDir: string,
-                   reImage = reImageSource,
-                   reVideo = reVideoSource): Media =
-  for file in walkDirRec sourceDir:
-    if file.endsWith(reImage):
-      yield Media(mType: mtImage, source: file)
-    elif file.endsWith(reVideo):
-      yield Media(mType: mtVideo, source: file)
-    else: stderr.write fmt "WARNING: unknown media type: {file}\n"
+var
+  lastMediaTStamp = now()
 
 proc parseOptions(): tuple[input, output: string] =
   var
@@ -40,42 +34,78 @@ proc parseOptions(): tuple[input, output: string] =
   createDir output
   (input, output)
 
-proc extractImageTstamp(media: var Media,
-                        cmdTstamp = cmdImageTstamp,
-                        reTstamp = reImageTstamp) =
+iterator walkMedia(sourceDir: string,
+                   reImage = reImageSource,
+                   reVideo = reVideoSource): Media =
+  for file in walkDirRec sourceDir:
+    if file.endsWith(reImage):
+      yield Media(mType: mtImage, source: file)
+    elif file.endsWith(reVideo):
+      yield Media(mType: mtVideo, source: file)
+    else: stderr.write fmt "WARNING: unknown media type: {file}\n"
+
+proc extractImageTStamp(media: var Media,
+                        cmdTStamp = cmdImageTStamp,
+                        reTStamp = reImageTStamp,
+                        fmtTStamp = fmtImageTStamp) =
   let (output, exitCode) =
-    execCmdEx fmt "{cmdTstamp} {quoteShell media.source}"
+    execCmdEx fmt "{cmdTStamp} {quoteShell media.source}"
   if exitCode != 0:
     stderr.write fmt "WARNING: exiv2: non-zero exit code: {exitCode}\n"
   var m: RegexMatch
-  if output.find(reTstamp, m):
-    echo output, m.groupFirstCapture("m", output)
+  if output.find(reTStamp, m):
+    media.tStamp = m.groupFirstCapture("tStamp", output).parse(fmtTStamp)
+    lastMediaTStamp = media.tStamp
   else:
-    stderr.write fmt "WARNING: exiv2: no timestamp\n"
+    media.tStamp = lastMediaTStamp
 
-proc extractVideoTstamp(media: var Media,
-                        cmdTstamp = cmdVideoTstamp,
-                        reTstamp = reVideoTstamp) =
+proc extractVideoTStamp(media: var Media,
+                        cmdTStamp = cmdVideoTStamp,
+                        reTStamp = reVideoTStamp,
+                        fmtTStamp = fmtVideoTStamp) =
   let (output, exitCode) =
-    execCmdEx fmt "{cmdTstamp} {quoteShell media.source}"
+    execCmdEx fmt "{cmdTStamp} {quoteShell media.source}"
   if exitCode != 0:
     stderr.write fmt "WARNING: ffprobe: non-zero exit code: {exitCode}\n"
   var m: RegexMatch
-  if output.find(reTstamp, m):
-    echo output, m.groupFirstCapture("m", output)
+  if output.find(reTStamp, m):
+    media.tStamp = m.groupFirstCapture("tStamp", output).parse(fmtTStamp)
+    lastMediaTStamp = media.tStamp
   else:
-    stderr.write fmt "WARNING: ffprobe: no timestamp\n"
+    media.tStamp = lastMediaTStamp
+
+proc digestMedia(media: var Media) =
+  media.digest = toLowerAscii $secureHashFile media.source
+
+proc writeMedia(media: Media, sinkDir: string) =
+  proc extractExt(source: string): string =
+    var m: RegexMatch
+    if source.find(re"(?P<ext>\.\w{2,4})$", m):
+      m.groupFirstCapture("ext", source).toLowerAscii.replace(re"jpeg$", "jpg")
+    else:
+      $media.mType
+  let mediaDir = media.tStamp.format("yyyy/yyyy-MM-dd")
+  let mediaExt = extractExt media.source
+  let mediaFile = media.tStamp.format("yyyyMMdd'_'HHmmss'_'") &
+    media.digest & mediaExt
+  createDir fmt "{sinkDir}/{mediaDir}"
+  copyFile media.source, fmt "{sinkDir}/{mediaDir}/{mediaFile}"
 
 proc organizeMedia(sourceDir, sinkDir: string) =
   for media in walkMedia(sourceDir):
     var media = media
-    case media.mType:
-    of mtImage:
-      echo fmt "IMAGE: {media.source}"
-      extractImageTstamp media
-    of mtVideo:
-      echo fmt "VIDEO: {media.source}"
-      extractVideoTstamp media
+    try:
+      case media.mType:
+      of mtImage:
+        echo fmt "IMAGE: {media.source}"
+        extractImageTStamp media
+      of mtVideo:
+        echo fmt "VIDEO: {media.source}"
+        extractVideoTStamp media
+      digestMedia media
+      writeMedia media, sinkDir
+    except CatchableError as error:
+      stderr.write fmt "ERROR: {error[]}\n"
 
 let (inputDir, outputDir) = parseOptions()
 organizeMedia inputDir, outputDir
