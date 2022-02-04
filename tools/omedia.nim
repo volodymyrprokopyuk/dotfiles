@@ -7,6 +7,8 @@ type
     source: string
     tStamp: DateTime
     digest: string
+  OptionsError = object of ValueError
+  FSError = object of OSError
 
 const
   reImageSource = re"\.(?i:jpe?g)"
@@ -22,15 +24,15 @@ var
   lastMediaTStamp = now()
 
 proc parseOptions(): tuple[input, output: string] =
-  var
-    input = getCurrentDir()
-    output = input
+  var input, output: string
   for _, key, value in getopt():
     case key:
     of "i", "input": input = value
     of "o", "output": output = value
+  if input == "" or output == "":
+    raise newException(OptionsError, fmt "options -i and -o are mandatory")
   if not dirExists input:
-    raise newException(OSError, fmt "input directory does not exist: {input}")
+    raise newException(FSError, fmt "input directory does not exist: {input}")
   createDir output
   (input, output)
 
@@ -105,7 +107,11 @@ proc organizeMedia(sourceDir, sinkDir: string) =
       digestMedia media
       writeMedia media, sinkDir
     except CatchableError as error:
-      stderr.write fmt "ERROR: {error[]}\n"
+      stderr.write fmt "ERROR: {error.msg}\n"
 
-let (inputDir, outputDir) = parseOptions()
-organizeMedia inputDir, outputDir
+try:
+  let (inputDir, outputDir) = parseOptions()
+  organizeMedia inputDir, outputDir
+except OptionsError as error:
+  stderr.write fmt "ERROR: {error.msg}\n"
+  echo "Usage: omedia -i:<sourceDir> -o:<sinkDir>"
