@@ -1,11 +1,15 @@
 import std/[strutils, strformat, parseopt, os, osproc]
 
+type
+  OptionError = object of ValueError
+  ShellError = object of OSError
+
 let home = getHomeDir()
 
 template shell(cmd: string) =
   let exitCode = execCmd cmd
   if exitCode != 0:
-    raise newException(OSError, "non-zero exit code: " & $exitCode)
+    raise newException(ShellError, "non-zero exit code: " & $exitCode)
 
 proc configGit() =
   let cmds = """
@@ -74,7 +78,7 @@ proc configureTools() =
         configZsh()
         configEmacs()
         configPsql()
-      else: raise newException(ValueError, fmt "unknown tool: {value}")
-    else: raise newException(ValueError, fmt "unknown option: {key}")
+      else: raise newException(OptionError, fmt "unknown tool: {value}")
+    else: raise newException(OptionError, fmt "unknown option: {key}")
 
 configureTools()
