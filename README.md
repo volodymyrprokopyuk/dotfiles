@@ -86,6 +86,53 @@ doom sync # config
 doom upgrade # doom and packages
 ```
 
+## Motions
+
+- `^|$` beginning / end of current line
+
+## Navigation
+
+- `s|S` current line 2-char snipe forward / backwards
+- `g s s` visible screen 2-char snipe
+- `g s /` visible screen timer snipe
+
+## Search
+
+- `SPC s s` search buffer
+- `SPC s S` search buffer (word under cursor)
+- `SPC s p` search project
+- `SPC SPC` find file in project
+- `SPC s f` locate file in system
+
+## Editing
+
+Repeat, undo / redo
+
+- `.` repeat the last change
+- `u` undo the last change
+- `C-r` redo the last undone change
+
+Insertion
+
+- `i|I` insert at cursor / at the beginning of current line
+- `a|A` append at cursor / at the end of current line
+- `o|O` open new line below cursor / above cursor
+
+Change
+
+- `c<move>|C` change till move / till the end of current line
+
+Deletion
+
+- `x` delete character under cursor
+- `dd` delete current line
+
+Indentation
+
+- `>|< <move>` indent / dedent vertical move
+- `>>|<<` indent / dedent current line
+
+
 ```
 Evil mode
 Tab complete the common part of suggestion list
