@@ -43,7 +43,7 @@ proc configGit() =
     git config --global alias.cm "!git dch && git commit"
   """
   removeFile fmt "{home}/.gitconfig"
-  for cmd in cmds.split('\n'): shell cmd
+  for cmd in cmds.unindent.split('\n'): shell cmd
   let gitignore = ["*~", ""]
   writeFile fmt "{home}/.gitignore", gitignore.join "\n"
 

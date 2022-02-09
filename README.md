@@ -86,21 +86,30 @@ doom sync # config
 doom upgrade # doom and packages
 ```
 
-## Motions
+## Motions (content)
 
-- `^|$` beginning / end of current line
+- `^|$` beginning / end of the current line content
+- `0` 0 position of the current line
 
-## Navigation
+## Navigation (sniping)
 
+- `f|F` current line 1-char snipe forward / backwards
+- `t|T` current line 1-char exclusive snipe forward / backwards
 - `s|S` current line 2-char snipe forward / backwards
+- `;|,` repeat last snipe forward / backwards
 - `g s s` visible screen 2-char snipe
 - `g s /` visible screen timer snipe
 
 ## Search
 
+- `*|#` search word under cursor forward / backwards
+- `/|?` incremental search forward / backwards
+- `n|N` repeat last search forward / backwards
+- `:s/pattern/replace/gc` substitute pattern with replace (global, confirm)
+- `&` repeat last substitution
 - `SPC s s` search buffer
 - `SPC s S` search buffer (word under cursor)
-- `SPC s p` search project
+- `SPC /` search project
 - `SPC SPC` find file in project
 - `SPC s f` locate file in system
 
@@ -125,12 +134,18 @@ Change
 Deletion
 
 - `x` delete character under cursor
+- `d<move>|D` delete till move / till the end of current line
 - `dd` delete current line
 
 Indentation
 
 - `>|< <move>` indent / dedent vertical move
 - `>>|<<` indent / dedent current line
+
+## Buffers
+
+- `SPC ,` switch buffer
+- `SPC <backtick>` switch to last buffer
 
 
 ```

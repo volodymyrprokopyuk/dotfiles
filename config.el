@@ -46,6 +46,8 @@
   ;; Highlight line content exceeding the limit
   (setq-default whitespace-line-column 80)
   (setq-default whitespace-style '(face tab-mark trailing lines-tail))
+  ;; Remove trailing whitespaces on save
+  (add-hook 'before-save-hook #'whitespace-cleanup)
   ;; Open new line after exceeding the limit
   (setq-default fill-column 80)
   (add-hook 'text-mode-hook #'auto-fill-mode)
