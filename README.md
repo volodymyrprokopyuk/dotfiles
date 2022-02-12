@@ -88,8 +88,14 @@ doom upgrade # doom and packages
 
 ## Motions (content)
 
+- `b|e` beginning / end of word
+- `w` next word
 - `^|$` beginning / end of the current line content
 - `0` 0 position of the current line
+
+Text objects
+
+- `i|aw|s|p` inside / outside word / sentence / paragraph + `([{<"'``'">}])`
 
 ## Navigation (sniping)
 
@@ -106,11 +112,12 @@ doom upgrade # doom and packages
 - `/|?` incremental search forward / backwards
 - `n|N` repeat last search forward / backwards
 - `:s/pattern/replace/gc` substitute pattern with replace (global, confirm)
-- `&` repeat last substitution
+- `&` repeat last substitution on the current line
 - `SPC s s` search buffer
 - `SPC s S` search buffer (word under cursor)
 - `SPC /` search project
-- `SPC SPC` find file in project
+- `SPC SPC` find file in project (git)
+- `SPC .` find file in directory (no git)
 - `SPC s f` locate file in system
 
 ## Editing
@@ -121,6 +128,12 @@ Repeat, undo / redo
 - `u` undo the last change
 - `C-r` redo the last undone change
 
+Yank / paste, registers
+
+- `y<move>|Y` yank till move / till the end of current line
+- `yy` yank current line
+- `p|P` paste after / before cursor
+
 Insertion
 
 - `i|I` insert at cursor / at the beginning of current line
@@ -130,6 +143,9 @@ Insertion
 Change
 
 - `c<move>|C` change till move / till the end of current line
+- `cc` change current line
+- `gu|U<move>` downcase / upcase till move
+- `guu|UU` downcase / upcase current line
 
 Deletion
 
@@ -137,10 +153,16 @@ Deletion
 - `d<move>|D` delete till move / till the end of current line
 - `dd` delete current line
 
-Indentation
+Indentation and formatting
 
-- `>|< <move>` indent / dedent vertical move
+- `>|<<move>` indent / dedent move
 - `>>|<<` indent / dedent current line
+- `=<move>` format move
+
+Commenting
+
+- `gc<move>` comment / uncomment move
+- `gcc` comment / uncomment current line
 
 ## Buffers
 

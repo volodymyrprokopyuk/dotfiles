@@ -81,6 +81,10 @@
   (evil-define-key nil vertico-map (kbd "M-k") #'vertico-previous))
 
 (defun config-evil ()
+  ;; 2-space indentation
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 2)
+  (setq evil-shift-width 2)
   ;; Enable key combinations
   (require 'key-chord)
   (key-chord-mode 1)
@@ -101,6 +105,8 @@
             #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
 
 (defun config-zsh ()
+  ;; 2-space identation
+  (setq sh-basic-offset 2)
   ;; Treat _ as part of the word on *, #, w, b, e
   (add-hook 'sh-mode-hook
             #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table))))
