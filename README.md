@@ -68,14 +68,13 @@ zinit self-update # zinit
 zinit update # packages
 ```
 
-```
 Command line editing
-Ctrl-a/Ctrl-e beginning/end of line
-Alt-f/Alt-b forward/backward word
-Ctrl-w delete word backword
-Ctrl-x, e edit command line
-Ctrl-l clear screen
-```
+
+- `C-a|e` beginning / end of line
+- `A-f|b` forward / backwards word
+- `C-w|u` delete backwords word / line
+- `C-x e` edit command line
+- `C-l` clear screen
 
 # Doom Emacs
 
@@ -86,16 +85,32 @@ doom sync # config
 doom upgrade # doom and packages
 ```
 
+## Scrolling
+
+- `C-y|e` scroll down / up
+- `C-f|b` forward / backwards half screen
+- `zz` current line in the middle of the screen
+- `H|M|L` move cursor to high / middle / low of the screen
+
 ## Motions (content)
 
 - `b|e` beginning / end of word
 - `w` next word
 - `^|$` beginning / end of the current line content
 - `0` 0 position of the current line
+- `%` jump between parentheses
 
 Text objects
 
-- `i|aw|s|p` inside / outside word / sentence / paragraph + `([{<"'``'">}])`
+- `i|aw|s|p|t` inside / outside word / sentence / paragraph / tag +
+  `([{<"'``'">}])`
+
+Visual mode
+
+- `v|V|C-v` char / line / block visual selection
+- `C-v $` ragged right visual selection
+- `o` go to the other end of selection
+- `gv` reselect the last visual selection
 
 ## Navigation (sniping)
 
@@ -103,6 +118,7 @@ Text objects
 - `t|T` current line 1-char exclusive snipe forward / backwards
 - `s|S` current line 2-char snipe forward / backwards
 - `;|,` repeat last snipe forward / backwards
+- `g;|,` jump to last modification backwards / forward
 - `g s s` visible screen 2-char snipe
 - `g s /` visible screen timer snipe
 
@@ -111,6 +127,7 @@ Text objects
 - `*|#` search word under cursor forward / backwards
 - `/|?` incremental search forward / backwards
 - `n|N` repeat last search forward / backwards
+- `gn|N` visually select last search forward / backwards
 - `:s/pattern/replace/gc` substitute pattern with replace (global, confirm)
 - `&` repeat last substitution on the current line
 - `SPC s s` search buffer
@@ -227,6 +244,19 @@ choosenim remove <version>
 nimble refresh # package list
 nimble install <package>[@<version>]
 ```
+
+Computer science
+
+- Data structures and algorithms
+- Parsing and DSL
+- Cryptography and blockchain
+- Concurrency, parallelism and networking
+- Databases, statistics and visualization
+- Computer graphics
+
+TODO
+
+- option, future, io, net, asyncdispatch
 
 # PostgreSQL environment
 
