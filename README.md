@@ -118,7 +118,8 @@ Visual mode
 - `t|T` current line 1-char exclusive snipe forward / backwards
 - `s|S` current line 2-char snipe forward / backwards
 - `;|,` repeat last snipe forward / backwards
-- `g;|,` jump to last modification backwards / forward
+- `g;|,` jump to last modification backwards / forward (change list)
+- `C-o|i` jump to last location  backwards / forward (jump list)
 - `g s s` visible screen 2-char snipe
 - `g s /` visible screen timer snipe
 
@@ -127,7 +128,6 @@ Visual mode
 - `*|#` search word under cursor forward / backwards
 - `/|?` incremental search forward / backwards
 - `n|N` repeat last search forward / backwards
-- `gn|N` visually select last search forward / backwards
 - `:s/pattern/replace/gc` substitute pattern with replace (global, confirm)
 - `&` repeat last substitution on the current line
 - `SPC s s` search buffer
@@ -136,8 +136,12 @@ Visual mode
 - `SPC SPC` find file in project (git)
 - `SPC .` find file in directory (no git)
 - `SPC s f` locate file in system
+- `q:|/|? j|k` query recent command line / forward / backwards search
 
 ## Editing
+
+- `:e` edit existing or new file
+- `:w[a]` write file
 
 Repeat, undo / redo
 
@@ -163,6 +167,7 @@ Change
 - `cc` change current line
 - `gu|U<move>` downcase / upcase till move
 - `guu|UU` downcase / upcase current line
+- `J` join lines
 
 Deletion
 
@@ -184,7 +189,16 @@ Commenting
 ## Buffers
 
 - `SPC ,` switch buffer
-- `SPC <backtick>` switch to last buffer
+- `SPC <backtick>` switch to alternate buffer
+- `C-x k` kill buffer
+
+## Windows
+
+- `C-w s|v` split window horizontal / vertical
+- `C-w w|h|j|k|l` cycle / move between windows
+- `C-w c` close active window
+- `C-w r` rotate windows
+- `C-x 0|1` close other / active window
 
 
 ```
@@ -256,7 +270,7 @@ Computer science
 
 TODO
 
-- option, future, io, net, asyncdispatch
+- future, fusion/matching, io.File, net.Socket, asyncdispatch, streams
 
 # PostgreSQL environment
 
