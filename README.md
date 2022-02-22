@@ -94,6 +94,8 @@ doom upgrade # doom and packages
 
 ## Motions (content)
 
+- `h|l` left / right character
+- `[g]j|k` down / up [visual] line
 - `b|e` beginning / end of word
 - `w` next word
 - `^|$` beginning / end of the current line content
@@ -142,6 +144,7 @@ Visual mode
 
 - `:e` edit existing or new file
 - `:w[a]` write file
+- `C-x C-c` exit Doom Emacs
 
 Repeat, undo / redo
 
@@ -195,6 +198,7 @@ Commenting
 ## Windows
 
 - `C-w s|v` split window horizontal / vertical
+- `C-w =` equalize windows
 - `C-w w|h|j|k|l` cycle / move between windows
 - `C-w c` close active window
 - `C-w r` rotate windows
@@ -270,7 +274,7 @@ Computer science
 
 TODO
 
-- future, fusion/matching, io.File, net.Socket, asyncdispatch, streams
+- with, future, fusion/matching, io.File, net.Socket, asyncdispatch, streams
 
 # PostgreSQL environment
 
