@@ -30,30 +30,30 @@ proc parseOptions(): tuple[input, output: string] =
     of "i", "input": input = value
     of "o", "output": output = value
   if input == "" or output == "":
-    raise newException(OptionsError, fmt "options -i and -o are mandatory")
+    raise newException(OptionsError, "options -i and -o are mandatory")
   if not dirExists input:
-    raise newException(FSError, fmt "input directory does not exist: {input}")
-  createDir output
+    raise newException(FSError, "input directory does not exist: " & input)
+  createDir(output)
   (input, output)
 
 iterator walkMedia(sourceDir: string,
                    reImage = reImageSource,
                    reVideo = reVideoSource): Media =
-  for file in walkDirRec sourceDir:
+  for file in walkDirRec(sourceDir):
     if file.endsWith(reImage):
       yield Media(mType: mtImage, source: file)
     elif file.endsWith(reVideo):
       yield Media(mType: mtVideo, source: file)
-    else: stderr.write fmt "WARNING: unknown media type: {file}\n"
+    else: stderr.write(fmt "WARNING: unknown media type: {file}\n")
 
 proc extractImageTStamp(media: var Media,
                         cmdTStamp = cmdImageTStamp,
                         reTStamp = reImageTStamp,
                         fmtTStamp = fmtImageTStamp) =
   let (output, exitCode) =
-    execCmdEx fmt "{cmdTStamp} {quoteShell media.source}"
+    execCmdEx(fmt "{cmdTStamp} {quoteShell media.source}")
   if exitCode != 0:
-    stderr.write fmt "WARNING: exiv2: non-zero exit code: {exitCode}\n"
+    stderr.write(fmt "WARNING: exiv2: non-zero exit code: {exitCode}\n")
   var m: RegexMatch
   if output.find(reTStamp, m):
     media.tStamp = m.groupFirstCapture("tStamp", output).parse(fmtTStamp)
@@ -66,9 +66,9 @@ proc extractVideoTStamp(media: var Media,
                         reTStamp = reVideoTStamp,
                         fmtTStamp = fmtVideoTStamp) =
   let (output, exitCode) =
-    execCmdEx fmt "{cmdTStamp} {quoteShell media.source}"
+    execCmdEx(fmt "{cmdTStamp} {quoteShell media.source}")
   if exitCode != 0:
-    stderr.write fmt "WARNING: ffprobe: non-zero exit code: {exitCode}\n"
+    stderr.write(fmt "WARNING: ffprobe: non-zero exit code: {exitCode}\n")
   var m: RegexMatch
   if output.find(reTStamp, m):
     media.tStamp = m.groupFirstCapture("tStamp", output).parse(fmtTStamp)
@@ -77,7 +77,7 @@ proc extractVideoTStamp(media: var Media,
     media.tStamp = lastMediaTStamp
 
 proc digestMedia(media: var Media) =
-  media.digest = toLowerAscii $secureHashFile media.source
+  media.digest = media.source.secureHashFile.`$`.toLowerAscii
 
 proc writeMedia(media: Media, sinkDir: string) =
   proc extractExt(source: string): string =
@@ -87,11 +87,11 @@ proc writeMedia(media: Media, sinkDir: string) =
     else:
       $media.mType
   let mediaDir = media.tStamp.format("yyyy/yyyy-MM-dd")
-  let mediaExt = extractExt media.source
+  let mediaExt = extractExt(media.source)
   let mediaFile = media.tStamp.format("yyyyMMdd'_'HHmmss'_'") &
     media.digest & mediaExt
-  createDir fmt "{sinkDir}/{mediaDir}"
-  copyFile media.source, fmt "{sinkDir}/{mediaDir}/{mediaFile}"
+  createDir(sinkDir / mediaDir)
+  copyFile(media.source, sinkDir / mediaDir / mediaFile)
 
 proc organizeMedia(sourceDir, sinkDir: string) =
   for media in walkMedia(sourceDir):
@@ -100,18 +100,18 @@ proc organizeMedia(sourceDir, sinkDir: string) =
       case media.mType:
       of mtImage:
         echo fmt "IMAGE: {media.source}"
-        extractImageTStamp media
+        extractImageTStamp(media)
       of mtVideo:
         echo fmt "VIDEO: {media.source}"
-        extractVideoTStamp media
-      digestMedia media
-      writeMedia media, sinkDir
+        extractVideoTStamp(media)
+      digestMedia(media)
+      writeMedia(media, sinkDir)
     except CatchableError as error:
       stderr.write fmt "ERROR: {error.msg}\n"
 
 try:
   let (inputDir, outputDir) = parseOptions()
-  organizeMedia inputDir, outputDir
+  organizeMedia(inputDir, outputDir)
 except OptionsError as error:
   stderr.write fmt "ERROR: {error.msg}\n"
-  echo "Usage: omedia -i:<sourceDir> -o:<sinkDir>"
+  quit("Usage: omedia -i:<sourceDir> -o:<sinkDir>")
