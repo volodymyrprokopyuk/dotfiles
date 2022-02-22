@@ -1,4 +1,4 @@
-import std/[strutils, strformat, parseopt, os, osproc]
+import std/[strutils, parseopt, os, osproc]
 
 type
   OptionError = object of ValueError
@@ -7,7 +7,7 @@ type
 let home = getHomeDir()
 
 template shell(cmd: string) =
-  let exitCode = execCmd cmd
+  let exitCode = execCmd(cmd)
   if exitCode != 0:
     raise newException(ShellError, "non-zero exit code: " & $exitCode)
 
@@ -42,26 +42,24 @@ proc configGit() =
     git config --global alias.a "!git add -A && git s"
     git config --global alias.cm "!git dch && git commit"
   """
-  removeFile fmt "{home}/.gitconfig"
-  for cmd in cmds.unindent.split('\n'): shell cmd
+  removeFile(home / ".gitconfig")
+  for cmd in cmds.unindent.split('\n'): shell(cmd)
   let gitignore = ["*~", ""]
-  writeFile fmt "{home}/.gitignore", gitignore.join "\n"
+  writeFile(home / ".gitignore", gitignore.join("\n"))
 
 proc configTmux() =
-  copyFile ".tmux.conf", fmt "{home}/.tmux.conf"
+  copyFile(".tmux.conf", home / ".tmux.conf")
 
 proc configZsh() =
-  copyFile ".zshrc", fmt "{home}/.zshrc"
+  copyFile(".zshrc", home / ".zshrc")
 
 proc configEmacs() =
-  let
-    doom = fmt "{home}/.doom.d"
-    files = ["packages.el", "init.el", "config.el"]
-  createDir doom
-  for file in files: copyFile file, fmt "{doom}/{file}"
+  createDir(home / ".doom.d")
+  for file in ["packages.el", "init.el", "config.el"]:
+    copyFile(file, home / ".doom.d" / file)
 
 proc configPsql() =
-  copyFile ".psqlrc", fmt "{home}/.psqlrc"
+  copyFile ".psqlrc", home / ".psqlrc"
 
 proc configureTools() =
   for kind, key, value in getopt():
@@ -78,7 +76,7 @@ proc configureTools() =
         configZsh()
         configEmacs()
         configPsql()
-      else: raise newException(OptionError, fmt "unknown tool: {value}")
-    else: raise newException(OptionError, fmt "unknown option: {key}")
+      else: raise newException(OptionError, "unknown tool: " & value)
+    else: raise newException(OptionError, "unknown option: " & key)
 
 configureTools()
