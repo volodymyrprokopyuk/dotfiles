@@ -80,14 +80,8 @@ proc digestMedia(media: var Media) =
   media.digest = media.source.secureHashFile.`$`.toLowerAscii
 
 proc writeMedia(media: Media, sinkDir: string) =
-  proc extractExt(source: string): string =
-    var m: RegexMatch
-    if source.find(re"(?P<ext>\.\w{2,4})$", m):
-      m.groupFirstCapture("ext", source).toLowerAscii.replace(re"jpeg$", "jpg")
-    else:
-      $media.mType
   let mediaDir = media.tStamp.format("yyyy/yyyy-MM-dd")
-  let mediaExt = extractExt(media.source)
+  let mediaExt = media.source.splitFile[2].toLowerAscii.replace(re"jpeg$", "jpg")
   let mediaFile = media.tStamp.format("yyyyMMdd'_'HHmmss'_'") &
     media.digest & mediaExt
   createDir(sinkDir / mediaDir)
