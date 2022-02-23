@@ -25,13 +25,13 @@ var
 
 proc parseOptions(): tuple[input, output: string] =
   var input, output: string
-  for _, key, value in getopt():
+  for _, key, value in getOpt():
     case key:
     of "i", "input": input = value
     of "o", "output": output = value
   if input == "" or output == "":
     raise newException(OptionsError, "options -i and -o are mandatory")
-  if not dirExists input:
+  if not dirExists(input):
     raise newException(FSError, "input directory does not exist: " & input)
   createDir(output)
   (input, output)
