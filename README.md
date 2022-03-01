@@ -96,8 +96,8 @@ doom upgrade # doom and packages
 
 - `h|l` left / right character
 - `[g]j|k` down / up [visual] line
-- `b|e` beginning / end of word
-- `w` next word
+- `w|b` beginning of the next / previous word + `W|B` on whitespace only
+- `e|ge` end of the next / previous word + `E|gE` on whitespace only
 - `^|$` beginning / end of the current line content
 - `0` 0 position of the current line
 - `%` jump between parentheses
