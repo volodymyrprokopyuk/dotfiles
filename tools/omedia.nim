@@ -1,4 +1,14 @@
-import std/[strutils, strformat, parseopt, os, osproc, times, sha1], pkg/regex
+#[
+omedia organizes photo and video files into a directory tree by date
+Usage: omedia -i:<sourceDir> -o:<sinkDir>
+Dependencies
+- exiv2 extracts date and time from a photo file
+- ffprobe (from ffmpeg) extracts date and time from a video file
+]#
+
+import std/[strformat, strutils, sequtils]
+import std/[parseopt, threadpool, os, osproc, times, sha1]
+import pkg/regex
 
 type
   MediaType = enum mtImage, mtVideo
@@ -19,9 +29,6 @@ const
   cmdVideoTStamp = "ffprobe -v quiet -select_streams v:0 -show_entries stream_tags=creation_time -of default=nw=1:nk=1"
   reVideoTStamp = re"(?P<tStamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})"
   fmtVideoTStamp = "yyyy-MM-dd'T'HH:mm:ss"
-
-var
-  lastMediaTStamp = now()
 
 proc parseOptions(): tuple[input, output: string] =
   var input, output: string
@@ -47,13 +54,15 @@ iterator walkMedia(sourceDir: string,
     else: stderr.write(fmt "WARNING: unknown media type: {file}\n")
 
 proc extractImageTStamp(media: var Media,
+                        lastMediaTStamp: var DateTime,
+                        log: var seq[string],
                         cmdTStamp = cmdImageTStamp,
                         reTStamp = reImageTStamp,
                         fmtTStamp = fmtImageTStamp) =
   let (output, exitCode) =
     execCmdEx(fmt "{cmdTStamp} {quoteShell media.source}")
   if exitCode != 0:
-    stderr.write(fmt "WARNING: exiv2: non-zero exit code: {exitCode}\n")
+    log.add(fmt "WARNING: exiv2: non-zero exit code: {exitCode}")
   var m: RegexMatch
   if output.find(reTStamp, m):
     media.tStamp = m.groupFirstCapture("tStamp", output).parse(fmtTStamp)
@@ -62,13 +71,15 @@ proc extractImageTStamp(media: var Media,
     media.tStamp = lastMediaTStamp
 
 proc extractVideoTStamp(media: var Media,
+                        lastMediaTStamp: var DateTime,
+                        log: var seq[string],
                         cmdTStamp = cmdVideoTStamp,
                         reTStamp = reVideoTStamp,
                         fmtTStamp = fmtVideoTStamp) =
   let (output, exitCode) =
     execCmdEx(fmt "{cmdTStamp} {quoteShell media.source}")
   if exitCode != 0:
-    stderr.write(fmt "WARNING: ffprobe: non-zero exit code: {exitCode}\n")
+    log.add(fmt "WARNING: ffprobe: non-zero exit code: {exitCode}")
   var m: RegexMatch
   if output.find(reTStamp, m):
     media.tStamp = m.groupFirstCapture("tStamp", output).parse(fmtTStamp)
@@ -87,25 +98,34 @@ proc writeMedia(media: Media, sinkDir: string) =
   createDir(sinkDir / mediaDir)
   copyFile(media.source, sinkDir / mediaDir / mediaFile)
 
-proc organizeMedia(sourceDir, sinkDir: string) =
-  for media in walkMedia(sourceDir):
-    var media = media
+proc organizeMedia(mediaGroup: seq[Media], sinkDir: string) =
+  var lastMediaTStamp = now()
+  for media in mediaGroup:
+    var
+      media = media
+      log = newSeq[string](3)
     try:
       case media.mType:
       of mtImage:
-        echo fmt "IMAGE: {media.source}"
-        extractImageTStamp(media)
+        log.add(fmt "IMAGE: {media.source}")
+        extractImageTStamp(media, lastMediaTStamp, log)
       of mtVideo:
-        echo fmt "VIDEO: {media.source}"
-        extractVideoTStamp(media)
+        log.add(fmt "VIDEO: {media.source}")
+        extractVideoTStamp(media, lastMediaTStamp, log)
       digestMedia(media)
       writeMedia(media, sinkDir)
     except CatchableError as error:
-      stderr.write fmt "ERROR: {error.msg}\n"
+      log.add(fmt "ERROR: {error.msg}")
+    echo log.join("\n").strip
 
 try:
-  let (inputDir, outputDir) = parseOptions()
-  organizeMedia(inputDir, outputDir)
+  let
+    (inputDir, outputDir) = parseOptions()
+    cpuCores = countProcessors()
+    mediaGroups = inputDir.walkMedia.toSeq.distribute(cpuCores)
+  for mediaGroup in mediaGroups:
+    spawn organizeMedia(mediaGroup, outputDir)
+  sync()
 except OptionsError as error:
   stderr.write fmt "ERROR: {error.msg}\n"
   quit("Usage: omedia -i:<sourceDir> -o:<sinkDir>")
