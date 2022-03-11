@@ -104,8 +104,13 @@ doom upgrade # doom and packages
 
 Text objects
 
-- `i|aw|s|p|t` inside / outside word / sentence / paragraph / tag +
-  `([{<"'``'">}])`
+- `i|aw|s|p|t` inside / around word / sentence / paragraph / tag +
+  `` ([{<"'``'">}]) ``
+
+Surround
+
+- `ys|S<obj>` add surrounding in normal / visual mode
+- `c|ds<sur>` change / delete surrounding in normal mode
 
 Visual mode
 
@@ -120,10 +125,11 @@ Visual mode
 - `t|T` current line 1-char exclusive snipe forward / backwards
 - `s|S` current line 2-char snipe forward / backwards
 - `;|,` repeat last snipe forward / backwards
-- `g;|,` jump to last modification backwards / forward (change list)
-- `C-o|i` jump to last location  backwards / forward (jump list)
 - `g s s` visible screen 2-char snipe
 - `g s /` visible screen timer snipe
+- `g;|,` jump to last modification backwards / forward (change list)
+- `C-o|i` jump to last location  backwards / forward (jump list)
+- `` m|'|`{a-z} `` set mark / jump to mark line / column
 
 ## Search
 
@@ -192,7 +198,7 @@ Commenting
 ## Buffers
 
 - `SPC ,` switch buffer
-- `SPC <backtick>` switch to alternate buffer
+- ``SPC ` `` switch to alternate buffer
 - `C-x k` kill buffer
 
 ## Windows
@@ -274,7 +280,22 @@ Computer science
 
 TODO
 
-- with, future, fusion/matching, io.File, net.Socket, asyncdispatch, streams
+- strformat, strutils, sequtils
+- future, asyncdispatch
+- io.File, net.Socket, streams
+- with, fusion/matching,
+- nimble
+
+# Node.js environment
+
+```zsh
+yay -S nvm
+nvm ls-remote
+nvm install <version>
+nvm alias default <version>
+nvm use default
+nvm ls
+```
 
 # PostgreSQL environment
 

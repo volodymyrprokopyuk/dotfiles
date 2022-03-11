@@ -96,3 +96,8 @@ path_add $HOME/.emacs.d/bin
 
 # Nim
 path_add $HOME/.nimble/bin
+
+# Node.js
+[ -z $NVM_DIR ] && export NVM_DIR=$HOME/.nvm
+script_source /usr/share/nvm/nvm.sh
+script_source /usr/share/nvm/install-nvm-exec
