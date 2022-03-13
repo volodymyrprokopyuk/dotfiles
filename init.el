@@ -1,8 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(doom! :input
-
-       :completion
+(doom! :completion
        company
        vertico
 
@@ -20,27 +18,20 @@
        undo
        vc
 
-       :term
-
-       :checkers
-
        :tools
        lookup
        docker
-
-       :os
 
        :lang
        json
        yaml
        markdown
-       emacs-lisp
+       rst
        sh
        nim
-
-       :email
-
-       :app
+       javascript
+       web
+       emacs-lisp
 
        :config
        (default +bindings +smartparens))
