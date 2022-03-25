@@ -26,7 +26,6 @@
        json
        yaml
        markdown
-       rst
        sh
        nim
        javascript

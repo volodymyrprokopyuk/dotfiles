@@ -102,11 +102,6 @@
 
 ;; Programming
 
-(defun config-elisp ()
-  ;; Treat - as part of the word on *, #, w, b, e
-  (add-hook 'emacs-lisp-mode-hook
-            #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
-
 (defun config-zsh ()
   ;; 2-space identation
   (setq sh-basic-offset 2)
@@ -125,6 +120,20 @@
   (add-hook 'nim-mode-hook
             #'(lambda () (modify-syntax-entry ?_ "w" nim-mode-syntax-table))))
 
+(defun config-web ()
+  (add-to-list 'auto-mode-alist '("\\.nwt\\'" . web-mode))
+  (setq web-mode-engines-alist '(("jinja2" . "\\.nwt\\'")))
+  (add-hook 'web-mode-hook
+            #'(lambda ()
+                (setq web-mode-markup-indent-offset 2)
+                (setq web-mode-css-indent-offset 2)
+                (setq web-mode-code-indent-offset 2))))
+
+(defun config-elisp ()
+  ;; Treat - as part of the word on *, #, w, b, e
+  (add-hook 'emacs-lisp-mode-hook
+            #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
+
 ;; Editor
 (config-doom)
 (config-clipboard)
@@ -137,7 +146,8 @@
 (config-evil)
 
 ;; Programming
-(config-elisp)
 (config-zsh)
 (config-sql)
 (config-nim)
+(config-web)
+(config-elisp)

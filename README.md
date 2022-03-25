@@ -280,7 +280,9 @@ Computer science
 
 TODO
 
-- strformat, strutils, sequtils
+- strutils, sequtils
+- times, random
+- db_sqlite
 - future, asyncdispatch
 - io.File, net.Socket, streams
 - with, fusion/matching,
