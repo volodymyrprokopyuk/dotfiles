@@ -280,9 +280,10 @@ Computer science
 
 TODO
 
-- strutils, sequtils
-- times, random
-- db_sqlite
+- system, os, osproc
+- algorithm, strutils, sequtils, setutils, enumutils
+- jester
+- random / sysrand
 - future, asyncdispatch
 - io.File, net.Socket, streams
 - with, fusion/matching,

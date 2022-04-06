@@ -121,6 +121,7 @@
             #'(lambda () (modify-syntax-entry ?_ "w" nim-mode-syntax-table))))
 
 (defun config-web ()
+  (setq css-indent-offset 2)
   (add-to-list 'auto-mode-alist '("\\.nwt\\'" . web-mode))
   (setq web-mode-engines-alist '(("jinja2" . "\\.nwt\\'")))
   (add-hook 'web-mode-hook
