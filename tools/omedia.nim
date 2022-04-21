@@ -21,7 +21,7 @@ type
   FSError = object of OSError
 
 const
-  reImageSource = re"\.(?i:jpe?g)"
+  reImageSource = re"\.(?i:jpe?g|heic)"
   cmdImageTStamp = "exiv2 -K Exif.Image.DateTime -P v"
   reImageTStamp = re"(?P<tStamp>\d{4}:\d{2}:\d{2} \d{2}:\d{2}:\d{2})"
   fmtImageTStamp = "yyyy:MM:dd HH:mm:ss"
