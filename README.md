@@ -257,6 +257,13 @@ gc<movement> comment a movement
 gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 ```
 
+# Firefox
+
+## Navigation
+
+- `C-[|]` history backwards / forward
+- `C-R|C-F5` reload page / override cache
+
 # Nim environment
 
 ```zsh
@@ -280,7 +287,7 @@ Computer science
 
 TODO
 
-- system, os, osproc
+- os, osproc
 - algorithm, strutils, sequtils, setutils, enumutils
 - jester
 - random / sysrand
@@ -346,21 +353,24 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 
 ```zsh
 # Install and configure Docker
-yay -S docker
+yay -S docker docker-compose
 sudo groupadd docker
 sudo usermod -G docker -a $USER
 newgrp docker
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
+
 # Image management
 docker build <user>/<image>:<version> .
 docker images -a
 docker rmi <image_id>
 docker system prune [-a]
+
 # Network management
 docker network create <networ>
 docker network ls <network>
 docker network rm <network>
+
 # Container management
 docker run --rm -it [-d] --name <container> --network <network> \
   -e ENV=value \
@@ -370,10 +380,18 @@ docker run --rm -it [-d] --name <container> --network <network> \
 docker ps -a
 docker ps -qf "name=^pattern$"
 docker rm <container_id>
+
 # Execute a command inside a container
 docker exec -it [-u 0] <container_id> ls
 docker exec -it <container_id> sh -c 'ls /*'
 docker exec -i <container_id> sh -c 'cat container_file' < host_file
+
+# Docker compose
+docker-compose -f <compose.yaml> up [-d]
+docker-compose ps
+docker-compose run <service> <command>
+docker-compose stop
+docker-compose down
 ```
 
 # System environment

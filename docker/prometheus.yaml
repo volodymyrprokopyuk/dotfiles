@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  prometheus:
+    image: bitnami/prometheus:2.35.0
+    volumes:
+      - type: bind
+        source: prometheus-config.yaml
+        target: /opt/bitnami/prometheus/conf/prometheus.yml
+        read_only: true
+    ports:
+      - 9090:9090
