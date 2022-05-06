@@ -391,7 +391,7 @@ docker-compose -f <compose.yaml> up [-d]
 docker-compose ps
 docker-compose run <service> <command>
 docker-compose stop
-docker-compose down
+docker-compose down <container-name>
 ```
 
 # System environment
