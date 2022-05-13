@@ -343,7 +343,7 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 
 ## psql commands
 
-- General `\c`, `\conninfo`, `\du`, `\l`, `\dn`, `\g`, `\r`, `\q`
+- General `\c`, `\conninfo`, `\du`, `\dx` `\l`, `\dn`, `\g`, `\r`, `\q`
 - Relations `\d`, `\dtvmi`
 - Functions `\df`, `\dfnptaw`, `\sf`
 - Editing `\e`, `\ef`
