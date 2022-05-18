@@ -15,3 +15,16 @@ services:
       # - POSTGRES_PASSWORD=vlad
     ports:
       - 5432:5432
+  grafana:
+    image: bitnami/grafana:8.5.1
+    volumes:
+      - type: bind
+        source: grafana-config.ini
+        target: /opt/bitnami/grafana/conf/grafana.ini
+        read_only: true
+      - type: bind
+        source: grafana-datasources.yaml
+        target: /opt/bitnami/grafana/conf/provisioning/datasources/datasources.yaml
+        read_only: true
+    ports:
+      - 3000:3000
