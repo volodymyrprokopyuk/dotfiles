@@ -130,6 +130,10 @@
                 (setq web-mode-css-indent-offset 2)
                 (setq web-mode-code-indent-offset 2))))
 
+(defun config-lilypond ()
+  (autoload 'LilyPond-mode "lilypond-mode.el" nil t)
+  (add-to-list 'auto-mode-alist '("\\.ly\\'" . LilyPond-mode)))
+
 (defun config-elisp ()
   ;; Treat - as part of the word on *, #, w, b, e
   (add-hook 'emacs-lisp-mode-hook
@@ -151,4 +155,5 @@
 (config-sql)
 (config-nim)
 (config-web)
+(config-lilypond)
 (config-elisp)
