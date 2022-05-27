@@ -75,6 +75,6 @@ for (const arg of process.argv.slice(2)) {
     case "psql": await psql(); break
     case "all":
       await Promise.all([git(), tmux(), zsh(), emacs(), psql()]); break
-    default: error(`ERROR: unknown option ${arg}`)
+    default: console.log(`WARNING: unknown option ${arg}`)
   }
 }
