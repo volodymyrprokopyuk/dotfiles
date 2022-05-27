@@ -44,7 +44,7 @@ proc configGit() =
   """
   removeFile(home / ".gitconfig")
   for cmd in cmds.unindent.split('\n'): shell(cmd)
-  let gitignore = ["*~", ""]
+  let gitignore = ["*~", "node_modules", ""]
   writeFile(home / ".gitignore", gitignore.join("\n"))
 
 proc configTmux() =

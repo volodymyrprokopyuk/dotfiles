@@ -9,22 +9,23 @@ services:
     # psql -h localhost -U postgres -d timeseries
     # psql -h localhost -U postgres -d timeseries -f timeseries.sql \
     #   -Xq -v ON_ERROR_STOP=on -P linestyle=unicode
-    image: timescale/timescaledb:2.6.1-pg14
+    image: timescale/timescaledb-ha:pg14-ts2.7-latest
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
       # - POSTGRES_PASSWORD=vlad
     ports:
       - 5432:5432
-  grafana:
-    image: bitnami/grafana:8.5.1
-    volumes:
-      - type: bind
-        source: grafana-config.ini
-        target: /opt/bitnami/grafana/conf/grafana.ini
-        read_only: true
-      - type: bind
-        source: grafana-datasources.yaml
-        target: /opt/bitnami/grafana/conf/provisioning/datasources/datasources.yaml
-        read_only: true
-    ports:
-      - 3000:3000
+
+  # grafana:
+  #   image: bitnami/grafana:8.5.1
+  #   volumes:
+  #     - type: bind
+  #       source: grafana-config.ini
+  #       target: /opt/bitnami/grafana/conf/grafana.ini
+  #       read_only: true
+  #     - type: bind
+  #       source: grafana-datasources.yaml
+  #       target: /opt/bitnami/grafana/conf/provisioning/datasources/datasources.yaml
+  #       read_only: true
+  #   ports:
+  #     - 3000:3000
