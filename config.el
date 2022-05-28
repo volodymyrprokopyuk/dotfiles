@@ -122,8 +122,8 @@
 
 (defun config-web ()
   (setq css-indent-offset 2)
-  (add-to-list 'auto-mode-alist '("\\.nwt\\'" . web-mode))
-  (setq web-mode-engines-alist '(("jinja2" . "\\.nwt\\'")))
+  (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode))
+  (setq web-mode-engines-alist '(("jinja2" . "\\.njk\\'")))
   (add-hook 'web-mode-hook
             #'(lambda ()
                 (setq web-mode-markup-indent-offset 2)
