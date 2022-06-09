@@ -120,6 +120,10 @@
   (add-hook 'nim-mode-hook
             #'(lambda () (modify-syntax-entry ?_ "w" nim-mode-syntax-table))))
 
+(defun config-js ()
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (setq js2-mode-show-strict-warnings nil))
+
 (defun config-web ()
   (setq css-indent-offset 2)
   (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode))
@@ -153,6 +157,7 @@
 ;; Programming
 (config-zsh)
 (config-sql)
+(config-js)
 (config-nim)
 (config-web)
 (config-lilypond)
