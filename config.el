@@ -122,6 +122,7 @@
 
 (defun config-js ()
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (setq js-indent-level 2)
   (setq js2-mode-show-strict-warnings nil))
 
 (defun config-web ()
