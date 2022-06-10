@@ -136,6 +136,7 @@
                 (setq web-mode-code-indent-offset 2))))
 
 (defun config-lilypond ()
+  (add-to-list 'load-path "~/.doom.d/lilypond")
   (autoload 'LilyPond-mode "lilypond-mode.el" nil t)
   (add-to-list 'auto-mode-alist '("\\.ly\\'" . LilyPond-mode)))
 

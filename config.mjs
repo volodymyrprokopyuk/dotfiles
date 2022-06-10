@@ -2,13 +2,25 @@
 import { promisify } from "util"
 import { exec as execCb } from "child_process"
 const exec = promisify(execCb)
-import { existsSync } from "fs"
+import { existsSync, createWriteStream } from "fs"
 import { mkdir, copyFile, writeFile, unlink } from "fs/promises"
 import { homedir } from "os"
 const home = homedir()
+import { get as GET } from "https"
+const rawGitHub = "https://raw.githubusercontent.com"
 
 async function removeFile(file) {
   if (existsSync(file)) { await unlink(file) }
+}
+
+async function download(url, path) {
+  const ws = createWriteStream(path)
+  return new Promise((resolve, reject) => {
+    GET(url, res => {
+      res.pipe(ws)
+      ws.on("finish", () => { ws.close(); resolve() })
+    }).on("error", e => { unlink(path); reject(e) })
+  })
 }
 
 async function git() {
@@ -62,6 +74,17 @@ async function emacs() {
   }
 }
 
+async function lilypond() {
+  const path = `${home}/.doom.d/lilypond`
+  await mkdir(path, { recursive: true })
+  const url = `${rawGitHub}/lilypond/lilypond/master/elisp`
+  const files = [
+    "lilypond-font-lock.el", "lilypond-indent.el", "lilypond-init.el",
+    "lilypond-mode.el", "lilypond-song.el", "lilypond-what-beat.el"
+  ]
+  Promise.all(files.map(file => download(`${url}/${file}`, `${path}/${file}`)))
+}
+
 async function psql() {
   await copyFile(".psqlrc", `${home}/.psqlrc`)
 }
@@ -72,9 +95,12 @@ for (const arg of process.argv.slice(2)) {
     case "tmux": await tmux(); break
     case "zsh": await zsh(); break
     case "emacs": await emacs(); break
+    case "lilypond": await lilypond(); break
     case "psql": await psql(); break
     case "all":
-      await Promise.all([git(), tmux(), zsh(), emacs(), psql()]); break
+      await Promise.all(
+        [git(), tmux(), zsh(), emacs(), lilypond(), psql()]
+      ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }
 }
