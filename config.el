@@ -121,7 +121,7 @@
             #'(lambda () (modify-syntax-entry ?_ "w" nim-mode-syntax-table))))
 
 (defun config-js ()
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
   (setq js-indent-level 2)
   (setq js2-mode-show-strict-warnings nil))
 
