@@ -4,6 +4,7 @@ Usage: omedia -i:<sourceDir> -o:<sinkDir>
 Dependencies
 - exiv2 extracts date and time from a photo file
 - ffprobe (from ffmpeg) extracts date and time from a video file
+cp -r ~/Media/sink/2022/*/ /run/media/vlad/SD2/Media-2021-202_/2022
 ]#
 
 import std/[strformat, strutils, sequtils]
