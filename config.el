@@ -138,7 +138,7 @@
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.doom.d/lilypond")
   (autoload 'LilyPond-mode "lilypond-mode.el" nil t)
-  (add-to-list 'auto-mode-alist '("\\.ly\\'" . LilyPond-mode)))
+  (add-to-list 'auto-mode-alist '("\\.lys?\\'" . LilyPond-mode)))
 
 (defun config-elisp ()
   ;; Treat - as part of the word on *, #, w, b, e

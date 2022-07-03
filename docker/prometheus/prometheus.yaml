@@ -19,7 +19,8 @@ services:
         target: /opt/bitnami/prometheus/conf/prometheus.yml
         read_only: true
       - type: bind
-        source: /home/vlad/Downloads/IPF/snapshots/20220427T031917Z-363053d23320dd99
+        # source: /home/vlad/Downloads/IPF/snapshots/20220427T031917Z-363053d23320dd99
+        source: /home/vlad/Downloads/IPF/snapshots/20220629T211723Z-096d8dcda71f3bdc
         target: /opt/bitnami/prometheus/data
     ports:
       - 9090:9090
