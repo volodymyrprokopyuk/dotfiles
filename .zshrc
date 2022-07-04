@@ -36,8 +36,13 @@ bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 # Tools
-function ll { exa --all --long --sort=type --color-scale --git --ignore-glob='*~|.git' $@ }
-function vv { bat --style plain --theme OneHalfDark --tabs 2 --map-syntax '*.conf:INI' $@ }
+function ll {
+  exa --all --long --sort=type --color-scale \
+    --git --ignore-glob='*~|.git|node_modules' $@
+}
+function vv {
+  bat --style plain --theme OneHalfDark --tabs 2 --map-syntax '*.conf:INI' $@
+}
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { rg --hidden --follow $@ }
 function ee { emacsclient -t $@ }
