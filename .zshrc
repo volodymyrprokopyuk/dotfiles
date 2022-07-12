@@ -40,6 +40,7 @@ function ll {
   exa --all --long --sort=type --color-scale \
     --git --ignore-glob='*~|.git|node_modules' $@
 }
+function lll { ll -T $@ }
 function vv {
   bat --style plain --theme OneHalfDark --tabs 2 --map-syntax '*.conf:INI' $@
 }
