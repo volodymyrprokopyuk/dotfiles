@@ -65,6 +65,9 @@ async function tmux() {
 
 async function zsh() {
   await copyFile(".zshrc", `${home}/.zshrc`)
+  const path = `${home}/.config`
+  await mkdir(path, { recursive: true })
+  await copyFile("starship.toml", `${path}/starship.toml`)
 }
 
 async function emacs() {
