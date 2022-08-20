@@ -6,6 +6,7 @@
 
        :ui
        doom
+       ligatures
        modeline
        ophints
        (popup +defaults)
