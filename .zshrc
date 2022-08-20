@@ -72,12 +72,6 @@ function man {
 # Zinit
 script_source $HOME/.local/share/zinit/zinit.git/zinit.zsh
 
-# Spaceship prompt
-# zinit light denysdovhan/spaceship-prompt.git
-# readonly SPACESHIP_CHAR_SYMBOL='▶ '
-# readonly SPACESHIP_EXIT_CODE_SHOW=true
-# readonly SPACESHIP_EXIT_CODE_SYMBOL='● '
-
 # Starship prompt
 eval "$(starship init zsh)"
 
