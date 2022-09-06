@@ -31,6 +31,22 @@
   (setq zenburn-override-colors-alist '(("zenburn-bg" . "#333333")))
   (load-theme 'zenburn t))
 
+(defun config-ligatures ()
+  (setq jet-brains-mono-ligatures
+        '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
+          "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
+          "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
+          "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
+          "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
+          "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
+          ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
+          "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
+          "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
+          "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
+          "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
+  (ligature-set-ligatures 'js2-mode jet-brains-mono-ligatures)
+  (global-ligature-mode t))
+
 (defun config-current-line ()
   (global-hl-line-mode 1)
   ;; Highlight current line
@@ -151,6 +167,7 @@
 (config-clipboard)
 (config-font)
 (config-theme)
+(config-ligatures)
 (config-current-line)
 (config-whitespace)
 (config-parentheses)
