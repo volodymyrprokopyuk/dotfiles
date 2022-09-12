@@ -1,0 +1,15 @@
+set window-width 1920
+set window-height 1080
+set guioptions sv
+set adjust-open width
+set show-recent 15
+set incremental-search true
+set statusbar-page-percent true
+
+set window-title-home-tilde true
+set statusbar-home-tilde true
+set default-bg "#C6C6C3"
+set page-padding 10
+
+map [normal] <C-g> abort
+map [insert] <C-g> abort

@@ -92,6 +92,12 @@ async function psql() {
   await copyFile(".psqlrc", `${home}/.psqlrc`)
 }
 
+async function zathura() {
+  const path = `${home}/.config/zathura`
+  await mkdir(path, { recursive: true })
+  await copyFile("zathurarc", `${path}/zathurarc`)
+}
+
 for (const arg of process.argv.slice(2)) {
   switch (arg) {
     case "git": await git(); break
@@ -100,9 +106,10 @@ for (const arg of process.argv.slice(2)) {
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
     case "psql": await psql(); break
+    case "zathura": await zathura(); break
     case "all":
       await Promise.all(
-        [git(), tmux(), zsh(), emacs(), lilypond(), psql()]
+        [git(), tmux(), zsh(), emacs(), lilypond(), psql(), zathura()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }

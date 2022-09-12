@@ -210,6 +210,23 @@ Commenting
 - `C-w r` rotate windows
 - `C-x 0|1` close other / active window
 
+# Zathura
+
+- `o|O` open / in current directory
+- `R` reload
+- `q` quit
+- `C-g` cancel TODO
+- `h|j|k|l` scroll left / down / up | right
+- `J|K` next / previous page
+- `H|L` top / bottom of page
+- `gg|G|<n>G` first / last / n page
+- `a|s|d` fit page height / width / dual view
+- `r` rotate
+- `+|-|=` zoom in / out / original size
+- `F11|F5` fullscreen / presentation mode
+- `Tab|j+k|l+h` index view / down + up / expand + collapse entry
+- `/|?|n+N` search forward / backwards / next + previous match
+- `m<a>|'<a>` mark page / go to marked page
 
 ```
 Evil mode
