@@ -218,6 +218,7 @@ Commenting
 - `C-g` cancel TODO
 - `h|j|k|l` scroll left / down / up | right
 - `J|K` next / previous page
+- `C-f|b` forward / backwards page
 - `H|L` top / bottom of page
 - `gg|G|<n>G` first / last / n page
 - `a|s|d` fit page height / width / dual view
