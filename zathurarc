@@ -11,5 +11,10 @@ set statusbar-home-tilde true
 set default-bg "#C6C6C3"
 set page-padding 10
 
+set index-bg "#FFE9CF"
+set index-fg "#000000"
+set index-active-bg "#BAEFE9"
+set index-active-fg "#000000"
+
 map [normal] <C-g> abort
 map [insert] <C-g> abort
