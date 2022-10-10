@@ -46,7 +46,7 @@ function vv {
 }
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { rg --hidden --follow $@ }
-function nn { nnn }
+function nn { nnn $@ }
 function ee { emacsclient -t $@ }
 
 # Man
