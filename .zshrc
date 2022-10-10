@@ -46,15 +46,8 @@ function vv {
 }
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { rg --hidden --follow $@ }
+function nn { nnn }
 function ee { emacsclient -t $@ }
-function pp {
-  fd --type file --follow --hidden --exclude .git --color always $@ \
-  | fzf \
-  --bind \
-  ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up \
-  --preview \
-  'bat --color always --style plain --theme zenburn --tabs 4 --map-syntax conf:INI {}'
-}
 
 # Man
 function man {
