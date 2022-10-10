@@ -13,7 +13,7 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 # Install tools
 yay -S base-devel
 yay -S ttf-jetbrains-mono nerd-fonts-jetbrains-mono
-yay -S tmux zsh starship emacs xsel
+yay -S tmux zsh starship nnn emacs xsel
 yay -S fd ripgrep fzf exa bat git-delta lscolors-git mlocate zathura
 # Clone the dotfiles repository into ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
