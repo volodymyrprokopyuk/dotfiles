@@ -42,7 +42,7 @@ function ll {
 }
 function lll { ll -T $@ }
 function vv {
-  bat --style plain --theme OneHalfDark --tabs 2 --map-syntax '*.conf:INI' $@
+  bat --style plain --theme 1337 --tabs 2 --map-syntax '*.conf:INI' $@
 }
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { rg --hidden --follow $@ }
