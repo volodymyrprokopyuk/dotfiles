@@ -47,14 +47,14 @@ function vv {
 }
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { rg --hidden --follow $@ }
-# function nn { nnn -A $@ }
-function nn {
+function nnn_config {
   BLK="8B" CHR="D2" DIR="33" EXE="C5" REG="FC"
   HLNK="BF" SLNK="E3" MISS="7C" ORPH="80"
   FIFO="1A" SOCK="2F" OTH="E7"
   export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HLNK$SLNK$MISS$ORPH$FIFO$SOCK$OTH"
-  nnn -A $@
 }
+nnn_config
+function nn { nnn -A $@ }
 function ee { emacsclient -t $@ }
 
 # Man
