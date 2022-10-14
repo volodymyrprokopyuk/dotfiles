@@ -76,6 +76,20 @@ Command line editing
 - `C-x e` edit command line
 - `C-l` clear screen
 
+# nnn
+
+- `?` help
+- `.` toggle hidden files
+- `Esc` cancel operation
+- `Tab|S-Tab` create / cycle context
+- `/|A-Esc` filter / quit filter prompt / unfilter
+- `~|-` go home / last visited directory
+- `space` toggle file / directory selection
+- `a|A` select all / invert selection
+- `C-p|C-v` copy / move selected files /directories
+- `C-r` rename file / directory
+- `x` delete file /directory
+
 # Doom Emacs
 
 ```zsh

@@ -47,7 +47,14 @@ function vv {
 }
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { rg --hidden --follow $@ }
-function nn { nnn $@ }
+# function nn { nnn -A $@ }
+function nn {
+  BLK="8B" CHR="D2" DIR="33" EXE="C5" REG="FC"
+  HLNK="BF" SLNK="E3" MISS="7C" ORPH="80"
+  FIFO="1A" SOCK="2F" OTH="E7"
+  export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HLNK$SLNK$MISS$ORPH$FIFO$SOCK$OTH"
+  nnn -A $@
+}
 function ee { emacsclient -t $@ }
 
 # Man
@@ -91,10 +98,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
 
-# Nim
-path_add $HOME/.nimble/bin
-
 # Node.js
 [ -z $NVM_DIR ] && export NVM_DIR=$HOME/.nvm
 script_source /usr/share/nvm/nvm.sh
 script_source /usr/share/nvm/install-nvm-exec
+
+# Nim
+path_add $HOME/.nimble/bin
