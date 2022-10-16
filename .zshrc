@@ -103,5 +103,8 @@ path_add $HOME/.emacs.d/bin
 script_source /usr/share/nvm/nvm.sh
 script_source /usr/share/nvm/install-nvm-exec
 
+# Lilypond
+path_add $HOME/.lilypond/bin
+
 # Nim
 path_add $HOME/.nimble/bin
