@@ -82,7 +82,7 @@ Command line editing
 - `.` toggle hidden files
 - `Esc` cancel operation
 - `Tab|S-Tab` create / cycle context
-- `/|A-Esc` filter / quit filter prompt / unfilter
+- `/|Esc|A-Esc` filter / keep filtered / remove filter
 - `~|-` go home / last visited directory
 - `space` toggle file / directory selection
 - `a|A` select all / invert selection
