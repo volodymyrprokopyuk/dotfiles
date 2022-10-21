@@ -78,17 +78,38 @@ Command line editing
 
 # nnn
 
+Presentation
+
 - `?` help
 - `.` toggle hidden files
-- `Esc` cancel operation
+- `d` toggle details
+
+Context
+
 - `Tab|S-Tab` create / cycle context
-- `/|Esc|A-Esc` filter / keep filtered / remove filter
+- `q` quit context
+
+Navigation
+
+- `h|j|k|l` parent / down / up / open
+- `g|G` top / end
 - `~|-` go home / last visited directory
-- `space` toggle file / directory selection
+
+Filtering
+
+- `/|Esc|A-Esc` filter / keep filtered / remove filter
+
+Selection
+
+- `space` toggle current file / directory selection
+- `m-m|mm` select range / clear selection
 - `a|A` select all / invert selection
-- `C-p|C-v` copy / move selected files /directories
+
+Manipulation
+
+- `p|v|x` copy / move / delete selected files / directories
 - `C-r` rename file / directory
-- `x` delete file /directory
+- `nf|nd` create new file / directory
 
 # Doom Emacs
 
