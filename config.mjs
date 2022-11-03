@@ -35,7 +35,7 @@ async function git() {
     git config --global credential.helper "cache --timeout=86400"
     git config --global core.quotepath "false"
     git config --global core.pager "delta"
-    git config --global delta.syntax-theme "OneHalfDark"
+    git config --global delta.syntax-theme "1337"
     git config --global alias.s "!git status -sb && git stash list"
     git config --global alias.d "diff"
     git config --global alias.ds "diff --stat"
