@@ -43,7 +43,7 @@ function vv {
   bat --style plain --theme 1337 --tabs 2 \
     --map-syntax '*.conf:INI' --map-syntax '*.lys:TeX' $@
 }
-function ff { fd --follow --hidden --exclude .git $@ }
+function ff { fd --hidden --follow --no-ignore $@ }
 function gg { rg --hidden --follow $@ }
 function ee { emacsclient -t $@ }
 
@@ -81,7 +81,7 @@ bindkey '^[,' autosuggest-accept
 # Fzf
 script_source /usr/share/fzf/key-bindings.zsh
 script_source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND="fd --follow --hidden --exclude .git --exclude node_modules --no-ignore --color always"
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --no-ignore --color always"
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_PREVIEW_COMMAND="bat --style plain --theme 1337 --tabs 2 --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"

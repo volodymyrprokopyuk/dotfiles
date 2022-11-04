@@ -88,14 +88,19 @@ async function lilypond() {
   Promise.all(files.map(file => download(`${url}/${file}`, `${path}/${file}`)))
 }
 
-async function psql() {
-  await copyFile(".psqlrc", `${home}/.psqlrc`)
-}
-
 async function zathura() {
   const path = `${home}/.config/zathura`
   await mkdir(path, { recursive: true })
   await copyFile("zathurarc", `${path}/zathurarc`)
+}
+
+async function tools() {
+  // fd
+  const path = `${home}/.config/fd`
+  await mkdir(path, { recursive: true })
+  await copyFile(".fdignore", `${path}/ignore`)
+  // psql
+  await copyFile(".psqlrc", `${home}/.psqlrc`)
 }
 
 for (const arg of process.argv.slice(2)) {
@@ -105,11 +110,11 @@ for (const arg of process.argv.slice(2)) {
     case "zsh": await zsh(); break
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
-    case "psql": await psql(); break
     case "zathura": await zathura(); break
+    case "tools": await tools(); break
     case "all":
       await Promise.all(
-        [git(), tmux(), zsh(), emacs(), lilypond(), psql(), zathura()]
+        [git(), tmux(), zsh(), emacs(), lilypond(), zathura(), tools()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }
