@@ -13,7 +13,7 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 # Install tools
 yay -S base-devel
 yay -S ttf-jetbrains-mono nerd-fonts-jetbrains-mono
-yay -S tmux zsh starship nnn emacs xsel
+yay -S tmux zsh starship emacs xsel
 yay -S fd ripgrep fzf exa bat git-delta lscolors-git mlocate btop zathura
 # Clone the dotfiles repository into ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
@@ -76,40 +76,10 @@ Command line editing
 - `C-x e` edit command line
 - `C-l` clear screen
 
-# nnn
-
-Presentation
-
-- `?` help
-- `.` toggle hidden files
-- `d` toggle details
-
-Context
-
-- `Tab|S-Tab` create / cycle context
-- `q` quit context
-
-Navigation
-
-- `h|j|k|l` parent / down / up / open
-- `g|G` top / end
-- `~|-` go home / last visited directory
-
-Filtering
-
-- `/|Esc|A-Esc` filter / keep filtered / remove filter
-
-Selection
-
-- `space` toggle current file / directory selection
-- `m-m|mm` select range / clear selection
-- `a|A` select all / invert selection
-
-Manipulation
-
-- `p|v|x` copy / move / delete selected files / directories
-- `C-r` rename file / directory
-- `nf|nd` create new file / directory
+Fzf
+- `C-r` search command history
+- `A-c` change directory
+- `C-t` preview and complete current command
 
 # Doom Emacs
 

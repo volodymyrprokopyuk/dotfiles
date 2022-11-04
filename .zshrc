@@ -47,14 +47,6 @@ function vv {
 }
 function ff { fd --follow --hidden --exclude .git $@ }
 function gg { rg --hidden --follow $@ }
-function nnn_config {
-  BLK="8B" CHR="D2" DIR="33" EXE="C5" REG="FC"
-  HLNK="BF" SLNK="E3" MISS="7C" ORPH="80"
-  FIFO="1A" SOCK="2F" OTH="E7"
-  export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HLNK$SLNK$MISS$ORPH$FIFO$SOCK$OTH"
-}
-nnn_config
-function nn { nnn -A $@ }
 function ee { emacsclient -t $@ }
 
 # Man
@@ -89,18 +81,15 @@ bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
 
 # Fzf
-# C-r search command history
-# A-c change directory
 script_source /usr/share/fzf/key-bindings.zsh
 script_source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd --follow --hidden --exclude .git --exclude node_modules --no-ignore --color always"
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# C-t preview and complete current command
 export FZF_PREVIEW_COMMAND="bat --style plain --theme 1337 --tabs 2 --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
 export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
 
-# C-o opne file with xdg-open
+# C-o open file with xdg-open
 function fzf-open-file {
   local file
   { file="$(fzf)" && [ -f "$file" ] && xdg-open "$file" &> /dev/null } </dev/tty
