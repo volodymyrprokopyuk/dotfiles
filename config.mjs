@@ -96,9 +96,13 @@ async function zathura() {
 
 async function tools() {
   // fd
-  const path = `${home}/.config/fd`
+  let path = `${home}/.config/fd`
   await mkdir(path, { recursive: true })
   await copyFile(".fdignore", `${path}/ignore`)
+  // bat
+  path = `${home}/.config/bat`
+  await mkdir(path, { recursive: true })
+  await copyFile("batconfig", `${path}/config`)
   // psql
   await copyFile(".psqlrc", `${home}/.psqlrc`)
 }

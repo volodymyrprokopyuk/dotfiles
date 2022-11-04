@@ -39,10 +39,7 @@ function ll {
     --git --ignore-glob='*~|.git|node_modules' $@
 }
 function lll { ll --tree $@ }
-function vv {
-  bat --style plain --theme 1337 --tabs 2 \
-    --map-syntax '*.conf:INI' --map-syntax '*.lys:TeX' $@
-}
+function vv { bat $@ }
 function ff { fd --hidden --follow --no-ignore $@ }
 function gg { rg --hidden --follow $@ }
 function ee { emacsclient -t $@ }
@@ -84,7 +81,7 @@ script_source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --no-ignore --color always"
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_PREVIEW_COMMAND="bat --style plain --theme 1337 --tabs 2 --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
+export FZF_PREVIEW_COMMAND="bat --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
 export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
 
 # C-o open file with xdg-open
