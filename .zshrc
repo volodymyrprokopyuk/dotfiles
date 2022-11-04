@@ -3,12 +3,10 @@ export EDITOR='emacsclient -t'
 export ALTERNATE_EDITOR='emacsclient -t'
 export PAGER=less
 export LESS='-RF'
+which vivid &> /dev/null && export LS_COLORS=$(vivid generate snazzy)
 
 function path_add { [[ -d $1 ]] && export PATH=$1:$PATH }
 function script_source { [[ -s $1 ]] && [[ $- = *i* ]] && source $1 }
-
-# ls colors
-script_source /usr/share/LS_COLORS/dircolors.sh
 
 # Tmux
 [[ $- = *i* ]] && [[ -z $TMUX ]] && \
