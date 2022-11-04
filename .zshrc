@@ -40,7 +40,7 @@ function ll {
   exa --all --long --sort=type --color-scale \
     --git --ignore-glob='*~|.git|node_modules' $@
 }
-function lll { ll -T $@ }
+function lll { ll --tree $@ }
 function vv {
   bat --style plain --theme 1337 --tabs 2 \
     --map-syntax '*.conf:INI' --map-syntax '*.lys:TeX' $@
@@ -90,13 +90,15 @@ bindkey '^[,' autosuggest-accept
 
 # Fzf
 # C-r search command history
-# C-t complete current command
 # A-c change directory
 script_source /usr/share/fzf/key-bindings.zsh
 script_source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND='fd --follow --hidden --exclude .git --exclude node_modules --no-ignore --color always'
+export FZF_DEFAULT_COMMAND="fd --follow --hidden --exclude .git --exclude node_modules --no-ignore --color always"
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# C-t preview and complete current command
+export FZF_PREVIEW_COMMAND="bat --style plain --theme 1337 --tabs 2 --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
+export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
 
 # C-o opne file with xdg-open
 function fzf-open-file {
