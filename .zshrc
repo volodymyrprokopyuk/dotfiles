@@ -83,6 +83,7 @@ export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_PREVIEW_COMMAND="bat --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
 export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --no-ignore --color always"
 
 # C-o open file with xdg-open
 function fzf-open-file {
