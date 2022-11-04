@@ -89,11 +89,22 @@ bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
 
 # Fzf
+# C-r search command history
+# C-t complete current command
+# A-c change directory
 script_source /usr/share/fzf/key-bindings.zsh
 script_source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND='fd --follow --hidden --exclude .git --color always'
+export FZF_DEFAULT_COMMAND='fd --follow --hidden --exclude .git --exclude node_modules --no-ignore --color always'
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# C-o opne file with xdg-open
+function fzf-open-file {
+  local file
+  { file="$(fzf)" && [ -f "$file" ] && xdg-open "$file" &> /dev/null } </dev/tty
+}
+zle -N fzf-open-file
+bindkey '^o' fzf-open-file
 
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
