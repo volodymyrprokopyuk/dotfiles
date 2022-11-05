@@ -40,7 +40,10 @@ function ll {
 }
 function lll { ll --tree $@ }
 function vv { bat $@ }
-function ff { fd --hidden --follow --no-ignore $@ }
+function ff {
+  fd --hidden --follow --no-ignore \
+  --exclude .git --exclude node_modules $@
+}
 function gg { rg --hidden --follow $@ }
 function ee { emacsclient -t $@ }
 
