@@ -96,7 +96,7 @@ async function zathura() {
 
 async function tools() {
   // bat
-  path = `${home}/.config/bat`
+  const path = `${home}/.config/bat`
   await mkdir(path, { recursive: true })
   await copyFile("batconfig", `${path}/config`)
   // psql
