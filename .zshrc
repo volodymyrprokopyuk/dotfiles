@@ -81,12 +81,13 @@ bindkey '^[,' autosuggest-accept
 # Fzf
 script_source /usr/share/fzf/key-bindings.zsh
 script_source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND="fd --hidden --follow --no-ignore --color always"
+FZF_PREVIEW="bat --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
+FZF_FIND="fd --hidden --follow --no-ignore --exclude .git --exclude node_modules --color always"
+export FZF_DEFAULT_COMMAND="$FZF_FIND"
 export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_PREVIEW_COMMAND="bat --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
-export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
-export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --no-ignore --color always"
+export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW) 2> /dev/null'"
+export FZF_ALT_C_COMMAND="$FZF_FIND --type d"
 
 # C-o open file with xdg-open
 function fzf-open-file {
@@ -104,7 +105,7 @@ path_add $HOME/.emacs.d/bin
 script_source /usr/share/nvm/nvm.sh
 script_source /usr/share/nvm/install-nvm-exec
 
-# Lilypond
+# LilyPond
 path_add $HOME/.lilypond/bin
 
 # Nim
