@@ -59,6 +59,12 @@ async function git() {
   await writeFile(`${home}/.gitignore`, gitignore.join("\n"))
 }
 
+async function wezterm() {
+  const path = `${home}/.config/wezterm`
+  await mkdir(path, { recursive: true })
+  await copyFile("wezterm.lua", `${path}/wezterm.lua`)
+}
+
 async function tmux() {
   await copyFile(".tmux.conf", `${home}/.tmux.conf`)
 }
@@ -106,6 +112,7 @@ async function tools() {
 for (const arg of process.argv.slice(2)) {
   switch (arg) {
     case "git": await git(); break
+    case "wezterm": await wezterm(); break
     case "tmux": await tmux(); break
     case "zsh": await zsh(); break
     case "emacs": await emacs(); break

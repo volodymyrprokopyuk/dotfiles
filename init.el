@@ -32,6 +32,7 @@
        javascript
        web
        emacs-lisp
+       lua
 
        :config
        (default +bindings +smartparens))

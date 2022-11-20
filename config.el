@@ -28,7 +28,7 @@
   (setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'light)))
 
 (defun config-theme ()
-  (setq zenburn-override-colors-alist '(("zenburn-bg" . "#333333")))
+  (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523")))
   (load-theme 'zenburn t))
 
 (defun config-ligatures ()
@@ -50,9 +50,13 @@
 (defun config-current-line ()
   (global-hl-line-mode 1)
   ;; Highlight current line
-  (set-face-attribute 'hl-line nil :foreground nil :background "#262626")
+  (set-face-attribute 'hl-line nil :foreground nil :background "#24190E")
   ;; Highlight visual selection
-  (set-face-attribute 'region nil :foreground nil :background "#801515"))
+  (set-face-attribute 'region nil :foreground nil :background "#801515")
+  ;; Highlight line numbers
+  (set-face-attribute 'line-number nil :foreground nil :background "#32312E")
+  (set-face-attribute 'line-number-current-line nil :foreground "#E2A665"
+                      :background nil :weight 'bold))
 
 (defun config-whitespace ()
   ;; Enable global whitespace mode
