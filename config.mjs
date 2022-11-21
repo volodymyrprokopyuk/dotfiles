@@ -38,7 +38,7 @@ async function git() {
     git config --global delta.syntax-theme "1337"
     git config --global delta.minus-style 'syntax "#5B0500"'
     git config --global delta.minus-emph-style 'syntax "#B70900"'
-    git config --global delta.plus-style 'syntax "#004200"'
+    git config --global delta.plus-style 'syntax "#234F23"'
     git config --global delta.plus-emph-style 'syntax "#008400"'
     git config --global alias.s "!git status -sb && git stash list"
     git config --global alias.d "diff"

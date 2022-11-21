@@ -17,6 +17,10 @@ return {
   -- color_scheme = "Vacuous 2 (terminal.sexy)",
   -- color_scheme = "VisiBone (terminal.sexy)",
   color_scheme = "VSCodeDark+ (Gogh)",
+  colors = {
+    -- Transparent cursor
+    cursor_fg = "rgba(0,0,0,1)",
+  },
   keys = {
     -- Toggle full screen
     { key = "F11", action = wezterm.action.ToggleFullScreen },
