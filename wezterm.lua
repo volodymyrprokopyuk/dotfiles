@@ -6,7 +6,7 @@ return {
   -- color_scheme = "zenwritten_dark",
   -- color_scheme = "wilmersdorf",
   -- color_scheme = "Wombat",
-  color_scheme = "Vacuous 2 (terminal.sexy)",
+  -- color_scheme = "Vacuous 2 (terminal.sexy)",
   -- color_scheme = "VisiBone (terminal.sexy)",
-  -- color_scheme = "VSCodeDark+ (Gogh)",
+  color_scheme = "VSCodeDark+ (Gogh)",
 }
