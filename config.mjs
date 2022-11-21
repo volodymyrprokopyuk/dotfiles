@@ -36,12 +36,13 @@ async function git() {
     git config --global core.quotepath "false"
     git config --global core.pager "delta"
     git config --global delta.syntax-theme "1337"
+    git config --global delta.minus-style 'syntax "#5B0500"'
+    git config --global delta.minus-emph-style 'syntax "#B70900"'
+    git config --global delta.plus-style 'syntax "#004200"'
+    git config --global delta.plus-emph-style 'syntax "#008400"'
     git config --global alias.s "!git status -sb && git stash list"
     git config --global alias.d "diff"
-    git config --global alias.ds "diff --stat"
-    git config --global alias.dc "diff --cached"
-    git config --global alias.dcs "diff --cached --stat"
-    git config --global alias.dch "diff --check"
+    git config --global alias.ds "diff --staged"
     git config --global alias.l 'log --all --graph --abbrev-commit --pretty=format:"%C(red)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(yellow)%s%C(reset) %C(green)<%an>%C(reset) %C(blue)(%cr)%C(reset)"'
     git config --global alias.lf 'log -p -M --follow --abbrev-commit --pretty=format:"%C(bold blue)commit%C(reset) %C(red)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(yellow)%s%C(reset) %C(green)<%an>%C(reset) %C(blue)(%cr)%C(reset)\\n"'
     git config --global alias.lsf 'log -p -M --follow --abbrev-commit --pretty=format:"%C(bold blue)commit%C(reset) %C(red)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(yellow)%s%C(reset) %C(green)<%an>%C(reset) %C(blue)(%cr)%C(reset)\\n" -S'
@@ -51,7 +52,7 @@ async function git() {
     git config --global alias.bnm "branch --no-merged"
     git config --global alias.ch "checkout"
     git config --global alias.a "!git add -A && git s"
-    git config --global alias.cm "!git dch && git commit"
+    git config --global alias.cm "!git diff --check && git commit"
   `
   await removeFile(`${home}/.gitconfig`)
   for (const cmd of cmds.split("\n")) { await exec(cmd) }
