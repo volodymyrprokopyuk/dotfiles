@@ -25,7 +25,9 @@
       (setq interprogram-paste-function 'xsel-paste-function))))
 
 (defun config-font ()
-  (setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'light)))
+  (setq doom-font
+        (font-spec :family "JetBrainsMono Nerd Font Mono"
+                   :size 18 :weight 'light)))
 
 (defun config-theme ()
   (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523")))
