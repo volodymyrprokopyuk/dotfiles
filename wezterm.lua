@@ -24,6 +24,7 @@ return {
     -- Transparent cursor
     cursor_fg = "rgba(0,0,0,1)",
   },
+  scrollback_lines = 10000,
   -- Key bindings
   disable_default_key_bindings = true,
   leader = { key = " ", mods = "ALT", timeout_milliseconds = 1000 },
@@ -56,5 +57,10 @@ return {
     { key = "l", mods = "LEADER", action = action.ActivatePaneDirection "Right" },
     { key = "q", mods = "LEADER",
       action = action.CloseCurrentPane { confirm = true } },
+    -- Scrolling
+    { key = "f", mods = "CTRL", action = action.ScrollByPage(0.5) },
+    { key = "b", mods = "CTRL", action = action.ScrollByPage(-0.5) },
+    { key = "e", mods = "CTRL", action = action.ScrollByLine(5) },
+    { key = "y", mods = "CTRL", action = action.ScrollByLine(-5) },
   },
 }
