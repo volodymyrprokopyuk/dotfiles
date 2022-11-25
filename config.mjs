@@ -36,10 +36,10 @@ async function git() {
     git config --global core.quotepath "false"
     git config --global core.pager "delta"
     git config --global delta.syntax-theme "1337"
-    git config --global delta.minus-style 'syntax "#5B0500"'
-    git config --global delta.minus-emph-style 'syntax "#B70900"'
-    git config --global delta.plus-style 'syntax "#234F23"'
-    git config --global delta.plus-emph-style 'syntax "#008400"'
+    git config --global delta.minus-style 'syntax "#480000"'
+    git config --global delta.minus-emph-style 'syntax "#8F0000"'
+    git config --global delta.plus-style 'syntax "#002C00"'
+    git config --global delta.plus-emph-style 'syntax "#006700"'
     git config --global alias.s "!git status -sb && git stash list"
     git config --global alias.d "diff"
     git config --global alias.ds "diff --staged"
