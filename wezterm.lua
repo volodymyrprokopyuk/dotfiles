@@ -1,4 +1,5 @@
 local wezterm = require "wezterm"
+local action = wezterm.action
 
 -- Maximize window on start up
 wezterm.on("gui-startup", function(cmd)
@@ -7,6 +8,8 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 return {
+  -- General
+  hide_tab_bar_if_only_one_tab = true,
   -- Font
   font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Light" }),
   font_size = 10,
@@ -21,8 +24,37 @@ return {
     -- Transparent cursor
     cursor_fg = "rgba(0,0,0,1)",
   },
+  -- Key bindings
+  disable_default_key_bindings = true,
+  leader = { key = " ", mods = "ALT", timeout_milliseconds = 1000 },
   keys = {
     -- Toggle full screen
-    { key = "F11", action = wezterm.action.ToggleFullScreen },
+    { key = "F11", action = action.ToggleFullScreen },
+    -- Font size
+    { key = "+", mods = "LEADER|SHIFT", action = action.IncreaseFontSize },
+    { key = "-", mods = "LEADER", action = action.DecreaseFontSize },
+    { key = "0", mods = "LEADER", action = action.ResetFontSize },
+    -- Tabs
+    { key = "n", mods = "LEADER|SHIFT", action = action.SpawnTab "CurrentPaneDomain" },
+    { key = "}", mods = "LEADER|SHIFT", action = action.ActivateTabRelative(1) },
+    { key = "{", mods = "LEADER|SHIFT", action = action.ActivateTabRelative(-1) },
+    { key = "o", mods = "LEADER|SHIFT", action = action.ActivateLastTab },
+    { key = "t", mods = "LEADER|SHIFT", action = action.ShowTabNavigator },
+    { key = "q", mods = "LEADER|SHIFT",
+      action = action.CloseCurrentTab { confirm = true }, },
+    -- Panes
+    { key = "v", mods = "LEADER",
+      action = action.SplitHorizontal { domain = "CurrentPaneDomain" } },
+    { key = "s", mods = "LEADER",
+      action = action.SplitVertical { domain = "CurrentPaneDomain" } },
+    { key = "z", mods = "LEADER", action = action.TogglePaneZoomState },
+    { key = "r", mods = "LEADER", action = action.RotatePanes "Clockwise" },
+    { key = "g", mods = "LEADER", action = action.PaneSelect },
+    { key = "h", mods = "LEADER", action = action.ActivatePaneDirection "Left" },
+    { key = "j", mods = "LEADER", action = action.ActivatePaneDirection "Down" },
+    { key = "k", mods = "LEADER", action = action.ActivatePaneDirection "Up" },
+    { key = "l", mods = "LEADER", action = action.ActivatePaneDirection "Right" },
+    { key = "q", mods = "LEADER",
+      action = action.CloseCurrentPane { confirm = true }, },
   },
 }
