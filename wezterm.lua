@@ -41,7 +41,7 @@ return {
     { key = "o", mods = "LEADER|SHIFT", action = action.ActivateLastTab },
     { key = "t", mods = "LEADER|SHIFT", action = action.ShowTabNavigator },
     { key = "q", mods = "LEADER|SHIFT",
-      action = action.CloseCurrentTab { confirm = true }, },
+      action = action.CloseCurrentTab { confirm = true } },
     -- Panes
     { key = "v", mods = "LEADER",
       action = action.SplitHorizontal { domain = "CurrentPaneDomain" } },
@@ -55,6 +55,6 @@ return {
     { key = "k", mods = "LEADER", action = action.ActivatePaneDirection "Up" },
     { key = "l", mods = "LEADER", action = action.ActivatePaneDirection "Right" },
     { key = "q", mods = "LEADER",
-      action = action.CloseCurrentPane { confirm = true }, },
+      action = action.CloseCurrentPane { confirm = true } },
   },
 }
