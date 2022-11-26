@@ -62,5 +62,6 @@ return {
     { key = "b", mods = "CTRL", action = action.ScrollByPage(-0.5) },
     { key = "e", mods = "CTRL", action = action.ScrollByLine(5) },
     { key = "y", mods = "CTRL", action = action.ScrollByLine(-5) },
+    { key = "g", mods = "SHIFT", action = action.ScrollToBottom },
   },
 }
