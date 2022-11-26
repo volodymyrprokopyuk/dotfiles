@@ -30,7 +30,7 @@ return {
   leader = { key = " ", mods = "ALT", timeout_milliseconds = 1000 },
   keys = {
     -- Toggle full screen
-    { key = "F11", action = action.ToggleFullScreen },
+    { key = "F11", mods = "NONE", action = action.ToggleFullScreen },
     -- Font size
     { key = "+", mods = "LEADER|SHIFT", action = action.IncreaseFontSize },
     { key = "-", mods = "LEADER", action = action.DecreaseFontSize },
@@ -57,11 +57,24 @@ return {
     { key = "l", mods = "LEADER", action = action.ActivatePaneDirection "Right" },
     { key = "q", mods = "LEADER",
       action = action.CloseCurrentPane { confirm = true } },
-    -- Scrolling
+    -- Scroll
     { key = "f", mods = "CTRL", action = action.ScrollByPage(0.5) },
     { key = "b", mods = "CTRL", action = action.ScrollByPage(-0.5) },
     { key = "e", mods = "CTRL", action = action.ScrollByLine(5) },
     { key = "y", mods = "CTRL", action = action.ScrollByLine(-5) },
     { key = "g", mods = "SHIFT", action = action.ScrollToBottom },
+    -- Search
+    { key = "/", mods = "LEADER",
+      action = action.Search "CurrentSelectionOrEmptyString" },
+  },
+  key_tables = {
+    search_mode = {
+      { key = "Enter", mods = "NONE", action = action.CopyMode "PriorMatch" },
+      { key = "k", mods = "ALT", action = action.CopyMode "PriorMatch" },
+      { key = "j", mods = "ALT", action = action.CopyMode "NextMatch" },
+      { key = "m", mods = "CTRL", action = action.CopyMode "CycleMatchType" },
+      { key = "c", mods = "CTRL", action = action.CopyMode "ClearPattern" },
+      { key = "g", mods = "CTRL", action = action.CopyMode "Close" },
+    },
   },
 }
