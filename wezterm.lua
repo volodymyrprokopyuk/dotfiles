@@ -23,7 +23,13 @@ return {
   colors = {
     -- Transparent cursor
     cursor_fg = "rgba(0,0,0,1)",
+    -- Search
+    copy_mode_active_highlight_fg = { Color = "#FFDF85" },
+    copy_mode_active_highlight_bg = { Color = "#EF1100" },
+    copy_mode_inactive_highlight_fg = { Color = "#FFDF85" },
+    copy_mode_inactive_highlight_bg = { Color = "007915" },
   },
+  inactive_pane_hsb = { daturation = 0.7, brightness = 0.7 },
   scrollback_lines = 10000,
   -- Key bindings
   disable_default_key_bindings = true,
