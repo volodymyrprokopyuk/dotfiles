@@ -27,7 +27,12 @@ return {
     copy_mode_active_highlight_fg = { Color = "#FFDF85" },
     copy_mode_active_highlight_bg = { Color = "#EF1100" },
     copy_mode_inactive_highlight_fg = { Color = "#FFDF85" },
-    copy_mode_inactive_highlight_bg = { Color = "007915" },
+    copy_mode_inactive_highlight_bg = { Color = "#007915" },
+    -- Quick select
+    quick_select_label_fg = { Color = "#FFDF85" },
+    quick_select_label_bg = { Color = "#EF1100" },
+    quick_select_match_fg = { Color = "#FFDF85" },
+    quick_select_match_bg = { Color = "#007915" },
   },
   inactive_pane_hsb = { daturation = 0.7, brightness = 0.7 },
   scrollback_lines = 10000,
@@ -72,6 +77,8 @@ return {
     -- Search
     { key = "/", mods = "LEADER",
       action = action.Search "CurrentSelectionOrEmptyString" },
+    -- Quick select
+    { key = ".", mods = "LEADER", action = action.QuickSelect },
   },
   key_tables = {
     search_mode = {
