@@ -66,10 +66,6 @@ async function wezterm() {
   await copyFile("wezterm.lua", `${path}/wezterm.lua`)
 }
 
-async function tmux() {
-  await copyFile(".tmux.conf", `${home}/.tmux.conf`)
-}
-
 async function zsh() {
   await copyFile(".zshrc", `${home}/.zshrc`)
   const path = `${home}/.config`
@@ -114,7 +110,6 @@ for (const arg of process.argv.slice(2)) {
   switch (arg) {
     case "git": await git(); break
     case "wezterm": await wezterm(); break
-    case "tmux": await tmux(); break
     case "zsh": await zsh(); break
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
@@ -122,7 +117,7 @@ for (const arg of process.argv.slice(2)) {
     case "tools": await tools(); break
     case "all":
       await Promise.all(
-        [git(), tmux(), zsh(), emacs(), lilypond(), zathura(), tools()]
+        [git(), wezterm(), zsh(), emacs(), lilypond(), zathura(), tools()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }

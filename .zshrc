@@ -8,10 +8,6 @@ which vivid &> /dev/null && export LS_COLORS=$(vivid generate snazzy)
 function path_add { [[ -d $1 ]] && export PATH=$1:$PATH }
 function script_source { [[ -s $1 ]] && [[ $- = *i* ]] && source $1 }
 
-# Tmux
-# [[ $- = *i* ]] && [[ -z $TMUX ]] && \
-#   (tmux -2 attach-session -t $USER || tmux -2 new-session -s $USER)
-
 # Zsh history
 readonly HISTFILE=~/.histfile
 readonly HISTSIZE=10000
