@@ -71,7 +71,7 @@ zinit update # packages
 Command line editing
 
 - `C-a|e` beginning / end of line
-- `A-f|b` forward / backwards word
+- `A-f|b` forward / backwrd word
 - `C-w|u` delete backwords word / line
 - `C-x e` edit command line
 - `C-l` clear screen
@@ -92,8 +92,9 @@ doom upgrade # doom and packages
 
 ## Scrolling
 
-- `C-y|e` scroll down / up
-- `C-f|b` forward / backwards half screen
+- `C-y|e` scroll one line down / up
+- `C-f|b` scroll full screen forward / backward
+- `C-d|u` scroll half screen down / up
 - `zz` current line in the middle of the screen
 - `H|M|L` move cursor to high / middle / low of the screen
 
@@ -126,21 +127,21 @@ Visual mode
 
 ## Navigation (sniping)
 
-- `f|F` current line 1-char snipe forward / backwards
-- `t|T` current line 1-char exclusive snipe forward / backwards
-- `s|S` current line 2-char snipe forward / backwards
-- `;|,` repeat last snipe forward / backwards
+- `f|F` current line 1-char snipe forward / backwrd
+- `t|T` current line 1-char exclusive snipe forward / backwrd
+- `s|S` current line 2-char snipe forward / backwrd
+- `;|,` repeat last snipe forward / backwrd
 - `g s s` visible screen 2-char snipe
 - `g s /` visible screen timer snipe
-- `g;|,` jump to last modification backwards / forward (change list)
-- `C-o|i` jump to last location  backwards / forward (jump list)
+- `g;|,` jump to last modification backwrd / forward (change list)
+- `C-o|i` jump to last location  backwrd / forward (jump list)
 - `` m|'|`{a-z} `` set mark / jump to mark line / column
 
 ## Search
 
-- `*|#` search word under cursor forward / backwards
-- `/|?` incremental search forward / backwards
-- `n|N` repeat last search forward / backwards
+- `*|#` search word under cursor forward / backwrd
+- `/|?` incremental search forward / backwrd
+- `n|N` repeat last search forward / backwrd
 - `:s/pattern/replace/gc` substitute pattern with replace (global, confirm)
 - `&` repeat last substitution on the current line
 - `SPC s s` search buffer
@@ -149,7 +150,7 @@ Visual mode
 - `SPC SPC` find file in project (git)
 - `SPC .` find file in directory (no git)
 - `SPC s f` locate file in system
-- `q:|/|? j|k` query recent command line / forward / backwards search
+- `q:|/|? j|k` query recent command line / forward / backwrd search
 
 ## Editing
 
@@ -223,7 +224,7 @@ C-SPC trigger completion window
 M-q format width of the selected text
 Ctrl-y paste into the mini buffer
 Motions within a buffer
-  Word/backwards/end: w/W, b/B, e/E, ge/gE
+  Word/backwrd/end: w/W, b/B, e/E, ge/gE
   Beginning/end of line: 0, ^, $,
   Search single char in current line: f/F, t/T -> ;/,
   Search regexp in a buffer: /?, */# -> n/N
@@ -245,8 +246,8 @@ Shift-r (replace mode: . A Shift-r , a)
 q: (query and edit ex command history)
 q/ (query and edit search history)
 Insert mode/command line mode
-  Alt-b, Alt-f (backwards, forward word)
-  Ctrl-w (delete word backwards)
+  Alt-b, Alt-f (backwrd, forward word)
+  Ctrl-w (delete word backwrd)
   Ctrl-r "/0 (paste unnamed/yank register)
 Visual mode (should only be used when normal mode standard motions are not enough)
   o (other end of selection)
@@ -269,7 +270,7 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `C-g` cancel TODO
 - `h|j|k|l` scroll left / down / up | right
 - `J|K` next / previous page
-- `C-f|b` forward / backwards page
+- `C-f|b` forward / backwrd page
 - `H|L` top / bottom of page
 - `gg|G|<n>G` first / last / n page
 - `a|s|d` fit page height / width / dual view
@@ -277,7 +278,7 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `+|-|=` zoom in / out / original size
 - `F11|F5` fullscreen / presentation mode
 - `Tab|j+k|l+h` index view / down + up / expand + collapse entry
-- `/|?|n+N` search forward / backwards / next + previous match
+- `/|?|n+N` search forward / backwrd / next + previous match
 - `m<a>|'<a>` mark page / go to marked page
 - `convert *.jpg +compress out.pdf`
 
@@ -285,7 +286,7 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 
 ## Navigation
 
-- `C-[|]` history backwards / forward
+- `C-[|]` history backwrd / forward
 - `C-R|C-F5` reload page / override cache
 
 # Nim environment
