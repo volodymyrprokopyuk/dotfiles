@@ -30,12 +30,12 @@ return {
     copy_mode_inactive_highlight_bg = { Color = "#007915" },
     -- Copy
     selection_fg = "#FFDF85",
-    selection_bg = "#EF1100",
+    selection_bg = "#480000",
     -- Quick select
     quick_select_label_fg = { Color = "#FFDF85" },
     quick_select_label_bg = { Color = "#EF1100" },
     quick_select_match_fg = { Color = "#FFDF85" },
-    quick_select_match_bg = { Color = "#007915" },
+    quick_select_match_bg = { Color = "#480000" },
   },
   inactive_pane_hsb = { daturation = 0.7, brightness = 0.7 },
   scrollback_lines = 10000,
