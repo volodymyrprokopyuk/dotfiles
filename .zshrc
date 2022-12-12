@@ -86,12 +86,19 @@ export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW) 2> /dev/null'"
 export FZF_ALT_C_COMMAND="$FZF_FIND --type d"
 
 # C-o open file with xdg-open
-function fzf-open-file {
+function fzf_open_file {
   local file
   { file="$(fzf)" && [ -f "$file" ] && xdg-open "$file" &> /dev/null } </dev/tty
 }
-zle -N fzf-open-file
-bindkey '^o' fzf-open-file
+zle -N fzf_open_file
+bindkey '^o' fzf_open_file
+
+# C-S-o open random file with xdg-open
+function random_open_file {
+  xdg-open "$(fd -t f . | shuf -n 1)" &> /dev/null
+}
+zle -N random_open_file
+bindkey '^x' random_open_file
 
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
