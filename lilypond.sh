@@ -6,8 +6,8 @@
 set -eu
 
 LP_HOME=$HOME/.lilypond
-LP_URL=https://lilypond.org/download/source/v2.23
-LP_VERSION=2.23.81
+LP_URL=https://lilypond.org/download/source/v2.24
+LP_VERSION=2.24.0
 
 mkdir -p $LP_HOME && cd $LP_HOME
 curl $LP_URL/lilypond-$LP_VERSION.tar.gz | tar -xz
