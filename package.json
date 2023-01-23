@@ -1,0 +1,16 @@
+{
+  "name": "dotfiles",
+  "version": "0.1.0",
+  "description": "Configuration files",
+  "main": "config.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volodymyrprokopyuk/dotfiles.git"
+  },
+  "author": "Volodymyr Prokopyuk",
+  "license": "ISC",
+  "dependencies": {
+    "zx": "^7.1.1"
+  }
+}
