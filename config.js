@@ -1,23 +1,26 @@
 #!/usr/bin/env node
 
-import { argv, $, os, fs, fetch } from "zx"
+import { promisify } from "util"
+import { pipeline as pipelineCb } from "stream"
+const pipeline = promisify(pipelineCb)
+import { homedir } from "os"
 import { createWriteStream } from "fs"
 import { copyFile, writeFile } from "fs/promises"
-const home = os.homedir()
+import { mkdirp, remove } from "fs-extra"
+import fetch from "node-fetch"
+import { argv, $ } from "zx"
+
+$.verbose = false
+const home = homedir()
 const rawGitHub = "https://raw.githubusercontent.com"
 
 async function GET(url, path) {
   const { body } = await fetch(url)
-  const ws = createWriteStream(path)
-  return new Promise((resolve, reject) => {
-    body.on("error", e => { fs.remove(path); reject(e) })
-    body.pipe(ws)
-    ws.on("finish", () => { ws.close(); resolve() })
-  })
+  return await pipeline(body, createWriteStream(path))
 }
 
 async function git() {
-  await fs.remove(`${home}/.gitconfig`)
+  await remove(`${home}/.gitconfig`)
   await $`git config --global user.name "Volodymyr Prokopyuk"`
   await $`git config --global user.email "volodymyrprokopyuk@gmail.com"`
   await $`git config --global core.excludesfile "~/.gitignore"`
@@ -53,19 +56,19 @@ async function git() {
 
 async function wezterm() {
   const path = `${home}/.config/wezterm`
-  await fs.mkdirp(path)
+  await mkdirp(path)
   await copyFile("wezterm.lua", `${path}/wezterm.lua`)
 }
 
 async function zsh() {
   await copyFile(".zshrc", `${home}/.zshrc`)
   const path = `${home}/.config`
-  await fs.mkdirp(path)
+  await mkdirp(path)
   await copyFile("starship.toml", `${path}/starship.toml`)
 }
 
 async function emacs() {
-  await fs.mkdirp(`${home}/.doom.d`)
+  await mkdirp(`${home}/.doom.d`)
   for (const file of ["packages.el", "init.el", "config.el"]) {
     await copyFile(file, `${home}/.doom.d/${file}`)
   }
@@ -73,25 +76,27 @@ async function emacs() {
 
 async function lilypond() {
   const path = `${home}/.doom.d/lilypond`
-  await fs.mkdirp(path)
+  await mkdirp(path)
   const url = `${rawGitHub}/lilypond/lilypond/master/elisp`
   const files = [
     "lilypond-font-lock.el", "lilypond-indent.el", "lilypond-init.el",
     "lilypond-mode.el", "lilypond-song.el", "lilypond-what-beat.el"
   ]
-  Promise.all(files.map(file => GET(`${url}/${file}`, `${path}/${file}`)))
+  return await Promise.all(
+    files.map(file => GET(`${url}/${file}`, `${path}/${file}`))
+  )
 }
 
 async function zathura() {
   const path = `${home}/.config/zathura`
-  await fs.mkdirp(path)
+  await mkdirp(path)
   await copyFile("zathurarc", `${path}/zathurarc`)
 }
 
 async function tools() {
   // bat
   const path = `${home}/.config/bat`
-  await fs.mkdirp(path)
+  await mkdirp(path)
   await copyFile("batconfig", `${path}/config`)
   // psql
   await copyFile(".psqlrc", `${home}/.psqlrc`)
