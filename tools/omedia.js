@@ -6,22 +6,29 @@
  * Dependencies
  * - exiv2 extracts date and time from a photo file
  * - ffprobe (from ffmpeg) extracts date and time from a video file
+ * - openssl generates a digest of a media file
  * cp -r ~/Media/sink/2022/* / /run/media/vlad/SD2/Media-2021-202_/2022
  */
 
-import { DateTime as dt } from "luxon"
+import { DateTime } from "luxon"
 import { extname } from "path"
-import { cpus } from "os"
-import { readFile, copyFile } from "fs/promises"
+import { copyFile } from "fs/promises"
 import { pathExists, mkdirp } from "fs-extra"
 import { globbyStream } from "globby"
-import { createHash } from "crypto"
 import chalk from "chalk"
 import parseArgs from "minimist"
 import { $ } from "zx"
 
 $.verbose = false
-let lastTs = dt.now()
+let lastTs = DateTime.now()
+
+function parseTs(str, format) {
+  const ts = DateTime.fromFormat(str, format)
+  if (ts.invalid) {
+    throw new Error(ts.invalid.explanation)
+  }
+  return ts
+}
 
 async function fromReadable(readable) {
   let res = ""
@@ -53,15 +60,25 @@ function asyncParallel(jobs, limit) {
 async function extractImageTs(file, logs) {
   try {
     const res = await $`exiv2 -K Exif.Image.DateTime -P v ${file}`
-    const output = await fromReadable(res.stdout)
-    return dt.fromFormat(output, "yyyy:MM:dd HH:mm:ss\n")
+    let output = await fromReadable(res.stdout)
+    output = output.replace("\n", "")
+    return parseTs(output, "yyyy:MM:dd HH:mm:ss")
   } catch (error) { logs.push(chalk.red(error)) }
 }
 
+async function extractVideoTs(file, logs) {
+  try {
+    const res = await $`ffprobe -v quiet -select_streams v:0 -show_entries stream_tags=creation_time -of default=nw=1:nk=1 ${file}`
+    let output = await fromReadable(res.stdout)
+    output = output.replace(/\.\d+Z$\n/m, "")
+    return parseTs(output, "yyyy-MM-dd'T'HH:mm:ss")
+  } catch(error) { logs.push(chalk.red(error)) }
+}
+
 async function digestMedia(file) {
-  const hash = createHash("sha256")
-  hash.update(await readFile(file))
-  return hash.digest("hex").slice(0, 16)
+  const res = await $`openssl dgst -sha256 ${file}`
+  const output = await fromReadable(res.stdout)
+  return output.replace(/^.+= /, "").slice(0, 16)
 }
 
 async function writeMedia(file, ts, digest, args) {
@@ -72,22 +89,11 @@ async function writeMedia(file, ts, digest, args) {
   await copyFile(file, `${args.o}/${dir}/${fileTime}_${digest}${ext}`)
 }
 
-async function organizeMedia(file, type, args) {
+async function organizeMedia(file, type, extractTs, args) {
   const logs = []
   try {
-    let ts
-    switch (type) {
-      case "image": {
-        logs.push(`${chalk.green("IMAGE:")} ${file}`)
-        ts = await extractImageTs(file, logs)
-        break
-      }
-      case "video": {
-        logs.push(`${chalk.blue("VIDEO:")} ${file}`)
-        ts = await extractImageTs(file, logs)
-        break
-      }
-    }
+    logs.push(`${chalk.green(type)} ${file}`)
+    let ts = await extractTs(file, logs)
     if (ts) { lastTs = ts } else { ts = lastTs }
     const digest = await digestMedia(file)
     await writeMedia(file, ts, digest, args)
@@ -102,11 +108,11 @@ async function readMedia(args) {
   }
   for await (const file of globbyStream(args.i)) {
     if (/(jpe?g|heic)$/i.test(file)) {
-      jobs.push(() => organizeMedia(file, "image", args))
+      jobs.push(() => organizeMedia(file, "image", extractImageTs, args))
     } else if (/(mp4|mov|avi)$/i.test(file)) {
-      jobs.push(() => organizeMedia(file, "video", args))
+      jobs.push(() => organizeMedia(file, "video", extractVideoTs, args))
     } else {
-      console.log(chalk.yellow("UNKNOWN:"), file)
+      console.log(chalk.yellow("unknown"), file)
     }
   }
   return jobs
@@ -120,7 +126,7 @@ async function organize(args) {
 function configure() {
   const argsConfig = {
     alias: { i: "input", o: "output", j: "jobs" },
-    default: { i: ".", o: "sink", j: cpus().length }
+    default: { i: ".", o: "sink", j: 128 }
   }
   return parseArgs(process.argv.slice(2), argsConfig)
 }
