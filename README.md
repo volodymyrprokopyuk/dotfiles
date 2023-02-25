@@ -289,38 +289,6 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `C-[|]` history backwrd / forward
 - `C-R|C-F5` reload page / override cache
 
-# Nim environment
-
-```zsh
-yay -S choosenim
-choosenim versions
-choosenim [update] stable | <version>
-choosenim show
-choosenim remove <version>
-nimble refresh # package list
-nimble install <package>[@<version>]
-```
-
-Computer science
-
-- Data structures and algorithms
-- Parsing and DSL
-- Cryptography and blockchain
-- Concurrency, parallelism and networking
-- Databases, statistics and visualization
-- Computer graphics
-
-TODO
-
-- os, osproc
-- algorithm, strutils, sequtils, setutils, enumutils
-- jester
-- random / sysrand
-- future, asyncdispatch
-- io.File, net.Socket, streams
-- with, fusion/matching,
-- nimble
-
 # Node.js environment
 
 ```zsh

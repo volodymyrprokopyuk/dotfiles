@@ -110,6 +110,3 @@ script_source /usr/share/nvm/install-nvm-exec
 
 # LilyPond
 path_add $HOME/.lilypond/bin
-
-# Nim
-path_add $HOME/.nimble/bin

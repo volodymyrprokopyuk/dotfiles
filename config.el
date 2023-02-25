@@ -137,11 +137,6 @@
   (add-hook 'sql-mode-hook
             #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
 
-(defun config-nim ()
-  ;; Treat _ as part of the word on *, #, w, b, e
-  (add-hook 'nim-mode-hook
-            #'(lambda () (modify-syntax-entry ?_ "w" nim-mode-syntax-table))))
-
 (defun config-js ()
   (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
   (setq js-indent-level 2)
@@ -184,7 +179,6 @@
 (config-zsh)
 (config-sql)
 (config-js)
-(config-nim)
 (config-web)
 (config-lilypond)
 (config-elisp)

@@ -28,7 +28,6 @@
        yaml
        markdown
        sh
-       nim
        javascript
        web
        emacs-lisp
