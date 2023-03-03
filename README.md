@@ -280,7 +280,7 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `Tab|j+k|l+h` index view / down + up / expand + collapse entry
 - `/|?|n+N` search forward / backwrd / next + previous match
 - `m<a>|'<a>` mark page / go to marked page
-- `convert *.jpg +compress out.pdf`
+- `convert *.jpg -auto-orient +compress out.pdf`
 
 # Firefox
 
