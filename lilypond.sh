@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# yay -S fontforge t1utils extractpdfmark
+# yay -S fontforge t1utils extractpdfmark pdfcpu
 # yay -S dblatex tex-gyre-fonts texlive-langcyrillic
 
 set -eu
