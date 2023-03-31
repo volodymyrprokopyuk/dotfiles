@@ -37,7 +37,7 @@ return {
     quick_select_match_fg = { Color = "#FFDF85" },
     quick_select_match_bg = { Color = "#480000" },
   },
-  inactive_pane_hsb = { daturation = 0.7, brightness = 0.7 },
+  inactive_pane_hsb = { saturation = 0.9, brightness = 0.7 },
   scrollback_lines = 10000,
   -- Key bindings
   disable_default_key_bindings = true,
