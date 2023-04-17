@@ -93,13 +93,6 @@ function fzf_open_file {
 zle -N fzf_open_file
 bindkey '^o' fzf_open_file
 
-# C-S-o open random file with xdg-open
-function random_open_file {
-  xdg-open "$(fd -t f . | shuf -n 1)" &> /dev/null
-}
-zle -N random_open_file
-bindkey '^x' random_open_file
-
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
 
