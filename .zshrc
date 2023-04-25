@@ -23,12 +23,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
-# Command line editing
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^xe' edit-command-line
-bindkey '^x^e' edit-command-line
-
 # Tools
 function ll {
   exa --all --long --sort=type --color-scale \
@@ -43,7 +37,6 @@ function ff {
 function gg { rg --hidden --follow $@ }
 function ee { emacsclient -t $@ }
 
-# Man
 function man {
   env \
   LESS_TERMCAP_mb=$'\e[01;31m' \
@@ -55,6 +48,26 @@ function man {
   LESS_TERMCAP_us=$'\e[04;38;5;146m' \
   man $@
 }
+
+function fzf_config {
+  script_source /usr/share/fzf/key-bindings.zsh
+  script_source /usr/share/fzf/completion.zsh
+  FZF_PREVIEW="bat --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
+  FZF_FIND="fd --hidden --follow --no-ignore --exclude .git --exclude node_modules --color always"
+  export FZF_DEFAULT_COMMAND="$FZF_FIND"
+  export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW) 2> /dev/null'"
+  export FZF_ALT_C_COMMAND="$FZF_FIND --type d"
+}
+
+# C-o open file with xdg-open
+function fzf_open_file {
+  local file
+  { file="$(fzf)" && [ -f "$file" ] && xdg-open "$file" &> /dev/null } </dev/tty
+}
+zle -N fzf_open_file
+bindkey '^o' fzf_open_file
 
 # Zinit
 script_source $HOME/.local/share/zinit/zinit.git/zinit.zsh
@@ -74,24 +87,19 @@ zinit light zsh-users/zsh-autosuggestions.git
 bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
 
-# Fzf
-script_source /usr/share/fzf/key-bindings.zsh
-script_source /usr/share/fzf/completion.zsh
-FZF_PREVIEW="bat --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
-FZF_FIND="fd --hidden --follow --no-ignore --exclude .git --exclude node_modules --color always"
-export FZF_DEFAULT_COMMAND="$FZF_FIND"
-export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW) 2> /dev/null'"
-export FZF_ALT_C_COMMAND="$FZF_FIND --type d"
-
-# C-o open file with xdg-open
-function fzf_open_file {
-  local file
-  { file="$(fzf)" && [ -f "$file" ] && xdg-open "$file" &> /dev/null } </dev/tty
+# Zsh vi mode
+function zvm_config {
+  ZVM_VI_ESCAPE_BINDKEY=jk
 }
-zle -N fzf_open_file
-bindkey '^o' fzf_open_file
+function zvm_after_init {
+  fzf_config
+}
+function zvm_after_lazy_keybindings {
+  zvm_bindkey vicmd '^[,' autosuggest-accept
+  zvm_define_widget fzf_open_file
+  zvm_bindkey vicmd '^o' fzf_open_file
+}
+zinit light jeffreytse/zsh-vi-mode
 
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
