@@ -5,10 +5,6 @@ export PAGER=less
 export LESS='-RF'
 which vivid &> /dev/null && export LS_COLORS=$(vivid generate snazzy)
 
-function path_add { [[ -d $1 ]] && export PATH=$1:$PATH }
-function script_source { [[ -s $1 ]] && [[ $- = *i* ]] && source $1 }
-
-# Zsh history
 readonly HISTFILE=~/.histfile
 readonly HISTSIZE=10000
 readonly SAVEHIST=10000
@@ -23,7 +19,9 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
-# Tools
+function path_add { [[ -d $1 ]] && export PATH=$1:$PATH }
+function script_source { [[ -s $1 ]] && [[ $- = *i* ]] && source $1 }
+
 function ll {
   exa --all --long --sort=type --color-scale \
     --git --ignore-glob='*~|.git|node_modules' $@
@@ -60,6 +58,7 @@ function fzf_config {
   export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW) 2> /dev/null'"
   export FZF_ALT_C_COMMAND="$FZF_FIND --type d"
 }
+fzf_config
 
 # C-o open file with xdg-open
 function fzf_open_file {
@@ -86,20 +85,6 @@ autoload -U compinit && compinit
 zinit light zsh-users/zsh-autosuggestions.git
 bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
-
-# Zsh vi mode
-function zvm_config {
-  ZVM_VI_ESCAPE_BINDKEY=jk
-}
-function zvm_after_init {
-  fzf_config
-}
-function zvm_after_lazy_keybindings {
-  zvm_bindkey vicmd '^[,' autosuggest-accept
-  zvm_define_widget fzf_open_file
-  zvm_bindkey vicmd '^o' fzf_open_file
-}
-zinit light jeffreytse/zsh-vi-mode
 
 # Doom Emacs
 path_add $HOME/.emacs.d/bin
