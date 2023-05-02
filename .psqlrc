@@ -1,8 +1,0 @@
-\set ECHO queries
-\set ON_ERROR_STOP on
-\set SHOW_CONTEXT always
-\set HISTSIZE 10000
-\set HISTCONTROL ignoredups
-\pset linestyle unicode
-\pset null ×
-\x auto
