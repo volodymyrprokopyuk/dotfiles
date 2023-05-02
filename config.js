@@ -57,20 +57,20 @@ async function git() {
 async function wezterm() {
   const path = `${home}/.config/wezterm`
   await mkdirp(path)
-  await copyFile("wezterm.lua", `${path}/wezterm.lua`)
+  await copyFile("base/wezterm.lua", `${path}/wezterm.lua`)
 }
 
 async function zsh() {
-  await copyFile(".zshrc", `${home}/.zshrc`)
+  await copyFile("base/.zshrc", `${home}/.zshrc`)
   const path = `${home}/.config`
   await mkdirp(path)
-  await copyFile("starship.toml", `${path}/starship.toml`)
+  await copyFile("base/starship.toml", `${path}/starship.toml`)
 }
 
 async function emacs() {
   await mkdirp(`${home}/.doom.d`)
   for (const file of ["packages.el", "init.el", "config.el"]) {
-    await copyFile(file, `${home}/.doom.d/${file}`)
+    await copyFile(`base/${file}`, `${home}/.doom.d/${file}`)
   }
 }
 
@@ -90,16 +90,13 @@ async function lilypond() {
 async function zathura() {
   const path = `${home}/.config/zathura`
   await mkdirp(path)
-  await copyFile("zathurarc", `${path}/zathurarc`)
+  await copyFile("tools/zathurarc", `${path}/zathurarc`)
 }
 
 async function tools() {
-  // bat
   const path = `${home}/.config/bat`
   await mkdirp(path)
-  await copyFile("batconfig", `${path}/config`)
-  // psql
-  await copyFile(".psqlrc", `${home}/.psqlrc`)
+  await copyFile("base/batconfig", `${path}/config`)
 }
 
 for (const arg of argv._) {
