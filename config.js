@@ -90,10 +90,10 @@ async function lilypond() {
 async function zathura() {
   const path = `${home}/.config/zathura`
   await mkdirp(path)
-  await copyFile("tools/zathurarc", `${path}/zathurarc`)
+  await copyFile("base/zathurarc", `${path}/zathurarc`)
 }
 
-async function tools() {
+async function util() {
   const path = `${home}/.config/bat`
   await mkdirp(path)
   await copyFile("base/batconfig", `${path}/config`)
@@ -107,10 +107,10 @@ for (const arg of argv._) {
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
     case "zathura": await zathura(); break
-    case "tools": await tools(); break
+    case "util": await util(); break
     case "all":
       await Promise.all(
-        [git(), wezterm(), zsh(), emacs(), lilypond(), zathura(), tools()]
+        [git(), wezterm(), zsh(), emacs(), lilypond(), zathura(), util()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }
