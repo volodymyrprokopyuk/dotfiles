@@ -59,6 +59,14 @@ yay -Ps
 pactree <package>
 ```
 
+# Zsh
+
+```zsh
+# /etc/zsh/zshenv
+export XDG_CONFIG_HOME=$HOME/.config
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+```
+
 # Zinit
 
 ```zsh
@@ -84,7 +92,7 @@ Fzf
 # Doom Emacs
 
 ```zsh
-git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
+git clone https://github.com/hlissner/doom-emacs.git $XDG_CONFIG_HOME/emacs
 doom install # packages
 doom sync # config
 doom upgrade # doom and packages

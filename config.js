@@ -6,24 +6,42 @@ const pipeline = promisify(pipelineCb)
 import { homedir } from "os"
 import { createWriteStream } from "fs"
 import { copyFile, writeFile } from "fs/promises"
-import { mkdirp, remove } from "fs-extra"
+import { mkdirp, remove, ensureFile } from "fs-extra"
 import fetch from "node-fetch"
 import { argv, $ } from "zx"
 
 $.verbose = false
-const home = homedir()
+const xdgHome = `${homedir()}/.config`
 const rawGitHub = "https://raw.githubusercontent.com"
+
+async function configDir(dir) {
+  const path = `${xdgHome}/${dir}`
+  await mkdirp(path)
+  return path
+}
 
 async function GET(url, path) {
   const { body } = await fetch(url)
   return await pipeline(body, createWriteStream(path))
 }
 
+async function wezterm() {
+  const path = await configDir("wezterm")
+  await copyFile("base/wezterm.lua", `${path}/wezterm.lua`)
+}
+
+async function zsh() {
+  const path = await configDir("zsh")
+  await copyFile("base/.zshrc", `${path}/.zshrc`)
+  await copyFile("base/starship.toml", `${xdgHome}/starship.toml`)
+}
+
 async function git() {
-  await remove(`${home}/.gitconfig`)
+  const path = await configDir("git")
+  await remove(`${path}/config`)
+  await ensureFile(`${path}/config`)
   await $`git config --global user.name "Volodymyr Prokopyuk"`
   await $`git config --global user.email "volodymyrprokopyuk@gmail.com"`
-  await $`git config --global core.excludesfile "~/.gitignore"`
   await $`git config --global init.defaultBranch "master"`
   await $`git config --global push.default "simple"`
   await $`git config --global pull.rebase false`
@@ -51,31 +69,23 @@ async function git() {
   await $`git config --global alias.a "!git add -A && git s"`
   await $`git config --global alias.cm "!git diff --check && git commit"`
   const gitignore = ["*~", "node_modules"]
-  await writeFile(`${home}/.gitignore`, gitignore.join("\n"))
+  await writeFile(`${path}/ignore`, gitignore.join("\n"))
 }
 
-async function wezterm() {
-  const path = `${home}/.config/wezterm`
-  await mkdirp(path)
-  await copyFile("base/wezterm.lua", `${path}/wezterm.lua`)
-}
-
-async function zsh() {
-  await copyFile("base/.zshrc", `${home}/.zshrc`)
-  const path = `${home}/.config`
-  await mkdirp(path)
-  await copyFile("base/starship.toml", `${path}/starship.toml`)
+async function util() {
+  const path = await configDir("bat")
+  await copyFile("base/batconfig", `${path}/config`)
 }
 
 async function emacs() {
-  await mkdirp(`${home}/.doom.d`)
+  const path = await configDir("doom")
   for (const file of ["packages.el", "init.el", "config.el"]) {
-    await copyFile(`base/${file}`, `${home}/.doom.d/${file}`)
+    await copyFile(`base/${file}`, `${path}/${file}`)
   }
 }
 
 async function lilypond() {
-  const path = `${home}/.doom.d/lilypond`
+  const path = `${xdgHome}/doom/lilypond`
   await mkdirp(path)
   const url = `${rawGitHub}/lilypond/lilypond/master/elisp`
   const files = [
@@ -88,29 +98,22 @@ async function lilypond() {
 }
 
 async function zathura() {
-  const path = `${home}/.config/zathura`
-  await mkdirp(path)
+  const path = await configDir("zathura")
   await copyFile("base/zathurarc", `${path}/zathurarc`)
-}
-
-async function util() {
-  const path = `${home}/.config/bat`
-  await mkdirp(path)
-  await copyFile("base/batconfig", `${path}/config`)
 }
 
 for (const arg of argv._) {
   switch (arg) {
-    case "git": await git(); break
     case "wezterm": await wezterm(); break
     case "zsh": await zsh(); break
+    case "git": await git(); break
+    case "util": await util(); break
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
     case "zathura": await zathura(); break
-    case "util": await util(); break
     case "all":
       await Promise.all(
-        [git(), wezterm(), zsh(), emacs(), lilypond(), zathura(), util()]
+        [wezterm(), zsh(), git(), util(), emacs(), lilypond(), zathura()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }

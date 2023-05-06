@@ -5,7 +5,7 @@ export PAGER=less
 export LESS='-RF'
 which vivid &> /dev/null && export LS_COLORS=$(vivid generate snazzy)
 
-readonly HISTFILE=~/.histfile
+readonly HISTFILE=$XDG_CONFIG_HOME/zsh/.histfile
 readonly HISTSIZE=10000
 readonly SAVEHIST=10000
 setopt EXTENDED_HISTORY
@@ -87,7 +87,7 @@ bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
 
 # Doom Emacs
-path_add $HOME/.emacs.d/bin
+path_add $XDG_CONFIG_HOME/emacs/bin
 
 # Node.js
 [ -z $NVM_DIR ] && export NVM_DIR=$HOME/.nvm

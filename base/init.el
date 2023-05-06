@@ -10,7 +10,6 @@
        ophints
        (popup +defaults)
        vc-gutter
-       treemacs
 
        :editor
        (evil +everywhere)
