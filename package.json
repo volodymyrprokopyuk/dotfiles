@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "luxon": "^3.2.1",
+    "tar": "^6.1.14",
     "zx": "^7.1.1"
   }
 }

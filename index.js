@@ -7,8 +7,8 @@ import { homedir } from "os"
 import { createWriteStream } from "fs"
 import { copyFile, writeFile } from "fs/promises"
 import { mkdirp, remove, ensureFile } from "fs-extra"
-import fetch from "node-fetch"
-import { argv, $ } from "zx"
+import { argv, $, cd, fetch } from "zx"
+import tar from "tar"
 
 $.verbose = false
 const xdgHome = `${homedir()}/.config`
@@ -20,7 +20,7 @@ async function configDir(dir) {
   return path
 }
 
-async function GET(url, path) {
+async function get(url, path) {
   const { body } = await fetch(url)
   return await pipeline(body, createWriteStream(path))
 }
@@ -93,8 +93,24 @@ async function lilypond() {
     "lilypond-mode.el", "lilypond-song.el", "lilypond-what-beat.el"
   ]
   return await Promise.all(
-    files.map(file => GET(`${url}/${file}`, `${path}/${file}`))
+    files.map(file => get(`${url}/${file}`, `${path}/${file}`))
   )
+}
+
+async function installLilypond(v) {
+  // yay -S fontforge t1utils extractpdfmark pdfcpu
+  // yay -S dblatex tex-gyre-fonts texlive-langcyrillic
+  const home = `${homedir()}/.lilypond`
+  const url = `https://lilypond.org/download/source/v${v.replace(/\.\d+$/, "")}`
+  const version = `lilypond-${v}`, archive = `${version}.tar.gz`
+  await mkdirp(home); cd(home)
+  await get(`${url}/${archive}`, `${home}/${archive}`)
+  await tar.extract({ file: `${home}/${archive}` })
+  cd (version); await mkdirp("build"); cd ("build"); $.verbose = true
+  await $`../autogen.sh --noconfigure`
+  await $`../configure --prefix=${home} --disable-documentation \
+    GUILE_FLAVOR=guile-3.0`
+  await $`make -j4`; await $`make install`
 }
 
 async function zathura() {
@@ -110,6 +126,7 @@ for (const arg of argv._) {
     case "util": await util(); break
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
+    case "ililypond": await installLilypond("2.25.4"); break
     case "zathura": await zathura(); break
     case "all":
       await Promise.all(
