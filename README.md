@@ -1,10 +1,10 @@
 # Initialization
 
 ```zsh
-# In /etc/pacman.conf enable
+# Enable options in /etc/pacman.conf
 Color CheckSpace VerbosePkgLists ParallelDownloads = 4
-# Update package repositories
-sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
+# Update package repositories in /etc/pacman.d/mirrorlist
+sudo pacman -Syyu
 # Install yay from AUR
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Update installed packages and clean up unused packages

@@ -115,7 +115,7 @@ async function installLilypond(v) {
 
 async function zathura() {
   const path = await configDir("zathura")
-  await copyFile("base/zathurarc", `${path}/zathurarc`)
+  await copyFile("app/zathurarc", `${path}/zathurarc`)
 }
 
 for (const arg of argv._) {
