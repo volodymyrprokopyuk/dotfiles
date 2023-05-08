@@ -72,7 +72,7 @@ async function git() {
   await writeFile(`${path}/ignore`, gitignore.join("\n"))
 }
 
-async function util() {
+async function base() {
   const path = await configDir("bat")
   await copyFile("base/batconfig", `${path}/config`)
 }
@@ -113,7 +113,7 @@ async function installLilypond(v) {
   await $`make -j4`; await $`make install`
 }
 
-async function zathura() {
+async function app() {
   const path = await configDir("zathura")
   await copyFile("app/zathurarc", `${path}/zathurarc`)
 }
@@ -123,14 +123,14 @@ for (const arg of argv._) {
     case "wezterm": await wezterm(); break
     case "zsh": await zsh(); break
     case "git": await git(); break
-    case "util": await util(); break
+    case "base": await base(); break
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
     case "ililypond": await installLilypond("2.25.4"); break
-    case "zathura": await zathura(); break
+    case "app": await app(); break
     case "all":
       await Promise.all(
-        [wezterm(), zsh(), git(), util(), emacs(), lilypond(), zathura()]
+        [wezterm(), zsh(), git(), base(), emacs(), lilypond(), app()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }
