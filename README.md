@@ -1,22 +1,25 @@
-# .dotfiles installation
+# Initialization
 
 ```zsh
-# Install yay with pacman from AUR
-pacman -S yay
-# Enable color in pacman/yay output
-sudo sed -i -e 's/^#Color$/Color/' /etc/pacman.conf
-# Install software with yay from core, extra, community and AUR repositories
-sudo pacman-mirrors --fasttrack 5
-sudo pacman -Syyu
-# Update installed software and clean up unused packages
+# In /etc/pacman.conf enable
+Color CheckSpace VerbosePkgLists ParallelDownloads = 4
+# Update package repositories
+sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
+# Install yay from AUR
+git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+# Update installed packages and clean up unused packages
 yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
+# Install Node.js
+yay -S nvm
+nvm install <version> && nvm alias default <version> && nvm use default
+# Clone dotfiles into ~
+git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
+
 # Install tools
 yay -S base-devel
 yay -S nerd-fonts-jetbrains-mono
 yay -S wezterm zsh starship emacs xsel
 yay -S fd ripgrep fzf exa bat git-delta vivid mlocate btop zathura
-# Clone the dotfiles repository into ~
-git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 # Configure zsh (log out, then log in)
 chsh -s $(which zsh)
 # Install applications
@@ -296,17 +299,6 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 
 - `C-[|]` history backwrd / forward
 - `C-R|C-F5` reload page / override cache
-
-# Node.js environment
-
-```zsh
-yay -S nvm
-nvm ls-remote
-nvm install <version>
-nvm alias default <version>
-nvm use default
-nvm ls
-```
 
 # PostgreSQL environment
 
