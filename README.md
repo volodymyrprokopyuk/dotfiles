@@ -13,7 +13,7 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 # Install packages
 yay -S wezterm zsh starship emacs xsel nerd-fonts-jetbrains-mono
 yay -S fzf fd ripgrep exa bat git-delta vivid mlocate btop
-yay -S lf zathura feh mpv dropbox
+yay -S lf zathura zathura-pdf-mupdf zathura-djvu feh mpv dropbox
 
 # Set Zsh environment variables
 cat << EOF | sudo tee /etc/zsh/zshenv
