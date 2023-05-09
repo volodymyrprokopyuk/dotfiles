@@ -7,24 +7,36 @@ Color CheckSpace VerbosePkgLists ParallelDownloads = 4
 sudo pacman -Syyu
 # Install yay from AUR
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-# Update installed packages and clean up unused packages
+# Update installed packages and remove unused packages
 yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
+
+# Install packages
+yay -S wezterm zsh starship emacs xsel nerd-fonts-jetbrains-mono
+yay -S fzf fd ripgrep exa bat git-delta vivid mlocate btop
+yay -S lf zathura feh mpv dropbox
+
+# Set Zsh environment variables
+cat << EOF | sudo tee /etc/zsh/zshenv
+export XDG_CONFIG_HOME=$HOME/.config
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+EOF
+# Install zinit
+H=~/.local/share/zinit; mkdir -p $H && \
+git clone https://github.com/zdharma-continuum/zinit.git $H
+zinit self-update && zinit update # packages
+
+# Install Doom Emacs
+git clone https://github.com/hlissner/doom-emacs.git $XDG_CONFIG_HOME/emacs
+doom install # packages
+doom sync # config
+doom upgrade # Doom and packages
+
 # Install Node.js
 yay -S nvm
 nvm install <version> && nvm alias default <version> && nvm use default
 # Clone dotfiles into ~
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
-
-# Install tools
-yay -S base-devel
-yay -S nerd-fonts-jetbrains-mono
-yay -S wezterm zsh starship emacs xsel
-yay -S fd ripgrep fzf exa bat git-delta vivid mlocate btop zathura
-# Configure zsh (log out, then log in)
-chsh -s $(which zsh)
-# Install applications
-yay -S inkscape plantuml
-yay -S dropbox
+cd ~/.dotfiles && ./index.js all
 ```
 
 # pacman/yay usage
@@ -64,21 +76,6 @@ pactree <package>
 
 # Zsh
 
-```zsh
-# /etc/zsh/zshenv
-export XDG_CONFIG_HOME=$HOME/.config
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
-```
-
-# Zinit
-
-```zsh
-mkdir -p ~/.local/share/zinit
-git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git
-zinit self-update # zinit
-zinit update # packages
-```
-
 Command line editing
 
 - `C-a|e` beginning / end of line
@@ -87,19 +84,13 @@ Command line editing
 - `C-x e` edit command line
 - `C-l` clear screen
 
-Fzf
+# Fzf
+
 - `C-r` search command history
 - `A-c` change directory
 - `C-t` preview and complete current command
 
 # Doom Emacs
-
-```zsh
-git clone https://github.com/hlissner/doom-emacs.git $XDG_CONFIG_HOME/emacs
-doom install # packages
-doom sync # config
-doom upgrade # doom and packages
-```
 
 ## Scrolling
 
