@@ -11,7 +11,8 @@ import { argv, $, cd, fetch } from "zx"
 import tar from "tar"
 
 $.verbose = false
-const xdgHome = `${homedir()}/.config`
+const home = homedir()
+const xdgHome = `${home}/.config`
 const rawGitHub = "https://raw.githubusercontent.com"
 
 async function configDir(dir) {
@@ -31,6 +32,7 @@ async function wezterm() {
 }
 
 async function zsh() {
+  await writeFile(`${home}/.zshenv`, "export ZDOTDIR=$HOME/.config/zsh")
   const path = await configDir("zsh")
   await copyFile("base/.zshrc", `${path}/.zshrc`)
   await copyFile("base/starship.toml", `${xdgHome}/starship.toml`)

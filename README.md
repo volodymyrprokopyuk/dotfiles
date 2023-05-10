@@ -3,41 +3,37 @@
 ```zsh
 # Enable options in /etc/pacman.conf
 Color CheckSpace VerbosePkgLists ParallelDownloads = 4
-# Update package repositories in /etc/pacman.d/mirrorlist
+# Update package repositories
 sudo pacman -Syyu
 # Install yay from AUR
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Update installed packages and remove unused packages
 yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 
+# Install Node.js
+yay -S nvm
+nvm install <version> && nvm alias default <version> && nvm use default
+# Install dotfiles
+git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles && npm install && ./index.js all
+
 # Install packages
-yay -S wezterm zsh starship emacs xsel nerd-fonts-jetbrains-mono
+yay -S wezterm zsh starship emacs xsel ttf-jetbrains-mono-nerd
 yay -S fzf fd ripgrep exa bat git-delta vivid mlocate btop
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu mupdf pdfcpu
 yay -S feh mpv dropbox
 
-# Set Zsh environment variables
-cat << EOF | sudo tee /etc/zsh/zshenv
-export XDG_CONFIG_HOME=$HOME/.config
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
-EOF
-# Install zinit
+# Install Zsh and zinit
+chsh -s $(which zsh)
 H=~/.local/share/zinit; mkdir -p $H && \
-git clone https://github.com/zdharma-continuum/zinit.git $H
+git clone https://github.com/zdharma-continuum/zinit.git $H/zinit.git
 zinit self-update && zinit update # packages
 
 # Install Doom Emacs
-git clone https://github.com/hlissner/doom-emacs.git $XDG_CONFIG_HOME/emacs
+git clone https://github.com/hlissner/doom-emacs.git $HOME/.config/emacs
 doom install # packages
 doom sync # config
 doom upgrade # Doom and packages
-
-# Install Node.js
-yay -S nvm
-nvm install <version> && nvm alias default <version> && nvm use default
-# Clone dotfiles into ~
-git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles && ./index.js all
 ```
 
 # pacman/yay usage

@@ -5,7 +5,7 @@ export PAGER=less
 export LESS='-RF'
 which vivid &> /dev/null && export LS_COLORS=$(vivid generate snazzy)
 
-readonly HISTFILE=$XDG_CONFIG_HOME/zsh/.histfile
+readonly HISTFILE=$HOME/.config/zsh/.histfile
 readonly HISTSIZE=10000
 readonly SAVEHIST=10000
 setopt EXTENDED_HISTORY
@@ -20,7 +20,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
 function path_add { [[ -d $1 ]] && export PATH=$1:$PATH }
-function script_source { [[ -s $1 ]] && [[ $- = *i* ]] && source $1 }
+function script_source { [[ -s $1 ]] && source $1 }
 
 function ll {
   exa --all --long --sort=type --color-scale \
@@ -87,7 +87,7 @@ bindkey -r '^[,'
 bindkey '^[,' autosuggest-accept
 
 # Doom Emacs
-path_add $XDG_CONFIG_HOME/emacs/bin
+path_add $HOME/.config/emacs/bin
 
 # Node.js
 [ -z $NVM_DIR ] && export NVM_DIR=$HOME/.nvm
