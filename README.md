@@ -25,9 +25,9 @@ yay -S dropbox
 
 # Install Zsh and zinit
 chsh -s $(which zsh)
-ZINIT=~/.local/share/zinit
-mkdir -p $ZINIT
-git clone https://github.com/zdharma-continuum/zinit.git $ZINIT/zinit.git
+DEST=~/.local/share/zinit
+mkdir -p $DEST
+git clone https://github.com/zdharma-continuum/zinit.git $DEST/zinit.git
 zinit self-update && zinit update # packages
 
 # Install Doom Emacs
