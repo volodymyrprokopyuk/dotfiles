@@ -20,8 +20,8 @@ cd ~/.dotfiles && npm install && ./index.js all
 # Install packages
 yay -S wezterm zsh starship emacs xsel ttf-jetbrains-mono-nerd
 yay -S fzf fd ripgrep exa bat git-delta vivid mlocate btop
-yay -S lf zathura zathura-pdf-mupdf zathura-djvu mupdf pdfcpu
-yay -S feh mpv dropbox
+yay -S lf zathura zathura-pdf-mupdf zathura-djvu mupdf pdfcpu feh mpv
+yay -S dropbox
 
 # Install Zsh and zinit
 chsh -s $(which zsh)
@@ -30,7 +30,7 @@ git clone https://github.com/zdharma-continuum/zinit.git $H/zinit.git
 zinit self-update && zinit update # packages
 
 # Install Doom Emacs
-git clone https://github.com/hlissner/doom-emacs.git $HOME/.config/emacs
+git clone https://github.com/hlissner/doom-emacs.git ~/.config/emacs
 doom install # packages
 doom sync # config
 doom upgrade # Doom and packages

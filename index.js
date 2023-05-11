@@ -12,11 +12,11 @@ import tar from "tar"
 
 $.verbose = false
 const home = homedir()
-const xdgHome = `${home}/.config`
+const conf = `${home}/.config`
 const rawGitHub = "https://raw.githubusercontent.com"
 
 async function configDir(dir) {
-  const path = `${xdgHome}/${dir}`
+  const path = `${conf}/${dir}`
   await mkdirp(path)
   return path
 }
@@ -35,7 +35,7 @@ async function zsh() {
   await writeFile(`${home}/.zshenv`, "export ZDOTDIR=$HOME/.config/zsh")
   const path = await configDir("zsh")
   await copyFile("base/.zshrc", `${path}/.zshrc`)
-  await copyFile("base/starship.toml", `${xdgHome}/starship.toml`)
+  await copyFile("base/starship.toml", `${conf}/starship.toml`)
 }
 
 async function git() {
@@ -75,7 +75,10 @@ async function git() {
 }
 
 async function base() {
-  const path = await configDir("bat")
+  let path = `${home}/.ssh`
+  await mkdirp(path)
+  await copyFile("base/sshconfig", `${path}/config`)
+  path = await configDir("bat")
   await copyFile("base/batconfig", `${path}/config`)
 }
 
@@ -87,7 +90,7 @@ async function emacs() {
 }
 
 async function lilypond() {
-  const path = `${xdgHome}/doom/lilypond`
+  const path = `${conf}/doom/lilypond`
   await mkdirp(path)
   const url = `${rawGitHub}/lilypond/lilypond/master/elisp`
   const files = [
