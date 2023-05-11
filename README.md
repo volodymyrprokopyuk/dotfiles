@@ -282,6 +282,19 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `m<a>|'<a>` mark page / go to marked page
 - `convert *.jpg -auto-orient +compress out.pdf`
 
+# Mupdf
+
+- `.|space ,|b` forward/backward page
+- `4g` go to page 4
+- `g|G` to to first/last page
+- `[0-9]m|[0-9]t` mark page/top back to the marked page
+- `+|-` zoom in/out
+- `W|H` fit width/height
+- `[|]` rotate page
+- `f` toggle fullscreen
+- `h|j|k|l` move left/down/up/right
+- `r` reload file
+
 # Firefox
 
 ## Navigation
