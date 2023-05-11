@@ -20,7 +20,7 @@ cd ~/.dotfiles && npm install && ./index.js all
 # Install packages
 yay -S wezterm zsh starship emacs xsel ttf-jetbrains-mono-nerd
 yay -S fzf fd ripgrep exa bat git-delta vivid mlocate btop
-yay -S lf zathura zathura-pdf-mupdf zathura-djvu mupdf pdfcpu feh mpv
+yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu feh mpv
 yay -S dropbox
 
 # Install Zsh and zinit
