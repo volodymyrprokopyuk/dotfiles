@@ -27,7 +27,7 @@
 (defun config-font ()
   (setq doom-font
         (font-spec :family "JetBrainsMono Nerd Font Mono"
-                   :size 18 :weight 'light)))
+                   :size 10.0 :weight 'light)))
 
 (defun config-theme ()
   (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523")))

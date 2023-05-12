@@ -37,6 +37,13 @@ doom sync # config
 doom upgrade # Doom and packages
 ```
 
+## i3wm
+
+```zsh
+# Set font scaling DPI (multiple of 96) in ~/.Xresources
+Xft.dpi: 256
+```
+
 # pacman/yay usage
 
 ```zsh
