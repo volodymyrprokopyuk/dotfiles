@@ -60,13 +60,13 @@ function fzf_config {
 }
 fzf_config
 
-# C-o open file with xdg-open
+# M-o open file with xdg-open
 function fzf_open_file {
   local file
   { file="$(fzf)" && [ -f "$file" ] && xdg-open "$file" &> /dev/null } </dev/tty
 }
 zle -N fzf_open_file
-bindkey '^o' fzf_open_file
+bindkey '^[o' fzf_open_file
 
 # Zinit
 script_source $HOME/.local/share/zinit/zinit.git/zinit.zsh

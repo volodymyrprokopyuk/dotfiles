@@ -103,17 +103,15 @@ async function lilypond() {
 }
 
 async function installLilypond(v) {
-  // yay -S fontforge t1utils extractpdfmark pdfcpu
-  // yay -S dblatex tex-gyre-fonts texlive-langcyrillic
-  const home = `${homedir()}/.lilypond`
+  const path = `${home}/.lilypond`
   const url = `https://lilypond.org/download/source/v${v.replace(/\.\d+$/, "")}`
   const version = `lilypond-${v}`, archive = `${version}.tar.gz`
-  await mkdirp(home); cd(home)
-  await get(`${url}/${archive}`, `${home}/${archive}`)
-  await tar.extract({ file: `${home}/${archive}` })
+  await mkdirp(path); cd(path)
+  await get(`${url}/${archive}`, `${path}/${archive}`)
+  await tar.extract({ file: `${path}/${archive}` })
   cd (version); await mkdirp("build"); cd ("build"); $.verbose = true
   await $`../autogen.sh --noconfigure`
-  await $`../configure --prefix=${home} --disable-documentation \
+  await $`../configure --prefix=${path} --disable-documentation \
     GUILE_FLAVOR=guile-3.0`
   await $`make -j4`; await $`make install`
 }

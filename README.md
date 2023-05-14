@@ -42,6 +42,8 @@ doom upgrade # Doom and packages
 ```zsh
 # Set font scaling DPI (multiple of 96) in ~/.Xresources
 Xft.dpi: 256
+# Install packages
+yay -S maim
 ```
 
 # pacman/yay usage
