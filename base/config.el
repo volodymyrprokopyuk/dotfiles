@@ -96,11 +96,11 @@
   ;; Enable global company mode
   (add-hook 'after-init-hook #'global-company-mode)
   ;; Use M-j, M-k for company completion selection
-  (evil-define-key nil company-active-map (kbd "M-j") #'company-select-next)
-  (evil-define-key nil company-active-map (kbd "M-k") #'company-select-previous)
+  (evil-define-key nil company-active-map (kbd "M-m") #'company-select-next)
+  (evil-define-key nil company-active-map (kbd "M-,") #'company-select-previous)
   ;; Use M-j, M-k for vertico completion selection
-  (evil-define-key nil vertico-map (kbd "M-j") #'vertico-next)
-  (evil-define-key nil vertico-map (kbd "M-k") #'vertico-previous))
+  (evil-define-key nil vertico-map (kbd "M-m") #'vertico-next)
+  (evil-define-key nil vertico-map (kbd "M-,") #'vertico-previous))
 
 (defun config-evil ()
   ;; 2-space indentation

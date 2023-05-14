@@ -53,7 +53,7 @@ function fzf_config {
   FZF_PREVIEW="bat --color always {} || exa --all --sort=type --tree --level 3 --color-scale {}"
   FZF_FIND="fd --hidden --follow --no-ignore --exclude .git --exclude node_modules --color always"
   export FZF_DEFAULT_COMMAND="$FZF_FIND"
-  export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-j:down,alt-k:up"
+  export FZF_DEFAULT_OPTS="--ansi --no-height --cycle --bind alt-m:down,alt-,:up"
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_CTRL_T_OPTS="--preview '($FZF_PREVIEW) 2> /dev/null'"
   export FZF_ALT_C_COMMAND="$FZF_FIND --type d"
@@ -83,8 +83,7 @@ autoload -U compinit && compinit
 
 # Zsh autosuggestions
 zinit light zsh-users/zsh-autosuggestions.git
-bindkey -r '^[,'
-bindkey '^[,' autosuggest-accept
+bindkey '^[m' autosuggest-accept
 
 # Doom Emacs
 path_add $HOME/.config/emacs/bin

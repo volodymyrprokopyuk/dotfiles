@@ -57,8 +57,8 @@ return {
     { key = "t", mods = "LEADER|SHIFT", action = act.ShowTabNavigator },
     { key = "q", mods = "LEADER|SHIFT", action = act.CloseCurrentTab { confirm = true } },
     -- Panes
-    { key = "v", mods = "LEADER", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
-    { key = "s", mods = "LEADER", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
+    { key = "v", mods = "ALT", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
+    { key = "s", mods = "ALT", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
     { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
     { key = "r", mods = "LEADER", action = act.RotatePanes "Clockwise" },
     { key = "g", mods = "LEADER", action = act.PaneSelect },
