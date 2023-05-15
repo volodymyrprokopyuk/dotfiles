@@ -59,14 +59,14 @@ return {
     -- Panes
     { key = "v", mods = "ALT", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = "s", mods = "ALT", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
-    { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-    { key = "r", mods = "LEADER", action = act.RotatePanes "Clockwise" },
-    { key = "g", mods = "LEADER", action = act.PaneSelect },
+    { key = "z", mods = "ALT", action = act.TogglePaneZoomState },
+    { key = "r", mods = "ALT", action = act.RotatePanes "Clockwise" },
+    { key = "g", mods = "ALT", action = act.PaneSelect },
     { key = "h", mods = "ALT", action = act.ActivatePaneDirection "Left" },
     { key = "j", mods = "ALT", action = act.ActivatePaneDirection "Down" },
     { key = "k", mods = "ALT", action = act.ActivatePaneDirection "Up" },
     { key = "l", mods = "ALT", action = act.ActivatePaneDirection "Right" },
-    { key = "q", mods = "LEADER", action = act.CloseCurrentPane { confirm = true } },
+    { key = "q", mods = "ALT", action = act.CloseCurrentPane { confirm = true } },
     -- Scroll
     { key = "e", mods = "CTRL", action = act.ScrollByLine(5) },
     { key = "y", mods = "CTRL", action = act.ScrollByLine(-5) },

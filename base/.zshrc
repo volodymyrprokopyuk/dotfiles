@@ -1,6 +1,4 @@
-export TERM=screen-256color
-export EDITOR='emacsclient -t'
-export ALTERNATE_EDITOR='emacsclient -t'
+export EDITOR='emacs -nw'
 export PAGER=less
 export LESS='-RF'
 which vivid &> /dev/null && export LS_COLORS=$(vivid generate snazzy)

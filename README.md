@@ -43,7 +43,7 @@ doom upgrade # Doom and packages
 # Set font scaling DPI (multiple of 96) in ~/.Xresources
 Xft.dpi: 256
 # Install packages
-yay -S maim
+yay -S xorg-xev xdotool maim
 ```
 
 # pacman/yay usage
