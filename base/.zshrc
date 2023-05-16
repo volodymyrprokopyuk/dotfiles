@@ -61,7 +61,9 @@ fzf_config
 # M-o open file with xdg-open
 function fzf_open_file {
   local file
-  { file="$(fzf)" && [ -f "$file" ] && xdg-open "$file" &> /dev/null } </dev/tty
+  { file="$(fzf)" && [ -f "$file" ] && \
+    xdg-open "$file" &> /dev/null & disown } </dev/tty
+  zle reset-prompt
 }
 zle -N fzf_open_file
 bindkey '^[o' fzf_open_file
