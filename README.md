@@ -41,9 +41,10 @@ doom upgrade # Doom and packages
 
 ```zsh
 # Set font scaling DPI (multiple of 96) in ~/.Xresources
-Xft.dpi: 256
+Xft.dpi: 192
+Xcursor.size: 40
 # Install packages
-yay -S xorg-xev xdotool maim
+yay -S xorg-xev i3lock-color maim
 ```
 
 # pacman/yay usage

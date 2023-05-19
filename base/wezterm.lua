@@ -12,7 +12,7 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   -- Font
   font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Light" }),
-  font_size = 10,
+  font_size = 13,
   -- Color theme
   -- color_scheme = "zenwritten_dark",
   -- color_scheme = "wilmersdorf",
