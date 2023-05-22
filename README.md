@@ -41,8 +41,9 @@ doom upgrade # Doom and packages
 
 ```zsh
 # Set font scaling DPI (multiple of 96) in ~/.Xresources
+Xcursor.theme: Qogir
+Xcursor.size: 48
 Xft.dpi: 192
-Xcursor.size: 40
 # Install packages
 yay -S xorg-xev i3lock-color maim
 ```
