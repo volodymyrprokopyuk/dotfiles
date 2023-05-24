@@ -121,6 +121,11 @@ async function app() {
   await copyFile("app/zathurarc", `${path}/zathurarc`)
 }
 
+async function i3wm() {
+  const path = await configDir("rofi")
+  await copyFile("i3wm/roficonfig.rasi", `${path}/config.rasi`)
+}
+
 for (const arg of argv._) {
   switch (arg) {
     case "wezterm": await wezterm(); break
@@ -131,9 +136,10 @@ for (const arg of argv._) {
     case "lilypond": await lilypond(); break
     case "ililypond": await installLilypond("2.25.4"); break
     case "app": await app(); break
+    case "i3wm": await i3wm(); break
     case "all":
       await Promise.all(
-        [wezterm(), zsh(), git(), base(), emacs(), lilypond(), app()]
+        [wezterm(), zsh(), git(), base(), emacs(), lilypond(), app(), i3wm()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }

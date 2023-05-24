@@ -1,0 +1,6 @@
+configuration {
+  dpi: 192;
+  kb-row-up: "Alt+comma,Up,Control+p";
+  kb-row-down: "Alt+m,Down,Control+n";
+}
+@theme "gruvbox-dark-hard"
