@@ -122,7 +122,9 @@ async function app() {
 }
 
 async function i3wm() {
-  const path = await configDir("rofi")
+  let path = await configDir("i3status-rust")
+  await copyFile("i3wm/i3status.toml", `${path}/config.toml`)
+  path = await configDir("rofi")
   await copyFile("i3wm/roficonfig.rasi", `${path}/config.rasi`)
 }
 
@@ -134,7 +136,7 @@ for (const arg of argv._) {
     case "base": await base(); break
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
-    case "ililypond": await installLilypond("2.25.4"); break
+    case "ililypond": await installLilypond("2.25.5"); break
     case "app": await app(); break
     case "i3wm": await i3wm(); break
     case "all":

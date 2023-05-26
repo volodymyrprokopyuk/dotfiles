@@ -45,7 +45,7 @@ Xcursor.theme: Qogir
 Xcursor.size: 48
 Xft.dpi: 192
 # Install packages
-yay -S xorg-xev i3lock-color maim
+yay -S xorg-xev i3status-rust i3lock-color maim
 ```
 
 # pacman/yay usage
