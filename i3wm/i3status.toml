@@ -1,5 +1,3 @@
-icons_format = "{icon}"
-
 [theme]
 theme = "gruvbox-dark"
 [theme.overrides]
@@ -10,8 +8,25 @@ icons = "awesome4"
 
 [[block]]
 block = "cpu"
+interval = 2
+format = " $icon $utilization "
+
+[[block]]
+block = "memory"
+interval = 4
+format = " $icon $mem_used_percents.eng(w:2) "
+
+[[block]]
+block = "disk_space"
+interval = 60
+format = " $icon $available "
+
+[[block]]
+block = "net"
+interval = 2
+format = " $icon $speed_down.eng(prefix:M)/$speed_up.eng(prefix:M) "
 
 [[block]]
 block = "time"
-interval = 5
-format = " $timestamp.datetime(f:'%a %d/%m %R') "
+format = " $timestamp.datetime(f:'%a %d %b %H:%M:%S') "
+interval = 1
