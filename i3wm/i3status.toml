@@ -25,8 +25,8 @@ block = "net"
 interval = 4
 format = " ^icon_net_down $speed_down.eng(prefix:M,hide_unit:true) ^icon_net_up $speed_up.eng(prefix:M,hide_unit:true) "
 [block.icons_overrides]
-net_down = "\uf354"
-net_up = "\uf357"
+net_down = "\uf063"
+net_up = "\uf062"
 
 [[block]]
 block = "time"
