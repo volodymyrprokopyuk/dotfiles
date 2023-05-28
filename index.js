@@ -122,7 +122,9 @@ async function app() {
 }
 
 async function i3wm() {
-  let path = await configDir("i3status-rust")
+  let path = await configDir("i3")
+  await copyFile("i3wm/i3config", `${path}/config`)
+  path = await configDir("i3status-rust")
   await copyFile("i3wm/i3status.toml", `${path}/config.toml`)
   path = await configDir("rofi")
   await copyFile("i3wm/roficonfig.rasi", `${path}/config.rasi`)

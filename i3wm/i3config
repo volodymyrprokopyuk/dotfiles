@@ -1,0 +1,119 @@
+exec --no-startup-id feh --bg-fill \
+  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id dunst
+
+gaps inner 2
+new_window pixel 1
+
+set $white #FFFFFF
+set $yellow #EEC500
+
+# class border bground text indicator child_border
+client.focused $white $white $white $yellow $yellow
+
+set $mod Mod4
+floating_modifier $mod
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+assign [class=(?i)wezterm] $ws1
+assign [class=(?i)firefox] $ws2
+
+for_window [class=(?i)wezterm] focus
+for_window [class=(?i)firefox] focus
+
+bindsym $mod+Return exec wezterm
+bindsym $mod+space exec emacs
+bindsym $mod+w exec firefox
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+v split h
+bindsym $mod+s split v
+bindsym $mod+z fullscreen toggle
+bindsym $mod+f floating toggle
+
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+q kill
+
+# normal = 1 0 0 0 1 0 0 0 1
+# left = 0 -1 1 1 0 0 0 0 1
+# right = 0 1 0 -1 0 1 0 0 1
+# inverted = -1 0 1 0 -1 1 0 0 1
+set $dsp Virtual1
+set $mou "VirtualBox mouse integration"
+set $ctm "Coordinate Transformation Matrix"
+bindsym $mod+Shift+bracketright exec xrandr --output $dsp --rotate left
+  # exec xinput set-prop $mou $ctm 0 -1 1 1 0 0 0 0 1
+bindsym $mod+Shift+bracketleft exec xrandr --output $dsp --rotate right
+  # exec xinput set-prop $mou $ctm 0 1 0 -1 0 1 0 0 1
+bindsym $mod+Shift+equal exec xrandr --output $dsp --rotate normal
+  # exec xinput set-prop $mou $ctm 1 0 0 0 1 0 0 0 1
+
+bindsym $mod+p exec maim --select --format png --quality 10 --hidecursor \
+  --bordersize 5 | xclip -selection clipboard -target image/png
+
+exec setxkbmap -model pc105 -layout 'us,es,ua,ru' -variant ,,, -option 'grp:alt_shift_toggle'
+
+bindsym $mod+r reload
+bindsym $mod+Shift+r restart
+
+set $lockcolor EEC500
+bindsym $mod+BackSpace exec i3lock --blur 12 \
+  --clock --time-str "%H:%M" --date-str "%a %e %b" \
+  --time-color $lockcolor --date-color $lockcolor \
+  --keylayout 1 --layout-color $lockcolor \
+  --indicator --ring-color $lockcolor
+bindsym $mod+Shift+BackSpace exec systemctl poweroff
+bindsym $mod+Shift+y exec i3-msg exit # logout
+bindsym $mod+Shift+b exec systemctl reboot
+
+bindsym $mod+a exec rofi -show drun
+bindsym $mod+o exec fd -I -t f -e pdf -e djvu . \
+  ~/Downloads ~/Projects/bayan | \
+  rofi -dmenu -i | xargs -I {} xdg-open {}
+
+bar {
+  status_command i3status-rs ~/.config/i3status-rust/config.toml
+  position top
+  font pango: "Noto Sans Regular" 13, "Font Awesome 6 Free Regular" 13
+}

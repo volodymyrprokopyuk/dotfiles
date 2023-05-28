@@ -4,29 +4,31 @@ theme = "gruvbox-dark"
 separator = " "
 
 [icons]
-icons = "awesome4"
+icons = "awesome6"
 
 [[block]]
 block = "cpu"
 interval = 2
 format = " $icon $utilization "
+[block.icons_overrides]
+cpu = "\uf2db"
 
 [[block]]
 block = "memory"
 interval = 4
-format = " $icon $mem_used_percents.eng(w:2) "
-
-[[block]]
-block = "disk_space"
-interval = 60
-format = " $icon $available "
+format = " $icon $mem_used_percents "
+[block.icons_overrides]
+memory_mem = "\uf7c2"
 
 [[block]]
 block = "net"
-interval = 2
-format = " $icon $speed_down.eng(prefix:M)/$speed_up.eng(prefix:M) "
+interval = 4
+format = " ^icon_net_down $speed_down.eng(prefix:M,hide_unit:true) ^icon_net_up $speed_up.eng(prefix:M,hide_unit:true) "
+[block.icons_overrides]
+net_down = "\uf354"
+net_up = "\uf357"
 
 [[block]]
 block = "time"
-format = " $timestamp.datetime(f:'%a %d %b %H:%M:%S') "
 interval = 1
+format = " $timestamp.datetime(f:'%a %d %b %H:%M:%S') "
