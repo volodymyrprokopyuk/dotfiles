@@ -1,3 +1,5 @@
+error_format = "$full_error_message"
+
 [theme]
 theme = "gruvbox-dark"
 [theme.overrides]
@@ -27,6 +29,11 @@ format = " ^icon_net_down $speed_down.eng(prefix:M,hide_unit:true) ^icon_net_up 
 [block.icons_overrides]
 net_down = "\uf063"
 net_up = "\uf062"
+
+[[block]]
+block = "custom_dbus"
+path = "/kblayout"
+format = " $short_text "
 
 [[block]]
 block = "time"

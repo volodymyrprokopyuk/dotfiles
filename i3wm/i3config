@@ -1,3 +1,10 @@
+set $e 26
+set $g 42
+set $i 31
+set $s 39
+set $u 30
+set $r 27
+
 exec --no-startup-id feh --bg-fill \
   /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 exec --no-startup-id dunst
@@ -92,19 +99,6 @@ bindsym $mod+Shift+equal exec xrandr --output $dsp --rotate normal
 bindsym $mod+p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 5 | xclip -selection clipboard -target image/png
 
-# exec setxkbmap -model pc105 -layout 'us,es,ua,ru' -variant ,,, -option 'grp:alt_shift_toggle'
-
-set $mode_kb_layout KeyboardLayout
-mode $mode_kb_layout {
-  bindsym Return mode default
-  bindsym Control+g mode default
-  bindsym e exec setxkbmap us; mode default
-  bindsym s exec setxkbmap es; mode default
-  bindsym u exec setxkbmap ua; mode default
-  bindsym r exec setxkbmap ru; mode default
-}
-bindsym $mod+i mode $mode_kb_layout
-
 bindsym $mod+r reload
 bindsym $mod+Shift+r restart
 
@@ -128,3 +122,21 @@ bar {
   position top
   font pango: "Noto Sans Regular" 13, "Font Awesome 6 Free Regular" 13
 }
+
+exec setxkbmap us
+exec busctl --user call rs.i3status /kblayout rs.i3status.custom \
+  SetText ss English us
+set $mode_input input
+mode $mode_input {
+  bindsym Return mode default
+  bindcode Control+$g mode default
+  bindcode $e exec setxkbmap us; exec busctl --user call rs.i3status /kblayout \
+    rs.i3status.custom SetText ss English us; mode default
+  bindcode $s exec setxkbmap es; exec busctl --user call rs.i3status /kblayout \
+    rs.i3status.custom SetText ss Spanish es; mode default
+  bindcode $u exec setxkbmap ua; exec busctl --user call rs.i3status /kblayout \
+    rs.i3status.custom SetText ss Ukrainian ua; mode default
+  bindcode $r exec setxkbmap ru; exec busctl --user call rs.i3status /kblayout \
+    rs.i3status.custom SetText ss Russian ru; mode default
+}
+bindcode $mod+$i mode $mode_input
