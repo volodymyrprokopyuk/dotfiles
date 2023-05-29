@@ -92,7 +92,18 @@ bindsym $mod+Shift+equal exec xrandr --output $dsp --rotate normal
 bindsym $mod+p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 5 | xclip -selection clipboard -target image/png
 
-exec setxkbmap -model pc105 -layout 'us,es,ua,ru' -variant ,,, -option 'grp:alt_shift_toggle'
+# exec setxkbmap -model pc105 -layout 'us,es,ua,ru' -variant ,,, -option 'grp:alt_shift_toggle'
+
+set $mode_kb_layout KeyboardLayout
+mode $mode_kb_layout {
+  bindsym Return mode default
+  bindsym Control+g mode default
+  bindsym e exec setxkbmap us; mode default
+  bindsym s exec setxkbmap es; mode default
+  bindsym u exec setxkbmap ua; mode default
+  bindsym r exec setxkbmap ru; mode default
+}
+bindsym $mod+i mode $mode_kb_layout
 
 bindsym $mod+r reload
 bindsym $mod+Shift+r restart

@@ -129,7 +129,8 @@
   (setq sh-basic-offset 2)
   ;; Treat _ as part of the word on *, #, w, b, e
   (add-hook 'sh-mode-hook
-            #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table))))
+            #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
+  (add-to-list 'auto-mode-alist '("config\\'" . conf-mode)))
 
 (defun config-sql ()
   (setq sql-product 'postgres)
