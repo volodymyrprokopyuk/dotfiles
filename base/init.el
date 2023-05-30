@@ -1,6 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
-(doom! :completion
+(doom! :os
+       tty
+
+       :completion
        company
        vertico
 

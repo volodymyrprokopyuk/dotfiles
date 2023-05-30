@@ -8,22 +8,6 @@
   ;; Skip confirmation on exit
   (setq confirm-kill-emacs nil))
 
-(defun config-clipboard ()
-  (setq select-enable-clipboard t)
-  (unless window-system
-    (when (getenv "DISPLAY")
-      (defun xsel-cut-function (text &optional push)
-        (with-temp-buffer
-          (insert text)
-          (call-process-region (point-min) (point-max)
-                               "xsel" nil 0 nil "--clipboard" "--input")))
-      (defun xsel-paste-function()
-        (let ((xsel-output
-               (shell-command-to-string "xsel --clipboard --output")))
-          (unless (string= (car kill-ring) xsel-output) xsel-output)))
-      (setq interprogram-cut-function 'xsel-cut-function)
-      (setq interprogram-paste-function 'xsel-paste-function))))
-
 (defun config-font ()
   (setq doom-font
         (font-spec :family "JetBrainsMono Nerd Font Mono"
@@ -166,7 +150,6 @@
 
 ;; Editor
 (config-doom)
-(config-clipboard)
 (config-font)
 (config-theme)
 (config-ligatures)
