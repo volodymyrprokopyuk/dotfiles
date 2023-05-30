@@ -68,17 +68,17 @@ return {
     { key = "l", mods = "ALT", action = act.ActivatePaneDirection "Right" },
     { key = "q", mods = "ALT", action = act.CloseCurrentPane { confirm = true } },
     -- Scroll
-    { key = "e", mods = "CTRL", action = act.ScrollByLine(5) },
-    { key = "y", mods = "CTRL", action = act.ScrollByLine(-5) },
-    { key = "f", mods = "CTRL", action = act.ScrollByPage(1.0) },
-    { key = "b", mods = "CTRL", action = act.ScrollByPage(-1.0) },
-    { key = "g", mods = "SHIFT", action = act.ScrollToBottom },
+    -- { key = "e", mods = "CTRL", action = act.ScrollByLine(5) },
+    -- { key = "y", mods = "CTRL", action = act.ScrollByLine(-5) },
+    -- { key = "f", mods = "CTRL", action = act.ScrollByPage(1.0) },
+    -- { key = "b", mods = "CTRL", action = act.ScrollByPage(-1.0) },
+    -- { key = "g", mods = "SHIFT", action = act.ScrollToBottom },
     -- Search
-    { key = "/", mods = "LEADER", action = act.Search "CurrentSelectionOrEmptyString" },
+    { key = "/", mods = "ALT", action = act.Search "CurrentSelectionOrEmptyString" },
     -- Copy
-    { key = "c", mods = "LEADER", action = act.ActivateCopyMode },
+    { key = "y", mods = "ALT", action = act.ActivateCopyMode },
     -- Paste
-    { key = "p", mods = "LEADER", action = act.PasteFrom "Clipboard" },
+    { key = "p", mods = "ALT", action = act.PasteFrom "Clipboard" },
     { key = "p", mods = "LEADER|SHIFT", action = act.PasteFrom "PrimarySelection" },
     -- Quick select
     { key = "?", mods = "LEADER|SHIFT", action = act.QuickSelect },

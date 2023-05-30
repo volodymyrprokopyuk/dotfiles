@@ -123,9 +123,6 @@ bar {
   font pango: "Noto Sans Regular" 13, "Font Awesome 6 Free Regular" 13
 }
 
-exec setxkbmap us
-exec busctl --user call rs.i3status /kblayout rs.i3status.custom \
-  SetText ss English us
 set $mode_input input
 mode $mode_input {
   bindsym Return mode default
