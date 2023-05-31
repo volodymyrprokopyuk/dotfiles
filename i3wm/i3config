@@ -87,14 +87,18 @@ bindsym $mod+q kill
 # right = 0 1 0 -1 0 1 0 0 1
 # inverted = -1 0 1 0 -1 1 0 0 1
 set $dsp Virtual1
-set $mou "VirtualBox mouse integration"
+set $mou "ImExPS/2 Generic Explorer Mouse"
 set $ctm "Coordinate Transformation Matrix"
-bindsym $mod+Shift+bracketright exec xrandr --output $dsp --rotate left
-  # exec xinput set-prop $mou $ctm 0 -1 1 1 0 0 0 0 1
-bindsym $mod+Shift+bracketleft exec xrandr --output $dsp --rotate right
-  # exec xinput set-prop $mou $ctm 0 1 0 -1 0 1 0 0 1
-bindsym $mod+Shift+equal exec xrandr --output $dsp --rotate normal
-  # exec xinput set-prop $mou $ctm 1 0 0 0 1 0 0 0 1
+set $ang "libinput Rotation Angle"
+bindsym $mod+Shift+bracketright exec xrandr --output $dsp --rotate left; \
+  exec xinput set-prop $mou $ctm 0 -1 1 1 0 0 0 0 1; \
+  exec xinput set-prop $mou $ang 90.0
+bindsym $mod+Shift+bracketleft exec xrandr --output $dsp --rotate right; \
+  exec xinput set-prop $mou $ctm 0 1 0 -1 0 1 0 0 1; \
+  exec xinput set-prop $mou $ang -90.0
+bindsym $mod+Shift+equal exec xrandr --output $dsp --rotate normal; \
+  exec xinput set-prop $mou $ctm 1 0 0 0 1 0 0 0 1; \
+  exec xinput set-prop $mou $ang 0.0
 
 bindsym $mod+p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 5 | xclip -selection clipboard -target image/png
