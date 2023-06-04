@@ -1,25 +1,29 @@
+set $a 38
+set $b 56
+set $c 54
+set $d 40
 set $e 26
+set $f 41
 set $g 42
+set $h 43
 set $i 31
-set $s 39
-set $u 30
+set $j 44
+set $k 45
+set $l 46
+set $m 58
+set $n 57
+set $o 32
+set $p 33
+set $q 24
 set $r 27
-
-exec --no-startup-id feh --bg-fill \
-  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
-exec --no-startup-id dunst
-
-gaps inner 2
-new_window pixel 1
-
-set $white #FFFFFF
-set $yellow #EEC500
-
-# class border bground text indicator child_border
-client.focused $white $white $white $yellow $yellow
-
-set $mod Mod4
-floating_modifier $mod
+set $s 39
+set $t 28
+set $u 30
+set $v 55
+set $w 25
+set $x 53
+set $y 29
+set $z 52
 
 set $ws1 "1"
 set $ws2 "2"
@@ -31,6 +35,25 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+set $mod Mod4
+bindcode $mod+$q kill
+bindcode $mod+$r reload
+bindcode $mod+Shift+$r restart
+bindsym $mod+Tab workspace back_and_forth
+bindcode $mod+$z fullscreen toggle
+bindcode $mod+$f floating toggle
+floating_modifier $mod
+
+bindcode $mod+$h focus left
+bindcode $mod+$j focus down
+bindcode $mod+$k focus up
+bindcode $mod+$l focus right
+
+bindcode $mod+Shift+$h move left
+bindcode $mod+Shift+$j move down
+bindcode $mod+Shift+$k move up
+bindcode $mod+Shift+$l move right
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -54,33 +77,28 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
+bindsym $mod+Return exec wezterm
+bindsym $mod+space exec emacs
+bindcode $mod+$w exec firefox
+
 assign [class=(?i)wezterm] $ws1
 assign [class=(?i)firefox] $ws2
-
 for_window [class=(?i)wezterm] focus
 for_window [class=(?i)firefox] focus
 
-bindsym $mod+Return exec wezterm
-bindsym $mod+space exec emacs
-bindsym $mod+w exec firefox
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+exec --no-startup-id feh --bg-fill \
+  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id dunst
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+gaps inner 2
+new_window pixel 1
 
-bindsym $mod+v split h
-bindsym $mod+s split v
-bindsym $mod+z fullscreen toggle
-bindsym $mod+f floating toggle
+set $white #FFFFFF
+set $yellow #EEC500
 
-bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+q kill
+# class border bground text indicator child_border
+client.focused $white $white $white $yellow $yellow
 
 # normal = 1 0 0 0 1 0 0 0 1
 # left = 0 -1 1 1 0 0 0 0 1
@@ -102,9 +120,6 @@ bindsym $mod+Shift+equal exec xrandr --output $dsp --rotate normal; \
 
 bindsym $mod+p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 5 | xclip -selection clipboard -target image/png
-
-bindsym $mod+r reload
-bindsym $mod+Shift+r restart
 
 set $lockcolor EEC500
 bindsym $mod+BackSpace exec i3lock --blur 12 \

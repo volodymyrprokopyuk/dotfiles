@@ -306,6 +306,15 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `h|j|k|l` move left/down/up/right
 - `r` reload file
 
+# Network
+
+``` zsh
+lspci -v # network kernel module
+sudo dmesg | grep <kernel module> # network interface
+ip link show dev <network interface> # network interface status
+ip link set <network interface> up | down # [dis]connect network interface
+```
+
 # Firefox
 
 ## Navigation
