@@ -1,6 +1,7 @@
 export EDITOR='emacs -nw'
 export PAGER=less
 export LESS='-RF'
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 which vivid &> /dev/null && export LS_COLORS=$(vivid generate snazzy)
 
 readonly HISTFILE=$HOME/.config/zsh/.histfile
