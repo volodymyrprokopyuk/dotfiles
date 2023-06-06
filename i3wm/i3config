@@ -24,6 +24,10 @@ set $w 25
 set $x 53
 set $y 29
 set $z 52
+set $brright 35
+set $brleft 34
+set $equal 21
+set $bkspace 22
 
 set $ws1 "1"
 set $ws2 "2"
@@ -86,61 +90,19 @@ assign [class=(?i)firefox] $ws2
 for_window [class=(?i)wezterm] focus
 for_window [class=(?i)firefox] focus
 
-
-exec --no-startup-id feh --bg-fill \
-  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+set $wp "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
+exec --no-startup-id feh --bg-fill $wm
 exec --no-startup-id dunst
 
-gaps inner 2
-new_window pixel 1
-
-set $white #FFFFFF
-set $yellow #EEC500
-
-# class border bground text indicator child_border
-client.focused $white $white $white $yellow $yellow
-
-# normal = 1 0 0 0 1 0 0 0 1
-# left = 0 -1 1 1 0 0 0 0 1
-# right = 0 1 0 -1 0 1 0 0 1
-# inverted = -1 0 1 0 -1 1 0 0 1
 set $dsp Virtual1
 set $mou "ImExPS/2 Generic Explorer Mouse"
 set $ctm "Coordinate Transformation Matrix"
-set $ang "libinput Rotation Angle"
-bindsym $mod+Shift+bracketright exec xrandr --output $dsp --rotate left; \
-  exec xinput set-prop $mou $ctm 0 -1 1 1 0 0 0 0 1; \
-  exec xinput set-prop $mou $ang 90.0
-bindsym $mod+Shift+bracketleft exec xrandr --output $dsp --rotate right; \
-  exec xinput set-prop $mou $ctm 0 1 0 -1 0 1 0 0 1; \
-  exec xinput set-prop $mou $ang -90.0
-bindsym $mod+Shift+equal exec xrandr --output $dsp --rotate normal; \
-  exec xinput set-prop $mou $ctm 1 0 0 0 1 0 0 0 1; \
-  exec xinput set-prop $mou $ang 0.0
-
-bindsym $mod+p exec maim --select --format png --quality 10 --hidecursor \
-  --bordersize 5 | xclip -selection clipboard -target image/png
-
-set $lockcolor EEC500
-bindsym $mod+BackSpace exec i3lock --blur 12 \
-  --clock --time-str "%H:%M" --date-str "%a %e %b" \
-  --time-color $lockcolor --date-color $lockcolor \
-  --keylayout 1 --layout-color $lockcolor \
-  --indicator --ring-color $lockcolor
-bindsym $mod+Shift+BackSpace exec systemctl poweroff
-bindsym $mod+Shift+y exec i3-msg exit # logout
-bindsym $mod+Shift+b exec systemctl reboot
-
-bindsym $mod+a exec rofi -show drun
-bindsym $mod+o exec fd -I -t f -e pdf -e djvu . \
-  ~/Downloads ~/Projects/bayan | \
-  rofi -dmenu -i | xargs -I {} xdg-open {}
-
-bar {
-  status_command i3status-rs ~/.config/i3status-rust/config.toml
-  position top
-  font pango: "Noto Sans Regular" 13, "Font Awesome 6 Free Regular" 13
-}
+bindcode $mod+Shift+$brright exec xrandr --output $dsp --rotate left; \
+  exec xinput set-prop $mou $ctm 0 -1 1 1 0 0 0 0 1
+bindcode $mod+Shift+$brleft exec xrandr --output $dsp --rotate right; \
+  exec xinput set-prop $mou $ctm 0 1 0 -1 0 1 0 0 1
+bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal; \
+  exec xinput set-prop $mou $ctm 1 0 0 0 1 0 0 0 1
 
 set $mode_input input
 mode $mode_input {
@@ -156,3 +118,34 @@ mode $mode_input {
     rs.i3status.custom SetText ss Russian ru; mode default
 }
 bindcode $mod+$i mode $mode_input
+
+bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
+  --bordersize 5 | xclip -selection clipboard -target image/png
+
+bindcode $mod+$a exec rofi -show drun
+bindcode $mod+$o exec fd --no-ignore --type file -e pdf -e djvu . \
+  ~/Downloads ~/Projects/bayan | rofi -dmenu -i | xargs -I {} xdg-open {}
+
+set $lockcolor EEC500
+bindcode $mod+$bkspace exec i3lock --blur 12 \
+  --clock --time-str "%H:%M" --date-str "%a %e %b" \
+  --time-color $lockcolor --date-color $lockcolor \
+  --keylayout 1 --layout-color $lockcolor \
+  --indicator --ring-color $lockcolor
+bindcode $mod+Shift+$bkspace exec systemctl poweroff
+bindcode $mod+Shift+$y exec i3-msg exit # logout
+bindcode $mod+Shift+$b exec systemctl reboot
+
+gaps inner 2
+new_window pixel 1
+
+set $white #FFFFFF
+set $yellow #EEC500
+
+client.focused $white $white $white $yellow $yellow
+
+bar {
+  status_command i3status-rs ~/.config/i3status-rust/config.toml
+  position top
+  font pango: "Noto Sans Regular" 13, "Font Awesome 6 Free Regular" 13
+}
