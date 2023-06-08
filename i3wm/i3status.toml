@@ -5,18 +5,15 @@ theme = "gruvbox-dark"
 [theme.overrides]
 separator = " "
 
-# [icons]
-# icons = "awesome6"
-
 [[block]]
 block = "cpu"
 interval = 2
-format = " P $utilization "
+format = " $utilization.eng(w:1)"
 
 [[block]]
 block = "memory"
 interval = 4
-format = " M $mem_used_percents "
+format = "/ $mem_used_percents.eng(w:1) "
 
 [[block]]
 block = "custom_dbus"
