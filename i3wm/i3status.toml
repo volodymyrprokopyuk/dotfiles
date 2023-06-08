@@ -5,22 +5,18 @@ theme = "gruvbox-dark"
 [theme.overrides]
 separator = " "
 
-[icons]
-icons = "awesome6"
+# [icons]
+# icons = "awesome6"
 
 [[block]]
 block = "cpu"
 interval = 2
-format = " $icon $utilization "
-[block.icons_overrides]
-cpu = "\uf2db"
+format = " P $utilization "
 
 [[block]]
 block = "memory"
 interval = 4
-format = " $icon $mem_used_percents "
-[block.icons_overrides]
-memory_mem = "\uf7c2"
+format = " M $mem_used_percents "
 
 [[block]]
 block = "custom_dbus"

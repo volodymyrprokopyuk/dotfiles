@@ -90,8 +90,8 @@ assign [class=(?i)firefox] $ws2
 for_window [class=(?i)wezterm] focus
 for_window [class=(?i)firefox] focus
 
-set $wp "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
-exec --no-startup-id feh --bg-fill $wm
+exec --no-startup-id feh --bg-fill \
+  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 exec --no-startup-id dunst
 
 set $dsp Virtual1

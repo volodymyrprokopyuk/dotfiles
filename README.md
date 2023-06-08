@@ -291,7 +291,7 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `Tab|j+k|l+h` index view / down + up / expand + collapse entry
 - `/|?|n+N` search forward / backwrd / next + previous match
 - `m<a>|'<a>` mark page / go to marked page
-- `convert *.jpg -auto-orient +compress out.pdf`
+- `convert *.jpg +compress -rotate 90 -crop 3000x4000-150+80 +repage -threshold 50% out.pdf`
 
 # Mupdf
 
