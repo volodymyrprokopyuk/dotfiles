@@ -70,7 +70,7 @@ async function git() {
   await $`git config --global alias.ch "checkout"`
   await $`git config --global alias.a "!git add -A && git s"`
   await $`git config --global alias.cm "!git diff --check && git commit"`
-  const gitignore = ["*~", "node_modules"]
+  const gitignore = ["*~", "node_modules/", "coverage/"]
   await writeFile(`${path}/ignore`, gitignore.join("\n"))
 }
 

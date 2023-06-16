@@ -1,5 +1,5 @@
 configuration {
-  dpi: 192;
+  dpi: 120;
   kb-row-up: "Alt+comma,Up,Control+p";
   kb-row-down: "Alt+m,Down,Control+n";
 }
