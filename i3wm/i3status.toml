@@ -8,12 +8,12 @@ separator = " "
 [[block]]
 block = "cpu"
 interval = 2
-format = " $utilization.eng(w:1)"
+format = " P $utilization.eng(w:1) "
 
 [[block]]
 block = "memory"
 interval = 4
-format = "/ $mem_used_percents.eng(w:1) "
+format = " M $mem_used_percents.eng(w:1) "
 
 [[block]]
 block = "custom_dbus"
