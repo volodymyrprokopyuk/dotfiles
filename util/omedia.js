@@ -7,7 +7,7 @@
  * - exiv2 extracts date and time from a photo file
  * - ffprobe (from ffmpeg) extracts date and time from a video file
  * - openssl generates a digest of a media file
- * cp -r ~/Media/sink/2022/* / /run/media/vlad/SD2/Media-2021-202_/2022
+ * cp -r ~/Media/sink/2022/* /run/media/vlad/SD2/Media-2021-202_/2022
  */
 
 import { DateTime } from "luxon"
@@ -107,7 +107,7 @@ async function readMedia(args) {
     throw new Error(`Input directory ${args.i} does not exist`)
   }
   for await (const file of globbyStream(args.i)) {
-    if (/(jpe?g|heic)$/i.test(file)) {
+    if (/(jpe?g|heic|webp)$/i.test(file)) {
       jobs.push(() => organizeMedia(file, "image", extractImageTs, args))
     } else if (/(mp4|mov|avi)$/i.test(file)) {
       jobs.push(() => organizeMedia(file, "video", extractVideoTs, args))
