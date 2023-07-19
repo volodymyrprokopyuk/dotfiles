@@ -32,6 +32,7 @@
        sh
        javascript
        web
+       solidity
        emacs-lisp
        lua
 
