@@ -90,9 +90,9 @@ bindkey '^[m' autosuggest-accept
 path_add $HOME/.config/emacs/bin
 
 # Node.js
-[ -z $NVM_DIR ] && export NVM_DIR=$HOME/.nvm
-script_source /usr/share/nvm/nvm.sh
-script_source /usr/share/nvm/install-nvm-exec
+# [ -z $NVM_DIR ] && export NVM_DIR=$HOME/.nvm
+# script_source /usr/share/nvm/nvm.sh
+# script_source /usr/share/nvm/install-nvm-exec
 
 # LilyPond
 path_add $HOME/.lilypond/bin
