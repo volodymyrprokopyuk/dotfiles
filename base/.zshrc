@@ -33,6 +33,7 @@ function ff {
 }
 function gg { rg --hidden --follow $@ }
 function ee { emacsclient -t $@ }
+function npm { pnpm $@ }
 
 function man {
   env \

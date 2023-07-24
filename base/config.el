@@ -138,6 +138,11 @@
                 (setq web-mode-css-indent-offset 2)
                 (setq web-mode-code-indent-offset 2))))
 
+(defun config-solidity ()
+  (add-hook 'solidity-mode-hook
+            #'(lambda ()
+               (setq c-basic-offset 2))))
+
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.config/doom/lilypond")
   (autoload 'LilyPond-mode "lilypond-mode.el" nil t)
@@ -165,5 +170,6 @@
 (config-sql)
 (config-js)
 (config-web)
+(config-solidity)
 (config-lilypond)
 (config-elisp)

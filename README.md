@@ -22,6 +22,7 @@ yay -S wezterm zsh starship emacs ttf-jetbrains-mono-nerd
 yay -S fzf fd sd ripgrep exa bat git-delta vivid mlocate btop
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu feh mpv
 yay -S nodejs pnpm
+yay -S go-ethereum solidity-bin
 yay -S dropbox
 
 # Install Zsh and zinit
