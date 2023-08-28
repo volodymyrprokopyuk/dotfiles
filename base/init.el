@@ -17,7 +17,6 @@
        :editor
        (evil +everywhere)
        fold
-       objed
 
        :emacs
        undo
