@@ -141,7 +141,7 @@ for (const arg of argv._) {
     case "base": await base(); break
     case "emacs": await emacs(); break
     case "lilypond": await lilypond(); break
-    case "ililypond": await installLilypond("2.25.6"); break
+    case "ililypond": await installLilypond("2.25.7"); break
     case "app": await app(); break
     case "i3wm": await i3wm(); break
     case "all":

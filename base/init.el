@@ -12,10 +12,12 @@
        modeline
        ophints
        (popup +defaults)
-       vc-gutter
+       (vc-gutter +pretty)
 
        :editor
        (evil +everywhere)
+       fold
+       objed
 
        :emacs
        undo
@@ -23,17 +25,17 @@
 
        :tools
        lookup
-       docker
+       lsp
 
        :lang
        json
        yaml
        markdown
-       sh
-       javascript
        web
+       (javascript +lsp)
        solidity
        emacs-lisp
+       sh
        lua
 
        :config
