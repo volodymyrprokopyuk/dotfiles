@@ -8,3 +8,4 @@
 (package! modus-themes)
 (package! ligature)
 (package! highlight-parentheses)
+(package! nushell-mode)
