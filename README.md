@@ -1,6 +1,13 @@
 # Initialization
 
 ```zsh
+# Disable login password
+sudo groupadd -r autologin
+sudo gpasswd -a $USER autologin
+# /etc/lightdm/lightdm.conf
+[Seat:*]
+autologin-user=vlad
+
 # Enable options in /etc/pacman.conf
 Color CheckSpace VerbosePkgLists ParallelDownloads = 4
 # Update package repositories
