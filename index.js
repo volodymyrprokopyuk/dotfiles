@@ -38,6 +38,12 @@ async function zsh() {
   await copyFile("base/starship.toml", `${conf}/starship.toml`)
 }
 
+async function fish() {
+  const path = await configDir("fish")
+  await copyFile("base/config.fish", `${path}/config.fish`)
+  await copyFile("base/starship.toml", `${conf}/starship.toml`)
+}
+
 async function git() {
   const path = await configDir("git")
   await remove(`${path}/config`)
@@ -137,6 +143,7 @@ for (const arg of argv._) {
   switch (arg) {
     case "wezterm": await wezterm(); break
     case "zsh": await zsh(); break
+    case "fish": await fish(); break
     case "git": await git(); break
     case "base": await base(); break
     case "emacs": await emacs(); break
@@ -146,7 +153,7 @@ for (const arg of argv._) {
     case "i3wm": await i3wm(); break
     case "all":
       await Promise.all(
-        [wezterm(), zsh(), git(), base(), emacs(), lilypond(), app(), i3wm()]
+        [wezterm(), zsh(), fish(), git(), base(), emacs(), lilypond(), app(), i3wm()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }
