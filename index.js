@@ -41,6 +41,7 @@ async function zsh() {
 async function fish() {
   const path = await configDir("fish")
   await copyFile("base/config.fish", `${path}/config.fish`)
+  await copyFile("base/fish_plugins", `${path}/fish_plugins`)
   await copyFile("base/starship.toml", `${conf}/starship.toml`)
 }
 
