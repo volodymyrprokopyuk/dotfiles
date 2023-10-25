@@ -21,11 +21,11 @@ setopt HIST_REDUCE_BLANKS
 function path_add { [[ -d $1 ]] && export PATH=$1:$PATH }
 function script_source { [[ -s $1 ]] && source $1 }
 
-function ll {
+function ll { # done
   exa --all --long --sort=type --color-scale \
     --git --ignore-glob='*~|.git|node_modules' $@
 }
-function lll { ll --tree $@ }
+function lll { ll --tree $@ } # done
 function vv { bat $@ }
 function ff {
   fd --hidden --follow --no-ignore \
