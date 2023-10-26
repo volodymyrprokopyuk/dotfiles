@@ -26,13 +26,13 @@ function ll { # done
     --git --ignore-glob='*~|.git|node_modules' $@
 }
 function lll { ll --tree $@ } # done
-function vv { bat $@ }
-function ff {
+function ff { # done
   fd --hidden --follow --no-ignore \
   --exclude .git --exclude node_modules $@
 }
-function gg { rg --hidden --follow $@ }
-function ee { emacsclient -t $@ }
+function gg { rg --hidden --follow $@ } # done
+function vv { bat $@ }
+function ee { emacsclient -t $@ } # done
 function npm { pnpm $@ }
 
 function man {

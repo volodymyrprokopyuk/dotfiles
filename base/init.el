@@ -33,8 +33,8 @@
        web
        (javascript +lsp)
        solidity
+       (sh +fish)
        emacs-lisp
-       sh
        lua
 
        :config

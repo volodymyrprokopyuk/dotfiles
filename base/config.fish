@@ -9,3 +9,15 @@ end
 function lll
   ll --tree $argv
 end
+
+function ff
+  fd --hidden $argv
+end
+
+function gg
+  rg --hidden --glob=!.git $argv
+end
+
+function ee
+  emacs -nw $argv
+end
