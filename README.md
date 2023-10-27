@@ -25,7 +25,8 @@ git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && npm install && ./index.js all
 
 # Install packages
-yay -S wezterm zsh fish fisher starship emacs ttf-jetbrains-mono-nerd
+yay -S wezterm zsh fish fisher starship emacs-nativecomp
+yay -S aspell aspell-en ttf-jetbrains-mono-nerd
 yay -S fzf fd sd ripgrep eza bat git-delta vivid mlocate btop
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu feh mpv
 yay -S nodejs pnpm typescript typescript-language-server

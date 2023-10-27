@@ -3,10 +3,6 @@
 (doom! :os
        tty
 
-       :completion
-       company
-       vertico
-
        :ui
        doom
        modeline
@@ -25,6 +21,14 @@
        :tools
        lookup
        lsp
+
+       :completion
+       company
+       vertico
+
+       :checkers
+       syntax
+       (spell +aspell +everywhere)
 
        :lang
        json
