@@ -88,8 +88,8 @@ async function base() {
   let path = `${home}/.ssh`
   await mkdirp(path)
   await copyFile("base/sshconfig", `${path}/config`)
-  path = await configDir("bat")
-  await copyFile("base/batconfig", `${path}/config`)
+  // path = await configDir("bat")
+  // await copyFile("base/batconfig", `${path}/config`)
 }
 
 async function emacs() {

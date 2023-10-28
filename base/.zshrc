@@ -31,7 +31,7 @@ function ff { # done
   --exclude .git --exclude node_modules $@
 }
 function gg { rg --hidden --follow $@ } # done
-function vv { bat $@ }
+function vv { bat $@ } # done
 function ee { emacsclient -t $@ } # done
 function npm { pnpm $@ }
 
