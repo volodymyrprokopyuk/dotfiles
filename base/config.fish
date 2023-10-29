@@ -1,11 +1,12 @@
-set -gx PATH $PATH $HOME/{.config/emacs,.lilypond}/bin
+set -gx PATH $PATH $HOME/.config/{emacs,lilypond}/bin
 set -gx EDITOR emacs -nw
 set -gx PAGER less
 set -gx LESS -RF
 set -gx LS_COLORS (vivid generate snazzy)
 set -gx BAT_STYLE plain
 set -gx BAT_THEME 1337
-set -g fish_greeting
+set -U fish_greeting
+bind \em accept-autosuggestion
 
 starship init fish | source
 

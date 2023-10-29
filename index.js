@@ -88,8 +88,6 @@ async function base() {
   let path = `${home}/.ssh`
   await mkdirp(path)
   await copyFile("base/sshconfig", `${path}/config`)
-  // path = await configDir("bat")
-  // await copyFile("base/batconfig", `${path}/config`)
 }
 
 async function emacs() {
@@ -113,7 +111,7 @@ async function lilypond() {
 }
 
 async function installLilypond(v) {
-  const path = `${home}/.lilypond`
+  const path = `${home}/.config/lilypond`
   const url = `https://lilypond.org/download/source/v${v.replace(/\.\d+$/, "")}`
   const version = `lilypond-${v}`, archive = `${version}.tar.gz`
   await mkdirp(path); cd(path)
