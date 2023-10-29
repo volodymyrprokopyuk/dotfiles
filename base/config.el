@@ -83,6 +83,7 @@
   ;; Use M-j, M-k for company completion selection
   (evil-define-key nil company-active-map (kbd "M-m") #'company-select-next)
   (evil-define-key nil company-active-map (kbd "M-,") #'company-select-previous)
+  (setq company-selection-wrap-around 1)
   ;; Use M-j, M-k for vertico completion selection
   (evil-define-key nil vertico-map (kbd "M-m") #'vertico-next)
   (evil-define-key nil vertico-map (kbd "M-,") #'vertico-previous))
