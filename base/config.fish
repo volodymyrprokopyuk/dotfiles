@@ -8,25 +8,24 @@ set -gx BAT_THEME 1337
 
 set -g fish_greeting
 
-set -g fish_color_normal D7E8FE
-set -g fish_color_error FF6C6C
-set -g fish_color_cancel FF7F56
-set -g fish_color_autosuggestion BABAFF
+set -g fish_color_normal FFFFCC # cream yellow
+set -g fish_color_autosuggestion 708238 # olive green
+set -g fish_color_comment B2AC88 # sage green
+set -g fish_color_error FF2400 # scarlet red
+set -g fish_color_cancel E52B50 # amaranth red
 
-set -g fish_color_command FFF467 --bold
-set -g fish_color_option FFAF3B
-set -g fish_color_param FFED95
+set -g fish_color_command 98FB98 --bold # mint green
+set -g fish_color_option 4CBB17 # kelly green
+set -g fish_color_param 9ACD32 # yellow green
 
-set -g fish_color_keyword FFFFFF --bold
-set -g fish_color_quote FF8C62
-set -g fish_color_valid_path 61FDA5 --underline
+set -g fish_color_keyword FDFD96 --bold # pastel yellow
+set -g fish_color_quote FEDC56 # mustard yellow
+set -g fish_color_escape E4D00A # citrine yellow
+set -g fish_color_valid_path DFFF00 --underline # chartreuse yellow
 
-set -g fish_color_operator 7DCEFA
-set -g fish_color_redirection 79FB6B
-set -g fish_color_end 69F7F7
-
-set -g fish_color_comment 00B567 --italics
-set -g fish_color_escape 23A700
+set -g fish_color_operator 00CCFF # vivid sky blue
+set -g fish_color_redirection 0ABAB5 # tiffany blue
+set -g fish_color_end 007fff # azure blue
 
 bind \em accept-autosuggestion
 
