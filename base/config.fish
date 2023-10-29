@@ -15,7 +15,7 @@ set -g fish_color_error FF2400 # scarlet red
 set -g fish_color_cancel E52B50 # amaranth red
 
 set -g fish_color_command 98FB98 --bold # mint green
-set -g fish_color_option 4CBB17 # kelly green
+set -g fish_color_option FF7F50 # coral red
 set -g fish_color_param 9ACD32 # yellow green
 
 set -g fish_color_keyword FDFD96 --bold # pastel yellow
@@ -60,3 +60,19 @@ end
 function ee
   emacs -nw $argv
 end
+
+function fzf_history
+  history | fzf --cycle --bind=alt-m:down,alt-,:up --ansi | read -l result
+  commandline -j -- $result
+  commandline -f repaint
+end
+
+bind \cR fzf_history
+
+function fzf_path
+  fd --hidden --exclude=.git --exclude=node_modules --color=always \
+      --type=file --type=directory | \
+    fzf --cycle --bind=alt-m:down,alt-,:up --ansi --multi
+end
+
+bind \cT fzf_path
