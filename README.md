@@ -25,7 +25,7 @@ git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && npm install && ./index.js all
 
 # Install packages
-yay -S wezterm zsh fish starship emacs-nativecomp
+yay -S wezterm fish starship emacs-nativecomp
 yay -S aspell aspell-en ttf-jetbrains-mono-nerd
 yay -S fzf fd sd ripgrep eza bat git-delta vivid mlocate btop
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu feh mpv
@@ -33,15 +33,8 @@ yay -S nodejs pnpm typescript typescript-language-server
 yay -S go-ethereum solidity-bin
 yay -S dropbox
 
-# Install fish and fisher
+# Install fish
 chsh -s $(which fish)
-
-# Install Zsh and zinit
-chsh -s $(which zsh)
-DEST=~/.local/share/zinit
-mkdir -p $DEST
-git clone https://github.com/zdharma-continuum/zinit.git $DEST/zinit.git
-zinit self-update && zinit update # packages
 
 # Install Doom Emacs
 git clone https://github.com/hlissner/doom-emacs.git ~/.config/emacs
@@ -96,7 +89,7 @@ yay -Ps
 pactree <package>
 ```
 
-# Zsh
+# Fish
 
 Command line editing
 

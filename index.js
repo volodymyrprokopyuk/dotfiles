@@ -31,13 +31,6 @@ async function wezterm() {
   await copyFile("base/wezterm.lua", `${path}/wezterm.lua`)
 }
 
-async function zsh() {
-  await writeFile(`${home}/.zshenv`, "export ZDOTDIR=$HOME/.config/zsh")
-  const path = await configDir("zsh")
-  await copyFile("base/.zshrc", `${path}/.zshrc`)
-  await copyFile("base/starship.toml", `${conf}/starship.toml`)
-}
-
 async function fish() {
   const path = await configDir("fish")
   await copyFile("base/config.fish", `${path}/config.fish`)
@@ -140,7 +133,6 @@ async function i3wm() {
 for (const arg of argv._) {
   switch (arg) {
     case "wezterm": await wezterm(); break
-    case "zsh": await zsh(); break
     case "fish": await fish(); break
     case "git": await git(); break
     case "base": await base(); break
@@ -151,7 +143,7 @@ for (const arg of argv._) {
     case "i3wm": await i3wm(); break
     case "all":
       await Promise.all(
-        [wezterm(), zsh(), fish(), git(), base(), emacs(), lilypond(), app(), i3wm()]
+        [wezterm(), fish(), git(), base(), emacs(), lilypond(), app(), i3wm()]
       ); break
     default: console.log(`WARNING: unknown option ${arg}`)
   }

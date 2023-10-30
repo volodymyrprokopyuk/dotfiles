@@ -16,7 +16,7 @@ set -g fish_color_cancel E52B50 # amaranth red
 
 set -g fish_color_command 98FB98 --bold # mint green
 set -g fish_color_option FF7F50 # coral red
-set -g fish_color_param 9ACD32 # yellow green
+set -g fish_color_param B2FFFF # celeste blue
 
 set -g fish_color_keyword FDFD96 --bold # pastel yellow
 set -g fish_color_quote FEDC56 # mustard yellow
@@ -32,9 +32,8 @@ bind \em accept-autosuggestion
 starship init fish | source
 
 function lla
-  eza --all --sort=type --long --git \
-    --time-style=relative --smart-group --no-permissions --octal-permissions \
-    --color-scale --no-quotes $argv
+  eza --all --sort=type --long --git --time-style=relative --smart-group \
+    --no-permissions --octal-permissions --color-scale --no-quotes $argv
 end
 
 function ll
@@ -62,17 +61,9 @@ function ee
 end
 
 function fzf_history
-  history | fzf --cycle --bind=alt-m:down,alt-,:up --ansi | read -l result
-  commandline -j -- $result
-  commandline -f repaint
+  history --null | fzf --query=(commandline) --read0 --print0 \
+    --cycle --bind=alt-m:down,alt-,:up --ansi | \
+    read --null --local result; and commandline -- $result
 end
 
 bind \cR fzf_history
-
-function fzf_path
-  fd --hidden --exclude=.git --exclude=node_modules --color=always \
-      --type=file --type=directory | \
-    fzf --cycle --bind=alt-m:down,alt-,:up --ansi --multi
-end
-
-bind \cT fzf_path

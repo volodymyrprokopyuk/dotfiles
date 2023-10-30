@@ -46,7 +46,7 @@
                       :background nil :weight 'bold))
 
 (defun config-whitespace ()
-  ;; Enable global whitespace mode
+  ;; Enable global white space mode
   (require 'whitespace)
   (global-whitespace-mode t)
   (global-whitespace-toggle-options t)
@@ -110,9 +110,10 @@
 
 ;; Programming
 
-(defun config-zsh ()
-  ;; 2-space identation
+(defun config-fish ()
+  ;; 2-space indentation
   (setq sh-basic-offset 2)
+  (setq fish-indent-offset 2)
   ;; Treat _ as part of the word on *, #, w, b, e
   (add-hook 'sh-mode-hook
             #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
@@ -167,7 +168,7 @@
 (config-evil)
 
 ;; Programming
-(config-zsh)
+(config-fish)
 (config-sql)
 (config-js)
 (config-web)
