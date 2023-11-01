@@ -146,7 +146,7 @@
                (setq c-basic-offset 2))))
 
 (defun config-lilypond ()
-  (add-to-list 'load-path "~/.config/doom/lilypond")
+  (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
   (autoload 'LilyPond-mode "lilypond-mode.el" nil t)
   (add-to-list 'auto-mode-alist '("\\.lys?\\'" . LilyPond-mode))
   (add-hook 'LilyPond-mode-hook #'(lambda () (display-line-numbers-mode))))
