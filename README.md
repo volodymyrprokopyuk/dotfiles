@@ -91,19 +91,29 @@ pactree <package>
 
 # Fish
 
-Command line editing
+Movements
 
-- `C-a|e` beginning / end of line
-- `A-f|b` forward / backwrd word
-- `C-w|u` delete backwords word / line
-- `C-x e` edit command line
-- `C-l` clear screen
+- `C-f|b` forward/backward char
+- `A-f|b` forward/backward word
+- `C-a|e` beginning/end of line
 
-# Fzf
+Deletion
 
+- `C-k|u` delete forward/backward line
+- `C-w` delete backward word
+- `C-z` undo the last edit
+
+History
+
+- `C-p|n` previous/next history command
 - `C-r` search command history
-- `A-c` change directory
-- `C-t` preview and complete current command
+- `C-g` cancel operation
+
+Program
+
+- `C-c` terminate program
+- `C-d` end input stream
+- `C-l` clear screen
 
 # Doom Emacs
 
