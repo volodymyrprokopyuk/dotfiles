@@ -22,6 +22,14 @@ set -g fish_color_valid_path DFFF00 --underline # chartreuse yellow
 set -g fish_color_operator 00CCFF # vivid sky blue
 set -g fish_color_redirection 0ABAB5 # tiffany blue
 set -g fish_color_end 007fff # azure blue
+set -g fish_pager_color_background --background=normal
+set -g fish_pager_color_prefix normal --bold --underline
+set -g fish_pager_color_completion 708238 # olive green
+set -g fish_pager_color_description B2AC88 # sage green
+set -g fish_pager_color_selected_background --background=normal
+set -g fish_pager_color_selected_prefix green --bold --underline
+set -g fish_pager_color_selected_completion yellow
+set -g fish_pager_color_selected_description FEDC56 # mustard yellow
 
 function lla
   eza --all --sort=type --long --git --time-style=relative --smart-group \
@@ -41,5 +49,7 @@ function fzf_history
 end
 bind \cR fzf_history
 bind \em accept-autosuggestion
+# bind \em down-line
+# bind \e, up-line
 
 starship init fish | source
