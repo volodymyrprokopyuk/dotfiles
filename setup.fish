@@ -32,17 +32,23 @@ function Apps
 end
 
 function Lpond
-  if not set -q argv[1]
-    echo argparse: missing LilyPond version; and return 1
+  if not string match -qr '^(?<ver>(?<v>\d\.\d{1,2})\.\d{1,2})$' $argv[1]
+    echo argparse: missing or invalid LilyPond version; and return 1
   end
-  echo $argv[1]
+  set -l url https://lilypond.org/download/sources/v$v/lilypond-$ver.tar.gz
+  set -l root ~/.config/lilypond; set -l dir $root/lilypond-$ver/build
+  curl -fsSL $url | tar xvz -C $root; and mkdir $dir; and cd $dir
+  and ../autogen.sh --noconfigure
+  and ../configure --prefix=$root --disable-documentation \
+    GUILE_FLAVOR=guile-3.0
+  and make -j 4; and make install
 end
 
 argparse --min-args=1 init v/version= -- $argv; or return
 
 if set -ql _flag_init
-  mkdir -p ~/.config/{wezterm,fish,doom,git,i3,i3status-rust,rofi,zathura} \
-    ~/.ssh
+  mkdir -p ~/.config/{wezterm,fish,doom,git,i3,i3status-rust,rofi} \
+    ~/.config/{zathura,lilypond} ~/.ssh
 end
 
 if contains all $argv
