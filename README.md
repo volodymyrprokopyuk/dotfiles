@@ -119,11 +119,9 @@ Program
 
 ## Scrolling
 
-- `C-y|e` scroll one line down / up
-- `C-f|b` scroll full screen forward / backward
-- `C-d|u` scroll half screen down / up
-- `zz` current line in the middle of the screen
-- `H|M|L` move cursor to high / middle / low of the screen
+- `C-e|y` forward/backward line
+- `C-f|b` forward/backward full screen
+- `C-d|u` forward/backward half screen
 
 ## Motions (content)
 
@@ -134,6 +132,8 @@ Program
 - `^|$` beginning / end of the current line content
 - `0` 0 position of the current line
 - `%` jump between parentheses
+- `zz` current line in the middle of the screen
+- `H|M|L` move cursor to high / middle / low of the screen
 
 Text objects
 

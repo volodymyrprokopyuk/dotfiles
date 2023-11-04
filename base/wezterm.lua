@@ -38,7 +38,10 @@ return {
     quick_select_match_bg = { Color = "#480000" },
   },
   inactive_pane_hsb = { saturation = 0.9, brightness = 0.7 },
-  scrollback_lines = 10000,
+  scrollback_lines = 2000,
+  quick_select_patterns = {
+    "^[a-z0-9]{4}",
+  },
   -- Key bindings
   disable_default_key_bindings = true,
   leader = { key = " ", mods = "ALT", timeout_milliseconds = 1000 },
@@ -68,11 +71,9 @@ return {
     { key = "l", mods = "ALT", action = act.ActivatePaneDirection "Right" },
     { key = "q", mods = "ALT", action = act.CloseCurrentPane { confirm = true } },
     -- Scroll
-    -- { key = "e", mods = "CTRL", action = act.ScrollByLine(5) },
-    -- { key = "y", mods = "CTRL", action = act.ScrollByLine(-5) },
-    -- { key = "f", mods = "CTRL", action = act.ScrollByPage(1.0) },
-    -- { key = "b", mods = "CTRL", action = act.ScrollByPage(-1.0) },
-    -- { key = "g", mods = "SHIFT", action = act.ScrollToBottom },
+    { key = "d", mods = "ALT", action = act.ScrollByPage(0.9) },
+    { key = "u", mods = "ALT", action = act.ScrollByPage(-0.9) },
+    { key = "g", mods = "SHIFT", action = act.ScrollToBottom },
     -- Search
     { key = "/", mods = "ALT", action = act.Search "CurrentSelectionOrEmptyString" },
     -- Copy
@@ -81,15 +82,14 @@ return {
     { key = "p", mods = "ALT", action = act.PasteFrom "Clipboard" },
     { key = "p", mods = "LEADER|SHIFT", action = act.PasteFrom "PrimarySelection" },
     -- Quick select
-    { key = "?", mods = "LEADER|SHIFT", action = act.QuickSelect },
+    { key = "q", mods = "ALT", action = act.QuickSelect },
   },
   key_tables = {
     search_mode = {
       { key = "Enter", mods = "NONE", action = act.CopyMode "PriorMatch" },
-      { key = "k", mods = "ALT", action = act.CopyMode "PriorMatch" },
-      { key = "j", mods = "ALT", action = act.CopyMode "NextMatch" },
-      { key = "m", mods = "CTRL", action = act.CopyMode "CycleMatchType" },
-      { key = "c", mods = "CTRL", action = act.CopyMode "ClearPattern" },
+      { key = ",", mods = "ALT", action = act.CopyMode "PriorMatch" },
+      { key = "m", mods = "ALT", action = act.CopyMode "NextMatch" },
+      { key = "u", mods = "CTRL", action = act.CopyMode "ClearPattern" },
       { key = "g", mods = "CTRL", action = act.CopyMode "Close" },
     },
     copy_mode = {
