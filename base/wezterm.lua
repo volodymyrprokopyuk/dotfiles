@@ -1,47 +1,40 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
--- Maximize window on start up
-wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = wezterm.mux.spawn_window(cmd or { })
-  window:gui_window():maximize()
-end)
+local themes = {
+  "zenwritten_dark",  "wilmersdorf",  "Wombat", "Vacuous 2 (terminal.sexy)",
+  "VisiBone (terminal.sexy)", "VSCodeDark+ (Gogh)"
+}
 
 return {
-  -- Appearence
+  -- Appearance
   hide_tab_bar_if_only_one_tab = true,
   -- Font
   font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Light" }),
   font_size = 13,
   -- Color theme
-  -- color_scheme = "zenwritten_dark",
-  -- color_scheme = "wilmersdorf",
-  -- color_scheme = "Wombat",
-  -- color_scheme = "Vacuous 2 (terminal.sexy)",
-  -- color_scheme = "VisiBone (terminal.sexy)",
-  color_scheme = "VSCodeDark+ (Gogh)",
+  color_scheme = "VSCodeDark+ (Gogh)", -- themes[math.random(#themes)],
   colors = {
     -- Transparent cursor
     cursor_fg = "rgba(0,0,0,1)",
+    -- Pane split
+    split = "yellow",
     -- Search
     copy_mode_active_highlight_fg = { Color = "#FFDF85" },
     copy_mode_active_highlight_bg = { Color = "#EF1100" },
     copy_mode_inactive_highlight_fg = { Color = "#FFDF85" },
-    copy_mode_inactive_highlight_bg = { Color = "#007915" },
+    copy_mode_inactive_highlight_bg = { Color = "#017371" },
     -- Copy
     selection_fg = "#FFDF85",
     selection_bg = "#480000",
     -- Quick select
     quick_select_label_fg = { Color = "#FFDF85" },
-    quick_select_label_bg = { Color = "#EF1100" },
+    quick_select_label_bg = { Color = "#23297A" },
     quick_select_match_fg = { Color = "#FFDF85" },
     quick_select_match_bg = { Color = "#480000" },
   },
-  inactive_pane_hsb = { saturation = 0.9, brightness = 0.7 },
+  quick_select_patterns = { "^[a-z0-9]{4}" },
   scrollback_lines = 2000,
-  quick_select_patterns = {
-    "^[a-z0-9]{4}",
-  },
   -- Key bindings
   disable_default_key_bindings = true,
   leader = { key = " ", mods = "ALT", timeout_milliseconds = 1000 },

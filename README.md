@@ -115,6 +115,11 @@ Program
 - `C-d` end input stream
 - `C-l` clear screen
 
+Completion
+
+- `Tab/S-Tab` forward/backward completion
+- `M-m/,` forward/backward completion
+
 # Doom Emacs
 
 ## Scrolling
