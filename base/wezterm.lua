@@ -1,19 +1,16 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-local themes = {
-  "zenwritten_dark",  "wilmersdorf",  "Wombat", "Vacuous 2 (terminal.sexy)",
-  "VisiBone (terminal.sexy)", "VSCodeDark+ (Gogh)"
-}
-
 return {
-  -- Appearance
+  -- General
   hide_tab_bar_if_only_one_tab = true,
+  scrollback_lines = 2000,
+  quick_select_patterns = { "^[a-z0-9]{4}" },
   -- Font
   font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Light" }),
   font_size = 13,
   -- Color theme
-  color_scheme = "VSCodeDark+ (Gogh)", -- themes[math.random(#themes)],
+  color_scheme = "VSCodeDark+ (Gogh)",
   colors = {
     -- Transparent cursor
     cursor_fg = "rgba(0,0,0,1)",
@@ -31,10 +28,8 @@ return {
     quick_select_label_fg = { Color = "#FFDF85" },
     quick_select_label_bg = { Color = "#23297A" },
     quick_select_match_fg = { Color = "#FFDF85" },
-    quick_select_match_bg = { Color = "#480000" },
+    quick_select_match_bg = { Color = "#480000" }
   },
-  quick_select_patterns = { "^[a-z0-9]{4}" },
-  scrollback_lines = 2000,
   -- Key bindings
   disable_default_key_bindings = true,
   leader = { key = " ", mods = "ALT", timeout_milliseconds = 1000 },
@@ -42,22 +37,21 @@ return {
     -- Toggle full screen
     { key = "F11", mods = "NONE", action = act.ToggleFullScreen },
     -- Font size
-    { key = "+", mods = "LEADER|SHIFT", action = act.IncreaseFontSize },
-    { key = "-", mods = "LEADER", action = act.DecreaseFontSize },
-    { key = "0", mods = "LEADER", action = act.ResetFontSize },
+    { key = "+", mods = "ALT|SHIFT", action = act.IncreaseFontSize },
+    { key = "-", mods = "ALT", action = act.DecreaseFontSize },
+    { key = "=", mods = "ALT", action = act.ResetFontSize },
     -- Tabs
-    { key = "n", mods = "LEADER|SHIFT", action = act.SpawnTab "CurrentPaneDomain" },
-    { key = "}", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(1) },
-    { key = "{", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(-1) },
-    { key = "o", mods = "LEADER|SHIFT", action = act.ActivateLastTab },
-    { key = "t", mods = "LEADER|SHIFT", action = act.ShowTabNavigator },
-    { key = "q", mods = "LEADER|SHIFT", action = act.CloseCurrentTab { confirm = true } },
+    { key = "n", mods = "LEADER", action = act.SpawnTab "CurrentPaneDomain" },
+    { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
+    { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+    { key = "o", mods = "LEADER", action = act.ActivateLastTab },
+    { key = "q", mods = "LEADER", action = act.CloseCurrentTab { confirm = true } },
     -- Panes
     { key = "v", mods = "ALT", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = "s", mods = "ALT", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
     { key = "z", mods = "ALT", action = act.TogglePaneZoomState },
     { key = "r", mods = "ALT", action = act.RotatePanes "Clockwise" },
-    { key = "g", mods = "ALT", action = act.PaneSelect },
+    { key = ".", mods = "ALT", action = act.PaneSelect },
     { key = "h", mods = "ALT", action = act.ActivatePaneDirection "Left" },
     { key = "j", mods = "ALT", action = act.ActivatePaneDirection "Down" },
     { key = "k", mods = "ALT", action = act.ActivatePaneDirection "Up" },
@@ -66,16 +60,15 @@ return {
     -- Scroll
     { key = "d", mods = "ALT", action = act.ScrollByPage(0.9) },
     { key = "u", mods = "ALT", action = act.ScrollByPage(-0.9) },
-    { key = "g", mods = "SHIFT", action = act.ScrollToBottom },
+    { key = "g", mods = "ALT", action = act.ScrollToBottom },
     -- Search
     { key = "/", mods = "ALT", action = act.Search "CurrentSelectionOrEmptyString" },
     -- Copy
     { key = "y", mods = "ALT", action = act.ActivateCopyMode },
     -- Paste
     { key = "p", mods = "ALT", action = act.PasteFrom "Clipboard" },
-    { key = "p", mods = "LEADER|SHIFT", action = act.PasteFrom "PrimarySelection" },
     -- Quick select
-    { key = "q", mods = "ALT", action = act.QuickSelect },
+    { key = "q", mods = "ALT", action = act.QuickSelect }
   },
   key_tables = {
     search_mode = {
@@ -83,7 +76,7 @@ return {
       { key = ",", mods = "ALT", action = act.CopyMode "PriorMatch" },
       { key = "m", mods = "ALT", action = act.CopyMode "NextMatch" },
       { key = "u", mods = "CTRL", action = act.CopyMode "ClearPattern" },
-      { key = "g", mods = "CTRL", action = act.CopyMode "Close" },
+      { key = "g", mods = "CTRL", action = act.CopyMode "Close" }
     },
     copy_mode = {
       { key = "h", mods = "NONE", action = act.CopyMode "MoveLeft" },
@@ -97,7 +90,7 @@ return {
       { key = "^", mods = "SHIFT", action = act.CopyMode "MoveToStartOfLineContent" },
       { key = "0", mods = "NONE", action = act.CopyMode "MoveToStartOfLine" },
       { key = "g", mods = "NONE", action = act.CopyMode "MoveToScrollbackTop" },
-      { key = "G", mods = "SHIFT", action = act.CopyMode "MoveToScrollbackBottom" },
+      { key = "g", mods = "SHIFT", action = act.CopyMode "MoveToScrollbackBottom" },
       { key = "f", mods = "NONE", action = act.CopyMode { JumpForward = { prev_char = false } } },
       { key = "f", mods = "SHIFT", action = act.CopyMode { JumpBackward = { prev_char = false } } },
       { key = "t", mods = "NONE", action = act.CopyMode { JumpForward = { prev_char = true } } },
@@ -111,7 +104,7 @@ return {
       { key = "o", mods = "SHIFT", action = act.CopyMode "MoveToSelectionOtherEnd" },
       { key = "y", mods = NONE, action = act.Multiple {
         { CopyTo = "ClipboardAndPrimarySelection" }, { CopyMode = "Close" } } },
-      { key = "g", mods = "CTRL", action = act.CopyMode "Close" },
-    },
-  },
+      { key = "g", mods = "CTRL", action = act.CopyMode "Close" }
+    }
+  }
 }
