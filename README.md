@@ -12,8 +12,6 @@ autologin-user=vlad
 Color CheckSpace VerbosePkgLists ParallelDownloads = 4
 # Update package repositories
 sudo pacman -Syyu
-# Install yay from AUR
-git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Update installed packages and remove unused packages
 yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 

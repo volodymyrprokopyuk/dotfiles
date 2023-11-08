@@ -15,7 +15,7 @@ return {
     -- Transparent cursor
     cursor_fg = "rgba(0,0,0,1)",
     -- Pane split
-    split = "yellow",
+    split = "#EEC500",
     -- Search
     copy_mode_active_highlight_fg = { Color = "#FFDF85" },
     copy_mode_active_highlight_bg = { Color = "#EF1100" },
