@@ -1,6 +1,6 @@
 # Initialization
 
-```zsh
+```fish
 # Disable login password
 sudo groupadd -r autologin
 sudo gpasswd -a $USER autologin
@@ -17,24 +17,21 @@ git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Update installed packages and remove unused packages
 yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 
-# Install Node.js
-yay -S nvm
-nvm install <version> && nvm alias default <version> && nvm use default
-# Install dotfiles
-git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles && npm install && ./index.js all
-
 # Install packages
 yay -S wezterm fish starship emacs-nativecomp
 yay -S aspell aspell-en ttf-jetbrains-mono-nerd
 yay -S fzf fd sd ripgrep eza bat git-delta vivid mlocate btop
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu feh mpv
-yay -S nodejs pnpm typescript typescript-language-server
+yay -S nodejs pnpm bun-bin typescript typescript-language-server
 yay -S go-ethereum solidity-bin
 yay -S dropbox
 
 # Install fish
 chsh -s $(which fish)
+
+# Install dotfiles
+git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles && ./setup.fish --init all
 
 # Install Doom Emacs
 git clone https://github.com/hlissner/doom-emacs.git ~/.config/emacs
