@@ -34,7 +34,7 @@ set -g fish_pager_color_progress --background=normal
 
 function lla
   eza --all --sort=type --long --git --time-style=relative --smart-group \
-    --no-permissions --octal-permissions --color-scale --no-quotes $argv
+    --no-permissions --octal-permissions --color-scale size --no-quotes $argv
 end
 function ll; lla --git-ignore $argv; end
 function lll; ll --tree $argv; end

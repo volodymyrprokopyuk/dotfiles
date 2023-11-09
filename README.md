@@ -19,7 +19,7 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 yay -S wezterm fish starship emacs-nativecomp
 yay -S aspell aspell-en ttf-jetbrains-mono-nerd
 yay -S fzf fd ripgrep eza bat git-delta vivid mlocate btop sd
-yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu feh mpv
+yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu
 yay -S nodejs pnpm bun-bin typescript typescript-language-server
 yay -S go-ethereum solidity-bin
 yay -S dropbox
@@ -40,7 +40,7 @@ doom upgrade # Doom and packages
 
 ## i3wm
 
-```zsh
+```fish
 # Set font scaling DPI (multiple of 96) in ~/.Xresources
 Xcursor.theme: Qogir
 Xcursor.size: 48
@@ -51,7 +51,7 @@ yay -S xorg-xev i3status-rust i3lock-color maim
 
 # pacman/yay usage
 
-```zsh
+```fish
 # Update the repository database
 yay -Sy
 # Upgrade the system
@@ -322,15 +322,6 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 - `h|j|k|l` move left/down/up/right
 - `r` reload file
 
-# Network
-
-``` zsh
-lspci -v # network kernel module
-sudo dmesg | grep <kernel module> # network interface
-ip link show dev <network interface> # network interface status
-ip link set <network interface> up | down # [dis]connect network interface
-```
-
 # Firefox
 
 ## Navigation
@@ -340,7 +331,7 @@ ip link set <network interface> up | down # [dis]connect network interface
 
 # PostgreSQL environment
 
-```zsh
+```fish
 # Install PostgreSQL server, client and tools
 yay -S postgresql
 # Create PostgreSQL data directory
@@ -382,7 +373,7 @@ psql -h localhost -p 5432 -f playground_dump_schema.sql \
 
 # Docker environment
 
-```zsh
+```fish
 # Install and configure Docker
 yay -S docker docker-compose
 sudo groupadd docker
@@ -429,7 +420,7 @@ docker-compose down <container-name>
 
 ## Users and groups management
 
-```zsh
+```fish
 # Show users
 cat /etc/passwd
 # Show groups
@@ -440,7 +431,7 @@ groups $USER
 
 ## systemd management
 
-```zsh
+```fish
 # Show services
 systemctl [list-units] --type=service --state=active
 # Manage service
@@ -450,7 +441,7 @@ sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
 ## SSH configuration
 
 Install and use locally generated SSH key on a remote server
-```zsh
+```fish
 # Generate SSH key pair locally
 # Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
 # File parmissions
@@ -473,7 +464,7 @@ ssh -T <alias>
 ```
 
 Add private SSH key identities to the SSH authentication agent
-```zsh
+```fish
 # Start SSH authentication agent
 eval $(ssh-agent)
 # Add private SSH key identities to the SSH authentication agent. Provide passphrase
@@ -482,9 +473,32 @@ ssh-add ~/.ssh/id_rsa*~*.pub
 ssh-add -l
 ```
 
+# Network
+
+```fish
+lspci -v # network kernel module
+sudo dmesg | grep <kernel module> # network interface
+ip link show dev <network interface> # network interface status
+ip link set <network interface> up | down # [dis]connect network interface
+```
+
+## Mount USB/HDD/SDD drive
+
+```fish
+sudo fdisk -l # list devices
+ll /dev/disk/by-uuid/* # list device UUIDs
+sudo mkdir /run/media/HD1 # create a mount point
+sudo mount -t ext4 /dev/sda3 /run/media/HD1 # mount a device
+df -h # verify mount success
+sudo umount /run/media/HD1 # unmount a device
+# /etc/fstab
+UUID=aa295f1c-3f40-4a02-b91c-a57c657ec247 /run/media/HD1 ext4 defaults 0 0
+sudo mount /run/media/HD1 # mount a device from fstab
+```
+
 ## Format USB drive
 
-```zsh
+```fish
 df -h
 sudo umount /dev/sdc1
 sudo mkfs.ext4 /dev/sdc1
