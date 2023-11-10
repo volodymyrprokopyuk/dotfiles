@@ -135,6 +135,7 @@ bindcode $mod+$bkspace exec i3lock --blur 12 \
 bindcode $mod+Shift+$bkspace exec systemctl poweroff
 bindcode $mod+Shift+$y exec i3-msg exit # logout
 bindcode $mod+Shift+$b exec systemctl reboot
+bindcode $mod+Shift+$z exec systemctl suspend
 
 gaps inner 2
 new_window pixel 1
