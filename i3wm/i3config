@@ -94,15 +94,14 @@ exec --no-startup-id feh --bg-fill \
   /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 exec --no-startup-id dunst
 
+# xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --off
+# set $dsp "HDMI-1"
 set $dsp Virtual1
 set $mou "ImExPS/2 Generic Explorer Mouse"
 set $ctm "Coordinate Transformation Matrix"
-bindcode $mod+Shift+$brright exec xrandr --output $dsp --rotate left; \
-  exec xinput set-prop $mou $ctm 0 -1 1 1 0 0 0 0 1
-bindcode $mod+Shift+$brleft exec xrandr --output $dsp --rotate right; \
-  exec xinput set-prop $mou $ctm 0 1 0 -1 0 1 0 0 1
-bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal; \
-  exec xinput set-prop $mou $ctm 1 0 0 0 1 0 0 0 1
+bindcode $mod+Shift+$brright exec xrandr --output $dsp --rotate left
+bindcode $mod+Shift+$brleft exec xrandr --output $dsp --rotate right
+bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal
 
 set $mode_input input
 mode $mode_input {
