@@ -127,15 +127,15 @@ bindcode $mod+$o exec fd --no-ignore --type file -e pdf -e djvu . \
   ~/Downloads ~/Projects/bayan | rofi -dmenu -i | xargs -I {} xdg-open {}
 
 set $lockcolor EEC500
-bindcode $mod+$bkspace exec i3lock --blur 12 \
+bindcode $mod+$y exec i3lock --blur 12 \
   --clock --time-str "%H:%M" --date-str "%a %e %b" \
   --time-color $lockcolor --date-color $lockcolor \
   --keylayout 1 --layout-color $lockcolor \
   --indicator --ring-color $lockcolor
-bindcode $mod+Shift+$bkspace exec systemctl poweroff
 bindcode $mod+Shift+$y exec i3-msg exit # logout
-bindcode $mod+Shift+$b exec systemctl reboot
 bindcode $mod+Shift+$z exec systemctl suspend
+bindcode $mod+$bkspace exec systemctl reboot
+bindcode $mod+Shift+$bkspace exec systemctl poweroff
 
 gaps inner 2
 new_window pixel 1
