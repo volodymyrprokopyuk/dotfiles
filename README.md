@@ -291,43 +291,45 @@ gc<a/i>(/[/{ comment outside/inside parentheses/brackets/braces
 
 # Zathura
 
-- `o|O` open / in current directory
-- `R` reload
+Operation
+
+- `o|O` open recent files/in current directory
+- `R` reload document
+- `C-c|g` cancel operation
+- `C-n` toggle status bar
+- `F11|F5` toggle full screen/presentation mode
 - `q` quit
-- `C-g` cancel TODO
-- `h|j|k|l` scroll left / down / up | right
-- `J|K` next / previous page
-- `C-f|b` forward / backwrd page
-- `H|L` top / bottom of page
-- `gg|G|<n>G` first / last / n page
-- `a|s|d` fit page height / width / dual view
-- `r` rotate
-- `+|-|=` zoom in / out / original size
-- `F11|F5` fullscreen / presentation mode
-- `Tab|j+k|l+h` index view / down + up / expand + collapse entry
-- `/|?|n+N` search forward / backwrd / next + previous match
-- `m<a>|'<a>` mark page / go to marked page
+
+Movements
+
+- `h|j|k|l` scroll left/down/up/right
+- `C-f|b`, `Space|S-Space` scroll forward/backward page
+- `J|K|H|L` scroll next/previous/top/bottom page
+
+Navigation
+
+- `gg|G|<n>G` go to first/last/n page
+- `m<a>|'<a>` mark page/go to marked page
+- `C-i|o` go to next/previous jump list item
+
+Transformation
+
+- `a|s|d` fit page height/width/dual view
+- `+|-|=|<n>=` zoom in/out/original size/% size
+- `r` rotate document
+
+Search
+
+- `/|?` search forward/backward
+- `n|N` go to next/previous match
+
+Index
+
+- `Tab` toggle index view
+- `j+k|l+h` move down/up, expand/collapse entry
+- `L+H` expand/collapse all entries
+
 - `convert in.jpg -rotate 90 -resize 1600 -crop 1450x2100+50+33 -threshold 60% -quality 70% cert.pdf`
-
-# Mupdf
-
-- `.|space ,|b` forward/backward page
-- `4g` go to page 4
-- `g|G` to to first/last page
-- `[0-9]m|[0-9]t` mark page/top back to the marked page
-- `+|-` zoom in/out
-- `W|H` fit width/height
-- `[|]` rotate page
-- `f` toggle fullscreen
-- `h|j|k|l` move left/down/up/right
-- `r` reload file
-
-# Firefox
-
-## Navigation
-
-- `C-[|]` history backwrd / forward
-- `C-R|C-F5` reload page / override cache
 
 # PostgreSQL environment
 
