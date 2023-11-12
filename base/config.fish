@@ -44,11 +44,12 @@ function vv; bat --tabs=2 $argv; end
 function ee; emacs -nw $argv; end
 
 function fzf_history
-  history --null | fzf --query=(commandline) --read0 --print0 \
-    --cycle --bind=alt-m:down,alt-,:up --ansi | \
+  history --null | fzf --query=(commandline) --scheme=history \
+    --read0 --print0 --cycle --bind=alt-m:down,alt-,:up --ansi | \
     read --null --local result; and commandline -- $result
 end
 bind \cR fzf_history
+
 bind \em 'if commandline --paging-mode; commandline -f down-line; \
   else; commandline -f accept-autosuggestion; end'
 bind \e, up-line
