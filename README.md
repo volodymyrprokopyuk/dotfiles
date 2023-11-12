@@ -1,5 +1,7 @@
 # Initialization
 
+## Base
+
 ```fish
 # Disable login password
 sudo groupadd -r autologin
@@ -19,7 +21,7 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 yay -S wezterm fish starship emacs-nativecomp
 yay -S aspell aspell-en ttf-jetbrains-mono-nerd
 yay -S fzf fd ripgrep eza bat git-delta vivid mlocate btop sd
-yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu
+yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu gthumb
 yay -S nodejs pnpm bun-bin typescript typescript-language-server
 yay -S go-ethereum solidity-bin
 yay -S dropbox
@@ -49,7 +51,9 @@ Xft.dpi: 192
 yay -S xorg-xev i3status-rust i3lock-color maim
 ```
 
-# pacman/yay usage
+# Commands
+
+## yay
 
 ```fish
 # Update the repository database
@@ -84,7 +88,95 @@ yay -Ps
 pactree <package>
 ```
 
-# Fish
+## Network
+
+```fish
+lspci -v # network kernel module
+sudo dmesg | grep <kernel module> # network interface
+ip link show dev <network interface> # network interface status
+ip link set <network interface> up | down # [dis]connect network interface
+```
+
+## Mount
+
+```fish
+sudo fdisk -l # list devices
+ll /dev/disk/by-uuid/* # list device UUIDs
+sudo mkdir /run/media/HD1 # create a mount point
+sudo mount -t ext4 /dev/sda3 /run/media/HD1 # mount a device
+df -h # verify mount success
+sudo umount /run/media/HD1 # unmount a device
+# /etc/fstab
+UUID=aa295f1c-3f40-4a02-b91c-a57c657ec247 /run/media/HD1 ext4 defaults 0 0
+sudo mount /run/media/HD1 # mount a device from fstab
+```
+
+## Format
+
+```fish
+df -h
+sudo umount /dev/sdc1
+sudo mkfs.ext4 /dev/sdc1
+```
+
+## Users and groups
+
+```fish
+# Show users
+cat /etc/passwd
+# Show groups
+cat /etc/group
+# Show groups that user belongs to
+groups $USER
+```
+
+## systemd management
+
+```fish
+# Show services
+systemctl [list-units] --type=service --state=active
+# Manage service
+sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
+```
+
+## SSH configuration
+
+Install and use locally generated SSH key on a remote server
+```fish
+# Generate SSH key pair locally
+# Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
+# File parmissions
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_*
+ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
+ssy-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
+# Copy SSH key to a remote host. Provide remote host username and password
+ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
+# Connect to the remote host using SSH key but not password. Provide passphrase
+ssh -i ~/.ssh/id_rsa_<provider> <username>@<host>
+# Configure SSH key alias in ~/.ssh/config
+Host <alias>
+    HostName <host>
+    User <user>
+    IdentityFile ~/.ssh/id_rsa<provider>
+# Connect to the remote host using SSH key alias. Provide passphrase
+ssh <alias>
+# Test SSH connection using SSH key
+ssh -T <alias>
+```
+
+Add private SSH key identities to the SSH authentication agent
+```fish
+# Start SSH authentication agent
+eval $(ssh-agent)
+# Add private SSH key identities to the SSH authentication agent. Provide passphrase
+ssh-add ~/.ssh/id_rsa*~*.pub
+# Show added to the SSH authentication agent private SSH key identities
+ssh-add -l
+```
+
+# Applications
+
+## Fish
 
 Movements
 
@@ -115,15 +207,15 @@ Completion
 - `Tab/S-Tab` forward/backward completion
 - `M-m/,` forward/backward completion
 
-# Doom Emacs
+## Doom Emacs TODO
 
-## Scrolling
+Scrolling
 
 - `C-e|y` forward/backward line
 - `C-f|b` forward/backward full screen
 - `C-d|u` forward/backward half screen
 
-## Motions (content)
+Motions
 
 - `h|l` left / right character
 - `[g]j|k` down / up [visual] line
@@ -150,9 +242,9 @@ Visual mode
 - `v|V|C-v` char / line / block visual selection
 - `C-v $` ragged right visual selection
 - `o` go to the other end of selection
-- `gv` reselect the last visual selection
+- `gv` re-select the last visual selection
 
-## Navigation (sniping)
+Navigation
 
 - `f|F` current line 1-char snipe forward / backwrd
 - `t|T` current line 1-char exclusive snipe forward / backwrd
@@ -164,7 +256,7 @@ Visual mode
 - `C-o|i` jump to last location  backwrd / forward (jump list)
 - `` m|'|`{a-z} `` set mark / jump to mark line / column
 
-## Search
+Search
 
 - `*|#` search word under cursor forward / backwrd
 - `/|?` incremental search forward / backwrd
@@ -179,19 +271,19 @@ Visual mode
 - `SPC s f` locate file in system
 - `q:|/|? j|k` query recent command line / forward / backwrd search
 
-## Editing
+Editing
 
 - `:e` edit existing or new file
 - `:w[a]` write file
 - `C-x C-c` exit Doom Emacs
 
-Repeat, undo / redo
+Repeat, undo/redo
 
 - `.` repeat the last change
 - `u` undo the last change
 - `C-r` redo the last undone change
 
-Yank / paste, registers
+Yank/paste, registers
 
 - `y<move>|Y` yank till move / till the end of current line
 - `yy` yank current line
@@ -228,13 +320,13 @@ Commenting
 - `gc<move>` comment / uncomment move
 - `gcc` comment / uncomment current line
 
-## Buffers
+Buffers
 
 - `SPC ,` switch buffer
 - ``SPC ` `` switch to alternate buffer
 - `C-x k` kill buffer
 
-## Windows
+Windows
 
 - `C-w s|v` split window horizontal / vertical
 - `C-w =` equalize windows
@@ -331,49 +423,9 @@ Index
 
 - `convert in.jpg -rotate 90 -resize 1600 -crop 1450x2100+50+33 -threshold 60% -quality 70% cert.pdf`
 
-# PostgreSQL environment
+# Environments
 
-```fish
-# Install PostgreSQL server, client and tools
-yay -S postgresql
-# Create PostgreSQL data directory
-sudo mkdir /var/lib/postgres/data
-sudo chown -R postgres:postgres /var/lib/postgres/data
-sudo chmod 755 -R /var/lib/postgres/*
-# Initialize PostgreSQL database cluster
-sudo su postgres
-initdb --locale en_US.UTF-8 --encoding UTF-8 -D /var/lib/postgres/data
-exit
-# Enable/disable/start/stop/restart/status PostgreSQL database service
-sudo systemctl enable|disable|start|stop|restart|status postgresql.service
-# Show PostgreSQL log
-journalctl -u postgresql.service
-# Create database user
-psql postgres postgres
-CREATE USER vlad WITH PASSWORD 'vlad' SUPERUSER;
-exit
-# Create database
-psql postgres vlad
-CREATE DATABASE playground WITH OWNER vlad;
-exit
-# Connect to database
-psql playground vlad
-# Dump database schema
-pg_dump -U vlad --schema-only playground > playground_dump_schema.sql
-# Restore database schema
-psql -h localhost -p 5432 -f playground_dump_schema.sql \
-    -v ON_ERROR_STOP=1 -v ECHO=queries playground vlad
-```
-
-## psql commands
-
-- General `\c`, `\conninfo`, `\du`, `\dx` `\l`, `\dn`, `\g`, `\r`, `\q`
-- Relations `\d`, `\dtvmi`
-- Functions `\df`, `\dfnptaw`, `\sf`
-- Editing `\e`, `\ef`
-
-
-# Docker environment
+## Docker
 
 ```fish
 # Install and configure Docker
@@ -418,90 +470,43 @@ docker-compose stop
 docker-compose down <container-name>
 ```
 
-# System environment
-
-## Users and groups management
+## PostgreSQL
 
 ```fish
-# Show users
-cat /etc/passwd
-# Show groups
-cat /etc/group
-# Show groups that user belongs to
-groups $USER
+# Install PostgreSQL server, client and tools
+yay -S postgresql
+# Create PostgreSQL data directory
+sudo mkdir /var/lib/postgres/data
+sudo chown -R postgres:postgres /var/lib/postgres/data
+sudo chmod 755 -R /var/lib/postgres/*
+# Initialize PostgreSQL database cluster
+sudo su postgres
+initdb --locale en_US.UTF-8 --encoding UTF-8 -D /var/lib/postgres/data
+exit
+# Enable/disable/start/stop/restart/status PostgreSQL database service
+sudo systemctl enable|disable|start|stop|restart|status postgresql.service
+# Show PostgreSQL log
+journalctl -u postgresql.service
+# Create database user
+psql postgres postgres
+CREATE USER vlad WITH PASSWORD 'vlad' SUPERUSER;
+exit
+# Create database
+psql postgres vlad
+CREATE DATABASE playground WITH OWNER vlad;
+exit
+# Connect to database
+psql playground vlad
+# Dump database schema
+pg_dump -U vlad --schema-only playground > playground_dump_schema.sql
+# Restore database schema
+psql -h localhost -p 5432 -f playground_dump_schema.sql \
+    -v ON_ERROR_STOP=1 -v ECHO=queries playground vlad
 ```
 
-## systemd management
+## psql commands
 
-```fish
-# Show services
-systemctl [list-units] --type=service --state=active
-# Manage service
-sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
-```
-
-## SSH configuration
-
-Install and use locally generated SSH key on a remote server
-```fish
-# Generate SSH key pair locally
-# Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
-# File parmissions
-chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_*
-ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
-ssy-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
-# Copy SSH key to a remote host. Provide remote host username and password
-ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
-# Connect to the remote host using SSH key but not password. Provide passphrase
-ssh -i ~/.ssh/id_rsa_<provider> <username>@<host>
-# Configure SSH key alias in ~/.ssh/config
-Host <alias>
-    HostName <host>
-    User <user>
-    IdentityFile ~/.ssh/id_rsa<provider>
-# Connect to the remote host using SSH key alias. Provide passphrase
-ssh <alias>
-# Test SSH connection using SSH key
-ssh -T <alias>
-```
-
-Add private SSH key identities to the SSH authentication agent
-```fish
-# Start SSH authentication agent
-eval $(ssh-agent)
-# Add private SSH key identities to the SSH authentication agent. Provide passphrase
-ssh-add ~/.ssh/id_rsa*~*.pub
-# Show added to the SSH authentication agent private SSH key identities
-ssh-add -l
-```
-
-# Network
-
-```fish
-lspci -v # network kernel module
-sudo dmesg | grep <kernel module> # network interface
-ip link show dev <network interface> # network interface status
-ip link set <network interface> up | down # [dis]connect network interface
-```
-
-## Mount USB/HDD/SDD drive
-
-```fish
-sudo fdisk -l # list devices
-ll /dev/disk/by-uuid/* # list device UUIDs
-sudo mkdir /run/media/HD1 # create a mount point
-sudo mount -t ext4 /dev/sda3 /run/media/HD1 # mount a device
-df -h # verify mount success
-sudo umount /run/media/HD1 # unmount a device
-# /etc/fstab
-UUID=aa295f1c-3f40-4a02-b91c-a57c657ec247 /run/media/HD1 ext4 defaults 0 0
-sudo mount /run/media/HD1 # mount a device from fstab
-```
-
-## Format USB drive
-
-```fish
-df -h
-sudo umount /dev/sdc1
-sudo mkfs.ext4 /dev/sdc1
-```
+- General `\c`, `\conninfo`, `\du`, `\dx` `\l`, `\dn`, `\g`, `\r`, `\q`
+- Relations `\d`, `\dtvmi`
+- Functions `\df`, `\dfnptaw`, `\sf`
+- Editing `\e`, `\ef`
