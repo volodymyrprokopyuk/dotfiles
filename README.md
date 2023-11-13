@@ -108,7 +108,9 @@ df -h # verify mount success
 sudo umount /run/media/HD1 # unmount a device
 # /etc/fstab
 UUID=aa295f1c-3f40-4a02-b91c-a57c657ec247 /run/media/HD1 ext4 defaults 0 0
+UUID=cbb67744-1bb8-42b8-ba94-bb97071404b2 /run/media/SD1 ext4 defaults,nofail,x-systemd.device-timeout=1 0 0
 sudo mount /run/media/HD1 # mount a device from fstab
+sudo mount -a # mount all devices from fstab
 ```
 
 ## Format
