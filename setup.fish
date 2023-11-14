@@ -22,7 +22,9 @@ function Git
 end
 
 function I3wm
+  set -l host (hostname)
   cp i3wm/i3config ~/.config/i3/config
+  sd "^# $host: " '' ~/.config/i3/config
   cp i3wm/i3status.toml ~/.config/i3status-rust/config.toml
   cp i3wm/roficonfig.rasi ~/.config/rofi/config.rasi
 end
