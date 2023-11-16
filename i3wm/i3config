@@ -41,13 +41,33 @@ set $ws9 "9"
 set $ws10 "10"
 
 set $mod Mod4
-bindcode $mod+$q kill
+bindcode $mod+Shift+$q kill
 bindcode $mod+$r reload
 bindcode $mod+Shift+$r restart
 bindsym $mod+Tab workspace back_and_forth
 bindcode $mod+$z fullscreen toggle
 bindcode $mod+$f floating toggle
 floating_modifier $mod
+
+set $lockcolor EEC500
+bindcode $mod+$y exec i3lock --blur 12 \
+  --clock --time-str "%H:%M" --date-str "%a %e %b" \
+  --time-color $lockcolor --date-color $lockcolor \
+  --keylayout 1 --layout-color $lockcolor \
+  --indicator --ring-color $lockcolor
+bindcode $mod+Shift+$y exec i3-msg exit # logout
+bindcode $mod+Shift+$z exec systemctl suspend
+bindcode $mod+$bkspace exec systemctl reboot
+bindcode $mod+Shift+$bkspace exec systemctl poweroff
+
+bindsym $mod+Return exec wezterm
+bindsym $mod+space exec emacs
+bindcode $mod+$w exec firefox
+
+assign [class=(?i)wezterm] $ws1
+assign [class=(?i)firefox] $ws2
+for_window [class=(?i)wezterm] focus
+for_window [class=(?i)firefox] focus
 
 bindcode $mod+$h focus left
 bindcode $mod+$j focus down
@@ -81,19 +101,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
-bindsym $mod+Return exec wezterm
-bindsym $mod+space exec emacs
-bindcode $mod+$w exec firefox
-
-assign [class=(?i)wezterm] $ws1
-assign [class=(?i)firefox] $ws2
-for_window [class=(?i)wezterm] focus
-for_window [class=(?i)firefox] focus
-
-exec --no-startup-id feh --bg-fill \
-  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
-exec --no-startup-id dunst
-
 # vbox: set $dsp Virtual1
 # sat: set $dsp HDMI-1
 # sat: exec --no-startup-id xrandr --output $dsp --primary --mode 1920x1080 --output LVDS-1 --off
@@ -125,17 +132,6 @@ bindcode $mod+$a exec rofi -show drun
 bindcode $mod+$o exec fd --no-ignore --type file -e pdf -e djvu . \
   ~/Downloads ~/Projects/bayan | rofi -dmenu -i | xargs -I {} xdg-open {}
 
-set $lockcolor EEC500
-bindcode $mod+$y exec i3lock --blur 12 \
-  --clock --time-str "%H:%M" --date-str "%a %e %b" \
-  --time-color $lockcolor --date-color $lockcolor \
-  --keylayout 1 --layout-color $lockcolor \
-  --indicator --ring-color $lockcolor
-bindcode $mod+Shift+$y exec i3-msg exit # logout
-bindcode $mod+Shift+$z exec systemctl suspend
-bindcode $mod+$bkspace exec systemctl reboot
-bindcode $mod+Shift+$bkspace exec systemctl poweroff
-
 gaps inner 2
 new_window pixel 1
 
@@ -149,3 +145,7 @@ bar {
   position top
   font pango: "Noto Sans Regular" 13, "Font Awesome 6 Free Regular" 13
 }
+
+exec --no-startup-id feh --bg-fill \
+  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id dunst
