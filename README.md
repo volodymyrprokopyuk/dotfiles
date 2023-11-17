@@ -398,6 +398,7 @@ Movements
 
 - `h|j|k|l` scroll left/down/up/right
 - `C-f|b`, `Space|S-Space` scroll forward/backward page
+- `C-d/u` scroll forward/backward half page
 - `J|K|H|L` scroll next/previous/top/bottom page
 
 Navigation

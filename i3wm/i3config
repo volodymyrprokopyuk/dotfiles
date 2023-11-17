@@ -24,6 +24,9 @@ set $w 25
 set $x 53
 set $y 29
 set $z 52
+set $tab 23
+set $return 36
+set $space 65
 set $brright 35
 set $brleft 34
 set $equal 21
@@ -44,7 +47,7 @@ set $mod Mod4
 bindcode $mod+Shift+$q kill
 bindcode $mod+$r reload
 bindcode $mod+Shift+$r restart
-bindsym $mod+Tab workspace back_and_forth
+bindcode $mod+$tab workspace back_and_forth
 bindcode $mod+$z fullscreen toggle
 bindcode $mod+$f floating toggle
 floating_modifier $mod
@@ -60,8 +63,8 @@ bindcode $mod+Shift+$z exec systemctl suspend
 bindcode $mod+$bkspace exec systemctl reboot
 bindcode $mod+Shift+$bkspace exec systemctl poweroff
 
-bindsym $mod+Return exec wezterm
-bindsym $mod+space exec emacs
+bindcode $mod+$return exec wezterm
+bindcode $mod+$space exec emacs
 bindcode $mod+$w exec firefox
 
 assign [class=(?i)wezterm] $ws1
@@ -112,7 +115,7 @@ bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal
 
 set $mode_input input
 mode $mode_input {
-  bindsym Return mode default
+  bindcode $return mode default
   bindcode Control+$g mode default
   bindcode $e exec setxkbmap us; exec busctl --user call rs.i3status /kblayout \
     rs.i3status.custom SetText ss English us; mode default
@@ -133,7 +136,7 @@ bindcode $mod+$o exec fd --no-ignore --type file -e pdf -e djvu . \
   ~/Downloads ~/Projects/bayan | rofi -dmenu -i | xargs -I {} xdg-open {}
 
 gaps inner 2
-new_window pixel 1
+default_border none
 
 set $white #FFFFFF
 set $yellow #EEC500
