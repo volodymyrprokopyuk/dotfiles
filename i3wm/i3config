@@ -48,6 +48,7 @@ bindcode $mod+Shift+$q kill
 bindcode $mod+$r reload
 bindcode $mod+Shift+$r restart
 bindcode $mod+$tab workspace back_and_forth
+workspace_auto_back_and_forth yes
 bindcode $mod+$z fullscreen toggle
 bindcode $mod+$f floating toggle
 floating_modifier $mod
@@ -58,7 +59,7 @@ bindcode $mod+$y exec i3lock --blur 12 \
   --time-color $lockcolor --date-color $lockcolor \
   --keylayout 1 --layout-color $lockcolor \
   --indicator --ring-color $lockcolor
-bindcode $mod+Shift+$y exec i3-msg exit # logout
+bindcode $mod+Shift+$y exec i3-msg exit
 bindcode $mod+Shift+$z exec systemctl suspend
 bindcode $mod+$bkspace exec systemctl reboot
 bindcode $mod+Shift+$bkspace exec systemctl poweroff
@@ -137,11 +138,6 @@ bindcode $mod+$o exec fd --no-ignore --type file -e pdf -e djvu . \
 
 gaps inner 2
 default_border none
-
-set $white #FFFFFF
-set $yellow #EEC500
-
-client.focused $white $white $white $yellow $yellow
 
 bar {
   status_command i3status-rs ~/.config/i3status-rust/config.toml
