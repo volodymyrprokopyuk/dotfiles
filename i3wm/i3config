@@ -143,6 +143,9 @@ bar {
   position top
   font pango:Noto Sans Regular 13
   status_command i3status-rs ~/.config/i3status-rust/config.toml
+  colors {
+    background #0F0E1C
+  }
 }
 
 exec --no-startup-id feh --bg-fill \
