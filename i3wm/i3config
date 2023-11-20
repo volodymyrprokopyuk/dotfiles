@@ -107,9 +107,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # vbox: set $dsp Virtual1
 # sat: set $dsp HDMI-1
-# sat: exec --no-startup-id xrandr --output $dsp --primary --mode 1920x1080 --output LVDS-1 --off
-set $mou "ImExPS/2 Generic Explorer Mouse"
-set $ctm "Coordinate Transformation Matrix"
+# sat: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --mode 1366x768 --right-of HDMI-1
 bindcode $mod+Shift+$brright exec xrandr --output $dsp --rotate left
 bindcode $mod+Shift+$brleft exec xrandr --output $dsp --rotate right
 bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal
