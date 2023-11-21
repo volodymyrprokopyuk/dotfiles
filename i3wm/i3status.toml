@@ -1,9 +1,11 @@
 error_format = "$full_error_message"
 
 [theme]
-theme = "gruvbox-dark"
+theme = "plain"
 [theme.overrides]
-separator = " "
+separator = ""
+idle_bg = "#0F0E1C"
+idle_fg = "#D2D4F6"
 
 [[block]]
 block = "cpu"
