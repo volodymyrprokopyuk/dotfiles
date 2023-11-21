@@ -112,7 +112,7 @@ bindcode $mod+Shift+$brright exec xrandr --output $dsp --rotate left
 bindcode $mod+Shift+$brleft exec xrandr --output $dsp --rotate right
 bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal
 
-set $mode_input input
+set $mode_input in
 mode $mode_input {
   bindcode $return mode default
   bindcode Control+$g mode default
@@ -145,6 +145,12 @@ bar {
   status_command i3status-rs ~/.config/i3status-rust/config.toml
   colors {
     background #0F0E1C
+    # border background foreground
+    focused_workspace #CFFBCF #009300 #CFFBCF
+    active_workspace #7C0CE9 #49038C #C499EE
+    inactive_workspace #3F59F9 #0A2F95 #7FA0FB
+    urgent_workspace #FECAD5 #B50027 #FECAD5
+    binding_mode #7D04B6 #590291 #EFD5FF
   }
 }
 
