@@ -10,6 +10,10 @@ sudo gpasswd -a $USER autologin
 [Seat:*]
 autologin-user=vlad
 
+# Scale apps on HDPI
+# /etc/profile.d/gtk.sh
+export GDK_DPI_SCALE=1.33
+
 # Enable options in /etc/pacman.conf
 Color CheckSpace VerbosePkgLists ParallelDownloads = 4
 # Update package repositories
