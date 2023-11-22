@@ -141,16 +141,16 @@ smart_gaps on
 
 bar {
   position top
-  font pango:Noto Sans Regular 13
+  font pango:Noto Sans Regular 14
   status_command i3status-rs ~/.config/i3status-rust/config.toml
   colors {
     background #0F0E1C
     # border background foreground
-    focused_workspace #CFFBCF #03688A #CFFBCF
-    active_workspace #7C0CE9 #370897 #C499EE
-    inactive_workspace #3F59F9 #3A4875 #7FA0FB
-    urgent_workspace #FECAD5 #B50027 #FECAD5
-    binding_mode #7D04B6 #590291 #EFD5FF
+    focused_workspace #FFFFFF #0044AA #FFFFFF
+    active_workspace #FFFFFF #442178 #FFFFFF
+    inactive_workspace #B7BEC8 #373E48 #B7BEC8
+    urgent_workspace #FFFFFF #D40055 #FFFFFF
+    binding_mode #FFFFFF #D45500 #FFFFFF
   }
 }
 
