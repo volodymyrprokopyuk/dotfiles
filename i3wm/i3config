@@ -51,6 +51,7 @@ bindcode $mod+$tab workspace back_and_forth
 workspace_auto_back_and_forth yes
 bindcode $mod+$z fullscreen toggle
 bindcode $mod+$f floating toggle
+bindcode $mod+$s sticky toggle
 floating_modifier $mod
 
 set $lockcolor EEC500
@@ -154,6 +155,6 @@ bar {
   }
 }
 
-exec --no-startup-id feh --bg-fill \
-  /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id feh --bg-fill --randomize \
+  /usr/share/endeavouros/backgrounds/*
 exec --no-startup-id dunst
