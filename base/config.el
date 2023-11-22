@@ -10,8 +10,7 @@
 
 (defun config-font ()
   (setq doom-font
-        (font-spec :family "JetBrainsMono Nerd Font Mono"
-                   :size 13.0 :weight 'light)))
+        (font-spec :family "JetBrainsMono NF" :size 13.0 :weight 'light)))
 
 (defun config-theme ()
   ;; (load-theme 'modus-vivendi-tinted t)

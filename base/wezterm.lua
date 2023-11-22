@@ -7,7 +7,7 @@ return {
   scrollback_lines = 2000,
   quick_select_patterns = { "^[a-z0-9]{4}" },
   -- Font
-  font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Light" }),
+  font = wezterm.font("JetBrainsMono NF", { weight = "Light" }),
   font_size = 13,
   -- Color theme
   color_scheme = "VSCodeDark+ (Gogh)",
