@@ -51,8 +51,16 @@ doom upgrade # Doom and packages
 Xcursor.theme: Qogir
 Xcursor.size: 48
 Xft.dpi: 192
+
 # Install packages
 yay -S xorg-xev i3status-rust i3lock-color maim
+
+# List installed applications
+fd -t f -e desktop . /
+# Set default applications for MIME xdg-open
+xdg-mime default org.pwmt.zathura.desktop application/pdf
+# Query default application for MIME xdg-open
+xdg-mime query default application/pdf
 ```
 
 # Commands
