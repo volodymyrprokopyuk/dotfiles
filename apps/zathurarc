@@ -1,6 +1,6 @@
 # show status bar and vertical scroll bar
 set guioptions sv
-set font "JetBrainsMono NF 11"
+set font "JetBrainsMono NF 10"
 set selection-clipboard clipboard
 set show-recent 15
 
