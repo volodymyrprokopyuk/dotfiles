@@ -55,12 +55,17 @@ Xft.dpi: 192
 # Install packages
 yay -S xorg-xev i3status-rust i3lock-color maim
 
+# Query MIME of a file
+xdg-mime query filetype file.pdf
 # List installed applications
 fd -t f -e desktop . /
-# Set default applications for MIME xdg-open
-xdg-mime default org.pwmt.zathura.desktop application/pdf
-# Query default application for MIME xdg-open
+# Query default application for a file
 xdg-mime query default application/pdf
+# Set default applications for a file
+xdg-mime default org.pwmt.zathura.desktop application/pdf
+xdg-mime default org.pwmt.zathura.desktop image/vnd.djvu
+xdg-mime default org.gnome.gThumb.desktop image/png
+xdg-mime default org.gnome.gThumb.desktop image/jpeg
 ```
 
 # Commands
