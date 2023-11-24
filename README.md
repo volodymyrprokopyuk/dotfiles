@@ -108,10 +108,11 @@ pactree <package>
 ## Network
 
 ```fish
-lspci -v # network kernel module
-sudo dmesg | grep <kernel module> # network interface
-ip link show dev <network interface> # network interface status
-ip link set <network interface> up | down # [dis]connect network interface
+nmcli device # list devices => connections
+nmcli connection # list connections => devices
+nmcli connection up|down connName # adtivate/deactivate connection
+nmcli radio wifi on|off # switch on/off WiFi
+nmcli device wifi # list avaialble WiFi networks
 ```
 
 ## Mount
