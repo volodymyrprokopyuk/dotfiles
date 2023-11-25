@@ -68,11 +68,14 @@ bindcode $mod+Shift+$bkspace exec systemctl poweroff
 bindcode $mod+$return exec wezterm
 bindcode $mod+$space exec emacs
 bindcode $mod+$w exec firefox
+bindcode $mod+$e exec inkscape
 
 assign [class=(?i)wezterm] $ws1
 assign [class=(?i)firefox] $ws2
+assign [class=(?i)inkscape] $ws3
 for_window [class=(?i)wezterm] focus
 for_window [class=(?i)firefox] focus
+for_window [class=(?i)inkscape] focus
 
 bindcode $mod+$h focus left
 bindcode $mod+$j focus down
