@@ -128,6 +128,9 @@ mode $mode_input {
     rs.i3status.custom SetText ss Ukrainian ua; mode default
   bindcode $r exec setxkbmap ru; exec busctl --user call rs.i3status /kblayout \
     rs.i3status.custom SetText ss Russian ru; mode default
+  bindcode $i exec pactl set-sink-volume 0 +5%
+  bindcode $d exec pactl set-sink-volume 0 -5%
+  bindcode $m exec pactl set-sink-mute 0 toggle
 }
 bindcode $mod+$i mode $mode_input
 
