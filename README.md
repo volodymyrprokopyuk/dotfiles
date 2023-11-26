@@ -111,9 +111,10 @@ pactree <package>
 ```fish
 nmcli device # list devices => connections
 nmcli connection # list connections => devices
-nmcli connection up|down connName # adtivate/deactivate connection
+nmcli connection up|down <connection> # adtivate/deactivate connection
 nmcli radio wifi on|off # switch on/off WiFi
 nmcli device wifi # list avaialble WiFi networks
+nmcli --ask device wifi connect <network> # connect to network
 ```
 
 ## Mount
