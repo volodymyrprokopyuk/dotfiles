@@ -135,7 +135,7 @@ bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 5 | xclip -selection clipboard -target image/png
 
 bindcode $mod+$a exec rofi -show drun
-bindcode $mod+$o exec fd --no-ignore -t file -e pdf -e djvu . \
+bindcode $mod+$o exec fd --no-ignore -t file -e pdf -e djvu -e svg . \
   ~/Downloads ~/Projects/bayan | rofi -dmenu -i | xargs -I {} xdg-open {}
 
 default_border none

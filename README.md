@@ -66,6 +66,7 @@ xdg-mime default org.pwmt.zathura.desktop application/pdf
 xdg-mime default org.pwmt.zathura.desktop image/vnd.djvu
 xdg-mime default org.gnome.gThumb.desktop image/png
 xdg-mime default org.gnome.gThumb.desktop image/jpeg
+xdg-mime default org.gnome.gThumb.desktop image/svg+xml
 ```
 
 # Commands
