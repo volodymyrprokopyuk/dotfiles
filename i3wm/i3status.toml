@@ -27,6 +27,16 @@ format = " Me $mem_used_percents.eng(w:1) "
 
 [[block]]
 block = "custom_dbus"
+path = "/auvol"
+format = " Vo $short_text "
+
+[[block]]
+block = "custom_dbus"
+path = "/aumic"
+format = " Mc $short_text "
+
+[[block]]
+block = "custom_dbus"
 path = "/kblay"
 format = " $short_text "
 
