@@ -120,17 +120,18 @@ set $mode_input in
 mode $mode_input {
   bindcode $return mode default
   bindcode Control+$g mode default
-  bindcode $e exec setxkbmap us; exec busctl --user call rs.i3status /kblayout \
+  bindcode $e exec setxkbmap us; exec busctl --user call rs.i3status /kblay \
     rs.i3status.custom SetText ss English us; mode default
-  bindcode $s exec setxkbmap es; exec busctl --user call rs.i3status /kblayout \
+  bindcode $s exec setxkbmap es; exec busctl --user call rs.i3status /kblay \
     rs.i3status.custom SetText ss Spanish es; mode default
-  bindcode $u exec setxkbmap ua; exec busctl --user call rs.i3status /kblayout \
+  bindcode $u exec setxkbmap ua; exec busctl --user call rs.i3status /kblay \
     rs.i3status.custom SetText ss Ukrainian ua; mode default
-  bindcode $r exec setxkbmap ru; exec busctl --user call rs.i3status /kblayout \
+  bindcode $r exec setxkbmap ru; exec busctl --user call rs.i3status /kblay \
     rs.i3status.custom SetText ss Russian ru; mode default
-  bindcode $i exec pactl set-sink-volume 0 +5%
-  bindcode $d exec pactl set-sink-volume 0 -5%
-  bindcode $m exec pactl set-sink-mute 0 toggle
+  bindcode $i exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+  bindcode $d exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+  bindcode $m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+  bindcode $c exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 }
 bindcode $mod+$i mode $mode_input
 

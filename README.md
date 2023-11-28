@@ -38,7 +38,7 @@ git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && ./setup.fish --init all
 
 # Install Doom Emacs
-git clone https://github.com/hlissner/doom-emacs.git ~/.config/emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 doom install # packages
 doom sync # config
 doom upgrade # Doom and packages
@@ -74,36 +74,38 @@ xdg-mime default org.gnome.gThumb.desktop image/svg+xml
 ## yay
 
 ```fish
-# Update the repository database
+# Update a repository database
 yay -Sy
-# Upgrade the system
+# Upgrade a system
 yay -Syu
 # Show packages to upgrade
 yay -Qu
-# Search the remote repository database for a package
-yay -Ss[i] <package>
-# Query the local repository database for the installed package
-yay -Qs[i] <package>
-# Install a package
-yay -S <package>
-# Remove a package, its configuration and dependencies
-yay -Rsn <package>
-# Install specific package version (downgrade)
-yay -U https://archive.archlinux.org/packages/f/firefox/firefox-68.0.2-1-x86_64.pkg.tar.xz
-# Clean package cache
+
+# Clean a package cache
 yay -Sc
 # Clean unneeded dependencies
 yay -Yc
+
+# Search a remote repository database for a package
+yay -Ss|i <package>
+# Query a local repository database for an installed package
+yay -Qs|i <package>
 # Show explicitly installed packages
 yay -Qe
+
+# Install a package
+yay -S <package>
+# Remove a package, its configuration, and dependencies
+yay -Rsn <package>
+
 # List all files owned by a package
 yay -Ql <package>
-# Show which package the file belongs to
+# Show which package a file belongs to
 yay -Qo <file path>
-# Show system statistics
-yay -Ps
 # Show dependency tree of a package
 pactree <package>
+# Show packages that depend on a package
+pactree -r <package>
 ```
 
 ## Network

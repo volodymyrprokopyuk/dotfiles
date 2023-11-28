@@ -18,16 +18,16 @@ critical_fg = "#D2D4F6"
 [[block]]
 block = "cpu"
 interval = 2
-format = " P $utilization.eng(w:1) "
+format = " Pr $utilization.eng(w:1) "
 
 [[block]]
 block = "memory"
 interval = 4
-format = " M $mem_used_percents.eng(w:1) "
+format = " Me $mem_used_percents.eng(w:1) "
 
 [[block]]
 block = "custom_dbus"
-path = "/kblayout"
+path = "/kblay"
 format = " $short_text "
 
 [[block]]
