@@ -36,6 +36,7 @@
        markdown
        web
        (javascript +lsp)
+       (go +lsp)
        solidity
        (sh +fish)
        emacs-lisp

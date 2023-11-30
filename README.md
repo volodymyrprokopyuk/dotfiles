@@ -27,6 +27,7 @@ yay -S aspell aspell-en ttf-jetbrains-mono-nerd
 yay -S fzf fd ripgrep eza bat git-delta vivid mlocate btop sd
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu gthumb inkscape
 yay -S nodejs pnpm bun-bin typescript typescript-language-server
+yay -S go gopls
 yay -S go-ethereum solidity-bin
 yay -S dropbox
 
