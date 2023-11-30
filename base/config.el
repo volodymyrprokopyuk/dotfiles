@@ -124,11 +124,6 @@
   (add-hook 'sql-mode-hook
             #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
 
-(defun config-js ()
-  (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
-  (setq js-indent-level 2)
-  (setq js2-mode-show-strict-warnings nil))
-
 (defun config-web ()
   (setq css-indent-offset 2)
   (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode))
@@ -139,10 +134,16 @@
                 (setq web-mode-css-indent-offset 2)
                 (setq web-mode-code-indent-offset 2))))
 
+(defun config-js ()
+  (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
+  (setq js-indent-level 2)
+  (setq js2-mode-show-strict-warnings nil))
+
+(defun config-go ()
+  (setq-hook! 'go-mode-hook indent-tabs-mode nil))
+
 (defun config-solidity ()
-  (add-hook 'solidity-mode-hook
-            #'(lambda ()
-               (setq c-basic-offset 2))))
+  (add-hook 'solidity-mode-hook #'(lambda () (setq c-basic-offset 2))))
 
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
@@ -153,7 +154,8 @@
 (defun config-elisp ()
   ;; Treat - as part of the word on *, #, w, b, e
   (add-hook 'emacs-lisp-mode-hook
-            #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
+            #'(lambda () (modify-syntax-entry ?- "w"
+                                              emacs-lisp-mode-syntax-table))))
 
 ;; Editor
 (config-doom)
@@ -169,8 +171,9 @@
 ;; Programming
 (config-fish)
 (config-sql)
-(config-js)
 (config-web)
+(config-js)
+(config-go)
 (config-solidity)
 (config-lilypond)
 (config-elisp)
