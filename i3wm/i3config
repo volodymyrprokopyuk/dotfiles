@@ -147,6 +147,7 @@ bindcode $mod+$o exec fd --no-ignore -t file -e pdf -e djvu -e svg . \
   ~/Downloads ~/Projects/bayan | rofi -dmenu -i | xargs -I {} xdg-open {}
 
 default_border none
+default_floating_border none
 gaps inner 2
 gaps outer -2
 smart_gaps on
