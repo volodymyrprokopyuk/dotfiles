@@ -139,8 +139,8 @@
   (setq js-indent-level 2)
   (setq js2-mode-show-strict-warnings nil))
 
-(defun config-go ()
-  (setq-hook! 'go-mode-hook indent-tabs-mode nil))
+;; (defun config-go ()
+;;   (setq-hook! 'go-mode-hook indent-tabs-mode nil))
 
 (defun config-solidity ()
   (add-hook 'solidity-mode-hook #'(lambda () (setq c-basic-offset 2))))
@@ -173,7 +173,7 @@
 (config-sql)
 (config-web)
 (config-js)
-(config-go)
+;; (config-go)
 (config-solidity)
 (config-lilypond)
 (config-elisp)
