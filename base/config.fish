@@ -1,4 +1,5 @@
-set -gx PATH $PATH $HOME/.config/{emacs,lilypond}/bin
+set -gx GOPATH $HOME/.local/go
+set -gx PATH $PATH $HOME/.config/{emacs,lilypond}/bin $GOPATH/bin
 set -gx EDITOR emacs -nw
 set -gx PAGER less
 set -gx LESS -RF
