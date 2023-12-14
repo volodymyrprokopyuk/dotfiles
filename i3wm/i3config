@@ -71,8 +71,8 @@ bindcode $mod+$w exec firefox
 bindcode $mod+$e exec inkscape
 
 assign [class=(?i)wezterm] $ws1
-assign [class=(?i)firefox] $ws2
-assign [class=(?i)inkscape] $ws3
+assign [class=(?i)firefox] $ws3
+assign [class=(?i)inkscape] $ws4
 for_window [class=(?i)wezterm] focus
 for_window [class=(?i)firefox] focus
 for_window [class=(?i)inkscape] focus
