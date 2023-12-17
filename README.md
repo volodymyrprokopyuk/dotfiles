@@ -449,6 +449,86 @@ Index
 
 - `convert in.jpg -rotate 90 -resize 1600 -crop 1450x2100+50+33 -threshold 60% -quality 70% cert.pdf`
 
+## Inkscape
+
+Document
+
+- `C-S-p` Inkscape preferences
+- `C-S-d` document preferences
+- `C-z|C-S-z` undo/redo
+- `C-M-k` spellcheck document
+- `C-S-s` save as PDF
+- `C-S-e` export as PNG
+
+Group, clone, duplicate
+
+- `C-d` duplicate selection
+- `C-g|C-S-g` group/ungroup selection
+- `M-d` clone object
+- `S-M-d` unlink clone
+- `S-d` select original
+
+Zoom
+
+- `C-wheel|+|-` zoom in/out
+- `5` fit page
+- `6` fit width
+- `4` fit drawing
+- `3` fit selection
+- `1` temporary zoom selection
+- ```|S-``` previous/next zoom
+
+Canvas
+
+- `wheel|S-wheel|C-arrows` vertical/horizontal scroll
+- `Spc-move` move canvas in any direction
+- `C-S-wheel` rotate canvas
+- `C-5` cycle outline modes
+- `f` temporary clean view
+- `S-f11` toggle tool bars
+- `f12` toggle dialogs
+
+Guides, grids
+
+- `%` toggle snapping
+- `#` toggle grid
+- `|` toggle guides
+- `Ruler-drag` crate guide
+- `S-drag` rotate guide
+- `C-S-drag` rotate guide snap angle
+- `Del` delete guide
+
+Z-order, layers
+
+- `Home` raise to top
+- `PgUp` raise selection
+- `PgDw` lower selection
+- `End` lower to bottom
+
+Fill, stroke
+
+- `click` fill from palette
+- `S-click` stroke from palette
+- `M-drag` temporary ungesture
+- `drag` adjust hue (color)
+- `C-drag` adjust lightness (intensity)
+- `S-drag` adjust saturation (shade)
+- `C-c|C-S-v` copy/paste object style
+
+Select
+
+Transform
+
+Text
+
+Bezier
+
+Node
+
+Rectanble
+
+Ellipse
+
 # Environments
 
 ## Docker
@@ -485,7 +565,7 @@ docker rm <container_id>
 
 # Execute a command inside a container
 docker exec -it [-u 0] <container_id> ls
-docker exec -it <container_id> sh -c 'ls /*'
+docker exec -it <container_id> sh -c `ls /*`
 docker exec -i <container_id> sh -c 'cat container_file' < host_file
 
 # Docker compose

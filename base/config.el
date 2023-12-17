@@ -13,7 +13,6 @@
         (font-spec :family "JetBrainsMono NF Light" :size 13.0 :weight 'light)))
 
 (defun config-theme ()
-  ;; (load-theme 'modus-vivendi-tinted t)
   (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523")))
   (load-theme 'zenburn t))
 
