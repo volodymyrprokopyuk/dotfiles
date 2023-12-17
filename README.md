@@ -515,19 +515,51 @@ Fill, stroke
 - `S-drag` adjust saturation (shade)
 - `C-c|C-S-v` copy/paste object style
 
-Select
+Select `s`
 
-Transform
+- `Spc` temporary switch to select
+- `click` select object
+- `S-click` toggle selection
+- `C-click` select in group
+- `M-click` select under
+- `drag` rubberband selection
+- `S-drag` add to rubberband selection
+- `M-drag` touch selection
+- `S-M-drag` add to touch selection
+- `Tab|S-Tab` select next/previous object
+- `S-s` cycle scale/rotate/align
 
-Text
+Move `s`
 
-Bezier
+- `drag|arrows` move selection
+- `S|M-arrows` coarse/fine grained move
+- `S-drag` move without snapping
+- `C-drag` horizontal/vertical move
 
-Node
+Scale `s`
 
-Rectanble
+- `C-drag` aspect ratio scale
+- `S-drag|<|>` symmetric scale
+- `C|M-<|>` coarse/fine grained scale`
 
-Ellipse
+Rotate, flip `s`
+
+- `C-drag` snap angle rotate
+- `S-drag` opposite corner rotate
+- `M-[|]` fine grained rotate
+- `h|v` horizontal/vertical flip
+
+Text `t`
+
+Bezier `b`
+
+Node `n`
+
+- `S-r` reverse path
+
+Rectanble `r`
+
+Ellipse `e`
 
 # Environments
 
