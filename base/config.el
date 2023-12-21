@@ -148,7 +148,12 @@
   (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
   (autoload 'LilyPond-mode "lilypond-mode.el" nil t)
   (add-to-list 'auto-mode-alist '("\\.lys?\\'" . LilyPond-mode))
-  (add-hook 'LilyPond-mode-hook #'(lambda () (display-line-numbers-mode))))
+  (add-hook 'LilyPond-mode-hook #'(lambda () (display-line-numbers-mode)))
+  (after! smartparens
+    (sp-local-pair '(LilyPond-mode) "(" nil
+                   :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC")))
+    (sp-local-pair '(LilyPond-mode) "[" nil
+                   :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC")))))
 
 (defun config-elisp ()
   ;; Treat - as part of the word on *, #, w, b, e
