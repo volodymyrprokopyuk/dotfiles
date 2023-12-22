@@ -21,7 +21,6 @@
        :tools
        lookup
        lsp
-       tree-sitter
 
        :completion
        company
@@ -36,8 +35,8 @@
        yaml
        markdown
        web
-       (javascript +lsp +tree-sitter)
-       (go +lsp +tree-sitter)
+       (javascript +lsp)
+       (go +lsp)
        solidity
        (sh +fish)
        emacs-lisp
