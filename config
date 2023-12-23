@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+# -*- mode: fish -*-
 
 function Wezterm
   cp base/wezterm.lua ~/.config/wezterm
@@ -9,8 +10,15 @@ function Fish
   cp base/starship.toml ~/.config
 end
 
-function Emacs
+function Emacs -a install
   cp base/*.el ~/.config/doom
+  if set -ql install
+    rm -rf ~/.config/emacs
+    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+    doom install # packages
+    # doom sync # config
+    # doom upgrade # Doom and packages
+  end
 end
 
 function Git
@@ -33,12 +41,13 @@ function Apps
   cp apps/zathurarc ~/.config/zathura
 end
 
-function Lpond
-  if not string match -qr '^(?<ver>(?<v>\d\.\d{1,2})\.\d{1,2})$' $argv[1]
+function Lpond -a lpversion
+  if not string match -qr '^(?<ver>(?<v>\d\.\d{1,2})\.\d{1,2})$' $lpversion
     echo argparse: missing or invalid LilyPond version; and return 1
   end
   set -l url https://lilypond.org/download/sources/v$v/lilypond-$ver.tar.gz
-  set -l root ~/.config/lilypond; set -l dir $root/lilypond-$ver/build
+  set -l root ~/.config/lilypond
+  set -l dir $root/lilypond-$ver/build
   curl -fsSL $url | tar xvz -C $root; and mkdir $dir; and cd $dir
   and ../autogen.sh --noconfigure
   and ../configure --prefix=$root --disable-documentation \
@@ -46,7 +55,7 @@ function Lpond
   and make -j 4; and make install
 end
 
-argparse --min-args=1 init v/version= -- $argv; or return
+argparse --min-args=1 init i/install v/version= -- $argv; or return
 
 if set -ql _flag_init
   mkdir -p ~/.config/{wezterm,fish,doom,git,i3,i3status-rust,rofi} \
@@ -61,7 +70,7 @@ for target in $argv
   switch $target
   case wezterm; Wezterm
   case fish; Fish
-  case emacs; Emacs
+  case emacs; Emacs $_flag_install
   case git; Git
   case i3wm; I3wm
   case apps; Apps

@@ -36,13 +36,7 @@ chsh -s $(which fish)
 
 # Install dotfiles
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles && ./setup.fish --init all
-
-# Install Doom Emacs
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-doom install # packages
-doom sync # config
-doom upgrade # Doom and packages
+cd ~/.dotfiles && ./config --init all -i
 ```
 
 ## i3wm
