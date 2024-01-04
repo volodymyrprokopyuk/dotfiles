@@ -110,6 +110,7 @@
 
 (defun config-fish ()
   ;; 2-space indentation
+  (setq c-basic-offset 2)
   (setq sh-basic-offset 2)
   (setq fish-indent-offset 2)
   ;; Treat _ as part of the word on *, #, w, b, e
