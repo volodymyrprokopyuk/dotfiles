@@ -106,6 +106,9 @@
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
+(defun config-spell ()
+  (after! spell-fu (setq spell-fu-idle-delay 0.5)))
+
 ;; Programming
 
 (defun config-fish ()
@@ -152,15 +155,17 @@
   (add-hook 'LilyPond-mode-hook #'(lambda () (display-line-numbers-mode)))
   (after! smartparens
     (sp-local-pair '(LilyPond-mode) "(" nil
-                   :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC")))
+      :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC")))
     (sp-local-pair '(LilyPond-mode) "[" nil
-                   :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC")))))
+      :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC"))))
+  (font-lock-add-keywords 'LilyPond-mode
+    '(("\\<define\\>\\|\\<template\\>\\|\\<block\\>\\|\\<end\\>" . font-lock-builtin-face)
+    ("\\<if\\>\\|\\<else\\>\\|\\<range\\>\\|\\<with\\>" . font-lock-builtin-face))))
 
 (defun config-elisp ()
   ;; Treat - as part of the word on *, #, w, b, e
   (add-hook 'emacs-lisp-mode-hook
-            #'(lambda () (modify-syntax-entry ?- "w"
-                                              emacs-lisp-mode-syntax-table))))
+    #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
 
 ;; Editor
 (config-doom)
@@ -172,6 +177,7 @@
 (config-parentheses)
 (config-completion)
 (config-evil)
+(config-spell)
 
 ;; Programming
 (config-fish)

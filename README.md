@@ -23,7 +23,8 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 
 # Install packages
 yay -S wezterm fish starship emacs-nativecomp
-yay -S aspell aspell-en ttf-jetbrains-mono-nerd noto-fonts-emoji
+yay -S aspell aspell-en aspell-es aspell-uk aspell-ru
+yay -S ttf-jetbrains-mono-nerd noto-fonts-emoji
 yay -S fzf fd ripgrep eza bat git-delta vivid plocate btop
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu pdfcpu gthumb inkscape
 yay -S nodejs pnpm bun-bin typescript typescript-language-server
