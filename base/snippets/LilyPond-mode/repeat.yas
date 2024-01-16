@@ -1,0 +1,5 @@
+# key: rep
+# --
+\repeat volta 2 {
+  $0
+}

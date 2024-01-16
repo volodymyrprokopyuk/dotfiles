@@ -106,6 +106,11 @@
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
+(defun config-snippets ()
+  (setq yas-snippet-dirs '("~/.dotfiles/base/snippets"))
+  (yas-global-mode 1)
+  (add-to-list 'auto-mode-alist '("\\.yas\\'" . snippet-mode)))
+
 ;; Programming
 
 (defun config-fish ()
@@ -174,6 +179,7 @@
 (config-parentheses)
 (config-completion)
 (config-evil)
+(config-snippets)
 
 ;; Programming
 (config-fish)
