@@ -106,9 +106,6 @@
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
-(defun config-spell ()
-  (after! spell-fu (setq spell-fu-idle-delay 0.5)))
-
 ;; Programming
 
 (defun config-fish ()
@@ -177,7 +174,6 @@
 (config-parentheses)
 (config-completion)
 (config-evil)
-(config-spell)
 
 ;; Programming
 (config-fish)
