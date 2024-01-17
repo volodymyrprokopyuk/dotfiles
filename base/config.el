@@ -109,7 +109,8 @@
 (defun config-snippets ()
   (setq yas-snippet-dirs '("~/.dotfiles/base/snippets"))
   (yas-global-mode 1)
-  (add-to-list 'auto-mode-alist '("\\.yas\\'" . snippet-mode)))
+  (add-to-list 'auto-mode-alist '("\\.yas\\'" . snippet-mode))
+  (setq yas-wrap-around-region t))
 
 ;; Programming
 
