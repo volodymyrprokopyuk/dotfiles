@@ -14,7 +14,8 @@
 
 (defun config-theme ()
   (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523")))
-  (load-theme 'zenburn t))
+  (load-theme 'zenburn t)
+  (custom-set-faces '(org-block ((t (:background "#282523" :extend t))))))
 
 (defun config-ligatures ()
   (setq jet-brains-mono-ligatures
