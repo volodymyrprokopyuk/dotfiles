@@ -1,46 +1,52 @@
 ;; -*- lexical-binding: t; -*-
 
-(doom! :os
-       tty
+(doom!
+ :completion
+ company
+ vertico
 
-       :ui
-       doom
-       modeline
-       ophints
-       (popup +defaults)
-       (vc-gutter +pretty)
+ :ui
+ doom
+ ;; ligatures TODO
+ modeline
+ ophints
+ (popup +defaults)
+ (vc-gutter +pretty)
 
-       :editor
-       (evil +everywhere)
-       fold
+ :editor
+ (evil +everywhere)
+ fold
+ ;; objed TODO
 
-       :emacs
-       undo
-       vc
+ :emacs
+ dired
+ undo
+ vc
 
-       :tools
-       lookup
-       lsp
+ :checkers
+ syntax
+ (spell +aspell +everywhere)
 
-       :completion
-       company
-       vertico
+ :tools
+ lookup
+ lsp
+ ;; magit TODO
 
-       :checkers
-       syntax
-       (spell +aspell +everywhere)
+ :os
+ tty
 
-       :lang
-       json
-       yaml
-       markdown
-       web
-       (javascript +lsp)
-       (go +lsp)
-       solidity
-       (sh +fish)
-       emacs-lisp
-       lua
+ :lang
+ json
+ yaml
+ markdown
+ org
+ (go +lsp)
+ solidity
+ web
+ (javascript +lsp)
+ (sh +fish)
+ emacs-lisp
+ lua
 
-       :config
-       (default +bindings +smartparens))
+ :config
+ (default +bindings +smartparens))
