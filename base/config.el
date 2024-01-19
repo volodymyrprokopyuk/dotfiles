@@ -113,6 +113,10 @@
   (add-to-list 'auto-mode-alist '("\\.yas\\'" . snippet-mode))
   (setq yas-wrap-around-region t))
 
+(defun config-org ()
+  (after! org
+    (setq org-startup-indented nil)))
+
 ;; Programming
 
 (defun config-fish ()
@@ -182,6 +186,7 @@
 (config-completion)
 (config-evil)
 (config-snippets)
+(config-org)
 
 ;; Programming
 (config-fish)
