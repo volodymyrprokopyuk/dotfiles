@@ -1,0 +1,15 @@
+* Application
+
+** Emacs
+
+*** Table
+
+| Key             | Function               |
+|-----------------+------------------------|
+| =¦ a ¦ b Tab=   | create table           |
+| =¦- Tab=        | insert hrule           |
+| =Tab/S-Tab=     | next/prev cell         |
+| =Spc m b i r/c= | insert row/column      |
+| =Spc m b d r/c= | delete row/column      |
+| =M-h/l=         | move column left/right |
+| =M-j/k=         | move row down/up       |
