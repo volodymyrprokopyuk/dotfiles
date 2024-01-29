@@ -237,8 +237,8 @@ Scrolling
 
 Motions
 
-- `h|l` left / right character
-- `[g]j|k` down / up [visual] line
+/- `h|l` left / right character
+/- `[g]j|k` down / up [visual] line
 - `w|b` beginning of the next / previous word + `W|B` on whitespace only
 - `e|ge` end of the next / previous word + `E|gE` on whitespace only
 - `^|$` beginning / end of the current line content

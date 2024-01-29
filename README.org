@@ -2,13 +2,29 @@
 
 ** Emacs
 
+*** Editor
+
+Movement
+
+| Key        | Function                                    |
+|------------+---------------------------------------------|
+| =h/l=      | move char left/right                        |
+| =j/k=      | move line down/up                           |
+| =g j/k=    | move visual line down/up                    |
+|------------+---------------------------------------------|
+| =w/b=      | move next/prev beg of word                  |
+| =e/ge=     | move next/prev end of word                  |
+| =W/B/E/gE= | move next/prev beg/end whitespace only word |
+|------------+---------------------------------------------|
+|            |                                             |
+
 *** Table
 
 | Key             | Function               |
 |-----------------+------------------------|
 | =¦ a ¦ b Tab=   | create table           |
 | =¦- Tab=        | insert hrule           |
-| =Tab/S-Tab=     | next/prev cell         |
+| =Tab/S-Tab=     | next/prev cell + align |
 | =Spc m b i r/c= | insert row/column      |
 | =Spc m b d r/c= | delete row/column      |
 | =M-h/l=         | move column left/right |
