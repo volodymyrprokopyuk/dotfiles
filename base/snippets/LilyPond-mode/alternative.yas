@@ -1,7 +1,6 @@
 # key: alt
 # --
 \alternative {
-  $0
-  \volta 1 {  }
+  \volta 1 { $0 }
   \volta 2 {  }
 }
