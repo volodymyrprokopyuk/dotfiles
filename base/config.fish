@@ -39,6 +39,7 @@ function lla
 end
 function ll; lla --git-ignore $argv; end
 function lll; ll --tree $argv; end
+function llla; lla --tree $argv; end
 function ff; fd --hidden $argv; end
 function gg; rg --hidden --glob=!.git $argv; end
 function vv; bat --tabs=2 $argv; end
