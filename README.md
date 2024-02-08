@@ -446,51 +446,6 @@ Index
 
 # Environments
 
-## Docker
-
-```fish
-# Install and configure Docker
-yay -S docker docker-compose
-sudo groupadd docker
-sudo usermod -G docker -a $USER
-newgrp docker
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-
-# Image management
-docker build <user>/<image>:<version> .
-docker images -a
-docker rmi <image_id>
-docker system prune [-a]
-
-# Network management
-docker network create <networ>
-docker network ls <network>
-docker network rm <network>
-
-# Container management
-docker run --rm -it [-d] --name <container> --network <network> \
-  -e ENV=value \
-  --mount type=bind,src=host,dst=container,[readonly] \
-  -p host:container \
-  <image> <command>
-docker ps -a
-docker ps -qf "name=^pattern$"
-docker rm <container_id>
-
-# Execute a command inside a container
-docker exec -it [-u 0] <container_id> ls
-docker exec -it <container_id> sh -c `ls /*`
-docker exec -i <container_id> sh -c 'cat container_file' < host_file
-
-# Docker compose
-docker-compose -f <compose.yaml> up [-d]
-docker-compose ps
-docker-compose run <service> <command>
-docker-compose stop
-docker-compose down <container-name>
-```
-
 ## PostgreSQL
 
 ```fish

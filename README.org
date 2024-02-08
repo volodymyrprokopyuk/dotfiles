@@ -1,4 +1,4 @@
-* Application
+* Applications
 
 ** Emacs
 
@@ -179,3 +179,67 @@ Ellipse =e=
 | Key | Function |
 |-----+----------|
 |     |          |
+
+
+* Environments
+
+** Docker
+
+Install and configure Docker
+
+#+BEGIN_SRC fish
+yay -S docker docker-compose
+sudo groupadd docker
+sudo usermod -G docker -a $USER
+newgrp docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+#+END_SRC
+
+Image management
+
+#+BEGIN_SRC fish
+docker build <user>/<image>:<version> .
+docker images -a
+docker rmi <image_id>
+docker system prune [-a]
+#+END_SRC
+
+Network management
+
+#+BEGIN_SRC fish
+docker network create <network>
+docker network ls <network>
+docker network rm <network>
+#+END_SRC
+
+Container management
+
+#+BEGIN_SRC fish
+docker run --rm -it [-d] --name <container> --network <network> \
+  -e ENV=value \
+  --mount type=bind,src=host,dst=container,[readonly] \
+  -p host:container \
+  <image> <command>
+docker ps -a
+docker ps -qf "name=^pattern$"
+docker rm <container_id>
+#+END_SRC
+
+Execute a command inside a container
+
+#+BEGIN_SRC fish
+docker exec -it [-u 0] <container_id> ls
+docker exec -it <container_id> sh -c 'ls /*'
+docker exec -i <container_id> sh -c 'cat container_file' < host_file
+#+END_SRC
+
+Docker compose
+
+#+BEGIN_SRC fish
+docker-compose -f <compose.yaml> up [-d]
+docker-compose ps
+docker-compose run <service> <command>
+docker-compose stop
+docker-compose down <container-name>
+#+END_SRC
