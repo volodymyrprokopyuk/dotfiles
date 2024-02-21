@@ -243,3 +243,18 @@ docker-compose run <service> <command>
 docker-compose stop
 docker-compose down <container-name>
 #+END_SRC
+
+** rclone
+
+#+BEGIN_SRC fish
+# configure remote
+rclone config
+# list remote files/directories
+rclone ls/lsl/lsd remote:path
+# copy files
+rclone copy remote:path local --progress
+# show remote object size
+rclone size remote:path
+# show remote quota
+rclone about remote:
+#+END_SRC
