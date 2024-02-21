@@ -23,8 +23,6 @@ import (
   "os/exec"
 )
 
-var lastTs = time.Now()
-
 type organizeCommand struct {
   inDir, outDir string
 }
@@ -99,29 +97,35 @@ func writeMedia(
 }
 
 type organizer interface {
-  organize(outDir string) error
+  organize(outDir string, lastTs *time.Time) error
 }
 
-type media string
+type image string
 
-type image struct {
-  media
-}
-
-func (img image) organize(outDir string) error {
-  file := string(img)
+func extractImageTs(file string) (time.Time, error) {
   out, err := exec.Command(
     "exiv2", "-K", "Exif.Image.DateTime", "-P", "v", file,
   ).Output()
   if err != nil {
-    return err
+    return time.Time{}, err
   }
   tstamp, err := time.Parse(
     "2006:01:02 15:04:05", strings.TrimRight(string(out), "\n"),
   )
   if err != nil {
-    return err
+    return time.Time{}, err
   }
+  return tstamp, nil
+}
+
+func (img image) organize(outDir string, lastTs *time.Time) error {
+  file := string(img)
+  tstamp, err := extractImageTs(file)
+  if err != nil {
+    fmt.Printf("error: %v %v\n", file, err)
+    tstamp = *lastTs
+  }
+  *lastTs = tstamp
   digest, err := digestMedia(file)
   if err != nil {
     return err
@@ -129,25 +133,33 @@ func (img image) organize(outDir string) error {
   return writeMedia(file, tstamp, digest, outDir)
 }
 
-type video struct {
-  media
-}
+type video string
 
-func (vid video) organize(outDir string) error {
-  file := string(vid)
+func extractVideoTs(file string) (time.Time, error) {
   out, err := exec.Command(
     "ffprobe", "-v", "quiet", "-select_streams", "v:0", "-show_entries",
     "stream_tags=creation_time", "-of", "default=nw=1:nk=1", file,
   ).Output()
   if err != nil {
-    return err
+    return time.Time{}, err
   }
   tstamp, err := time.Parse(
     "2006-01-02T15:04:05", strings.TrimSuffix(string(out), ".000000Z\n"),
   )
   if err != nil {
-    return err
+    return time.Time{}, err
   }
+  return tstamp, nil
+}
+
+func (vid video) organize(outDir string, lastTs *time.Time) error {
+  file := string(vid)
+  tstamp, err := extractVideoTs(file)
+  if err != nil {
+    fmt.Printf("error: %v %v\n", file, err)
+    tstamp = *lastTs
+  }
+  *lastTs = tstamp
   digest, err := digestMedia(file)
   if err != nil {
     return err
@@ -161,29 +173,52 @@ var (
 )
 
 func readMedia(inDir string) ([]organizer, error) {
-  media := make([]organizer, 0, 1e3)
-  err := filepath.WalkDir(inDir, func(
-    path string, de fs.DirEntry, err error,
-  ) error {
+  files := make([]organizer, 0, 1e3)
+  walk := func(path string, de fs.DirEntry, err error) error {
     if err != nil {
       return err
     }
     if (!de.IsDir()) {
       switch {
       case reImage.MatchString(path):
-        media = append(media, image(path))
+        files = append(files, image(path))
       case reVideo.MatchString(path):
-        media = append(media, video(path))
+        files = append(files, video(path))
       default:
         fmt.Printf("unknown file: %v\n", path)
       }
     }
     return nil
-  })
+  }
+  err := filepath.WalkDir(inDir, walk)
   if err != nil {
     return nil, err
   }
-  return media, nil
+  return files, nil
+}
+
+func organizeMedia(files []organizer, oc organizeCommand) {
+  var wg sync.WaitGroup
+  in := make(chan organizer)
+  for range min(len(files), 8) {
+    wg.Add(1)
+    go func() {
+      defer wg.Done()
+      var lastTs = time.Now()
+      for file := range in {
+        fmt.Println(file)
+        err := file.organize(oc.outDir, &lastTs)
+        if err != nil {
+          fmt.Printf("error: %v\n", err)
+        }
+      }
+    }()
+  }
+  for _, file := range files {
+    in <- file
+  }
+  close(in)
+  wg.Wait()
 }
 
 func main() {
@@ -197,24 +232,5 @@ func main() {
     fmt.Printf("error: %v\n", err)
     os.Exit(1)
   }
-  var wg sync.WaitGroup
-  in := make(chan media)
-  for range 4 {
-    wg.Add(1)
-    go func() {
-      defer wg.Done()
-      for file := range in {
-        fmt.Println(file)
-        err := file.organize(oc.outDir)
-        if err != nil {
-          fmt.Printf("error: %v\n", err)
-        }
-      }
-    }()
-  }
-  for _, file := range files {
-    in <- file
-  }
-  close(in)
-  wg.Wait()
+  organizeMedia(files, oc)
 }
