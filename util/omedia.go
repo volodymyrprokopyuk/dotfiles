@@ -17,9 +17,10 @@ import (
   "io"
   "io/fs"
   "path/filepath"
+  "crypto/sha256"
+  "sync"
   "os"
   "os/exec"
-  "crypto/sha256"
 )
 
 var lastTs = time.Now()
@@ -33,7 +34,8 @@ func parseArgs() (organizeCommand, error) {
   flag.StringVar(&outDir, "o", "", "output directory")
   flag.Parse()
   if len(outDir) == 0 {
-    return organizeCommand{}, fmt.Errorf("missing output directory")
+    return organizeCommand{},
+      fmt.Errorf("missing output directory")
   }
   _, err := os.Stat(outDir)
   if os.IsNotExist(err) {
@@ -62,14 +64,37 @@ func digestMedia(file string) (string, error) {
   return fmt.Sprintf("%x", hash.Sum(nil)), nil
 }
 
-func writeMedia(file string, tstamp time.Time, digest string) error {
-  dir := tstamp.Format("2006/2006-01-01")
-  file = fmt.Sprintf(
+func copyFile(src, dst string) (int64, error) {
+  srcFile, err := os.Open(src)
+  if err != nil {
+    return 0, err
+  }
+  defer srcFile.Close()
+  dstFile, err := os.Create(dst)
+  if err != nil {
+    return 0, err
+  }
+  defer dstFile.Close()
+  return io.Copy(dstFile, srcFile)
+}
+
+func writeMedia(
+  inFile string, tstamp time.Time, digest, outDir string,
+) error {
+  outDir = filepath.Join(outDir, tstamp.Format("2006/2006-01-02"))
+  outFile := fmt.Sprintf(
     "%v_%v%v",
     tstamp.Format("20060102_150405"), digest[:8],
-    strings.Replace(strings.ToLower(filepath.Ext(file)), ".jpeg", ".jpg", 1),
+    strings.Replace(strings.ToLower(filepath.Ext(inFile)), ".jpeg", ".jpg", 1),
   )
-  fmt.Printf("%v/%v\n", dir, file)
+  err := os.MkdirAll(outDir, 0755)
+  if err != nil {
+    return err
+  }
+  _, err = copyFile(inFile, filepath.Join(outDir, outFile))
+  if err != nil {
+    return err
+  }
   return nil
 }
 
@@ -77,7 +102,11 @@ type organizer interface {
   organize(outDir string) error
 }
 
-type image string
+type media string
+
+type image struct {
+  media
+}
 
 func (img image) organize(outDir string) error {
   file := string(img)
@@ -97,10 +126,12 @@ func (img image) organize(outDir string) error {
   if err != nil {
     return err
   }
-  return writeMedia(file, tstamp, digest)
+  return writeMedia(file, tstamp, digest, outDir)
 }
 
-type video string
+type video struct {
+  media
+}
 
 func (vid video) organize(outDir string) error {
   file := string(vid)
@@ -121,7 +152,7 @@ func (vid video) organize(outDir string) error {
   if err != nil {
     return err
   }
-  return writeMedia(file, tstamp, digest)
+  return writeMedia(file, tstamp, digest, outDir)
 }
 
 var (
@@ -161,15 +192,29 @@ func main() {
     fmt.Printf("error: %v\n", err)
     os.Exit(1)
   }
-  media, err := readMedia(oc.inDir)
+  files, err := readMedia(oc.inDir)
   if err != nil {
     fmt.Printf("error: %v\n", err)
     os.Exit(1)
   }
-  for _, med := range media {
-    err := med.organize(oc.outDir)
-    if err != nil {
-      fmt.Printf("error: %v\n", err)
-    }
+  var wg sync.WaitGroup
+  in := make(chan media)
+  for range 4 {
+    wg.Add(1)
+    go func() {
+      defer wg.Done()
+      for file := range in {
+        fmt.Println(file)
+        err := file.organize(oc.outDir)
+        if err != nil {
+          fmt.Printf("error: %v\n", err)
+        }
+      }
+    }()
   }
+  for _, file := range files {
+    in <- file
+  }
+  close(in)
+  wg.Wait()
 }
