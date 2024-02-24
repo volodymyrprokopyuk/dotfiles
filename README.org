@@ -224,6 +224,7 @@ docker run --rm -it [-d] --name <container> --network <network> \
 docker ps -a
 docker ps -qf "name=^pattern$"
 docker rm <container_id>
+docker container rm -f (docker container ls -aq)
 #+END_SRC
 
 Execute a command inside a container
