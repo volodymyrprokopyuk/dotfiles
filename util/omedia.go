@@ -100,6 +100,8 @@ type organizer interface {
   organize(outDir string, lastTs *time.Time) error
 }
 
+var cutTime, _ = time.Parse("2006-01-02", "2000-01-01")
+
 type image string
 
 func extractImageTs(file string) (time.Time, error) {
@@ -123,6 +125,9 @@ func (img image) organize(outDir string, lastTs *time.Time) error {
   tstamp, err := extractImageTs(file)
   if err != nil {
     fmt.Printf("error: %v %v\n", file, err)
+    tstamp = *lastTs
+  }
+  if (tstamp.Before(cutTime)) {
     tstamp = *lastTs
   }
   *lastTs = tstamp
@@ -157,6 +162,9 @@ func (vid video) organize(outDir string, lastTs *time.Time) error {
   tstamp, err := extractVideoTs(file)
   if err != nil {
     fmt.Printf("error: %v %v\n", file, err)
+    tstamp = *lastTs
+  }
+  if (tstamp.Before(cutTime)) {
     tstamp = *lastTs
   }
   *lastTs = tstamp
