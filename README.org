@@ -188,7 +188,7 @@ Ellipse =e=
 Install and configure Docker
 
 #+BEGIN_SRC fish
-yay -S docker docker-compose
+yay -S docker docker-compose docker-buildx
 sudo groupadd docker
 sudo usermod -G docker -a $USER
 newgrp docker
@@ -199,18 +199,19 @@ sudo systemctl start docker.service
 Image management
 
 #+BEGIN_SRC fish
-docker build <user>/<image>:<version> .
-docker images -a
-docker rmi <image_id>
-docker system prune [-a]
+docker buildx build --tag user/image:version .
+docker image ls -a
+docker image rm -f IID
+docker image rm -f (docker image ls -aq)
+docker image rm -f (docker image ls -aqf 'dangling=true')
 #+END_SRC
 
 Network management
 
 #+BEGIN_SRC fish
-docker network create <network>
-docker network ls <network>
-docker network rm <network>
+docker network create net
+docker network ls net
+docker network rm net
 #+END_SRC
 
 Container management
@@ -221,18 +222,23 @@ docker run --rm -it [-d] --name <container> --network <network> \
   --mount type=bind,src=host,dst=container,[readonly] \
   -p host:container \
   <image> <command>
-docker ps -a
-docker ps -qf "name=^pattern$"
-docker rm <container_id>
+
+docker container run --name name --rm [--detach] user/image:version
+docker container run --env A=b host:cont user/image:version
+docker container run --publish host:cont user/image:version
+docker container run --network net user/image:version
+docker container ls -a
+docker container rm -f CID/name
 docker container rm -f (docker container ls -aq)
 #+END_SRC
 
 Execute a command inside a container
 
 #+BEGIN_SRC fish
-docker exec -it [-u 0] <container_id> ls
-docker exec -it <container_id> sh -c 'ls /*'
-docker exec -i <container_id> sh -c 'cat container_file' < host_file
+docker container top/stats/logs --follow CID/name
+docker container cp hostfile CID/name:/path
+docker container exec CID/name ls/cat/rm /path
+docker container exec -it CID/name bash
 #+END_SRC
 
 Docker compose
@@ -251,11 +257,18 @@ docker-compose down <container-name>
 # configure remote
 rclone config
 # list remote files/directories
-rclone ls/lsl/lsd remote:path
-# copy files
-rclone copy remote:path local --progress
+rclone ls/lsl/lsd/tree remote:path
 # show remote object size
 rclone size remote:path
 # show remote quota
 rclone about remote:
+# generate a public link to a file
+rclone link remote:path
+# copy files
+rclone copy --progress remote:path ~/local
+rclone copy --progress ~/local remote:path
+# delete files
+rclone --dry-run delete remote:path
+# operate remote with TUI
+rclone ncdu remote:
 #+END_SRC

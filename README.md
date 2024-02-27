@@ -23,9 +23,9 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 
 # Install packages
 yay -S wezterm fish starship emacs-nativecomp
-yay -S aspell aspell-en aspell-es aspell-uk aspell-ru
+yay -S aspell aspell-en
 yay -S ttf-jetbrains-mono-nerd noto-fonts-emoji
-yay -S fzf fd ripgrep eza bat git-delta vivid plocate btop
+yay -S fzf fd ripgrep eza bat git-delta vivid plocate btop go-yq
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu gthumb inkscape
 yay -S nodejs pnpm bun-bin typescript typescript-language-server
 yay -S go gopls
@@ -122,13 +122,14 @@ sudo fdisk -l # list devices
 ll /dev/disk/by-uuid/* # list device UUIDs
 sudo mkdir /run/media/HD1 # create a mount point
 sudo mount -t ext4 /dev/sda3 /run/media/HD1 # mount a device
-df -h # verify mount success
+df -h # verify mount success; show storage space usage
 sudo umount /run/media/HD1 # unmount a device
 # /etc/fstab
 UUID=aa295f1c-3f40-4a02-b91c-a57c657ec247 /run/media/HD1 ext4 defaults 0 0
 UUID=cbb67744-1bb8-42b8-ba94-bb97071404b2 /run/media/SD1 ext4 defaults,nofail,x-systemd.device-timeout=1 0 0
 sudo mount /run/media/HD1 # mount a device from fstab
 sudo mount -a # mount all devices from fstab
+du -hd 1 # show directory size to depth
 ```
 
 ## Format
