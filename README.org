@@ -196,59 +196,62 @@ sudo systemctl enable docker.service
 sudo systemctl start docker.service
 #+END_SRC
 
+Network management
+
+#+BEGIN_SRC fish
+docker network create $net
+docker network ls
+docker network rm --force $net
+#+END_SRC
+
 Image management
 
 #+BEGIN_SRC fish
 docker buildx build --tag user/image:version .
-docker image ls -a
-docker image rm -f IID
-docker image rm -f (docker image ls -aq)
-docker image rm -f (docker image ls -aqf 'dangling=true')
-#+END_SRC
-
-Network management
-
-#+BEGIN_SRC fish
-docker network create net
-docker network ls net
-docker network rm net
+docker image ls --all
+docker image rm --force $img
 #+END_SRC
 
 Container management
 
 #+BEGIN_SRC fish
-docker run --rm -it [-d] --name <container> --network <network> \
-  -e ENV=value \
-  --mount type=bind,src=host,dst=container,[readonly] \
-  -p host:container \
-  <image> <command>
-
-docker container run --name name --rm [--detach] user/image:version
-docker container run --env A=b host:cont user/image:version
-docker container run --publish host:cont user/image:version
-docker container run --network net user/image:version
-docker container ls -a
-docker container rm -f CID/name
-docker container rm -f (docker container ls -aq)
+docker container run --name $cnt --rm $img [cmd args...] [bash -c 'cmd ...']
+docker container run --env VAR=val $img
+docker container run --detach --publish $hostPort:$cntPort $img
+docker container run --volume $vol:/path $img
+docker container run --network $net $img
+docker container ls --all
+docker container rm --force $cnt
 #+END_SRC
 
 Execute a command inside a container
 
 #+BEGIN_SRC fish
-docker container top/stats/logs --follow CID/name
-docker container cp hostfile CID/name:/path
-docker container exec CID/name ls/cat/rm /path
-docker container exec -it CID/name bash
+docker container top/stats/logs --follow $cnt
+docker container cp hostfile $cnt:/path # even from stopped
+docker container exec $cnt ls/cat/rm /path # only on running
+docker container exec -it $cnt bash
+#+END_SRC
+
+Volume and mount management
+
+#+BEGIN_SRC fish
+docker volume create $vol
+docker volume ls
+docker volume rm --force $vol
+docker container run --name $cnt --rm \
+  --mount type=bind,source=(pwd)/path,target=/path,readonly $img
 #+END_SRC
 
 Docker compose
 
 #+BEGIN_SRC fish
-docker-compose -f <compose.yaml> up [-d]
+docker-compose --file compose.yaml up [--detach]
+docker-compose up --scale $srv=N # creates new containers
 docker-compose ps
-docker-compose run <service> <command>
-docker-compose stop
-docker-compose down <container-name>
+docker-compose logs --follow [$srv]
+docker-compose start/stop # existing containers
+docker-compose down [$srv] # removes containers
 #+END_SRC
 
 ** rclone
