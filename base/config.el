@@ -129,6 +129,9 @@
             #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
   (add-to-list 'auto-mode-alist '("config\\'" . conf-mode)))
 
+(defun config-docker ()
+  (setq dockerfile-indent-offset 2))
+
 (defun config-sql ()
   (setq sql-product 'postgres)
   ;; Treat _ as part of the word on *, #, w, b, e
@@ -190,6 +193,7 @@
 
 ;; Programming
 (config-fish)
+(config-docker)
 (config-sql)
 (config-web)
 (config-js)
