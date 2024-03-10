@@ -7,3 +7,4 @@
 (package! zenburn-theme)
 (package! ligature)
 (package! highlight-parentheses)
+(package! protobuf-mode)

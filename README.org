@@ -246,6 +246,7 @@ docker container run --name $cnt --rm \
 Docker compose
 
 #+BEGIN_SRC fish
+docker-compose config # shows merged YAML config
 docker-compose --file compose.yaml up [--detach]
 docker-compose up --scale $srv=N # creates new containers
 docker-compose ps
