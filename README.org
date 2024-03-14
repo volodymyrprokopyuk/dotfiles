@@ -210,6 +210,11 @@ Image management
 docker buildx build --tag user/image:version .
 docker image ls --all
 docker image rm --force $img
+# space for images, build cache, loval volumes and container writable layers
+docker system df
+# remove all stopped containers, not used networks, dangling images, unused
+# build cache
+docker system prune
 #+END_SRC
 
 Container management
