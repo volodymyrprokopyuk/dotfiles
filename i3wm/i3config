@@ -142,7 +142,7 @@ bindcode $mod+Shift+$c exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; \
   exec ~/.dotfiles/i3wm/getvol.sh /aumic @DEFAULT_AUDIO_SOURCE@
 
 bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
-  --bordersize 5 | xclip -selection clipboard -target image/png
+  --bordersize 3 | xclip -selection clipboard -target image/png
 
 bindcode $mod+$a exec rofi -show drun
 bindcode $mod+$o exec fd --no-ignore -t file -e pdf -e djvu -e svg . \
