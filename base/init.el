@@ -15,11 +15,11 @@
 
   :editor
   (evil +everywhere)
-  fold
+  ;; fold
   ;; objed TODO
 
   :emacs
-  dired
+  ;; dired
   undo
   vc
 
@@ -30,7 +30,7 @@
   :tools
   lookup
   lsp
-  magit
+  ;; magit
   docker
 
   :os
@@ -42,9 +42,9 @@
   markdown
   org
   (go +lsp)
-  solidity
+  ;; solidity
   web
-  (javascript +lsp)
+  ;; (javascript +lsp)
   (sh +fish)
   emacs-lisp
   lua
