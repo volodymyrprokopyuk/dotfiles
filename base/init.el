@@ -17,6 +17,7 @@
   (evil +everywhere)
   ;; fold
   ;; objed TODO
+  snippets
 
   :emacs
   ;; dired
