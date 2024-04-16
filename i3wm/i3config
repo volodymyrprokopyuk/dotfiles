@@ -172,4 +172,3 @@ bar {
 
 exec --no-startup-id feh --bg-fill --randomize \
   /usr/share/endeavouros/backgrounds/*
-exec --no-startup-id dunst
