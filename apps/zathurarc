@@ -14,7 +14,7 @@ set statusbar-page-percent true
 set default-bg "#C6C6C3" # gray
 set statusbar-bg "#FEFFAE" # yellow
 set statusbar-fg "#34342F"
-set inputbar-bg "#D2FE9B" # gree
+set inputbar-bg "#D2FE9B" # green
 set inputbar-fg "#34342F"
 set completion-bg "#FFE9CF" # cream
 set completion-fg "#34342F"
@@ -30,6 +30,5 @@ set notification-warning-bg "#FFD0A5" # orange
 set notification-warning-fg "#34342F"
 set notification-error-bg "#FFB3B5" # red
 set notification-error-fg "#34342F"
-set highlight-transparency 0.4 # search
-set highlight-color "#DEFD2C" # yellow
-set highlight-active-color "#2AF52A" # green
+set highlight-color rgba(255,216,0,0.4) # yellow
+set highlight-active-color grba(152,251,152,0.4) # green
