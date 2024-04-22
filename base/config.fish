@@ -2,7 +2,7 @@ set -gx GOPATH $HOME/.local/go
 set -gx PATH $PATH $HOME/.dotfiles $HOME/.config/{emacs,lilypond}/bin $GOPATH/bin
 set -gx EDITOR emacs -nw
 set -gx PAGER less
-set -gx LESS -RF
+set -gx LESS '-RFQ --no-vbell'
 set -gx LS_COLORS (vivid generate snazzy)
 set -gx BAT_STYLE plain
 set -gx BAT_THEME 1337
