@@ -30,6 +30,7 @@
           "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
           "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
           "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
+  (ligature-set-ligatures 'go-mode jet-brains-mono-ligatures)
   (ligature-set-ligatures 'js2-mode jet-brains-mono-ligatures)
   (global-ligature-mode t))
 
