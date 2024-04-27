@@ -55,8 +55,9 @@ bindcode $mod+$s sticky toggle
 floating_modifier $mod
 
 set $lockcolor EEC500
-bindcode $mod+$y exec i3lock --blur 12 \
-  --clock --time-str "%H:%M" --date-str "%a %e %b" \
+bindcode $mod+$y exec setxkbmap us; exec busctl --user call rs.i3status /kblay \
+  rs.i3status.custom SetText ss English us; mode default; \
+  exec i3lock --blur 12 --clock --time-str "%H:%M" --date-str "%a %e %b" \
   --time-color $lockcolor --date-color $lockcolor \
   --keylayout 1 --layout-color $lockcolor \
   --indicator --ring-color $lockcolor
