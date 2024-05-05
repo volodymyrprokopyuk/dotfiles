@@ -16,6 +16,7 @@ export GDK_DPI_SCALE=1.33
 
 # Enable options in /etc/pacman.conf
 Color CheckSpace VerbosePkgLists ParallelDownloads = 4
+# Disable [multilib]
 # Update package repositories
 sudo pacman -Syyu
 # Update installed packages and remove unused packages
