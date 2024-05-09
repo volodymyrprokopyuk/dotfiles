@@ -202,18 +202,18 @@ Network management
 docker network create $net
 docker network ls
 docker network rm --force $net
+docker container run --network $net --network-alias $cnt $img
 #+END_SRC
 
 Image management
 
 #+BEGIN_SRC fish
-docker buildx build --tag user/image:version .
-docker image ls --all
+docker buildx build --tag user/image:tag --target stage .
+docker image ls --all [image[:tag]]
 docker image rm --force $img
-# space for images, build cache, loval volumes and container writable layers
+# space for images, build cache, local volumes and container writable layers
 docker system df
-# remove all stopped containers, not used networks, dangling images, unused
-# build cache
+# remove all stopped containers, unused networks, dangling images, unused cache
 docker system prune
 #+END_SRC
 
@@ -221,12 +221,12 @@ Container management
 
 #+BEGIN_SRC fish
 docker container run --name $cnt --rm $img [cmd args...] [bash -c 'cmd ...']
+docker container run --interactive --tty $img
 docker container run --env VAR=val $img
-docker container run --detach --publish $hostPort:$cntPort $img
-docker container run --volume $vol:/path $img
-docker container run --network $net $img
+docker container run --detach --publish $hostport:$cntport $img
 docker container ls --all
-docker container rm --force $cnt
+docker container stop $cnt
+docker container rm --force $cnt # stop then remove
 #+END_SRC
 
 Execute a command inside a container
@@ -235,7 +235,7 @@ Execute a command inside a container
 docker container top/stats/logs --follow $cnt
 docker container cp hostfile $cnt:/path # even from stopped
 docker container exec $cnt ls/cat/rm /path # only on running
-docker container exec -it $cnt bash
+docker container exec -it $cnt bash # interactive
 #+END_SRC
 
 Volume and mount management
@@ -244,16 +244,19 @@ Volume and mount management
 docker volume create $vol
 docker volume ls
 docker volume rm --force $vol
+docker container run --volume $vol:/cntpath $img
 docker container run --name $cnt --rm \
-  --mount type=bind,source=(pwd)/path,target=/path,readonly $img
+  --mount type=volume,source=$vol,target=/cntpath,readonly $img
+docker container run --name $cnt --rm \
+  --mount type=bind,source=(pwd)/hostpath,target=/cntpath,readonly $img
 #+END_SRC
 
 Docker compose
 
 #+BEGIN_SRC fish
-docker-compose config # shows merged YAML config
+docker-compose config # validate merged YAML config
 docker-compose --file compose.yaml up [--detach]
-docker-compose up --scale $srv=N # creates new containers
+docker-compose up --build --scale $srv=N # creates new containers
 docker-compose ps
 docker-compose logs --follow [$srv]
 docker-compose start/stop # existing containers
