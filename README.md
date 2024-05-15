@@ -33,9 +33,6 @@ yay -S go gopls
 yay -S go-ethereum solidity-bin
 yay -S dropbox
 
-# Install fish
-chsh -s $(which fish)
-
 # Install dotfiles
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && ./config --init all -i

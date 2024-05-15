@@ -1,5 +1,5 @@
 set -gx GOPATH $HOME/.local/go
-set -gx PATH $PATH $HOME/.dotfiles $HOME/.config/{emacs,lilypond}/bin $GOPATH/bin
+set -gx PATH $GOPATH/bin $HOME/.config/{emacs,lilypond}/bin $PATH
 set -gx EDITOR emacs -nw
 set -gx PAGER less
 set -gx LESS '-RFQ --no-vbell'
