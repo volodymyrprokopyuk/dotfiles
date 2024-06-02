@@ -15,18 +15,18 @@
 package main
 
 import (
-  "fmt"
-  "strings"
-  "flag"
-  "regexp"
-  "time"
-  "io"
-  "io/fs"
-  "path/filepath"
-  "crypto/sha256"
-  "sync"
-  "os"
-  "os/exec"
+	"crypto/sha256"
+	"flag"
+	"fmt"
+	"io"
+	"io/fs"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"regexp"
+	"strings"
+	"sync"
+	"time"
 )
 
 type organizeCommand struct {
