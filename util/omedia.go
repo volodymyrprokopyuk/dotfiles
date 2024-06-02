@@ -4,7 +4,13 @@
  * Dependencies
  * - exiv2 extracts date and time from an image file
  * - ffprobe (from ffmpeg) extracts date and time from a video file
- * cp -r ~/Media/sink/2022/* /run/media/vlad/SD1/Media-2021-202_/2022
+ * rclone copy --progress lanagph:media/all ~/Media/source/
+ * ./omedia -o ~/Media/sink ~/Media/source
+ * sudo mkdir /run/media/SD{1,2,3,4}
+ * sudo chown -R vlad:vlad /run/media/SD{1,2,3,4}
+ * sudo mount -a
+ * cp -rv ~/Media/sink/2022/* /run/media/vlad/SD1/Media-2021-202_/2022
+ * sudo umount /run/media/SD{1,2,3,4}
  */
 package main
 

@@ -220,7 +220,8 @@ docker system prune
 Container management
 
 #+BEGIN_SRC fish
-docker container run --name $cnt --rm $img [cmd args...] [bash -c 'cmd ...']
+docker container run --name $cnt --hostname $cnt --rm $img \
+  [cmd args...] [bash -c 'cmd ...']
 docker container run --interactive --tty $img
 docker container run --env VAR=val $img
 docker container run --detach --publish $hostport:$cntport $img
