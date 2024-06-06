@@ -31,4 +31,4 @@ set notification-warning-fg "#34342F"
 set notification-error-bg "#FFB3B5" # red
 set notification-error-fg "#34342F"
 set highlight-color rgba(255,216,0,0.4) # yellow
-set highlight-active-color grba(152,251,152,0.4) # green
+set highlight-active-color rgba(152,251,152,0.4) # green

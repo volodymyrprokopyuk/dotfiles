@@ -52,6 +52,13 @@ function fzf_history
 end
 bind \cR fzf_history
 
+function fzf_open
+  set -l file (fd --no-ignore -t file -e pdf -e djvu . ~/Downloads ~/Projects/bayan |
+    fzf --cycle --bind=alt-m:down,alt-,:up --ansi)
+  nohup xdg-open $file &>/dev/null & disown $last_pid
+end
+bind \eo fzf_open
+
 bind \em 'if commandline --paging-mode; commandline -f down-line; \
   else; commandline -f accept-autosuggestion; end'
 bind \e, up-line
