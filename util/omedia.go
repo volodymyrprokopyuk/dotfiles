@@ -5,6 +5,7 @@
  * - exiv2 extracts date and time from an image file
  * - ffprobe (from ffmpeg) extracts date and time from a video file
  * rclone copy --progress lanagph:media/all ~/Media/source/
+ * unzip ./Downloads/photos.zip -d ~/Media/source
  * ./omedia -o ~/Media/sink ~/Media/source
  * sudo mkdir /run/media/SD{1,2,3,4}
  * sudo chown -R vlad:vlad /run/media/SD{1,2,3,4}
