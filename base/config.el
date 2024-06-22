@@ -6,7 +6,10 @@
   ;; Maximize window on startup
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
   ;; Skip confirmation on exit
-  (setq confirm-kill-emacs nil))
+  (setq confirm-kill-emacs nil)
+  ;; Start calendar from monday
+  (setq calendar-week-start-day 1)
+  )
 
 (defun config-font ()
   (setq doom-font
