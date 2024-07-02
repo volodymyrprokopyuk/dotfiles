@@ -30,7 +30,7 @@
 
   :tools
   lookup
-  ;; lsp
+  lsp
   ;; magit
   docker
 
@@ -42,8 +42,7 @@
   yaml
   markdown
   org
-  ;; (go +lsp)
-  go
+  (go +lsp)
   ;; solidity
   web
   ;; (javascript +lsp)
