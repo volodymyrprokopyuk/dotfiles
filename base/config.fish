@@ -53,7 +53,8 @@ end
 bind \cR fzf_history
 
 function fzf_open
-  set -l file (fd --no-ignore -t file -e pdf -e djvu . ~/Downloads ~/Projects/bayan |
+  set -l file (fd --no-ignore -t file -e pdf -e djvu . \
+    ~/Downloads ~/Projects/bayanguru |
     fzf --cycle --bind=alt-m:down,alt-,:up --ansi)
   nohup xdg-open $file &>/dev/null & disown $last_pid
 end

@@ -147,7 +147,7 @@ bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
 
 bindcode $mod+$a exec rofi -show drun
 bindcode $mod+$o exec fd --no-ignore -t file -e pdf -e djvu . \
-  ~/Downloads ~/Projects/bayan | rofi -dmenu -i | xargs -I {} xdg-open {}
+  ~/Downloads ~/Projects/bayanguru | rofi -dmenu -i | xargs -I {} xdg-open {}
 
 default_border none
 default_floating_border none
