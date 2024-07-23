@@ -119,7 +119,7 @@
 
 (defun config-org ()
   (after! org
-    (setq org-startup-indented nil)))
+    (setq org-startup-folded t)))
 
 ;; Programming
 
