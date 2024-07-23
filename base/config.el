@@ -119,7 +119,10 @@
 
 (defun config-org ()
   (after! org
-    (setq org-startup-folded t)))
+    ;; Fold content at startup
+    (setq org-startup-folded t)
+    ;; Do not indent nested content
+    (setq org-startup-indented nil)))
 
 ;; Programming
 
