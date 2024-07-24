@@ -25,7 +25,7 @@ function Git
   cp base/sshconfig ~/.ssh/config
   echo "" > ~/.config/git/config
   source base/gitconfig
-  set -l gitignore '*~'\nnode_modules/\ncoverage/\nartifacts/\ncache/
+  set -l gitignore '*~'\nnode_modules/\ncoverage/\ncoverage.cov
   echo -e $gitignore > ~/.config/git/ignore
 end
 
