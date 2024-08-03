@@ -46,6 +46,7 @@
   ;; solidity
   web
   ;; (javascript +lsp)
+  (java +lsp)
   (sh +fish)
   emacs-lisp
   lua
