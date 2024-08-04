@@ -31,6 +31,7 @@ yay -S lf zathura zathura-pdf-mupdf zathura-djvu gthumb inkscape
 yay -S nodejs pnpm bun-bin typescript typescript-language-server
 yay -S go gopls
 yay -S go-ethereum solidity-bin
+yay -S jdk-openjdk intellij-idea-community-edition
 yay -S dropbox
 
 # Install dotfiles
