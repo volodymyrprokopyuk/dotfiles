@@ -42,12 +42,11 @@
   yaml
   markdown
   org
-  (go +lsp)
-  ;; solidity
   web
+  (go +lsp)
   ;; (javascript +lsp)
-  java
   ;; (java +lsp)
+  ;; solidity
   (sh +fish)
   emacs-lisp
   lua
