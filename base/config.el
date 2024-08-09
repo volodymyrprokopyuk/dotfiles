@@ -92,9 +92,10 @@
   (evil-define-key nil vertico-map (kbd "M-,") #'vertico-previous))
 
 (defun config-error-nav ()
-  (evil-define-key nil flycheck-mode-map (kbd "] e") #'flycheck-next-error)
-  (evil-define-key nil flycheck-mode-map (kbd "[ e") #'flycheck-previous-error)
-)
+  (after! evil-mode (unbind-key "] e"))
+  (after! evil-mode (unbind-key "[ e"))
+  (evil-define-key 'normal 'global (kbd "] e") #'flycheck-next-error)
+  (evil-define-key 'normal 'global (kbd "[ e") #'flycheck-previous-error))
 
 (defun config-evil ()
   ;; 2-space indentation
