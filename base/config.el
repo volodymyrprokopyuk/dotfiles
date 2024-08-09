@@ -95,7 +95,8 @@
   (after! evil-mode (unbind-key "] e"))
   (after! evil-mode (unbind-key "[ e"))
   (evil-define-key 'normal 'global (kbd "] e") #'flycheck-next-error)
-  (evil-define-key 'normal 'global (kbd "[ e") #'flycheck-previous-error))
+  (evil-define-key 'normal 'global (kbd "[ e") #'flycheck-previous-error)
+  (evil-define-key 'normal 'global (kbd "] x") #'flycheck-list-errors))
 
 (defun config-evil ()
   ;; 2-space indentation
