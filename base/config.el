@@ -91,6 +91,11 @@
   (evil-define-key nil vertico-map (kbd "M-m") #'vertico-next)
   (evil-define-key nil vertico-map (kbd "M-,") #'vertico-previous))
 
+(defun config-error-nav ()
+  (evil-define-key nil flycheck-mode-map (kbd "] e") #'flycheck-next-error)
+  (evil-define-key nil flycheck-mode-map (kbd "[ e") #'flycheck-previous-error)
+)
+
 (defun config-evil ()
   ;; 2-space indentation
   (setq-default indent-tabs-mode nil)
@@ -194,6 +199,7 @@
 (config-whitespace)
 (config-parentheses)
 (config-completion)
+(config-error-nav)
 (config-evil)
 (config-snippets)
 (config-org)
