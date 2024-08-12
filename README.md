@@ -24,7 +24,8 @@ yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 
 # Install packages
 yay -S wezterm fish starship emacs-nativecomp
-yay -S aspell aspell-en
+yay -S aspell aspell-en aspell-es aspell-uk aspell-ru
+yay -S hunspell hunspell-en_us hunspell-es_es hunspell-uk hunspell-ru
 yay -S ttf-jetbrains-mono-nerd noto-fonts-emoji
 yay -S fzf fd ripgrep eza bat git-delta vivid plocate btop go-yq
 yay -S lf zathura zathura-pdf-mupdf zathura-djvu gthumb inkscape

@@ -26,7 +26,6 @@
 
   :checkers
   syntax
-  (spell +aspell +everywhere)
 
   :tools
   lookup
@@ -43,11 +42,10 @@
   markdown
   org
   web
+  (sh +fish)
   (go +lsp)
   ;; (javascript +lsp)
-  ;; (java +lsp)
   ;; solidity
-  (sh +fish)
   emacs-lisp
   lua
 

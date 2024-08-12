@@ -91,12 +91,18 @@
   (evil-define-key nil vertico-map (kbd "M-m") #'vertico-next)
   (evil-define-key nil vertico-map (kbd "M-,") #'vertico-previous))
 
-(defun config-error-nav ()
+(defun config-errors ()
   (after! evil-mode (unbind-key "] e"))
   (after! evil-mode (unbind-key "[ e"))
   (evil-define-key 'normal 'global (kbd "] e") #'flycheck-next-error)
   (evil-define-key 'normal 'global (kbd "[ e") #'flycheck-previous-error)
   (evil-define-key 'normal 'global (kbd "] x") #'flycheck-list-errors))
+
+(defun config-spell ()
+  (add-hook 'emacs-startup-hook #'global-jinx-mode)
+  (evil-define-key 'normal 'global (kbd "z =") #'jinx-correct)
+  (evil-define-key 'normal 'global (kbd "] s") #'jinx-next)
+  (evil-define-key 'normal 'global (kbd "[ s") #'jinx-previous))
 
 (defun config-evil ()
   ;; 2-space indentation
@@ -143,9 +149,6 @@
             #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
   (add-to-list 'auto-mode-alist '("config\\'" . conf-mode)))
 
-(defun config-docker ()
-  (setq dockerfile-indent-offset 2))
-
 (defun config-sql ()
   (setq sql-product 'postgres)
   ;; Treat _ as part of the word on *, #, w, b, e
@@ -162,16 +165,24 @@
                 (setq web-mode-css-indent-offset 2)
                 (setq web-mode-code-indent-offset 2))))
 
+(defun config-go ()
+  (setq-hook! 'go-mode-hook indent-tabs-mode nil))
+
 (defun config-js ()
   (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
   (setq js-indent-level 2)
   (setq js2-mode-show-strict-warnings nil))
 
-(defun config-go ()
-  (setq-hook! 'go-mode-hook indent-tabs-mode nil))
-
 (defun config-solidity ()
   (add-hook 'solidity-mode-hook #'(lambda () (setq c-basic-offset 2))))
+
+(defun config-docker ()
+  (setq dockerfile-indent-offset 2))
+
+(defun config-elisp ()
+  ;; Treat - as part of the word on *, #, w, b, e
+  (add-hook 'emacs-lisp-mode-hook
+    #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
 
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
@@ -187,11 +198,6 @@
     '(("\\<define\\>\\|\\<template\\>\\|\\<block\\>\\|\\<end\\>" . font-lock-builtin-face)
     ("\\<if\\>\\|\\<else\\>\\|\\<range\\>\\|\\<with\\>" . font-lock-builtin-face))))
 
-(defun config-elisp ()
-  ;; Treat - as part of the word on *, #, w, b, e
-  (add-hook 'emacs-lisp-mode-hook
-    #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
-
 ;; Editor
 (config-doom)
 (config-font)
@@ -201,18 +207,19 @@
 (config-whitespace)
 (config-parentheses)
 (config-completion)
-(config-error-nav)
+(config-errors)
+(config-spell)
 (config-evil)
 (config-snippets)
 (config-org)
 
 ;; Programming
 (config-fish)
-(config-docker)
 (config-sql)
 (config-web)
-;; (config-js)
 (config-go)
+;; (config-js)
 ;; (config-solidity)
-(config-lilypond)
+(config-docker)
 (config-elisp)
+(config-lilypond)
