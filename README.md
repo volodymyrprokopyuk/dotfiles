@@ -14,6 +14,9 @@ autologin-user=vlad
 # /etc/profile.d/gtk.sh
 export GDK_DPI_SCALE=1.33
 
+# Disable wakeup on Logi Bolt
+sudo cp ~/.dotfiles/base/logibolt.rules /etc/udev/rules.d
+
 # Enable options in /etc/pacman.conf
 Color CheckSpace VerbosePkgLists ParallelDownloads = 4
 # Disable [multilib]
