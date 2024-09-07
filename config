@@ -12,12 +12,13 @@ end
 
 function Emacs -a install
   cp base/*.el ~/.config/doom
-  set -l dir ~/.config/emacs2
+  set -l dir ~/.config/emacs
   # doom sync # config
   if test -n "$install"
-    rm -rf $dir
-    git clone --depth 1 https://github.com/doomemacs/doomemacs $dir
-    cd $dir and ./bin/doom install and cd - # packages
+    rm -rf {$dir}2
+    git clone --depth 1 https://github.com/doomemacs/doomemacs {$dir}2
+    cd {$dir}2; and ./bin/doom install # packages
+      and mv $dir {$dir}1; and mv {$dir}2 $dir; and doom sync; and cd -
     # doom upgrade # Doom and packages
   end
 end

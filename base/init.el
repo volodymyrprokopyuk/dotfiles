@@ -30,7 +30,7 @@
   :tools
   lookup
   lsp
-  ;; magit
+  magit
   docker
 
   :os
