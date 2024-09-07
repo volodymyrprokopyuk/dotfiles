@@ -1,4 +1,4 @@
-# key: ife
+# key: ifn
 # --
 if err != nil {
   return $0
