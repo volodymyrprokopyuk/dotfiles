@@ -15,7 +15,7 @@ function Emacs -a install
   set -l dir ~/.config/emacs
   # doom sync # config
   if test -n "$install"
-    rm -rf {$dir}2
+    rm -rf {$dir}{1,2}
     git clone --depth 1 https://github.com/doomemacs/doomemacs {$dir}2
     cd {$dir}2; and ./bin/doom install # packages
       and mv $dir {$dir}1; and mv {$dir}2 $dir; and doom sync; and cd -
