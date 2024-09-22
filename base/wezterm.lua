@@ -69,7 +69,7 @@ return {
     -- Paste
     { key = "p", mods = "ALT", action = act.PasteFrom "Clipboard" },
     -- Quick select
-    { key = "q", mods = "ALT", action = act.QuickSelect }
+    { key = "c", mods = "ALT", action = act.QuickSelect }
   },
   key_tables = {
     search_mode = {
