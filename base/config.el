@@ -186,15 +186,15 @@
 
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
-  (autoload 'LilyPond-mode "lilypond-mode.el" nil t)
-  (add-to-list 'auto-mode-alist '("\\.ly\\'" . LilyPond-mode))
-  (add-hook 'LilyPond-mode-hook #'(lambda () (display-line-numbers-mode)))
+  (autoload 'lilypond-mode "lilypond-mode.el" nil t)
+  (add-to-list 'auto-mode-alist '("\\.ly\\'" . lilypond-mode))
+  (add-hook 'lilypond-mode-hook #'(lambda () (display-line-numbers-mode)))
   (after! smartparens
-    (sp-local-pair '(LilyPond-mode) "(" nil
+    (sp-local-pair '(lilypond-mode) "(" nil
       :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC")))
-    (sp-local-pair '(LilyPond-mode) "[" nil
+    (sp-local-pair '(lilypond-mode) "[" nil
       :post-handlers '(:rem ("||\n[i]" "RET") ("| " "SPC"))))
-  (font-lock-add-keywords 'LilyPond-mode
+  (font-lock-add-keywords 'lilypond-mode
     '(("\\<define\\>\\|\\<template\\>\\|\\<block\\>\\|\\<end\\>" . font-lock-builtin-face)
     ("\\<if\\>\\|\\<else\\>\\|\\<range\\>\\|\\<with\\>" . font-lock-builtin-face))))
 
