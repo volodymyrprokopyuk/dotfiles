@@ -7,3 +7,4 @@
 (package! highlight-parentheses)
 (package! jinx)
 (package! protobuf-mode)
+(package! org-make-toc)
