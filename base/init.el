@@ -44,8 +44,8 @@
   web
   (sh +fish)
   (go +lsp)
-  ;; (javascript +lsp)
-  ;; solidity
+  (javascript +lsp)
+  solidity
   emacs-lisp
   lua
 
