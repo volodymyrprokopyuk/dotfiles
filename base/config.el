@@ -135,7 +135,10 @@
     ;; Fold content at startup
     (setq org-startup-folded t)
     ;; Do not indent nested content
-    (setq org-startup-indented nil)))
+    (setq org-startup-indented nil)
+    ;; Exclude angle brackets from parentheses highlight
+    (modify-syntax-entry ?< "." org-mode-syntax-table)
+    (modify-syntax-entry ?> "." org-mode-syntax-table)))
 
 ;; Programming
 
