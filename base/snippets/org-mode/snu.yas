@@ -1,0 +1,5 @@
+# key: snu
+# --
+#+BEGIN_SRC nu
+  $0
+#+END_SRC

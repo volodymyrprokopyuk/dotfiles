@@ -1,0 +1,5 @@
+# key: ssol
+# --
+#+BEGIN_SRC solidity
+  $0
+#+END_SRC
