@@ -64,7 +64,7 @@ bindcode $mod+$y exec setxkbmap us; exec busctl --user call rs.i3status /kblay \
 bindcode $mod+Shift+$y exec i3-msg exit
 bindcode $mod+Shift+$z exec systemctl suspend
 bindcode $mod+$bkspace exec systemctl reboot
-bindcode $mod+Shift+$ctrl+$bkspace exec systemctl poweroff
+bindcode $mod+Shift+Control+$bkspace exec systemctl poweroff
 
 bindcode $mod+$return exec wezterm
 bindcode $mod+$space exec emacs
