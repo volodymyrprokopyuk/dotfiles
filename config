@@ -10,6 +10,10 @@ function Fish
   cp base/starship.toml ~/.config
 end
 
+function Nushell
+  cp base/*.nu ~/.config/nushell
+end
+
 function Emacs -a install
   cp base/*.el ~/.config/doom
   set dir ~/.config/emacs
@@ -78,13 +82,14 @@ if set -ql _flag_init
 end
 
 if contains all $argv
-  Wezterm; Fish; Emacs; Git; I3wm; Apps; and return
+  Wezterm; Fish; Nushell; Emacs; Git; I3wm; Apps; and return
 end
 
 for target in $argv
   switch $target
   case wezterm; Wezterm
   case fish; Fish
+  case nushell; Nushell
   case emacs; Emacs $_flag_install
   case git; Git
   case i3wm; I3wm
