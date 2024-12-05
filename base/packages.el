@@ -6,5 +6,8 @@
 (package! ligature)
 (package! highlight-parentheses)
 (package! jinx)
+
+;; Programming
+(package! nushell-mode)
 (package! protobuf-mode)
 (package! org-make-toc)
