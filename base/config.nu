@@ -1,4 +1,7 @@
-$env.config {
-  show_bunner: false,
-  buffer_editor: emacs
+$env.config = {
+  show_banner: false,
+  # buffer_editor: emacs
 }
+
+# Starship prompt
+use ~/.cache/starship/init.nu
