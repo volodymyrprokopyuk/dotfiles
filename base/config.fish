@@ -52,6 +52,13 @@ function fzf_history
 end
 bind \cR fzf_history
 
+function fzf_view
+  set -l file (fd --type file --hidden --exclude .git --exclude node_modules \
+    --color always . | fzf --cycle --bind=alt-m:down,alt-,:up --ansi)
+  bat --tabs=2 $file
+end
+bind \ew fzf_view
+
 function fzf_open
   set -l file (fd --no-ignore -t file -e pdf -e djvu . \
     ~/Downloads ~/Projects/bayanguru |
