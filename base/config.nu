@@ -3,7 +3,6 @@ $env.config = {
   keybindings: [{
     name: completion_next, modifier: alt, keycode: char_m, mode: [emacs],
     event: {until: [{send: historyhintcomplete}, {send: menunext}]}
-
   }, {
     name: completion_prev, modifier: alt, keycode: char_u002c, mode: [emacs],
     event: {send: menuprevious}
@@ -40,7 +39,8 @@ alias ee = emacs -nw
 alias fzf-base = fzf --cycle --bind alt-m:down,alt-,:up --ansi
 
 def fzf-history [] {
-  history | get command | uniq | reverse | str join (char --integer 0)
+  history | get command | uniq | reverse
+    | each { nu-highlight } | str join (char --integer 0)
     | fzf-base --query (commandline) --scheme history --read0
     | commandline edit --replace $in
 }

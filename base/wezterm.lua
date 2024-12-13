@@ -3,7 +3,7 @@ local act = wezterm.action
 
 return {
   -- General
-  default_prog = { "/usr/bin/fish" },
+  default_prog = { "/usr/bin/nu" },
   hide_tab_bar_if_only_one_tab = true,
   scrollback_lines = 2000,
   quick_select_patterns = { "^[a-z0-9]{4}" },
