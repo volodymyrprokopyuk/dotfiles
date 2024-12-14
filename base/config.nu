@@ -1,5 +1,6 @@
 $env.config = {
   show_banner: false,
+  table: {mode: none},
   keybindings: [{
     name: completion_next, modifier: alt, keycode: char_m, mode: [emacs],
     event: {until: [{send: historyhintcomplete}, {send: menunext}]}
