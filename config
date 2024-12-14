@@ -32,7 +32,7 @@ def "main emacs" [--install (-i)] {
 }
 
 def "main git" [] {
-  cpv base/sshconfig ~/.ssh/config
+  cp base/sshconfig ~/.ssh/config
   source base/gitconfig
 }
 
@@ -47,22 +47,51 @@ def "main zathura" [] {
   cp apps/zathurarc ~/.config/zathura
 }
 
-def main [] {
-
+def "main lilypond" [--version (-v): string] {
+  let v = ($version | parse --regex '(?P<long>(?P<short>\d.\d{1,2}).\d{1,2})')
+  if ($v | is-empty) {
+    print $"error: missing or invalid version: ($version)"
+    exit 1
+  }
+  let release = $"https://lilypond.org/download/sources/v($v.short.0)"
+  let archive = $"lilypond-($v.long.0).tar.gz"
+  let dir = ("~/.config/lilypond" | path expand)
+  curl -fsSL $"($release)/($archive)" | tar xvz -C $dir
+  let build = $"($dir)/lilypond-($v.long.0)/build"
+  mkdir $build; cd $build
+  print (pwd)
+  ../autogen.sh --noconfigure
+  ../configure --prefix=$dir --disable-documentation GUILE_FLAVOR=guile-3.0
+  make --jobs=4; make install
 }
 
-# def main [...targets: string, --install (-i)] {
-#   for target in $targets {
-#     match $target {
-#       "wezterm" => { config-wezterm }
-#       "nushell" => { config-nushell }
-#       "fish" => { config-fish }
-#       "emacs" => { config-emacs $install }
-#       "git" => { config-git }
-#       _ => {
-#         print --stderr $"error: unknown target: ($target)"
-#         exit 1
-#       }
-#     }
-#   }
-# }
+def "main foundry" [--version (-v): string] {
+  if ($version | is-empty) {
+    print "error: missing version"
+    exit 1
+  }
+  let dir = ("~/.config/foundry/bin" | path expand)
+  let release = "https://github.com/foundry-rs/foundry/releases/download"
+  let archive = "foundry_nightly_linux_amd64.tar.gz"
+  mkdir $dir
+  curl -fsSL $"($release)/($version)/($archive)" | tar xvz -C $dir
+}
+
+def main [--init (-i), --all (-a)] {
+  if $init {
+    let dirs = [
+      wezterm, nushell, fish, doom, i3, i3status-rust, rofi,
+      zathura, lilypond, foundry
+    ]
+    mkdir ...($dirs | each { $"~/.config/($in)" | path expand }) ~/.ssh
+  }
+  if $all {
+    main wezterm
+    main nushell
+    main fish
+    main emacs
+    main git
+    main i3
+    main zathura
+  }
+}
