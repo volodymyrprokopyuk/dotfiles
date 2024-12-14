@@ -44,7 +44,7 @@ def "main i3" [] {
 }
 
 def "main zathura" [] {
-  cp apps/zathurarc ~/.config/zathura
+  cp base/zathurarc ~/.config/zathura
 }
 
 def "main lilypond" [--version (-v): string] {
