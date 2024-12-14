@@ -134,13 +134,13 @@ mode $mode_input {
 bindcode $mod+$i mode $mode_input
 
 bindcode $mod+$m exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+; \
-  exec ~/.dotfiles/i3wm/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
+  exec ~/.dotfiles/i3/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
 bindcode $mod+$n exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; \
-  exec ~/.dotfiles/i3wm/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
+  exec ~/.dotfiles/i3/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
 bindcode $mod+Shift+$m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; \
-  exec ~/.dotfiles/i3wm/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
+  exec ~/.dotfiles/i3/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
 bindcode $mod+Shift+$c exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; \
-  exec ~/.dotfiles/i3wm/getvol.sh /aumic @DEFAULT_AUDIO_SOURCE@
+  exec ~/.dotfiles/i3/getvol.sh /aumic @DEFAULT_AUDIO_SOURCE@
 
 bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 3 | xclip -selection clipboard -target image/png

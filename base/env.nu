@@ -9,5 +9,5 @@ $env.PAGER = "less"
 $env.LESS = "-RFQ --no-vbell"
 $env.LS_COLORS = (vivid generate snazzy)
 
-mkdir "~/.cache/starship"
-starship init nu | save -f "~/.cache/starship/init.nu"
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
