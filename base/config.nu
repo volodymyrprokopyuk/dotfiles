@@ -56,3 +56,5 @@ def fzf-open [] {
 }
 
 use ~/.cache/starship/init.nu
+
+source ~/.config/nushell/vs-code-dark-plus.nu
