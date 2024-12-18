@@ -1,9 +1,6 @@
-$env.PATH = $env.PATH | split row ":"
-  | prepend (
-    ["go", "emacs", "lilypond", "foundry"]
-    | each { $"($env.HOME)/.config/($in)/bin" }
-  )
-$env.GOPATH = $"($env.HOME)/.config/go"
+$env.PATH = $env.PATH | split row ":" | prepend ($env.HOME
+  | path join .config/{go,emacs,lilypond,foundry}/bin | str expand)
+$env.GOPATH = ($env.HOME | path join .config/go)
 $env.EDITOR = "emacs -nw"
 $env.PAGER = "less"
 $env.LESS = "-RFQ --no-vbell"
