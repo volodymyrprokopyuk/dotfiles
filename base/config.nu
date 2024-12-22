@@ -1,6 +1,9 @@
 $env.config = {
   show_banner: false,
   table: {mode: none},
+  history: {
+    file_format: sqlite, max_size: 10_000, isolation: true, sync_on_enter: true
+  }
   keybindings: [{
     name: completion_next, modifier: alt, keycode: char_m, mode: [emacs],
     event: {until: [{send: historyhintcomplete}, {send: menunext}]}
@@ -9,13 +12,13 @@ $env.config = {
     event: {send: menuprevious}
   }, {
     name: fzf_history, modifier: control, keycode: char_r, mode: [emacs],
-    event: [{send: ExecuteHostCommand, cmd: "fzf-history"}]
+    event: [{send: ExecuteHostCommand, cmd: fzf-history}]
   }, {
     name: fzf_view, modifier: alt, keycode: char_w, mode: [emacs],
-    event: [{send: ExecuteHostCommand, cmd: "fzf-view"}]
+    event: [{send: ExecuteHostCommand, cmd: fzf-view}]
   }, {
     name: fzf_open, modifier: alt, keycode: char_o, mode: [emacs],
-    event: [{send: ExecuteHostCommand, cmd: "fzf-open"}]
+    event: [{send: ExecuteHostCommand, cmd: fzf-open}]
   }]
 }
 
