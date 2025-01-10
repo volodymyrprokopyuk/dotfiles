@@ -16,9 +16,8 @@
         (font-spec :family "JetBrainsMono NF Light" :size 13.0 :weight 'light)))
 
 (defun config-theme ()
-  (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523")))
-  (load-theme 'zenburn t)
-  (custom-set-faces '(org-block ((t (:background "#282523" :extend t))))))
+  (setq doom-theme 'zenburn)
+  (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523"))))
 
 (defun config-ligatures ()
   (setq jet-brains-mono-ligatures
@@ -39,14 +38,15 @@
 
 (defun config-current-line ()
   (global-hl-line-mode 1)
-  ;; Highlight current line
-  (set-face-attribute 'hl-line nil :foreground nil :background "#24190E")
-  ;; Highlight visual selection
-  (set-face-attribute 'region nil :foreground nil :background "#801515")
-  ;; Highlight line numbers
-  (set-face-attribute 'line-number nil :foreground nil :background "#32312E")
-  (set-face-attribute 'line-number-current-line nil :foreground "#E2A665"
-                      :background nil :weight 'bold))
+  (custom-set-faces!
+    ;; Highlight current line
+    (set-face-attribute 'hl-line nil :foreground nil :background "#24190E")
+    ;; Highlight visual selection
+    (set-face-attribute 'region nil :foreground nil :background "#801515")
+    ;; Highlight line numbers
+    (set-face-attribute 'line-number nil :foreground nil :background "#32312E")
+    (set-face-attribute 'line-number-current-line nil :foreground "#E2A665"
+                        :background nil :weight 'bold)))
 
 (defun config-whitespace ()
   ;; Enable global white space mode
