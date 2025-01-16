@@ -1,23 +1,29 @@
 $env.config = {
   show_banner: false,
   table: {mode: none},
+  # edit_mode: vi
   history: {
     file_format: sqlite, max_size: 10_000, isolation: true, sync_on_enter: true
   }
   keybindings: [{
-    name: completion_next, modifier: alt, keycode: char_m, mode: [emacs],
+    name: completion_next, modifier: alt, keycode: char_m,
+    mode: [vi_normal, vi_insert, emacs],
     event: {until: [{send: historyhintcomplete}, {send: menunext}]}
   }, {
-    name: completion_prev, modifier: alt, keycode: char_u002c, mode: [emacs],
+    name: completion_prev, modifier: alt, keycode: char_u002c,
+    mode: [vi_normal, vi_insert, emacs],
     event: {send: menuprevious}
   }, {
-    name: fzf_history, modifier: control, keycode: char_r, mode: [emacs],
+    name: fzf_history, modifier: control, keycode: char_r,
+    mode: [vi_normal, vi_insert, emacs],
     event: [{send: ExecuteHostCommand, cmd: fzf-history}]
   }, {
-    name: fzf_view, modifier: alt, keycode: char_w, mode: [emacs],
+    name: fzf_view, modifier: alt, keycode: char_w,
+    mode: [vi_normal, vi_insert, emacs],
     event: [{send: ExecuteHostCommand, cmd: fzf-view}]
   }, {
-    name: fzf_open, modifier: alt, keycode: char_o, mode: [emacs],
+    name: fzf_open, modifier: alt, keycode: char_o,
+    mode: [vi_normal, vi_insert, emacs],
     event: [{send: ExecuteHostCommand, cmd: fzf-open}]
   }]
 }
