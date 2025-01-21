@@ -8,10 +8,13 @@
  * unzip ./Downloads/photos.zip -d ~/Media/source
  * ./omedia -o ~/Media/sink ~/Media/source
  * sudo mkdir /run/media/SD{1,2,3,4}
+ * sudo mkdir ...("/run/media/SD{1,2,3,4}" | str expand)
  * sudo chown -R vlad:vlad /run/media/SD{1,2,3,4}
+ * sudo chown -R vlad:vlad ...("/run/media/SD{1,2,3,4}" | str expand)
  * sudo mount -a
  * cp -rv ~/Media/sink/2022/* /run/media/vlad/SD1/Media-2021-202_/2022
  * sudo umount /run/media/SD{1,2,3,4}
+ * sudo umount ...("/run/media/SD{1,2,3,4}" | str expand)
  */
 package main
 
