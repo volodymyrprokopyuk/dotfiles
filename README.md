@@ -181,7 +181,7 @@ ssh -i ~/.ssh/id_rsa_<provider> <username>@<host>
 Host <alias>
     HostName <host>
     User <user>
-    IdentityFile ~/.ssh/id_rsa<provider>
+    IdentityFile ~/.ssh/id_rsa_<provider>
 # Connect to the remote host using SSH key alias. Provide passphrase
 ssh <alias>
 # Test SSH connection using SSH key
