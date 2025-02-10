@@ -198,6 +198,19 @@ ssh-add ~/.ssh/id_rsa*~*.pub
 ssh-add -l
 ```
 
+SSH tunneling (port forwarding)
+- SSH tunneling transports arbitrary data between authenticated SSH client and
+  authenticated SSH server over an untrusted network through an encrypted SSH
+  connection (confidentiality, integrity). SSH tunneling provides secure
+  connections to internal services from the outside
+- SSH client forwards connections to a configured localhost:port to an SSH
+  server through an encrypted SSH connection
+- SSH server connects to a configured server:port e.g. DB
+
+``` fish
+ssh -L [localIP:]localPort:destServer:destPort [sshUser@]sshServer
+```
+
 # Applications
 
 ## Fish
