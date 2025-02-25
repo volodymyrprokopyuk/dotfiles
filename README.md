@@ -125,6 +125,7 @@ sudo fdisk -l # list devices
 ll /dev/disk/by-uuid/* # list device UUIDs
 sudo mkdir /run/media/HD1 # create a mount point
 sudo mount -t ext4 /dev/sda3 /run/media/HD1 # mount a device
+sudo mount -t vfat /dev/sdc1 /run/media/PD1
 df -h # verify mount success; show storage space usage
 sudo umount /run/media/HD1 # unmount a device
 # /etc/fstab
@@ -173,6 +174,7 @@ Install and use locally generated SSH key on a remote server
 chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_*
 ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
 ssy-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
+ssh-keygen -y -f ~/.ssh/id_rsa_stadami # verify passphrase
 # Copy SSH key to a remote host. Provide remote host username and password
 ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
 # Connect to the remote host using SSH key but not password. Provide passphrase
