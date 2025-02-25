@@ -59,9 +59,8 @@ def "main lilypond" [--version (-v): string] {
   curl -fsSL $"($release)/($archive)" | tar xvz -C $dir
   let build = $"($dir)/lilypond-($v.long.0)/build"
   mkdir $build; cd $build
-  print (pwd)
   ../autogen.sh --noconfigure
-  ../configure --prefix=$dir --disable-documentation GUILE_FLAVOR=guile-3.0
+  ../configure $"--prefix=($dir)" --disable-documentation GUILE_FLAVOR=guile-3.0
   make --jobs=4; make install
 }
 
