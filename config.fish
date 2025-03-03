@@ -12,27 +12,25 @@ end
 
 function Nushell
   cp base/*.nu ~/.config/nushell
+  cp base/starship.toml ~/.config
 end
 
 function Emacs -a install
   cp base/*.el ~/.config/doom
-  set dir ~/.config/emacs
-  # doom sync # config
   if test -n "$install"
-    rm -rf {$dir}{1,2}
-    git clone --depth 1 https://github.com/doomemacs/doomemacs {$dir}2
-    cd {$dir}2; and ./bin/doom install # packages
-      and mv $dir {$dir}1; and mv {$dir}2 $dir; and doom sync; and cd -
-    # doom upgrade # Doom and packages
+    set root ~/.config/emacs
+    set backup ~/.config/emacs2
+    rm -rf $backup
+    mv $root $backup
+    git clone --depth 1 https://github.com/doomemacs/doomemacs $root
+    cd $root; and ./bin/doom install; and ./bin/doom sync; and cd -
+    # doom upgrade
   end
 end
 
 function Git
   cp base/sshconfig ~/.ssh/config
-  echo "" > ~/.config/git/config
   source base/gitconfig
-  set gitignore '*~'\nnode_modules/\ncoverage/\ncoverage.cov
-  echo -e $gitignore > ~/.config/git/ignore
 end
 
 function I3wm
@@ -42,21 +40,20 @@ function I3wm
   cp i3wm/roficonfig.rasi ~/.config/rofi/config.rasi
 end
 
-function Apps
+function Zathura
   cp apps/zathurarc ~/.config/zathura
 end
 
-function Lpond -a lpversion
-  if not string match -qr '^(?<ver>(?<v>\d\.\d{1,2})\.\d{1,2})$' $lpversion
+function Lilypond -a lpversion
+  if not string match -qr '^(?<long>(?<short>\d\.\d{1,2})\.\d{1,2})$' $lpversion
     echo argparse: missing or invalid LilyPond version; and return 1
   end
-  set url https://lilypond.org/download/sources/v$v/lilypond-$ver.tar.gz
+  set url https://lilypond.org/download/sources/v$short/lilypond-$long.tar.gz
   set root ~/.config/lilypond
-  set dir $root/lilypond-$ver/build
-  curl -fsSL $url | tar xvz -C $root; and mkdir $dir; and cd $dir
+  set build $root/lilypond-$long/build
+  curl -fsSL $url | tar xvz -C $root; and mkdir $build; and cd $build
   and ../autogen.sh --noconfigure
-  and ../configure --prefix=$root --disable-documentation \
-    GUILE_FLAVOR=guile-3.0
+  and ../configure --prefix=$root --disable-documentation GUILE_FLAVOR=guile-3.0
   and make -j 4; and make install
 end
 
@@ -64,25 +61,25 @@ function Foundry -a fversion
   if test -z "$fversion"
     echo argparse: missing Foundry version; and return 1
   end
-  set dir ~/.config/foundry
-  mkdir -p $dir/bin
+  set root ~/.config/foundry
+  mkdir -p $root/bin
   set release https://github.com/foundry-rs/foundry/releases/download
-  set url $release/$fversion/foundry_nightly_linux_amd64.tar.gz
-  curl -fsSL $url | tar xvz -C $dir/bin
+  set url $release/$fversion/foundry_stable_linux_amd64.tar.gz
+  curl -fsSL $url | tar xvz -C $root/bin
   forge completions fish > ~/.config/fish/completions/forge.fish
   cast completions fish > ~/.config/fish/completions/cast.fish
   anvil completions fish > ~/.config/fish/completions/anvil.fish
 end
 
-argparse --min-args=1 init i/install v/version= -- $argv; or return
+argparse --min-args=1 init a/all i/install v/version= -- $argv; or return
 
 if set -ql _flag_init
-  mkdir -p ~/.config/{wezterm,fish,doom,git,i3,i3status-rust,rofi} \
+  mkdir -p ~/.config/{wezterm,fish,doom,i3,i3status-rust,rofi} \
     ~/.config/{zathura,lilypond,foundry} ~/.ssh
 end
 
-if contains all $argv
-  Wezterm; Fish; Nushell; Emacs; Git; I3wm; Apps; and return
+if set -ql _flag_all
+  Wezterm; Fish; Nushell; Emacs; Git; I3wm; Zathura; and return
 end
 
 for target in $argv
@@ -93,8 +90,8 @@ for target in $argv
   case emacs; Emacs $_flag_install
   case git; Git
   case i3wm; I3wm
-  case apps; Apps
-  case lpond; Lpond $_flag_version
+  case zathura; Zathura
+  case lilypond; Lilypond $_flag_version
   case foundry; Foundry $_flag_version
   case '*'
     echo argparse: unknown target $target; and return 1

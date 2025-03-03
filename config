@@ -72,7 +72,6 @@ def "main foundry" [--version (-v): string = "stable"] {
   let dir = ("~/.config/foundry/bin" | path expand)
   let release = "https://github.com/foundry-rs/foundry/releases/download"
   let archive = "foundry_stable_linux_amd64.tar.gz"
-  mkdir $dir
   curl -fsSL $"($release)/($version)/($archive)" | tar xvz -C $dir
 }
 
