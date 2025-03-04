@@ -1,11 +1,9 @@
+set -gx PATH $HOME/.config/{go,emacs,lilypond,foundry}/bin $PATH
 set -gx GOPATH $HOME/.local/go
-set -gx PATH $GOPATH/bin $HOME/.config/{emacs,lilypond,foundry}/bin $PATH
 set -gx EDITOR emacs -nw
 set -gx PAGER less
 set -gx LESS '-RFQ --no-vbell'
 set -gx LS_COLORS (vivid generate snazzy)
-set -gx BAT_STYLE plain
-set -gx BAT_THEME 1337
 
 set -g fish_greeting
 set -g fish_color_normal FFFFCC # cream yellow
@@ -33,16 +31,27 @@ set -g fish_pager_color_selected_completion yellow
 set -g fish_pager_color_selected_description FEDC56 # mustard yellow
 set -g fish_pager_color_progress --background=normal
 
+# --ignore-glob (-I) <glob|glob>
 function lla
-  eza --all --sort=type --long --git --time-style=relative --smart-group \
-    --no-permissions --octal-permissions --color-scale size --no-quotes $argv
+  eza --all --long --group-directories-first --git --no-quotes \
+    --no-permissions --octal-permissions --smart-group --time-style relative \
+    --color always --color-scale size --color-scale-mode gradient $argv
 end
 function ll; lla --git-ignore $argv; end
 function lll; ll --tree $argv; end
 function llla; lla --tree $argv; end
-function ff; fd --hidden $argv; end
-function gg; rg --hidden --glob=!.git $argv; end
-function vv; bat --tabs=2 $argv; end
+# --exclude (-E) <glob>
+# --type (-t) <file|dir>
+function ff; fd --hidden --color always $argv; end
+# --glob (-g) <!glob>
+# --type (-t) <ext>; --type-not (-T) <ext>
+# --invert-match (-v)
+# --after-context (-A) <N>; --before-context (-B) <N>; --context (-C) <N>
+function gg; rg --hidden --color always $argv; end
+function vv
+  bat --tabs 2 --map-syntax '*.ly:LaTeX' --style plain,header \
+    --decorations always --color always --theme 1337 --paging always $argv
+end
 function ee; emacs -nw $argv; end
 
 function fzf_history
