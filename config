@@ -28,7 +28,7 @@ function Git
   source base/gitconfig
 end
 
-function I3wm
+function I3
   set host (hostname)
   awk "{ sub(/^# $host: /, \"\"); print }" i3/i3config > ~/.config/i3/config
   cp i3/i3status.toml ~/.config/i3status-rust/config.toml
@@ -74,7 +74,7 @@ if set -ql _flag_init
 end
 
 if set -ql _flag_all
-  Wezterm; Fish; Emacs; Git; I3wm; Zathura; and return
+  Wezterm; Fish; Emacs; Git; I3; Zathura; and return
 end
 
 for target in $argv
@@ -83,7 +83,7 @@ for target in $argv
   case fish; Fish
   case emacs; Emacs $_flag_install
   case git; Git
-  case i3wm; I3wm
+  case i3; I3
   case zathura; Zathura
   case lilypond; Lilypond $_flag_version
   case foundry; Foundry $_flag_version

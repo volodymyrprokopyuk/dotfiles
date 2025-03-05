@@ -2,7 +2,7 @@ set -gx PATH $HOME/.config/{go,emacs,lilypond,foundry}/bin $PATH
 set -gx GOPATH $HOME/.local/go
 set -gx EDITOR emacs -nw
 set -gx PAGER less
-set -gx LESS '-RFQ --no-vbell'
+set -gx LESS '-RQ --no-vbell'
 set -gx LS_COLORS (vivid generate snazzy)
 
 set -g fish_greeting
@@ -54,30 +54,30 @@ function vv
 end
 function ee; emacs -nw $argv; end
 
-function fzf_history
-  history --null | fzf --query=(commandline) --scheme=history \
-    --read0 --print0 --cycle --bind=alt-m:down,alt-,:up --ansi | \
-    read --null --local result; and commandline -- $result
+function fzfBase
+  fzf --cycle --bind alt-m:down,alt-,:up --ansi $argv
 end
-bind \cR fzf_history
 
-function fzf_view
-  set -l file (fd --type file --hidden --exclude .git --exclude node_modules \
-    --color always . | fzf --cycle --bind=alt-m:down,alt-,:up --ansi)
-  bat --tabs=2 $file
+function fzfHistory
+  history --null |
+  fzfBase --query=(commandline) --scheme=history --read0 --print0 |
+  read --null --local selected; and commandline -- $selected
 end
-bind \ew fzf_view
+bind ctrl-r fzfHistory
 
-function fzf_open
-  set -l file (fd --no-ignore -t file -e pdf -e djvu . \
-    ~/Downloads ~/Projects/bayanguru |
-    fzf --cycle --bind=alt-m:down,alt-,:up --ansi)
-  nohup xdg-open $file &>/dev/null & disown $last_pid
+function fzfView
+  ff --exclude .git | fzfBase | read --local selected; and vv $selected
 end
-bind \eo fzf_open
+bind alt-w fzfView
 
-bind \em 'if commandline --paging-mode; commandline -f down-line; \
+function fzfOpen
+  ff --no-ignore --type file '(pdf|djvu?)$' ~/Downloads ~/Projects/bayanguru |
+    fzfBase | read --local selected; and xdg-open $selected &>/dev/null
+end
+bind alt-o fzfOpen
+
+bind alt-m 'if commandline --paging-mode; commandline -f down-line; \
   else; commandline -f accept-autosuggestion; end'
-bind \e, up-line
+bind alt-comma up-line
 
 starship init fish | source
