@@ -1,0 +1,5 @@
+# key: sfish
+# --
+#+BEGIN_SRC fish
+  $0
+#+END_SRC

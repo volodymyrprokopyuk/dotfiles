@@ -71,7 +71,7 @@ if set -ql _flag_init
 end
 
 if set -ql _flag_all
-  Wezterm; Fish; Emacs; Git; I3; Zathura; and return
+  Wezterm; Fish; Emacs $_flag_install; Git; I3; Zathura; and return
 end
 
 for target in $argv

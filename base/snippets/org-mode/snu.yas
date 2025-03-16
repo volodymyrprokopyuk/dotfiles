@@ -1,5 +1,0 @@
-# key: snu
-# --
-#+BEGIN_SRC nushell
-  $0
-#+END_SRC

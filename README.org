@@ -1,3 +1,96 @@
+* Installation
+** Base installation
+*** ISO image and bootable USB
+
+#+BEGIN_SRC fish
+# Create a bootable USB from an ISO image
+sha512sum -c image.iso.sha512sum
+sudo fdisk -l
+sudo dd bs=4M if=image.iso of=/dev/sdX conv=fsync oflag=direct status=progress
+#+END_SRC
+
+*** Initial configuration
+
+#+BEGIN_SRC fish
+# Disable login password
+sudo groupadd -r autologin
+sudo gpasswd -a $USER autologin
+# /etc/lightdm/lightdm.conf
+[Seat:*]
+autologin-user=vlad
+
+# Scale apps on HDPI
+# /etc/profile.d/gtk.sh
+export GDK_DPI_SCALE=1.33
+
+# Disable wakeup on Logi Bolt
+sudo cp ~/.dotfiles/base/logibolt.rules /etc/udev/rules.d
+#+END_SRC
+
+*** Install packages
+
+#+BEGIN_SRC fish
+# Enable options in /etc/pacman.conf
+Color CheckSpace VerbosePkgLists ParallelDownloads = 8
+# Disable [multilib]
+# Update package repositories
+sudo pacman -Syyu
+# Update installed packages and remove unused packages
+yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
+
+# Install packages
+yay -S wezterm fish starship emacs-nativecomp
+yay -S aspell aspell-en aspell-es aspell-uk aspell-ru
+yay -S hunspell hunspell-en_us hunspell-es_es hunspell-uk hunspell-ru
+yay -S ttf-jetbrains-mono-nerd noto-fonts-emoji
+yay -S fzf fd ripgrep eza bat git-delta vivid plocate btop go-yq
+yay -S zathura zathura-pdf-mupdf zathura-djvu
+yay -S go gopls
+yay -S bun-bin typescript typescript-language-server
+#+END_SRC
+
+*** Install configuration files
+
+#+BEGIN_SRC fish
+# Install configuration files
+git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles && ./config --init --all --install
+#+END_SRC
+
+** i3 installation
+*** Install i3 packages
+
+#+BEGIN_SRC fish
+# Install i3 packages
+yay -S xorg-xev i3status-rust i3lock-color maim
+#+END_SRC
+
+*** Configure font scaling
+
+#+BEGIN_SRC fish
+# Set font scaling DPI (multiple of 96) in ~/.Xresources
+Xcursor.theme: Qogir
+Xcursor.size: 48
+Xft.dpi: 192
+#+END_SRC
+
+*** Configure default applications
+
+#+BEGIN_SRC fish
+# Query MIME of a file
+xdg-mime query filetype file.pdf
+# List installed applications
+fd -t f -e desktop . /
+# Query default application for a file
+xdg-mime query default application/pdf
+# Set default applications for a file
+xdg-mime default org.pwmt.zathura.desktop application/pdf
+xdg-mime default org.pwmt.zathura.desktop image/vnd.djvu
+xdg-mime default org.gnome.gThumb.desktop image/png
+xdg-mime default org.gnome.gThumb.desktop image/jpeg
+xdg-mime default org.gnome.gThumb.desktop image/svg+xml
+#+END_SRC
+
 * Applications
 
 ** i3
@@ -224,7 +317,65 @@ Ellipse =e=
 |     |          |
 
 
-* Environments
+* Commands
+** yay
+
+#+BEGIN_SRC fish
+# Update a repository database
+yay -Sy
+# Upgrade a system
+yay -Syu
+# Show packages to upgrade
+yay -Qu
+
+# Clean a package cache
+yay -Sc
+# Clean unneeded dependencies
+yay -Yc
+
+# Search a remote repository database for a package
+yay -Ss/i <package>
+# Query a local repository database for an installed package
+yay -Qs/i <package>
+# Show explicitly installed packages
+yay -Qe
+
+# Install a package
+yay -S <package>
+# Remove a package, its configuration, and dependencies
+yay -Rsn <package>
+
+# List all files owned by a package
+yay -Ql <package>
+# Show which package a file belongs to
+yay -Qo <file path>
+# Show dependency tree of a package
+pactree <package>
+# Show packages that depend on a package
+pactree -r <package>
+#+END_SRC
+
+** rclone
+
+#+BEGIN_SRC fish
+# configure remote
+rclone config
+# list remote files/directories
+rclone ls/lsl/lsd/tree remote:path
+# show remote object size
+rclone size remote:path
+# show remote quota
+rclone about remote:
+# generate a public link to a file
+rclone link remote:path
+# copy files
+rclone copy --progress remote:path ~/local
+rclone copy --progress ~/local remote:path
+# delete files
+rclone --dry-run delete remote:path
+# operate remote with TUI
+rclone ncdu remote:
+#+END_SRC
 
 ** Docker
 
@@ -307,24 +458,3 @@ docker-compose start/stop # existing containers
 docker-compose down [$srv] # removes containers
 #+END_SRC
 
-** rclone
-
-#+BEGIN_SRC fish
-# configure remote
-rclone config
-# list remote files/directories
-rclone ls/lsl/lsd/tree remote:path
-# show remote object size
-rclone size remote:path
-# show remote quota
-rclone about remote:
-# generate a public link to a file
-rclone link remote:path
-# copy files
-rclone copy --progress remote:path ~/local
-rclone copy --progress ~/local remote:path
-# delete files
-rclone --dry-run delete remote:path
-# operate remote with TUI
-rclone ncdu remote:
-#+END_SRC
