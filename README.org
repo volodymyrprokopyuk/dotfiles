@@ -45,7 +45,7 @@ yay -S hunspell hunspell-en_us hunspell-es_es hunspell-uk hunspell-ru
 yay -S ttf-jetbrains-mono-nerd noto-fonts-emoji
 yay -S fzf fd ripgrep eza bat git-delta vivid plocate btop go-yq
 yay -S zathura zathura-pdf-mupdf zathura-djvu
-yay -S go gopls
+yay -S go gopls golangci-lint
 yay -S bun-bin typescript typescript-language-server
 #+END_SRC
 
@@ -69,7 +69,7 @@ yay -S xorg-xev i3status-rust i3lock-color maim
 
 #+BEGIN_SRC fish
 # Set font scaling DPI (multiple of 96) in ~/.Xresources
-Xcursor.theme: Qogir
+Xcursor.theme: Qogir-dark
 Xcursor.size: 48
 Xft.dpi: 192
 #+END_SRC
