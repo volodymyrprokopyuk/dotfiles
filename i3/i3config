@@ -133,6 +133,11 @@ bindcode $mod+$i mode $mode_input
 # Screen
 
 # vbox: set $dsp Virtual1
+
+# think: set $dsp HDMI-1
+# think: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --off
+# thinkall: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --mode 1920x1080 --right-of HDMI-1
+
 # sat: set $dsp HDMI-1
 # sat: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --off
 # satall: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --mode 1366x768 --right-of HDMI-1
