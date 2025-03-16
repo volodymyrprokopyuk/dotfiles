@@ -1,5 +1,48 @@
 * Applications
 
+** i3
+
+| Key              | Function                      |
+|------------------+-------------------------------|
+| =mod-r=          | Reload i3 config              |
+| =mod-S-r=        | Restart i3 config             |
+| =mod-z=          | Toggle full screen            |
+| =mod-f=          | Toggle floating               |
+| =mod-s=          | Toggle sticky                 |
+|------------------+-------------------------------|
+| =mod-[0-9]=      | Switch to workspace           |
+| =mod-tab=        | Last workspace                |
+| =mod-S-[0-9]=    | Move application to workspace |
+| =mod-hjkl=       | Focus on application          |
+| =mod-S-hjkl=     | Shift application             |
+|------------------+-------------------------------|
+| =mod-return=     | Wezterm terminal              |
+| =mod-space=      | Emacs editor                  |
+| =mod-w=          | Firefox browser               |
+| =mod-x=          | Launch application            |
+| =mod-S-q=        | Kill application              |
+| =mod-o=          | Open document                 |
+| =mod-i=          | Change input language         |
+|------------------+-------------------------------|
+| =mod-S-rbracket= | Rotate screen right           |
+| =mod-S-lbracket= | Rotate screen left            |
+| =mod-S-equal=    | Restore screen                |
+| =mod-p=          | Print screen                  |
+|------------------+-------------------------------|
+| =mod-uarrow=     | Increase volume               |
+| =mod-darrow=     | Decrease volume               |
+| =mod-S-m=        | Mute volume                   |
+|------------------+-------------------------------|
+| =mod-rarrow=     | Increase mic                  |
+| =mod-larrow=     | Decrease mic                  |
+| =mod-S-u=        | Mute mic                      |
+|------------------+-------------------------------|
+| =mod-y=          | Lock screen                   |
+| =mod-S-y=        | Log out from i3 session       |
+| =mod-S-z=        | Suspend                       |
+| =mod-C-bspace=   | Reboot                        |
+| =mod-S-C-bspace= | Power off                     |
+
 ** Emacs
 
 *** Editor
