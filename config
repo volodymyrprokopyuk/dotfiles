@@ -13,13 +13,9 @@ end
 function Emacs -a install
   cp base/*.el ~/.config/doom
   if test -n "$install"
-    set root ~/.config/emacs
-    set backup ~/.config/emacs2
-    rm -rf $backup
-    mv $root $backup
-    git clone --depth 1 https://github.com/doomemacs/doomemacs $root
-    cd $root; and ./bin/doom install; and ./bin/doom sync
-    # doom upgrade
+    set dir ~/.config/emacs
+    git clone --depth 1 https://github.com/doomemacs/doomemacs $dir
+    cd $dir && ./bin/doom install && ./bin/doom sync # doom upgrade
   end
 end
 
