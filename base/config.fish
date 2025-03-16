@@ -32,6 +32,7 @@ set -g fish_pager_color_selected_description FEDC56 # mustard yellow
 set -g fish_pager_color_progress --background=normal
 
 # --ignore-glob (-I) <glob|glob>
+# --level L <depth>
 function lla
   eza --all --long --group-directories-first --git --no-quotes \
     --no-permissions --octal-permissions --smart-group --time-style relative \

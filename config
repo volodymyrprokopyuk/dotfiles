@@ -52,15 +52,12 @@ function Lilypond -a lpver
   and make -j 4; and make install
 end
 
-function Foundry -a fver
-  if test -z "$fver"
-    echo argparse: missing Foundry version; and return 1
-  end
-  set root ~/.config/foundry
-  mkdir -p $root/bin
+function Foundry
+  set dir ~/.config/foundry/bin
+  mkdir -p $dir
   set release https://github.com/foundry-rs/foundry/releases/download
-  set url $release/$fver/foundry_stable_linux_amd64.tar.gz
-  curl -fsSL $url | tar xvz -C $root/bin
+  set url $release/stable/foundry_stable_linux_amd64.tar.gz
+  curl -fsSL $url | tar xvz -C $dir
   forge completions fish > ~/.config/fish/completions/forge.fish
   cast completions fish > ~/.config/fish/completions/cast.fish
   anvil completions fish > ~/.config/fish/completions/anvil.fish
@@ -86,7 +83,7 @@ for target in $argv
   case i3; I3
   case zathura; Zathura
   case lilypond; Lilypond $_flag_version
-  case foundry; Foundry $_flag_version
+  case foundry; Foundry
   case '*'
     echo argparse: unknown target $target; and return 1
   end
