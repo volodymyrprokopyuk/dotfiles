@@ -29,8 +29,8 @@ function Git
 end
 
 function I3
-  set host (hostname)
-  awk "{ sub(/^# $host: /, \"\"); print }" i3/i3config > ~/.config/i3/config
+  cat i3/i3config | string collect | \
+    string replace --regex --all "^# $(hostname): " "" > ~/.config/i3/config
   cp i3/i3status.toml ~/.config/i3status-rust/config.toml
   cp i3/roficonfig.rasi ~/.config/rofi/config.rasi
 end
