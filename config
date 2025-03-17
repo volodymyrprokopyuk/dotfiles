@@ -36,16 +36,17 @@ function Zathura
 end
 
 function Lilypond -a lpver
-  if not string match -qr '^(?<long>(?<short>\d\.\d{1,2})\.\d{1,2})$' $lpver
-    echo argparse: missing or invalid LilyPond version; and return 1
+  set re '^(?<long>(?<short>\d\.\d{1,2})\.\d{1,2})$'
+  if not string match --quiet --regex $re $lpver
+    echo argparse: missing or invalid LilyPond version && return 1
   end
   set url https://lilypond.org/download/sources/v$short/lilypond-$long.tar.gz
-  set root ~/.config/lilypond
-  set build $root/lilypond-$long/build
-  curl -fsSL $url | tar xvz -C $root
-  and mkdir $build; and cd $build; and ../autogen.sh --noconfigure
-  and ../configure --prefix=$root --disable-documentation GUILE_FLAVOR=guile-3.0
-  and make -j 4; and make install
+  set dir ~/.config/lilypond
+  set build $dir/lilypond-$long/build
+  curl -fsSL $url | tar xvz -C $dir && \
+  mkdir $build && cd $build && ../autogen.sh --noconfigure && \
+  ../configure --prefix=$dir --disable-documentation GUILE_FLAVOR=guile-3.0 && \
+  make -j 8 && make install
 end
 
 function Foundry
@@ -59,7 +60,7 @@ function Foundry
   anvil completions fish > ~/.config/fish/completions/anvil.fish
 end
 
-argparse init a/all i/install v/version= -- $argv; or return
+argparse init a/all i/install v/version= -- $argv || return
 
 if set -ql _flag_init
   mkdir -p ~/.config/{wezterm,fish,doom,i3,i3status-rust,rofi}
@@ -67,7 +68,7 @@ if set -ql _flag_init
 end
 
 if set -ql _flag_all
-  Wezterm; Fish; Emacs $_flag_install; Git; I3; Zathura; and return
+  Wezterm; Fish; Emacs $_flag_install; Git; I3; Zathura && return
 end
 
 for target in $argv
@@ -81,6 +82,6 @@ for target in $argv
   case lilypond; Lilypond $_flag_version
   case foundry; Foundry
   case '*'
-    echo argparse: unknown target $target; and return 1
+    echo argparse: unknown target $target && return 1
   end
 end
