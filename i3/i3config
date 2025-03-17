@@ -152,18 +152,18 @@ bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
 # Volume and mic
 
 bindcode $mod+$uarrow exec wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SINK@ 5%+; \
-  exec ~/.dotfiles/i3/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
+  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
 bindcode $mod+$darrow exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; \
-  exec ~/.dotfiles/i3/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
+  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
 bindcode $mod+Shift+$m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; \
-  exec ~/.dotfiles/i3/getvol.sh /auvol @DEFAULT_AUDIO_SINK@
+  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
 
 bindcode $mod+$rarrow exec wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+; \
-  exec ~/.dotfiles/i3/getvol.sh /aumic @DEFAULT_AUDIO_SOURCE@
+  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
 bindcode $mod+$larrow exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; \
-  exec ~/.dotfiles/i3/getvol.sh /aumic @DEFAULT_AUDIO_SOURCE@
+  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
 bindcode $mod+Shift+$u exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; \
-  exec ~/.dotfiles/i3/getvol.sh /aumic @DEFAULT_AUDIO_SOURCE@
+  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
 
 # System
 
