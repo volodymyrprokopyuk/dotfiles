@@ -57,6 +57,32 @@ git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && ./config --init --all --install
 #+END_SRC
 
+
+*** LTS Linux kernel
+
+- Official kernels
+  - =stable= latest features
+  - =lts= stability focused
+  - =zen= desktop optimizations
+  - =hardened= security enhancements
+  - =rt= real-time scheduling
+
+#+BEGIN_SRC fish
+yay -S linux-lts66 linux-lts66-headers
+lsblk -o name,uuid,fstype,mountpoint
+sudo touch /boot/loader/entries/arch-lts66.conf
+# title Arch Linux LTS 6.6
+# linux /vmlinuz-linux-lts66
+# initrd /intel-ucode.img (optional)
+# initrd /initramfs-linux-lts66.img
+# options root=UUID=45d61aea-cda7-4e55-a5f5-32ab4518a6dd rw
+bootctl list
+# Reboot
+uname -r
+# /boot/loader/loader.conf
+default arch-lts.conf
+#+END_SRC
+
 ** i3 installation
 *** Install i3 packages
 
@@ -315,7 +341,6 @@ Ellipse =e=
 | Key | Function |
 |-----+----------|
 |     |          |
-
 
 * Commands
 ** yay
