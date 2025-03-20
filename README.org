@@ -155,9 +155,7 @@ xdg-mime default org.gnome.gThumb.desktop image/svg+xml
 
 ** Emacs
 
-*** Editor
-
-Movement
+Movements
 
 | Key        | Function                                    |
 |------------+---------------------------------------------|
@@ -170,7 +168,7 @@ Movement
 | =W/B/E/gE= | move next/prev beg/end whitespace only word |
 |------------+---------------------------------------------|
 
-*** Table
+Table
 
 | Key             | Function               |
 |-----------------+------------------------|
@@ -181,6 +179,26 @@ Movement
 | =Spc m b d r/c= | delete row/column      |
 | =M-h/l=         | move column left/right |
 | =M-j/k=         | move row down/up       |
+
+** Firefox
+
+| Key            | Function        |
+|----------------+-----------------|
+| =C-t=          | New tab         |
+| =C-tab=        | Last tab        |
+| =C-w=          | Close tab       |
+| =C-S-p=        | Private window  |
+| =C-S-w=        | Close window    |
+| =C-q=          | Quit            |
+| =C-+/-=        | Zoom in/out     |
+| =C-0=          | Actual size     |
+| =C-l/rbracket= | Go back/forward |
+| =C-f=          | Find            |
+| =C-g=          | Find next       |
+| =C-p=          | Print           |
+| =C-h=          | History         |
+| =C-b=          | Bookmarks       |
+| =C-S-b=        | Bookmarks bar   |
 
 ** Inkscape
 
