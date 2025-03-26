@@ -410,3 +410,44 @@ rclone --dry-run delete remote:path
 rclone ncdu remote:
 #+END_SRC
 
+
+** ssh
+
+- SSH keys :: SSH keys allow secure access to remote hosts using a key pair e.g.
+  ED25519, RSA
+
+#+BEGIN_SRC fish
+# Set ~/.ssh directory and file parmissions
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_*
+# Generate a SSH key pair
+ssh-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
+# Verify the passphrase
+ssh-keygen -y -f ~/.ssh/id_ed25519_<host>
+# Update the passphrase
+ssh-keygen -p -f ~/.ssh/id_ed25519_<host>
+# Copy the SSH key to a remote host
+ssh-copy-id -i ~/.ssh/id_ed25519_<host>.pub <user>@<host>
+# Connect to the remote host using the SSH key
+ssh -i ~/.ssh/id_ed25519_<host> <user>@<host>
+# Configure an SSH key alias in ~/.ssh/config
+Host <alias>
+    HostName <host>
+    User <user>
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_ed25519_<host>
+# Test connection to the remote host using the SSH key
+ssh -T <user>@<host>
+# Connect to the remote host using the SSH key alias
+ssh <alias>
+#+END_SRC
+
+- SSH tunneling :: SSH tunneling (port forwarding) transports arbitrary data
+  between an authenticated SSH client and an authenticated SSH server over an
+  untrusted network through an encrypted SSH connection that ensures
+  confidentiality and integrity. SSH tunneling provides secure connections to
+  internal services over the Internet
+
+#+BEGIN_SRC fish
+ssh -L [localIP:]localPort:destServer:destPort [sshUser@]sshServer
+#+END_SRC

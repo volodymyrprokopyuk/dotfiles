@@ -59,55 +59,6 @@ systemctl [list-units] --type=service --state=active
 sudo systemctl enable|start|status|stop|restart|disable $SERVICE.service
 ```
 
-## SSH configuration
-
-Install and use locally generated SSH key on a remote server
-```fish
-# Generate SSH key pair locally
-# Provide SSH key file location ($HOME/.ssh/id_rsa_<provider>) and passphrase
-# File parmissions
-chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_*
-ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
-ssy-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
-ssh-keygen -y -f ~/.ssh/id_rsa_stadami # verify passphrase
-# Copy SSH key to a remote host. Provide remote host username and password
-ssh-copy-id -i ~/.ssh/id_rsa_<provider>.pub <username>@<host>
-# Connect to the remote host using SSH key but not password. Provide passphrase
-ssh -i ~/.ssh/id_rsa_<provider> <username>@<host>
-# Configure SSH key alias in ~/.ssh/config
-Host <alias>
-    HostName <host>
-    User <user>
-    IdentityFile ~/.ssh/id_rsa_<provider>
-# Connect to the remote host using SSH key alias. Provide passphrase
-ssh <alias>
-# Test SSH connection using SSH key
-ssh -T <alias>
-```
-
-Add private SSH key identities to the SSH authentication agent
-```fish
-# Start SSH authentication agent
-eval $(ssh-agent)
-# Add private SSH key identities to the SSH authentication agent. Provide passphrase
-ssh-add ~/.ssh/id_rsa*~*.pub
-# Show added to the SSH authentication agent private SSH key identities
-ssh-add -l
-```
-
-SSH tunneling (port forwarding)
-- SSH tunneling transports arbitrary data between authenticated SSH client and
-  authenticated SSH server over an untrusted network through an encrypted SSH
-  connection (confidentiality, integrity). SSH tunneling provides secure
-  connections to internal services from the outside
-- SSH client forwards connections to a configured localhost:port to an SSH
-  server through an encrypted SSH connection
-- SSH server connects to a configured server:port e.g. DB
-
-``` fish
-ssh -L [localIP:]localPort:destServer:destPort [sshUser@]sshServer
-```
-
 # Applications
 
 ## Fish
