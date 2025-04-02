@@ -20,8 +20,9 @@ function Emacs -a install
 end
 
 function Git
-  cp base/sshconfig ~/.ssh/config
+  rm ~/.gitconfig
   source base/gitconfig
+  cp base/sshconfig ~/.ssh/config
 end
 
 function I3

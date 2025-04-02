@@ -71,6 +71,12 @@ function fzfView
 end
 bind alt-w fzfView
 
+function fzfDiff
+  git l --color=always | fzfBase --reverse | read --local selected
+  and git d --color=always (string match --regex '\w{7}' $selected)^! | delta | less
+end
+bind alt-i fzfDiff
+
 function fzfOpen
   ff --no-ignore --type file '(pdf|djvu?)$' ~/Downloads ~/Projects/bayanguru |
     fzfBase | read --local selected; and xdg-open $selected &>/dev/null
