@@ -388,29 +388,6 @@ pactree <package>
 pactree -r <package>
 #+END_SRC
 
-** rclone
-
-#+BEGIN_SRC fish
-# configure remote
-rclone config
-# list remote files/directories
-rclone ls/lsl/lsd/tree remote:path
-# show remote object size
-rclone size remote:path
-# show remote quota
-rclone about remote:
-# generate a public link to a file
-rclone link remote:path
-# copy files
-rclone copy --progress remote:path ~/local
-rclone copy --progress ~/local remote:path
-# delete files
-rclone --dry-run delete remote:path
-# operate remote with TUI
-rclone ncdu remote:
-#+END_SRC
-
-
 ** ssh
 
 - SSH keys :: SSH keys allow secure access to remote hosts using a key pair e.g.
@@ -450,4 +427,46 @@ ssh <alias>
 
 #+BEGIN_SRC fish
 ssh -L [localIP:]localPort:destServer:destPort [sshUser@]sshServer
+#+END_SRC
+
+** rclone
+
+#+BEGIN_SRC fish
+# configure remote
+rclone config
+# list remote files/directories
+rclone ls/lsl/lsd/tree remote:path
+# show remote object size
+rclone size remote:path
+# show remote quota
+rclone about remote:
+# generate a public link to a file
+rclone link remote:path
+# copy files
+rclone copy --progress remote:path ~/local
+rclone copy --progress ~/local remote:path
+# delete files
+rclone --dry-run delete remote:path
+# operate remote with TUI
+rclone ncdu remote:
+#+END_SRC
+
+** zrok
+
+#+BEGIN_SRC fish
+# Install zrok
+yay -S zrok-bin
+zrok completion fish > ~/.config/fish/completions/zrok.fish
+# Enable a local environment with the https://myzrok.io instance
+zrok enable secretAccountToken
+# The default --backend-mode proxy is a reverse proxy for local HTTP services
+# Public share to the Internet > curl https://ephemeralShareToken.share.zrok.io
+zrok share public http://localhost:8080 # ephemeralShareToken
+# Private share to the OpenZiti network > zrok access private ephemeralShareToken
+zrok share private http://localhost:8080 # ephemeralShareToken
+# Shares are ephemeral by default for each > zrok share public|private ...
+# Reserved share with a permanent reservedShareToken
+zrok reserve public http://localhost:8080 # reservedShareToken
+zrok share reserved reservedShareToken
+zrok release reservedShareToken
 #+END_SRC
