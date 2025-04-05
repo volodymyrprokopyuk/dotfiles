@@ -74,9 +74,9 @@ return {
   key_tables = {
     search_mode = {
       { key = "Enter", mods = "NONE", action = act.CopyMode "PriorMatch" },
-      { key = ",", mods = "ALT", action = act.CopyMode "PriorMatch" },
-      { key = "m", mods = "ALT", action = act.CopyMode "NextMatch" },
-      { key = "u", mods = "CTRL", action = act.CopyMode "ClearPattern" },
+      { key = "n", mods = "SHIFT", action = act.CopyMode "PriorMatch" },
+      { key = "n", mods = "NONE", action = act.CopyMode "NextMatch" },
+      { key = "c", mods = "NONE", action = act.CopyMode "ClearPattern" },
       { key = "g", mods = "CTRL", action = act.CopyMode "Close" }
     },
     copy_mode = {
