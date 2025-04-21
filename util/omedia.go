@@ -1,20 +1,19 @@
-/*
- * omedia organizes photo and video files into a directory tree by date
+/* omedia organizes photo and video files into a directory tree by year and month
  * Usage: omedia -o <outDir> <inDir>
- * Dependencies
- * - exiv2 extracts date and time from an image file
- * - ffprobe (from ffmpeg) extracts date and time from a video file
- * rclone copy --progress lanagph:media/all ~/Media/source/
+ * yay -S exiv2 ffmpeg
+ * - exiv2 extracts the date and time from an image file
+ * - ffprobe (from ffmpeg) extracts the date and time from a video file
+ * mkdir -p ~/Media/{source,sink}
+ * rclone copy --progress vladgph:media/all ~/Media/source/
  * unzip ./Downloads/photos.zip -d ~/Media/source
  * ./omedia -o ~/Media/sink ~/Media/source
  * sudo mkdir /run/media/SD{1,2,3,4}
- * sudo mkdir ...("/run/media/SD{1,2,3,4}" | str expand)
  * sudo chown -R vlad:vlad /run/media/SD{1,2,3,4}
- * sudo chown -R vlad:vlad ...("/run/media/SD{1,2,3,4}" | str expand)
- * sudo mount -a
+ * sudo fdisk -l
+ * sudo mount -t ext4 /dev/sdb1 /run/media/SD1
+ * df -h
  * cp -rv ~/Media/sink/2022/* /run/media/vlad/SD1/Media-2021-202_/2022
  * sudo umount /run/media/SD{1,2,3,4}
- * sudo umount ...("/run/media/SD{1,2,3,4}" | str expand)
  */
 package main
 

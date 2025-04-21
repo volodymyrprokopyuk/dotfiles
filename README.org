@@ -457,16 +457,20 @@ rclone ncdu remote:
 # Install zrok
 yay -S zrok-bin
 zrok completion fish > ~/.config/fish/completions/zrok.fish
+# An environment is a local system connected to a zrok service instance
+# A share is a local service exposed through a zrok service instance
 # Enable a local environment with the https://myzrok.io instance
 zrok enable secretAccountToken
-# The default --backend-mode proxy is a reverse proxy for local HTTP services
-# Public share to the Internet > curl https://ephemeralShareToken.share.zrok.io
-zrok share public http://localhost:8080 # ephemeralShareToken
-# Private share to the OpenZiti network > zrok access private ephemeralShareToken
-zrok share private http://localhost:8080 # ephemeralShareToken
+zrok disable secretAccountToken
+# The default --backend-mode proxy is a reverse proxy for a local HTTP service
+# A public share to the Internet > curl https://ephPubShareToken.share.zrok.io
+zrok share public http://localhost:8080 # ephPubShareToken
+# A private share to the OpenZiti network > zrok access private ephPrvShareToken
+zrok share private http://localhost:8080 # ephPrvShareToken
 # Shares are ephemeral by default for each > zrok share public|private ...
-# Reserved share with a permanent reservedShareToken
-zrok reserve public http://localhost:8080 # reservedShareToken
+# A reserved share with a permanent reservedShareToken
+# Permanent URL > curl https://reservedShareToken.share.zrok.io
+zrok reserve public http://localhost:8080 --unique-name reservedShareToken
 zrok share reserved reservedShareToken
 zrok release reservedShareToken
 #+END_SRC
