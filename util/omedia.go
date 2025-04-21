@@ -7,6 +7,7 @@
  * rclone copy --progress vladgph:media/all ~/Media/source/
  * unzip ./Downloads/photos.zip -d ~/Media/source
  * ./omedia -o ~/Media/sink ~/Media/source
+ * du -sh ~/Media/sink
  * sudo mkdir /run/media/SD{1,2,3,4}
  * sudo chown -R vlad:vlad /run/media/SD{1,2,3,4}
  * sudo fdisk -l
