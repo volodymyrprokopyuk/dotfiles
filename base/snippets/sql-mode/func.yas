@@ -1,0 +1,9 @@
+# key: func
+# --
+create or replace function $0()
+returns _ immutable
+language plpgsql as $$
+declare
+begin
+end;
+$$;

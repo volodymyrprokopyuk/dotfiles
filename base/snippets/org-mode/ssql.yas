@@ -1,0 +1,5 @@
+# key: ssql
+# --
+#+BEGIN_SRC sql
+  $0
+#+END_SRC
