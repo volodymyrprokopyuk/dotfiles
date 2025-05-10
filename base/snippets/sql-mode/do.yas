@@ -1,0 +1,7 @@
+# key: do
+# --
+do $$
+declare
+begin
+end;
+$$;

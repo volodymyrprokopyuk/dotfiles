@@ -8,3 +8,8 @@ Host gitlab.triare.net
     User git
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_ed25519_gitlab_triare
+Host gitlab.com
+    HostName gitlab.com
+    User git
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_ed25519_gitlab_stadami
