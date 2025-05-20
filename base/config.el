@@ -132,6 +132,10 @@
 
 (defun config-org ()
   (after! org
+    ;; Set dark background color in source code blocs
+    (set-face-attribute
+     'org-block nil :background
+     (color-darken-name (face-attribute 'default :background) 3))
     ;; Fold content at startup
     (setq org-startup-folded t)
     ;; Do not indent nested content
