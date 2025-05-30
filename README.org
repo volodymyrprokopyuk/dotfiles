@@ -45,7 +45,7 @@ yay -S hunspell hunspell-en_us hunspell-es_es hunspell-uk hunspell-ru
 yay -S ttf-jetbrains-mono-nerd noto-fonts-emoji
 yay -S fzf fd ripgrep eza bat git-delta vivid plocate btop go-yq
 yay -S zathura zathura-pdf-mupdf zathura-djvu
-yay -S go gopls golangci-lint
+yay -S go gopls golangci-lint pulumi
 yay -S bun-bin typescript typescript-language-server
 #+END_SRC
 
@@ -471,6 +471,16 @@ zrok share private http://localhost:8080 # ephPrvShareToken
 # A reserved share with a permanent reservedShareToken
 # Permanent URL > curl https://reservedShareToken.share.zrok.io
 zrok reserve public http://localhost:8080 --unique-name reservedShareToken
-zrok share reserved reservedShareToken
+zrok share reserved reservedShareToken --headless
 zrok release reservedShareToken
+#+END_SRC
+
+** psql
+
+#+BEGIN_SRC fish
+\set ON_ERROR_STOP on
+\pset linestyle unicode
+\pset columns 160
+\pset expanded auto
+\pset null ><
 #+END_SRC
