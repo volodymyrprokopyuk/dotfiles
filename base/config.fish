@@ -106,3 +106,6 @@ bind alt-m 'if commandline --paging-mode; commandline -f down-line; \
 bind alt-comma up-line
 
 starship init fish | source
+
+set -gx _ZO_FZF_OPTS '--cycle --bind alt-m:down,alt-,:up --ansi'
+zoxide init --cmd j fish | source
