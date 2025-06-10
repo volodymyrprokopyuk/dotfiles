@@ -1,16 +1,16 @@
 #!/usr/bin/env fish
 # -*- mode: fish -*-
 
-function Wezterm
+function cfg_wezterm
   cp base/wezterm.lua ~/.config/wezterm
 end
 
-function Fish
+function cfg_fish
   cp base/config.fish ~/.config/fish
   cp base/starship.toml ~/.config
 end
 
-function Emacs -a install
+function cfg_emacs -a install
   cp base/*.el ~/.config/doom
   if test -n "$install"
     set dir ~/.config/emacs
@@ -19,24 +19,24 @@ function Emacs -a install
   end
 end
 
-function Git
+function cfg_git
   rm ~/.gitconfig
   source base/gitconfig
   cp base/sshconfig ~/.ssh/config
 end
 
-function I3
+function cfg_i3
   cat i3/i3config | string collect | \
     string replace --regex --all "^# $(hostname): " "" > ~/.config/i3/config
   cp i3/i3status.toml ~/.config/i3status-rust/config.toml
   cp i3/roficonfig.rasi ~/.config/rofi/config.rasi
 end
 
-function Zathura
+function cfg_zathura
   cp base/zathurarc ~/.config/zathura
 end
 
-function Lilypond -a lpver
+function cfg_lilypond -a lpver
   set re '^(?<long>(?<short>\d\.\d{1,2})\.\d{1,2})$'
   if not string match --quiet --regex $re $lpver
     echo argparse: missing or invalid LilyPond version && return 1
@@ -50,7 +50,7 @@ function Lilypond -a lpver
   make -j 8 && make install
 end
 
-function Foundry
+function cfg_foundry
   set dir ~/.config/foundry/bin
   mkdir -p $dir
   set release https://github.com/foundry-rs/foundry/releases/download
@@ -69,19 +69,20 @@ if set -ql _flag_init
 end
 
 if set -ql _flag_all
-  Wezterm; Fish; Emacs $_flag_install; Git; I3; Zathura && return
+  cfg_wezterm; cfg_fish; cfg_emacs $_flag_install; cfg_git; cfg_i3;
+  cfg_zathura && return
 end
 
 for target in $argv
   switch $target
-  case wezterm; Wezterm
-  case fish; Fish
-  case emacs; Emacs $_flag_install
-  case git; Git
-  case i3; I3
-  case zathura; Zathura
-  case lilypond; Lilypond $_flag_version
-  case foundry; Foundry
+  case wezterm; cfg_wezterm
+  case fish; cfg_fish
+  case emacs; cfg_emacs $_flag_install
+  case git; cfg_git
+  case i3; cfg_i3
+  case zathura; cfg_zathura
+  case lilypond; cfg_lilypond $_flag_version
+  case foundry; cfg_foundry
   case '*'
     echo argparse: unknown target $target && return 1
   end
