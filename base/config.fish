@@ -66,6 +66,9 @@ end
 function ee
   emacs -nw $argv
 end
+function mm
+  yazi $argv
+end
 function jj
   yq --input-format json --output-format json --prettyPrint --indent 2 $arvg
 end
