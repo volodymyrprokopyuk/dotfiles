@@ -63,7 +63,9 @@ func digestMedia(file string) (string, error) {
   if err != nil {
     return "", err
   }
-  defer f.Close()
+  defer func() {
+    _ = f.Close()
+  }()
   hash := sha256.New()
   _, err = io.Copy(hash, f)
   if err != nil {
@@ -77,12 +79,16 @@ func copyFile(src, dst string) (int64, error) {
   if err != nil {
     return 0, err
   }
-  defer srcFile.Close()
+  defer func() {
+    _ = srcFile.Close()
+  }()
   dstFile, err := os.Create(dst)
   if err != nil {
     return 0, err
   }
-  defer dstFile.Close()
+  defer func() {
+    _ = dstFile.Close()
+  }()
   return io.Copy(dstFile, srcFile)
 }
 
