@@ -40,6 +40,7 @@
   yaml
   markdown
   org
+  graphviz
   web
   (sh +fish)
   (go +lsp)
