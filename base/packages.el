@@ -5,6 +5,7 @@
 (package! zenburn-theme)
 (package! ligature)
 (package! highlight-parentheses)
+(package! rainbow-delimiters)
 (package! jinx)
 
 ;; Programming
