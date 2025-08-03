@@ -78,7 +78,7 @@ uname -r
 
 #+BEGIN_SRC fish
 # Install i3 packages
-yay -S xorg-xev i3status-rust i3lock-color maim
+yay -S xorg-xev i3status-rust i3lock-color maim xclip
 #+END_SRC
 
 *** Configure font scaling

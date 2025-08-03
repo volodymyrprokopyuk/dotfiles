@@ -37,6 +37,8 @@ set $uarrow 111
 set $darrow 116
 set $larrow 113
 set $rarrow 114
+set $less 59
+set $greater 60
 
 set $ws1 "1"
 set $ws2 "2"
@@ -145,6 +147,8 @@ bindcode $mod+$i mode $mode_input
 bindcode $mod+Shift+$rbracket exec xrandr --output $dsp --rotate left
 bindcode $mod+Shift+$lbracket exec xrandr --output $dsp --rotate right
 bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal
+bindcode $mod+Shift+$less exec xrandr --output eDP-1 --primary --mode 1920x1080 --output HDMI-1 --off
+bindcode $mod+Shift+$greater exec xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --off
 
 bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 3 | xclip -selection clipboard -target image/png
