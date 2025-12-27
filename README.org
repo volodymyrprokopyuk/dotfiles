@@ -479,6 +479,8 @@ zrok share private http://localhost:8080 # ephPrvShareToken
 # Permanent URL > curl https://reservedShareToken.share.zrok.io
 zrok reserve public http://localhost:8080 --unique-name reservedShareToken
 zrok share reserved reservedShareToken --headless
+zrok share reserved reservedShareToken --headless \
+  --override-endpoint https://localhost:8081
 zrok release reservedShareToken
 zrok overview | jj
 #+END_SRC
