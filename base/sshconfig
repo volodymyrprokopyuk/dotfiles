@@ -1,15 +1,18 @@
 Host github.com
     HostName github.com
     User git
+    IdentityFile ~/.ssh/id_ed25519_github_arberis
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/id_rsa_github
-Host gitlab.triare.net
-    HostName gitlab.triare.net
-    User git
-    PreferredAuthentications publickey
-    IdentityFile ~/.ssh/id_ed25519_gitlab_triare
+    IdentitiesOnly yes
 Host gitlab.com
     HostName gitlab.com
     User git
-    PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_ed25519_gitlab_stadami
+    PreferredAuthentications publickey
+    IdentitiesOnly yes
+Host gitlab.triare.net
+    HostName gitlab.triare.net
+    User git
+    IdentityFile ~/.ssh/id_ed25519_gitlab_triare
+    PreferredAuthentications publickey
+    IdentitiesOnly yes
