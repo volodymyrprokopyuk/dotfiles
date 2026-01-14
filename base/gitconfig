@@ -23,3 +23,5 @@ git config --global alias.lgf 'log -p -M --follow --abbrev-commit --pretty=forma
 git config --global alias.ch "checkout"
 git config --global alias.a "!git add -A && git s"
 git config --global alias.cm "!git diff --check && git commit"
+git config --global url."git@github.com:volodymyrprokopyuk/".insteadOf \
+  "https://github.com/volodymyrprokopyuk/"
