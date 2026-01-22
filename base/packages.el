@@ -11,3 +11,4 @@
 ;; Programming
 (package! protobuf-mode)
 (package! org-make-toc)
+(package! d2-mode)

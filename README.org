@@ -39,7 +39,7 @@ sudo pacman -Syyu
 yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
 
 # Install packages
-yay -S wezterm fish starship zoxide emacs neovim yazi just
+yay -S wezterm fish starship zoxide emacs neovim yazi
 yay -S aspell aspell-en aspell-es aspell-uk aspell-ru
 yay -S hunspell hunspell-en_us hunspell-es_es hunspell-uk hunspell-ru
 yay -S ttf-jetbrains-mono-nerd noto-fonts-emoji
@@ -47,6 +47,7 @@ yay -S fzf fd ripgrep eza bat git-delta vivid 7zip plocate btop jq
 yay -S rclone syncthing zrok-bin
 yay -S zathura zathura-pdf-mupdf zathura-djvu
 yay -S go gopls golangci-lint pulumi
+yay -S d2 pandoc-bin chromium
 yay -S bun-bin typescript typescript-language-server
 #+END_SRC
 
