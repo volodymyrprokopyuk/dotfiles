@@ -3,11 +3,12 @@
 (doom!
   :completion
   company
+  ;; (corfu +orderless)
   vertico
 
   :ui
   doom
-  ;; ligatures TODO
+  ligatures
   modeline
   ophints
   (popup +defaults)
@@ -15,9 +16,9 @@
 
   :editor
   (evil +everywhere)
-  ;; fold
-  ;; objed TODO
+  fold
   snippets
+  ;; (whitespace +guess +trim)
 
   :emacs
   ;; dired

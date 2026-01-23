@@ -19,23 +19,6 @@
   (setq doom-theme 'zenburn)
   (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523"))))
 
-(defun config-ligatures ()
-  (setq jet-brains-mono-ligatures
-        '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
-          "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
-          "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
-          "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
-          "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
-          "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
-          ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
-          "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
-          "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
-          "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
-          "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
-  (ligature-set-ligatures 'go-mode jet-brains-mono-ligatures)
-  (ligature-set-ligatures 'js2-mode jet-brains-mono-ligatures)
-  (global-ligature-mode t))
-
 (defun config-current-line ()
   (global-hl-line-mode 1)
   (custom-set-faces!
@@ -209,7 +192,6 @@
 (config-doom)
 (config-font)
 (config-theme)
-(config-ligatures)
 (config-current-line)
 (config-whitespace)
 (config-parentheses)
