@@ -57,7 +57,7 @@
   (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
   (add-hook 'text-mode-hook #'highlight-parentheses-mode)
   (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
-  (setq hl-paren-colors '("firebrick1" nil nil nil))
+  (setq highlight-parentheses-colors '("firebrick1" nil nil nil))
   ;; Handle parentheses automatically
   (require 'smartparens-config)
   (add-hook 'prog-mode-hook #'smartparens-mode)
@@ -188,6 +188,14 @@
     '(("\\<define\\>\\|\\<template\\>\\|\\<block\\>\\|\\<end\\>" . font-lock-builtin-face)
     ("\\<if\\>\\|\\<else\\>\\|\\<range\\>\\|\\<with\\>" . font-lock-builtin-face))))
 
+(defun config-d2 ()
+  (add-to-list 'auto-mode-alist '("\\.d2\\'" . js-mode))
+  (add-hook 'js-mode-hook (lambda ()
+    (when (and buffer-file-name (string-suffix-p ".d2" buffer-file-name))
+      (lsp-disable)
+      (flycheck-mode -1)
+      (format-all-mode -1)))))
+
 ;; Editor
 (config-doom)
 (config-font)
@@ -212,3 +220,4 @@
 (config-docker)
 (config-elisp)
 (config-lilypond)
+(config-d2)
