@@ -169,6 +169,16 @@ Movements
 | =W/B/E/gE= | move next/prev beg/end whitespace only word |
 |------------+---------------------------------------------|
 
+Fold
+
+| Key     | Function                |
+|---------+-------------------------|
+| =z c=   | Fold (close)            |
+| =z o=   | Unfold (open)           |
+| =z a=   | Toggle fold (alternate) |
+| =z m=   | Fold all (mute)         |
+| =z r=   | Unfold all (reopen)     |
+
 Table
 
 | Key             | Function               |
