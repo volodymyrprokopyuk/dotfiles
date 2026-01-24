@@ -192,9 +192,15 @@
   (add-to-list 'auto-mode-alist '("\\.d2\\'" . js-mode))
   (add-hook 'js-mode-hook (lambda ()
     (when (and buffer-file-name (string-suffix-p ".d2" buffer-file-name))
-      (lsp-disable)
-      (flycheck-mode -1)
-      (format-all-mode -1)))))
+      ;; Redefine comment symbol
+      (setq-local comment-start "# ")
+      (setq-local comment-end "")
+      (setq-local comment-start-skip "#+\\s-*")
+      ;; Highlight comments
+      (set-syntax-table (make-syntax-table (syntax-table)))
+      (modify-syntax-entry ?# "<" (syntax-table))
+      (modify-syntax-entry ?\n ">" (syntax-table))
+      (modify-syntax-entry ?/ "." (syntax-table))))))
 
 ;; Editor
 (config-doom)

@@ -47,7 +47,7 @@ yay -S fzf fd ripgrep eza bat git-delta vivid 7zip plocate btop jq
 yay -S rclone syncthing zrok-bin
 yay -S zathura zathura-pdf-mupdf zathura-djvu
 yay -S go gopls golangci-lint pulumi
-yay -S d2 pandoc-bin chromium
+yay -S d2 pandoc-bin chromium pdfcpu
 yay -S bun-bin typescript typescript-language-server
 #+END_SRC
 
