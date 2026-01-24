@@ -36,7 +36,7 @@ Color CheckSpace VerbosePkgLists ParallelDownloads = 8
 # Update package repositories
 sudo pacman -Syyu
 # Update installed packages and remove unused packages
-yay --noconfirm -Syu && yay --noconfirm -Sc && yay --noconfirm -Yc
+yay --noconfirm -Syu; and yay --noconfirm -Sc; and yay --noconfirm -Yc
 
 # Install packages
 yay -S wezterm fish starship zoxide emacs neovim yazi
@@ -56,7 +56,7 @@ yay -S bun-bin typescript typescript-language-server
 #+BEGIN_SRC fish
 # Install configuration files
 git clone git@github.com:volodymyrprokopyuk/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles && ./config --init --all --install
+cd ~/.dotfiles; and ./config --init --all --install
 #+END_SRC
 
 *** LTS Linux kernel
@@ -413,7 +413,7 @@ tr -dc 'A-Za-z0-9!@#$%^&*()_+{}[]' </dev/urandom | head -c 10
 
 #+BEGIN_SRC fish
 # Set ~/.ssh directory and file parmissions
-chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_*
+chmod 700 ~/.ssh; and chmod 600 ~/.ssh/id_*
 # Generate a SSH key pair
 ssh-keygen -t ed25519 -C "volodymyrprokopyuk@gmail.com"
 ssh-keygen -t rsa -b 4096 -C "volodymyrprokopyuk@gmail.com"
