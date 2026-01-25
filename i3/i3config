@@ -115,7 +115,8 @@ bindcode $mod+$x exec rofi -show drun
 bindcode $mod+Shift+$q kill
 
 bindcode $mod+$o exec fd --no-ignore --type file '(pdf|djvu?)$' \
-  ~/Downloads ~/Projects/bayanguru | rofi -dmenu -i | xargs -I {} xdg-open {}
+  ~/Downloads ~/Projects/bayanguru ~/Arberis \
+  | rofi -dmenu -i | xargs -I {} xdg-open {}
 
 set $mode_input in
 mode $mode_input {

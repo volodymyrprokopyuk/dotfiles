@@ -99,7 +99,8 @@ end
 bind alt-i fzfDiff
 
 function fzfOpen
-  ff --no-ignore --type file '(pdf|djvu?)$' ~/Downloads ~/Projects/bayanguru |
+  ff --no-ignore --type file '(pdf|djvu?)$' \
+    ~/Downloads ~/Projects/bayanguru ~/Arberis |
     fzfBase | read --local selected; and xdg-open $selected &>/dev/null
 end
 bind alt-o fzfOpen
