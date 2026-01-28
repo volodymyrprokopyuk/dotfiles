@@ -1,5 +1,5 @@
 # key: ssql
 # --
-#+BEGIN_SRC sql
+#+begin_src sql
   $0
-#+END_SRC
+#+end_src
