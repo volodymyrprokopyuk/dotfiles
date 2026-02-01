@@ -87,19 +87,23 @@ yay -S xorg-xev i3status-rust i3lock-color maim xclip
 
 #+BEGIN_SRC fish
 # ~/.Xresources
-Xcursor.theme: Qogir-dark
-Xcursor.size: 96
+Xcursor.theme: Bibata-Modern-Ice
+Xcursor.size: 56
 Xft.dpi: 192
 # ~/.profile and ~/.xprofile
-export XCURSOR_THEME=Qogir-dark
-export XCURSOR_SIZE=96
+export XCURSOR_THEME=Bibata-Modern-Ice
+export XCURSOR_SIZE=56
 # ~/.icons/default/index.theme
 [Icon Theme]
 Name=Default
 Comment=Default Cursor Theme
-Inherits=Qogir-dark
+Inherits=Bibata-Modern-Ice
 # ~/.icons/default/cursors.conf
-Size=96
+size=56
+# ~/.config/gtk-3.0/settings.ini
+[Settings]
+gtk-cursor-theme-name=Bibata-Modern-Ice
+gtk-cursor-theme-size=56
 #+END_SRC
 
 *** Configure default applications
