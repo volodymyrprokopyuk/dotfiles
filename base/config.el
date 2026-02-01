@@ -83,6 +83,12 @@
 
 (defun config-spell ()
   (add-hook 'emacs-startup-hook #'global-jinx-mode)
+  (setq jinx-languages "en_US es_ES")
+  (custom-set-faces
+   '(jinx-misspelled
+     ((t (:underline (:style wave :color "orange" :thickness 3)))))
+   '(jinx-incorrect
+     ((t (:underline (:style wave :color "red" :thickness 3))))))
   (evil-define-key 'normal 'global (kbd "z =") #'jinx-correct)
   (evil-define-key 'normal 'global (kbd "] s") #'jinx-next)
   (evil-define-key 'normal 'global (kbd "[ s") #'jinx-previous))
