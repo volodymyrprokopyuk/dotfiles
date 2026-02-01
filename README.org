@@ -83,13 +83,23 @@ uname -r
 yay -S xorg-xev i3status-rust i3lock-color maim xclip
 #+END_SRC
 
-*** Configure font scaling
+*** Configure font scaling and cursor size
 
 #+BEGIN_SRC fish
-# Set font scaling DPI (multiple of 96) in ~/.Xresources
+# ~/.Xresources
 Xcursor.theme: Qogir-dark
-Xcursor.size: 48
+Xcursor.size: 96
 Xft.dpi: 192
+# ~/.profile and ~/.xprofile
+export XCURSOR_THEME=Qogir-dark
+export XCURSOR_SIZE=96
+# ~/.icons/default/index.theme
+[Icon Theme]
+Name=Default
+Comment=Default Cursor Theme
+Inherits=Qogir-dark
+# ~/.icons/default/cursors.conf
+Size=96
 #+END_SRC
 
 *** Configure default applications
