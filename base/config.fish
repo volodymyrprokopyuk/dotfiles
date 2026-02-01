@@ -69,12 +69,6 @@ end
 function mm
   yazi $argv
 end
-function jj
-  yq --input-format json --output-format json --prettyPrint --indent 2 $argv
-end
-function yy
-  yq --input-format yaml --output-format yaml --prettyPrint --indent 2 $argv
-end
 
 function fzfBase
   fzf --cycle --bind alt-m:down,alt-,:up --ansi $argv
