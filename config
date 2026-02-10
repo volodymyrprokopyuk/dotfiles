@@ -43,8 +43,23 @@ function cfg_git
 end
 
 function cfg_i3
-  cat i3/i3config | string collect |
-    string replace --regex --all "^# $(hostname): " "" > ~/.config/i3/config
+  switch (hostname)
+  case think
+    set -x display1 HDMI-1
+    set -x mode1 3840x2160
+    set -x display2 eDP-1
+    set -x mode2 1920x1080
+  case sat
+    set -x display1 HDMI-1
+    set -x mode1 1920x1080
+    set -x display2 LVDS-1
+    set -x mode2 1366x768
+  case '*'
+    echo "invalid hostname $(hostname)"
+    return 1
+  end
+  cat i3/i3config |
+    envsubst '$display1,$mode1,$display2,$mode2' > ~/.config/i3/config
   pipe_success
   or return 1
   cp i3/i3status.toml ~/.config/i3status-rust/config.toml

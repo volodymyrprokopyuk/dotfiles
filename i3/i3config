@@ -134,23 +134,29 @@ mode $mode_input {
 }
 bindcode $mod+$i mode $mode_input
 
-# Screen
+# Display
 
-# vbox: set $dsp Virtual1
+exec --no-startup-id xrandr \
+  --output $display1 --primary --mode $mode1 \
+  --output $display2 --off
+# exec --no-startup-id xrandr \
+#   --output $display1 --primary --mode $mode1 \
+#   --output $display2 --mode $mode2 --right-of $display1
 
-# think: set $dsp HDMI-1
-# think: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --off
-# thinkall: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --mode 1920x1080 --right-of HDMI-1
+bindcode $mod+Shift+$rbracket exec --no-startup-id xrandr \
+  --output $display1 --rotate left
+bindcode $mod+Shift+$lbracket exec --no-startup-id xrandr \
+  --output $display1 --rotate right
+bindcode $mod+Shift+$equal exec --no-startup-id xrandr \
+  --output $display1 --rotate normal
+bindcode $mod+Shift+$less exec --no-startup-id xrandr \
+  --output $display2 --primary --mode $mode2 \
+  --output $display1 --off
+bindcode $mod+Shift+$greater exec --no-startup-id xrandr \
+  --output $display1 --primary --mode $mode1 \
+  --output $display2 --off
 
-# sat: set $dsp HDMI-1
-# sat: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --off
-# satall: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --mode 1366x768 --right-of HDMI-1
-
-bindcode $mod+Shift+$rbracket exec --no-startup-id xrandr --output $dsp --rotate left
-bindcode $mod+Shift+$lbracket exec --no-startup-id xrandr --output $dsp --rotate right
-bindcode $mod+Shift+$equal exec --no-startup-id xrandr --output $dsp --rotate normal
-bindcode $mod+Shift+$less exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --output HDMI-1 --off
-bindcode $mod+Shift+$greater exec --no-startup-id xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --off
+# Print screen
 
 bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 3 | xclip -selection clipboard -target image/png
