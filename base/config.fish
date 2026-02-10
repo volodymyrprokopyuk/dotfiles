@@ -31,6 +31,13 @@ set -g fish_pager_color_selected_completion yellow
 set -g fish_pager_color_selected_description FEDC56 # mustard yellow
 set -g fish_pager_color_progress --background=normal
 
+function pipe_success
+  for sta in $pipestatus
+    test $sta -eq 0
+    or return 1
+  end
+end
+
 # --ignore-glob (-I) <glob|glob>
 # --level L <depth>
 function lla
@@ -76,26 +83,43 @@ end
 
 function fzfHistory
   history --null |
-  fzfBase --query=(commandline) --scheme=history --read0 --print0 |
-  read --null --local selected; and commandline -- $selected
+    fzfBase --query=(commandline) --scheme=history --read0 --print0 |
+    read --null --local selected
+  pipe_success
+  or return 1
+  commandline -- $selected
 end
 bind ctrl-r fzfHistory
 
 function fzfView
-  ff --exclude .git | fzfBase | read --local selected; and vv $selected
+  ff --exclude .git --print0 |
+    fzfBase --read0 --print0 |
+    read --null --local selected
+  pipe_success
+  or return 1
+  vv $selected
 end
 bind alt-w fzfView
 
 function fzfDiff
-  git l --color=always | fzfBase --reverse | read --local selected
-  and git d --color=always (string match --regex '\w{7}' $selected)^! | delta | less
+  git l --color=always |
+    fzfBase --reverse |
+    read --local selected
+  pipe_success
+  or return 1
+  git d --color=always (string match --regex '\w{7}' $selected)^! |
+    delta | less
 end
 bind alt-i fzfDiff
 
 function fzfOpen
-  ff --no-ignore --type file '(pdf|djvu?)$' \
-    ~/Downloads ~/Projects/bayanguru ~/Arberis |
-    fzfBase | read --local selected; and xdg-open $selected &>/dev/null
+  set src ~/Downloads ~/Projects/bayanguru ~/Arberis
+  ff --no-ignore --type file '(pdf|djvu?)$' --print0 $src |
+    fzfBase --read0 --print0 |
+    read --null --local selected
+  pipe_success
+  or return 1
+  xdg-open $selected &>/dev/null
 end
 bind alt-o fzfOpen
 
