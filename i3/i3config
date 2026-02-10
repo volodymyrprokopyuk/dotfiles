@@ -114,7 +114,8 @@ for_window [class=(?i)firefox] focus
 bindcode $mod+$x exec rofi -show drun
 bindcode $mod+Shift+$q kill
 
-bindcode $mod+$o exec fd --no-ignore --type file '(pdf|djvu?)$' \
+bindcode $mod+$o exec --no-startup-id \
+  fd --no-ignore --type file '(pdf|djvu?)$' \
   ~/Downloads ~/Projects/bayanguru ~/Arberis \
   | rofi -dmenu -i | xargs -I {} xdg-open {}
 
@@ -145,30 +146,36 @@ bindcode $mod+$i mode $mode_input
 # sat: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --off
 # satall: exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --output LVDS-1 --mode 1366x768 --right-of HDMI-1
 
-bindcode $mod+Shift+$rbracket exec xrandr --output $dsp --rotate left
-bindcode $mod+Shift+$lbracket exec xrandr --output $dsp --rotate right
-bindcode $mod+Shift+$equal exec xrandr --output $dsp --rotate normal
-bindcode $mod+Shift+$less exec xrandr --output eDP-1 --primary --mode 1920x1080 --output HDMI-1 --off
-bindcode $mod+Shift+$greater exec xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --off
+bindcode $mod+Shift+$rbracket exec --no-startup-id xrandr --output $dsp --rotate left
+bindcode $mod+Shift+$lbracket exec --no-startup-id xrandr --output $dsp --rotate right
+bindcode $mod+Shift+$equal exec --no-startup-id xrandr --output $dsp --rotate normal
+bindcode $mod+Shift+$less exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --output HDMI-1 --off
+bindcode $mod+Shift+$greater exec --no-startup-id xrandr --output HDMI-1 --primary --mode 3840x2160 --output eDP-1 --off
 
 bindcode $mod+$p exec maim --select --format png --quality 10 --hidecursor \
   --bordersize 3 | xclip -selection clipboard -target image/png
 
 # Volume and mic
 
-bindcode $mod+$uarrow exec wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SINK@ 5%+; \
-  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
-bindcode $mod+$darrow exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; \
-  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
-bindcode $mod+Shift+$m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; \
-  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
+bindcode $mod+$uarrow exec --no-startup-id \
+  wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SINK@ 5%+; \
+  exec --no-startup-id fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
+bindcode $mod+$darrow exec --no-startup-id \
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; \
+  exec --no-startup-id fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
+bindcode $mod+Shift+$m exec --no-startup-id \
+  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; \
+  exec --no-startup-id fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SINK@ /auvol
 
-bindcode $mod+$rarrow exec wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+; \
-  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
-bindcode $mod+$larrow exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; \
-  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
-bindcode $mod+Shift+$u exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; \
-  exec fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
+bindcode $mod+$rarrow exec --no-startup-id \
+  wpctl set-volume --limit 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+; \
+  exec --no-startup-id fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
+bindcode $mod+$larrow exec --no-startup-id \
+  wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; \
+  exec --no-startup-id fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
+bindcode $mod+Shift+$u exec --no-startup-id \
+  wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; \
+  exec --no-startup-id fish ~/.dotfiles/i3/audio.fish @DEFAULT_AUDIO_SOURCE@ /aumic
 
 # System
 
