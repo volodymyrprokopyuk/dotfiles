@@ -87,7 +87,7 @@ function fzfHistory
     read --null --local selected
   pipe_success
   or return 1
-  commandline -- $selected
+  commandline -- "$selected"
 end
 bind ctrl-r fzfHistory
 
@@ -97,7 +97,7 @@ function fzfView
     read --null --local selected
   pipe_success
   or return 1
-  vv $selected
+  vv "$selected"
 end
 bind alt-w fzfView
 
@@ -107,7 +107,7 @@ function fzfDiff
     read --local selected
   pipe_success
   or return 1
-  git d --color=always (string match --regex '\w{7}' $selected)^! |
+  git d --color=always (string match --regex '\w{7}' "$selected")^! |
     delta | less
 end
 bind alt-i fzfDiff
@@ -119,13 +119,15 @@ function fzfOpen
     read --null --local selected
   pipe_success
   or return 1
-  xdg-open $selected &>/dev/null
+  xdg-open "$selected" &>/dev/null
 end
 bind alt-o fzfOpen
 
 bind alt-m 'if commandline --paging-mode; commandline -f down-line; \
   else; commandline -f accept-autosuggestion; end'
 bind alt-comma up-line
+
+bind ctrl-g 'commandline ""'
 
 starship init fish | source
 
