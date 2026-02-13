@@ -44,6 +44,36 @@
   ;; Wrap long lines
   (global-visual-line-mode t))
 
+(defun config-indent ()
+  ;; Set default 2-space indentation
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 2)
+  (setq-default standard-indent 2)
+  ;; Vim shift with >>, <<
+  (setq evil-shift-width 2)
+  ;; Set 2-space indentation
+  (after! web-mode
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-attr-indent-offset 2)
+    (setq web-mode-attr-value-indent-offset 2)
+    (setq css-indent-offset 2))
+  (after! dockerfile-mode
+    (setq dockerfile-indent-offset 2))
+  (after! fish-mode
+    (setq c-basic-offset 2)
+    (setq sh-basic-offset 2)
+    (setq fish-indent-offset 2))
+  (after! go-mode
+    (setq-hook! 'go-mode-hook indent-tabs-mode nil))
+  (after! js-mode
+    (setq js-indent-level 2))
+  (after! lisp-mode
+    (setq lisp-indent-offset 2))
+  (after! lua-mode
+    (setq lua-indent-level 2)))
+
 (defun config-parentheses ()
   ;; Highlight matching parentheses
   (require 'rainbow-delimiters)
@@ -73,10 +103,6 @@
     (define-key vertico-map (kbd "M-,") #'vertico-previous)))
 
 (defun config-evil ()
-  ;; 2-space indentation
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 2)
-  (setq evil-shift-width 2)
   ;; Set jk to escape
   (setq evil-escape-key-sequence "kj")
   (setq evil-escape-delay 0.2)
@@ -110,8 +136,9 @@
 (defun config-org ()
   (after! org
     ;; Set dark background color in source code blocs
-    (set-face-attribute 'org-block nil :background
-      (color-darken-name (face-attribute 'default :background) 3))
+    (custom-set-faces!
+      `(org-block :background
+        ,(doom-darken (face-attribute 'default :background) 0.03)))
     ;; Fold content at startup
     (setq org-startup-folded t)
     ;; Do not indent nested content
@@ -119,48 +146,6 @@
     ;; Exclude angle brackets from parentheses highlight
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table)))
-
-(defun config-fish ()
-  ;; 2-space indentation
-  (setq c-basic-offset 2)
-  (setq sh-basic-offset 2)
-  (setq fish-indent-offset 2)
-  ;; Treat _ as part of the word on *, #, w, b, e
-  (add-hook 'sh-mode-hook
-            #'(lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
-  (add-to-list 'auto-mode-alist '("config\\'" . conf-mode)))
-
-(defun config-sql ()
-  (setq sql-product 'postgres)
-  ;; Treat _ as part of the word on *, #, w, b, e
-  (add-hook 'sql-mode-hook
-            #'(lambda () (modify-syntax-entry ?_ "w" sql-mode-syntax-table))))
-
-(defun config-web ()
-  (setq css-indent-offset 2)
-  (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode))
-  (setq web-mode-engines-alist '(("jinja2" . "\\.njk\\'")))
-  (add-hook 'web-mode-hook
-            #'(lambda ()
-                (setq web-mode-markup-indent-offset 2)
-                (setq web-mode-css-indent-offset 2)
-                (setq web-mode-code-indent-offset 2))))
-
-(defun config-go ()
-  (setq-hook! 'go-mode-hook indent-tabs-mode nil))
-
-(defun config-js ()
-  (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
-  (setq js-indent-level 2)
-  (setq js2-mode-show-strict-warnings nil))
-
-(defun config-docker ()
-  (setq dockerfile-indent-offset 2))
-
-(defun config-elisp ()
-  ;; Treat - as part of the word on *, #, w, b, e
-  (add-hook 'emacs-lisp-mode-hook
-    #'(lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table))))
 
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
@@ -196,6 +181,7 @@
 (config-theme)
 (config-current-line)
 (config-whitespace)
+(config-indent)
 (config-parentheses)
 (config-completion)
 (config-evil)
@@ -204,12 +190,5 @@
 
 ;; Programming
 (config-org)
-(config-d2)
-(config-web)
-(config-fish)
-(config-sql)
-(config-go)
-(config-js)
-(config-docker)
-(config-elisp)
 (config-lilypond)
+(config-d2)

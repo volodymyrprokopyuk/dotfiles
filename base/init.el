@@ -9,11 +9,11 @@
   doom
   (ligatures +extra)
   (smartparens +overlay)
-  (indent-guides)
+  indent-guides
+  (vc-gutter +pretty)
   modeline
   ophints
   (popup +defaults)
-  (vc-gutter +pretty)
 
   :editor
   (evil +everywhere)
