@@ -72,18 +72,6 @@
     (define-key vertico-map (kbd "M-m") #'vertico-next)
     (define-key vertico-map (kbd "M-,") #'vertico-previous)))
 
-(defun config-spell ()
-  (add-hook 'emacs-startup-hook #'global-jinx-mode)
-  (setq jinx-languages "en_US es_ES")
-  (custom-set-faces
-   '(jinx-misspelled
-     ((t (:underline (:style wave :color "orange" :thickness 3)))))
-   '(jinx-incorrect
-     ((t (:underline (:style wave :color "red" :thickness 3))))))
-  (evil-define-key 'normal 'global (kbd "z =") #'jinx-correct)
-  (evil-define-key 'normal 'global (kbd "] s") #'jinx-next)
-  (evil-define-key 'normal 'global (kbd "[ s") #'jinx-previous))
-
 (defun config-evil ()
   ;; 2-space indentation
   (setq-default indent-tabs-mode nil)
@@ -96,17 +84,34 @@
   (setq evil-goggles-duration 0.5))
 
 (defun config-snippets ()
-  (setq yas-snippet-dirs '("~/.dotfiles/base/snippets"))
-  (yas-global-mode 1)
-  (add-to-list 'auto-mode-alist '("\\.yas\\'" . snippet-mode))
-  (setq yas-wrap-around-region t))
+  (after! yasnippet
+    (add-to-list 'yas-snippet-dirs "~/.dotfiles/base/snippets")
+    (yas-load-directory "~/.dotfiles/base/snippets")
+    ;; Wrap region in snippet
+    (setq yas-wrap-around-region t)
+    ;; Expand nested snippets
+    (setq yas-triggers-in-field t)))
+
+(defun config-spell ()
+  ;; Enable jinx
+  (add-hook 'doom-first-buffer-hook #'global-jinx-mode)
+  ;; Set spell check languages
+  (setq jinx-languages "en_US es_ES")
+  ;; Set misspelled face
+  (custom-set-faces!
+    `(jinx-misspelled :underline (:style wave :color "red" :thickness 3)))
+  ;; Set spell check key bindings
+  (evil-define-key 'normal 'global (kbd "z =") #'jinx-correct)
+  (evil-define-key 'normal 'global (kbd "] s") #'jinx-next)
+  (evil-define-key 'normal 'global (kbd "[ s") #'jinx-previous))
+
+;; Programming
 
 (defun config-org ()
   (after! org
     ;; Set dark background color in source code blocs
-    (set-face-attribute
-     'org-block nil :background
-     (color-darken-name (face-attribute 'default :background) 3))
+    (set-face-attribute 'org-block nil :background
+      (color-darken-name (face-attribute 'default :background) 3))
     ;; Fold content at startup
     (setq org-startup-folded t)
     ;; Do not indent nested content
@@ -114,8 +119,6 @@
     ;; Exclude angle brackets from parentheses highlight
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table)))
-
-;; Programming
 
 (defun config-fish ()
   ;; 2-space indentation
@@ -150,9 +153,6 @@
   (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
   (setq js-indent-level 2)
   (setq js2-mode-show-strict-warnings nil))
-
-(defun config-solidity ()
-  (add-hook 'solidity-mode-hook #'(lambda () (setq c-basic-offset 2))))
 
 (defun config-docker ()
   (setq dockerfile-indent-offset 2))
@@ -198,19 +198,18 @@
 (config-whitespace)
 (config-parentheses)
 (config-completion)
-(config-spell)
 (config-evil)
 (config-snippets)
-(config-org)
+(config-spell)
 
 ;; Programming
+(config-org)
+(config-d2)
+(config-web)
 (config-fish)
 (config-sql)
-(config-web)
 (config-go)
 (config-js)
-(config-solidity)
 (config-docker)
 (config-elisp)
 (config-lilypond)
-(config-d2)

@@ -8,4 +8,3 @@
 
 ;; Programming
 (package! protobuf-mode)
-(package! org-make-toc)

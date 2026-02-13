@@ -2,7 +2,7 @@
 
 (doom!
   :completion
-  (corfu +orderless)
+  (corfu +orderless +icons)
   (vertico +icons)
 
   :ui
@@ -17,9 +17,9 @@
 
   :editor
   (evil +everywhere)
+  (whitespace +trim)
   fold
   snippets
-  (whitespace +trim)
 
   :emacs
   undo
@@ -41,12 +41,10 @@
   yaml
   markdown
   org
-  graphviz
   web
   (sh +fish)
   (go +lsp)
   (javascript)
-  solidity
   emacs-lisp
   lua
 
