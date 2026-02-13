@@ -3,11 +3,10 @@
 (doom!
   :completion
   (corfu +orderless)
-  vertico
+  (vertico +icons)
 
   :ui
   doom
-  unicode
   (ligatures +extra)
   (smartparens +overlay)
   (indent-guides)
@@ -52,4 +51,4 @@
   lua
 
   :config
-  (default +bindings +smartparens))
+  (default +bindings +snippets))

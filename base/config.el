@@ -89,18 +89,9 @@
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
   (setq evil-shift-width 2)
-  ;; Enable key combinations
-  (require 'key-chord)
-  (key-chord-mode 1)
-  ;; Set key chord detection delay
-  (setq key-chord-two-keys-delay 0.5)
-  ;; Exit insert/replace/visual mode on jk
-  (key-chord-define evil-insert-state-map "jk" #'evil-normal-state)
-  (key-chord-define evil-replace-state-map "jk" #'evil-normal-state)
-  (key-chord-define evil-visual-state-map "jk" #'evil-normal-state)
-  ;; Move between visual lines
-  (evil-define-key nil evil-normal-state-map (kbd "gj") #'evil-next-visual-line)
-  (evil-define-key nil evil-normal-state-map (kbd "gk") #'evil-previous-visual-line)
+  ;; Set jk to escape
+  (setq evil-escape-key-sequence "kj")
+  (setq evil-escape-delay 0.2)
   ;; Set operation highlight duration
   (setq evil-goggles-duration 0.5))
 
