@@ -13,7 +13,8 @@
 
 (defun config-font ()
   (setq doom-font
-    (font-spec :family "JetBrainsMono NF Light" :size 13.0 :weight 'light)))
+    (font-spec :family "JetBrainsMono NF Light" :size 13.0 :weight 'light))
+  (setq +ligatures-in-all-modes t))
 
 (defun config-theme ()
   (setq doom-theme 'zenburn)
@@ -50,32 +51,26 @@
   (add-hook 'text-mode-hook #'rainbow-delimiters-mode)
   ;; Highlight surrounding parentheses
   (require 'highlight-parentheses)
+  (after! highlight-parentheses
+    (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
+    (setq highlight-parentheses-colors '("firebrick1" nil nil nil)))
   (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
-  (add-hook 'text-mode-hook #'highlight-parentheses-mode)
-  (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
-  (setq highlight-parentheses-colors '("firebrick1" nil nil nil))
-  ;; Handle parentheses automatically
-  (require 'smartparens-config)
-  (add-hook 'prog-mode-hook #'smartparens-mode)
-  (add-hook 'text-mode-hook #'smartparens-mode))
+  (add-hook 'text-mode-hook #'highlight-parentheses-mode))
 
 (defun config-completion ()
-  ;; Enable global company mode
-  (add-hook 'after-init-hook #'global-company-mode)
-  ;; Use M-j, M-k for company completion selection
-  (evil-define-key nil company-active-map (kbd "M-m") #'company-select-next)
-  (evil-define-key nil company-active-map (kbd "M-,") #'company-select-previous)
-  (setq company-selection-wrap-around 1)
-  ;; Use M-j, M-k for vertico completion selection
-  (evil-define-key nil vertico-map (kbd "M-m") #'vertico-next)
-  (evil-define-key nil vertico-map (kbd "M-,") #'vertico-previous))
-
-(defun config-errors ()
-  (after! evil-mode (unbind-key "] e"))
-  (after! evil-mode (unbind-key "[ e"))
-  (evil-define-key 'normal 'global (kbd "] e") #'flycheck-next-error)
-  (evil-define-key 'normal 'global (kbd "[ e") #'flycheck-previous-error)
-  (evil-define-key 'normal 'global (kbd "] x") #'flycheck-list-errors))
+  (after! corfu
+    ;; Use M-j, M-k for corfu completion selection
+    (define-key corfu-map (kbd "M-m") #'corfu-next)
+    (define-key corfu-map (kbd "M-,") #'corfu-previous)
+    (custom-set-faces!
+      ;; Main popup window face
+      `(corfu-default :background "#24190E" :foreground "#DCDCCC")
+      ;; Currently selection face
+      `(corfu-current :background "#480000" :foreground "#FEDC56")))
+  (after! vertico
+    ;; Use M-j, M-k for vertico completion selection
+    (define-key vertico-map (kbd "M-m") #'vertico-next)
+    (define-key vertico-map (kbd "M-,") #'vertico-previous)))
 
 (defun config-spell ()
   (add-hook 'emacs-startup-hook #'global-jinx-mode)
@@ -212,7 +207,6 @@
 (config-whitespace)
 (config-parentheses)
 (config-completion)
-(config-errors)
 (config-spell)
 (config-evil)
 (config-snippets)

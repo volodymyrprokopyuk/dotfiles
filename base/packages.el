@@ -3,9 +3,8 @@
 ;; Editor
 (package! key-chord)
 (package! zenburn-theme)
-(package! ligature)
-(package! highlight-parentheses)
 (package! rainbow-delimiters)
+(package! highlight-parentheses)
 (package! jinx)
 
 ;; Programming

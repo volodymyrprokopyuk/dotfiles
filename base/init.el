@@ -2,14 +2,15 @@
 
 (doom!
   :completion
-  company
-  ;; (corfu +orderless)
+  (corfu +orderless)
   vertico
 
   :ui
   doom
   unicode
-  ligatures
+  (ligatures +extra)
+  (smartparens +overlay)
+  (indent-guides)
   modeline
   ophints
   (popup +defaults)
