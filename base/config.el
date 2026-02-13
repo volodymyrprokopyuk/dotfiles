@@ -7,40 +7,36 @@
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
   ;; Skip confirmation on exit
   (setq confirm-kill-emacs nil)
-  ;; Start calendar from monday
-  (setq calendar-week-start-day 1)
-  )
+  (after! calendar
+    ;; Start calendar from Monday
+    (setq calendar-week-start-day 1)))
 
 (defun config-font ()
   (setq doom-font
-        (font-spec :family "JetBrainsMono NF Light" :size 13.0 :weight 'light)))
+    (font-spec :family "JetBrainsMono NF Light" :size 13.0 :weight 'light)))
 
 (defun config-theme ()
   (setq doom-theme 'zenburn)
   (setq zenburn-override-colors-alist '(("zenburn-bg" . "#282523"))))
 
 (defun config-current-line ()
+  ;; Relative line numbers navigation with 5j, 5k
+  (setq display-line-numbers-type 'relative)
   (global-hl-line-mode 1)
   (custom-set-faces!
     ;; Highlight current line
-    (set-face-attribute 'hl-line nil :foreground nil :background "#24190E")
+    `(hl-line :background "#24190E")
     ;; Highlight visual selection
-    (set-face-attribute 'region nil :foreground nil :background "#801515")
+    `(region :background "#801515")
     ;; Highlight line numbers
-    (set-face-attribute 'line-number nil :foreground nil :background "#32312E")
-    (set-face-attribute 'line-number-current-line nil :foreground "#E2A665"
-                        :background nil :weight 'bold)))
+    `(line-number :background "#32312E" :foreground "#F5F5DC")
+    `(line-number-current-line :foreground "#E2A665" :weight bold)))
 
 (defun config-whitespace ()
-  ;; Enable global white space mode
-  (require 'whitespace)
-  (global-whitespace-mode t)
-  (global-whitespace-toggle-options t)
   ;; Highlight line content exceeding the limit
+  (global-whitespace-toggle-options t)
   (setq-default whitespace-line-column 80)
   (setq-default whitespace-style '(face tab-mark trailing lines-tail))
-  ;; Remove trailing whitespaces on save
-  (add-hook 'before-save-hook #'whitespace-cleanup)
   ;; Open new line after exceeding the limit
   (setq-default fill-column 80)
   (add-hook 'text-mode-hook #'auto-fill-mode)

@@ -8,6 +8,7 @@
 
   :ui
   doom
+  unicode
   ligatures
   modeline
   ophints
@@ -18,10 +19,9 @@
   (evil +everywhere)
   fold
   snippets
-  ;; (whitespace +guess +trim)
+  (whitespace +trim)
 
   :emacs
-  ;; dired
   undo
   vc
 
