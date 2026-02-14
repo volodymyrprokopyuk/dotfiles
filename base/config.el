@@ -51,28 +51,26 @@
   (setq-default standard-indent 2)
   ;; Vim shift with >>, <<
   (setq evil-shift-width 2)
-  ;; Set 2-space indentation
-  (after! web-mode
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)
-    (setq web-mode-attr-indent-offset 2)
-    (setq web-mode-attr-value-indent-offset 2)
-    (setq css-indent-offset 2))
-  (after! dockerfile-mode
-    (setq dockerfile-indent-offset 2))
-  (after! fish-mode
-    (setq c-basic-offset 2)
-    (setq sh-basic-offset 2)
-    (setq fish-indent-offset 2))
-  (after! go-mode
-    (setq-hook! 'go-mode-hook indent-tabs-mode nil))
-  (after! js-mode
-    (setq js-indent-level 2))
-  (after! lisp-mode
-    (setq lisp-indent-offset 2))
-  (after! lua-mode
-    (setq lua-indent-level 2)))
+  (setq-hook! 'web-mode-hook
+    web-mode-markup-indent-offset 2
+    web-mode-css-indent-offset 2
+    web-mode-code-indent-offset 2
+    web-mode-attr-indent-offset 2
+    web-mode-attr-value-indent-offset 2)
+  (setq-hook! 'css-mode-hook
+    css-indent-offset 2)
+  (setq-hook! 'dockerfile-mode-hook
+    dockerfile-indent-offset 2)
+  (setq-hook! 'fish-mode-hook
+    sh-basic-offset 2
+    fish-indent-offset 2)
+  (setq-hook! 'go-mode-hook
+    indent-tabs-mode nil)
+  (setq-hook! 'js-mode-hook
+    js-indent-level 2)
+  (setq-hook! 'emacs-lisp-mode-hook lisp-indent-offset 2)
+  (setq-hook! 'lua-mode-hook
+    lua-indent-level 2))
 
 (defun config-parentheses ()
   ;; Highlight matching parentheses
