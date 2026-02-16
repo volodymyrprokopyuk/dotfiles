@@ -73,17 +73,15 @@
     lua-indent-level 2))
 
 (defun config-parentheses ()
-  ;; Highlight matching parentheses
-  (require 'rainbow-delimiters)
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'text-mode-hook #'rainbow-delimiters-mode)
-  ;; Highlight surrounding parentheses
-  (require 'highlight-parentheses)
-  (after! highlight-parentheses
+  ;; Highlight matching parentheses with different colors
+  (use-package! rainbow-delimiters
+    :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
+  ;; Highlight three nested surrounding parentheses with different colors
+  (use-package! highlight-parentheses
+    :hook ((prog-mode text-mode) . highlight-parentheses-mode)
+    :config
     (set-face-attribute 'hl-paren-face nil :weight 'extra-bold)
-    (setq highlight-parentheses-colors '("firebrick1" nil nil nil)))
-  (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
-  (add-hook 'text-mode-hook #'highlight-parentheses-mode))
+    (setq highlight-parentheses-colors '("firebrick1" nil nil nil))))
 
 (defun config-completion ()
   (after! corfu
@@ -145,6 +143,10 @@
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table)))
 
+(defun config-protobuf ()
+  (use-package! protobuf-mode
+    :mode "\\.proto\\'"))
+
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
   (autoload 'lilypond-mode "lilypond-mode.el" nil t)
@@ -188,5 +190,6 @@
 
 ;; Programming
 (config-org)
+(config-protobuf)
 (config-lilypond)
 (config-d2)
