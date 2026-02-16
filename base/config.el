@@ -127,6 +127,16 @@
   (evil-define-key 'normal 'global (kbd "] s") #'jinx-next)
   (evil-define-key 'normal 'global (kbd "[ s") #'jinx-previous))
 
+;; ~/.authinfo 600
+;; machine generativelanguage.googleapis.com login apikey password API_KEY
+(defun config-gptel ()
+  (use-package! gptel
+    :config
+    (setq gptel-model 'gemini-2.5-flash)
+    (setq gptel-backend
+      (gptel-make-gemini "Gemini"
+        :key #'gptel-api-key-from-auth-source :stream t))))
+
 ;; Programming
 
 (defun config-org ()
@@ -187,6 +197,7 @@
 (config-evil)
 (config-snippets)
 (config-spell)
+(config-gptel)
 
 ;; Programming
 (config-org)
