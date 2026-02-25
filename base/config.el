@@ -143,10 +143,6 @@
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table)))
 
-(defun config-protobuf ()
-  (use-package! protobuf-mode
-    :mode "\\.proto\\'"))
-
 (defun config-lilypond ()
   (add-to-list 'load-path "~/.config/lilypond/share/emacs/site-lisp")
   (autoload 'lilypond-mode "lilypond-mode.el" nil t)
@@ -175,6 +171,13 @@
       (modify-syntax-entry ?\n ">" (syntax-table))
       (modify-syntax-entry ?/ "." (syntax-table))))))
 
+(defun config-protobuf ()
+  (use-package! protobuf-mode
+    :mode "\\.proto\\'"))
+
+(defun config-sql ()
+  (setq sql-product 'postgres))
+
 ;; Editor
 (config-doom)
 (config-font)
@@ -190,6 +193,7 @@
 
 ;; Programming
 (config-org)
-(config-protobuf)
 (config-lilypond)
 (config-d2)
+(config-protobuf)
+(config-sql)
