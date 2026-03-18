@@ -1,7 +1,7 @@
 # key: func
 # --
-create or replace function $0()
-returns _ immutable
+create function $0()
+returns _ volatile
 language plpgsql as $$
 declare
 begin
