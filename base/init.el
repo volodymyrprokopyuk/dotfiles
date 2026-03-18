@@ -9,7 +9,6 @@
   doom
   (ligatures +extra)
   (smartparens +overlay)
-  indent-guides
   (vc-gutter +pretty)
   modeline
   ophints

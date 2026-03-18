@@ -70,7 +70,12 @@
     js-indent-level 2)
   (setq-hook! 'emacs-lisp-mode-hook lisp-indent-offset 2)
   (setq-hook! 'lua-mode-hook
-    lua-indent-level 2))
+    lua-indent-level 2)
+  (use-package! indent-bars
+    :hook (prog-mode . indent-bars-mode)
+    :config
+    (setq indent-bars-highlight-current-depth
+      '(:color "#6FE2B2" :width 0.1 :pad 0.1 :pattern "."))))
 
 (defun config-parentheses ()
   ;; Highlight matching parentheses with different colors
