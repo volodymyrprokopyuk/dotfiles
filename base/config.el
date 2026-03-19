@@ -9,7 +9,15 @@
   (setq confirm-kill-emacs nil)
   (after! calendar
     ;; Start calendar from Monday
-    (setq calendar-week-start-day 1)))
+    (setq calendar-week-start-day 1))
+  (after! doom-modeline
+    (add-hook 'doom-modeline-after-update-env-hook
+      (defun my/trim-go-modeline-version ()
+        (when (and (derived-mode-p 'go-mode)
+                doom-modeline-env--version)
+          (setq doom-modeline-env--version
+            (replace-regexp-in-string "-?X:.*\\'" ""
+              doom-modeline-env--version)))))))
 
 (defun config-font ()
   (setq doom-font
