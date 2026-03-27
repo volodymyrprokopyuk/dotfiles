@@ -184,10 +184,6 @@
       (modify-syntax-entry ?\n ">" (syntax-table))
       (modify-syntax-entry ?/ "." (syntax-table))))))
 
-(defun config-protobuf ()
-  (use-package! protobuf-mode
-    :mode "\\.proto\\'"))
-
 (defun config-sql ()
   (setq sql-product 'postgres))
 
@@ -208,5 +204,4 @@
 (config-org)
 (config-lilypond)
 (config-d2)
-(config-protobuf)
 (config-sql)

@@ -6,6 +6,3 @@
 (package! rainbow-delimiters)
 (package! highlight-parentheses)
 (package! jinx)
-
-;; Programming
-(package! protobuf-mode)
