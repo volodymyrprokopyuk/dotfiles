@@ -1,0 +1,7 @@
+# C-S-, reload configuration
+# Font
+font-size = 13
+font-family = JetBrainsMono NF Light
+font-family-bold = JetBrainsMono NF Medium
+font-family-italic = JetBrainsMono NF Light Italic
+font-family-bold-italic = JetBrainsMono NF SemiBold Italic

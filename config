@@ -8,8 +8,9 @@ function pipe_success
   end
 end
 
-function cfg_wezterm
+function cfg_ghostty
   cp base/wezterm.lua ~/.config/wezterm
+  cp base/config.ghostty ~/.config/ghostty
 end
 
 function cfg_fish
@@ -114,14 +115,14 @@ argparse init a/all i/install v/version= -- $argv
 or return 1
 
 if set -ql _flag_init
-  mkdir -p ~/.config/{wezterm,fish,doom,i3,i3status-rust,rofi}
+  mkdir -p ~/.config/{wezterm,ghostty,fish,doom,i3,i3status-rust,rofi}
   or return 1
   mkdir -p ~/.config/{zathura,lilypond,foundry} ~/.ssh
   or return 1
 end
 
 if set -ql _flag_all
-  cfg_wezterm
+  cfg_ghostty
   cfg_fish
   cfg_emacs $_flag_install
   cfg_git
@@ -132,8 +133,8 @@ end
 
 for target in $argv
   switch $target
-  case wezterm
-    cfg_wezterm
+  case ghostty
+    cfg_ghostty
   case fish
     cfg_fish
   case emacs
