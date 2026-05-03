@@ -7,7 +7,7 @@
 
   :ui
   doom
-  (ligatures +extra)
+  ligatures
   (smartparens +overlay)
   (vc-gutter +pretty)
   modeline
