@@ -99,7 +99,7 @@ function fzfView
   or return 1
   vv "$selected"
 end
-bind alt-w fzfView
+bind alt-. fzfView
 
 function fzfDiff
   git l --color=always |
