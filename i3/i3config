@@ -102,13 +102,13 @@ bindcode $mod+Shift+$l move right
 
 # Application
 
-bindcode $mod+$return exec wezterm
+bindcode $mod+$return exec ghostty
 bindcode $mod+$space exec emacs
 bindcode $mod+$w exec firefox
 
-assign [class=(?i)wezterm] $ws1
+assign [class=(?i)ghostty] $ws1
 assign [class=(?i)firefox] $ws3
-for_window [class=(?i)wezterm] focus
+for_window [class=(?i)ghostty] focus
 for_window [class=(?i)firefox] focus
 
 bindcode $mod+$x exec rofi -show drun

@@ -9,7 +9,7 @@ function pipe_success
 end
 
 function cfg_ghostty
-  cp base/wezterm.lua ~/.config/wezterm
+  # cp base/wezterm.lua ~/.config/wezterm
   cp base/config.ghostty ~/.config/ghostty
 end
 
