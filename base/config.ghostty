@@ -1,7 +1,10 @@
 # C-S-, reload configuration
 
-# Remove title bar
-window-decoration = false
+# Window
+window-decoration = none
+scrollbar = never
+resize-overlay = never
+maximize
 
 # Font
 font-size = 13
@@ -13,19 +16,38 @@ font-family-bold-italic = JetBrains Mono SemiBold Italic
 # Theme
 theme = Arcoiris
 
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+cursor-color = white
+
+# Mouse
+mouse-hide-while-typing
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+selection-clear-on-typing = true
+selection-clear-on-copy = true
+
 # Shell
 command = /usr/bin/fish
+shell-integration = fish
+shell-integration-features = true
 scrollback-limit = 2000
 
-# Split creation
+# Split create
 keybind = alt+v=new_split:right
 keybind = alt+s=new_split:down
 keybind = alt+z=toggle_split_zoom
 keybind = alt+w=close_surface
-# Split navigation
+# Split navigate
 keybind = alt+h=goto_split:left
 keybind = alt+j=goto_split:bottom
 keybind = alt+k=goto_split:top
 keybind = alt+l=goto_split:right
-# Scroll
+# Split scroll
 keybind = alt+g=scroll_to_bottom
+# Split color
+split-divider-color = white
