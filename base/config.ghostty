@@ -11,8 +11,8 @@ scrollback-limit = 2000
 window-decoration = none
 scrollbar = never
 resize-overlay = never
-maximize
 split-divider-color = white
+maximize
 
 # Font
 font-size = 13
@@ -28,8 +28,7 @@ theme = Arcoiris
 cursor-style = block
 cursor-style-blink = false
 cursor-color = white
-
-# Mouse
+cursor-text = cell-background
 mouse-hide-while-typing
 
 # Clipboard
