@@ -1,10 +1,18 @@
-# C-S-, reload configuration
+# Configuration
+keybind = alt+r=reload_config
+
+# Shell
+command = /usr/bin/fish
+shell-integration = fish
+shell-integration-features = true
+scrollback-limit = 2000
 
 # Window
 window-decoration = none
 scrollbar = never
 resize-overlay = never
 maximize
+split-divider-color = white
 
 # Font
 font-size = 13
@@ -30,12 +38,8 @@ clipboard-write = allow
 copy-on-select = clipboard
 selection-clear-on-typing = true
 selection-clear-on-copy = true
-
-# Shell
-command = /usr/bin/fish
-shell-integration = fish
-shell-integration-features = true
-scrollback-limit = 2000
+keybind = alt+c=copy_to_clipboard
+keybind = alt+p=paste_from_clipboard
 
 # Split create
 keybind = alt+v=new_split:right
@@ -48,6 +52,11 @@ keybind = alt+j=goto_split:bottom
 keybind = alt+k=goto_split:top
 keybind = alt+l=goto_split:right
 # Split scroll
+keybind = alt+e=scroll_page_lines:-1
+keybind = alt+y=scroll_page_lines:1
+keybind = alt+u=scroll_page_fractional:-0.96
+keybind = alt+d=scroll_page_fractional:0.96
 keybind = alt+g=scroll_to_bottom
-# Split color
-split-divider-color = white
+
+# Search
+keybind = alt+f=start_search
