@@ -110,7 +110,7 @@ function fzfDiff
   git d --color=always (string match --regex '\w{7}' "$selected")^! |
     delta | less
 end
-bind alt-i fzfDiff
+bind alt-d fzfDiff
 
 function fzfOpen
   set src ~/Downloads ~/Projects/bayanguru ~/Arberis

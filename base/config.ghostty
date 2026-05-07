@@ -58,4 +58,7 @@ keybind = alt+d=scroll_page_fractional:0.96
 keybind = alt+g=scroll_to_bottom
 
 # Search
-keybind = alt+f=start_search
+keybind = alt+/=start_search
+
+# Fish key bindings
+keybind = alt+d=unbind
