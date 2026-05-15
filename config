@@ -100,27 +100,13 @@ function cfg_lilypond -a lpver
   make install
 end
 
-function cfg_foundry
-  set dir ~/.config/foundry/bin
-  mkdir -p $dir
-  or return 1
-  set release https://github.com/foundry-rs/foundry/releases/download
-  set url $release/stable/foundry_stable_linux_amd64.tar.gz
-  curl -fsSL $url | tar xvz -C $dir
-  pipe_success
-  or return 1
-  forge completions fish > ~/.config/fish/completions/forge.fish
-  cast completions fish > ~/.config/fish/completions/cast.fish
-  anvil completions fish > ~/.config/fish/completions/anvil.fish
-end
-
 argparse init a/all i/install v/version= -- $argv
 or return 1
 
 if set -ql _flag_init
   mkdir -p ~/.config/{ghostty,fish,doom,yazi,i3,i3status-rust,rofi}
   or return 1
-  mkdir -p ~/.config/{zathura,lilypond,foundry} ~/.ssh
+  mkdir -p ~/.config/{zathura,lilypond} ~/.ssh
   or return 1
 end
 
@@ -153,8 +139,6 @@ for target in $argv
     cfg_zathura
   case lilypond
     cfg_lilypond $_flag_version
-  case foundry
-    cfg_foundry
   case '*'
     echo "argparse: unknown target $target"
     return 1
