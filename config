@@ -34,6 +34,10 @@ function cfg_emacs -a install
   end
 end
 
+function cfg_yazi
+  cp base/yazi.toml ~/.config/yazi
+end
+
 function cfg_git
   rm ~/.gitconfig
   or return 1
@@ -114,7 +118,7 @@ argparse init a/all i/install v/version= -- $argv
 or return 1
 
 if set -ql _flag_init
-  mkdir -p ~/.config/{ghostty,fish,doom,i3,i3status-rust,rofi}
+  mkdir -p ~/.config/{ghostty,fish,doom,yazi,i3,i3status-rust,rofi}
   or return 1
   mkdir -p ~/.config/{zathura,lilypond,foundry} ~/.ssh
   or return 1
@@ -124,6 +128,7 @@ if set -ql _flag_all
   cfg_ghostty
   cfg_fish
   cfg_emacs $_flag_install
+  cfg_yazi
   cfg_git
   cfg_i3
   cfg_zathura
@@ -138,6 +143,8 @@ for target in $argv
     cfg_fish
   case emacs
     cfg_emacs $_flag_install
+  case yazi
+    cfg_yazi
   case git
     cfg_git
   case i3

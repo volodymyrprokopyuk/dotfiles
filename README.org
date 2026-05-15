@@ -40,6 +40,7 @@ yay --noconfirm -Syu; and yay --noconfirm -Sc; and yay --noconfirm -Yc
 
 # Install packages
 yay -S ghostty fish starship zoxide emacs neovim yazi
+ya pkg add Shallow-Seek/djvu-view
 yay -S aspell aspell-en aspell-es aspell-uk aspell-ru
 yay -S hunspell hunspell-en_us hunspell-es_es hunspell-uk hunspell-ru
 yay -S ttf-jetbrains-mono ttf-jetbrains-mono-nerd noto-fonts-emoji
