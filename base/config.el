@@ -171,6 +171,7 @@
     ("\\<if\\>\\|\\<else\\>\\|\\<range\\>\\|\\<with\\>" . font-lock-builtin-face))))
 
 (defun config-d2 ()
+  (add-to-list 'auto-mode-alist '("\\.templ\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.d2\\'" . js-mode))
   (add-hook 'js-mode-hook (lambda ()
     (when (and buffer-file-name (string-suffix-p ".d2" buffer-file-name))
