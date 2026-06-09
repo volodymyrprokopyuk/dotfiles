@@ -45,20 +45,25 @@ function lla
     --no-permissions --octal-permissions --smart-group --time-style relative \
     --color always --color-scale size --color-scale-mode gradient $argv
 end
+
 function ll
   lla --git-ignore $argv
 end
+
 function lll
   ll --tree $argv
 end
+
 function llla
   lla --tree $argv
 end
+
 # --exclude (-E) <glob>
 # --type (-t) <file|dir>
 function ff
   fd --hidden --color always $argv
 end
+
 # --glob (-g) <!glob>
 # --type (-t) <ext>; --type-not (-T) <ext>
 # --invert-match (-v)
@@ -66,15 +71,22 @@ end
 function gg
   rg --hidden --color always $argv
 end
+
 function vv
   bat --tabs 2 --map-syntax '*.ly:LaTeX' --style plain,header \
     --decorations always --color always --theme 1337 --paging always $argv
 end
+
 function ee
   emacs -nw $argv
 end
+
 function mm
   yazi $argv
+end
+
+function hq
+  htmlq --pretty $argv | vv --language html
 end
 
 function fzfBase
