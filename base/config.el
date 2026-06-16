@@ -105,7 +105,14 @@
       ;; Main popup window face
       `(corfu-default :background "#24190E" :foreground "#DCDCCC")
       ;; Currently selection face
-      `(corfu-current :background "#480000" :foreground "#FEDC56")))
+      `(corfu-current :background "#480000" :foreground "#FEDC56"))
+    ;; Completion in text mode
+    (setq-hook! 'text-mode-hook corfu-auto t)
+    (map! :map corfu-map "C-SPC" #'completion-at-point)
+    (map! :i "C-SPC" #'completion-at-point))
+  (after! cape
+    ;; Enable completion of words in buffer
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev))
   (after! vertico
     ;; Use M-j, M-k for vertico completion selection
     (define-key vertico-map (kbd "M-m") #'vertico-next)
