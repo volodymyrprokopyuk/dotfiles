@@ -7,9 +7,10 @@
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
   ;; Skip confirmation on exit
   (setq confirm-kill-emacs nil)
+  ;; Start calendar from Monday
   (after! calendar
-    ;; Start calendar from Monday
     (setq calendar-week-start-day 1))
+  ;; Clean up Go version in modeline
   (after! doom-modeline
     (add-hook 'doom-modeline-after-update-env-hook
       (defun my/trim-go-modeline-version ()
@@ -195,6 +196,10 @@
 (defun config-sql ()
   (setq sql-product 'postgres))
 
+(defun config-overwrite ()
+  ;; Track position in closed files
+  (save-place-mode 1))
+
 ;; Editor
 (config-doom)
 (config-font)
@@ -213,3 +218,5 @@
 (config-lilypond)
 (config-d2)
 (config-sql)
+
+(config-overwrite)
