@@ -4,6 +4,7 @@ set font "JetBrainsMono NF 10"
 set selection-clipboard clipboard
 set selection-notification false
 set show-recent 15
+set confirm-links false
 
 set adjust-open width
 set scroll-full-overlap 0.1
