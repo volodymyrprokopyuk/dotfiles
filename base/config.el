@@ -114,6 +114,10 @@
   (after! cape
     ;; Enable completion of words in buffer
     (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+  (after! go-mode
+    ;; Remove abbrev completions in Go mode
+    (add-hook 'go-mode-hook (lambda ()
+      (remove-hook 'completion-at-point-functions #'cape-dabbrev t))))
   (after! vertico
     ;; Use M-j, M-k for vertico completion selection
     (define-key vertico-map (kbd "M-m") #'vertico-next)
