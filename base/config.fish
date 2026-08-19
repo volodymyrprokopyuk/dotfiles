@@ -85,6 +85,10 @@ function mm
   yazi $argv
 end
 
+function jq
+  jaq $argv
+end
+
 function hq
   htmlq --pretty $argv | vv --language html
 end
