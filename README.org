@@ -42,14 +42,13 @@ yay --noconfirm -Syu; and yay --noconfirm -Sc; and yay --noconfirm -Yc
 yay -S ghostty fish starship zoxide emacs neovim yazi
 ya pkg add Shallow-Seek/djvu-view
 ya pkg upgrade
-yay -S vulkan-intel zed
 yay -S aspell aspell-en aspell-es aspell-uk aspell-ru
 yay -S hunspell hunspell-en_us hunspell-es_es hunspell-uk hunspell-ru
 yay -S ttf-jetbrains-mono ttf-jetbrains-mono-nerd noto-fonts-emoji
 yay -S fzf fd ripgrep eza bat git-delta vivid 7zip plocate btop jaq htmlq age
 yay -S rclone syncthing zrok-bin
 yay -S zathura zathura-pdf-mupdf zathura-djvu
-yay -S go gopls golangci-lint pulumi
+yay -S go gopls golangci-lint-bin pulumi
 yay -S d2 pandoc-bin chromium pdfcpu
 yay -S bun-bin typescript typescript-language-server
 #+END_SRC
@@ -125,6 +124,16 @@ xdg-mime default org.gnome.gThumb.desktop image/png
 xdg-mime default org.gnome.gThumb.desktop image/jpeg
 xdg-mime default org.gnome.gThumb.desktop image/svg+xml
 #+END_SRC
+
+** Niri installation
+
+#+begin_src fish
+yay -S mesa vulkan-intel intel-media-driver
+yay -S pipeware wireplumber
+yay -S xdg-desktop-portal xdg-desktop-portal-gnome
+yay -S niri noctalia
+yay -S emacs-wayland
+#+end_src
 
 * Applications
 
