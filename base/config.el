@@ -117,7 +117,10 @@
   (after! vertico
     ;; Use M-j, M-k for vertico completion selection
     (define-key vertico-map (kbd "M-m") #'vertico-next)
-    (define-key vertico-map (kbd "M-,") #'vertico-previous)))
+    (define-key vertico-map (kbd "M-,") #'vertico-previous))
+  ;; Navigate to errors
+  (map! :n "] e" #'next-error
+    :n "[ e" #'previous-error))
 
 (defun config-evil ()
   ;; Set jk to escape
