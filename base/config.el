@@ -114,6 +114,13 @@
   (after! cape
     ;; Enable completion of words in buffer
     (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+  ;; Preserve case in abbrev completion list
+  (after! abbrev
+    (dolist (table abbrev-table-name-list)
+      (when (boundp table)
+        (abbrev-table-put (symbol-value table) :case-fixed t)))
+    (setq dabbrev-case-fold-search nil
+      dabbrev-case-replace nil))
   (after! vertico
     ;; Use M-j, M-k for vertico completion selection
     (define-key vertico-map (kbd "M-m") #'vertico-next)
