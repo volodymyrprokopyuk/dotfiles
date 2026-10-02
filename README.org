@@ -17,7 +17,9 @@ sudo groupadd -r autologin
 sudo gpasswd -a $USER autologin
 # /etc/lightdm/lightdm.conf
 [Seat:*]
+user-session=niri
 autologin-user=vlad
+autologin-session=niri
 
 # Scale apps on HDPI
 # /etc/profile.d/gtk.sh
@@ -129,8 +131,8 @@ xdg-mime default org.gnome.gThumb.desktop image/svg+xml
 
 #+begin_src fish
 yay -S mesa vulkan-intel intel-media-driver
-yay -S pipeware wireplumber
-yay -S xdg-desktop-portal xdg-desktop-portal-gnome
+yay -S pipewire wireplumber
+yay -S xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome
 yay -S niri noctalia
 yay -S emacs-wayland
 #+end_src
