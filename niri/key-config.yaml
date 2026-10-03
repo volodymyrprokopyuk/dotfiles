@@ -1,0 +1,15 @@
+auto_kbd_layout: true
+menu:
+  # Keyboard layout
+  - key: e
+    desc: English
+    cmd: niri msg action switch-layout 0
+  - key: s
+    desc: Spanish
+    cmd: niri msg action switch-layout 1
+  - key: u
+    desc: Ukrainian
+    cmd: niri msg action switch-layout 2
+  - key: r
+    desc: Russian
+    cmd: niri msg action switch-layout 3
