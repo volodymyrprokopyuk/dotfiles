@@ -45,7 +45,6 @@
   (go +lsp)
   (javascript)
   emacs-lisp
-  lua
 
   :config
   (default +bindings +snippets))

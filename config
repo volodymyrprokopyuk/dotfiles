@@ -23,7 +23,7 @@ function cfg_emacs -a install
   or return 1
   if test -n "$install"
     set dir ~/.config/emacs
-    git clone --depth 1 https://github.com/doomemacs/doomemacs $dir
+    git clone --depth 1 https://github.com/doomemacs/core $dir
     or return 1
     cd $dir
     or return 1
@@ -44,6 +44,10 @@ function cfg_git
   source base/gitconfig
   or return 1
   cp base/sshconfig ~/.ssh/config
+end
+
+function cfg_niri
+  cp niri/config.kdl ~/.config/niri
 end
 
 function cfg_i3
@@ -116,6 +120,7 @@ if set -ql _flag_all
   cfg_emacs $_flag_install
   cfg_yazi
   cfg_git
+  cfg_niri
   cfg_i3
   cfg_zathura
   return
@@ -133,6 +138,8 @@ for target in $argv
     cfg_yazi
   case git
     cfg_git
+  case niri
+    cfg_niri
   case i3
     cfg_i3
   case zathura

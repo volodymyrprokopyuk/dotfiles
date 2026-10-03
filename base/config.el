@@ -188,6 +188,9 @@
     '(("\\<define\\>\\|\\<template\\>\\|\\<block\\>\\|\\<end\\>" . font-lock-builtin-face)
     ("\\<if\\>\\|\\<else\\>\\|\\<range\\>\\|\\<with\\>" . font-lock-builtin-face))))
 
+(defun config-kdl ()
+  (add-to-list 'auto-mode-alist '("\\.kdl\\'" . js-mode)))
+
 (defun config-d2 ()
   (add-to-list 'auto-mode-alist '("\\.templ\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.d2\\'" . js-mode))
@@ -226,6 +229,7 @@
 ;; Programming
 (config-org)
 (config-lilypond)
+(config-kdl)
 (config-d2)
 (config-sql)
 
