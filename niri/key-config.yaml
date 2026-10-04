@@ -1,6 +1,6 @@
 auto_kbd_layout: true
 menu:
-  # Keyboard layout
+  # Keyboard layouts > niri msg keyboard-layouts
   - key: e
     desc: English
     cmd: niri msg action switch-layout 0
@@ -13,3 +13,4 @@ menu:
   - key: r
     desc: Russian
     cmd: niri msg action switch-layout 3
+  # Monitors > niri msg outpus
