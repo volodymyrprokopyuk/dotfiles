@@ -1,3 +1,6 @@
+// Omit application title bar
+prefer-no-csd
+
 input {
   keyboard {
     xkb {
@@ -40,6 +43,8 @@ output "HDMI-A-1" {
 cursor {
   xcursor-theme "Bibata-Modern-Ice"
   xcursor-size 32
+  // gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
+  // gsettings set org.gnome.desktop.interface cursor-size 32
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -213,13 +218,6 @@ hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     // skip-at-startup
 }
-
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// If the client will specifically ask for CSD, the request will be honored.
-// Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
-// This option will also fix border/focus ring drawing behind some semitransparent windows.
-// After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
