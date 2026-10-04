@@ -1,16 +1,48 @@
+# Theme
+font: JetBrains Mono ExtraLight 13
+background: "#070722ee"
+color: "#f3edf7"
+border: "#fff59b"
+separator: " → "
+border_width: 1
+corner_r: 8
+padding: 16
+rows_per_column: 24
+column_padding: 28
+
+# Multi-layout key bindings
 auto_kbd_layout: true
 menu:
   # Keyboard layouts > niri msg keyboard-layouts
   - key: e
-    desc: English
+    desc: Keyboard English
     cmd: niri msg action switch-layout 0
   - key: s
-    desc: Spanish
+    desc: Keyboard Spanish
     cmd: niri msg action switch-layout 1
   - key: u
-    desc: Ukrainian
+    desc: Keyboard Ukrainian
     cmd: niri msg action switch-layout 2
   - key: r
-    desc: Russian
+    desc: Keyboard Russian
     cmd: niri msg action switch-layout 3
-  # Monitors > niri msg outpus
+  # Monitors > niri msg outputs
+  - key: "]"
+    desc: Monitor rotate clockwise
+    cmd: niri msg output HDMI-A-1 transform 270
+  - key: "["
+    desc: Monitor rotate counter-clockwise
+    cmd: niri msg output HDMI-A-1 transform 90
+  - key: "="
+    desc: Monitor normal orientation
+    cmd: niri msg output HDMI-A-1 transform normal
+  # Screenshots
+  - key: p
+    desc: Screenshot UI (Space, Ctrl+c, Enter)
+    cmd: niri msg action screenshot --show-pointer=false
+  - key: P
+    desc: Screenshot window (clipboard only)
+    cmd: niri msg action screenshot-window --write-to-disk=false
+  - key: Ctrl+p
+    desc: Screenshot window (write to disk)
+    cmd: niri msg action screenshot-window --write-to-disk=true

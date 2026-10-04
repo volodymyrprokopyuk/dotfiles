@@ -22,7 +22,7 @@
 
 (defun config-font ()
   (setq doom-font
-    (font-spec :family "JetBrainsMono NF Light" :size 13.0 :weight 'light))
+    (font-spec :family "JetBrainsMono NF Light" :size 11.0 :weight 'light))
   (setq +ligatures-in-all-modes t))
 
 (defun config-theme ()
