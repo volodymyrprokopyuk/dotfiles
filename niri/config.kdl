@@ -66,31 +66,18 @@ xwayland-satellite {off;}
 hotkey-overlay {skip-at-startup;}
 screenshot-path "~/Pictures/Screenshots/screenshot_%Y-%m-%dT%H-%M-%S.png"
 
+// All windows maximize
 window-rule {
   open-maximized-to-edges true
 }
 
 binds {
-  // Workspace focus
-  Mod+1 {focus-workspace 1;}
-  Mod+2 {focus-workspace 2;}
-  Mod+3 {focus-workspace 3;}
-  Mod+4 {focus-workspace 4;}
-  Mod+5 {focus-workspace 5;}
-  Mod+6 {focus-workspace 6;}
-  Mod+7 {focus-workspace 7;}
-  Mod+8 {focus-workspace 8;}
-  Mod+9 {focus-workspace 9;}
-  // Window move to workspace
-  Mod+Shift+1 {move-window-to-workspace 1;}
-  Mod+Shift+2 {move-window-to-workspace 2;}
-  Mod+Shift+3 {move-window-to-workspace 3;}
-  Mod+Shift+4 {move-window-to-workspace 4;}
-  Mod+Shift+5 {move-window-to-workspace 5;}
-  Mod+Shift+6 {move-window-to-workspace 6;}
-  Mod+Shift+7 {move-window-to-workspace 7;}
-  Mod+Shift+8 {move-window-to-workspace 8;}
-  Mod+Shift+9 {move-window-to-workspace 9;}
+  // Workspace focus down, up
+  Mod+D {focus-workspace-down;}
+  Mod+U {focus-workspace-up;}
+  // Window move to workspace down, up
+  Mod+Shift+D {move-window-to-workspace-down;}
+  Mod+Shift+U {move-window-to-workspace-up;}
 
   // Column, window focus
   Mod+H {focus-column-left-or-last;}
@@ -104,8 +91,8 @@ binds {
   Mod+Shift+L {move-column-right;}
 
   // Window width, height resize
-  Mod+U {switch-preset-column-width;}
-  Mod+Shift+U {switch-preset-window-height;}
+  Mod+Y {switch-preset-column-width;}
+  Mod+Shift+Y {switch-preset-window-height;}
   // Column width shrink, expand
   Mod+Comma {set-column-width "-10%";}
   Mod+Period {set-column-width "+10%";}
@@ -121,12 +108,32 @@ binds {
   // Bottom window expel to the right of the focused column
   Mod+Shift+BracketRight {expel-window-from-column;}
 
+  // Floating window
+  Mod+F {toggle-window-floating;}
+  // Full screen window
+  Mod+Shift+F {fullscreen-window;}
+
   // Screenshot UI (Space to move, Ctrl+c clipboard only, Enter save to disk)
   Mod+P {screenshot show-pointer=false;}
   // Screenshot window (clipboard only)
   Mod+Shift+P {screenshot-window write-to-disk=false;}
   // Screenshot window (write to disk)
   Mod+Ctrl+P {screenshot-window write-to-disk=true;}
+
+  // Volume increase, decrease
+  Mod+Up allow-when-locked=true {
+    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+" "--limit" "1.5"
+  }
+  Mod+Down allow-when-locked=true {
+    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"
+  }
+  // Speakers, mic mute, unpute
+  Mod+M allow-when-locked=true {
+    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"
+  }
+  Mod+Shift+M allow-when-locked=true {
+    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
+  }
 
   // Applications
   Mod+Return {spawn "ghostty";}
