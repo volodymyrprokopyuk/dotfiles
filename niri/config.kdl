@@ -148,6 +148,11 @@ binds {
 
   // Input and output
   Mod+I {spawn "wlr-which-key";}
+
+  // Application launch
+  Mod+X {spawn "fuzzel";}
+  // Document open
+  Mod+O {spawn "fuzzel" "--dmenu";}
 }
 
 spawn-at-startup "noctalia"

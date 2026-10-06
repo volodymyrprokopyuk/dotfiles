@@ -47,10 +47,19 @@ function cfg_git
 end
 
 function cfg_niri
-  cp niri/key-config.yaml ~/.config/wlr-which-key/config.yaml
+  cp niri/which-key.yaml ~/.config/wlr-which-key/config.yaml
+  or return 1
   niri validate --config niri/config.kdl
   or return 1
   cp niri/config.kdl ~/.config/niri
+  or return 1
+  noctalia config validate niri/noctalia.toml
+  or return 1
+  cp niri/noctalia.toml ~/.config/noctalia/config.toml
+  or return 1
+  fuzzel --check-config --config niri/fuzzel.ini
+  or return 1
+  cp niri/fuzzel.ini ~/.config/fuzzel/fuzzel.ini
 end
 
 function cfg_i3
@@ -111,7 +120,7 @@ argparse init a/all i/install v/version= -- $argv
 or return 1
 
 if set -ql _flag_init
-  mkdir -p ~/.config/{niri,wlr-which-key}
+  mkdir -p ~/.config/{wlr-which-key,niri,noctalia,fuzzel}
   mkdir -p ~/.config/{ghostty,fish,doom,yazi,i3,i3status-rust,rofi}
   or return 1
   mkdir -p ~/.config/{zathura,lilypond} ~/.ssh
