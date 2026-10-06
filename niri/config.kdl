@@ -76,8 +76,8 @@ binds {
   Mod+D {focus-workspace-down;}
   Mod+U {focus-workspace-up;}
   // Window move to workspace down, up
-  Mod+Shift+D {move-window-to-workspace-down;}
-  Mod+Shift+U {move-window-to-workspace-up;}
+  Mod+Shift+D {move-column-to-workspace-down;}
+  Mod+Shift+U {move-column-to-workspace-up;}
 
   // Column, window focus
   Mod+H {focus-column-left-or-last;}
@@ -152,7 +152,9 @@ binds {
   // Application launch
   Mod+X {spawn "fuzzel";}
   // Document open
-  Mod+O {spawn "fuzzel" "--dmenu";}
+  Mod+O {
+    spawn-sh "fd --no-ignore --type file -e html -e pdf -e djvu . ~/Downloads ~/Projects/bayanguru ~/Arberis | fuzzel --dmenu --only-match | xargs --no-run-if-empty --delimiter '\\n' xdg-open"
+  }
 }
 
 spawn-at-startup "noctalia"

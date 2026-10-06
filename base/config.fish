@@ -130,9 +130,8 @@ bind alt-d fzfDiff
 
 function fzfOpen
   set src ~/Downloads ~/Projects/bayanguru ~/Arberis
-  ff --no-ignore --type file '(pdf|djvu?)$' --print0 $src |
-    fzfBase --read0 --print0 |
-    read --null --local selected
+  ff --no-ignore --type file -e html -e pdf -e djvu . --print0 $src |
+    fzfBase --read0 --print0 | read --null --local selected
   pipe_success
   or return 1
   xdg-open "$selected" &>/dev/null
