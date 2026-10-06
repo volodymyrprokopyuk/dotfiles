@@ -36,13 +36,3 @@ menu:
   - key: "="
     desc: Monitor normal orientation
     cmd: niri msg output HDMI-A-1 transform normal
-  # Screenshots
-  - key: p
-    desc: Screenshot UI (Space, Ctrl+c, Enter)
-    cmd: niri msg action screenshot --show-pointer=false
-  - key: P
-    desc: Screenshot window (clipboard only)
-    cmd: niri msg action screenshot-window --write-to-disk=false
-  - key: Ctrl+p
-    desc: Screenshot window (write to disk)
-    cmd: niri msg action screenshot-window --write-to-disk=true
