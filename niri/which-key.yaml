@@ -1,10 +1,10 @@
 # Theme
-font: JetBrains Mono ExtraLight 13
+font: JetBrains Mono ExtraLight 14
 background: "#070722ee"
 color: "#f3edf7"
-border: "#fff59b"
+border: "#21215f"
 separator: " → "
-border_width: 1
+border_width: 2
 corner_r: 8
 padding: 16
 rows_per_column: 24

@@ -141,7 +141,10 @@ binds {
   Mod+Apostrophe {spawn "firefox";}
   Mod+Ctrl+Q repeat=false {close-window;}
 
-  // System
+  // Lock, log out
+  Mod+Escape {spawn "noctalia" "msg" "session" "lock";}
+  Mod+Ctrl+Escape {quit;}
+  // Suspend, reboot, power off
   Mod+BackSpace repeat=false {spawn "systemctl" "suspend";}
   Mod+Shift+BackSpace repeat=false {spawn "systemctl" "reboot";}
   Mod+Ctrl+BackSpace repeat=false {spawn "systemctl" "poweroff";}

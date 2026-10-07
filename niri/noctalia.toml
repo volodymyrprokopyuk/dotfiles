@@ -1,2 +1,5 @@
 [bar.default]
 position = "top"
+
+[lockscreen]
+lock_before_suspend = false
