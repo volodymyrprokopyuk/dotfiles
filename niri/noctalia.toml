@@ -1,5 +1,17 @@
+[shell]
+font_family = "JetBrains Mono ExtraLight"
+
 [bar.default]
 position = "top"
+scale = 1.4
+margin_ends = 0
+padding = 0
+start = ["workspaces"]
+center = []
+end = ["clock"]
+
+[widget.clock]
+format = "{:%a %d %b %H:%M:%S}"
 
 [lockscreen]
 lock_before_suspend = false

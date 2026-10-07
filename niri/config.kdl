@@ -1,3 +1,7 @@
+environment {
+  LC_TIME "en_US.UTF-8"
+}
+
 input {
   keyboard {
     xkb {layout "us,es,ua,ru";}
