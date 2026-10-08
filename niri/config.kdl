@@ -58,9 +58,9 @@ layout {
 
 cursor {
   xcursor-theme "Bibata-Modern-Ice"
-  xcursor-size 32
+  xcursor-size 28
   // gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
-  // gsettings set org.gnome.desktop.interface cursor-size 32
+  // gsettings set org.gnome.desktop.interface cursor-size 28
   hide-when-typing
   hide-after-inactive-ms 5000
 }

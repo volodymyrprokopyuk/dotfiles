@@ -14,7 +14,12 @@ show_label = false
 
 [location]
 auto_locate = false
-address     = "Colmenarejo, Spain"
+address = "Colmenarejo, Spain"
+
+[weather]
+enabled = true
+refresh_minutes = 30
+unit = "metric"
 
 [bar.default]
 position = "top"

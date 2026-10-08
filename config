@@ -134,7 +134,7 @@ if set -ql _flag_all
   cfg_yazi
   cfg_git
   cfg_niri
-  cfg_i3
+  # cfg_i3
   cfg_zathura
   return
 end
@@ -153,8 +153,8 @@ for target in $argv
     cfg_git
   case niri
     cfg_niri
-  case i3
-    cfg_i3
+  # case i3
+  #   cfg_i3
   case zathura
     cfg_zathura
   case lilypond
