@@ -1,14 +1,29 @@
 [shell]
 font_family = "JetBrains Mono ExtraLight"
 
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+
+[widget.ram]
+type = "sysmon"
+stat = "ram_pct"
+
+[widget.network]
+show_label = false
+
+[location]
+auto_locate = false
+address     = "Colmenarejo, Spain"
+
 [bar.default]
 position = "top"
 scale = 1.4
 margin_ends = 0
 padding = 0
-start = ["workspaces"]
-center = []
-end = ["clock"]
+start = ["workspaces", "taskbar"]
+center = ["weather", "clock"]
+end = ["privacy", "cpu", "ram", "battery", "volume", "network", "keyboard_layout"]
 
 [widget.clock]
 format = "{:%a %d %b %H:%M:%S}"
