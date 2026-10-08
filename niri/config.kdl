@@ -10,7 +10,6 @@ input {
   mouse {}
   touchpad {
     tap
-    natural-scroll
   }
   workspace-auto-back-and-forth
 }
@@ -105,6 +104,7 @@ binds {
   Mod+Shift+Comma {set-window-height "-10%";}
   Mod+Shift+Period {set-window-height "+10%";}
 
+
   // Focused window consume, expel to the left, right
   Mod+BracketLeft {consume-or-expel-window-left;}
   Mod+BracketRight {consume-or-expel-window-right;}
@@ -138,6 +138,21 @@ binds {
   }
   Mod+Shift+M allow-when-locked=true {
     spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
+  }
+
+  // Laptop monitor switch on, off
+  Mod+Ctrl+Comma allow-when-locked=true {
+    spawn "niri" "msg" "output" "eDP-1" "on"
+  }
+  Mod+Ctrl+Period allow-when-locked=true {
+    spawn "niri" "msg" "output" "eDP-1" "off"
+  }
+  // Laptop monitor brightness increase, decrease
+  Mod+Ctrl+Equal allow-when-locked=true {
+    spawn "brightnessctl" "--class=backlight" "set" "+10%"
+  }
+  Mod+Ctrl+Minus allow-when-locked=true {
+    spawn "brightnessctl" "--class=backlight" "set" "10%-"
   }
 
   // Applications

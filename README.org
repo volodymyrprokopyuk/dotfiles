@@ -134,7 +134,7 @@ xdg-mime default org.gnome.gThumb.desktop image/svg+xml
 yay -S mesa vulkan-intel intel-media-driver
 yay -S pipewire wireplumber
 yay -S xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome
-yay -S niri noctalia wlr-which-key
+yay -S niri noctalia wlr-which-key brightnessctl
 yay -S emacs-wayland
 #+end_src
 
