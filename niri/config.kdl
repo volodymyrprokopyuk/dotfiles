@@ -148,11 +148,11 @@ binds {
     spawn "niri" "msg" "output" "eDP-1" "off"
   }
   // Laptop monitor brightness increase, decrease
-  Mod+Ctrl+Equal allow-when-locked=true {
-    spawn "brightnessctl" "--class=backlight" "set" "+10%"
+  Mod+Right allow-when-locked=true {
+    spawn "brightnessctl" "--class=backlight" "set" "+5%"
   }
-  Mod+Ctrl+Minus allow-when-locked=true {
-    spawn "brightnessctl" "--class=backlight" "set" "10%-"
+  Mod+Left allow-when-locked=true {
+    spawn "brightnessctl" "--class=backlight" "set" "5%-"
   }
 
   // Applications
