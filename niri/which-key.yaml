@@ -26,7 +26,7 @@ menu:
   - key: r
     desc: Keyboard Russian
     cmd: niri msg action switch-layout 3
-  # Monitors > niri msg outputs
+  # Monitors rotate > niri msg outputs
   - key: "]"
     desc: Monitor rotate clockwise
     cmd: niri msg output HDMI-A-1 transform 270
@@ -36,3 +36,10 @@ menu:
   - key: "="
     desc: Monitor normal orientation
     cmd: niri msg output HDMI-A-1 transform normal
+  # Monitors switch on, off
+  - key: ","
+    desc: Laptop monitor swith on
+    cmd: niri msg output eDP-1 on
+  - key: "."
+    desc: Laptop monitor swith off
+    cmd: niri msg output eDP-1 off

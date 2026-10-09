@@ -37,11 +37,9 @@ output "HDMI-A-1" {
 prefer-no-csd
 
 layout {
-  // Gaps and borders
   gaps 2
   focus-ring {off;}
   border {off;}
-  // Window width and height resize
   default-column-width {
     proportion 1.0;
   }
@@ -69,17 +67,16 @@ xwayland-satellite {off;}
 hotkey-overlay {skip-at-startup;}
 screenshot-path "~/Pictures/Screenshots/screenshot_%Y-%m-%dT%H-%M-%S.png"
 
-// All windows maximize
 window-rule {
   open-maximized-to-edges true
 }
 
 binds {
-  // Workspace focus down, up
+  // Workspace focus down/up
   Mod+W {focus-workspace-previous;}
   Mod+D {focus-workspace-down;}
   Mod+U {focus-workspace-up;}
-  // Window move to workspace down, up
+  // Window move to workspace down/up
   Mod+Shift+D {move-column-to-workspace-down;}
   Mod+Shift+U {move-column-to-workspace-up;}
 
@@ -104,8 +101,7 @@ binds {
   Mod+Shift+Comma {set-window-height "-10%";}
   Mod+Shift+Period {set-window-height "+10%";}
 
-
-  // Focused window consume, expel to the left, right
+  // Focused window consume, expel to the left/right
   Mod+BracketLeft {consume-or-expel-window-left;}
   Mod+BracketRight {consume-or-expel-window-right;}
   // Right window consume to the bottom of the focused column
@@ -132,7 +128,7 @@ binds {
   Mod+Down allow-when-locked=true {
     spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"
   }
-  // Speakers, mic mute, unpute
+  // Speakers, mic mute
   Mod+M allow-when-locked=true {
     spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"
   }
@@ -140,7 +136,7 @@ binds {
     spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
   }
 
-  // Laptop monitor switch on, off
+  // Laptop monitor switch on/off
   Mod+Ctrl+Comma allow-when-locked=true {
     spawn "niri" "msg" "output" "eDP-1" "on"
   }
