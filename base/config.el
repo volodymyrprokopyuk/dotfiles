@@ -207,7 +207,12 @@
       (modify-syntax-entry ?/ "." (syntax-table))))))
 
 (defun config-sql ()
-  (setq sql-product 'postgres))
+  (setq sql-product 'postgres)
+  (add-hook! 'sql-mode-hook
+    ;; Enable completion of words in buffer
+    (defun my/sql-abbrev-capf-h ()
+      (abbrev-mode +1)
+      (add-hook 'completion-at-point-functions #'cape-abbrev 10 t))))
 
 (defun config-overwrite ()
   ;; Track position in closed files

@@ -112,7 +112,7 @@ binds {
   // Floating window
   Mod+F {toggle-window-floating;}
   // Full screen window
-  Mod+Shift+F {fullscreen-window;}
+  Mod+Z {fullscreen-window;}
 
   // Screenshot UI (Space to move, Ctrl+c clipboard only, Enter save to disk)
   Mod+P {screenshot show-pointer=false;}
