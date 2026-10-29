@@ -5,7 +5,8 @@ keybind = alt+r=reload_config
 command = /usr/bin/fish
 shell-integration = fish
 shell-integration-features = true
-scrollback-limit = 2000
+scrollback-limit-lines = 10000
+scrollback-compression = true
 
 # Window
 window-decoration = none
