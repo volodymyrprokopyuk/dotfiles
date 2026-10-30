@@ -172,7 +172,7 @@ binds {
   Mod+X {spawn "fuzzel";}
   // Document open
   Mod+O {
-    spawn-sh "fd --no-ignore --type file -e html -e pdf -e djvu . ~/Downloads ~/Projects/bayanguru ~/Arberis | fuzzel --dmenu --only-match | xargs --no-run-if-empty --delimiter '\\n' xdg-open"
+    spawn-sh "{ fd --no-ignore --type file -e pdf -e djvu . ~/Downloads; fd --no-ignore --type file -e pdf . ~/Projects/bayanguru; fd --no-ignore --type file -e html -e pdf . ~/Arberis; } 2>/dev/null | fuzzel --dmenu --only-match | xargs --no-run-if-empty --delimiter '\\n' xdg-open"
   }
 }
 
